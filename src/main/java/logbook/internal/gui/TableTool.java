@@ -3,10 +3,14 @@ package logbook.internal.gui;
 import java.io.IOException;
 import java.util.List;
 
+import javafx.scene.control.TableCell;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import javafx.util.Callback;
 
 /**
  * TableViewに関係するメソッドを集めたクラス
@@ -95,4 +99,21 @@ class TableTool {
         Tools.Tables.setSortOrder(table, key);
     }
 
+    static <T> Callback<TableColumn<T, Integer>, TableCell<T, Integer>> getRowCountCellFactory() {
+        return e -> {
+            TableCell<T, Integer> cell = new TableCell<T, Integer>() {
+                @Override
+                protected void updateItem(Integer item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (!empty) {
+                        TableRow<?> currentRow = this.getTableRow();
+                        this.setText(Integer.toString(currentRow.getIndex() + 1));
+                    } else {
+                        this.setText(null);
+                    }
+                }
+            };
+            return cell;
+        };
+    }
 }

@@ -42,6 +42,7 @@
                <children>
                   <TableView fx:id="detail" VBox.vgrow="ALWAYS">
                      <columns>
+                        <TableColumn fx:id="row" prefWidth="50.0" sortable="false" text="行番号" />
                         <TableColumn fx:id="date" prefWidth="150.0" text="日付" />
                         <TableColumn fx:id="item" prefWidth="120.0" text="開発装備" />
                         <TableColumn fx:id="type" prefWidth="100.0" text="種別" />

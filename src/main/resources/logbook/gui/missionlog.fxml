@@ -55,6 +55,7 @@
                         </SplitPane>
                         <TableView fx:id="detail">
                            <columns>
+                              <TableColumn fx:id="row" prefWidth="50.0" sortable="false" text="行番号" />
                               <TableColumn fx:id="date" prefWidth="150.0" text="日付" />
                               <TableColumn fx:id="name" prefWidth="110.0" text="遠征名" />
                               <TableColumn fx:id="result" prefWidth="55.0" text="結果" />

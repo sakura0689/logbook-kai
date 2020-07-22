@@ -118,6 +118,10 @@ public class BattleLogController extends WindowController {
     @FXML
     private TableView<BattleLogDetail> detail;
 
+    /** 行番号 */
+    @FXML
+    private TableColumn<BattleLogDetail, Integer> row;
+
     /** 日付 */
     @FXML
     private TableColumn<BattleLogDetail, String> date;
@@ -285,6 +289,7 @@ public class BattleLogController extends WindowController {
             this.detail.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
             this.detail.setOnKeyPressed(TableTool::defaultOnKeyPressedHandler);
 
+            this.row.setCellFactory(TableTool.getRowCountCellFactory());
             this.date.setCellValueFactory(new PropertyValueFactory<>("date"));
             this.area.setCellValueFactory(new PropertyValueFactory<>("area"));
             this.cell.setCellValueFactory(new PropertyValueFactory<>("cell"));

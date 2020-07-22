@@ -44,7 +44,6 @@ import javafx.scene.control.Labeled;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
@@ -455,21 +454,7 @@ public class ShipTablePane extends VBox {
             this.missionValue.selectedProperty().addListener(this::filterAction);
 
             // カラムとオブジェクトのバインド
-            this.row.setCellFactory(e -> {
-                TableCell<ShipItem, Integer> cell = new TableCell<ShipItem, Integer>() {
-                    @Override
-                    protected void updateItem(Integer item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (!empty) {
-                            TableRow<?> currentRow = this.getTableRow();
-                            this.setText(Integer.toString(currentRow.getIndex() + 1));
-                        } else {
-                            this.setText(null);
-                        }
-                    }
-                };
-                return cell;
-            });
+            this.row.setCellFactory(TableTool.getRowCountCellFactory());
             this.id.setCellValueFactory(new PropertyValueFactory<>("id"));
             this.fleet.setCellValueFactory(new PropertyValueFactory<>("fleet"));
             this.ship.setCellValueFactory(new PropertyValueFactory<>("ship"));

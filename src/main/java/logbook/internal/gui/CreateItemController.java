@@ -108,6 +108,10 @@ public class CreateItemController extends WindowController {
     @FXML
     private TableView<CreateItem> detail;
 
+    /** 行番号 */
+    @FXML
+    private TableColumn<BattleLogDetail, Integer> row;
+
     /** 日付 */
     @FXML
     private TableColumn<CreateItem, String> date;
@@ -154,6 +158,7 @@ public class CreateItemController extends WindowController {
             this.count.setCellValueFactory(new TreeItemPropertyValueFactory<>("count"));
             this.ratio.setCellValueFactory(new TreeItemPropertyValueFactory<>("ratio"));
 
+            this.row.setCellFactory(TableTool.getRowCountCellFactory());
             this.date.setCellValueFactory(new PropertyValueFactory<>("date"));
             this.item.setCellValueFactory(new PropertyValueFactory<>("item"));
             this.type.setCellValueFactory(new PropertyValueFactory<>("type"));

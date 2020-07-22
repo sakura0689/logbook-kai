@@ -66,6 +66,7 @@
                   </TitledPane>
                   <TableView fx:id="detail" VBox.vgrow="ALWAYS">
                     <columns>
+                      <TableColumn fx:id="row" prefWidth="50.0" sortable="false" text="行番号" />
                       <TableColumn fx:id="date" prefWidth="150.0" text="日付" />
                       <TableColumn fx:id="area" prefWidth="130.0" text="海域" />
                       <TableColumn fx:id="cell" prefWidth="40.0" text="マス" />

@@ -83,6 +83,10 @@ public class MissionLogController extends WindowController {
     @FXML
     private TableView<MissionLogDetail> detail;
 
+    /** 行番号 */
+    @FXML
+    private TableColumn<BattleLogDetail, Integer> row;
+
     /** 日付 */
     @FXML
     private TableColumn<MissionLogDetail, String> date;
@@ -183,6 +187,7 @@ public class MissionLogController extends WindowController {
         this.detail.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         this.detail.setOnKeyPressed(TableTool::defaultOnKeyPressedHandler);
 
+        this.row.setCellFactory(TableTool.getRowCountCellFactory());
         this.date.setCellValueFactory(new PropertyValueFactory<>("date"));
         this.name.setCellValueFactory(new PropertyValueFactory<>("name"));
         this.result.setCellValueFactory(new PropertyValueFactory<>("result"));
