@@ -1,15 +1,15 @@
 航海日誌 (logbook-kai)
 --
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/sanaehirotaka/logbook-kai)](https://github.com/sanaehirotaka/logbook-kai/releases/latest)
-[![GitHub](https://img.shields.io/github/license/sanaehirotaka/logbook-kai)](LICENSE)
-[![GitHub All Releases](https://img.shields.io/github/downloads/sanaehirotaka/logbook-kai/total)](https://github.com/sanaehirotaka/logbook-kai/releases)
-[![GitHub Release Date](https://img.shields.io/github/release-date/sanaehirotaka/logbook-kai)](https://github.com/sanaehirotaka/logbook-kai/releases)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/Sdk0815/logbook-kai)](https://github.com/Sdk0815/logbook-kai/releases/latest)
+[![GitHub](https://img.shields.io/github/license/Sdk0815/logbook-kai)](LICENSE)
+[![GitHub All Releases](https://img.shields.io/github/downloads/Sdk0815/logbook-kai/total)](https://github.com/Sdk0815/logbook-kai/releases)
+[![GitHub Release Date](https://img.shields.io/github/release-date/Sdk0815/logbook-kai)](https://github.com/Sdk0815/logbook-kai/releases)
 
 ## ****重要なお知らせ****
 v20.9.2 以降のバージョンはオリジナルの [sanaehirotaka さんのリポジトリ](https://github.com/sanaehirotaka/logbook-kai/)ではなく
-[Sdk0815 の fork](https://github.com/Sdk0815/logbook-kai/)にて開発を行います。
+こちらの[Sdk0815 の fork](https://github.com/Sdk0815/logbook-kai/)にて開発を行います。
 最新バージョンも[こちら](https://github.com/Sdk0815/logbook-kai/releases)からダウンロードしてください。
-今後は[Issue（問題報告・要望）](https://github.com/Sdk0815/logbook-kai/issues)や[Pull Request（変更要求）](https://github.com/Sdk0815/logbook-kai/pulls)などもそちらにオープンしていただきますようお願いします。
+今後は[Issue（問題報告・要望）](https://github.com/Sdk0815/logbook-kai/issues)や[Pull Request（変更要求）](https://github.com/Sdk0815/logbook-kai/pulls)などもこちらのリポジトリにオープンしていただきますようお願いします。
 
 ### 概要
 
@@ -18,6 +18,8 @@ v20.9.2 以降のバージョンはオリジナルの [sanaehirotaka さんの�
 画面がコンパクトなのが特徴です。
 
 ![メイン画面](images/overview.png)
+
+![メイン画面(ワイド)](images/overview-wide.png)
 
 ### 航海日誌 について
 
@@ -57,7 +59,7 @@ Java 8u40以降のJava8がインストールされたWindows,LinuxまたはmacOS
 - Amazon Corretto : 一部機能が動作しません(集計機能・自動アップデートが利用不可)。
 - AdoptOpenJDK : ライブラリが不足しているため起動しません。
 
-### [ダウンロード](https://github.com/sanaehirotaka/logbook-kai/releases)
+### [ダウンロード](https://github.com/Sdk0815/logbook-kai/releases)
 
 **ご注意ください**
 
