@@ -74,6 +74,10 @@ public class ConfigController extends WindowController {
     private RadioButton windowStyleWide;
 
     @FXML
+    /** フォント */
+    private TextField fontFamily;
+
+    @FXML
     private ToggleGroup fontSize;
 
     /** 文字の大きさ-標準 */
@@ -374,6 +378,7 @@ public class ConfigController extends WindowController {
         AppConfig conf = AppConfig.get();
         this.windowStyleSmart.setSelected("main".equals(conf.getWindowStyle()));
         this.windowStyleWide.setSelected("main_wide".equals(conf.getWindowStyle()));
+        this.fontFamily.setText(conf.getFontFamily());
         this.fontSizeLarge1.setSelected("large1".equals(conf.getFontSize()));
         this.fontSizeLarge2.setSelected("large2".equals(conf.getFontSize()));
         this.useNotification.setSelected(conf.isUseNotification());
@@ -492,7 +497,7 @@ public class ConfigController extends WindowController {
         if (this.windowStyleWide.isSelected())
             windowStyle = "main_wide";
         conf.setWindowStyle(windowStyle);
-
+        conf.setFontFamily(this.fontFamily.getText());
         String fontSize = "default";
         if (this.fontSizeLarge1.isSelected())
             fontSize = "large1";

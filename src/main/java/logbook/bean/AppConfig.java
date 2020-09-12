@@ -24,6 +24,9 @@ public final class AppConfig implements Serializable {
     /** ウインドウスタイル */
     private String windowStyle = "main";
 
+    /** フォント */
+    private String fontFamily;
+
     /** フォントサイズ */
     private String fontSize = "default";
 

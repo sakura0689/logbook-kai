@@ -2,6 +2,7 @@ package logbook.internal.gui;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
@@ -13,6 +14,13 @@ import logbook.bean.AppConfig;
 import logbook.plugin.PluginServices;
 
 public final class InternalFXMLLoader {
+
+    /** OSによる（今の所Macのみ特別扱い）デフォルトのフォントファミリー */
+    private static final String DEFAULT_FONT;
+
+    static {
+        DEFAULT_FONT = System.getProperty("os.name").toLowerCase().startsWith("mac") ? "Hiragino Maru Gothic ProN" : "Meiryo UI";
+    }
 
     public static FXMLLoader load(String name) throws IOException {
         URL url = PluginServices.getResource(name);
@@ -33,6 +41,8 @@ public final class InternalFXMLLoader {
                 root.getStylesheets().add(url.toString());
             }
         }
+        String font = Optional.ofNullable(AppConfig.get().getFontFamily()).filter(str -> str.trim().length() > 0).orElse(DEFAULT_FONT);
+        root.setStyle("-fx-font-family: \""+ font + "\";");
         return root;
     }
 
