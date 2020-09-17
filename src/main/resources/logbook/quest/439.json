@@ -1,0 +1,13 @@
+/* [439]兵站強化遠征任務【基本作戦】 */
+{
+    "type": "遠征",
+    "resetType" : "イヤリー",
+    "yearlyResetMonth": 9,
+    "conditions" : [
+        {"missions": ["海上護衛任務"], "count": 1},
+        {"missions": ["兵站強化任務"], "count": 1},
+        {"missions": ["ボーキサイト輸送任務"], "count": 1},
+        {"missions": ["南西方面航空偵察作戦"], "count": 1}
+    ]
+}
+

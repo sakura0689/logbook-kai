@@ -1,0 +1,15 @@
+/* [928]歴戦「第十方面艦隊」、全力出撃！ */
+{
+    "type" : "出撃",
+    "resetType" : "イヤリー",
+    "yearlyResetMonth": 9,
+    "filter" : {
+        "area": ["7-3", "7-2", "4-2"],
+        "fleet": {"name": ["羽黒", "足柄", "妙高", "高雄", "神風"], "count": 4, "operator": "GE"}
+    },
+    "conditions" : [
+        {"boss": true, "area": ["7-3"], "cell": "P", "rank": ["S"], "count": 3},
+        {"boss": true, "area": ["7-2"], "cell": "M", "rank": ["S"], "count": 3},
+        {"boss": true, "area": ["4-2"], "rank": ["S"], "count": 1}
+    ]
+}

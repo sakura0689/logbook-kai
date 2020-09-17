@@ -1,0 +1,14 @@
+/* [440]兵站強化遠征任務【拡張作戦】 */
+{
+    "type": "遠征",
+    "resetType" : "イヤリー",
+    "yearlyResetMonth": 9,
+    "conditions" : [
+        {"missions": ["ブルネイ泊地沖哨戒"], "count": 1},
+        {"missions": ["海上護衛任務"], "count": 1},
+        {"missions": ["水上機前線輸送"], "count": 1},
+        {"missions": ["強行鼠輸送作戦"], "count": 1},
+        {"missions": ["南西海域戦闘哨戒"], "count": 1}
+    ]
+}
+
