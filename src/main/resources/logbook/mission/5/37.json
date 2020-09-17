@@ -1,6 +1,13 @@
 /*東京急行*/
 {
     "operator": "AND",
+    "greatSuccessCondition": {
+        "operator": "AND",
+        "conditions": [
+            {"type": "艦隊", "count_type": "キラキラ",  "value": 4},
+            {"type": "艦隊", "count_type": "装備", "item": "ドラム缶(輸送用)", "value": 5}
+        ]
+    },
     "conditions": [
         {"type": "艦隊", "count_type": "レベル", "value": 200},
         {

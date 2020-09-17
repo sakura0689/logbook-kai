@@ -1,6 +1,9 @@
 /*西方潜水艦作戦*/
 {
     "operator": "AND",
+    "greatSuccessCondition": {
+         "type": "艦隊", "count_type": "旗艦レベル＋キラキラ"
+    },
     "conditions": [
         {"type": "艦隊", "count_type": "火力", "value": 60},
         {"type": "艦隊", "count_type": "対空", "value": 80},

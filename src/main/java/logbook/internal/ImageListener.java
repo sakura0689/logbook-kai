@@ -64,6 +64,9 @@ public class ImageListener implements ContentListenerSpi {
             if (uri.startsWith("/kcs2/img/duty/")) {
                 this.images(request, response, "duty");
             }
+            if (uri.startsWith("/kcs2/img/sally/")) {
+                this.images(request, response, "sally");
+            }
         } catch (Exception e) {
             LoggerHolder.get().warn("画像ファイル処理中に例外が発生しました", e);
         }

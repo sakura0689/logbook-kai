@@ -1,6 +1,9 @@
 /*南西諸島離島防衛作戦*/
 {
     "operator": "AND",
+    "greatSuccessCondition": {
+         "type": "艦隊", "count_type": "旗艦レベル＋キラキラ"
+    },
     "conditions": [
         {"type": "艦隊", "count_type": "火力", "value": 500},
         {"type": "艦隊", "count_type": "対潜", "value": 280},

@@ -53,6 +53,8 @@ public class MissionCondition implements TestAllPredicate<List<Ship>> {
 
     private String current;
 
+    private MissionCondition greatSuccessCondition;
+
     @Override
     public boolean test(List<Ship> ships) {
         this.result = false;
@@ -77,7 +79,7 @@ public class MissionCondition implements TestAllPredicate<List<Ship>> {
                 return this.toStringFleet();
             }
         } else if (this.operator != null) {
-            return this.toStringOperator();
+            return this.toStringOperator(this.operator, this.description);
         }
         return "";
     }
@@ -181,6 +183,27 @@ public class MissionCondition implements TestAllPredicate<List<Ship>> {
                     .filter(this.item::equals)
                     .count();
         }
+        if ("キラキラ".equals(this.countType)) {
+            current = ships.stream()
+                    .filter(Objects::nonNull)
+                    .filter(ship -> ship.getCond() > 49)
+                    .count();
+        }
+        if ("旗艦レベル＋キラキラ".equals(this.countType)) {
+            current = ships.stream()
+                    .filter(Objects::nonNull)
+                    .filter(ship -> ship.getCond() > 49)
+                    .count();
+            this.value = 6;
+            if (ships.size() > 0) {
+                int lv = ships.get(0).getLv();
+                if (lv >= 128) {
+                    this.value = 4;
+                } else if (lv >= 33) {
+                    this.value = 5;
+                }
+            }
+        }
         this.current = String.valueOf(current);
         return current >= this.value;
     }
@@ -206,19 +229,7 @@ public class MissionCondition implements TestAllPredicate<List<Ship>> {
      * @return 条件に一致する場合true
      */
     private boolean testOperator(List<Ship> ships) {
-        Predicate<List<Ship>> predicate = null;
-        for (MissionCondition condition : this.conditions) {
-            if (predicate == null) {
-                predicate = condition;
-            } else {
-                predicate = this.operator.endsWith("AND")
-                        ? predicate.and(condition)
-                        : predicate.or(condition);
-            }
-        }
-        if ("NAND".equals(this.operator) || "NOR".equals(this.operator)) {
-            predicate = predicate.negate();
-        }
+        Predicate<List<Ship>> predicate = processOperator(this.operator, this.conditions);
         return predicate.test(new ArrayList<>(ships));
     }
 
@@ -256,6 +267,14 @@ public class MissionCondition implements TestAllPredicate<List<Ship>> {
         StringBuilder sb = new StringBuilder();
         if ("装備".equals(this.countType)) {
             sb.append(this.item);
+        } else if ("旗艦レベル＋キラキラ".equals(this.countType)) {
+            if (this.value == 4) {
+                sb.append("旗艦レベル128以上かつキラキラ");
+            } else if (this.value == 5) {
+                sb.append("旗艦レベル33以上かつキラキラ");
+            } else {
+                sb.append("(旗艦レベル33未満)キラキラ");
+            }
         } else {
             sb.append("艦隊" + this.countType + "合計");
         }
@@ -269,29 +288,4 @@ public class MissionCondition implements TestAllPredicate<List<Ship>> {
         }
         return sb.toString();
     }
-
-    private String toStringOperator() {
-        StringBuilder sb = new StringBuilder();
-        switch (this.operator) {
-        case "AND":
-            sb.append("次の条件を全て満たす");
-            break;
-        case "OR":
-            sb.append("次の条件のいずれか少なくとも1つを満たす");
-            break;
-        case "NAND":
-            sb.append("次の条件のいずれか少なくとも1つを満たさない");
-            break;
-        case "NOR":
-            sb.append("次の条件を全て満たさない");
-            break;
-        default:
-            break;
-        }
-        if (this.description != null) {
-            sb.append("(" + this.description + ")");
-        }
-        return sb.toString();
-    }    
-    
 }

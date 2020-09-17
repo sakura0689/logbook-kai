@@ -1,6 +1,9 @@
 /*ラバウル方面艦隊進出*/
 {
     "operator": "AND",
+    "greatSuccessCondition": {
+         "type": "艦隊", "count_type": "旗艦レベル＋キラキラ"
+    },
     "conditions": [
         {"type": "艦隊", "count_type": "火力", "value": 450},
         {"type": "艦隊", "count_type": "対空", "value": 350},

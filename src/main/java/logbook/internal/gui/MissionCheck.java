@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 
 import org.controlsfx.control.SegmentedButton;
 import org.controlsfx.glyphfont.FontAwesome;
+import org.controlsfx.glyphfont.Glyph;
 import org.controlsfx.glyphfont.GlyphFont;
 import org.controlsfx.glyphfont.GlyphFontRegistry;
 
@@ -24,6 +25,7 @@ import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import logbook.bean.DeckPort;
@@ -142,6 +144,14 @@ public class MissionCheck extends WindowController {
         }
         this.conditionTree.setRoot(root);
     }
+    
+    private static MissionCondition createDefaultGreatSuccessCondition() {
+        MissionCondition success = new MissionCondition();
+        success.setType("艦隊");
+        success.setCountType("キラキラ");
+        success.setValue(6);
+        return success;
+    }
 
     private TreeItem<String> buildTree0(Mission mission, List<Ship> fleet) {
         try {
@@ -150,6 +160,10 @@ public class MissionCheck extends WindowController {
             if (condition.isPresent()) {
                 MissionCondition cond = condition.get();
                 cond.test(fleet);
+                if (cond.getGreatSuccessCondition() == null) {
+                    cond.setGreatSuccessCondition(createDefaultGreatSuccessCondition());
+                }
+                cond.getGreatSuccessCondition().test(fleet);
                 item = this.buildLeaf(cond);
             } else if (mission.getSampleFleet() != null) {
                 item = new TreeItem<>();
@@ -157,17 +171,31 @@ public class MissionCheck extends WindowController {
             } else {
                 return null;
             }
-            item.setValue(mission.toString());
+            
+            item.setValue(mission.toString()+" ["+Missions.getDurationText(mission) + "]");
+            if (mission.getDamageType() != null && mission.getDamageType().intValue() > 0) {
+                String label;
+                switch (mission.getDamageType()) {
+                case 1:
+                    label = "交戦型";
+                    break;
+                case 2:
+                    label = "交戦II型";
+                    break;
+                default:
+                    label = "交戦型(" + mission.getDamageType() + ")";
+                    break;
+                }
+                TreeItem<String> battle = new TreeItem<>(label);
+                ImageView image = new ImageView(Missions.damageTypeIcon(mission.getDamageType()));
+                image.setFitWidth(18);
+                image.setFitHeight(18);
+                battle.setGraphic(image);
+                item.getChildren().add(0, battle);
+            }
             if (mission.getSampleFleet() != null) {
                 TreeItem<String> sample = new TreeItem<>("サンプル編成");
-
-                GlyphFont fontAwesome = GlyphFontRegistry.font("FontAwesome");
-
-                StackPane pane = new StackPane();
-                pane.setPrefWidth(18);
-                pane.getChildren().add(fontAwesome.create(FontAwesome.Glyph.INFO));
-                sample.setGraphic(pane);
-
+                setIcon(sample, FontAwesome.Glyph.INFO, null);
                 for (Integer type : mission.getSampleFleet()) {
                     Optional.ofNullable(StypeCollection.get()
                             .getStypeMap()
@@ -187,6 +215,27 @@ public class MissionCheck extends WindowController {
     private TreeItem<String> buildLeaf(MissionCondition condition) {
         TreeItem<String> item = new TreeItem<>(condition.toString());
         this.setIcon(item, condition.getResult());
+        // 大成功条件をチェック
+        Optional.ofNullable(condition.getGreatSuccessCondition())
+            .ifPresent(cond -> {
+                TreeItem<String> greatSuccess;
+                if (condition.getResult()) {
+                    if (cond.getResult()) {
+                        greatSuccess = new TreeItem<>("大成功");
+                        setIcon(greatSuccess, true);
+                    } else {
+                        greatSuccess = new TreeItem<>("成功");
+                        setIcon(greatSuccess, FontAwesome.Glyph.CHECK, Color.ORANGE);
+                        setIcon(item, FontAwesome.Glyph.CHECK, Color.ORANGE);
+                    }
+                } else {
+                    greatSuccess = new TreeItem<>("失敗");
+                    setIcon(greatSuccess, false);
+                }
+                greatSuccess.getChildren().add(buildLeaf(cond));
+                item.getChildren().add(greatSuccess);
+            });
+
         if (condition.getConditions() != null) {
             if (condition.getConditions().size() == 1 && !condition.getOperator().startsWith("N")) {
                 item.setValue(condition.getConditions().get(0).toString());
@@ -199,21 +248,25 @@ public class MissionCheck extends WindowController {
         return item;
     }
 
-    private void setIcon(TreeItem<String> item, Boolean result) {
+    private void setIcon(TreeItem<String> item, FontAwesome.Glyph glyph, Color color) {
         GlyphFont fontAwesome = GlyphFontRegistry.font("FontAwesome");
-
         StackPane pane = new StackPane();
         pane.setPrefWidth(18);
+        Glyph g = fontAwesome.create(glyph);
+        Optional.ofNullable(color).ifPresent(g::color);
+        pane.getChildren().add(g);
+        item.setGraphic(pane);
+    }
 
+    private void setIcon(TreeItem<String> item, Boolean result) {
         if (result != null) {
             if (result) {
-                pane.getChildren().add(fontAwesome.create(FontAwesome.Glyph.CHECK).color(Color.GREEN));
+                setIcon(item, FontAwesome.Glyph.CHECK, Color.GREEN);
             } else {
-                pane.getChildren().add(fontAwesome.create(FontAwesome.Glyph.EXCLAMATION).color(Color.RED));
+                setIcon(item, FontAwesome.Glyph.EXCLAMATION, Color.RED);
             }
         } else {
-            pane.getChildren().add(fontAwesome.create(FontAwesome.Glyph.QUESTION).color(Color.GRAY));
+            setIcon(item, FontAwesome.Glyph.QUESTION, Color.GRAY);
         }
-        item.setGraphic(pane);
     }
 }

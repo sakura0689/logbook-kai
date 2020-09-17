@@ -1,6 +1,9 @@
 /*ブルネイ泊地沖哨戒*/
 {
     "operator": "AND",
+    "greatSuccessCondition": {
+         "type": "艦隊", "count_type": "旗艦レベル＋キラキラ"
+    },
     "conditions": [
         {"type": "艦隊", "count_type": "レベル", "value": 100},
         {"type": "艦隊", "count_type": "対潜", "value": 210},
