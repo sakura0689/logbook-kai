@@ -27,4 +27,17 @@ public abstract class LogFormatBase<T> implements LogFormat<T> {
     protected static String nowString() {
         return Logs.nowString();
     }
+    
+    /**
+     * 文字列を "" で囲み、" があればエスケープします
+     * 
+     * @param text 元の文字列
+     * @return エスケープ済みの "" で囲まれた文字列
+     */
+    protected static String wrap(String text) {
+        if (text == null || text.length() == 0) {
+            return "";
+        }
+        return "\"" + text.replaceAll("\"", "\"\"") + "\"";
+    }
 }

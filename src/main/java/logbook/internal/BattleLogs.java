@@ -540,7 +540,7 @@ public class BattleLogs {
          * @param line 海戦・ドロップ報告書.csvの行
          */
         public SimpleBattleLog(String line) {
-            String[] columns = line.split(",", -1);
+            String[] columns = parseLine(line);
 
             this.setDateString(columns[0]);
             // 任務の更新時間が午前5時のため
@@ -566,6 +566,10 @@ public class BattleLogs {
             this.setDispseiku(columns[8]);
             this.setFtouch(columns[9]);
             this.setEtouch(columns[10]);
+            if ("深海5".equals(columns[11]) && "500t級軽巡洋艦".equals(columns[12])) {
+                columns = Arrays.copyOfRange(columns, 1, columns.length);
+                columns[11] = columns[10]+","+columns[11];
+            }
             this.setEfleet(columns[11]);
             this.setDropType(columns[12]);
             this.setDropShip(columns[13]);
@@ -578,6 +582,48 @@ public class BattleLogs {
             if (columns.length > 64) {
                 this.setExp(columns[64]);
             }
+        }
+        
+        private static final String [] parseLine(String line) {
+            List<String> tmp = new ArrayList<String>(line.length());
+            for (int i = 0; i < line.length(); i++) {
+                char c = line.charAt(i);
+                switch (c) {
+                case ',':
+                    // 空
+                    tmp.add("");
+                    break;
+                case '"':
+                    // ", 次の単独の " まで
+                    int dq = line.indexOf('"', i+1);
+                    while (dq > 0 && dq < line.length()-1 && line.charAt(dq+1) =='"') {
+                        dq = line.indexOf('"', dq+2);
+                    }
+                    if (dq < 0) {
+                        // 異常
+                        tmp.add(line.substring(i+1));
+                        i = line.length()-1;
+                    } else {
+                        tmp.add(line.substring(i+1, dq).replaceAll("\"\"", "\""));
+                        i = dq+1;
+                        // もし " の後がカンマじゃないと一文字捨てることになるがどのみち異常なのでそのまま
+                    }
+                    break;
+                default:
+                    // 次のカンマまで
+                    int comma = line.indexOf(',', i+1);
+                    if (comma < 0) {
+                        comma = line.length();
+                    }
+                    tmp.add(line.substring(i, comma));
+                    i=comma;
+                    break;
+                }
+            }
+            if (line.length() > 0 && line.charAt(line.length()-1) == ',') {
+                tmp.add("");
+            }
+            return tmp.toArray(new String [0]);
         }
     }
 

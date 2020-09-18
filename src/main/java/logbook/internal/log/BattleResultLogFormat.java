@@ -276,29 +276,29 @@ public class BattleResultLogFormat extends LogFormatBase<BattleLog> {
         @Override
         public String toString() {
             StringJoiner joiner = new StringJoiner(",");
-            joiner.add(this.日付);
-            joiner.add(this.海域);
-            joiner.add(this.マス);
-            joiner.add(this.ボス);
-            joiner.add(this.ランク);
-            joiner.add(this.艦隊行動);
-            joiner.add(this.味方陣形);
-            joiner.add(this.敵陣形);
-            joiner.add(this.制空権);
-            joiner.add(this.味方触接);
-            joiner.add(this.敵触接);
-            joiner.add(this.敵艦隊);
-            joiner.add(this.ドロップ艦種);
-            joiner.add(this.ドロップ艦娘);
+            joiner.add(wrap(this.日付));
+            joiner.add(wrap(this.海域));
+            joiner.add(wrap(this.マス));
+            joiner.add(wrap(this.ボス));
+            joiner.add(wrap(this.ランク));
+            joiner.add(wrap(this.艦隊行動));
+            joiner.add(wrap(this.味方陣形));
+            joiner.add(wrap(this.敵陣形));
+            joiner.add(wrap(this.制空権));
+            joiner.add(wrap(this.味方触接));
+            joiner.add(wrap(this.敵触接));
+            joiner.add(wrap(this.敵艦隊));
+            joiner.add(wrap(this.ドロップ艦種));
+            joiner.add(wrap(this.ドロップ艦娘));
             for (int i = 0; i < this.味方艦.length; i++) {
-                joiner.add(this.味方艦[i]);
-                joiner.add(this.味方艦HP[i]);
+                joiner.add(wrap(this.味方艦[i]));
+                joiner.add(wrap(this.味方艦HP[i]));
             }
             for (int i = 0; i < this.敵艦.length; i++) {
-                joiner.add(this.敵艦[i]);
-                joiner.add(this.敵艦HP[i]);
+                joiner.add(wrap(this.敵艦[i]));
+                joiner.add(wrap(this.敵艦HP[i]));
             }
-            joiner.add(this.ドロップアイテム);
+            joiner.add(wrap(this.ドロップアイテム));
             joiner.add(this.艦娘経験値);
             joiner.add(this.提督経験値);
             return joiner.toString();
