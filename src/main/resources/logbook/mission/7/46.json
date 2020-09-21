@@ -1,0 +1,30 @@
+/*南西海域戦闘哨戒*/
+{
+    "operator": "AND",
+    "greatSuccessCondition": {
+         "type": "艦隊", "count_type": "旗艦レベル＋キラキラ"
+    },
+    "conditions": [
+        {"type": "艦隊", "count_type": "レベル", "value": 300},
+        {"type": "艦隊", "count_type": "火力", "value": 350},
+        {"type": "艦隊", "count_type": "対空", "value": 300},
+        {"type": "艦隊", "count_type": "対潜", "value": 220},
+        {"type": "艦隊", "count_type": "索敵", "value": 200},
+                {
+            "operator": "AND",
+            "conditions": [
+                {"type": "艦娘", "level": 60, "order": 1}
+            ]
+        },
+        {
+            "operator": "AND",
+            "conditions": [
+                {"type": "艦娘", "ship_type" :["重巡洋艦"]},
+                {"type": "艦娘", "ship_type" :["重巡洋艦"]},
+                {"type": "艦娘", "ship_type" :["軽巡洋艦"]},
+                {"type": "艦娘", "ship_type" :["駆逐艦"]},
+                {"type": "艦娘", "ship_type" :["駆逐艦"]}
+            ]
+        }
+    ]
+}

@@ -1,0 +1,43 @@
+/*強行鼠輸送作戦*/
+{
+    "operator": "AND",
+    "greatSuccessCondition": {
+        "operator": "AND",
+        "conditions": [
+            {"type": "艦隊", "count_type": "キラキラ",  "value": 4},
+            {"type": "艦隊", "count_type": "装備", "item": "ドラム缶(輸送用)", "value": 5}
+        ]
+    },
+    "conditions": [
+        {"type": "艦隊", "count_type": "レベル", "value": 353},
+        {"type": "艦隊", "count_type": "火力", "value": 280},
+        {"type": "艦隊", "count_type": "対空", "value": 289},
+        {"type": "艦隊", "count_type": "対潜", "value": 278},
+        {"type": "艦隊", "count_type": "索敵", "value": 164},
+        {
+            "operator": "AND",
+            "conditions": [
+                {"type": "艦娘", "level": 70, "order": 1}
+            ]
+        },
+        {
+            "operator": "AND",
+            "conditions": [
+                {"type": "艦隊", "count_type": "装備", "item": "ドラム缶(輸送用)", "value": 4},
+                {"type": "艦娘", "item": "ドラム缶(輸送用)"},
+                {"type": "艦娘", "item": "ドラム缶(輸送用)"},
+                {"type": "艦娘", "item": "ドラム缶(輸送用)"}
+            ]
+        },
+        {
+            "operator": "AND",
+            "conditions": [
+                {"type": "艦娘", "ship_type" :["駆逐艦"]},
+                {"type": "艦娘", "ship_type" :["駆逐艦"]},
+                {"type": "艦娘", "ship_type" :["駆逐艦"]},
+                {"type": "艦娘", "ship_type" :["駆逐艦"]},
+                {"type": "艦娘", "ship_type" :["駆逐艦"]}
+            ]
+        }
+    ]
+}
