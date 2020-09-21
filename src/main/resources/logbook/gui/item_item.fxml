@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.Label?>
@@ -10,7 +11,9 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.VBox?>
 <?import org.controlsfx.control.ToggleSwitch?>
 
@@ -22,16 +25,30 @@
                  <children>
                     <TitledPane fx:id="filter" animated="false" expanded="false" text="フィルター">
                    <content>
+                      <VBox spacing="5">
                       <FlowPane fx:id="filters" hgap="5" >
                          <children>
                             <VBox>
                                <children>
-                                  <ToggleSwitch fx:id="typeFilter" prefWidth="0.0" style="-fx-font-weight: bold;" text="テキスト" />
-                                  <ComboBox fx:id="typeValue" disable="true" editable="true" prefWidth="180.0" />
+                                  <ToggleSwitch fx:id="textFilter" prefWidth="0.0" style="-fx-font-weight: bold;" text="テキスト" />
+                                  <ComboBox fx:id="textValue" disable="true" editable="true" prefWidth="180.0" />
+                                  <ToggleSwitch fx:id="typeFilter" prefWidth="0.0" style="-fx-font-weight: bold; -fx-padding: 20 0 0 0;" text="種類" />
                                </children>
                             </VBox>
                          </children>
                       </FlowPane>
+                      <TitledPane fx:id="typeFilterTitledPane" animated="false" expanded="false" text="種類フィルター">
+                         <GridPane fx:id="typeFilterPane" hgap="20" vgap="5">
+                            <columnConstraints>
+                               <ColumnConstraints fillWidth="false" minWidth="100"/>
+                               <ColumnConstraints fillWidth="true" />
+                          </columnConstraints>
+                          <children>
+                             <CheckBox fx:id="allTypes" text="すべて" allowIndeterminate="true" disable="true"/>
+                          </children>
+                         </GridPane>
+                      </TitledPane>
+                      </VBox>
                    </content>
                     </TitledPane>
                     <TableView fx:id="typeTable" VBox.vgrow="ALWAYS">

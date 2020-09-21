@@ -2,10 +2,15 @@ package logbook.internal.gui;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -27,6 +32,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.SelectionMode;
@@ -40,6 +46,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
@@ -48,6 +55,7 @@ import logbook.bean.AppItemTableConfig;
 import logbook.bean.Ship;
 import logbook.bean.SlotItem;
 import logbook.bean.SlotItemCollection;
+import logbook.bean.SlotitemEquiptype;
 import logbook.bean.SlotitemMst;
 import logbook.bean.SlotitemMstCollection;
 import logbook.internal.Items;
@@ -75,11 +83,29 @@ public class ItemItemController extends WindowController {
 
     /** テキスト */
     @FXML
-    private ToggleSwitch typeFilter;
+    private ToggleSwitch textFilter;
 
     /** テキスト */
     @FXML
-    private ComboBox<String> typeValue;
+    private ComboBox<String> textValue;
+
+    @FXML
+    private GridPane typeFilterPane;
+
+    /** 種類フィルター */
+    @FXML
+    private ToggleSwitch typeFilter;
+
+    @FXML
+    /** 種別フィルターのタイトルペイン */
+    private TitledPane typeFilterTitledPane;
+
+    @FXML
+    /** 種別フィルターの全選択・全解除 */
+    private CheckBox allTypes;
+
+    /** 種別フィルター */
+    private final Map<Integer, CheckBox> typeFilters = new TreeMap<>();
 
     /** パラメータフィルター */
     private List<ParameterFilterPane<Item>> parameterFilters;
@@ -189,12 +215,63 @@ public class ItemItemController extends WindowController {
             }));
             x.play();
             this.filter.expandedProperty().addListener((ob, o, n) -> saveConfig());
-            this.typeFilter.selectedProperty().addListener((ob, ov, nv) -> {
-                this.typeValue.setDisable(!nv);
-                this.typeValue.setDisable(!nv);
+            this.textFilter.selectedProperty().addListener((ob, ov, nv) -> {
+                this.textValue.setDisable(!nv);
+                this.textValue.setDisable(!nv);
             });
+            this.textFilter.selectedProperty().addListener(this::filterAction);
+            this.textValue.getSelectionModel().selectedItemProperty().addListener(this::filterAction);
+
+            this.typeFilterTitledPane.expandedProperty().addListener((ob, o, n) -> saveConfig());
+            // カテゴリを調べて存在するものだけ表示する
+            Map<Integer, SlotitemMst> slotitemMap = SlotitemMstCollection.get().getSlotitemMap();
+            Set<Integer> existingTypes = SlotItemCollection.get().getSlotitemMap().values().stream()
+                .map(SlotItem::getSlotitemId)
+                .map(slotitemMap::get)
+                .map(mst -> mst.getType().get(2))
+                .collect(Collectors.toSet());
+            Map<String, List<SlotitemEquiptype>> categories = Items.getCategories();
+            final AtomicInteger row = new AtomicInteger(1);
+            final List<CheckBox> categoryCheckBoxes = new ArrayList<CheckBox>();
+            categories.forEach((name, equipTypes) -> {
+                List<CheckBox> types = equipTypes.stream()
+                        // 該当の装備を1つも持ってないものは除外
+                        .filter(type -> existingTypes.contains(type.getId()))
+                        .map(type -> {
+                            CheckBox check = new CheckBox(type.getName());
+                            check.setDisable(true);
+                            check.selectedProperty().addListener(this::filterAction);
+                            this.typeFilters.put(type.getId(), check);
+                            return check;
+                        })
+                        .collect(Collectors.toList());
+                if (types.isEmpty()) {
+                    // 空であれば何もしない
+                    return;
+                }
+
+                FlowPane categoryPane = new FlowPane();
+                CheckBox category = new CheckBox(name);
+                category.setDisable(true);
+                category.setAllowIndeterminate(true);
+                categoryPane.getChildren().add(category);
+                this.typeFilterPane.add(categoryPane, 0, row.get());
+                categoryCheckBoxes.add(category);
+
+                FlowPane typesPane = new FlowPane(5, 0);
+                typesPane.setPrefWidth(Integer.MAX_VALUE);
+                typesPane.getChildren().addAll(types);
+                this.typeFilterPane.add(typesPane, 1, row.getAndIncrement());
+                Tools.Conrtols.bindChildCheckBoxes(category, types);
+                category.disabledProperty().addListener((ob, o, n) -> types.forEach(c -> c.setDisable(n)));
+            });
+            Tools.Conrtols.bindChildCheckBoxes(this.allTypes, categoryCheckBoxes);
             this.typeFilter.selectedProperty().addListener(this::filterAction);
-            this.typeValue.getSelectionModel().selectedItemProperty().addListener(this::filterAction);
+            this.typeFilter.selectedProperty().addListener((ob, o, n) -> {
+                categoryCheckBoxes.forEach(c -> c.setDisable(!n));
+                this.allTypes.setDisable(!n);
+            });
+
 
             this.parameterFilters = IntStream.range(0, 3).mapToObj(i -> new ParameterFilterPane.ItemParameterFilterPane()).collect(Collectors.toList());
             this.filters.getChildren().addAll(this.parameterFilters);
@@ -238,12 +315,12 @@ public class ItemItemController extends WindowController {
                     .sorted(Comparator.comparing(Item::getType3).thenComparing(Comparator.comparing(Item::getName)))
                     .collect(Collectors.toCollection(FXCollections::observableArrayList));
             // テキストフィルター
-            this.typeValue.setItems(items.stream()
+            this.textValue.setItems(items.stream()
                     .map(Item::typeProperty)
                     .map(StringProperty::get)
                     .distinct()
                     .collect(Collectors.toCollection(FXCollections::observableArrayList)));
-            TextFields.bindAutoCompletion(this.typeValue.getEditor(),
+            TextFields.bindAutoCompletion(this.textValue.getEditor(),
                     new SuggestSupport(String::contains, items.stream()
                             .flatMap(i -> Stream.of(i.typeProperty().get(), i.getName()))
                             .distinct()
@@ -281,8 +358,8 @@ public class ItemItemController extends WindowController {
     
     private void createFilter() {
         Predicate<Item> filter = ItemFilter.DefaultFilter.builder()
-                .typeFilter(this.typeFilter.isSelected())
-                .typeValue(this.typeValue.getValue() == null ? "" : this.typeValue.getValue())
+                .typeFilter(this.textFilter.isSelected())
+                .typeValue(this.textValue.getValue() == null ? "" : this.textValue.getValue())
                 .build();
         filter = filterAnd(filter, this.parameterFilters.stream()
             .map(ParameterFilterPane::filterProperty)
@@ -290,8 +367,18 @@ public class ItemItemController extends WindowController {
             .filter(Objects::nonNull)
             .reduce((acc, val) -> filterAnd(acc, val))
             .orElse(null));
-
+        if (this.typeFilter.isSelected()) {
+            Set<Integer> selectedTypes = getSelectedTypes();
+            filter = filterAnd(filter, (item) -> selectedTypes.contains(item.getType2()));
+        }
         this.types.setPredicate(filter);
+    }
+    
+    private Set<Integer> getSelectedTypes() {
+        return this.typeFilters.entrySet().stream()
+                .filter(entry -> entry.getValue().isSelected())
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toSet());
     }
 
     private <T> Predicate<T> filterAnd(Predicate<T> base, Predicate<T> add) {
@@ -521,12 +608,17 @@ public class ItemItemController extends WindowController {
         try {
             Optional.ofNullable(AppItemTableConfig.get()).map(AppItemTableConfig::getItemTabConfig).ifPresent(config -> {
                 this.filter.setExpanded(config.isFilterExpanded());
-                this.typeFilter.setSelected(config.isTextFilterEnabled());
-                Optional.ofNullable(config.getTextFilter()).ifPresent(this.typeValue::setValue);
+                this.textFilter.setSelected(config.isTextFilterEnabled());
+                Optional.ofNullable(config.getTextFilter()).ifPresent(this.textValue::setValue);
                 Optional.ofNullable(config.getParameterFilters()).ifPresent((list) -> {
                     for (int i = 0; i < Math.min(list.size(), this.parameterFilters.size()); i++) {
                         this.parameterFilters.get(i).loadConfig(list.get(i));
                     }
+                });
+                this.typeFilter.setSelected(config.isTypeFilterEnabled());
+                this.typeFilterTitledPane.setExpanded(config.isTypeFilterExpanded());
+                Optional.ofNullable(config.getSelectedTypes()).ifPresent(types -> {
+                    types.stream().map(this.typeFilters::get).forEach(checkbox -> checkbox.setSelected(true));
                 });
             });
         } finally {
@@ -541,8 +633,11 @@ public class ItemItemController extends WindowController {
         AppItemTableConfig config = AppItemTableConfig.get();
         AppItemTableConfig.ItemTabConfig itemTabConfig = new AppItemTableConfig.ItemTabConfig();
         itemTabConfig.setFilterExpanded(this.filter.isExpanded());
-        itemTabConfig.setTextFilterEnabled(this.typeFilter.isSelected());
-        Optional.ofNullable(this.typeValue.getValue()).map(String::trim).filter(str -> !str.isEmpty()).ifPresent(itemTabConfig::setTextFilter);
+        itemTabConfig.setTextFilterEnabled(this.textFilter.isSelected());
+        Optional.ofNullable(this.textValue.getValue()).map(String::trim).filter(str -> !str.isEmpty()).ifPresent(itemTabConfig::setTextFilter);
+        itemTabConfig.setTypeFilterEnabled(this.typeFilter.isSelected());
+        itemTabConfig.setTypeFilterExpanded(this.typeFilterTitledPane.isExpanded());
+        itemTabConfig.setSelectedTypes(getSelectedTypes());
         itemTabConfig.setParameterFilters(this.parameterFilters.stream().map(ParameterFilterPane::saveConfig).collect(Collectors.toList()));
         config.setItemTabConfig(itemTabConfig);
     }

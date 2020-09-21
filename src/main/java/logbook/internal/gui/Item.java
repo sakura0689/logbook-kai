@@ -22,6 +22,11 @@ public class Item implements Comparable<Item> {
     /** 装備定義 */
     private IntegerProperty id = new SimpleIntegerProperty();
 
+    /** フィルター用 種別*/
+    @Getter
+    @Setter
+    private Integer type2;
+
     /** ソート用 種別 */
     @Getter
     @Setter
@@ -462,6 +467,7 @@ public class Item implements Comparable<Item> {
                 .count();
         Item item = new Item();
         item.setId(slotitem.getId());
+        item.setType2(slotitem.getType().get(2));
         item.setType3(slotitem.getType().get(3));
         item.setName(slotitem.getName());
         item.setType(type);

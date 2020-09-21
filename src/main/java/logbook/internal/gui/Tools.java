@@ -16,6 +16,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.StringJoiner;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -35,6 +36,7 @@ import javafx.scene.SnapshotParameters;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.SplitPane.Divider;
 import javafx.scene.control.TableColumn;
@@ -317,6 +319,76 @@ public class Tools {
                     AppConfig.get().getDividerPositionMap().put(key, n.doubleValue());
                 });
             }
+        }
+
+        /**
+         * 親子関係のある CheckBox を bind します。
+         * 
+         * 親を選択した場合、子は全部選択され、親を非選択した場合は子も全部非選択されます。
+         * すべての子が選択されていたら親を選択し、すべての子が非選択ならば親も非選択にします。
+         * 子が選択非選択混ざっている場合は親は不定にします。
+         * 
+         * @param parent 親の CheckBox
+         * @param children 子供の CheckBox
+         */
+        public static void bindChildCheckBoxes(CheckBox parent, List<CheckBox> children) {
+            AtomicBoolean disable = new AtomicBoolean();
+            children.stream().forEach(checkbox -> checkbox.selectedProperty().addListener((ob, o, n) -> {
+                if (disable.get()) {
+                    return;
+                }
+                disable.set(true);
+                try {
+                    if (children.stream().allMatch(c -> c.isSelected() == n)) {
+                        // 子供が全部選択もしくは全部非選択なので、親の状態もそれに応じて変える
+                        parent.setIndeterminate(false);
+                        parent.setSelected(n);
+                    } else {
+                        // 子供が選択・非選択混ざっている場合は親を不定にする
+                        parent.setIndeterminate(true);
+                    }
+                } finally {
+                    disable.set(false);
+                }
+            }));
+            parent.selectedProperty().addListener((ob, o, n) -> {
+                if (disable.get()) {
+                    return;
+                }
+                disable.set(true);
+                try {
+                    parent.setIndeterminate(false);
+                } finally {
+                    disable.set(false);
+                }
+                // 上の listener にイベントを発行させる必要があるので disable を false にした後に実行
+                children.forEach(checkbox -> {
+                    checkbox.setSelected(n);
+                    checkbox.setIndeterminate(false);
+                });
+            });
+            parent.indeterminateProperty().addListener((ob, o, n) -> {
+                if (disable.get()) {
+                    return;
+                }
+                if (n) {
+                    // 以下の処理は子供が全部選択されている、もしくは全部選択されていないとき、
+                    // 中間状態をスキップするためのコードなので、上の listener のイベントを発行させる必要がある
+                    // （なので disable を true にしないで処理する）
+                    if (children.stream().allMatch(checkbox -> checkbox.isSelected())) {
+                        // 全部選択されているので全部非選択にする
+                        parent.setIndeterminate(false);
+                        parent.setSelected(false);
+                    } else if (children.stream().allMatch(checkbox -> !checkbox.isSelected())) {
+                        // 全部選択されていないので全部選択にする
+                        parent.setIndeterminate(false);
+                        parent.setSelected(true);
+                    }
+                } else {
+                    // こちらの処理も上の listener のイベントを発行させる必要があるのでやはり disable は true にしない
+                    children.forEach(checkbox -> checkbox.setSelected(parent.isSelected()));
+                }
+            });
         }
     }
 

@@ -1,5 +1,6 @@
 package logbook.bean;
 
+import java.util.Collection;
 import java.util.List;
 
 import logbook.internal.Config;
@@ -34,6 +35,15 @@ public class AppItemTableConfig {
 
         /** テキストフィルター */
         private String textFilter;
+
+        /** 種類フィルターがオンだったかどうか */
+        private boolean typeFilterEnabled;
+
+        /** 種類フィルターが展開されていたかどうか */
+        private boolean typeFilterExpanded;
+
+        /** オンだった種類フィルター */
+        private Collection<Integer> selectedTypes;
 
         /** パラメータフィルター */
         private List<ParameterFilterConfig> parameterFilters;
