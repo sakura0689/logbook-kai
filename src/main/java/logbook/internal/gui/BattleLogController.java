@@ -31,12 +31,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TableColumn;
@@ -52,6 +54,8 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 import javafx.util.Duration;
+import logbook.bean.AppViewConfig;
+import logbook.bean.AppViewConfig.BattleLogConfig;
 import logbook.bean.BattleLog;
 import logbook.internal.BattleLogs;
 import logbook.internal.BattleLogs.IUnit;
@@ -77,6 +81,14 @@ public class BattleLogController extends WindowController {
     /** 統計 */
     @FXML
     private TreeTableView<BattleLogCollect> collect;
+
+    /** 集計の削除 */
+    @FXML
+    private Button removeUnitButton;
+
+    /** 集計の削除 */
+    @FXML
+    private MenuItem removeUnitMenu;
 
     /** 集計 */
     @FXML
@@ -215,7 +227,7 @@ public class BattleLogController extends WindowController {
     private PieChart chart;
 
     /** ユーザー追加単位 */
-    private List<IUnit> userUnit = new ArrayList<>();
+    private List<BattleLogs.CustomUnit> userUnit = new ArrayList<>();
 
     /** 戦闘ログ */
     private Map<IUnit, List<SimpleBattleLog>> logMap;
@@ -380,6 +392,8 @@ public class BattleLogController extends WindowController {
             // フィルタ
             this.initializeFilterPane();
 
+            loadConfig();
+
             TreeTableTool.setVisible(this.collect, this.getClass().toString() + "#" + "collect");
         } catch (Exception e) {
             LoggerHolder.get().error("FXMLの初期化に失敗しました", e);
@@ -503,6 +517,35 @@ public class BattleLogController extends WindowController {
     }
 
     /**
+     * ビューの状態を保存
+     */
+    private void saveConfig() {
+        BattleLogConfig config = AppViewConfig.get().getBattleLogConfig();
+        if (config == null) {
+            config = new BattleLogConfig();
+            AppViewConfig.get().setBattleLogConfig(config);
+        }
+        config.setCustomUnits(this.userUnit.stream()
+                .map(u -> new BattleLogConfig.CustomUnit(u.getFrom().toLocalDate().toEpochDay(), u.getTo().toLocalDate().toEpochDay()))
+                .collect(Collectors.toList())
+        );
+    }
+
+    /**
+     * ビューの状態を復元
+     */
+    private void loadConfig() {
+        Optional.ofNullable(AppViewConfig.get().getBattleLogConfig()).ifPresent(config -> {
+            Optional.ofNullable(config.getCustomUnits()).ifPresent(units -> units.stream().forEach(u -> {
+                BattleLogs.CustomUnit unit = new BattleLogs.CustomUnit(LocalDate.ofEpochDay(u.getFrom()), LocalDate.ofEpochDay(u.getTo()));
+                this.logMap.put(unit, BattleLogs.readSimpleLog(unit));
+                this.addTree(unit);
+                this.userUnit.add(unit);
+            }));
+        });
+    }
+
+    /**
      * 集計の追加
      */
     @FXML
@@ -516,13 +559,33 @@ public class BattleLogController extends WindowController {
         alert.setTitle("集計の追加");
         alert.setDialogPane(dialog);
         alert.showAndWait().filter(ButtonType.APPLY::equals).ifPresent(b -> {
-            IUnit unit = dialog.getUnit();
+            BattleLogs.CustomUnit unit = dialog.getUnit();
             if (unit != null) {
                 this.logMap.put(unit, BattleLogs.readSimpleLog(unit));
                 this.addTree(unit);
                 this.userUnit.add(unit);
+                saveConfig();
             }
         });
+    }
+
+    /**
+     * 集計の追加
+     */
+    @FXML
+    void removeUnitAction(ActionEvent event) {
+        TreeItem<BattleLogCollect> item = this.collect.getSelectionModel().getSelectedItem();
+        if (item != null && this.userUnit.contains(item.getValue().getCollectUnit()) && this.collect.getRoot().getChildren().contains(item)) {
+            Tools.Controls.alert(Alert.AlertType.CONFIRMATION, "削除", "集計("+item.getValue().getUnit()+")を削除してよろしいですか？", this.getWindow())
+                .filter(op -> op == ButtonType.OK)
+                .ifPresent(type -> {
+                    this.collect.getRoot().getChildren().remove(item);
+                    IUnit unit = item.getValue().getCollectUnit();
+                    this.userUnit.remove(unit);
+                    this.logMap.remove(unit);
+                    saveConfig();
+                });
+        }
     }
 
     /**
@@ -626,6 +689,9 @@ public class BattleLogController extends WindowController {
                     .sorted(Comparator.comparing(BattleLogDetail::getDate).reversed())
                     .collect(Collectors.toList());
             this.detailsSource.addAll(values);
+            boolean userUnitRootSelected = this.userUnit.contains(collect.getCollectUnit()) && this.collect.getRoot().getChildren().contains(value);
+            this.removeUnitButton.setDisable(!userUnitRootSelected);
+            this.removeUnitMenu.setDisable(!userUnitRootSelected);
         }
         this.initializeFilterPane();
     }
@@ -824,7 +890,7 @@ public class BattleLogController extends WindowController {
             this.from.setDayCellFactory(callback);
         }
 
-        public IUnit getUnit() {
+        public BattleLogs.CustomUnit getUnit() {
             LocalDate from = this.from.getValue();
             LocalDate to = this.to.getValue();
             if (from != null && to != null) {

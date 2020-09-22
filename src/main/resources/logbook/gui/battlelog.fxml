@@ -42,6 +42,7 @@
                         <ContextMenu>
                           <items>
                               <MenuItem mnemonicParsing="false" onAction="#addUnitAction" text="集計の追加" />
+                              <MenuItem fx:id="removeUnitMenu" mnemonicParsing="false" onAction="#removeUnitAction" text="集計の削除"  disable="true" />
                               <MenuItem mnemonicParsing="false" onAction="#reloadAction" text="更新">
                                  <accelerator>
                                     <KeyCodeCombination alt="UP" code="F5" control="UP" meta="UP" shift="UP" shortcut="ANY" />
@@ -53,7 +54,8 @@
                   </TreeTableView>
                    <ToolBar>
                      <Button mnemonicParsing="false" onAction="#addUnitAction" text="集計の追加" />
-                       <Button mnemonicParsing="false" onAction="#reloadAction" text="更新(F5)" />
+                     <Button fx:id="removeUnitButton" mnemonicParsing="false" onAction="#removeUnitAction" text="集計の削除"  disable="true" />
+                     <Button mnemonicParsing="false" onAction="#reloadAction" text="更新(F5)" />
                    </ToolBar>
                </children>
             </VBox>
