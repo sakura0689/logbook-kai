@@ -102,7 +102,7 @@ public class BattleLogScriptController extends WindowController {
 
     @FXML
     void remove() {
-        ButtonType result = Tools.Conrtols.alert(AlertType.CONFIRMATION,
+        ButtonType result = Tools.Controls.alert(AlertType.CONFIRMATION,
                 "スクリプトの削除", "このスクリプトを削除しますか？", this.getWindow())
                 .orElse(null);
         if (!ButtonType.OK.equals(result)) {
@@ -134,7 +134,7 @@ public class BattleLogScriptController extends WindowController {
             return;
         }
         if (!this.current.getScript().equals(this.editor.get())) {
-            ButtonType result = Tools.Conrtols.alert(AlertType.CONFIRMATION,
+            ButtonType result = Tools.Controls.alert(AlertType.CONFIRMATION,
                     "スクリプトの保存", "スクリプトは保存されていません。\n保存せず実行しますか？", this.getWindow())
                     .orElse(null);
             if (!ButtonType.OK.equals(result)) {

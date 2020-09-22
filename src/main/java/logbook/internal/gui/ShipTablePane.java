@@ -645,7 +645,7 @@ public class ShipTablePane extends VBox {
         if (this.table.getSelectionModel()
                 .getSelectedItems()
                 .isEmpty()) {
-            Tools.Conrtols.alert(AlertType.INFORMATION,
+            Tools.Controls.alert(AlertType.INFORMATION,
                     "艦娘が選ばれていません",
                     "ラベルを追加する艦娘を選択してください",
                     this.getScene().getWindow());
@@ -692,7 +692,7 @@ public class ShipTablePane extends VBox {
         if (this.table.getSelectionModel()
                 .getSelectedItems()
                 .isEmpty()) {
-            Tools.Conrtols.alert(AlertType.INFORMATION,
+            Tools.Controls.alert(AlertType.INFORMATION,
                     "艦娘が選ばれていません",
                     "ラベルを除去する艦娘を選択してください",
                     this.getScene().getWindow());
@@ -1027,7 +1027,7 @@ public class ShipTablePane extends VBox {
                 if (AppConfig.get().isHideShipImageFromShipTablePane()) {
                     this.setGraphic(null);
                 } else {
-                    this.setGraphic(Tools.Conrtols.zoomImage(new ImageView(Ships.shipWithItemImage(ship))));
+                    this.setGraphic(Tools.Controls.zoomImage(new ImageView(Ships.shipWithItemImage(ship))));
                 }
                 this.setText(Ships.shipMst(ship)
                         .map(ShipMst::getName)

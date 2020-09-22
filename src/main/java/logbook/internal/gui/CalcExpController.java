@@ -133,7 +133,7 @@ public class CalcExpController extends WindowController {
         // SplitPaneの分割サイズ
         Timeline x = new Timeline();
         x.getKeyFrames().add(new KeyFrame(Duration.millis(1), (e) -> {
-            Tools.Conrtols.setSplitWidth(this.splitPane, this.getClass() + "#" + "splitPane");
+            Tools.Controls.setSplitWidth(this.splitPane, this.getClass() + "#" + "splitPane");
         }));
         x.play();
         // Spinnerに最小値最大値現在値を設定
@@ -506,7 +506,7 @@ public class CalcExpController extends WindowController {
             super.updateItem(ship, empty);
 
             if (!empty) {
-                this.setGraphic(Tools.Conrtols.zoomImage(new ImageView(Ships.shipWithItemImage(ship))));
+                this.setGraphic(Tools.Controls.zoomImage(new ImageView(Ships.shipWithItemImage(ship))));
                 this.setText(Ships.shipMst(ship)
                         .map(ShipMst::getName)
                         .orElse(""));

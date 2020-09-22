@@ -20,7 +20,7 @@ public class ToStringConverter<T> extends StringConverter<T> {
     @Override
     public String toString(T object) {
         if (object != null) {
-            return converter.apply(object);
+            return this.converter.apply(object);
         } else {
             return "";
         }

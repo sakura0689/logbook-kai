@@ -440,7 +440,7 @@ public class MainController extends WindowController {
     private void pushNotifyMission(DeckPort port) {
         if (AppConfig.get().isUseToast()) {
             String message = Messages.getString("mission.complete", port.getName()); //$NON-NLS-1$
-            Tools.Conrtols.showNotify(null, "遠征完了", message);
+            Tools.Controls.showNotify(null, "遠征完了", message);
         }
         if (AppConfig.get().isUseSound()) {
             this.soundNotify(Paths.get(AppConfig.get().getMissionSoundDir()));
@@ -495,7 +495,7 @@ public class MainController extends WindowController {
 
             ImageView img = new ImageView(Ships.shipWithItemImage(ship));
 
-            Tools.Conrtols.showNotify(img, "修復完了", message);
+            Tools.Controls.showNotify(img, "修復完了", message);
         }
         if (AppConfig.get().isUseSound()) {
             this.soundNotify(Paths.get(AppConfig.get().getNdockSoundDir()));

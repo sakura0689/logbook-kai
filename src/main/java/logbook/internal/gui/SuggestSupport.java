@@ -76,7 +76,7 @@ public class SuggestSupport implements Callback<ISuggestionRequest, Collection<S
             return this.values;
         } else {
             return this.values.stream()
-                    .filter(e -> predicate.test(e, text))
+                    .filter(e -> this.predicate.test(e, text))
                     .collect(Collectors.toList());
         }
     }

@@ -90,7 +90,7 @@ public class StatisticsPane extends VBox {
      */
     @FXML
     void storeImageAction(ActionEvent event) {
-        Tools.Conrtols.storeSnapshot(this.content, "統計情報", this.content.getScene().getWindow());
+        Tools.Controls.storeSnapshot(this.content, "統計情報", this.content.getScene().getWindow());
     }
 
     /**

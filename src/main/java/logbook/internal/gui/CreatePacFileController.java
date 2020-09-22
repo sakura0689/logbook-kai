@@ -49,13 +49,13 @@ public class CreatePacFileController extends WindowController {
 
                 this.addr.setText("file:///" + file.toURI().toString().replaceFirst("file:/", ""));
 
-                Tools.Conrtols.alert(AlertType.INFORMATION,
+                Tools.Controls.alert(AlertType.INFORMATION,
                         "自動プロキシ構成スクリプトファイル",
                         "自動プロキシ構成スクリプトファイルを生成しました。\n" + "次にブラウザの設定を行って下さい。",
                         this.getWindow());
             }
         } catch (IOException e) {
-            Tools.Conrtols.alert(AlertType.ERROR,
+            Tools.Controls.alert(AlertType.ERROR,
                     "自動プロキシ構成スクリプトファイル",
                     "自動プロキシ構成スクリプトファイルの生成に失敗しました",
                     e,

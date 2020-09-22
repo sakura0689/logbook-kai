@@ -115,7 +115,7 @@ public class MainMenuController extends WindowController {
                             ((BattleDetail) c).setData(sendlog);
                         }, null);
             } else {
-                Tools.Conrtols.alert(AlertType.INFORMATION, "現在の戦闘", "戦闘のデータがありません", this.parentController.getWindow());
+                Tools.Controls.alert(AlertType.INFORMATION, "現在の戦闘", "戦闘のデータがありません", this.parentController.getWindow());
             }
         } catch (Exception ex) {
             LoggerHolder.get().error("詳細の表示に失敗しました", ex);
@@ -139,7 +139,7 @@ public class MainMenuController extends WindowController {
                             ((BattleDetail) c).setData(sendlog);
                         }, null);
             } else {
-                Tools.Conrtols.alert(AlertType.INFORMATION, "演習詳細", "演習のデータがありません", this.parentController.getWindow());
+                Tools.Controls.alert(AlertType.INFORMATION, "演習詳細", "演習のデータがありません", this.parentController.getWindow());
             }
         } catch (Exception ex) {
             LoggerHolder.get().error("詳細の表示に失敗しました", ex);

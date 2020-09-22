@@ -236,8 +236,8 @@ public class BattleLogController extends WindowController {
             // SplitPaneの分割サイズ
             Timeline x = new Timeline();
             x.getKeyFrames().add(new KeyFrame(Duration.millis(1), (e) -> {
-                Tools.Conrtols.setSplitWidth(this.splitPane1, this.getClass() + "#" + "splitPane1");
-                Tools.Conrtols.setSplitWidth(this.splitPane2, this.getClass() + "#" + "splitPane2");
+                Tools.Controls.setSplitWidth(this.splitPane1, this.getClass() + "#" + "splitPane1");
+                Tools.Controls.setSplitWidth(this.splitPane2, this.getClass() + "#" + "splitPane2");
             }));
             x.play();
             // 統計

@@ -57,7 +57,7 @@ public class ColumnVisibleController extends WindowController {
         AppConfig.get()
                 .getColumnWidthMap()
                 .remove(this.key);
-        Tools.Conrtols.alert(AlertType.INFORMATION, "列幅をリセット", "列幅がリセットされました。\n再度ウインドウを開いたときに反映されます。",
+        Tools.Controls.alert(AlertType.INFORMATION, "列幅をリセット", "列幅がリセットされました。\n再度ウインドウを開いたときに反映されます。",
                 this.getWindow());
     }
 

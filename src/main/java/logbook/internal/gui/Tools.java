@@ -151,7 +151,7 @@ public class Tools {
      * misc
      *
      */
-    public static class Conrtols {
+    public static class Controls {
 
         /**
          * ノードの内容をPNGファイルとして出力します

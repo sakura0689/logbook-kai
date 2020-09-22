@@ -218,7 +218,7 @@ public class CaptureController extends WindowController {
             rectangle.height = bean.getHeight();
             this.setBounds(this.sc.getRobot(), rectangle);
         } else {
-            Tools.Conrtols.alert(AlertType.INFORMATION, "範囲を編集", "範囲を編集するには自動または手動で範囲を設定してください", this.getWindow());
+            Tools.Controls.alert(AlertType.INFORMATION, "範囲を編集", "範囲を編集するには自動または手動で範囲を設定してください", this.getWindow());
         }
     }
 
@@ -248,7 +248,7 @@ public class CaptureController extends WindowController {
         if ((AppConfig.get().getFfmpegPath() == null || AppConfig.get().getFfmpegPath().isEmpty())
                 || (AppConfig.get().getFfmpegArgs() == null || AppConfig.get().getFfmpegArgs().isEmpty())
                 || (AppConfig.get().getFfmpegExt() == null || AppConfig.get().getFfmpegExt().isEmpty())) {
-            Tools.Conrtols.alert(AlertType.INFORMATION, "設定が必要です", "[設定]メニューの[キャプチャ]タブから"
+            Tools.Controls.alert(AlertType.INFORMATION, "設定が必要です", "[設定]メニューの[キャプチャ]タブから"
                     + "FFmpegパスおよび引数を設定してください。", this.getWindow());
             this.movie.setSelected(false);
         }
@@ -406,7 +406,7 @@ public class CaptureController extends WindowController {
                 this.end = new Point2D(e.getX(), e.getY());
                 if (!this.start.equals(this.end)) {
 
-                    Optional<ButtonType> buttonType = Tools.Conrtols.alert(Alert.AlertType.CONFIRMATION,
+                    Optional<ButtonType> buttonType = Tools.Controls.alert(Alert.AlertType.CONFIRMATION,
                             "矩形選択",
                             "この範囲でよろしいですか？",
                             stage);
@@ -542,7 +542,7 @@ public class CaptureController extends WindowController {
             this.process = pb.start();
         } catch (Exception e) {
             this.stopProcess();
-            Tools.Conrtols.alert(AlertType.ERROR, "動画撮影に失敗しました", "設定が誤っている可能性があります。\n引数:" + args.toString(), e,
+            Tools.Controls.alert(AlertType.ERROR, "動画撮影に失敗しました", "設定が誤っている可能性があります。\n引数:" + args.toString(), e,
                     this.getWindow());
         }
     }

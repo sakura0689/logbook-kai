@@ -168,7 +168,7 @@ public class Deck extends WindowController {
     @FXML
     void storeImage(ActionEvent event) {
         if (this.currentDeck.get() != null) {
-            Tools.Conrtols.storeSnapshot(this.deck, "編成記録_" + this.currentDeck.get().getName(), this.getWindow());
+            Tools.Controls.storeSnapshot(this.deck, "編成記録_" + this.currentDeck.get().getName(), this.getWindow());
         }
     }
 

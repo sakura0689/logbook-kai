@@ -107,7 +107,7 @@ public class ApiReqMapStart implements APIListenerSpi {
                     .map(ShipMst::getName)
                     .orElse(""), ship.getLv());
 
-            Tools.Conrtols.showNotify(node, "大破警告", message, Duration.seconds(30));
+            Tools.Controls.showNotify(node, "大破警告", message, Duration.seconds(30));
         }
     }
 

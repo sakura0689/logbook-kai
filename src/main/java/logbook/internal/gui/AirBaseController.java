@@ -142,7 +142,7 @@ public class AirBaseController extends WindowController {
             // SplitPaneの分割サイズ
             Timeline x = new Timeline();
             x.getKeyFrames().add(new KeyFrame(Duration.millis(1), (e) -> {
-                Tools.Conrtols.setSplitWidth(this.splitPane, this.getClass() + "#" + "splitPane");
+                Tools.Controls.setSplitWidth(this.splitPane, this.getClass() + "#" + "splitPane");
             }));
             x.play();
             this.areaTable.setShowRoot(false);

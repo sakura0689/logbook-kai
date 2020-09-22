@@ -264,7 +264,7 @@ public class BattleDetail extends WindowController {
         if (source != null) {
             source.setVisible(false);
         }
-        Tools.Conrtols.storeSnapshot(this.detail, "戦闘ログのスナップショット", this.getWindow());
+        Tools.Controls.storeSnapshot(this.detail, "戦闘ログのスナップショット", this.getWindow());
         if (source != null) {
             source.setVisible(true);
         }

@@ -273,7 +273,7 @@ public class ItemAirBaseController extends WindowController {
                         .get(itemId);
 
                 if (mst != null) {
-                    this.setGraphic(Tools.Conrtols.zoomImage(new ImageView(Items.itemImage(mst))));
+                    this.setGraphic(Tools.Controls.zoomImage(new ImageView(Items.itemImage(mst))));
                     this.setText(mst.getName());
                 }
             } else {

@@ -70,7 +70,7 @@ public class CheckUpdate {
         if (!Version.UNKNOWN.equals(remoteVersion) && Version.getCurrent().compareTo(remoteVersion) < 0) {
             Platform.runLater(() -> CheckUpdate.openInfo(Version.getCurrent(), remoteVersion, isStartUp, stage));
         } else if (!isStartUp) {
-            Tools.Conrtols.alert(AlertType.INFORMATION, "更新の確認", "最新のバージョンです。", stage);
+            Tools.Controls.alert(AlertType.INFORMATION, "更新の確認", "最新のバージョンです。", stage);
         }
     }
 

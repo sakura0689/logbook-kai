@@ -468,7 +468,7 @@ public class ConfigController extends WindowController {
         this.pluginTable.setItems(this.plugins);
 
         this.toastLocation.getSelectionModel().selectedItemProperty().addListener(
-                (ob, o, n) -> Tools.Conrtols.showNotify(null, "確認", "この位置に表示されます。", Duration.seconds(5), Pos.valueOf(n.getValue())));
+                (ob, o, n) -> Tools.Controls.showNotify(null, "確認", "この位置に表示されます。", Duration.seconds(5), Pos.valueOf(n.getValue())));
 
         this.bouyomiChanInit();
     }
@@ -708,7 +708,7 @@ public class ConfigController extends WindowController {
         if (bouyomichanPath != null) {
             this.bouyomiPath.setText(bouyomichanPath.toString());
         } else {
-            Tools.Conrtols.alert(AlertType.INFORMATION,
+            Tools.Controls.alert(AlertType.INFORMATION,
                     "BouyomiChan.exeが見つかりません",
                     "選択されたフォルダにBouyomiChan.exeが見つかりませんでした。",
                     this.getWindow());

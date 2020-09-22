@@ -239,7 +239,7 @@ public class ApiPortPort implements APIListenerSpi {
             if (eventObject.containsKey("api_m_flag2")) {
                 if (JsonHelper.toInteger(eventObject.get("api_m_flag2")) > 0) {
                     Platform.runLater(
-                            () -> Tools.Conrtols.showNotify(null, "ギミック解除", "ギミックの達成を確認しました。",
+                            () -> Tools.Controls.showNotify(null, "ギミック解除", "ギミックの達成を確認しました。",
                                     javafx.util.Duration.seconds(15)));
                     // 通知音再生
                     if (AppConfig.get().isUseSound()) {

@@ -71,7 +71,7 @@ public class CaptureSaveController extends WindowController {
         // SplitPaneの分割サイズ
         Timeline x = new Timeline();
         x.getKeyFrames().add(new KeyFrame(Duration.millis(1), (e) -> {
-            Tools.Conrtols.setSplitWidth(this.splitPane, this.getClass() + "#" + "splitPane");
+            Tools.Controls.setSplitWidth(this.splitPane, this.getClass() + "#" + "splitPane");
         }));
         x.play();
         this.image.fitWidthProperty().bind(this.imageParent.widthProperty());
@@ -120,7 +120,7 @@ public class CaptureSaveController extends WindowController {
                     protected void succeeded() {
                         super.succeeded();
 
-                        Tools.Conrtols.alert(AlertType.INFORMATION,
+                        Tools.Controls.alert(AlertType.INFORMATION,
                                 "キャプチャが保存されました",
                                 "キャプチャが保存されました",
                                 CaptureSaveController.this.getWindow());
@@ -131,7 +131,7 @@ public class CaptureSaveController extends WindowController {
                         super.failed();
                         Throwable t = this.getException();
 
-                        Tools.Conrtols.alert(AlertType.ERROR,
+                        Tools.Controls.alert(AlertType.ERROR,
                                 "キャプチャの保存先に失敗しました",
                                 "キャプチャの保存先に失敗しました",
                                 t,

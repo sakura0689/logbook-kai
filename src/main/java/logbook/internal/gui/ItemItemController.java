@@ -211,7 +211,7 @@ public class ItemItemController extends WindowController {
             // SplitPaneの分割サイズ
             Timeline x = new Timeline();
             x.getKeyFrames().add(new KeyFrame(Duration.millis(1), (e) -> {
-                Tools.Conrtols.setSplitWidth(this.splitPane, this.getClass() + "#" + "splitPane");
+                Tools.Controls.setSplitWidth(this.splitPane, this.getClass() + "#" + "splitPane");
             }));
             x.play();
             this.filter.expandedProperty().addListener((ob, o, n) -> saveConfig());
@@ -262,10 +262,10 @@ public class ItemItemController extends WindowController {
                 typesPane.setPrefWidth(Integer.MAX_VALUE);
                 typesPane.getChildren().addAll(types);
                 this.typeFilterPane.add(typesPane, 1, row.getAndIncrement());
-                Tools.Conrtols.bindChildCheckBoxes(category, types);
+                Tools.Controls.bindChildCheckBoxes(category, types);
                 category.disabledProperty().addListener((ob, o, n) -> types.forEach(c -> c.setDisable(n)));
             });
-            Tools.Conrtols.bindChildCheckBoxes(this.allTypes, categoryCheckBoxes);
+            Tools.Controls.bindChildCheckBoxes(this.allTypes, categoryCheckBoxes);
             this.typeFilter.selectedProperty().addListener(this::filterAction);
             this.typeFilter.selectedProperty().addListener((ob, o, n) -> {
                 categoryCheckBoxes.forEach(c -> c.setDisable(!n));
@@ -436,7 +436,7 @@ public class ItemItemController extends WindowController {
                         .get(itemId);
 
                 if (mst != null) {
-                    this.setGraphic(Tools.Conrtols.zoomImage(new ImageView(Items.itemImage(mst))));
+                    this.setGraphic(Tools.Controls.zoomImage(new ImageView(Items.itemImage(mst))));
                     this.setText(mst.getName());
                 }
             } else {
@@ -497,7 +497,7 @@ public class ItemItemController extends WindowController {
         protected void updateItem(Ship ship, boolean empty) {
             super.updateItem(ship, empty);
             if (!empty) {
-                this.setGraphic(Tools.Conrtols.zoomImage(new ImageView(Ships.shipWithItemImage(ship))));
+                this.setGraphic(Tools.Controls.zoomImage(new ImageView(Ships.shipWithItemImage(ship))));
                 if (ship != null) {
                     this.setText(Ships.toName(ship));
                 } else {

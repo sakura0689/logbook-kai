@@ -87,7 +87,7 @@ public class ApiReqMissionStart implements APIListenerSpi {
                 .append("」")
                 .append("の条件を満たしていません");
 
-        Tools.Conrtols.showNotify(null, "遠征警告", sb.toString(), Duration.seconds(10));
+        Tools.Controls.showNotify(null, "遠征警告", sb.toString(), Duration.seconds(10));
     }
 
     /**
