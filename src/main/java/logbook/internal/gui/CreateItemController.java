@@ -55,6 +55,8 @@ import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 import logbook.bean.AppConfig;
+import logbook.bean.AppViewConfig;
+import logbook.bean.AppViewConfig.CreateItemLogConfig;
 import logbook.bean.SlotitemEquiptype;
 import logbook.bean.SlotitemEquiptypeCollection;
 import logbook.bean.SlotitemMst;
@@ -175,6 +177,7 @@ public class CreateItemController extends WindowController {
             this.group.selectedToggleProperty()
                     .addListener(this::changeType);
             this.setCollect(this.buttonItemRecipe);
+            loadConfig();
             TreeTableTool.setVisible(this.collect, this.getClass() + "#" + "collect");
         } catch (Exception e) {
             LoggerHolder.get().error("FXMLの初期化に失敗しました", e);
@@ -304,10 +307,16 @@ public class CreateItemController extends WindowController {
                                         toList())));
             }
 
-            TreeItem<CreateItemCollect> root = new TreeItem<>();
-            root.setValue(rootCollect);
-            root.setExpanded(true);
-            this.collect.setRoot(root);
+            TreeItem<CreateItemCollect> root = this.collect.getRoot();
+            if (root == null) {
+                root = new TreeItem<>();
+                root.setValue(rootCollect);
+                root.setExpanded(true);
+                this.collect.setRoot(root);
+            } else {
+                this.collect.getRoot().getChildren().clear();
+                this.collect.getRoot().setValue(rootCollect);
+            }
             this.collect.setShowRoot(true);
             this.setUnit(root, count, null, grouping);
             setCount(root);
@@ -428,6 +437,25 @@ public class CreateItemController extends WindowController {
     private void changeType(ObservableValue<? extends Toggle> observable,
             Toggle oldValue, Toggle value) {
         this.setCollect(value);
+        saveConfig();
+    }
+
+    private void loadConfig() {
+        Optional.ofNullable(AppViewConfig.get().getCreateItemLogConfig())
+            .ifPresent(config -> {
+                if (config.getIndex() == 1) {
+                    this.group.selectToggle(this.buttonRecipeItem);
+                }
+            });
+    }
+
+    private void saveConfig() {
+        CreateItemLogConfig config = AppViewConfig.get().getCreateItemLogConfig();
+        if (config == null) {
+            config = new CreateItemLogConfig();
+        }
+        config.setIndex(this.group.getSelectedToggle() == this.buttonItemRecipe ? 0 : 1);
+        AppViewConfig.get().setCreateItemLogConfig(config);
     }
 
     /**

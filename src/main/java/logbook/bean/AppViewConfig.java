@@ -18,6 +18,8 @@ public class AppViewConfig {
 
     private BattleLogConfig battleLogConfig;
 
+    private CreateItemLogConfig createItemLogConfig;
+
     @Data
     public static class BattleLogConfig {
         private List<CustomUnit> customUnits;
@@ -29,6 +31,11 @@ public class AppViewConfig {
             private long from;
             private long to;
         }
+    }
+
+    @Data
+    public static class CreateItemLogConfig {
+        private int index;
     }
 
     /**
