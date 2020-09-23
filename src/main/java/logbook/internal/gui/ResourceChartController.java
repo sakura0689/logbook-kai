@@ -45,6 +45,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Duration;
 import javafx.util.StringConverter;
 import logbook.bean.AppConfig;
+import logbook.bean.AppViewConfig;
+import logbook.bean.AppViewConfig.ResourceChartConfig;
 import logbook.internal.LoggerHolder;
 import logbook.internal.Logs;
 import logbook.internal.Tuple.Pair;
@@ -175,6 +177,9 @@ public class ResourceChartController extends WindowController {
             Tools.Controls.setSplitWidth(this.splitPane, this.getClass() + "#" + "splitPane");
         }));
         x.play();
+        this.term.setItems(FXCollections.observableArrayList(ScaleOption.values()));
+        loadConfig();
+        
         // 資材ログのテーブル列をバインド
         this.date.setCellValueFactory(new PropertyValueFactory<>("date"));
         this.fuelGap.setCellValueFactory(new PropertyValueFactory<>("fuel"));
@@ -194,15 +199,54 @@ public class ResourceChartController extends WindowController {
         this.improveGap.setCellValueFactory(new PropertyValueFactory<>("improve"));
         this.improveGap.setComparator(Comparator.comparing(Pair::get1));
 
-        // 終了日付を初期値として設定
-        this.to.setValue(LocalDate.from(ZonedDateTime.now(TIME_ZONE)));
-
-        this.term.setItems(FXCollections.observableArrayList(ScaleOption.values()));
         this.term.getSelectionModel().selectedItemProperty().addListener((ov, o, n) -> this.changeScaleAction(n));
-        this.term.getSelectionModel().select(2);
+        changeAction();
 
         // 資材ログのテーブル読み込み
         this.loadTable();
+    }
+
+    private void saveConfig() {
+        ResourceChartConfig config = AppViewConfig.get().getResourceChartConfig();
+        if (config == null) {
+            config = new ResourceChartConfig();
+        }
+        config.setTermIndex(this.term.getSelectionModel().getSelectedIndex());
+        config.setFrom(this.from.getValue().toEpochDay());
+        config.setTo(this.to.getValue().toEpochDay());
+        config.setFuel(this.fuel.isSelected());
+        config.setAmmo(this.ammo.isSelected());
+        config.setMetal(this.metal.isSelected());
+        config.setBauxite(this.bauxite.isSelected());
+        config.setBucket(this.bucket.isSelected());
+        config.setBurner(this.burner.isSelected());
+        config.setResearch(this.research.isSelected());
+        config.setImprove(this.improve.isSelected());
+        config.setForceZero(this.forceZero.isSelected());
+        AppViewConfig.get().setResourceChartConfig(config);
+    }
+
+    private void loadConfig() {
+        ResourceChartConfig config = Optional.ofNullable(AppViewConfig.get().getResourceChartConfig()).orElseGet(ResourceChartConfig::new);
+        // default は今日から2週間前まで
+        this.from.setValue(Optional.ofNullable(config.getFrom()).map((l) -> LocalDate.ofEpochDay(l)).orElseGet(() -> LocalDate.from(ZonedDateTime.now(TIME_ZONE).minusDays(14))));
+        this.to.setValue(Optional.ofNullable(config.getTo()).map((l) -> LocalDate.ofEpochDay(l)).orElseGet(() -> LocalDate.from(ZonedDateTime.now(TIME_ZONE))));
+        this.fuel.setSelected(config.isFuel());
+        this.ammo.setSelected(config.isAmmo());
+        this.metal.setSelected(config.isMetal());
+        this.bauxite.setSelected(config.isBauxite());
+        this.bucket.setSelected(config.isBucket());
+        this.burner.setSelected(config.isBurner());
+        this.research.setSelected(config.isResearch());
+        this.improve.setSelected(config.isImprove());
+        this.forceZero.setSelected(config.isForceZero());
+        this.term.getSelectionModel().select(config.getTermIndex());
+    }
+
+    @FXML
+    void today(ActionEvent event) {
+        this.to.setValue(LocalDate.now());
+        this.changeScaleAction(this.term.getValue());
     }
 
     @FXML
@@ -227,6 +271,8 @@ public class ResourceChartController extends WindowController {
      * 変更された場合
      */
     private void changeAction() {
+        saveConfig();
+
         // 開始日時(自身を含む)
         ZonedDateTime fromDateTime = ZonedDateTime.of(this.from.getValue(), LocalTime.MIN, TIME_ZONE);
         // 終了日時(自身を含む)

@@ -2,6 +2,9 @@ package logbook.bean;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 import logbook.internal.Config;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,6 +23,8 @@ public class AppViewConfig {
 
     private CreateItemLogConfig createItemLogConfig;
 
+    private ResourceChartConfig resourceChartConfig;
+
     @Data
     public static class BattleLogConfig {
         private List<CustomUnit> customUnits;
@@ -36,6 +41,23 @@ public class AppViewConfig {
     @Data
     public static class CreateItemLogConfig {
         private int index;
+    }
+
+    @Data
+    @JsonInclude(Include.NON_DEFAULT)
+    public static class ResourceChartConfig {
+        private int termIndex = 2;
+        private Long from;
+        private Long to;
+        private boolean fuel = true;
+        private boolean ammo = true;
+        private boolean metal = true;
+        private boolean bauxite = true;
+        private boolean bucket;
+        private boolean burner;
+        private boolean research;
+        private boolean improve;
+        private boolean forceZero;
     }
 
     /**

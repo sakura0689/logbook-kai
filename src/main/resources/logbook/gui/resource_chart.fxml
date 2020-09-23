@@ -4,6 +4,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.ContextMenu?>
@@ -23,7 +24,7 @@
          <items>
             <VBox>
                <children>
-                  <FlowPane>
+                  <FlowPane hgap="5">
                      <children>
                         <Label text="期間" />
                         <ChoiceBox fx:id="term" prefWidth="100.0" />
@@ -31,12 +32,13 @@
                         <DatePicker fx:id="from" onAction="#change" prefWidth="120.0" />
                         <Label text="終了" />
                         <DatePicker fx:id="to" onAction="#change" prefWidth="120.0" />
+                        <Button text="今日" onAction="#today" />
                      </children>
                      <padding>
                         <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
                      </padding>
                   </FlowPane>
-                  <FlowPane>
+                  <FlowPane hgap="5">
                      <children>
                         <CheckBox fx:id="fuel" mnemonicParsing="false" onAction="#change" selected="true" text="燃料" />
                         <CheckBox fx:id="ammo" mnemonicParsing="false" onAction="#change" selected="true" text="弾薬" />
