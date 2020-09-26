@@ -63,6 +63,7 @@
             </Button>
             <Button fx:id="save" mnemonicParsing="false" onAction="#save" text="保存" />
             <CheckBox fx:id="direct" mnemonicParsing="false" text="直接保存" />
+            <CheckBox fx:id="autoBattleCapture" mnemonicParsing="false" text="出撃と連動" disable="true"/>
          </items>
       </ToolBar>
       <HBox alignment="CENTER_LEFT">

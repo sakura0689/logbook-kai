@@ -59,9 +59,12 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import javafx.stage.WindowEvent;
+import javafx.util.Duration;
+import logbook.bean.AppCondition;
 import logbook.bean.AppConfig;
 import logbook.bean.AppViewConfig;
 import logbook.bean.AppViewConfig.CaptureConfig;
+import logbook.bean.Mapinfo;
 import logbook.internal.LoggerHolder;
 import logbook.internal.ThreadManager;
 import logbook.internal.gui.ScreenCapture.ImageData;
@@ -115,6 +118,9 @@ public class CaptureController extends WindowController {
     private CheckBox direct;
 
     @FXML
+    private CheckBox autoBattleCapture;
+
+    @FXML
     private Label message;
 
     @FXML
@@ -143,6 +149,9 @@ public class CaptureController extends WindowController {
 
     /** 直接保存先 */
     private Path directPath;
+
+    /** 出撃連動動画キャプチャ用チェック */
+    private Timeline autoBattleCaptureTimeline;
 
     @FXML
     void initialize() {
@@ -184,8 +193,61 @@ public class CaptureController extends WindowController {
         });
         this.jpeg.setSelected("jpg".equals(AppConfig.get().getCaptureFormat()));
         this.png.setSelected("png".equals(AppConfig.get().getCaptureFormat()));
+        this.autoBattleCapture.selectedProperty().addListener(this::toggleAutoBattleCapture);
     }
 
+    private void toggleAutoBattleCapture(ObservableValue<? extends Boolean> ob, Boolean prev, Boolean value) {
+        if (value) {
+            if (this.autoBattleCaptureTimeline == null) {
+                // 本来は observer pattern を使いたいところだが Java 11 になってからにする
+                this.mapInfoLastModified = Mapinfo.get().getLastModified();
+                this.autoBattleCaptureTimeline = new Timeline();
+                this.autoBattleCaptureTimeline.setCycleCount(Timeline.INDEFINITE);
+                this.autoBattleCaptureTimeline.getKeyFrames().add(new KeyFrame(Duration.seconds(3), this::checkBattleStartEnd));
+                this.autoBattleCaptureTimeline.play();
+            }
+        } else {
+            if (this.autoBattleCaptureTimeline != null) {
+                this.autoBattleCaptureTimeline.stop();
+                this.autoBattleCaptureTimeline = null;
+            }
+        }
+    }
+
+    private long mapInfoLastModified;
+    private boolean shouldBeInBattle;
+
+    private void checkBattleStartEnd(ActionEvent event) {
+        boolean inBattle = this.shouldBeInBattle;
+        if (this.shouldBeInBattle) {
+            if (AppCondition.get().isMapStart()) {
+                // 出撃した
+                this.mapInfoLastModified = -1;
+            } else if (System.currentTimeMillis() - this.mapInfoLastModified > 90000) {
+                // 戦闘終了、または海域を開いたけど1分半以内に出撃しなかったので停止
+                inBattle = false;
+                this.mapInfoLastModified = Mapinfo.get().getLastModified();
+            }
+        } else {
+            if (this.mapInfoLastModified != Mapinfo.get().getLastModified()) {
+                // 海域を開いたので出撃になるかもしれない
+                this.mapInfoLastModified = Mapinfo.get().getLastModified();
+                inBattle = true;
+            } else if (AppCondition.get().isMapStart()) {
+                // 出撃後にオンにしたなど
+                inBattle = true;
+            }
+        }
+        if (this.shouldBeInBattle ^ inBattle) {
+            // 状況に変化があった
+            this.shouldBeInBattle = inBattle;
+            // もし手動で動画を開始・停止されていたら何もしない
+            if (this.processRunning ^ this.shouldBeInBattle) {
+                capture(event);
+            }
+        }
+    }
+    
     @FXML
     void cutNone(ActionEvent event) {
         this.sc.setCutRect(ScreenCapture.CutType.NONE.getAngle());
@@ -233,6 +295,8 @@ public class CaptureController extends WindowController {
         this.stopTimeLine();
         // 動画モード解除
         this.movie.setSelected(false);
+        this.autoBattleCapture.setSelected(false);
+        this.autoBattleCapture.setDisable(true);
 
         if (this.cyclic.isSelected()) {
             // キャプチャボタンテキストの変更
@@ -262,9 +326,12 @@ public class CaptureController extends WindowController {
             this.setCatureButtonState(ButtonState.START);
             // 直接保存に設定
             this.direct.setSelected(true);
+            this.autoBattleCapture.setDisable(false);
         } else {
             // キャプチャボタンテキストの変更
             this.setCatureButtonState(ButtonState.CAPTURE);
+            this.autoBattleCapture.setDisable(true);
+            this.autoBattleCapture.setSelected(false);
         }
     }
 
@@ -503,6 +570,7 @@ public class CaptureController extends WindowController {
     protected void onWindowHidden(WindowEvent e) {
         this.images.clear();
         this.timeline.stop();
+        Optional.ofNullable(this.autoBattleCaptureTimeline).ifPresent(Timeline::stop);
         this.stopProcess();
     }
 

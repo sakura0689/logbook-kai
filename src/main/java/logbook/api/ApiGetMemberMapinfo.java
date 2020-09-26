@@ -30,6 +30,7 @@ public class ApiGetMemberMapinfo implements APIListenerSpi {
             } else {
                 mapinfo.getAirBase().clear();
             }
+            mapinfo.setLastModified(System.currentTimeMillis());
         }
     }
 

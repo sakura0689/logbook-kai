@@ -26,6 +26,9 @@ public class Mapinfo implements Serializable {
     /** api_air_base */
     private List<AirBase> airBase = new ArrayList<>();
 
+    /** 最終更新時刻 */
+    private long lastModified;
+
     /**
      * api_map_info
      */
