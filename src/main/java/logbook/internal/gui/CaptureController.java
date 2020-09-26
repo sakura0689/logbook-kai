@@ -1,5 +1,6 @@
 package logbook.internal.gui;
 
+import java.awt.AWTException;
 import java.awt.GraphicsConfiguration;
 import java.awt.Rectangle;
 import java.awt.Robot;
@@ -59,6 +60,8 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 import javafx.stage.WindowEvent;
 import logbook.bean.AppConfig;
+import logbook.bean.AppViewConfig;
+import logbook.bean.AppViewConfig.CaptureConfig;
 import logbook.internal.LoggerHolder;
 import logbook.internal.ThreadManager;
 import logbook.internal.gui.ScreenCapture.ImageData;
@@ -162,6 +165,8 @@ public class CaptureController extends WindowController {
                 File file = dc.showDialog(this.getWindow());
                 if (file != null) {
                     this.directPath = file.toPath();
+                    // 保存先を覚える
+                    AppConfig.get().setCaptureDir(file.getAbsolutePath());
                 } else {
                     this.direct.setSelected(false);
 
@@ -338,6 +343,21 @@ public class CaptureController extends WindowController {
     public void setWindow(Stage window) {
         super.setWindow(window);
         this.detectAction();
+        if (this.sc == null) {
+            Optional.ofNullable(AppViewConfig.get().getCaptureConfig())
+                .map(CaptureConfig::getBounds)
+                .ifPresent(bounds -> {
+                    // 前の状態を復元する
+                    GraphicsConfiguration gc = this.currentGraphicsConfiguration();
+                    try {
+                        Robot robot = new Robot(gc.getDevice());
+                        Rectangle rect = new Rectangle(bounds.getX(), bounds.getY(), bounds.getWidth(), bounds.getHeight());
+                        setBounds(robot, rect);
+                    } catch (AWTException e) {
+                        // could not restored but just ignore
+                    }
+                });
+        }
     }
 
     /**
@@ -662,6 +682,18 @@ public class CaptureController extends WindowController {
         this.sc = new ScreenCapture(robot, fixed);
         this.sc.setItems(this.images);
         this.sc.setCurrent(this.preview);
+        
+        CaptureConfig config = AppViewConfig.get().getCaptureConfig();
+        if (config == null) {
+            config = new CaptureConfig();
+        }
+        CaptureConfig.Bounds bounds = new CaptureConfig.Bounds();
+        bounds.setX((int)fixed.getMinX());
+        bounds.setY((int)fixed.getMinY());
+        bounds.setWidth((int)fixed.getWidth());
+        bounds.setHeight((int)fixed.getHeight());
+        config.setBounds(bounds);
+        AppViewConfig.get().setCaptureConfig(config);
     }
 
     private GraphicsConfiguration currentGraphicsConfiguration() {

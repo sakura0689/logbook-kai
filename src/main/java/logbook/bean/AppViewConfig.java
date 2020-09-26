@@ -2,6 +2,7 @@ package logbook.bean;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
@@ -24,6 +25,8 @@ public class AppViewConfig {
     private CreateItemLogConfig createItemLogConfig;
 
     private ResourceChartConfig resourceChartConfig;
+
+    private CaptureConfig captureConfig;
 
     @Data
     public static class BattleLogConfig {
@@ -58,6 +61,21 @@ public class AppViewConfig {
         private boolean research;
         private boolean improve;
         private boolean forceZero;
+    }
+
+    @Data
+    @JsonInclude(Include.NON_DEFAULT)
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public static class CaptureConfig {
+        private Bounds bounds;
+
+        @Data
+        public static class Bounds {
+            private int x;
+            private int y;
+            private int width;
+            private int height;
+        }
     }
 
     /**
