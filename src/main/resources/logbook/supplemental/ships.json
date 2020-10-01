@@ -3468,6 +3468,12 @@
     "min_kaihi" : 54,
     "min_sakuteki" : 5
   }, {
+    "id" : 617,
+    "name" : "屋代改",
+    "min_taisen" : 39,
+    "min_kaihi" : 53,
+    "min_sakuteki" : 5
+  }, {
     "id" : 618,
     "name" : "Perth改",
     "min_taisen" : 20,
@@ -3708,6 +3714,12 @@
     "min_kaihi" : 44,
     "min_sakuteki" : 7
   }, {
+    "id" : 701,
+    "name" : "第四号海防艦改",
+    "min_taisen" : 32,
+    "min_kaihi" : 49,
+    "min_sakuteki" : 4
+  }, {
     "id" : 702,
     "name" : "松改",
     "min_taisen" : 35,
@@ -3719,6 +3731,12 @@
     "min_taisen" : 16,
     "min_kaihi" : 44,
     "min_sakuteki" : 6
+  }, {
+    "id" : 704,
+    "name" : "Hornet改",
+    "min_taisen" : 0,
+    "min_kaihi" : 38,
+    "min_sakuteki" : 49
   }, {
     "id" : 893,
     "name" : "Janus改",
