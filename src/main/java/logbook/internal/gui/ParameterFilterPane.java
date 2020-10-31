@@ -119,7 +119,6 @@ abstract class ParameterFilterPane<T> extends GridPane {
                 }
             }
         });
-        this.parameter.getSelectionModel().select(0);
         this.parameterFilter.selectedProperty().addListener((ob, ov, nv) -> {
             this.parameter.setDisable(!nv);
             this.parameterValue.setDisable(!nv);
@@ -147,7 +146,7 @@ abstract class ParameterFilterPane<T> extends GridPane {
      * @return フィルター
      */
     private Predicate<T> createFilter() {
-        if (this.parameterFilter.isSelected()) {
+        if (this.parameterFilter.isSelected() && !this.parameter.getSelectionModel().isEmpty()) {
             Integer value = null;
             if (this.parameterValue.isVisible()) {
                 try {
