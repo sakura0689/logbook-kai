@@ -33,8 +33,8 @@ import logbook.bean.SlotitemMst;
 import logbook.bean.SlotitemMstCollection;
 import logbook.bean.Stype;
 import logbook.bean.StypeCollection;
-import logbook.bean.Useitem;
-import logbook.bean.UseitemCollection;
+import logbook.bean.UseitemMst;
+import logbook.bean.UseitemMstCollection;
 import logbook.internal.Config;
 import logbook.internal.JsonHelper;
 import logbook.internal.LoggerHolder;
@@ -133,8 +133,8 @@ public class ApiStart2 implements APIListenerSpi {
      * @param array api_mst_useitem
      */
     private void apiMstUseitem(JsonArray array) {
-        UseitemCollection.get()
-                .setUseitemMap(JsonHelper.toMap(array, Useitem::getId, Useitem::toMission));
+        UseitemMstCollection.get()
+                .setUseitemMap(JsonHelper.toMap(array, UseitemMst::getId, UseitemMst::toUseitem));
     }
 
     /**

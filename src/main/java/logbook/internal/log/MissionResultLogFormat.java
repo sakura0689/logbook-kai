@@ -5,8 +5,8 @@ import java.util.Optional;
 import java.util.StringJoiner;
 
 import logbook.bean.MissionResult;
-import logbook.bean.Useitem;
-import logbook.bean.UseitemCollection;
+import logbook.bean.UseitemMst;
+import logbook.bean.UseitemMstCollection;
 
 /**
  * 遠征報告書
@@ -64,17 +64,17 @@ public class MissionResultLogFormat extends LogFormatBase<MissionResult> {
         // ボーキ
         joiner.add(result.getGetMaterial().get(3).toString());
 
-        Map<Integer, Useitem> useitemMap = UseitemCollection.get().getUseitemMap();
+        Map<Integer, UseitemMst> useitemMap = UseitemMstCollection.get().getUseitemMap();
         // アイテム1名前
         // アイテム1個数
         if (result.getGetItem1() != null) {
-            Optional<Useitem> item;
+            Optional<UseitemMst> item;
             if (result.getUseitemFlag().get(0) != 4) {
                 item = Optional.ofNullable(useitemMap.get(result.getUseitemFlag().get(0)));
             } else {
                 item = Optional.ofNullable(useitemMap.get(result.getGetItem1().getUseitemId()));
             }
-            joiner.add(item.map(Useitem::getName).orElse(""));
+            joiner.add(item.map(UseitemMst::getName).orElse(""));
             joiner.add(result.getGetItem1().getUseitemCount().toString());
         } else {
             joiner.add("");
@@ -83,13 +83,13 @@ public class MissionResultLogFormat extends LogFormatBase<MissionResult> {
         // アイテム2名前
         // アイテム2個数
         if (result.getGetItem2() != null) {
-            Optional<Useitem> item;
+            Optional<UseitemMst> item;
             if (result.getUseitemFlag().get(1) != 4) {
                 item = Optional.ofNullable(useitemMap.get(result.getUseitemFlag().get(1)));
             } else {
                 item = Optional.ofNullable(useitemMap.get(result.getGetItem2().getUseitemId()));
             }
-            joiner.add(item.map(Useitem::getName).orElse(""));
+            joiner.add(item.map(UseitemMst::getName).orElse(""));
             joiner.add(result.getGetItem2().getUseitemCount().toString());
         } else {
             joiner.add("");

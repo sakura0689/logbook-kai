@@ -11,7 +11,7 @@ import lombok.Data;
  * api_mst_useitem
  */
 @Data
-public class Useitem implements Serializable {
+public class UseitemMst implements Serializable {
 
     private static final long serialVersionUID = -3290324243327123224L;
 
@@ -27,13 +27,13 @@ public class Useitem implements Serializable {
     }
 
     /**
-     * JsonObjectから{@link Useitem}を構築します
+     * JsonObjectから{@link UseitemMst}を構築します
      *
      * @param json JsonObject
-     * @return {@link Useitem}
+     * @return {@link UseitemMst}
      */
-    public static Useitem toMission(JsonObject json) {
-        Useitem bean = new Useitem();
+    public static UseitemMst toUseitem(JsonObject json) {
+        UseitemMst bean = new UseitemMst();
         JsonHelper.bind(json)
                 .setInteger("api_id", bean::setId)
                 .setString("api_name", bean::setName);

@@ -12,23 +12,23 @@ import lombok.Data;
  *
  */
 @Data
-public class UseitemCollection implements Serializable {
+public class UseitemMstCollection implements Serializable {
 
     private static final long serialVersionUID = -3813660780247992556L;
 
     /** アイテム */
-    private Map<Integer, Useitem> useitemMap = new LinkedHashMap<>();
+    private Map<Integer, UseitemMst> useitemMap = new LinkedHashMap<>();
 
     /**
-     * アプリケーションのデフォルト設定ディレクトリから{@link UseitemCollection}を取得します、
+     * アプリケーションのデフォルト設定ディレクトリから{@link UseitemMstCollection}を取得します、
      * これは次の記述と同等です
      * <blockquote>
      *     <code>Config.getDefault().get(UseitemCollection.class, UseitemCollection::new)</code>
      * </blockquote>
      *
-     * @return {@link UseitemCollection}
+     * @return {@link UseitemMstCollection}
      */
-    public static UseitemCollection get() {
-        return Config.getDefault().get(UseitemCollection.class, UseitemCollection::new);
+    public static UseitemMstCollection get() {
+        return Config.getDefault().get(UseitemMstCollection.class, UseitemMstCollection::new);
     }
 }

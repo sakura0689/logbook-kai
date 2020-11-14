@@ -22,8 +22,8 @@ import logbook.bean.ShipMst;
 import logbook.bean.ShipMstCollection;
 import logbook.bean.SlotitemMst;
 import logbook.bean.SlotitemMstCollection;
-import logbook.bean.Useitem;
-import logbook.bean.UseitemCollection;
+import logbook.bean.UseitemMst;
+import logbook.bean.UseitemMstCollection;
 import logbook.internal.Ships;
 
 /**
@@ -225,8 +225,8 @@ public class BattleResultLogFormat extends LogFormatBase<BattleLog> {
         // ドロップアイテム
         format.ドロップアイテム = Optional.ofNullable(result.getGetUseitem())
                 .map(BattleResult.Useitem::getUseitemId)
-                .map(id -> Optional.ofNullable(UseitemCollection.get().getUseitemMap().get(id)))
-                .map(o -> o.map(Useitem::getName).orElse("不明"))
+                .map(id -> Optional.ofNullable(UseitemMstCollection.get().getUseitemMap().get(id)))
+                .map(o -> o.map(UseitemMst::getName).orElse("不明"))
                 .orElse("");
         // 経験値
         format.艦娘経験値 = Integer.toString(result.getGetShipExp().stream()
