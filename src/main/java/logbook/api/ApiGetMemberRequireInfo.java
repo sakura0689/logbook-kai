@@ -6,6 +6,8 @@ import javax.json.JsonObject;
 import logbook.bean.Basic;
 import logbook.bean.SlotItem;
 import logbook.bean.SlotItemCollection;
+import logbook.bean.Useitem;
+import logbook.bean.UseitemCollection;
 import logbook.internal.JsonHelper;
 import logbook.proxy.RequestMetaData;
 import logbook.proxy.ResponseMetaData;
@@ -23,6 +25,7 @@ public class ApiGetMemberRequireInfo implements APIListenerSpi {
         if (data != null) {
             this.apiBasic(data.getJsonObject("api_basic"));
             this.apiSlotItem(data.getJsonArray("api_slot_item"));
+            this.apiUseitem(data.getJsonArray("api_useitem"));
         }
     }
 
@@ -43,6 +46,16 @@ public class ApiGetMemberRequireInfo implements APIListenerSpi {
     private void apiSlotItem(JsonArray array) {
         SlotItemCollection.get()
                 .setSlotitemMap(JsonHelper.toMap(array, SlotItem::getId, SlotItem::toSlotItem));
+    }
+
+    /**
+     * api_data.api_useitem
+     *
+     * @param array api_useitem
+     */
+    private void apiUseitem(JsonArray array) {
+        UseitemCollection.get()
+                .setUseitemMap(JsonHelper.toMap(array, Useitem::getId, Useitem::toUseitem));
     }
 
 }

@@ -1,6 +1,7 @@
 package logbook.bean;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.json.JsonObject;
 
@@ -21,6 +22,9 @@ public class UseitemMst implements Serializable {
     /** api_name */
     private String name;
 
+    /** api_description */
+    private List<String> description;
+
     @Override
     public String toString() {
         return this.name;
@@ -36,7 +40,8 @@ public class UseitemMst implements Serializable {
         UseitemMst bean = new UseitemMst();
         JsonHelper.bind(json)
                 .setInteger("api_id", bean::setId)
-                .setString("api_name", bean::setName);
+                .setString("api_name", bean::setName)
+                .setStringList("api_description", bean::setDescription);
         return bean;
     }
 }
