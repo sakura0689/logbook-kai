@@ -160,7 +160,9 @@ public class MissionCondition implements TestAllPredicate<List<Ship>> {
             current = this.fleetStatus(ships, ship -> ship.getKaryoku().get(0));
         }
         if ("対潜".equals(this.countType)) {
-            current = this.fleetStatus(ships , ship -> Ships.getTaisen(ship) + Ships.sumItemParam(ship, SlotitemMst::getTais, true));
+            // 遠征のときは艦載機の対潜値は複雑な式となるので、最小見積もりとして0.65倍する（ことによって false positive をなくす）
+            current = this.fleetStatus(ships , ship -> Ships.getTaisen(ship)
+                    + Ships.sumItemParam(ship, (item) -> Items.isAircraft(item) ? (int)(item.getTais()*0.65) : item.getTais(), true));
         }
         if ("対空".equals(this.countType)) {
             current = this.fleetStatus(ships, ship -> ship.getTaiku().get(0));
