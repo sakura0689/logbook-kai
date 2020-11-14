@@ -50,7 +50,7 @@ Java 8u40以降のJava8がインストールされたWindows,LinuxまたはmacOS
 
 **次のJavaVMで動作確認されています。**
 - **[Liberica JDK version 8](https://bell-sw.com/pages/java-8u232/)**
-   - 新規に導入する場合、こちらを推奨します。
+   - 新規に導入する場合、こちらを推奨します。JavaFXを利用しているため必ず**StandardではなくFullをダウンロード**してください。
 - [Oracle JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
    - ダウンロードにOTNアカウントが必要です。
 
