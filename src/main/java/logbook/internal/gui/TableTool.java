@@ -1,6 +1,7 @@
 package logbook.internal.gui;
 
 import java.io.IOException;
+import java.text.NumberFormat;
 import java.util.List;
 
 import javafx.scene.control.TableCell;
@@ -114,6 +115,24 @@ class TableTool {
                 }
             };
             return cell;
+        };
+    }
+    
+    static Callback<TableColumn<UseitemItem, Integer>, TableCell<UseitemItem, Integer>> createIntegerFormattedCellFactory() {
+        final NumberFormat format = NumberFormat.getIntegerInstance();
+        return new Callback<TableColumn<UseitemItem,Integer>, TableCell<UseitemItem,Integer>>() {
+            @Override
+            public TableCell<UseitemItem, Integer> call(TableColumn<UseitemItem, Integer> param) {
+                return new TableCell<UseitemItem, Integer>() {
+                    @Override
+                    protected void updateItem(Integer item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (item != null) {
+                            setText(format.format(item));
+                        }
+                    }
+                };
+            }
         };
     }
 }

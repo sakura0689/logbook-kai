@@ -223,6 +223,16 @@ public class MainMenuController extends WindowController {
     }
 
     /**
+     * アイテム一覧
+     *
+     * @param e ActionEvent
+     */
+    @FXML
+    void useitems(ActionEvent e) {
+        this.parentController.useitems(e);
+    }
+
+    /**
      * お風呂に入りたい艦娘
      *
      * @param e ActionEvent

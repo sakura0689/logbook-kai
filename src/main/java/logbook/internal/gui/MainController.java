@@ -170,6 +170,18 @@ public class MainController extends WindowController {
     }
 
     /**
+     * アイテム一覧
+     * @param e ActionEvent
+     */
+    public void useitems(ActionEvent e) {
+        try {
+            InternalFXMLLoader.showWindow("logbook/gui/useitem.fxml", this.getWindow(), "アイテム一覧");
+        } catch (Exception ex) {
+            LoggerHolder.get().error("アイテム一覧の初期化に失敗しました", ex);
+        }
+    }
+
+    /**
      * 画面の更新
      *
      * @param e

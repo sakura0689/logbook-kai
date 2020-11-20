@@ -37,6 +37,7 @@
                    <accelerator>
                       <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                    </accelerator></MenuItem>
+            <MenuItem mnemonicParsing="false" onAction="#useitems" text="アイテム一覧" />
             <SeparatorMenuItem mnemonicParsing="false" />
             <MenuItem mnemonicParsing="false" onAction="#ndock" text="お風呂に入りたい艦娘">
                    <accelerator>
