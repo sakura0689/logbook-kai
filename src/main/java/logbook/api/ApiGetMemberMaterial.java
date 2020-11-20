@@ -26,10 +26,11 @@ public class ApiGetMemberMaterial implements APIListenerSpi {
     public void accept(JsonObject json, RequestMetaData req, ResponseMetaData res) {
         JsonArray array = json.getJsonArray("api_data");
         if (array != null) {
+            Map<Integer, Material> material = JsonHelper.toMap(array, Material::getId, Material::toMaterial);
+            AppCondition.get().setMaterial(material);
             Duration duration = Duration.ofMillis(System.currentTimeMillis() - AppCondition.get()
                     .getWroteMaterialLogLast());
             if (duration.compareTo(Duration.ofSeconds(AppConfig.get().getMaterialLogInterval())) >= 0) {
-                Map<Integer, Material> material = JsonHelper.toMap(array, Material::getId, Material::toMaterial);
                 LogWriter.getInstance(MaterialLogFormat::new)
                         .write(material);
                 AppCondition.get()

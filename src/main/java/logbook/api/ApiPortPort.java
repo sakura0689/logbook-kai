@@ -156,10 +156,11 @@ public class ApiPortPort implements APIListenerSpi {
      * @param array api_material
      */
     private void apiMaterial(JsonArray array) {
+        Map<Integer, Material> material = JsonHelper.toMap(array, Material::getId, Material::toMaterial);
+        AppCondition.get().setMaterial(material);
         Duration duration = Duration.ofMillis(System.currentTimeMillis() - AppCondition.get()
                 .getWroteMaterialLogLast());
         if (duration.compareTo(Duration.ofSeconds(AppConfig.get().getMaterialLogInterval())) >= 0) {
-            Map<Integer, Material> material = JsonHelper.toMap(array, Material::getId, Material::toMaterial);
             LogWriter.getInstance(MaterialLogFormat::new)
                     .write(material);
             AppCondition.get()

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import logbook.internal.Config;
@@ -41,6 +42,9 @@ public class AppCondition implements Serializable {
 
     /** 退避艦ID */
     private Set<Integer> escape = new HashSet<>();
+
+    /** 資材状況 */
+    private Map<Integer, Material> material;
 
     /** 最後に資材ログに書き込んだ時間 */
     private long wroteMaterialLogLast = 0;
