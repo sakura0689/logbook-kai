@@ -20,6 +20,7 @@ import logbook.bean.ShipCollection;
 import logbook.internal.Audios;
 import logbook.internal.BattleLogs;
 import logbook.internal.BouyomiChanUtils;
+import logbook.internal.Config;
 import logbook.internal.Logs;
 import logbook.internal.PhaseState;
 import logbook.internal.BouyomiChanUtils.Type;
@@ -103,5 +104,7 @@ public class ApiReqCombinedBattleBattleresult implements APIListenerSpi {
                 }
             }
         }
+        // 戦闘結果APIの前後は他のAPIが呼ばれることがなくconflictの可能性が低いためデータ保存する
+        Config.getDefault().store();
     }
 }

@@ -22,6 +22,7 @@ import logbook.internal.BouyomiChanUtils;
 import logbook.internal.Logs;
 import logbook.internal.PhaseState;
 import logbook.internal.BouyomiChanUtils.Type;
+import logbook.internal.Config;
 import logbook.internal.gui.Tools;
 import logbook.internal.log.BattleResultLogFormat;
 import logbook.internal.log.LogWriter;
@@ -101,5 +102,7 @@ public class ApiReqSortieBattleresult implements APIListenerSpi {
                 }
             }
         }
+        // 戦闘結果APIの前後は他のAPIが呼ばれることがなくconflictの可能性が低いためデータ保存する
+        Config.getDefault().store();
     }
 }
