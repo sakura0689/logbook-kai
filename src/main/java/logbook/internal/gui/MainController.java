@@ -2,8 +2,13 @@ package logbook.internal.gui;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.DecimalFormat;
 import java.text.MessageFormat;
 import java.time.Duration;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -18,6 +23,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.image.ImageView;
@@ -27,6 +33,7 @@ import logbook.Messages;
 import logbook.bean.AppBouyomiConfig;
 import logbook.bean.AppCondition;
 import logbook.bean.AppConfig;
+import logbook.bean.AppExpRecords;
 import logbook.bean.AppQuest;
 import logbook.bean.AppQuestCollection;
 import logbook.bean.Basic;
@@ -92,6 +99,18 @@ public class MainController extends WindowController {
 
     @FXML
     private TabPane fleetTab;
+
+    @FXML
+    private Label achievementLabel1;
+
+    @FXML
+    private Label achievementValue1;
+
+    @FXML
+    private Label achievementLabel2;
+
+    @FXML
+    private Label achievementValue2;
 
     @FXML
     private VBox missionbox;
@@ -190,6 +209,8 @@ public class MainController extends WindowController {
         try {
             // 所有装備/所有艦娘
             this.button();
+            // 戦果
+            this.achievement();
             // 艦隊タブ・遠征
             this.checkPort();
             // 泊地修理タイマー
@@ -247,6 +268,33 @@ public class MainController extends WindowController {
             }
         } else {
             this.ship.getStyleClass().remove(FULLY_CLASS);
+        }
+    }
+
+    /**
+     * 戦果の計算
+     */
+    private void achievement() {
+        final ZoneId JST = ZoneId.of("UTC+07:00");
+        final DecimalFormat format = new DecimalFormat("0.000");
+        final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("d日a");
+        AppExpRecords records = AppExpRecords.get();
+        long exp = Optional.ofNullable(Basic.get()).map(Basic::getExperience).map(Integer::longValue).orElse(0L);
+        if (records.getExp12h() != null) {
+            ZonedDateTime start = Instant.ofEpochMilli(records.getTime12h()).atZone(JST);
+            this.achievementLabel2.setText(start.format(dateFormatter) + "(" + (start.getHour()+2) + "- )");
+            this.achievementValue2.setText(format.format((exp - records.getExp12h())*7f/10000));
+        } else {
+            this.achievementLabel2.setText("");
+            this.achievementValue2.setText("");
+        }
+        if (records.getExp1d() != null && records.getTime1d() != records.getTime12h()) {
+            ZonedDateTime start = Instant.ofEpochMilli(records.getTime1d()).atZone(JST);
+            this.achievementLabel1.setText(start.format(dateFormatter) + "(" + (start.getHour()+2) + "-" + (start.getHour()/12*12+14)+")");
+            this.achievementValue1.setText(format.format((records.getExp12h()-records.getExp1d())*7f/10000));
+        } else {
+            this.achievementLabel1.setText("");
+            this.achievementValue1.setText("");
         }
     }
 

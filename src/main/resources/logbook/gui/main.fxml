@@ -2,10 +2,12 @@
 
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
@@ -26,6 +28,26 @@
                      <content>
                         <VBox fx:id="infobox">
                            <children>
+                              <TitledPane fx:id="achievementPane" animated="false" text="戦果">
+                                 <content>
+                                    <HBox style="-fx-padding:0;" spacing="10">
+                                       <children>
+                                          <AnchorPane HBox.hgrow="always" styleClass="achievement" prefHeight="40.0" minWidth="130.0">
+                                             <children>
+                                                <Label fx:id="achievementLabel1" maxWidth="130.0" prefWidth="130.0" styleClass="name" AnchorPane.leftAnchor="1.0" AnchorPane.topAnchor="1.0" text=""/>
+                                                <Label fx:id="achievementValue1" styleClass="achievement" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="1.0" text=""/>
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane HBox.hgrow="always" styleClass="achievement" prefHeight="40.0" minWidth="130.0">
+                                             <children>
+                                                <Label fx:id="achievementLabel2" maxWidth="130.0" prefWidth="130.0" styleClass="name" AnchorPane.leftAnchor="1.0" AnchorPane.topAnchor="1.0" text=""/>
+                                                <Label fx:id="achievementValue2" styleClass="achievement" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="1.0" text=""/>
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                    </HBox>
+                                 </content>
+                              </TitledPane>
                               <TitledPane animated="false" text="遠征">
                                  <content>
                                     <VBox fx:id="missionbox" />

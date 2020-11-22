@@ -71,6 +71,14 @@ TabPane .tab.empty .tab-label {
     -fx-font-size: 1.1em;
     -fx-font-weight: bold;
 }
+.achievement .name {
+    -fx-font-size: 10pt;
+}
+.achievement .achievement {
+    -fx-font-size: 14pt;
+    -fx-font-weight: bold;
+}
+
 .mission .progress {
     -fx-background-color: transparent;
     -fx-background-radius: 0;
