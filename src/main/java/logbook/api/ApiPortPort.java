@@ -18,6 +18,7 @@ import javafx.application.Platform;
 import logbook.bean.AppBouyomiConfig;
 import logbook.bean.AppCondition;
 import logbook.bean.AppConfig;
+import logbook.bean.AppExpRecords;
 import logbook.bean.Basic;
 import logbook.bean.DeckPort;
 import logbook.bean.DeckPortCollection;
@@ -68,6 +69,7 @@ public class ApiPortPort implements APIListenerSpi {
      */
     private void apiBasic(JsonObject object) {
         Basic.updateBasic(Basic.get(), object);
+        AppExpRecords.get().update(Basic.get());
     }
 
     /**

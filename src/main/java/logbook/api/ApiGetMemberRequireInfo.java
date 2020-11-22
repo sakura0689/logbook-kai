@@ -36,6 +36,8 @@ public class ApiGetMemberRequireInfo implements APIListenerSpi {
      */
     private void apiBasic(JsonObject object) {
         Basic.updateBasic(Basic.get(), object);
+        // require_info の時の api_basic は戦果が送られてこないので更新すべきでない
+        //AppExpRecords.get().update(Basic.get());
     }
 
     /**
