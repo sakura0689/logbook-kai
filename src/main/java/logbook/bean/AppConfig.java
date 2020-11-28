@@ -57,6 +57,18 @@ public final class AppConfig implements Serializable {
     /** 遠征完了時のリマインド(秒) */
     private int remind = 60;
 
+    /** 戦果ペインの表示 */
+    private boolean showAchievement = false;
+
+    /** 遠征ペインの表示 */
+    private boolean showMission = true;
+
+    /** 入渠ペインの表示 */
+    private boolean showNdock = true;
+
+    /** 任務ペインの表示 */
+    private boolean showQuest = true;
+
     /** 艦娘の画像に経験値バーを表示する */
     private boolean visibleExpGauge = true;
 

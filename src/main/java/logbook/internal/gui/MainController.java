@@ -26,6 +26,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.control.TitledPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.AudioClip;
@@ -82,6 +83,9 @@ public class MainController extends WindowController {
     /** 任務コレクションのハッシュ・コード */
     private long questHashCode;
 
+    /** 戦果のハッシュ・コード */
+    private long achievementHashCode;
+
     /** 遠征通知のタイムスタンプ */
     private Map<Integer, Long> timeStampMission = new HashMap<>();
 
@@ -101,6 +105,9 @@ public class MainController extends WindowController {
     private TabPane fleetTab;
 
     @FXML
+    private TitledPane achievementPane;
+
+    @FXML
     private Label achievementLabel1;
 
     @FXML
@@ -113,13 +120,22 @@ public class MainController extends WindowController {
     private Label achievementValue2;
 
     @FXML
+    private TitledPane missionPane;
+
+    @FXML
     private VBox missionbox;
+
+    @FXML
+    private TitledPane ndockPane;
 
     @FXML
     private VBox akashiTimer;
 
     @FXML
     private VBox ndockbox;
+
+    @FXML
+    private TitledPane questPane;
 
     @FXML
     private VBox questbox;
@@ -275,11 +291,23 @@ public class MainController extends WindowController {
      * 戦果の計算
      */
     private void achievement() {
+        long exp = Optional.ofNullable(Basic.get()).map(Basic::getExperience).map(Integer::longValue).orElse(0L);
+        boolean show = AppConfig.get().isShowAchievement();
+        Map<String, Object> map = new HashMap<>();
+        map.put("exp", exp);
+        long hash = hashCode(map, show);
+        if (hash == this.achievementHashCode) {
+            return;
+        }
+        this.achievementHashCode = hash;
+
+        this.achievementPane.setVisible(show);
+        this.achievementPane.setManaged(show);
+
         final ZoneId JST = ZoneId.of("UTC+07:00");
         final DecimalFormat format = new DecimalFormat("0.000");
         final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("d日a");
         AppExpRecords records = AppExpRecords.get();
-        long exp = Optional.ofNullable(Basic.get()).map(Basic::getExperience).map(Integer::longValue).orElse(0L);
         if (records.getExp12h() != null) {
             ZonedDateTime start = Instant.ofEpochMilli(records.getTime12h()).atZone(JST);
             this.achievementLabel2.setText(start.format(dateFormatter) + "(" + (start.getHour()+2) + "- )");
@@ -304,12 +332,13 @@ public class MainController extends WindowController {
     private void checkPort() {
         Map<Integer, DeckPort> ports = DeckPortCollection.get()
                 .getDeckPortMap();
-        long newHashCode = hashCode(ports);
+        boolean show = AppConfig.get().isShowMission();
+        long newHashCode = hashCode(ports, show);
         boolean change = this.portHashCode != newHashCode;
         this.portHashCode = newHashCode;
 
         this.fleetTab(change);
-        this.mission(change);
+        this.mission(change, show);
     }
 
     /**
@@ -376,10 +405,14 @@ public class MainController extends WindowController {
      * 遠征の更新
      *
      * @param change 艦隊の変更フラグ
+     * @param show 表示するフラグ
      */
-    private void mission(boolean change) {
+    private void mission(boolean change, boolean show) {
         ObservableList<Node> mission = this.missionbox.getChildren();
         if (change) {
+            this.missionPane.setVisible(show);
+            this.missionPane.setManaged(show);
+
             Map<Integer, DeckPort> ports = DeckPortCollection.get()
                     .getDeckPortMap();
             mission.clear();
@@ -422,8 +455,12 @@ public class MainController extends WindowController {
         Map<Integer, Ndock> ndockMap = NdockCollection.get()
                 .getNdockMap();
         ObservableList<Node> ndock = this.ndockbox.getChildren();
-        long newHashCode = hashCode(ndockMap);
+        boolean show = AppConfig.get().isShowNdock();
+        long newHashCode = hashCode(ndockMap, show);
         if (this.ndockHashCode != newHashCode) {
+            this.ndockPane.setVisible(show);
+            this.ndockPane.setManaged(show);
+
             // ハッシュ・コードが変わっている場合入渠ドックの更新
             ndock.clear();
             ndockMap.values()
@@ -449,8 +486,11 @@ public class MainController extends WindowController {
     private void quest() {
         Map<Integer, AppQuest> questMap = AppQuestCollection.get()
                 .getQuest();
-        long newHashCode = hashCode(questMap);
+        boolean show = AppConfig.get().isShowQuest();
+        long newHashCode = hashCode(questMap, show);
         if (this.questHashCode != newHashCode) {
+            this.questPane.setVisible(show);
+            this.questPane.setManaged(show);
             // ハッシュ・コードが変わっている場合任務の更新
             ObservableList<Node> quest = this.questbox.getChildren();
             quest.clear();
@@ -646,13 +686,15 @@ public class MainController extends WindowController {
                 Tuple.of("${kanjiName}", kanji));
     }
 
-    private static long hashCode(Map<?, ?> map) {
+    private static long hashCode(Map<?, ?> map, boolean show) {
         long h = 59;
         Iterator<?> i = map.entrySet().iterator();
         while (i.hasNext()) {
             h *= 63;
             h += i.next().hashCode();
         }
+        h *= 63;
+        h += Boolean.hashCode(show);
         return h;
     }
 }

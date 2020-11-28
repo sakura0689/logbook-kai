@@ -48,12 +48,12 @@
                                     </HBox>
                                  </content>
                               </TitledPane>
-                              <TitledPane animated="false" text="遠征">
+                              <TitledPane fx:id="missionPane" animated="false" text="遠征">
                                  <content>
                                     <VBox fx:id="missionbox" />
                                  </content>
                               </TitledPane>
-                              <TitledPane animated="false" text="入渠">
+                              <TitledPane fx:id="ndockPane" animated="false" text="入渠">
                                  <content>
                                     <VBox>
                                        <children>
@@ -63,7 +63,7 @@
                                     </VBox>
                                  </content>
                               </TitledPane>
-                              <TitledPane animated="false" text="任務">
+                              <TitledPane fx:id="questPane" animated="false" text="任務">
                                  <content>
                                     <VBox fx:id="questbox" />
                                  </content>

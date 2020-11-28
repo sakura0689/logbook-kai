@@ -124,6 +124,22 @@ public class ConfigController extends WindowController {
     @FXML
     private ChoiceBox<Pair<String, String>> toastLocation;
 
+    /** 戦果ペインの表示 */
+    @FXML
+    private CheckBox showAchievement;
+
+    /** 遠征ペインの表示 */
+    @FXML
+    private CheckBox showMission;
+
+    /** 入渠ペインの表示 */
+    @FXML
+    private CheckBox showNdock;
+
+    /** 任務ペインの表示 */
+    @FXML
+    private CheckBox showQuest;
+    
     /** 遠征完了時のリマインド */
     @FXML
     private CheckBox useRemind;
@@ -389,6 +405,10 @@ public class ConfigController extends WindowController {
         this.defaultNotifySound.setText(conf.getDefaultNotifySound());
         this.useToast.setSelected(conf.isUseToast());
         this.toastLocation.setValue(this.toastLocation.getItems().stream().filter(value -> value.getValue().equals(conf.getToastLocation())).findAny().orElse(this.toastLocation.getItems().get(3)));
+        this.showAchievement.setSelected(conf.isShowAchievement());
+        this.showMission.setSelected(conf.isShowMission());
+        this.showNdock.setSelected(conf.isShowNdock());
+        this.showQuest.setSelected(conf.isShowQuest());
         this.useRemind.setSelected(conf.isUseRemind());
         this.remind.setText(Integer.toString(conf.getRemind()));
         this.soundLevel.setText(Integer.toString(conf.getSoundLevel()));
@@ -513,6 +533,10 @@ public class ConfigController extends WindowController {
         conf.setDefaultNotifySound(this.defaultNotifySound.getText());
         conf.setUseToast(this.useToast.isSelected());
         conf.setToastLocation(this.toastLocation.getValue().getValue());
+        conf.setShowAchievement(this.showAchievement.isSelected());
+        conf.setShowMission(this.showMission.isSelected());
+        conf.setShowNdock(this.showNdock.isSelected());
+        conf.setShowQuest(this.showQuest.isSelected());
         conf.setUseRemind(this.useRemind.isSelected());
         conf.setRemind(Math.max(this.toInt(this.remind.getText()), 10));
         conf.setSoundLevel(this.toInt(this.soundLevel.getText()));
