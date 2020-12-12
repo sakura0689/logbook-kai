@@ -11,6 +11,9 @@ v20.9.2 以降のバージョンはオリジナルの [sanaehirotaka さんの�
 最新バージョンも[こちら](https://github.com/Sdk0815/logbook-kai/releases)からダウンロードしてください。
 今後は[Issue（問題報告・要望）](https://github.com/Sdk0815/logbook-kai/issues)や[Pull Request（変更要求）](https://github.com/Sdk0815/logbook-kai/pulls)などもこちらのリポジトリにオープンしていただきますようお願いします。
 
+Twitter の公式アカウントを作成しました→  [@logbook_kai](https://twitter.com/logbook_kai) （Twitter の命名規則により、間の記号はハイフン `-` ではなくアンダースコア `_` なのでご注意ください。）
+今後リリースのお知らせに加え、新機能の実装のやり方等でアンケートを取ったりする予定なので、よろしければ是非フォローしてみてください。サポート依頼を含む質問には返答いたしませんのであらかじめご了承ください。
+
 ### 概要
 
 **航海日誌 (logbook-kai)** は、「艦隊これくしょん ～艦これ～」をより遊びやすくするための外部ツールです。
