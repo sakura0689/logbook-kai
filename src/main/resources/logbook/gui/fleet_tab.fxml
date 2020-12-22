@@ -65,7 +65,7 @@
                               <HBox alignment="CENTER_LEFT" GridPane.rowIndex="2">
                                  <children>
                                     <ImageView fx:id="lvsumImg" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
-                                    <Label text="艦娘レベル合計:" />
+                                    <Label text="艦娘Lv合計:" />
                                  </children>
                               </HBox>
                               <Label fx:id="lvsum" styleClass="value" GridPane.columnIndex="1" GridPane.rowIndex="2" />
@@ -107,6 +107,13 @@
                                  </children>
                               </HBox>
                               <Label fx:id="sakutekisum" styleClass="value" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                              <HBox alignment="CENTER_LEFT" GridPane.columnIndex="0" GridPane.rowIndex="5">
+                                 <children>
+                                    <ImageView fx:id="tpsumImg" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Label text="TP(S/A):" />
+                                 </children>
+                              </HBox>
+                              <Label fx:id="tpsum" styleClass="value" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                            </children>
                         </GridPane>
                      </children>

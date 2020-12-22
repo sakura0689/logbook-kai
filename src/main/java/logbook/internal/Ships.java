@@ -5,6 +5,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.EnumMap;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -75,6 +76,10 @@ public class Ships {
     private static final Map<SlotItemType, Double> AA_COEFFICIENT = new EnumMap<>(SlotItemType.class);
     /** 対空改修係数 */
     private static final Map<SlotItemType, Double> AALV_COEFFICIENT = new EnumMap<>(SlotItemType.class);
+    /** 艦種ごとのTP */
+    private static final Map<ShipType, Integer> SHIP_TYPE_TP_MAP = new HashMap<>();
+    /** 装備種別ごとのTP */
+    private static final Map<SlotItemType, Integer> SLOTITEM_TYPE_TP_MAP = new HashMap<>();
 
     /** 艦娘付加情報 */
     private static final Map<Integer, ShipSupplementalInfo> ships;
@@ -161,7 +166,25 @@ public class Ships {
         AALV_COEFFICIENT.put(SlotItemType.小口径主砲, 2D);
         AALV_COEFFICIENT.put(SlotItemType.副砲, 2D);
         AALV_COEFFICIENT.put(SlotItemType.高射装置, 2D);
-        
+
+        // 艦種ごとのTP
+        SHIP_TYPE_TP_MAP.put(ShipType.駆逐艦, 5);
+        SHIP_TYPE_TP_MAP.put(ShipType.軽巡洋艦, 2);
+        SHIP_TYPE_TP_MAP.put(ShipType.航空戦艦, 7);
+        SHIP_TYPE_TP_MAP.put(ShipType.水上機母艦, 9);
+        SHIP_TYPE_TP_MAP.put(ShipType.潜水空母, 1);
+        SHIP_TYPE_TP_MAP.put(ShipType.練習巡洋艦, 6);
+        SHIP_TYPE_TP_MAP.put(ShipType.航空巡洋艦, 4);
+        SHIP_TYPE_TP_MAP.put(ShipType.補給艦, 15);
+        SHIP_TYPE_TP_MAP.put(ShipType.揚陸艦, 12);
+        SHIP_TYPE_TP_MAP.put(ShipType.潜水母艦, 7);
+
+        // 装備種別ごとのTP
+        SLOTITEM_TYPE_TP_MAP.put(SlotItemType.簡易輸送部材, 5);
+        SLOTITEM_TYPE_TP_MAP.put(SlotItemType.上陸用舟艇, 8);
+        SLOTITEM_TYPE_TP_MAP.put(SlotItemType.特型内火艇, 2);
+        SLOTITEM_TYPE_TP_MAP.put(SlotItemType.戦闘糧食, 1);
+
         // 付加的な情報の読み込み
         InputStream is = PluginServices.getResourceAsStream("logbook/supplemental/ships.json");
         Optional<Map<Integer, ShipSupplementalInfo>> map = Optional.empty();
@@ -842,6 +865,36 @@ public class Ships {
             }
         }
         return 0;
+    }
+
+    /**
+     * TP (S勝利時)
+     *
+     * @param ship 艦娘
+     * @return TP
+     */
+    public static int transportPoint(Ship ship) {
+        Map<Integer, SlotItem> itemMap = SlotItemCollection.get()
+                .getSlotitemMap();
+        Map<Integer, SlotitemMst> itemMstMap = SlotitemMstCollection.get()
+                .getSlotitemMap();
+        // 参考 https://wikiwiki.jp/kancolle/%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E6%B5%B7%E5%9F%9F%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88/%E8%BC%B8%E9%80%81%E8%B3%87%E6%BA%90%E9%87%8F%E3%81%AE%E8%A8%88%E7%AE%97_2019%E7%A7%8B
+
+        
+        // 艦娘TP
+        int value = shipMst(ship).map(ShipType::toShipType).map(SHIP_TYPE_TP_MAP::get).orElse(0);
+        // 装備TP
+        value += Stream.concat(ship.getSlot().stream(), Stream.of(ship.getSlotEx()))
+                .map(itemMap::get)
+                .filter(Objects::nonNull)
+                .map(SlotItem::getSlotitemId)
+                .map(itemMstMap::get)
+                .map(SlotItemType::toSlotItemType)
+                .map(SLOTITEM_TYPE_TP_MAP::get)
+                .filter(Objects::nonNull)
+                .mapToInt(Integer::intValue)
+                .sum();
+        return value;
     }
 
     /**

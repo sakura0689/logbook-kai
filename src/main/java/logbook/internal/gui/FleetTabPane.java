@@ -153,6 +153,14 @@ public class FleetTabPane extends ScrollPane {
     @FXML
     private Label sakutekisum;
 
+    /** TP合計アイコン */
+    @FXML
+    private ImageView tpsumImg;
+
+    /** TP合計 */
+    @FXML
+    private Label tpsum;
+
     /** 注釈 */
     @FXML
     private VBox remark;
@@ -309,6 +317,9 @@ public class FleetTabPane extends ScrollPane {
         this.taissum.setText(Integer.toString(withoutEscape.stream().mapToInt(ship -> ship.getTaisen().get(0)).sum()));
         // 索敵合計
         this.sakutekisum.setText(Integer.toString(withoutEscape.stream().mapToInt(ship -> ship.getSakuteki().get(0)).sum()));
+        // TP合計
+        int tp = withoutEscape.stream().mapToInt(Ships::transportPoint).sum();
+        this.tpsum.setText(tp + "/" + (int)(tp*7/10));
 
         ObservableList<Node> childs = this.ships.getChildren();
         childs.clear();
@@ -417,6 +428,7 @@ public class FleetTabPane extends ScrollPane {
         this.taikusumImg.setImage(Items.itemImageByType(15));
         this.taissumImg.setImage(Items.itemImageByType(17));
         this.sakutekisumImg.setImage(Items.itemImageByType(11));
+        this.tpsumImg.setImage(Items.itemImageByType(25));
     }
 
     /**
