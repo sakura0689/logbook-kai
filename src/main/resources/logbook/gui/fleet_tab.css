@@ -9,3 +9,8 @@
 :enablebgimage.image .label,:enablebgimage.image .hyperlink {
     -fx-effect: dropshadow(gaussian, white, 3, 0.8, 0, 0);
 }
+
+#speed {
+    -fx-effect: dropshadow(gaussian, black, 2, 1, 0, 0);
+    -fx-text-fill: white;
+}

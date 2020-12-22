@@ -161,6 +161,14 @@ public class FleetTabPane extends ScrollPane {
     @FXML
     private Label tpsum;
 
+    /** 艦隊速度アイコン */
+    @FXML
+    private ImageView speedImg;
+
+    /** 艦隊速度 */
+    @FXML
+    private Label speed;
+    
     /** 注釈 */
     @FXML
     private VBox remark;
@@ -321,6 +329,25 @@ public class FleetTabPane extends ScrollPane {
         int tp = withoutEscape.stream().mapToInt(Ships::transportPoint).sum();
         this.tpsum.setText(tp + "/" + (int)(tp*7/10));
 
+        // 艦隊速度 - 各艦の速度のうち最低の速度を艦隊の速度とする
+        String label;
+        int speed = this.shipList.stream().map(Ship::getSoku).mapToInt(Integer::intValue).min().orElse(0);
+        this.speed.setStyle("");
+        if (speed >= 20) {
+            label = "最速";
+            this.speed.setStyle("-fx-text-fill: #9FEEEE;");
+        } else if (speed >= 15) {
+            label = "高速+";
+            this.speed.setStyle("-fx-text-fill: #CFEEEE;");
+        } else if (speed >= 10) {
+            label = "高速";
+        } else if (speed >= 5) {
+            label = "低速";
+        } else {
+            label = "(不明)";
+        }
+        this.speed.setText(label);
+
         ObservableList<Node> childs = this.ships.getChildren();
         childs.clear();
         this.shipList.stream()
@@ -429,6 +456,7 @@ public class FleetTabPane extends ScrollPane {
         this.taissumImg.setImage(Items.itemImageByType(17));
         this.sakutekisumImg.setImage(Items.itemImageByType(11));
         this.tpsumImg.setImage(Items.itemImageByType(25));
+        this.speedImg.setImage(Items.itemImageByType(19));
     }
 
     /**

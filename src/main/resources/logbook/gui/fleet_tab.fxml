@@ -114,6 +114,13 @@
                                  </children>
                               </HBox>
                               <Label fx:id="tpsum" styleClass="value" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                              <HBox GridPane.columnIndex="2" GridPane.rowIndex="5">
+                                 <children>
+                                    <ImageView fx:id="speedImg" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Label prefHeight="24.0" text="艦隊速度:"/>
+                                 </children>
+                              </HBox>
+                              <Label fx:id="speed" styleClass="value" GridPane.columnIndex="3" GridPane.rowIndex="5" />
                            </children>
                         </GridPane>
                      </children>
