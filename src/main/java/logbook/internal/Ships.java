@@ -883,6 +883,10 @@ public class Ships {
         
         // 艦娘TP
         int value = shipMst(ship).map(ShipType::toShipType).map(SHIP_TYPE_TP_MAP::get).orElse(0);
+        if (ship.getShipId() == 487) {
+            // 鬼怒改二は大発動艇を1つ内蔵
+            value += 8;
+        }
         // 装備TP
         value += Stream.concat(ship.getSlot().stream(), Stream.of(ship.getSlotEx()))
                 .map(itemMap::get)
