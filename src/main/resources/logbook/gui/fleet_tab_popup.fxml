@@ -2,9 +2,28 @@
 
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
 
-<fx:root fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="150.0" stylesheets="@popup.css" type="VBox" xmlns="http://javafx.com/javafx/8.0.131" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="150.0" stylesheets="@popup.css,@fleet_tab_popup.css" type="VBox" xmlns="http://javafx.com/javafx/8.0.131" xmlns:fx="http://javafx.com/fxml/1">
    <children>
+      <Label styleClass="title" text="補給状況" />
+      <VBox>
+         <HBox styleClass="popup-item">
+            <Label styleClass="item-title" text="燃料" />
+            <Label fx:id="fuel" styleClass="item-percent" text="(不明)" />
+            <Label fx:id="fuelDesc" styleClass="item-desc" text="" />
+         </HBox>
+         <HBox>
+            <Label styleClass="item-title" text="弾薬" />
+            <Label fx:id="bull" styleClass="item-percent" text="(不明)" />
+            <Label fx:id="bullDesc" styleClass="item-desc" text="" />
+         </HBox>
+         <HBox fx:id="planeBox">
+            <Label styleClass="item-title" text="艦載機損耗" />
+            <Label fx:id="plane" styleClass="item-percent" text="(不明)" />
+            <Label fx:id="planeDesc" styleClass="item-desc" text="" />
+         </HBox>
+      </VBox>
       <Label styleClass="title" text="装備" />
    </children>
 </fx:root>

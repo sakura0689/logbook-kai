@@ -25,6 +25,21 @@ import logbook.internal.Ships;
  */
 public class FleetTabShipPopup extends VBox {
 
+    @FXML
+    private Label fuel;
+    @FXML
+    private Label fuelDesc;
+    @FXML
+    private Label bull;
+    @FXML
+    private Label bullDesc;
+    @FXML
+    private HBox planeBox;
+    @FXML
+    private Label plane;
+    @FXML
+    private Label planeDesc;
+
     private Chara chara;
 
     /**
@@ -48,7 +63,30 @@ public class FleetTabShipPopup extends VBox {
     void initialize() {
         if (this.chara.isShip()) {
             Ship ship = this.chara.asShip();
-
+            Ships.shipMst(this.chara).map(ShipMst::getFuelMax).ifPresent(max -> {
+                this.fuel.setText(ship.getFuel()*100/max+"%");
+                this.fuelDesc.setText("("+ship.getFuel()+"/"+max+")");
+            });
+            Ships.shipMst(this.chara).map(ShipMst::getBullMax).ifPresent(max -> {
+                this.bull.setText(ship.getBull()*100/max+"%");
+                this.bullDesc.setText("("+ship.getBull()+"/"+max+")");
+            });
+            int maxPlane = Ships.shipMst(this.chara)
+                    .map(ShipMst::getMaxeq)
+                    .map(eq -> eq.stream().filter(e -> e > 0).mapToInt(Integer::intValue).sum())
+                    .orElse(0);
+            if (maxPlane == 0) {
+                this.planeBox.setVisible(false);
+                this.planeBox.setManaged(false);
+            } else {
+                int total = ship.getOnslot().stream().filter(e -> e > 0).mapToInt(Integer::intValue).sum();
+                if (total >= maxPlane) {
+                    this.plane.setText("なし");
+                } else {
+                    this.plane.setText((maxPlane-total) + "機");
+                    this.planeDesc.setText("(要ボーキ"+(maxPlane-total)*5 + ")");
+                }
+            }
             for (int i = 0; i < ship.getSlotnum(); i++) {
                 this.getChildren().add(new FleetTabShipPopupItem(this.chara, i));
             }

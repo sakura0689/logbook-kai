@@ -1,0 +1,16 @@
+.popup-item {
+    -fx-alignment: CENTER;
+}
+.item-title {
+    -fx-min-width: 6em;
+    -fx-padding: 0 0.5em 0 0;
+    -fx-alignment: CENTER_RIGHT;
+}
+.item-percent {
+    -fx-min-width: 4em;
+    -fx-padding: 0 0.5em 0 0;
+    -fx-alignment: CENTER_RIGHT;
+}
+.item-desc {
+    -fx-min-width: 8em;
+}
