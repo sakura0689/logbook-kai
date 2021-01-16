@@ -1,0 +1,19 @@
+{
+    "type": "出撃",
+    "resetType" : "ウィークリー",
+    "filter" : {
+        "area": ["5-2", "5-5", "6-4"],
+        "fleet": {
+            "operator": "AND",
+            "conditions": [
+                {"stype": ["戦艦", "正規空母", "装甲空母", "軽空母"], "order": 1},
+                {"stype": ["駆逐艦"], "count": 2, "operator": "GE"}
+            ]
+        }
+    },
+    "conditions" : [
+        {"boss": true, "area": ["5-2"], "rank": ["S"], "count": 1},
+        {"boss": true, "area": ["5-5"], "rank": ["S"], "count": 1},
+        {"boss": true, "area": ["6-4"], "rank": ["S"], "count": 1}
+    ]
+}
