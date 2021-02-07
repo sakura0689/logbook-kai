@@ -1,0 +1,21 @@
+/* [904] 精鋭「十九駆」、躍り出る！ */
+{
+    "resetType" : "イヤリー",
+    "yearlyResetMonth": 2,
+    "filter" : {
+        "area": ["2-5", "3-4", "4-5", "5-3"],
+        "fleet": {
+            "operator": "AND",
+            "conditions": [
+                {"name": ["綾波改二", "敷波改二"], "count": 2, "operator": "GE"},
+                {"stype": ["*"], "count": 6, "operator": "GE"}
+            ]
+        }
+    },
+    "conditions" : [
+        {"boss": true, "area": ["2-5"], "rank": ["S"], "count": 1},
+        {"boss": true, "area": ["3-4"], "rank": ["S"], "count": 1},
+        {"boss": true, "area": ["4-5"], "rank": ["S"], "count": 1},
+        {"boss": true, "area": ["5-3"], "rank": ["S"], "count": 1}
+    ]
+}

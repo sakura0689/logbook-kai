@@ -1,0 +1,13 @@
+/* [442] 西方連絡作戦準備を実施せよ！ */
+{
+    "type": "遠征",
+    "resetType" : "イヤリー",
+    "yearlyResetMonth": 2,
+    "conditions" : [
+        {"missions": ["西方海域偵察作戦"], "count": 1},
+        {"missions": ["潜水艦派遣演習"], "count": 1},
+        {"missions": ["潜水艦派遣作戦"], "count": 1},
+        {"missions": ["欧州方面友軍との接触"], "count": 1}
+    ]
+}
+

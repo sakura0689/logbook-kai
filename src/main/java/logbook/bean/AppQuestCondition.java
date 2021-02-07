@@ -198,7 +198,7 @@ public class AppQuestCondition implements Predicate<QuestCollect> {
                 String stype = ship.asStype()
                         .map(Stype::getName)
                         .orElse(null);
-                return this.stype.contains(stype);
+                return this.stype.contains(stype) || this.stype.size() > 0 && this.stype.contains("*");
             }
             if (this.name != null) {
                 for (String name : this.name) {
@@ -236,7 +236,7 @@ public class AppQuestCondition implements Predicate<QuestCollect> {
         private String toStringShip() {
             StringBuilder sb = new StringBuilder();
             if (this.stype != null) {
-                sb.append(this.stype.stream().collect(Collectors.joining("または")));
+                sb.append(this.stype.stream().map(s -> s.equals("*") ? "任意の艦種" : s).collect(Collectors.joining("または")));
             }
             if (this.name != null) {
                 sb.append(this.name.stream().collect(Collectors.joining("または")));
@@ -313,8 +313,11 @@ public class AppQuestCondition implements Predicate<QuestCollect> {
         /** 海域 */
         private LinkedHashSet<String> area;
 
-        /** マップセル(7-2の第1ボスなら7、第2ボスなら15) */
+        /** マップセル(7-2の第1ボスならG、第2ボスならM) */
         private String cell;
+
+        /** 複数のマップセル(7-2の第1ボスならG、第2ボスならM) */
+        private LinkedHashSet<String> cells;
 
         /** 出撃 */
         private boolean start;
@@ -379,8 +382,8 @@ public class AppQuestCondition implements Predicate<QuestCollect> {
                 } else {
                     sb.append("任意の海域");
                 }
-                if (this.cell != null) {
-                    sb.append("(セル" + this.cell + ")");
+                if (this.cell != null || this.cells != null) {
+                    sb.append("(セル").append(this.cell != null ? this.cell : this.cells.stream().collect(Collectors.joining("または"))).append(")");
                 }
                 if (this.start) {
                     sb.append("に").append(this.count).append("回出撃");
@@ -472,6 +475,10 @@ public class AppQuestCondition implements Predicate<QuestCollect> {
                 Rank rank;
                 if (this.cell != null) {
                     rank = battleCount.getCell().computeIfAbsent(this.area.stream().findFirst().get() + "-" + this.cell, i -> new Rank());
+                } else if (this.cells != null) {
+                    rank = new Rank();
+                    final Map<String, Rank> cellCount = battleCount.getCell();
+                    this.cells.stream().map(c -> cellCount.computeIfAbsent(this.area.stream().findFirst().get() + "-" + c, i -> new Rank())).forEach(rank::add);
                 } else {
                     if (this.boss) {
                         rank = battleCount.getBoss();

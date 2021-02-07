@@ -1,0 +1,22 @@
+/* [905] 「海防艦」、海を護る！ */
+{
+    "resetType" : "イヤリー",
+    "yearlyResetMonth": 2,
+    "filter" : {
+        "area": ["1-1", "1-2", "1-3", "1-5", "1-6"],
+        "fleet": {
+            "operator": "AND",
+            "conditions": [
+                {"stype": ["海防艦"], "count": 3, "operator": "GE"},
+                {"stype": ["*"], "count": 5, "operator": "LE"}
+            ]
+        }
+    },
+    "conditions" : [
+        {"boss": true, "area": ["1-1"], "rank": ["S", "A"], "count": 1},
+        {"boss": true, "area": ["1-2"], "rank": ["S", "A"], "count": 1},
+        {"boss": true, "area": ["1-3"], "rank": ["S", "A"], "count": 1},
+        {"boss": true, "area": ["1-5"], "rank": ["S", "A"], "count": 1},
+        {"area": ["1-6"], "rank": ["S", "A", "B", "C", "D", "E"], "cells": ["B", "D"], "count": 1}
+    ]
+}
