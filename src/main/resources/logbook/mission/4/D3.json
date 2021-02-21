@@ -1,0 +1,30 @@
+/*欧州方面友軍との接触*/
+{
+    "operator": "AND",
+    "greatSuccessCondition": {
+         "type": "艦隊", "count_type": "旗艦レベル＋キラキラ"
+    },
+    "conditions": [
+        {"type": "艦隊", "count_type": "レベル", "value": 350},
+        {"type": "艦隊", "count_type": "火力", "value": 115},
+        {"type": "艦隊", "count_type": "対空", "value": 90},
+        {"type": "艦隊", "count_type": "対潜", "value": 70},
+        {"type": "艦隊", "count_type": "索敵", "value": 95},
+        {
+            "operator": "AND",
+            "conditions": [
+                {"type": "艦娘", "level": 65, "order": 1}
+            ]
+        },
+        {
+            "operator": "AND",
+            "conditions": [
+                {"type": "艦娘", "ship_type" :["潜水母艦"], "order": 1},
+                {"type": "艦娘", "ship_type" :["潜水艦", "潜水空母"]},
+                {"type": "艦娘", "ship_type" :["潜水艦", "潜水空母"]},
+                {"type": "艦娘", "ship_type" :["潜水艦", "潜水空母"]},
+                {"type": "艦娘"}
+            ]
+        }
+    ]
+}
