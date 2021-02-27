@@ -236,7 +236,7 @@ public class ItemItemController extends WindowController {
             categories.forEach((name, equipTypes) -> {
                 List<CheckBox> types = equipTypes.stream()
                         // 該当の装備を1つも持ってないものは除外
-                        .filter(type -> existingTypes.contains(type.getId()))
+                        .filter(type -> type != null && existingTypes.contains(type.getId()))
                         .map(type -> {
                             CheckBox check = new CheckBox(type.getName());
                             check.setDisable(true);
