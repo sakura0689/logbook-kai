@@ -2922,6 +2922,12 @@
     "min_kaihi" : 33,
     "min_sakuteki" : 14
   }, {
+    "id" : 514,
+    "name" : "Sheffield",
+    "min_taisen" : 38,
+    "min_kaihi" : 32,
+    "min_sakuteki" : 22
+  }, {
     "id" : 515,
     "name" : "Ark Royal",
     "min_taisen" : 0,
@@ -3594,11 +3600,83 @@
     "min_kaihi" : 35,
     "min_sakuteki" : 10
   }, {
+    "id" : 642,
+    "name" : "竹",
+    "min_taisen" : 29,
+    "min_kaihi" : 34,
+    "min_sakuteki" : 9
+  }, {
     "id" : 646,
     "name" : "加賀改二護",
     "min_taisen" : 72,
     "min_kaihi" : 26,
     "min_sakuteki" : 54
+  }, {
+    "id" : 648,
+    "name" : "秋雲改二",
+    "min_taisen" : 28,
+    "min_kaihi" : 47,
+    "min_sakuteki" : 10
+  }, {
+    "id" : 651,
+    "name" : "丹陽",
+    "min_taisen" : 26,
+    "min_kaihi" : 65,
+    "min_sakuteki" : 15
+  }, {
+    "id" : 652,
+    "name" : "球磨改二",
+    "min_taisen" : 40,
+    "min_kaihi" : 42,
+    "min_sakuteki" : 13
+  }, {
+    "id" : 653,
+    "name" : "Scirocco",
+    "min_taisen" : 29,
+    "min_kaihi" : 48,
+    "min_sakuteki" : 7
+  }, {
+    "id" : 654,
+    "name" : "Washington",
+    "min_taisen" : 0,
+    "min_kaihi" : 26,
+    "min_sakuteki" : 14
+  }, {
+    "id" : 656,
+    "name" : "雪風改二",
+    "min_taisen" : 28,
+    "min_kaihi" : 66,
+    "min_sakuteki" : 14
+  }, {
+    "id" : 657,
+    "name" : "球磨改二丁",
+    "min_taisen" : 48,
+    "min_kaihi" : 41,
+    "min_sakuteki" : 13
+  }, {
+    "id" : 658,
+    "name" : "Scirocco改",
+    "min_taisen" : 39,
+    "min_kaihi" : 47,
+    "min_sakuteki" : 10
+  }, {
+    "id" : 659,
+    "name" : "Washington改",
+    "min_taisen" : 0,
+    "min_kaihi" : 35,
+    "min_sakuteki" : 18
+  }, {
+    "id" : 662,
+    "name" : "能代改二",
+    "min_taisen" : 32,
+    "min_kaihi" : 43,
+    "min_sakuteki" : 15
+  }, {
+    "id" : 665,
+    "name" : "曙改二",
+    "min_taisen" : 30,
+    "min_kaihi" : 62,
+    "min_sakuteki" : 10
   }, {
     "id" : 678,
     "name" : "日振改",
@@ -3737,6 +3815,18 @@
     "min_taisen" : 0,
     "min_kaihi" : 38,
     "min_sakuteki" : 49
+  }, {
+    "id" : 705,
+    "name" : "Sheffield改",
+    "min_taisen" : 40,
+    "min_kaihi" : 38,
+    "min_sakuteki" : 24
+  }, {
+    "id" : 706,
+    "name" : "竹改",
+    "min_taisen" : 34,
+    "min_kaihi" : 37,
+    "min_sakuteki" : 14
   }, {
     "id" : 893,
     "name" : "Janus改",
