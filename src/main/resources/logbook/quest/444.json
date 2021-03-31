@@ -1,0 +1,13 @@
+/* [444] 新兵装開発資材輸送を船団護衛せよ！ */
+{
+    "type": "遠征",
+    "resetType" : "イヤリー",
+    "yearlyResetMonth": 3,
+    "conditions" : [
+        {"missions": ["海上護衛任務"], "count": 1},
+        {"missions": ["資源輸送任務"], "count": 1},
+        {"missions": ["タンカー護衛任務"], "count": 1},
+        {"missions": ["南西方面航空偵察作戦"], "count": 1},
+        {"missions": ["ボーキサイト輸送任務"], "count": 1}
+    ]
+}
