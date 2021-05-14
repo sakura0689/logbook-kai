@@ -2880,6 +2880,12 @@
     "min_kaihi" : 16,
     "min_sakuteki" : 24
   }, {
+    "id" : 501,
+    "name" : "最上改二",
+    "min_taisen" : 0,
+    "min_kaihi" : 39,
+    "min_sakuteki" : 28
+  }, {
     "id" : 503,
     "name" : "鈴谷改二",
     "min_taisen" : 0,
@@ -2891,6 +2897,12 @@
     "min_taisen" : 0,
     "min_kaihi" : 40,
     "min_sakuteki" : 25
+  }, {
+    "id" : 506,
+    "name" : "最上改二特",
+    "min_taisen" : 0,
+    "min_kaihi" : 39,
+    "min_sakuteki" : 24
   }, {
     "id" : 508,
     "name" : "鈴谷航改二",
@@ -3672,11 +3684,23 @@
     "min_kaihi" : 43,
     "min_sakuteki" : 15
   }, {
+    "id" : 663,
+    "name" : "矢矧改二",
+    "min_taisen" : 31,
+    "min_kaihi" : 45,
+    "min_sakuteki" : 15
+  }, {
     "id" : 665,
     "name" : "曙改二",
     "min_taisen" : 30,
     "min_kaihi" : 62,
     "min_sakuteki" : 10
+  }, {
+    "id" : 668,
+    "name" : "矢矧改二乙",
+    "min_taisen" : 30,
+    "min_kaihi" : 42,
+    "min_sakuteki" : 15
   }, {
     "id" : 678,
     "name" : "日振改",
@@ -3827,6 +3851,18 @@
     "min_taisen" : 34,
     "min_kaihi" : 37,
     "min_sakuteki" : 14
+  }, {
+    "id" : 883,
+    "name" : "龍鳳改二戊",
+    "min_taisen" : 36,
+    "min_kaihi" : 40,
+    "min_sakuteki" : 30
+  }, {
+    "id" : 888,
+    "name" : "龍鳳改二",
+    "min_taisen" : 32,
+    "min_kaihi" : 37,
+    "min_sakuteki" : 33
   }, {
     "id" : 893,
     "name" : "Janus改",
