@@ -14,7 +14,7 @@
     -fx-padding: 5px;
 }
 TabPane {
-    -fx-tab-max-width: 4em;
+    -fx-tab-max-width: 5em;
 }
 TabPane .tab-label {
     -fx-font-size: 1.1em;
