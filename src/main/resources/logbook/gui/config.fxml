@@ -83,16 +83,19 @@
                                     <RadioButton fx:id="fontSizeLarge2" mnemonicParsing="false" text="大きい" toggleGroup="$fontSize" />
                                  </children>
                               </HBox>
-                              <HBox  alignment="CENTER_LEFT" GridPane.rowIndex="3" GridPane.columnSpan="2147483647">
+                              <HBox alignment="CENTER_LEFT" GridPane.rowIndex="3" GridPane.columnSpan="2147483647">
                                  <CheckBox fx:id="useNotification" mnemonicParsing="false" text="遠征・入渠完了時に通知をする" />
                                  <CheckBox fx:id="useToast" mnemonicParsing="false" text="通知でトーストを表示" />
                               </HBox>
-                              <CheckBox fx:id="alertBadlyStart" mnemonicParsing="false" text="出撃時に大破艦がいる場合に通知をする" GridPane.columnSpan="2147483647" GridPane.rowIndex="4" />
-                              <CheckBox fx:id="alertBadlyNext" mnemonicParsing="false" text="進撃時に大破艦がいる場合に通知をする" GridPane.columnSpan="2147483647" GridPane.rowIndex="5" />
-                              <CheckBox fx:id="ignoreSecondFlagship" mnemonicParsing="false" text="大破警告から連合艦隊の第二艦隊旗艦を除外する" GridPane.columnSpan="2147483647" GridPane.rowIndex="6" />
+                              <CheckBox fx:id="useCondRecoverToast" mnemonicParsing="false" text="疲労回復予定時刻にトーストを表示" GridPane.columnSpan="2147483647" GridPane.rowIndex="4" />
+                              <CheckBox fx:id="alertBadlyStart" mnemonicParsing="false" text="出撃時に大破艦がいる場合に通知をする" GridPane.columnSpan="2147483647" GridPane.rowIndex="5" />
+                              <HBox alignment="CENTER_LEFT" GridPane.rowIndex="6" GridPane.columnSpan="2147483647">
+                                  <CheckBox fx:id="alertBadlyNext" mnemonicParsing="false" text="進撃時に大破艦がいる場合に通知をする"/>
+                                  <CheckBox fx:id="ignoreSecondFlagship" mnemonicParsing="false" text="連合艦隊の第二艦隊旗艦を除外"/>
+                              </HBox>
                               <CheckBox fx:id="useSound" mnemonicParsing="false" text="通知でサウンドを鳴らす" GridPane.columnSpan="2147483647" GridPane.rowIndex="7" />
                               <Label text="デフォルトサウンド" GridPane.rowIndex="8" />
-                              <TextField fx:id="defaultNotifySound" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                              <TextField fx:id="defaultNotifySound" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                               <Button mnemonicParsing="false" onAction="#selectSoundFile" text="参照..." GridPane.columnIndex="2" GridPane.rowIndex="8" />
                               <Label text="トーストの位置" GridPane.rowIndex="9" />
                               <ChoiceBox fx:id="toastLocation" prefWidth="60.0" GridPane.columnIndex="1"  GridPane.rowIndex="9" />
@@ -106,7 +109,7 @@
                               <CheckBox fx:id="checkDoit" mnemonicParsing="false" text="終了時に確認する" GridPane.rowIndex="14" />
                               <CheckBox fx:id="checkUpdate" mnemonicParsing="false" text="起動時にアップデートチェック*" GridPane.columnSpan="2147483647" GridPane.rowIndex="15" />
                               <Label text="報告書の保存先" GridPane.rowIndex="16" />
-                              <TextField fx:id="reportDir" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="16" />
+                              <TextField fx:id="reportDir" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="16" />
                               <Button mnemonicParsing="false" onAction="#selectReportDir" text="参照..." GridPane.columnIndex="2" GridPane.rowIndex="16" />
                               <Label text="母港タブ表示内容" GridPane.rowIndex="17" />
                               <HBox  alignment="CENTER_LEFT" GridPane.rowIndex="17" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" spacing="5">

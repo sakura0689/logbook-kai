@@ -96,6 +96,10 @@ public class ConfigController extends WindowController {
     @FXML
     private CheckBox useNotification;
 
+    /** 疲労回復予想時刻にトースト通知をする */
+    @FXML
+    private CheckBox useCondRecoverToast;
+
     /** 出撃時に大破艦がいる場合に通知をする */
     @FXML
     private CheckBox alertBadlyStart;
@@ -398,6 +402,7 @@ public class ConfigController extends WindowController {
         this.fontSizeLarge1.setSelected("large1".equals(conf.getFontSize()));
         this.fontSizeLarge2.setSelected("large2".equals(conf.getFontSize()));
         this.useNotification.setSelected(conf.isUseNotification());
+        this.useCondRecoverToast.setSelected(conf.isUseCondRecoverToast());
         this.alertBadlyStart.setSelected(conf.isAlertBadlyStart());
         this.alertBadlyNext.setSelected(conf.isAlertBadlyNext());
         this.ignoreSecondFlagship.setSelected(conf.isIgnoreSecondFlagship());
@@ -526,6 +531,7 @@ public class ConfigController extends WindowController {
         conf.setFontSize(fontSize);
 
         conf.setUseNotification(this.useNotification.isSelected());
+        conf.setUseCondRecoverToast(this.useCondRecoverToast.isSelected());
         conf.setAlertBadlyStart(this.alertBadlyStart.isSelected());
         conf.setAlertBadlyNext(this.alertBadlyNext.isSelected());
         conf.setIgnoreSecondFlagship(this.ignoreSecondFlagship.isSelected());

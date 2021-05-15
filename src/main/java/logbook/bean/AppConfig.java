@@ -48,6 +48,9 @@ public final class AppConfig implements Serializable {
     /** 通知でトーストを表示 */
     private boolean useToast = true;
 
+    /** 疲労回復予想時刻にトーストを表示 */
+    private boolean useCondRecoverToast = false;
+
     /** トーストの位置 (default: BOTTOM_RIGHT) */
     private String toastLocation;
 

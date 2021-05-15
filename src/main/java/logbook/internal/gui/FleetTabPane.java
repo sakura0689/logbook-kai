@@ -27,6 +27,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import logbook.Messages;
 import logbook.bean.AppCondition;
 import logbook.bean.AppConfig;
 import logbook.bean.DeckPort;
@@ -63,6 +64,9 @@ public class FleetTabPane extends ScrollPane {
 
     /** 入渠中の艦娘達のハッシュ・コード */
     private int ndocksHashCode;
+
+    /** 疲労回復予想時刻 */
+    private long condRecoverEpoch = Long.MAX_VALUE;
 
     /** 連合艦隊フラグ */
     private boolean combinedFlag;
@@ -262,6 +266,11 @@ public class FleetTabPane extends ScrollPane {
             this.ndocksHashCode = ndocksHashCode;
             this.combinedFlag = AppCondition.get().isCombinedFlag();
         }
+        if (this.condRecoverEpoch != Long.MAX_VALUE && ZonedDateTime.now(ZoneId.systemDefault()).toEpochSecond() > this.condRecoverEpoch) {
+            this.condRecoverEpoch = Long.MAX_VALUE;
+            String message = Messages.getString("cond.recover", this.port.getName());
+            Tools.Controls.showNotify(null, "疲労抜け", message);
+        }
     }
 
     /**
@@ -398,6 +407,7 @@ public class FleetTabPane extends ScrollPane {
                 .mapToInt(Ship::getCond)
                 .min()
                 .orElse(49);
+        this.condRecoverEpoch = Long.MAX_VALUE;
         if (minCond < 49) {
 
             long cut = AppCondition.get().getCondUpdateTime();
@@ -414,6 +424,11 @@ public class FleetTabPane extends ScrollPane {
                 DateTimeFormatter format = DateTimeFormatter.ofPattern("HH:mm");
 
                 this.cond.setText(format.format(disp));
+                // 未出撃の時のみ通知する
+                if (AppConfig.get().isUseCondRecoverToast() && !AppCondition.get().isMapStart()
+                        && this.port.getMission().get(0).intValue() == 0) {  // (0=未出撃, 1=遠征中, 2=遠征帰還, 3=遠征中止)
+                    this.condRecoverEpoch = end;
+                }
             } else {
                 this.cond.setText("");
             }
