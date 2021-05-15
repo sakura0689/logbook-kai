@@ -72,14 +72,19 @@ public interface ShipFilter extends Predicate<ShipItem> {
 
     @Builder
     public static class LabelFilter implements ShipFilter {
+        public static String NO_LABEL = "";
 
         /** ラベル */
         private String labelValue;
 
         @Override
         public boolean test(ShipItem ship) {
-            if (ship == null)
+            if (ship == null || this.labelValue == null) {
                 return false;
+            }
+            if (NO_LABEL.equals(this.labelValue)) {
+                return ship.getLabel().isEmpty();
+            }
             return ship.getLabel().contains(this.labelValue);
         }
     }

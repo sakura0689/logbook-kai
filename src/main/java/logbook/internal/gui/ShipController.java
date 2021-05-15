@@ -144,6 +144,22 @@ public class ShipController extends WindowController {
      */
     private void addLabelTabs() {
         Map<Integer, Set<String>> labelMap = ShipLabelCollection.get().getLabels();
+        // 海域札(手動のラベルは除く)がついている艦がいる場合のみ表示
+        if (ShipCollection.get().getShipMap().values().stream()
+            .map(Ship::getSallyArea)
+            .map(SeaArea::fromArea)
+            .filter(Objects::nonNull)
+            .count() > 0) {
+            // 「海域札なし」タブには手動でラベルを付けただけの艦を表示するため SallyArea のみチェック
+            ShipTablePane noLabelPane = new ShipTablePane(() -> {
+                return ShipCollection.get().getShipMap().values().stream()
+                    .filter(ship -> SeaArea.fromArea(ship.getSallyArea()) == null)
+                    .sorted(Comparator.comparing(Ship::getLv).reversed()
+                            .thenComparing(Comparator.comparing(Ship::getShipId)))
+                    .collect(Collectors.toList());
+            }, "海域札なし");
+            this.tab.getTabs().add(new Tab("海域札なし", noLabelPane));
+        }
         ShipCollection.get().getShipMap().values().stream()
                 .flatMap(ship -> {
                     List<String> label = new ArrayList<>();

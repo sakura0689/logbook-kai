@@ -55,6 +55,7 @@ import javafx.scene.input.ClipboardContent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
 import logbook.bean.AppConfig;
 import logbook.bean.AppShipTableConfig;
 import logbook.bean.AppShipTableConfig.AppShipTableTabConfig;
@@ -434,6 +435,17 @@ public class ShipTablePane extends VBox {
             this.labelFilter.selectedProperty().addListener((ob, ov, nv) -> {
                 this.labelValue.setDisable(!nv);
             });
+            this.labelValue.setConverter(new StringConverter<String>() {
+                @Override
+                public String toString(String object) {
+                    return object.equals(ShipFilter.LabelFilter.NO_LABEL) ? "(ラベルなし)" : object;
+                }
+                
+                @Override
+                public String fromString(String string) {
+                    return string;
+                }
+            });
             this.slotExFilter.selectedProperty().addListener((ob, ov, nv) -> {
                 this.slotExValue.setDisable(!nv);
             });
@@ -573,6 +585,7 @@ public class ShipTablePane extends VBox {
      */
     private void updateLabel() {
         Set<String> labels = new TreeSet<>();
+        labels.add(ShipFilter.LabelFilter.NO_LABEL);
         this.shipItems.forEach(ship -> {
             labels.addAll(ship.getLabel());
         });
@@ -667,6 +680,7 @@ public class ShipTablePane extends VBox {
                     labels.add(label);
                 }
                 this.updateLabel();
+                this.updateFilter();
                 this.table.refresh();
             }
         }
@@ -722,6 +736,7 @@ public class ShipTablePane extends VBox {
                     });
                 }
                 this.updateLabel();
+                this.updateFilter();
                 this.table.refresh();
             }
         }
@@ -876,7 +891,7 @@ public class ShipTablePane extends VBox {
         }
         if (this.labelFilter.isSelected()) {
             filter = this.filterAnd(filter, ShipFilter.LabelFilter.builder()
-                    .labelValue(this.labelValue.getValue() == null ? "" : this.labelValue.getValue())
+                    .labelValue(this.labelValue.getValue())
                     .build());
         }
         if (this.slotExFilter.isSelected()) {
