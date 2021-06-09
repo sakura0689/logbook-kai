@@ -46,6 +46,7 @@ logbook.api.ApiReqKousyouDestroyship
 logbook.api.ApiReqKousyouGetship
 logbook.api.ApiReqKousyouRemodelSlot
 logbook.api.ApiReqKousyouRemodelSlotlist
+logbook.api.ApiReqMapAnchorageRepair
 logbook.api.ApiReqMapNext
 logbook.api.ApiReqMapStart
 logbook.api.ApiReqMemberItemuse
