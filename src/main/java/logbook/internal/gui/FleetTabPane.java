@@ -268,8 +268,10 @@ public class FleetTabPane extends ScrollPane {
         }
         if (this.condRecoverEpoch != Long.MAX_VALUE && ZonedDateTime.now(ZoneId.systemDefault()).toEpochSecond() > this.condRecoverEpoch) {
             this.condRecoverEpoch = Long.MAX_VALUE;
-            String message = Messages.getString("cond.recover", this.port.getName());
-            Tools.Controls.showNotify(null, "疲労抜け", message);
+            if (!AppCondition.get().isMapStart() && this.port.getMission().get(0).intValue() == 0) { // 出撃中・遠征中だったら通知しない
+                String message = Messages.getString("cond.recover", this.port.getName());
+                Tools.Controls.showNotify(null, "疲労抜け", message);
+            }
         }
     }
 
