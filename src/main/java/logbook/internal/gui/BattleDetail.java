@@ -389,7 +389,8 @@ public class BattleDetail extends WindowController {
                         // インデックスは0始まり
                         int idx = stage2.getAirFire().getIdx();
                         Ship ship;
-                        if (idx < 6) {
+                        // 遊撃部隊は7隻なので < 6 ではない
+                        if (idx < ps.getAfterFriend().size()) {
                             ship = ps.getAfterFriend().get(idx);
                         } else {
                             ship = ps.getAfterFriendCombined().get(idx - 6);
