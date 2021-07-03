@@ -1,6 +1,7 @@
 package logbook.internal.gui;
 
 import java.io.IOException;
+import java.util.Map;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -40,15 +41,28 @@ public class FleetTabShipPopup extends VBox {
     @FXML
     private Label planeDesc;
 
-    private Chara chara;
+    private final Chara chara;
 
+    private final Map<Integer, SlotItem> itemMap;
+    
     /**
      * 艦隊タブポップアップのコンストラクタ
      *
      * @param chara キャラクター
      */
     public FleetTabShipPopup(Chara chara) {
+        this(chara, SlotItemCollection.get().getSlotitemMap());
+    }
+
+    /**
+     * 艦隊タブポップアップのコンストラクタ
+     *
+     * @param chara キャラクター
+     * @param itemMap 装備マップ
+     */
+    public FleetTabShipPopup(Chara chara, Map<Integer, SlotItem> itemMap) {
         this.chara = chara;
+        this.itemMap = itemMap;
         try {
             FXMLLoader loader = InternalFXMLLoader.load("logbook/gui/fleet_tab_popup.fxml");
             loader.setRoot(this);
@@ -88,14 +102,12 @@ public class FleetTabShipPopup extends VBox {
                 }
             }
             for (int i = 0; i < ship.getSlotnum(); i++) {
-                this.getChildren().add(new FleetTabShipPopupItem(this.chara, i));
+                this.getChildren().add(new FleetTabShipPopupItem(this.chara, this.itemMap, i));
             }
             if (ship.getSlotEx() != 0) {
-                SlotItem item = SlotItemCollection.get()
-                        .getSlotitemMap()
-                        .get(ship.getSlotEx());
+                SlotItem item = this.itemMap.get(ship.getSlotEx());
                 if (item != null) {
-                    this.getChildren().add(new FleetTabShipPopupItem(this.chara));
+                    this.getChildren().add(new FleetTabShipPopupItem(this.chara, this.itemMap));
                 }
             }
             double barrageRate = Ships.rocketBarrageActivationRate(ship);
@@ -109,7 +121,7 @@ public class FleetTabShipPopup extends VBox {
         } else {
             for (int i = 0; i < this.chara.getSlot().size(); i++) {
                 if (this.chara.getSlot().get(i) > 0) {
-                    this.getChildren().add(new FleetTabShipPopupItem(this.chara, i));
+                    this.getChildren().add(new FleetTabShipPopupItem(this.chara, this.itemMap, i));
                 }
             }
         }
@@ -141,13 +153,16 @@ public class FleetTabShipPopup extends VBox {
         /** スロット番号 */
         private int slotIndex;
 
+        /** 装備マップ */
+        private final Map<Integer, SlotItem> itemMap;
+
         /**
          * 艦隊タブポップアップのコンストラクタ(補強増設)
          *
          * @param chara キャラクター
          */
-        public FleetTabShipPopupItem(Chara chara) {
-            this(chara, SLOT_EX);
+        public FleetTabShipPopupItem(Chara chara, Map<Integer, SlotItem> itemMap) {
+            this(chara, itemMap, SLOT_EX);
         }
 
         /**
@@ -156,9 +171,10 @@ public class FleetTabShipPopup extends VBox {
          * @param chara キャラクター
          * @param slotIndex スロット番号
          */
-        public FleetTabShipPopupItem(Chara chara, int slotIndex) {
+        public FleetTabShipPopupItem(Chara chara, Map<Integer, SlotItem> itemMap, int slotIndex) {
             this.chara = chara;
             this.slotIndex = slotIndex;
+            this.itemMap = itemMap;
             try {
                 FXMLLoader loader = InternalFXMLLoader.load("logbook/gui/fleet_tab_popup_item.fxml");
                 loader.setRoot(this);
@@ -177,9 +193,7 @@ public class FleetTabShipPopup extends VBox {
                 Integer itemId = this.slotIndex == SLOT_EX
                         ? ship.getSlotEx() : this.chara.getSlot().get(this.slotIndex);
 
-                SlotItem item = SlotItemCollection.get()
-                        .getSlotitemMap()
-                        .get(itemId);
+                SlotItem item = this.itemMap.get(itemId);
 
                 Integer slotEq = Ships.shipMst(this.chara)
                         .map(ShipMst::getMaxeq)

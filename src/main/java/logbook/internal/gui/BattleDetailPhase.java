@@ -117,7 +117,7 @@ public class BattleDetailPhase extends TitledPane {
 
         PopOver<Chara> popover = new PopOver<>((node, chara) -> {
             VBox child = new VBox();
-            child.getChildren().add(new FleetTabShipPopup(chara));
+            child.getChildren().add(new FleetTabShipPopup(chara, this.phase.getItemMap()));
             List<PhaseState.AttackDetail> details = this.attackDetails.stream()
                     .filter(e -> {
                         if (chara.getClass() != e.getAttacker().getClass()) {
