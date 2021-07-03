@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -203,6 +204,9 @@ public final class AppConfig implements Serializable {
 
     /** テーブル列のソート順 */
     private Map<String, Map<String, String>> columnSortOrderMap = new LinkedHashMap<>();
+
+    /** テーブル列の並び順 */
+    private Map<String, List<String>> columnOrderMap = new LinkedHashMap<>();
 
     /** SplitPaneの分割サイズ */
     private Map<String, Double> dividerPositionMap = new HashMap<>();

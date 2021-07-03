@@ -425,6 +425,7 @@ public class Tools {
 
         public interface AbstractTable<S, C extends TableColumnBase<?, ?>> {
             public Stream<C> getColumns();
+            public ObservableList<C> getTopColumns();
             public ObservableList<C> getSortOrder();
             public String getSortType(C column);
             public void setSortType(C column, String type);
@@ -440,6 +441,11 @@ public class Tools {
             @Override
             public Stream<TableColumn<S, ?>> getColumns() {
                 return Tables.getColumns(this.table);
+            }
+
+            @Override
+            public ObservableList<TableColumn<S, ?>> getTopColumns() {
+                return this.table.getColumns();
             }
 
             @Override
@@ -472,6 +478,11 @@ public class Tools {
             @Override
             public Stream<TreeTableColumn<S, ?>> getColumns() {
                 return Trees.getColumns(this.tree);
+            }
+
+            @Override
+            public ObservableList<TreeTableColumn<S, ?>> getTopColumns() {
+                return this.tree.getColumns();
             }
 
             @Override
@@ -532,6 +543,39 @@ public class Tools {
             sortOrder.stream().forEach(col -> setting.put(getColumnName(col), table.getSortType(col)));
         }
         
+        /**
+         * テーブル列の並び順の設定を行う
+         * @param table テーブル
+         * @param key テーブルのキー名
+         */
+        public static <S, C extends TableColumnBase<?, ?>> void setColumnOrder(AbstractTable<S, C> table, String key) {
+            List<String> setting = AppConfig.get()
+                    .getColumnOrderMap()
+                    .get(key);
+            ObservableList<C> columns = table.getTopColumns();
+            if (setting != null) {
+                for (int i = 0; i < setting.size() && i < columns.size(); i++) {
+                    if (!setting.get(i).equals(columns.get(i).getText())) {
+                        // 並び順が違うので探す
+                        for (int j = i+1; j < columns.size(); j++) {
+                            if (setting.get(i).equals(columns.get(j).getText())) {
+                                // 見つかった
+                                C column = columns.remove(j);
+                                columns.add(i, column);
+                                break;
+                            }
+                        }
+                        // 見つからないはずはないのでその場合は無視
+                    }
+                }
+            }
+            // 並び順が変更された時に設定を保存する
+            columns.addListener((ListChangeListener<C>) e -> {
+                AppConfig.get().getColumnOrderMap()
+                    .put(key, e.getList().stream().map(TableColumnBase::getText).collect(Collectors.toList()));
+            });
+        }
+
         /**
          * TableColumnの名前を取得する
          * @param column TableColumn
@@ -712,6 +756,16 @@ public class Tools {
         }
 
         /**
+         * テーブル列の並び順の設定を行う
+         * @param <S> テーブルの型
+         * @param table テーブル
+         * @param key テーブルのキー名
+         */
+        public static <S> void setColumnOrder(TableView<S> table, String key) {
+            TablesTreesBase.setColumnOrder(new TableWrapper<S>(table), key);
+        }
+
+        /**
          * TableViewからTableColumnをストリームとして取得する
          * @param table TableView
          * @return TableColumn
@@ -760,6 +814,15 @@ public class Tools {
          */
         public static <S> void setSortOrder(TreeTableView<S> table, String key) {
             TablesTreesBase.setSortOrder(new TreeWrapper<S>(table), key);
+        }
+
+        /**
+         * テーブル列の並び順の設定を行う
+         * @param table テーブル
+         * @param key テーブルのキー名
+         */
+        public static <S> void setColumnOrder(TreeTableView<S> table, String key) {
+            TablesTreesBase.setColumnOrder(new TreeWrapper<S>(table), key);
         }
 
         /**

@@ -12,5 +12,6 @@ public class TreeTableTool {
         //Tools.Trees.setVisible(table, key);   // not yet implemented
         Tools.Trees.setWidth(table, key);
         Tools.Trees.setSortOrder(table, key);
+        Tools.Trees.setColumnOrder(table, key);
     }
 }

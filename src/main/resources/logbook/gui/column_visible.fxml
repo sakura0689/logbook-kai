@@ -28,7 +28,7 @@
                </padding>
             </Button>
             <Pane HBox.hgrow="ALWAYS" />
-            <Button mnemonicParsing="false" onAction="#resetWidth" text="列幅をリセット">
+            <Button mnemonicParsing="false" onAction="#resetWidth" text="列幅・並び順をリセット">
                <HBox.margin>
                   <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
                </HBox.margin>

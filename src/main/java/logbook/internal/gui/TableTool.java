@@ -98,6 +98,7 @@ class TableTool {
         Tools.Tables.setVisible(table, key);
         Tools.Tables.setWidth(table, key);
         Tools.Tables.setSortOrder(table, key);
+        Tools.Tables.setColumnOrder(table, key);
     }
 
     static <T> Callback<TableColumn<T, Integer>, TableCell<T, Integer>> getRowCountCellFactory() {
