@@ -6,6 +6,14 @@
 [![GitHub Release Date](https://img.shields.io/github/release-date/Sdk0815/logbook-kai)](https://github.com/Sdk0815/logbook-kai/releases)
 
 ## ****重要なお知らせ****
+航海日誌(logbook-kai)は[sanaehirotaka さん](https://github.com/sanaehirotaka/logbook-kai/)が開発されたものを引き継ぐ形で、2020年から[Sdk0815](https://github.com/Sdk0815/logbook-kai/)によってメンテナンスを継続してきましたが、諸般の事情により今後のメンテナンスを停止することといたしました。現状の最新版である `v21.7.1` が最終盤となります。公式Twitterアカウントも後日閉鎖する予定です。
+
+今後もし開発を引き継いでいただける方がおられましたら引き継ぎのサポートはさせていただこうと思いますので私まで（issueをあげていただくか[Sdk0815＠Twitter](https://twitter.com/Sdk0815)まで）お知らせいただければと思います。ソースコードは当初より公開しておりますので特にお知らせなくforkしていただいてももちろん問題ありません。
+
+引き継いで1年とちょっとでの開発終了となり心苦しい気持ちではありますが、ご理解いただけるとありがたく思います。以上、よろしくお願いいたします。
+
+## ****（以前の）重要なお知らせ****
+
 v20.9.2 以降のバージョンはオリジナルの [sanaehirotaka さんのリポジトリ](https://github.com/sanaehirotaka/logbook-kai/)ではなく
 こちらの[Sdk0815 の fork](https://github.com/Sdk0815/logbook-kai/)にて開発を行います。
 最新バージョンも[こちら](https://github.com/Sdk0815/logbook-kai/releases)からダウンロードしてください。
