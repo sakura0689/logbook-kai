@@ -67,8 +67,8 @@ public class ApiReqMapStart implements APIListenerSpi {
                         .get(AppCondition.get().getDeckId())
                         .getBadlyShips();
 
-                // 連合艦隊時は第2艦隊も見る
-                if (AppCondition.get().isCombinedFlag()) {
+                // 連合艦隊編成時に第1艦隊出撃中は第2艦隊も見る
+                if (condition.isCombinedFlag() && condition.getDeckId() == 1) {
                     badlyShips.addAll(DeckPortCollection.get()
                             .getDeckPortMap()
                             .get(2).getBadlyShips(AppConfig.get().isIgnoreSecondFlagship()));
