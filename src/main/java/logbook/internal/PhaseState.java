@@ -877,7 +877,7 @@ public class PhaseState {
 
                 defender.setNowhp(defender.getNowhp() - damage);
 
-                this.addDetail(attacker, defender, damage, Collections.singletonList(damage), critical,
+                this.addDetail(attacker, defender, damage, Collections.singletonList(damage), Collections.singletonList(critical.get(i)),
                         SortieAtTypeRaigeki.通常雷撃);
             }
         }
