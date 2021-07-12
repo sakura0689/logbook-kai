@@ -35,8 +35,8 @@
                                 <manifestEntries>
                                     <Bundle-License>The MIT License (MIT)</Bundle-License>
                                     <Implementation-Title>航海日誌</Implementation-Title>
-                                    <Implementation-Vendor>Sdk0815</Implementation-Vendor>
-                                    <Built-By>Sdk0815</Built-By>
+                                    <Implementation-Vendor>sakura0689</Implementation-Vendor>
+                                    <Built-By>sakura0689</Built-By>
                                 </manifestEntries>
                                 <manifest>
                                     <mainClass>logbook.internal.Launcher</mainClass>
