@@ -124,18 +124,25 @@ public final class APIListener implements ContentListenerSpi {
         }
     }
 
+    /**
+     * pairのAPI処理実行
+     *
+     * @param pair　実行対象APIListenerSpi情報
+     * @param json　ResponseBodyJSON
+     * @param req
+     * @param res
+     */
     private void createTask(Pair<String, APIListenerSpi> pair, JsonObject json, RequestMetaData req,
             ResponseMetaData res) {
         try {
             if (this.isDebugEnabled) {
                 String className = pair.getValue().getClass().getName();
-                LoggerHolder.get().debug(Messages.getString("APIListener.0"), //$NON-NLS-1$
-                        className, req.getRequestURI());
+                LoggerHolder.get().debug(Messages.getString("APIListener.0", className, req.getRequestURI()));
             }
             pair.getValue().accept(json, req, res);
         } catch (Exception e) {
             LoggerHolder.get().warn(Messages.getString("APIListener.1"), e); //$NON-NLS-1$
-            LoggerHolder.get().warn(json);
+            LoggerHolder.get().warn(json.toString());
         }
     }
 }

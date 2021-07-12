@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+	<Appenders>
+	    <Console name="Console" target="SYSTEM_OUT">
+        	<PatternLayout pattern="%d{yyyy.MM.dd HH:mm:ss.SSS} %p [%thread] %m%n"/>
+        </Console>
+    	<RollingFile name="ROLLING" fileName="logs/app.log" filePattern="logs/%d{yyyy-MM}/app-%d{yyyy-MM-dd}.log">
+            <PatternLayout pattern="%d{yyyy.MM.dd HH:mm:ss.SSS} %p [%thread] %m%n" />
+            <TimeBasedTriggeringPolicy />
+        </RollingFile>
+	</Appenders>
+	<Loggers>
+	    <Root level="INFO">
+    	    <AppenderRef ref="STDOUT" />
+        	<AppenderRef ref="ROLLING" />
+    	</Root>
+    </Loggers>
+</Configuration>
