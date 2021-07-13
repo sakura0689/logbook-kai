@@ -1,4 +1,4 @@
-package logbook.internal;
+package logbook.constants;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

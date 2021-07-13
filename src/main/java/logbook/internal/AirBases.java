@@ -4,6 +4,7 @@ import java.util.Map;
 
 import logbook.bean.Mapinfo.AirBase;
 import logbook.bean.Mapinfo.PlaneInfo;
+import logbook.constants.SlotItemType;
 import logbook.bean.SlotItem;
 import logbook.bean.SlotItemCollection;
 import logbook.bean.SlotitemMst;

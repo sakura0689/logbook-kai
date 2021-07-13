@@ -40,6 +40,7 @@ import logbook.bean.BattleTypes.Stage1;
 import logbook.bean.BattleTypes.Stage2;
 import logbook.bean.BattleTypes.SupportAiratack;
 import logbook.bean.BattleTypes.SupportInfo;
+import logbook.constants.Rank;
 import logbook.bean.CombinedBattleEachBattle;
 import logbook.bean.MapStartNext;
 import logbook.bean.Ship;
@@ -49,7 +50,6 @@ import logbook.bean.SlotitemMstCollection;
 import logbook.internal.Items;
 import logbook.internal.Mapping;
 import logbook.internal.PhaseState;
-import logbook.internal.Rank;
 import logbook.internal.Ships;
 import lombok.Getter;
 

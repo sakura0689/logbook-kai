@@ -42,6 +42,8 @@ import logbook.bean.SlotitemMstCollection;
 import logbook.bean.Stype;
 import logbook.bean.StypeCollection;
 import logbook.common.Messages;
+import logbook.constants.ShipType;
+import logbook.constants.SlotItemType;
 import logbook.internal.Tuple.Pair;
 import logbook.plugin.PluginServices;
 import lombok.AllArgsConstructor;

@@ -6,10 +6,10 @@ import java.util.Optional;
 
 import javax.json.JsonObject;
 
+import logbook.constants.ShipType;
+import logbook.constants.SlotItemType;
 import logbook.internal.JsonHelper;
-import logbook.internal.ShipType;
 import logbook.internal.Ships;
-import logbook.internal.SlotItemType;
 import lombok.Data;
 
 /**
