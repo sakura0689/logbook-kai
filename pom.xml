@@ -4,7 +4,7 @@
     <name>logbook-kai</name>
     <artifactId>logbook-kai</artifactId>
     <groupId>logbook</groupId>
-    <version>21.7.1</version>
+    <version>22.0.1</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
@@ -30,8 +30,8 @@
                                 <manifestEntries>
                                     <Bundle-License>The MIT License (MIT)</Bundle-License>
                                     <Implementation-Title>航海日誌</Implementation-Title>
-                                    <Implementation-Vendor>Sdk0815</Implementation-Vendor>
-                                    <Built-By>Sdk0815</Built-By>
+                                    <Implementation-Vendor>sakura0689</Implementation-Vendor>
+                                    <Built-By>sakura0689</Built-By>
                                 </manifestEntries>
                                 <manifest>
                                     <mainClass>logbook.internal.Launcher</mainClass>

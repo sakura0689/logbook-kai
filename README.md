@@ -1,9 +1,13 @@
 航海日誌 (logbook-kai)
 --
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/Sdk0815/logbook-kai)](https://github.com/Sdk0815/logbook-kai/releases/latest)
-[![GitHub](https://img.shields.io/github/license/Sdk0815/logbook-kai)](LICENSE)
-[![GitHub All Releases](https://img.shields.io/github/downloads/Sdk0815/logbook-kai/total)](https://github.com/Sdk0815/logbook-kai/releases)
-[![GitHub Release Date](https://img.shields.io/github/release-date/Sdk0815/logbook-kai)](https://github.com/Sdk0815/logbook-kai/releases)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/sakura0689/logbook-kai)](https://github.com/sakura0689/logbook-kai/releases/latest)
+[![GitHub](https://img.shields.io/github/license/sakura0689/logbook-kai)](LICENSE)
+[![GitHub All Releases](https://img.shields.io/github/downloads/sakura0689/logbook-kai/total)](https://github.com/sakura0689/logbook-kai/releases)
+[![GitHub Release Date](https://img.shields.io/github/release-date/sakura0689/logbook-kai)](https://github.com/sakura0689/logbook-kai/releases)
+
+## ****お知らせ****
+
+個人利用のため修正を行っておりますので、Issueは受け付けておりません。
 
 ## ****重要なお知らせ****
 航海日誌(logbook-kai)は[sanaehirotaka さん](https://github.com/sanaehirotaka/logbook-kai/)が開発されたものを引き継ぐ形で、2020年から[Sdk0815](https://github.com/Sdk0815/logbook-kai/)によってメンテナンスを継続してきましたが、諸般の事情により今後のメンテナンスを停止することといたしました。現状の最新版である `v21.7.1` が最終盤となります。公式Twitterアカウントも後日閉鎖する予定です。
@@ -70,7 +74,7 @@ Java 8u40以降のJava8がインストールされたWindows,LinuxまたはmacOS
 - Amazon Corretto : 一部機能が動作しません(集計機能・自動アップデートが利用不可)。
 - AdoptOpenJDK : ライブラリが不足しているため起動しません。
 
-### [ダウンロード](https://github.com/Sdk0815/logbook-kai/releases)
+### [ダウンロード](https://github.com/sakura0689/logbook-kai/releases)
 
 **ご注意ください**
 
