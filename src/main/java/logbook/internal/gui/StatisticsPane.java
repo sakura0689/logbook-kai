@@ -28,7 +28,7 @@ import javafx.scene.text.Text;
 import logbook.bean.Ship;
 import logbook.bean.ShipCollection;
 import logbook.bean.Stype;
-import logbook.internal.ExpTable;
+import logbook.constants.ExpTable;
 import logbook.internal.LoggerHolder;
 import logbook.internal.Ships;
 

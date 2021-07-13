@@ -25,6 +25,7 @@ import logbook.bean.ShipMst;
 import logbook.bean.SlotItem;
 import logbook.bean.SlotitemMst;
 import logbook.bean.SlotitemMstCollection;
+import logbook.constants.ExpTable;
 
 class ShipImage {
 

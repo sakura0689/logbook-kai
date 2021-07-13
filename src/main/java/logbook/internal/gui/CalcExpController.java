@@ -39,7 +39,7 @@ import logbook.bean.DeckPortCollection;
 import logbook.bean.Ship;
 import logbook.bean.ShipCollection;
 import logbook.bean.ShipMst;
-import logbook.internal.ExpTable;
+import logbook.constants.ExpTable;
 import logbook.internal.LoggerHolder;
 import logbook.internal.Rank;
 import logbook.internal.Ships;
