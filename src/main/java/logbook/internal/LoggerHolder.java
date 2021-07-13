@@ -10,102 +10,80 @@ import org.apache.logging.log4j.Logger;
 public class LoggerHolder {
 
     public static LoggerProxy get() {
-        return new LoggerProxy();
+        String callerClass = getCallerClass(2);
+        return new LoggerProxy(callerClass);
     }
 
     public static class LoggerProxy {
 
-        private String callerClass;
-
         private Logger logger;
 
-        public LoggerProxy() {
-            this.callerClass = getCallerClass(3);
-            this.logger = LogManager.getLogger(this.callerClass);
+        public LoggerProxy(String callerClass) {
+            this.logger = LogManager.getLogger(callerClass);
         }
 
         public boolean isDebugEnabled() {
             return this.logger.isDebugEnabled();
         }
 
-        public void debug(Object message) {
-            this.logger.debug(message);
-        }
-
         public void debug(String message) {
-            this.logger.debug(message);
+            this.logger.debug(getCallerClassAddMethodLines(2) + message);
         }
 
         public void debug(String message, Object... params) {
-            this.logger.debug(message, params);
+            this.logger.debug(getCallerClassAddMethodLines(2) + message, params);
         }
 
         public void debug(String message, Throwable t) {
-            this.logger.debug(message, t);
-        }
-
-        public void info(Object message) {
-            this.logger.info(message);
+            this.logger.debug(getCallerClassAddMethodLines(2) + message, t);
         }
 
         public void info(String message) {
-            this.logger.info(message);
+            this.logger.info(getCallerClassAddMethodLines(2) + message);
         }
 
         public void info(String message, Object... params) {
-            this.logger.info(message, params);
+            this.logger.info(getCallerClassAddMethodLines(2) + message, params);
         }
 
         public void info(String message, Throwable t) {
-            this.logger.info(message, t);
-        }
-
-        public void warn(Object message) {
-            this.logger.warn(message);
+            this.logger.info(getCallerClassAddMethodLines(2) + message, t);
         }
 
         public void warn(String message) {
-            this.logger.warn(message);
+            this.logger.warn(getCallerClassAddMethodLines(2) + message);
         }
 
         public void warn(String message, Object... params) {
-            this.logger.warn(message, params);
+            this.logger.warn(getCallerClassAddMethodLines(2) + message, params);
         }
 
         public void warn(String message, Throwable t) {
-            this.logger.warn(message, t);
-        }
-
-        public void error(Object message) {
-            this.logger.error(message);
+            this.logger.warn(getCallerClassAddMethodLines(2) + message, t);
         }
 
         public void error(String message) {
-            this.logger.error(message);
+            this.logger.error(getCallerClassAddMethodLines(2) + message);
         }
 
         public void error(String message, Object... params) {
-            this.logger.error(message, params);
+            this.logger.error(getCallerClassAddMethodLines(2) + message, params);
         }
 
         public void error(String message, Throwable t) {
-            this.logger.error(message, t);
-        }
-
-        public void fatal(Object message) {
-            this.logger.fatal(message);
+            this.logger.error(getCallerClassAddMethodLines(2) + message, t);
         }
 
         public void fatal(String message) {
-            this.logger.fatal(message);
+            this.logger.fatal(getCallerClassAddMethodLines(2) + message);
         }
 
         public void fatal(String message, Object... params) {
-            this.logger.fatal(message, params);
+            this.logger.fatal(getCallerClassAddMethodLines(2) + message, params);
         }
 
         public void fatal(String message, Throwable t) {
-            this.logger.fatal(message, t);
+            this.logger.fatal(getCallerClassAddMethodLines(2) + message, t);
         }
     }
 
@@ -113,6 +91,11 @@ public class LoggerHolder {
         return getEquivalentStackTraceElement(depth + 1).getClassName();
     }
 
+    static String getCallerClassAddMethodLines(final int depth) {
+        StackTraceElement element = getEquivalentStackTraceElement(depth + 1);
+        return new StringBuilder(element.getClassName()).append("#").append(element.getMethodName()).append("(").append(element.getLineNumber()).append(") ").toString();
+    }
+    
     private static StackTraceElement getEquivalentStackTraceElement(final int depth) {
         final StackTraceElement[] elements = new Throwable().getStackTrace();
         int i = 0;

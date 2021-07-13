@@ -19,13 +19,13 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
-import logbook.Messages;
 import logbook.bean.AppConfig;
 import logbook.bean.SlotItem;
 import logbook.bean.SlotitemEquiptype;
 import logbook.bean.SlotitemEquiptypeCollection;
 import logbook.bean.SlotitemMst;
 import logbook.bean.SlotitemMstCollection;
+import logbook.common.Messages;
 import logbook.plugin.PluginServices;
 import lombok.Data;
 

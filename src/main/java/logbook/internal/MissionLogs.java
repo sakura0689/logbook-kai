@@ -104,6 +104,11 @@ public class MissionLogs {
         public SimpleMissionLog(String line) {
             String[] columns = line.split(",", -1);
             
+            boolean isNewFormat = true;
+            if (columns.length == 7) {
+                isNewFormat = false;
+            }
+            
             this.setDateString(columns[0]);
             // 任務の更新時間が午前5時のため
             // 日付文字列を日本時間として解釈した後、GMT+04:00のタイムゾーンに変更します
@@ -112,12 +117,21 @@ public class MissionLogs {
                     .withZoneSameInstant(ZoneId.of("GMT+04:00"));
             this.setDate(date);
             this.setResult(columns[1]);
-            this.setArea(columns[2]);
-            this.setName(columns[3]);
-            this.setFuel(Integer.parseInt(columns[4]));
-            this.setAmmo(Integer.parseInt(columns[5]));
-            this.setMetal(Integer.parseInt(columns[6]));
-            this.setBauxite(Integer.parseInt(columns[7]));
+            if (isNewFormat) {
+                this.setArea(columns[2]);
+                this.setName(columns[3]);
+                this.setFuel(Integer.parseInt(columns[4]));
+                this.setAmmo(Integer.parseInt(columns[5]));
+                this.setMetal(Integer.parseInt(columns[6]));
+                this.setBauxite(Integer.parseInt(columns[7]));
+            } else {
+                this.setArea("");
+                this.setName(columns[2]);
+                this.setFuel(columns[3].equals("") ? 0 : Integer.parseInt(columns[3]));
+                this.setAmmo(columns[4].equals("") ? 0 : Integer.parseInt(columns[4]));
+                this.setMetal(columns[5].equals("") ? 0 : Integer.parseInt(columns[5]));
+                this.setBauxite(columns[6].equals("") ? 0 : Integer.parseInt(columns[6]));
+            }            
             if (columns.length > 8)
                 this.setItem1name(columns[8]);
             if (columns.length > 9)
