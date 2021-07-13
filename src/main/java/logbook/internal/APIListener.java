@@ -16,9 +16,9 @@ import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
 
-import logbook.Messages;
 import logbook.api.API;
 import logbook.api.APIListenerSpi;
+import logbook.common.Messages;
 import logbook.internal.Tuple.Pair;
 import logbook.plugin.PluginServices;
 import logbook.proxy.ContentListenerSpi;
@@ -129,8 +129,7 @@ public final class APIListener implements ContentListenerSpi {
         try {
             if (this.isDebugEnabled) {
                 String className = pair.getValue().getClass().getName();
-                LoggerHolder.get().debug(Messages.getString("APIListener.0"), //$NON-NLS-1$
-                        className, req.getRequestURI());
+                LoggerHolder.get().debug(Messages.getString("APIListener.0", className, req.getRequestURI()));
             }
             pair.getValue().accept(json, req, res);
         } catch (Exception e) {

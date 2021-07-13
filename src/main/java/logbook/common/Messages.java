@@ -1,4 +1,4 @@
-package logbook;
+package logbook.common;
 
 import java.io.BufferedReader;
 import java.io.IOException;
