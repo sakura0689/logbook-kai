@@ -3,8 +3,10 @@ package logbook.internal.gui;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -27,13 +29,13 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import logbook.bean.Ship;
 import logbook.bean.ShipCollection;
-import logbook.bean.Stype;
 import logbook.constants.ExpTable;
+import logbook.constants.StatisticsShipTypeGroup;
 import logbook.internal.LoggerHolder;
-import logbook.internal.Ships;
 
 /**
- * 統計
+ * 所有艦娘一覧機能
+ * 統計タブ
  *
  */
 public class StatisticsPane extends VBox {
@@ -131,12 +133,12 @@ public class StatisticsPane extends VBox {
      * @param ships 対象艦
      */
     private void setRatio(List<Ship> ships) {
-        Map<TypeGroup, Long> collect = ships.stream()
-                .collect(Collectors.groupingBy(TypeGroup::toTypeGroup, TreeMap::new,
+        Map<StatisticsShipTypeGroup, Long> collect = ships.stream()
+                .collect(Collectors.groupingBy(StatisticsShipTypeGroup::toTypeGroup, TreeMap::new,
                         Collectors.summingLong(this::getExp)));
 
         ObservableList<PieChart.Data> value = FXCollections.observableArrayList();
-        for (Entry<TypeGroup, Long> data : collect.entrySet()) {
+        for (Entry<StatisticsShipTypeGroup, Long> data : collect.entrySet()) {
             if (data.getKey() != null)
                 value.add(new PieChart.Data(data.getKey().name(), data.getValue()));
         }
@@ -151,15 +153,15 @@ public class StatisticsPane extends VBox {
         this.average.getData().clear();
 
         this.averageCategory.setCategories(
-                Arrays.stream(TypeGroup.values())
-                        .map(TypeGroup::name)
+                Arrays.stream(StatisticsShipTypeGroup.values())
+                        .map(StatisticsShipTypeGroup::name)
                         .collect(Collectors.toCollection(FXCollections::observableArrayList)));
         ships.stream()
-                .collect(Collectors.groupingBy(TypeGroup::toTypeGroup,
+                .collect(Collectors.groupingBy(StatisticsShipTypeGroup::toTypeGroup,
                         Collectors.averagingLong(Ship::getLv)))
                 .entrySet().stream()
                 .filter(e -> e.getKey() != null)
-                .sorted(Comparator.comparing(Entry<TypeGroup, Double>::getKey))
+                .sorted(Comparator.comparing(Entry<StatisticsShipTypeGroup, Double>::getKey))
                 .map(e -> new XYChart.Data<>(e.getValue(), e.getKey().name()))
                 .forEach(data -> {
                     XYChart.Series<Double, String> series = new XYChart.Series<>();
@@ -176,22 +178,46 @@ public class StatisticsPane extends VBox {
     private void setSpectrum(List<Ship> ships) {
         this.spectrum.getData().clear();
 
-        Map<TypeGroup, Map<Integer, Long>> value = ships.stream()
-                .collect(Collectors.groupingBy(TypeGroup::toTypeGroup, Collectors.mapping(this::tickLevel,
+        Map<StatisticsShipTypeGroup, Map<Integer, Long>> value = ships.stream()
+                .collect(Collectors.groupingBy(StatisticsShipTypeGroup::toTypeGroup, Collectors.mapping(this::tickLevel,
                         Collectors.groupingBy(Function.identity(), Collectors.counting()))));
-        this.spectrumCategory.setCategories(
-                IntStream.rangeClosed(1, ExpTable.maxLv())
-                        .map(i -> i / 10 * 10)
-                        .distinct()
-                        .mapToObj(Integer::valueOf)
-                        .map(i -> i + "-" + (i + 9))
+        
+        List<Integer> categoriesList = IntStream.rangeClosed(1, ExpTable.maxLv())
+                .map(i -> i / 10 * 10)
+                .distinct()
+                .mapToObj(Integer::valueOf)
+                .collect(Collectors.toList());
+
+        List<String> categoriesLavelList = new ArrayList<String>();
+        for (Integer lv : categoriesList) {
+            if (lv == 90) {
+                categoriesLavelList.add(Integer.toString(lv) + "-" + Integer.toString(lv + 8));
+                categoriesLavelList.add(Integer.toString(99));
+            } else {
+                categoriesLavelList.add(Integer.toString(lv) + "-" + Integer.toString(lv + 9));
+            }
+        }
+
+        this.spectrumCategory.setCategories(categoriesLavelList.stream()
                         .collect(Collectors.toCollection(FXCollections::observableArrayList)));
-        for (TypeGroup group : TypeGroup.values()) {
+        
+        for (StatisticsShipTypeGroup group : StatisticsShipTypeGroup.values()) {
             Map<Integer, Long> tick = value.get(group);
             if (tick != null) {
-                ObservableList<XYChart.Data<Long, String>> data = tick.entrySet()
+                Map<String, Long> graph_data = new HashMap<String, Long>();
+                for (Entry<Integer, Long> ent : tick.entrySet()) {
+                    if (ent.getKey() == 99) {
+                        graph_data.put("99", ent.getValue());
+                    } else if (ent.getKey() == 90) {
+                        graph_data.put(Integer.toString(ent.getKey()) + "-" + Integer.toString(ent.getKey() + 8), ent.getValue());
+                    } else {
+                        graph_data.put(Integer.toString(ent.getKey()) + "-" + Integer.toString(ent.getKey() + 9), ent.getValue());
+                    }
+                }
+                
+                ObservableList<XYChart.Data<Long, String>> data = graph_data.entrySet()
                         .stream()
-                        .map(e -> new XYChart.Data<>(e.getValue(), e.getKey() + "-" + (e.getKey() + 9)))
+                        .map(e -> new XYChart.Data<>(e.getValue(), e.getKey()))
                         .collect(Collectors.toCollection(FXCollections::observableArrayList));
 
                 XYChart.Series<Long, String> series = new XYChart.Series<>();
@@ -209,11 +235,11 @@ public class StatisticsPane extends VBox {
     private void setBubble(List<Ship> ships) {
         this.bubble.getData().clear();
 
-        Map<TypeGroup, List<Integer>> value = ships.stream()
-                .collect(Collectors.groupingBy(TypeGroup::toTypeGroup,
+        Map<StatisticsShipTypeGroup, List<Integer>> value = ships.stream()
+                .collect(Collectors.groupingBy(StatisticsShipTypeGroup::toTypeGroup,
                         Collectors.mapping(Ship::getLv, Collectors.toList())));
 
-        for (TypeGroup group : TypeGroup.values()) {
+        for (StatisticsShipTypeGroup group : StatisticsShipTypeGroup.values()) {
             List<Integer> levels = value.get(group);
             if (levels != null) {
                 double average = levels.stream()
@@ -266,41 +292,9 @@ public class StatisticsPane extends VBox {
     }
 
     private int tickLevel(Ship ship) {
+        if (ship.getLv() == 99) {
+            return ship.getLv();
+        }
         return ship.getLv() / 10 * 10;
-    }
-
-    /**
-     * 艦種のグループわけ
-     */
-    private enum TypeGroup {
-
-        駆逐艦("駆逐艦"),
-        海防艦("海防艦"),
-        正規空母("正規空母", "装甲空母"),
-        軽空母("軽空母"),
-        戦艦("戦艦", "航空戦艦"),
-        巡洋艦("軽巡洋艦", "重雷装巡洋艦", "練習巡洋艦", "重巡洋艦", "航空巡洋艦"),
-        潜水艦("潜水艦", "潜水空母"),
-        特殊艦("水上機母艦", "揚陸艦", "工作艦", "潜水母艦", "補給艦");
-
-        private String[] group;
-
-        private TypeGroup(String... shipTypes) {
-            this.group = shipTypes;
-        }
-
-        public static TypeGroup toTypeGroup(Ship ship) {
-            Stype stype = Ships.stype(ship).orElse(null);
-            if (stype != null) {
-                String name = stype.getName();
-                for (TypeGroup group : values()) {
-                    for (String v : group.group) {
-                        if (v.equals(name))
-                            return group;
-                    }
-                }
-            }
-            return null;
-        }
     }
 }

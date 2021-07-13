@@ -98,6 +98,7 @@ public class ShipController extends WindowController {
                 }
             });
 
+            // 統計タブ
             this.addStatistics();
 
             this.timeline = new Timeline();
