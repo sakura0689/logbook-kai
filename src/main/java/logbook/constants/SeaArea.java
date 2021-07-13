@@ -1,9 +1,9 @@
-package logbook.internal;
+package logbook.constants;
 
 import java.util.stream.Stream;
 
 /**
- * 海域
+ * イベント海域の札情報
  *
  */
 public enum SeaArea {

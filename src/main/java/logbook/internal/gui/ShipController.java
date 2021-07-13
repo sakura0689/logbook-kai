@@ -26,8 +26,8 @@ import logbook.bean.Ship;
 import logbook.bean.ShipCollection;
 import logbook.bean.ShipLabelCollection;
 import logbook.bean.ShipMst;
+import logbook.constants.SeaArea;
 import logbook.internal.LoggerHolder;
-import logbook.internal.SeaArea;
 import logbook.internal.Ships;
 
 /**

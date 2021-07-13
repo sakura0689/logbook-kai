@@ -23,8 +23,8 @@ import logbook.bean.SlotItem;
 import logbook.bean.SlotItemCollection;
 import logbook.bean.SlotitemMst;
 import logbook.bean.Stype;
+import logbook.constants.SeaArea;
 import logbook.internal.Items;
-import logbook.internal.SeaArea;
 import logbook.internal.Ships;
 
 /**
