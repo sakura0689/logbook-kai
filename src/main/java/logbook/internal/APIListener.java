@@ -135,7 +135,7 @@ public final class APIListener implements ContentListenerSpi {
             pair.getValue().accept(json, req, res);
         } catch (Exception e) {
             LoggerHolder.get().warn(Messages.getString("APIListener.1"), e); //$NON-NLS-1$
-            LoggerHolder.get().warn(json);
+            LoggerHolder.get().warn(json.toString());
         }
     }
 }
