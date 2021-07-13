@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import logbook.constants.Rank;
 import logbook.internal.Config;
-import logbook.internal.Rank;
 import logbook.internal.ShipImageCacheStrategy;
 import lombok.Data;
 

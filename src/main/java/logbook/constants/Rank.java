@@ -1,7 +1,7 @@
-package logbook.internal;
+package logbook.constants;
 
 /**
- * ランク
+ * 戦闘評価
  *
  */
 public enum Rank {
