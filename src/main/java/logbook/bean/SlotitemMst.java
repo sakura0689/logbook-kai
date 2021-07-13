@@ -5,8 +5,8 @@ import java.util.List;
 
 import javax.json.JsonObject;
 
+import logbook.constants.SlotItemType;
 import logbook.internal.JsonHelper;
-import logbook.internal.SlotItemType;
 import lombok.Data;
 
 /**

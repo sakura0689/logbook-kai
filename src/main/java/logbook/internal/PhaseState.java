@@ -42,6 +42,7 @@ import logbook.bean.BattleTypes.Stage3;
 import logbook.bean.BattleTypes.SupportAiratack;
 import logbook.bean.BattleTypes.SupportHourai;
 import logbook.bean.BattleTypes.SupportInfo;
+import logbook.constants.SlotItemType;
 import logbook.bean.Chara;
 import logbook.bean.Enemy;
 import logbook.bean.Friend;

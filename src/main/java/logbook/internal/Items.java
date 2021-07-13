@@ -26,6 +26,7 @@ import logbook.bean.SlotitemEquiptypeCollection;
 import logbook.bean.SlotitemMst;
 import logbook.bean.SlotitemMstCollection;
 import logbook.common.Messages;
+import logbook.constants.SlotItemType;
 import logbook.plugin.PluginServices;
 import lombok.Data;
 
