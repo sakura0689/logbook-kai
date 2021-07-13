@@ -1,4 +1,4 @@
-package logbook.internal;
+package logbook.constants;
 
 import logbook.bean.ShipMst;
 import logbook.bean.Stype;

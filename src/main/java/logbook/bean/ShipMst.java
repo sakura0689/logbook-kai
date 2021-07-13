@@ -8,8 +8,8 @@ import java.util.Optional;
 
 import javax.json.JsonObject;
 
+import logbook.constants.ShipType;
 import logbook.internal.JsonHelper;
-import logbook.internal.ShipType;
 import lombok.Data;
 
 /**
