@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -31,12 +32,21 @@ import logbook.proxy.ResponseMetaData;
  */
 public final class APIListener implements ContentListenerSpi {
 
-    private final Map<String, List<Pair<String, APIListenerSpi>>> services;
+    /**
+     * @APIアノテーションが付与された、実行対象URI情報とAPIListenerSpi実装クラスのペア情報一覧
+     */
+    private final Map<String, List<Pair<String, APIListenerSpi>>> targetEventExec;
 
-    private final List<Pair<String, APIListenerSpi>> all = new ArrayList<>();
+    /**
+     * @APIアノテーションが付与されていない、全てのURLで実行されるAPIListenerSpi実装クラスの一覧
+     */
+    private final List<Pair<String, APIListenerSpi>> allEventExec = new ArrayList<>();
 
     private final boolean isDebugEnabled;
 
+    /** 全てのURLで実行される設定がされているフラグ */
+    private final boolean isAllEventExec;
+    
     public APIListener() {
         Function<APIListenerSpi, Stream<Pair<String, APIListenerSpi>>> mapper = impl -> {
             API target = impl.getClass().getAnnotation(API.class);
@@ -44,20 +54,35 @@ public final class APIListener implements ContentListenerSpi {
                 return Arrays.stream(target.value())
                         .map(k -> Tuple.of(k, impl));
             } else {
-                this.all.add(Tuple.of(null, impl));
+                this.allEventExec.add(Tuple.of(null, impl));
             }
             return Stream.empty();
         };
-        this.services = PluginServices.instances(APIListenerSpi.class)
+        this.isAllEventExec = !this.allEventExec.isEmpty();
+        this.targetEventExec = PluginServices.instances(APIListenerSpi.class)
                 .flatMap(mapper)
                 .collect(Collectors.groupingBy(Pair::getKey));
         this.isDebugEnabled = LoggerHolder.get().isDebugEnabled();
+        
+        if (this.isDebugEnabled) {
+            LoggerHolder.get().debug("APIListener initialize done");
+            LoggerHolder.get().debug("targetEventExec設定情報");
+            for (Entry<String, List<Pair<String, APIListenerSpi>>> ent : this.targetEventExec.entrySet()) {
+                for (Pair<String, APIListenerSpi> data : ent.getValue()) {
+                    LoggerHolder.get().debug(ent.getKey() + " : " + data.getKey() + " : " + data.getValue());
+                }
+            }
+            LoggerHolder.get().debug("allEventExec設定情報");
+            for (Pair<String, APIListenerSpi> data : this.allEventExec) {
+                LoggerHolder.get().debug(data.getKey() + " : " + data.getValue());
+            }
+        }
     }
 
     @Override
     public boolean test(RequestMetaData requestMetaData) {
         String uri = requestMetaData.getRequestURI();
-        return uri.startsWith("/kcsapi/") && (!this.all.isEmpty() || this.services.containsKey(uri)); //$NON-NLS-1$
+        return uri.startsWith("/kcsapi/") && (this.isAllEventExec || this.targetEventExec.containsKey(uri));
     }
 
     @Override
@@ -111,14 +136,14 @@ public final class APIListener implements ContentListenerSpi {
 
     void send(RequestMetaData req, ResponseMetaData res, JsonObject json) {
         String uri = req.getRequestURI();
-        List<Pair<String, APIListenerSpi>> pairs = this.services.getOrDefault(uri, Collections.emptyList());
-
+        
+        List<Pair<String, APIListenerSpi>> pairs = this.targetEventExec.getOrDefault(uri, Collections.emptyList());
         for (Pair<String, APIListenerSpi> pair : pairs) {
             Runnable task = () -> this.createTask(pair, json, req, res);
             ThreadManager.getExecutorService().submit(task);
         }
 
-        for (Pair<String, APIListenerSpi> pair : this.all) {
+        for (Pair<String, APIListenerSpi> pair : this.allEventExec) {
             Runnable task = () -> this.createTask(pair, json, req, res);
             ThreadManager.getExecutorService().submit(task);
         }
