@@ -3906,6 +3906,12 @@
     "min_kaihi" : 37,
     "min_sakuteki" : 14
   }, {
+    "id" : 707,
+    "name" : "Gambier Bay Mk.II",
+    "min_taisen" : 40,
+    "min_kaihi" : 28,
+    "min_sakuteki" : 39
+  }, {
     "id" : 708,
     "name" : "桃改",
     "min_taisen" : 33,
