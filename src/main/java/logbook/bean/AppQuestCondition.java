@@ -45,6 +45,12 @@ public class AppQuestCondition implements Predicate<QuestCollect> {
     /** 結果 */
     private Boolean result;
 
+    /**
+     * 任務(クエスト)の達成条件設定ファイルを読み込みます
+     * 
+     * @param questNo 任務番号
+     * @return 任務条件設定
+     */
     public static AppQuestCondition loadFromResource(int questNo) {
         InputStream is = PluginServices.getQuestResourceAsStream(questNo);
         if (is != null) {
