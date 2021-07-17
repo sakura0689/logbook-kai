@@ -1,0 +1,9 @@
+/* Test用 */
+{
+    "type": "遠征",
+    "resetType" : "デイリー",
+    "conditions" : [
+        {"missions": [], "count": 3}
+    ]
+}
+

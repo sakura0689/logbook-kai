@@ -1,0 +1,8 @@
+/* Test用 */
+{
+    "type" : "出撃",
+    "resetType" : "デイリー",
+    "conditions" : [
+        {"rank": ["S", "A", "B"], "count": 1}
+    ]
+}
