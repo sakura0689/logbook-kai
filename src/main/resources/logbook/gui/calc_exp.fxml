@@ -170,7 +170,7 @@
             </HBox>
             <VBox>
                <children>
-                  <Label text="改装レベル不足の艦娘" />
+                  <Label text="未改装の艦娘 ([未改修運用艦]ラベルで非表示)" />
                   <TableView fx:id="shortageShip" prefHeight="200.0" VBox.vgrow="ALWAYS">
                      <columns>
                         <TableColumn fx:id="id" prefWidth="50.0" text="ID" />

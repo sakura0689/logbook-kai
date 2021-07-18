@@ -5,6 +5,7 @@ import java.math.RoundingMode;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import javafx.animation.KeyFrame;
@@ -38,7 +39,9 @@ import logbook.bean.AppSeaAreaExpCollection;
 import logbook.bean.DeckPortCollection;
 import logbook.bean.Ship;
 import logbook.bean.ShipCollection;
+import logbook.bean.ShipLabelCollection;
 import logbook.bean.ShipMst;
+import logbook.constants.ConvertShip;
 import logbook.constants.ExpTable;
 import logbook.constants.Rank;
 import logbook.internal.LoggerHolder;
@@ -100,7 +103,7 @@ public class CalcExpController extends WindowController {
     @FXML
     private NumberAxis yAxis;
 
-    /** 改装レベル不足の艦娘 */
+    /** 未改装の艦娘 */
     @FXML
     private TableView<ShortageShipItem> shortageShip;
 
@@ -119,7 +122,7 @@ public class CalcExpController extends WindowController {
     /** 艦娘のコンボボックスに表示する */
     private ObservableList<ShipWrapper> ships = FXCollections.observableArrayList();
 
-    /** 改装レベル不足の艦娘 */
+    /** 未改装の艦娘 */
     private ObservableList<ShortageShipItem> item = FXCollections.observableArrayList();
 
     /** 今の経験値 */
@@ -155,9 +158,9 @@ public class CalcExpController extends WindowController {
         this.lv.setCellValueFactory(new PropertyValueFactory<>("lv"));
         this.afterLv.setCellValueFactory(new PropertyValueFactory<>("afterLv"));
 
-        // 改装レベル不足の艦娘
+        // 未改装の艦娘
         this.shortageShip.setItems(this.item);
-        this.shortageShip();
+        this.setShortageShip();
 
         // イベントリスナー
         this.shipList.getSelectionModel()
@@ -404,19 +407,41 @@ public class CalcExpController extends WindowController {
     }
 
     /**
-     * 改装レベル不足の艦娘の一覧を作る
+     * 未改装の艦娘の一覧を作る
      */
-    private void shortageShip() {
+    private void setShortageShip() {
         this.item.addAll(ShipCollection.get()
                 .getShipMap()
                 .values()
                 .stream()
                 .map(ShortageShipItem::toShipItem)
-                .filter(item -> item.getAfterLv() > item.getLv())
+                .filter(item -> isOutput(item))
                 .sorted(Comparator.comparing(ShortageShipItem::getLv).reversed())
                 .collect(Collectors.toList()));
     }
 
+    /**
+     * 表示対象の未改修艦かの判定結果を返却します
+     * 
+     * @param ship
+     * @return
+     */
+    private boolean isOutput(ShortageShipItem ship) {
+        if (ship.getAfterLv() > 0) {
+            //未改修運用艦ラベルチェック
+            Set<String> labels = ShipLabelCollection.get().getLabels().get(ship.getId());
+            if (labels != null && labels.contains("未改修運用艦")) {
+                return false;
+            }
+            if (ConvertShip.isConvertShip(ship.getShip().getShipId())) {
+                return ship.getAfterLv() > ship.getLv();
+            } else {
+                return true;
+            }
+        }
+        return false;
+    }
+    
     /**
      * チャートを作る
      */
@@ -497,7 +522,7 @@ public class CalcExpController extends WindowController {
     }
 
     /**
-     * 改装レベル不足の艦娘の一覧に表示する艦娘画像のセル
+     * 未改装の艦娘の一覧に表示する艦娘画像のセル
      *
      */
     private static class ShipImageTableCell extends TableCell<ShortageShipItem, Ship> {
