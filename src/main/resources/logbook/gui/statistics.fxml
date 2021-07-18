@@ -50,6 +50,19 @@
                               </StackedBarChart>
                            </children>
                         </VBox>
+                        <VBox HBox.hgrow="ALWAYS">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="section-title" text="レベル中央値" />
+                              <StackedBarChart fx:id="median" styleClass="average">
+                                <xAxis>
+                                  <NumberAxis side="BOTTOM" />
+                                </xAxis>
+                                <yAxis>
+                                  <CategoryAxis fx:id="medianCategory" side="LEFT" />
+                                </yAxis>
+                              </StackedBarChart>
+                           </children>
+                        </VBox>
                      </children>
                   </HBox>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="section-title" text="レベル分布" />
