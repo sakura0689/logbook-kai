@@ -1,0 +1,22 @@
+/* [945] 南西方面の兵站航路の安全を図れ！*/
+{
+    "type" : "出撃",
+    "resetType" : "イヤリー",
+    "yearlyResetMonth": 6,
+    "filter" : {
+        "area": ["1-5", "1-6", "2-1"],
+        "fleet": {
+            "description" : "旗艦に軽巡洋艦または練習巡洋艦または駆逐艦、随伴艦に駆逐艦または海防艦3隻、他自由",
+            "operator": "AND",
+            "conditions": [
+                {"stype": ["軽巡洋艦", "練習巡洋艦", "駆逐艦"], "order": 1},
+                {"stype": ["駆逐艦", "海防艦"], "count": 3, "operator": "GE"}
+            ]
+        }
+    },
+    "conditions" : [
+        {"boss": true, "area": ["1-5"], "rank": ["S", "A"], "count": 2},
+        {"area": ["1-6"], "rank": ["S", "A", "B", "C", "D", "E"], "cells": ["B", "D"], "count": 2},
+        {"boss": true, "area": ["2-1"], "rank": ["S", "A"], "count": 2}
+    ]
+}
