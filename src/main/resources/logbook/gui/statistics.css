@@ -35,11 +35,11 @@
 .default-color8.chart-bubble { -fx-bubble-fill: CHART_COLOR_9_TRANS_20; -fx-border-color: CHART_COLOR_9; }
 
 .ratio {
-    -fx-pref-width: 525px;
+    -fx-pref-width: 325px;
     -fx-pref-height: 300px;
 }
 .average {
-    -fx-pref-width: 525px;
+    -fx-pref-width: 425px;
     -fx-pref-height: 300px;
 }
 .spectrum {

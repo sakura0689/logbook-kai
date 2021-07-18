@@ -59,6 +59,14 @@ public class StatisticsPane extends VBox {
     @FXML
     private CategoryAxis averageCategory;
 
+    /** レベル中央値 */
+    @FXML
+    private StackedBarChart<Double, String> median;
+
+    /** レベル中央値 カテゴリ軸 */
+    @FXML
+    private CategoryAxis medianCategory;
+
     /** レベル分布 */
     @FXML
     private StackedBarChart<Long, String> spectrum;
@@ -113,6 +121,8 @@ public class StatisticsPane extends VBox {
         this.setRatio(ships);
         // 平均レベル
         this.setAverage(ships);
+        // レベル中央値
+        this.setMedian(ships);
         // レベル分布
         this.setSpectrum(ships);
         this.setBubble(ships);
@@ -169,6 +179,38 @@ public class StatisticsPane extends VBox {
                     series.getData().add(data);
                     this.average.getData().add(series);
                 });
+    }
+
+    /**
+     * レベル中央値
+     * @param ships 対象艦
+     */
+    private void setMedian(List<Ship> ships) {
+        this.median.getData().clear();
+
+        this.medianCategory.setCategories(
+                Arrays.stream(StatisticsShipTypeGroup.values())
+                        .map(StatisticsShipTypeGroup::name)
+                        .collect(Collectors.toCollection(FXCollections::observableArrayList)));
+        
+        Map<StatisticsShipTypeGroup, List<Integer>> value = ships.stream()
+                    .collect(Collectors.groupingBy(StatisticsShipTypeGroup::toTypeGroup, Collectors.mapping(Ship::getLv, Collectors.toList())));
+        
+        for (StatisticsShipTypeGroup group : StatisticsShipTypeGroup.values()) {
+            List<Integer> levels = value.get(group);
+            if (levels != null) {
+                int size = levels.size();
+                levels.sort(Integer::compareTo);
+                double median = (size % 2 == 0)
+                        ? (double) (levels.get(size / 2) + levels.get(Math.max(size / 2 - 1, 0))) / 2
+                        : (double) levels.get(size / 2);
+
+                XYChart.Series<Double, String> series = new XYChart.Series<Double, String>();
+                series.setName(group.name());
+                series.getData().add(new XYChart.Data<>(median, group.name()));
+                this.median.getData().add(series);
+            }
+        }
     }
 
     /**
