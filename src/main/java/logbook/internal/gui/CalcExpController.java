@@ -5,6 +5,7 @@ import java.math.RoundingMode;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import javafx.animation.KeyFrame;
@@ -38,6 +39,7 @@ import logbook.bean.AppSeaAreaExpCollection;
 import logbook.bean.DeckPortCollection;
 import logbook.bean.Ship;
 import logbook.bean.ShipCollection;
+import logbook.bean.ShipLabelCollection;
 import logbook.bean.ShipMst;
 import logbook.constants.ConvertShip;
 import logbook.constants.ExpTable;
@@ -426,6 +428,11 @@ public class CalcExpController extends WindowController {
      */
     private boolean isOutput(ShortageShipItem ship) {
         if (ship.getAfterLv() > 0) {
+            //未改修運用艦ラベルチェック
+            Set<String> labels = ShipLabelCollection.get().getLabels().get(ship.getId());
+            if (labels != null && labels.contains("未改修運用艦")) {
+                return false;
+            }
             if (ConvertShip.isConvertShip(ship.getShip().getShipId())) {
                 return ship.getAfterLv() > ship.getLv();
             } else {
