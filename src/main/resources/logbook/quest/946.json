@@ -1,0 +1,21 @@
+/* [946] 空母機動部隊、出撃！敵艦隊を迎撃せよ！*/
+{
+    "type" : "出撃",
+    "resetType" : "イヤリー",
+    "yearlyResetMonth": 6,
+    "filter" : {
+        "area": ["2-2", "2-3", "2-4"],
+        "fleet": {
+            "operator": "AND",
+            "conditions": [
+                {"stype": ["軽空母", "正規空母", "装甲空母"], "order": 1},
+                {"stype": ["重巡洋艦", "航空巡洋艦"], "count": 2, "operator": "GE"}
+            ]
+        }
+    },
+    "conditions" : [
+        {"boss": true, "area": ["2-2"], "rank": ["S"], "count": 1},
+        {"boss": true, "area": ["2-3"], "rank": ["S"], "count": 1},
+        {"boss": true, "area": ["2-4"], "rank": ["S"], "count": 1}
+    ]
+}

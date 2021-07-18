@@ -1,0 +1,22 @@
+/* [944] 鎮守府近海海域の哨戒を実施せよ！*/
+{
+    "type" : "出撃",
+    "resetType" : "イヤリー",
+    "yearlyResetMonth": 6,
+    "filter" : {
+        "area": ["1-2", "1-3", "1-4"],
+        "fleet": {
+            "description" : "旗艦に重巡洋艦または駆逐艦、随伴艦に駆逐艦または海防艦3隻、他自由",
+            "operator": "AND",
+            "conditions": [
+                {"stype": ["駆逐艦", "重巡洋艦"], "order": 1},
+                {"stype": ["駆逐艦", "海防艦"], "count": 3, "operator": "GE"}
+            ]
+        }
+    },
+    "conditions" : [
+        {"boss": true, "area": ["1-2"], "rank": ["S", "A"], "count": 2},
+        {"boss": true, "area": ["1-3"], "rank": ["S", "A"], "count": 2},
+        {"boss": true, "area": ["1-4"], "rank": ["S", "A"], "count": 2}
+    ]
+}
