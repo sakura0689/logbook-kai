@@ -9,7 +9,7 @@ import logbook.bean.ShipMst;
 import logbook.internal.Ships;
 
 /**
- * 改装レベル不足の艦娘テーブルの行
+ * 未改装の艦娘テーブルの行
  *
  */
 public class ShortageShipItem {
@@ -123,10 +123,10 @@ public class ShortageShipItem {
     }
 
     /**
-     * 改装レベル不足の艦娘テーブルの行を作成します
+     * 未改装の艦娘テーブルの行を作成します
      *
      * @param ship 艦娘
-     * @return 改装レベル不足の艦娘テーブルの行
+     * @return 未改装の艦娘テーブルの行
      */
     public static ShortageShipItem toShipItem(Ship ship) {
         ShortageShipItem item = new ShortageShipItem();
