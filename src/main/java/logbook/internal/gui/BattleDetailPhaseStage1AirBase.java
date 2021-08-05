@@ -31,7 +31,7 @@ public class BattleDetailPhaseStage1AirBase extends VBox {
     /**
     * Stage1 詳細
     * @param stage1 stage1
-    * @param friendName (基地航空隊編成情報)
+    * @param airbase (基地航空隊編成情報)
     */
     public BattleDetailPhaseStage1AirBase(Stage1 stage1, List<BattleTypes.SquadronPlane> airbase) {
         this.stage1 = stage1;
