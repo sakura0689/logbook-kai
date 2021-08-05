@@ -40,13 +40,13 @@ import logbook.bean.BattleTypes.Stage1;
 import logbook.bean.BattleTypes.Stage2;
 import logbook.bean.BattleTypes.SupportAiratack;
 import logbook.bean.BattleTypes.SupportInfo;
-import logbook.constants.Rank;
 import logbook.bean.CombinedBattleEachBattle;
 import logbook.bean.MapStartNext;
 import logbook.bean.Ship;
 import logbook.bean.SlotItem;
 import logbook.bean.SlotitemMst;
 import logbook.bean.SlotitemMstCollection;
+import logbook.constants.Rank;
 import logbook.internal.Items;
 import logbook.internal.Mapping;
 import logbook.internal.PhaseState;
@@ -582,6 +582,7 @@ public class BattleDetail extends WindowController {
 
                 for (AirBaseAttack airBaseAttack : ((IAirBaseAttack) this.battle).getAirBaseAttack()) {
                     if (airBaseAttack.getStage1() != null) {
+                        stage.add(new BattleDetailPhaseStage1AirBase(airBaseAttack.getStage1(), airBaseAttack.getSquadronPlane()));
                         stage.add(new BattleDetailPhaseStage1(airBaseAttack.getStage1(), "基地航空隊"));
                     }
                     if (airBaseAttack.getStage2() != null) {
