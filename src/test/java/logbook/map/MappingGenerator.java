@@ -13,6 +13,9 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+/**
+ * KC3Kaiからmapping情報を取得し、mapping.jsonにconvertします
+ */
 public class MappingGenerator {
     /** Source URL, thanks to KC3 */
     private static final String SOURCE_URL = "https://raw.githubusercontent.com/KC3Kai/KC3Kai/master/src/data/edges.json";
