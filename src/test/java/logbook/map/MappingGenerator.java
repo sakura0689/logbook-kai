@@ -24,6 +24,9 @@ public class MappingGenerator {
     
     @SuppressWarnings("unchecked")
     public static void main(String[] args) throws JsonParseException, JsonMappingException, MalformedURLException, IOException {
+        
+        System.out.println("convert start");
+        
         ObjectMapper mapper = new ObjectMapper();
         Map<String, Map<String, List<String>>> json = mapper.readValue(new URL(SOURCE_URL), Map.class);
         try (FileOutputStream fos = new FileOutputStream(new File("src/main/resources/logbook/map/mapping.json"));
@@ -43,5 +46,7 @@ public class MappingGenerator {
                 .ifPresent(pw::println);
             pw.println("}");
         }
+        
+        System.out.println("convert end");
     }
 }
