@@ -3336,6 +3336,12 @@
     "min_kaihi" : 49,
     "min_sakuteki" : 11
   }, {
+    "id" : 588,
+    "name" : "山風改二",
+    "min_taisen" : 30,
+    "min_kaihi" : 50,
+    "min_sakuteki" : 8
+  }, {
     "id" : 589,
     "name" : "L.d.S.D.d.Abruzzi",
     "min_taisen" : 20,
@@ -3507,7 +3513,7 @@
     "id" : 619,
     "name" : "Grecale改",
     "min_taisen" : 38,
-    "min_kaihi" : 18,
+    "min_kaihi" : 19,
     "min_sakuteki" : 10
   }, {
     "id" : 620,
@@ -3650,9 +3656,9 @@
   }, {
     "id" : 645,
     "name" : "宗谷",
-    "min_taisen" : 1,
-    "min_kaihi" : 26,
-    "min_sakuteki" : 14
+    "min_taisen" : 8,
+    "min_kaihi" : 27,
+    "min_sakuteki" : 2
   }, {
     "id" : 646,
     "name" : "加賀改二護",
@@ -3671,6 +3677,12 @@
     "min_taisen" : 30,
     "min_kaihi" : 48,
     "min_sakuteki" : 14
+  }, {
+    "id" : 650,
+    "name" : "宗谷",
+    "min_taisen" : 8,
+    "min_kaihi" : 27,
+    "min_sakuteki" : 2
   }, {
     "id" : 651,
     "name" : "丹陽",
@@ -3750,11 +3762,23 @@
     "min_kaihi" : 62,
     "min_sakuteki" : 10
   }, {
+    "id" : 667,
+    "name" : "山風改二丁",
+    "min_taisen" : 28,
+    "min_kaihi" : 49,
+    "min_sakuteki" : 8
+  }, {
     "id" : 668,
     "name" : "矢矧改二乙",
     "min_taisen" : 30,
     "min_kaihi" : 42,
     "min_sakuteki" : 15
+  }, {
+    "id" : 670,
+    "name" : "親潮改二",
+    "min_taisen" : 30,
+    "min_kaihi" : 48,
+    "min_sakuteki" : 9
   }, {
     "id" : 671,
     "name" : "巻波",
@@ -3868,7 +3892,7 @@
     "name" : "South Dakota改",
     "min_taisen" : 0,
     "min_kaihi" : 36,
-    "min_sakuteki" : 0
+    "min_sakuteki" : 18
   }, {
     "id" : 698,
     "name" : "加賀改二",
@@ -3948,10 +3972,16 @@
     "min_kaihi" : 37,
     "min_sakuteki" : 10
   }, {
+    "id" : 711,
+    "name" : "Honolulu改",
+    "min_taisen" : 0,
+    "min_kaihi" : 38,
+    "min_sakuteki" : 22
+  }, {
     "id" : 712,
     "name" : "第三〇号海防艦改",
-    "min_taisen" : 32,
-    "min_kaihi" : 48,
+    "min_taisen" : 30,
+    "min_kaihi" : 46,
     "min_sakuteki" : 4
   }, {
     "id" : 713,
