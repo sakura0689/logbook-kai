@@ -6,6 +6,7 @@ import java.util.List;
 import javax.json.JsonObject;
 
 import logbook.constants.SlotItemType;
+import logbook.constants.SlotitemMstTypeConst;
 import logbook.internal.JsonHelper;
 import lombok.Data;
 
@@ -27,7 +28,15 @@ public class SlotitemMst implements Serializable {
     /** api_name */
     private String name;
 
-    /** api_type */
+    /** api_type
+     * [
+     * 0:大分類
+     * 1:図鑑表示
+     * 2:カテゴリ :: @see SlotItemType
+     * 3:アイコンID
+     * 4:航空機カテゴリ
+     * ]
+     * */
     private List<Integer> type;
 
     /** api_taik(耐久) */
@@ -106,7 +115,7 @@ public class SlotitemMst implements Serializable {
     public boolean is(SlotItemType itemType) {
         if (this.getType() == null)
             return false;
-        return itemType.getType() == this.getType().get(2);
+        return itemType.getType() == this.getType().get(SlotitemMstTypeConst.SLOT_ITEM_TYPE);
     }
 
     /**
@@ -118,7 +127,7 @@ public class SlotitemMst implements Serializable {
     public boolean is(SlotItemType itemType1, SlotItemType itemType2) {
         if (this.getType() == null)
             return false;
-        int type2 = this.getType().get(2);
+        int type2 = this.getType().get(SlotitemMstTypeConst.SLOT_ITEM_TYPE);
         return itemType1.getType() == type2 || itemType2.getType() == type2;
     }
 
@@ -130,7 +139,7 @@ public class SlotitemMst implements Serializable {
     public boolean is(SlotItemType... itemTypes) {
         if (this.getType() == null)
             return false;
-        int type2 = this.getType().get(2);
+        int type2 = this.getType().get(SlotitemMstTypeConst.SLOT_ITEM_TYPE);
         for (SlotItemType itemType : itemTypes) {
             if (itemType.getType() == type2) {
                 return true;
