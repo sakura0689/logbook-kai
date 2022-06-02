@@ -1758,6 +1758,12 @@
     "min_kaihi" : 38,
     "min_sakuteki" : 42
   }, {
+    "id" : 299,
+    "name" : "Scamp",
+    "min_taisen" : 0,
+    "min_kaihi" : 17,
+    "min_sakuteki" : 11
+  }, {
     "id" : 300,
     "name" : "初風改",
     "min_taisen" : 27,
@@ -2189,6 +2195,12 @@
     "min_taisen" : 66,
     "min_kaihi" : 23,
     "min_sakuteki" : 29
+  }, {
+    "id" : 382,
+    "name" : "雲鷹改",
+    "min_taisen" : 64,
+    "min_kaihi" : 23,
+    "min_sakuteki" : 31
   }, {
     "id" : 383,
     "name" : "択捉改",
@@ -2982,6 +2994,12 @@
     "min_kaihi" : 24,
     "min_sakuteki" : 28
   }, {
+    "id" : 522,
+    "name" : "八幡丸",
+    "min_taisen" : 0,
+    "min_kaihi" : 24,
+    "min_sakuteki" : 28
+  }, {
     "id" : 524,
     "name" : "択捉",
     "min_taisen" : 35,
@@ -3036,6 +3054,12 @@
     "min_kaihi" : 45,
     "min_sakuteki" : 8
   }, {
+    "id" : 533,
+    "name" : "冬月",
+    "min_taisen" : 24,
+    "min_kaihi" : 44,
+    "min_sakuteki" : 8
+  }, {
     "id" : 534,
     "name" : "神鷹",
     "min_taisen" : 36,
@@ -3058,6 +3082,12 @@
     "name" : "涼月改",
     "min_taisen" : 28,
     "min_kaihi" : 51,
+    "min_sakuteki" : 9
+  }, {
+    "id" : 538,
+    "name" : "冬月改",
+    "min_taisen" : 29,
+    "min_kaihi" : 50,
     "min_sakuteki" : 9
   }, {
     "id" : 539,
@@ -3648,6 +3678,12 @@
     "min_kaihi" : 34,
     "min_sakuteki" : 9
   }, {
+    "id" : 643,
+    "name" : "梅",
+    "min_taisen" : 26,
+    "min_kaihi" : 33,
+    "min_sakuteki" : 11
+  }, {
     "id" : 644,
     "name" : "桃",
     "min_taisen" : 27,
@@ -3665,6 +3701,12 @@
     "min_taisen" : 72,
     "min_kaihi" : 26,
     "min_sakuteki" : 54
+  }, {
+    "id" : 647,
+    "name" : "浦波改二",
+    "min_taisen" : 25,
+    "min_kaihi" : 47,
+    "min_sakuteki" : 12
   }, {
     "id" : 648,
     "name" : "秋雲改二",
@@ -3762,6 +3804,12 @@
     "min_kaihi" : 62,
     "min_sakuteki" : 10
   }, {
+    "id" : 666,
+    "name" : "磯波改二",
+    "min_taisen" : 28,
+    "min_kaihi" : 45,
+    "min_sakuteki" : 9
+  }, {
     "id" : 667,
     "name" : "山風改二丁",
     "min_taisen" : 28,
@@ -3784,6 +3832,12 @@
     "name" : "巻波",
     "min_taisen" : 24,
     "min_kaihi" : 43,
+    "min_sakuteki" : 9
+  }, {
+    "id" : 674,
+    "name" : "玉波",
+    "min_taisen" : 22,
+    "min_kaihi" : 46,
     "min_sakuteki" : 9
   }, {
     "id" : 675,
@@ -3990,6 +4044,36 @@
     "min_kaihi" : 32,
     "min_sakuteki" : 46
   }, {
+    "id" : 714,
+    "name" : "昭南改",
+    "min_taisen" : 38,
+    "min_kaihi" : 53,
+    "min_sakuteki" : 6
+  }, {
+    "id" : 715,
+    "name" : "Scamp改",
+    "min_taisen" : 0,
+    "min_kaihi" : 18,
+    "min_sakuteki" : 13
+  }, {
+    "id" : 716,
+    "name" : "梅改",
+    "min_taisen" : 33,
+    "min_kaihi" : 37,
+    "min_sakuteki" : 16
+  }, {
+    "id" : 717,
+    "name" : "山汐丸改",
+    "min_taisen" : 32,
+    "min_kaihi" : 14,
+    "min_sakuteki" : 23
+  }, {
+    "id" : 718,
+    "name" : "玉波改",
+    "min_taisen" : 25,
+    "min_kaihi" : 46,
+    "min_sakuteki" : 12
+  }, {
     "id" : 877,
     "name" : "Conte di Cavour",
     "min_taisen" : 0,
@@ -4020,6 +4104,12 @@
     "min_kaihi" : 40,
     "min_sakuteki" : 30
   }, {
+    "id" : 884,
+    "name" : "雲鷹",
+    "min_taisen" : 34,
+    "min_kaihi" : 23,
+    "min_sakuteki" : 29
+  }, {
     "id" : 885,
     "name" : "Victorious",
     "min_taisen" : 0,
@@ -4038,16 +4128,46 @@
     "min_kaihi" : 37,
     "min_sakuteki" : 33
   }, {
+    "id" : 889,
+    "name" : "雲鷹改二",
+    "min_taisen" : 74,
+    "min_kaihi" : 35,
+    "min_sakuteki" : 37
+  }, {
     "id" : 893,
     "name" : "Janus改",
     "min_taisen" : 53,
     "min_kaihi" : 47,
     "min_sakuteki" : 12
   }, {
+    "id" : 895,
+    "name" : "昭南",
+    "min_taisen" : 38,
+    "min_kaihi" : 39,
+    "min_sakuteki" : 3
+  }, {
+    "id" : 900,
+    "name" : "山汐丸",
+    "min_taisen" : 23,
+    "min_kaihi" : 14,
+    "min_sakuteki" : 13
+  }, {
+    "id" : 903,
+    "name" : "天霧改二",
+    "min_taisen" : 27,
+    "min_kaihi" : 54,
+    "min_sakuteki" : 10
+  }, {
+    "id" : 908,
+    "name" : "天霧改二丁",
+    "min_taisen" : 25,
+    "min_kaihi" : 53,
+    "min_sakuteki" : 10
+  }, {
     "id" : 1496,
     "name" : "Colorado改",
     "min_taisen" : 0,
     "min_kaihi" : 22,
     "min_sakuteki" : 16
-  } ]
+ } ]
 }
