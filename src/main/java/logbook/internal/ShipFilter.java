@@ -111,21 +111,29 @@ public interface ShipFilter extends Predicate<ShipItem> {
 
         @Override
         public boolean test(ShipItem ship) {
-            if (ship == null)
+            if (ship == null) {
                 return false;
-            if (this.text.isEmpty())
+            }
+            
+            if (this.text.isEmpty()) {
                 return true;
+            } else if (this.text.length() == 1 && this.text.matches("^[\\u3040-\\u309F]+$")) {
+                //ひらがな1文字はマッチ対象が多すぎるため検索しない
+                return true;
+            }
+            
             Map<Integer, SlotItem> itemMap = SlotItemCollection.get()
                     .getSlotitemMap();
             List<Supplier<String>> texts = Arrays.asList(
                     () -> Ships.shipMst(ship.getShip()).map(ShipMst::getName).orElse(""),
-                    () -> ship.getType(),
+                    () -> Ships.shipMst(ship.getShip()).map(ShipMst::getYomi).orElse(""),
                     () -> Items.slotitemMst(itemMap.get(ship.getSlot1())).map(SlotitemMst::getName).orElse(""),
                     () -> Items.slotitemMst(itemMap.get(ship.getSlot2())).map(SlotitemMst::getName).orElse(""),
                     () -> Items.slotitemMst(itemMap.get(ship.getSlot3())).map(SlotitemMst::getName).orElse(""),
                     () -> Items.slotitemMst(itemMap.get(ship.getSlot4())).map(SlotitemMst::getName).orElse(""),
                     () -> Items.slotitemMst(itemMap.get(ship.getSlot5())).map(SlotitemMst::getName).orElse(""),
                     () -> Items.slotitemMst(itemMap.get(ship.getSlotEx())).map(SlotitemMst::getName).orElse(""));
+            
             for (Supplier<String> supplier : texts) {
                 if (supplier.get().contains(this.text)) {
                     return true;

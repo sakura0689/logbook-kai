@@ -27,7 +27,7 @@
                         <FlowPane>
                            <children>
                               <ToggleSwitch fx:id="textFilter" prefWidth="0.0" text="テキスト" />
-                              <TextField fx:id="textValue" disable="true" prefWidth="200.0" promptText="名前・艦種または装備" />
+                              <TextField fx:id="textValue" disable="true" prefWidth="200.0" promptText="名前(ひらがな,カタカナ)または装備" />
                            </children>
                         </FlowPane>
                         <FlowPane fx:id="filters" Hgap="5" Vgap="5">
