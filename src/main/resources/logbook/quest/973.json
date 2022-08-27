@@ -1,0 +1,21 @@
+/* [973]日英米合同水上艦隊、抜錨せよ！ */
+{
+    "type" : "出撃",
+    "resetType" : "イヤリー",
+    "yearlyResetMonth": 5,
+    "filter" : {
+        "area": ["3-1", "3-3", "7-3", "4-3"],
+        "fleet": {
+            "description": "米英艦艇3隻以上を含む空母を伴わない艦隊",
+            "name": [
+                "Iowa","Colorado","South Dakota","Washington","Houston","Northampton","Atlanta","Helena","Honolulu","Fletcher","Johnston","Samuel B.Roberts","Scamp",
+                "Warspite","Nelson","Sheffield","Jervis","Janus"
+            ], "count": 3, "operator": "GE"}
+    },
+    "conditions" : [
+        {"boss": true, "area": ["3-1"], "rank": ["S", "A"], "count": 1},
+        {"boss": true, "area": ["3-3"], "rank": ["S", "A"], "count": 1},
+        {"boss": true, "area": ["7-3"], "cell": "P", "rank": ["S", "A"], "count": 1},
+        {"boss": true, "area": ["4-3"], "rank": ["S", "A"], "count": 1}
+    ]
+}
