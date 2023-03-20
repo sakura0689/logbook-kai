@@ -111,6 +111,21 @@ public class BattleLogs {
         return null;
     }
 
+    /**
+     * 日付を指定して戦闘ログを取得します。
+     *
+     * @param dateString 日付文字列
+     * @return 戦闘ログ、存在しない又は入出力例外の場合null
+     */
+    public static BattleLog read(InputStream inputStream) {
+        try {
+            return mapper.readValue(inputStream, BattleLog.class);
+        } catch (Exception e) {
+            LoggerHolder.get().warn("戦闘ログの読み込み中に例外", e);
+        }
+        return null;
+    }
+
     private static List<Path> tryReadPaths(String dateString) {
         Path dir = Paths.get(AppConfig.get().getBattleLogDir());
         String name = fileNameSafeDateString(dateString);
