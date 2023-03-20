@@ -36,6 +36,14 @@ public class Enemy implements Chara, Serializable, Cloneable {
     private boolean practice;
 
     @Override
+    public Integer getNowhp() {
+        if (nowhp == null) {
+            return 0;
+        }
+        return nowhp;
+    }
+
+    @Override
     public boolean isEnemy() {
         return true;
     }
