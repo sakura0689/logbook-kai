@@ -42,7 +42,6 @@ import logbook.bean.BattleTypes.Stage3;
 import logbook.bean.BattleTypes.SupportAiratack;
 import logbook.bean.BattleTypes.SupportHourai;
 import logbook.bean.BattleTypes.SupportInfo;
-import logbook.constants.SlotItemType;
 import logbook.bean.Chara;
 import logbook.bean.Enemy;
 import logbook.bean.Friend;
@@ -50,6 +49,7 @@ import logbook.bean.Ship;
 import logbook.bean.SlotItem;
 import logbook.bean.SlotItemCollection;
 import logbook.bean.SlotitemMst;
+import logbook.constants.SlotItemType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -751,11 +751,16 @@ public class PhaseState {
             }
         }
         for (int i = 0, s = b.getEMaxhps().size(); i < s; i++) {
-            if (b.getEMaxhps().get(i) == -1) {
+            Integer eMaxhps = b.getEMaxhps().get(i);
+            if (eMaxhps == null) {
+                //暫定対応:潜水(空)マス 攻撃できない空母を表示対象外へ
+                continue;
+            }
+            if (eMaxhps == -1) {
                 continue;
             }
             if (this.afterEnemy.get(i) != null) {
-                this.afterEnemy.get(i).setMaxhp(b.getEMaxhps().get(i));
+                this.afterEnemy.get(i).setMaxhp(eMaxhps);
                 this.afterEnemy.get(i).setNowhp(b.getENowhps().get(i));
             }
         }
@@ -778,13 +783,18 @@ public class PhaseState {
             List<Integer> eNowHps = b.asICombinedEcBattle().getENowhpsCombined();
             if (eNowHps != null) {
                 for (int i = 0, s = eNowHps.size(); i < s; i++) {
-                    if (eNowHps.get(i) == -1) {
+                    Integer eNowhps = eNowHps.get(i);
+                    if (eNowhps == null) {
+                        //暫定対応:潜水(空)マス 攻撃できない空母を表示対象外へ
+                        continue;
+                    }
+                    if (eNowhps == -1) {
                         continue;
                     }
                     Chara chara = this.afterEnemyCombined.get(i);
                     if (chara != null) {
                         chara.setMaxhp(eMaxHps.get(i));
-                        chara.setNowhp(eNowHps.get(i));
+                        chara.setNowhp(eNowhps);
                     }
                 }
             }
@@ -920,11 +930,11 @@ public class PhaseState {
      * @return 敵のHP合計
      */
     public double enemyTotalHp() {
-        return Stream.concat(this.afterEnemy.stream(), this.afterEnemyCombined.stream())
-                .filter(Objects::nonNull)
-                .mapToInt(Chara::getNowhp)
-                .map(hp -> Math.max(hp, 0))
-                .sum();
+            return Stream.concat(this.afterEnemy.stream(), this.afterEnemyCombined.stream())
+                    .filter(Objects::nonNull)
+                    .mapToInt(Chara::getNowhp)
+                    .map(hp -> Math.max(hp, 0))
+                    .sum();
     }
 
     /**
@@ -946,7 +956,7 @@ public class PhaseState {
      * @return 敵のHP1以上の隻数
      */
     public int enemydAliveCount() {
-        return (int) Stream.concat(this.afterEnemy.stream(), this.afterEnemyCombined.stream())
+            return (int) Stream.concat(this.afterEnemy.stream(), this.afterEnemyCombined.stream())
                 .filter(Objects::nonNull)
                 .mapToInt(Chara::getNowhp)
                 .filter(hp -> hp > 0)

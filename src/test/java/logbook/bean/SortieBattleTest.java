@@ -25,7 +25,19 @@ public class SortieBattleTest {
             try (JsonReader jsonReader = Json.createReader(reader)) {
                 JsonObject json = jsonReader.readObject()
                         .getJsonObject("api_data");
-                SortieBattle.toBattle(json);
+                SortieBattle bean = SortieBattle.toBattle(json);
+            }
+        }
+    }
+
+    @Test
+    public void testToBattle2023SpringE1H2() throws IOException {
+        Path p = Paths.get("./src/test/resources/logbook/bean/req_sortie_battle_2023SpringE1H2.json");
+        try (Reader reader = Files.newBufferedReader(p)) {
+            try (JsonReader jsonReader = Json.createReader(reader)) {
+                JsonObject json = jsonReader.readObject()
+                        .getJsonObject("api_data");
+                SortieBattle bean = SortieBattle.toBattle(json);
             }
         }
     }

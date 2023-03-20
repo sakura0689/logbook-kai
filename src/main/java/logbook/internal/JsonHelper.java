@@ -406,7 +406,7 @@ public final class JsonHelper {
         C collection = supplier.get();
         if (value instanceof JsonArray) {
             for (JsonValue val : (JsonArray) value) {
-                if (val == null || val == JsonValue.NULL) {
+                if (val == null || val == JsonValue.NULL || "\"N/A\"".equals(val.toString())) {
                     collection.add(null);
                 } else {
                     collection.add(function.apply((T) val));
