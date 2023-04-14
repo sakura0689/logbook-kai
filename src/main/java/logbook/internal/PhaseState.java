@@ -753,7 +753,9 @@ public class PhaseState {
         for (int i = 0, s = b.getEMaxhps().size(); i < s; i++) {
             Integer eMaxhps = b.getEMaxhps().get(i);
             if (eMaxhps == null) {
-                //暫定対応:潜水(空)マス 攻撃できない空母を表示対象外へ
+            	//潜水(空)マス対応
+                this.afterEnemy.get(i).setMaxhp(0);
+                this.afterEnemy.get(i).setNowhp(0);
                 continue;
             }
             if (eMaxhps == -1) {
@@ -784,17 +786,19 @@ public class PhaseState {
             if (eNowHps != null) {
                 for (int i = 0, s = eNowHps.size(); i < s; i++) {
                     Integer eNowhps = eNowHps.get(i);
-                    if (eNowhps == null) {
-                        //暫定対応:潜水(空)マス 攻撃できない空母を表示対象外へ
-                        continue;
-                    }
                     if (eNowhps == -1) {
                         continue;
                     }
                     Chara chara = this.afterEnemyCombined.get(i);
                     if (chara != null) {
-                        chara.setMaxhp(eMaxHps.get(i));
-                        chara.setNowhp(eNowhps);
+                        if (eNowhps != null) {
+                            chara.setMaxhp(eMaxHps.get(i));
+                            chara.setNowhp(eNowhps);
+                        } else {
+                            //潜水(空)マス対応
+                            chara.setMaxhp(0);
+                            chara.setNowhp(0);
+                        }
                     }
                 }
             }
