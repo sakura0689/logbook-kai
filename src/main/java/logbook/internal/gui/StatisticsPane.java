@@ -224,7 +224,7 @@ public class StatisticsPane extends VBox {
                 .collect(Collectors.groupingBy(StatisticsShipTypeGroup::toTypeGroup, Collectors.mapping(this::tickLevel,
                         Collectors.groupingBy(Function.identity(), Collectors.counting()))));
         
-        List<Integer> categoriesList = IntStream.rangeClosed(1, ExpTable.maxLv())
+        List<Integer> categoriesList = IntStream.rangeClosed(1, ExpTable.MAX_LEVEL)
                 .map(i -> i / 10 * 10)
                 .distinct()
                 .mapToObj(Integer::valueOf)

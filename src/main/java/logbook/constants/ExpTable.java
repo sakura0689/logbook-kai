@@ -9,6 +9,9 @@ import java.util.Map;
  */
 public class ExpTable {
 
+    /** 艦娘MaxLv */
+    public static final int MAX_LEVEL = 180;
+    
     /**
      * 経験値テーブルプリセット値
      */
@@ -191,6 +194,11 @@ public class ExpTable {
         EXP_TABLE.put(173, 9705000);
         EXP_TABLE.put(174, 10266000);
         EXP_TABLE.put(175, 10950000);
+        EXP_TABLE.put(176, 11100000);
+        EXP_TABLE.put(177, 11300000);
+        EXP_TABLE.put(178, 11600000);
+        EXP_TABLE.put(179, 12100000);
+        EXP_TABLE.put(180, 13000000);
     }
 
     /**
@@ -206,8 +214,9 @@ public class ExpTable {
      * 最大Lvを取得します
      *
      * @return 最大Lv
+     * @deprecated
      */
     public static int maxLv() {
-        return 175;
+        return MAX_LEVEL;
     }
 }

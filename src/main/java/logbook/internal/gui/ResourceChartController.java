@@ -54,7 +54,7 @@ import logbook.internal.log.LogWriter;
 import logbook.internal.log.MaterialLogFormat;
 
 /**
- * 資材ログ
+ * 資材チャート
  *
  */
 public class ResourceChartController extends WindowController {
