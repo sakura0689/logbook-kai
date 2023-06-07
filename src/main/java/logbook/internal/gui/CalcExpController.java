@@ -140,8 +140,8 @@ public class CalcExpController extends WindowController {
         }));
         x.play();
         // Spinnerに最小値最大値現在値を設定
-        this.nowLv.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, ExpTable.maxLv(), 1, 1));
-        this.goalLv.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, ExpTable.maxLv(), 1, 1));
+        this.nowLv.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, ExpTable.MAX_LEVEL, 1, 1));
+        this.goalLv.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, ExpTable.MAX_LEVEL, 1, 1));
         // コンボボックス
         this.shipList.setItems(this.ships);
         this.shipList();
@@ -271,10 +271,10 @@ public class CalcExpController extends WindowController {
                 .orElse(0);
         int goal;
         if ((oldShip != null && !oldShip.getId().equals(newShip.getId())) || afterLv > newShip.getLv()) {
-            goal = Math.min(Math.max(afterLv, newShip.getLv() + 1), ExpTable.maxLv());
+            goal = Math.min(Math.max(afterLv, newShip.getLv() + 1),  ExpTable.MAX_LEVEL);
         } else {
             int nowGoalLv = Optional.ofNullable(this.goalLv.getValue()).orElse(0);
-            goal = Math.min(Math.max(Math.max(afterLv, newShip.getLv() + 1), nowGoalLv), ExpTable.maxLv());
+            goal = Math.min(Math.max(Math.max(afterLv, newShip.getLv() + 1), nowGoalLv), ExpTable.MAX_LEVEL);
         }
 
         this.goalExpValue = ExpTable.get().get(goal);

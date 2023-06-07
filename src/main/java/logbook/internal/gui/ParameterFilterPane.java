@@ -25,6 +25,7 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory;
 import javafx.scene.layout.GridPane;
 import logbook.bean.ParameterFilterConfig;
+import logbook.constants.ExpTable;
 import logbook.internal.ComparableFilter;
 import logbook.internal.LoggerHolder;
 import logbook.internal.Operator;
@@ -209,7 +210,7 @@ abstract class ParameterFilterPane<T> extends GridPane {
         static {
             SHIPITEM_PARAMETERS = Stream.of(
                     new IntegerParameter<ShipItem>("cond", ShipItem::getCond, () -> new IntegerSpinnerValueFactory(0, 100, 53)),
-                    new IntegerParameter<ShipItem>("Lv", ShipItem::getLv, () -> new IntegerSpinnerValueFactory(1, 175, 99)),
+                    new IntegerParameter<ShipItem>("Lv", ShipItem::getLv, () -> new IntegerSpinnerValueFactory(1, ExpTable.MAX_LEVEL, 99)),
                     new IntegerParameter<ShipItem>("ID", ShipItem::getId, () -> new IntegerSpinnerValueFactory(1, Integer.MAX_VALUE)),
                     new IntegerParameter<ShipItem>("exp", ShipItem::getExp, () -> new IntegerSpinnerValueFactory(0, Integer.MAX_VALUE)),
                     new IntegerParameter<ShipItem>("next", ShipItem::getNext, () -> new IntegerSpinnerValueFactory(0, Integer.MAX_VALUE)),
