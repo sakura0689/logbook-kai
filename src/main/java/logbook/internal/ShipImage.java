@@ -25,6 +25,7 @@ import logbook.bean.ShipMst;
 import logbook.bean.SlotItem;
 import logbook.bean.SlotitemMst;
 import logbook.bean.SlotitemMstCollection;
+import logbook.constants.BannerIcon;
 import logbook.constants.ExpTable;
 import logbook.constants.SeaArea;
 
@@ -42,101 +43,47 @@ class ShipImage {
     /** 画像キャッシュ(経験値ゲージ) */
     private static final ReferenceCache<Double, Image> EXPGAUGE_CACHE = new ReferenceCache<>(50);
 
-    /** 艦娘画像ファイル名(健在・小破) */
-    private static final String[] NORMAL = { "1.png", "1.jpg" };
-
-    /** 艦娘画像ファイル名(中破・大破) */
-    private static final String[] DAMAGED = { "3.png", "3.jpg", "1.png", "1.jpg" };
-
-    /** 艦娘画像ファイル名(健在・小破) */
-    private static final String[] STANDING_NORMAL = { "17.png", "17.jpg" };
-
-    /** 艦娘画像ファイル名(中破・大破) */
-    private static final String[] STANDING_DAMAGED = { "19.png", "19.jpg" };
-
-    /** 小破バナーアイコン */
-    private static final String MC_BANNER_ICON0 = "common_misc/common_misc_110.png";
-
-    /** 中破バナーアイコン */
-    private static final String MC_BANNER_ICON1 = "common_misc/common_misc_104.png";
-
-    /** 大破バナーアイコン */
-    private static final String MC_BANNER_ICON2 = "common_misc/common_misc_114.png";
-
-    /** 撃沈バナーアイコン */
-    private static final String MC_BANNER_ICON3 = "common_misc/common_misc_107.png";
-
-    /** 修復バナーアイコン */
-    private static final String MC_BANNER_ICON4 = "common_misc/common_misc_113.png";
-
-    /** 遠征バナーアイコン */
-    private static final String MC_BANNER_ICON5 = "common_misc/common_misc_105.png";
-
-    /** 退避バナーアイコン */
-    private static final String MC_BANNER_ICON10 = "common_misc/common_misc_115.png";
-
-    /** 小破汚れ */
-    private static final String MC_BANNER_SMOKE_IMG0 = "common_misc/common_misc_101.png";
-
-    /** 中破汚れ */
-    private static final String MC_BANNER_SMOKE_IMG1 = "common_misc/common_misc_102.png";
-
-    /** 大破汚れ */
-    private static final String MC_BANNER_SMOKE_IMG2 = "common_misc/common_misc_103.png";
-
-    /** 疲労オレンジ背景 */
-    private static final String COMMON_MISC_35 = "common_misc/common_misc_39.png";
-
-    /** 疲労オレンジ顔 */
-    private static final String COMMON_MISC_112 = "common_misc/common_misc_117.png";
-
-    /** 疲労赤背景 */
-    private static final String COMMON_MISC_36 = "common_misc/common_misc_40.png";
-
-    /** 疲労赤顔 */
-    private static final String COMMON_MISC_113 = "common_misc/common_misc_118.png";
-
     /** 小破バッチ */
-    private static final Layer SLIGHT_DAMAGE_BADGE = new Layer(0, 0, Paths.get("common", MC_BANNER_ICON0));
+    private static final Layer SLIGHT_DAMAGE_BADGE = new Layer(0, 0, Paths.get("common", BannerIcon.MC_BANNER_ICON0));
 
     /** 中破バッチ */
-    private static final Layer HALF_DAMAGE_BADGE = new Layer(0, 0, Paths.get("common", MC_BANNER_ICON1));
+    private static final Layer HALF_DAMAGE_BADGE = new Layer(0, 0, Paths.get("common", BannerIcon.MC_BANNER_ICON1));
 
     /** 大破バッチ */
-    private static final Layer BADLY_DAMAGE_BADGE = new Layer(0, 0, Paths.get("common", MC_BANNER_ICON2));
+    private static final Layer BADLY_DAMAGE_BADGE = new Layer(0, 0, Paths.get("common", BannerIcon.MC_BANNER_ICON2));
 
     /** 撃沈バッチ */
-    private static final Layer LOST_BADGE = new Layer(0, 0, Paths.get("common", MC_BANNER_ICON3));
+    private static final Layer LOST_BADGE = new Layer(0, 0, Paths.get("common", BannerIcon.MC_BANNER_ICON3));
 
     /** 修復バッチ */
-    private static final Layer NDOCK_BADGE = new Layer(0, 0, Paths.get("common", MC_BANNER_ICON4));
+    private static final Layer NDOCK_BADGE = new Layer(0, 0, Paths.get("common", BannerIcon.MC_BANNER_ICON4));
 
     /** 遠征バッチ */
-    private static final Layer MISSION_BADGE = new Layer(0, 0, Paths.get("common", MC_BANNER_ICON5));
+    private static final Layer MISSION_BADGE = new Layer(0, 0, Paths.get("common", BannerIcon.MC_BANNER_ICON5));
 
     /** 退避バッチ */
-    private static final Layer ESCAPE_BADGE = new Layer(0, 0, Paths.get("common", MC_BANNER_ICON10));
+    private static final Layer ESCAPE_BADGE = new Layer(0, 0, Paths.get("common", BannerIcon.MC_BANNER_ICON10));
 
     /** 小破汚れ */
-    private static final Layer SLIGHT_DAMAGE_BACKGROUND = new Layer(0, 0, Paths.get("common", MC_BANNER_SMOKE_IMG0));
+    private static final Layer SLIGHT_DAMAGE_BACKGROUND = new Layer(0, 0, Paths.get("common", BannerIcon.MC_BANNER_SMOKE_IMG0));
 
     /** 中破汚れ */
-    private static final Layer HALF_DAMAGE_BACKGROUND = new Layer(0, 0, Paths.get("common", MC_BANNER_SMOKE_IMG1));
+    private static final Layer HALF_DAMAGE_BACKGROUND = new Layer(0, 0, Paths.get("common", BannerIcon.MC_BANNER_SMOKE_IMG1));
 
     /** 大破汚れ */
-    private static final Layer BADLY_DAMAGE_BACKGROUND = new Layer(0, 0, Paths.get("common", MC_BANNER_SMOKE_IMG2));
+    private static final Layer BADLY_DAMAGE_BACKGROUND = new Layer(0, 0, Paths.get("common", BannerIcon.MC_BANNER_SMOKE_IMG2));
 
     /** 疲労オレンジ背景 */
-    private static final Layer ORANGE_BACKGROUND = new Layer(150, 0, Paths.get("common", COMMON_MISC_35));
+    private static final Layer ORANGE_BACKGROUND = new Layer(150, 0, Paths.get("common", BannerIcon.COMMON_MISC_35));
 
     /** 疲労オレンジ顔 */
-    private static final Layer ORANGE_FACE = new Layer(214, 18, Paths.get("common", COMMON_MISC_112));
+    private static final Layer ORANGE_FACE = new Layer(214, 18, Paths.get("common", BannerIcon.COMMON_MISC_112));
 
     /** 疲労赤背景 */
-    private static final Layer RED_BACKGROUND = new Layer(150, 0, Paths.get("common", COMMON_MISC_36));
+    private static final Layer RED_BACKGROUND = new Layer(150, 0, Paths.get("common", BannerIcon.COMMON_MISC_36));
 
     /** 疲労赤顔 */
-    private static final Layer RED_FACE = new Layer(214, 18, Paths.get("common", COMMON_MISC_113));
+    private static final Layer RED_FACE = new Layer(214, 18, Paths.get("common", BannerIcon.COMMON_MISC_113));
 
     /** 出撃札 */
     private static final String JOIN_BANNER = "common_event/common_event_{0}.png";
@@ -477,7 +424,7 @@ class ShipImage {
      * @return キャラクター画像へのパス
      */
     static Path getPath(Chara chara) {
-        return getBaseImagePath(chara, NORMAL, DAMAGED);
+        return getBaseImagePath(chara, BannerIcon.NORMAL, BannerIcon.DAMAGED);
     }
 
     /**
@@ -486,7 +433,7 @@ class ShipImage {
      * @return キャラクター画像へのパス(立ち絵)
      */
     static Path getStandingPosePath(Chara chara) {
-        return getBaseImagePath(chara, STANDING_NORMAL, STANDING_DAMAGED);
+        return getBaseImagePath(chara, BannerIcon.STANDING_NORMAL, BannerIcon.STANDING_DAMAGED);
     }
 
     /**
