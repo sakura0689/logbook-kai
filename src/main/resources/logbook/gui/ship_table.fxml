@@ -139,7 +139,7 @@
                         <MenuItem mnemonicParsing="false" onAction="#kanmusuListSelectionCopy" text="選択した艦のみクリップボードにコピー" />
                     </items>
                   </Menu>
-                  <Menu mnemonicParsing="false" text="艦隊分析">
+                  <Menu mnemonicParsing="false" text="制空権シミュレータv2">
                     <items>
                       <MenuItem mnemonicParsing="false" onAction="#kancolleFleetanalysis" text="ロックされてる艦娘データをクリップボードにコピー" />
                     </items>
