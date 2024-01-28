@@ -1,0 +1,14 @@
+/* [441]【節分任務:恵方】令和六年節分遠征*/
+{
+    "type": "遠征",
+    "resetType" : "単発",
+    "conditions" : [
+        {"missions": ["タンカー護衛任務"], "count": 1},
+        {"missions": ["対潜警戒任務"], "count": 1},
+        {"missions": ["海上護衛任務"], "count": 1},
+        {"missions": ["北号作戦"], "count": 1},
+        {"missions": ["長時間対潜警戒"], "count": 1},
+        {"missions": ["囮機動部隊支援作戦"], "count": 1}
+    ]
+}
+
