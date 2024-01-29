@@ -75,7 +75,7 @@
                              <MenuItem mnemonicParsing="false" onAction="#selectAllType" text="すべてを選択" />
                              <MenuItem mnemonicParsing="false" onAction="#storeType" text="CSVファイルとして保存" />
                              <SeparatorMenuItem mnemonicParsing="false" />
-                             <Menu mnemonicParsing="false" text="艦隊分析">
+                             <Menu mnemonicParsing="false" text="制空権シミュレータv2">
                                <items>
                                  <MenuItem mnemonicParsing="false" onAction="#kancolleFleetanalysis" text="ロック装備をクリップボードにコピー" />
                                </items>

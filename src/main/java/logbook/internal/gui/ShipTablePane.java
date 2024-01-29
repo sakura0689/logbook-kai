@@ -767,7 +767,7 @@ public class ShipTablePane extends VBox {
     }
 
     /**
-     * 艦隊分析
+     * 制空権シミュレータv2(艦娘)
      */
     @FXML
     void kancolleFleetanalysis() {
@@ -785,7 +785,7 @@ public class ShipTablePane extends VBox {
             content.putString(input);
             Clipboard.getSystemClipboard().setContent(content);
         } catch (Exception e) {
-            LoggerHolder.get().error("艦隊分析のロック装備をクリップボードにコピーに失敗しました", e);
+            LoggerHolder.get().error("制空権シミュレータv2形式でクリップボードコピーに失敗しました[ロック艦娘]", e);
         }
     }
 

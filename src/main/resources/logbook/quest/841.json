@@ -1,0 +1,19 @@
+/* [841]【節分任務:鬼】南西方面節分作戦二〇二四 */
+{
+    "resetType" : "ウィークリー",
+    "filter" : {
+        "area": ["2-1", "2-2", "7-4"],
+        "fleet": {
+            "description": "旗艦/2番艦に「Ranger」「Johnston」「早霜」「神鷹」「大淀」「明石」「天霧」「狭霧」「瑞穂」「Commandant Teste」の艦隊",
+            "operator": "AND",
+            "conditions": [
+                {"name": ["Ranger","Johnston","早霜","神鷹","大淀","明石","天霧","狭霧","瑞穂","Commandant Teste"], "count": 2, "operator": "GE"}
+            ]
+        }
+    },
+    "conditions" : [
+        {"boss": true, "area": ["2-1"], "rank": ["S","A"], "count": 2},
+        {"boss": true, "area": ["2-2"], "rank": ["S","A"], "count": 2},
+        {"boss": true, "area": ["7-4"], "rank": ["S","A"], "count": 2}
+    ]
+}

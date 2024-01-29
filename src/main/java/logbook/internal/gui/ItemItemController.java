@@ -539,7 +539,7 @@ public class ItemItemController extends WindowController {
     }
 
     /**
-     * 艦隊分析
+     * 制空権シミュレータv2(装備)
      */
     @FXML
     void kancolleFleetanalysis() {
@@ -557,7 +557,7 @@ public class ItemItemController extends WindowController {
             content.putString(input);
             Clipboard.getSystemClipboard().setContent(content);
         } catch (Exception e) {
-            LoggerHolder.get().error("艦隊分析のロック装備をクリップボードにコピーに失敗しました", e);
+            LoggerHolder.get().error("制空権シミュレータv2形式でクリップボードコピーに失敗しました[ロック装備]", e);
         }
     }
 
