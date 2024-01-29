@@ -1,0 +1,19 @@
+/* [840]【節分任務:豆】節分作戦二〇二四 */
+{
+    "resetType" : "ウィークリー",
+    "filter" : {
+        "area": ["1-1", "1-3", "1-4"],
+        "fleet": {
+            "description": "旗艦/2番艦に「鳳翔」「阿賀野」「浦波」「深雪」「朧」「潮」「清霜」「風雲」「朝霜」「峯雲」「長鯨」「迅鯨」の艦隊",
+            "operator": "AND",
+            "conditions": [
+                {"name": ["鳳翔","阿賀野","浦波","深雪","朧","潮","清霜","風雲","朝霜","峯雲","長鯨","迅鯨"], "count": 2, "operator": "GE"}
+            ]
+        }
+    },
+    "conditions" : [
+        {"boss": true, "area": ["1-1"], "rank": ["S","A"], "count": 2},
+        {"boss": true, "area": ["1-3"], "rank": ["S","A"], "count": 2},
+        {"boss": true, "area": ["1-4"], "rank": ["S","A"], "count": 2}
+    ]
+}
