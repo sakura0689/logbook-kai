@@ -1114,10 +1114,10 @@ public class BattleTypes {
     }
 
     /**
-     * 雷撃
+     * 雷撃(2024/2/29以前)
      */
     @Data
-    public static class Raigeki implements Serializable {
+    public static class Raigeki20240229 implements Serializable {
 
         private static final long serialVersionUID = 4769524848250854584L;
 
@@ -1151,8 +1151,8 @@ public class BattleTypes {
          * @param json JsonObject
          * @return {@link Raigeki}
          */
-        public static Raigeki toRaigeki(JsonObject json) {
-            Raigeki bean = new Raigeki();
+        public static Raigeki20240229 toRaigeki(JsonObject json) {
+            Raigeki20240229 bean = new Raigeki20240229();
             JsonHelper.bind(json)
                     .setIntegerList("api_frai", bean::setFrai)
                     .setIntegerList("api_erai", bean::setErai)
@@ -1162,6 +1162,60 @@ public class BattleTypes {
                     .setDoubleList("api_eydam", bean::setEydam)
                     .setIntegerList("api_fcl", bean::setFcl)
                     .setIntegerList("api_ecl", bean::setEcl);
+            return bean;
+        }
+    }
+
+    /**
+     * 雷撃(2024/3/1以降)
+     */
+    @Data
+    public static class Raigeki implements Serializable {
+
+        private static final long serialVersionUID = -6678116833654857320L;
+
+        /** api_frai_list_items */
+        private List<List<Integer>> frai;
+        
+        /** api_fcl_list_items */
+        private List<List<Integer>> fcl;
+
+        /** api_fdam */
+        private List<Double> fdam;
+
+        /** api_fydam_list_items */
+        private List<List<Double>> fydam;
+
+        /** api_erai_list_items */
+        private List<List<Integer>> erai;
+
+        /** api_ecl_list_items */
+        private List<List<Integer>> ecl;
+
+        /** api_edam */
+        private List<Double> edam;
+
+        /** api_eydam_list_items */
+        private List<List<Double>> eydam;
+
+        /**
+         * JsonObjectから{@link Raigeki}を構築します
+         *
+         * @param json JsonObject
+         * @return {@link Raigeki}
+         */
+        public static Raigeki toRaigeki(JsonObject json) {
+            Raigeki bean = new Raigeki();
+            JsonHelper.bind(json)
+                    .set("api_frai_list_items", bean::setFrai, JsonHelper.toList(JsonHelper::toIntegerList))
+                    .set("api_fcl_list_items", bean::setFcl, JsonHelper.toList(JsonHelper::toIntegerList))
+                    .setDoubleList("api_fdam", bean::setFdam)
+                    .set("api_fydam_list_items", bean::setFydam, JsonHelper.toList(JsonHelper::toDoubleList))
+                    .set("api_erai_list_items", bean::setErai, JsonHelper.toList(JsonHelper::toIntegerList))
+                    .set("api_ecl_list_items", bean::setEcl, JsonHelper.toList(JsonHelper::toIntegerList))
+                    .setDoubleList("api_edam", bean::setEdam)
+                    .set("api_eydam_list_items", bean::setEydam, JsonHelper.toList(JsonHelper::toDoubleList));
+            
             return bean;
         }
     }
