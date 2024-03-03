@@ -42,4 +42,30 @@ public class SortieBattleTest {
         }
     }
 
+    @Test
+    public void testToBattle2024SpringOldformat() throws IOException {
+        Path p = Paths.get("./src/test/resources/logbook/bean/req_sortie_battle_2024Spring_oldformat.json");
+        try (Reader reader = Files.newBufferedReader(p)) {
+            try (JsonReader jsonReader = Json.createReader(reader)) {
+                JsonObject json = jsonReader.readObject()
+                        .getJsonObject("api_data");
+                SortieBattle bean = SortieBattle.toBattle(json);
+                BattleTypes.Raigeki raigeki= bean.getOpeningAtack();
+            }
+        }
+    }
+
+    @Test
+    public void testToBattle2024SpringNewformat() throws IOException {
+        Path p = Paths.get("./src/test/resources/logbook/bean/req_sortie_battle_2024Spring_newformat.json");
+        try (Reader reader = Files.newBufferedReader(p)) {
+            try (JsonReader jsonReader = Json.createReader(reader)) {
+                JsonObject json = jsonReader.readObject()
+                        .getJsonObject("api_data");
+                SortieBattle bean = SortieBattle.toBattle(json);
+                BattleTypes.Raigeki raigeki= bean.getOpeningAtack();
+            }
+        }
+    }
+
 }

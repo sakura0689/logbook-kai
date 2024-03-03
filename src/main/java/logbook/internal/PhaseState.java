@@ -753,7 +753,7 @@ public class PhaseState {
         for (int i = 0, s = b.getEMaxhps().size(); i < s; i++) {
             Integer eMaxhps = b.getEMaxhps().get(i);
             if (eMaxhps == null) {
-            	//潜水(空)マス対応
+                //潜水(空)マス対応
                 this.afterEnemy.get(i).setMaxhp(0);
                 this.afterEnemy.get(i).setNowhp(0);
                 continue;
@@ -870,7 +870,7 @@ public class PhaseState {
      */
     private void addDetailRaigeki0(List<? extends Chara> attackerFleet, List<? extends Chara> attackerFleetCombined,
             List<? extends Chara> defenderFleet, List<? extends Chara> defenderFleetCombined,
-            List<Integer> index, List<Double> ydam, List<Integer> critical) {
+            List<List<Integer>> index, List<List<Double>> ydam, List<List<Integer>> critical) {
 
         if (defenderFleet != null)
             defenderFleet = defenderFleet.stream()
@@ -880,20 +880,27 @@ public class PhaseState {
             defenderFleetCombined = defenderFleetCombined.stream()
                     .map(c -> c != null ? c.clone() : null)
                     .collect(Collectors.toList());
-        for (int i = 0; i < index.size(); i++) {
-            if (index.get(i) >= 0) {
-                Chara attacker = Math.max(attackerFleet.size(), 6) > i
-                        ? attackerFleet.get(i)
-                        : attackerFleetCombined.get(i - 6);
-                Chara defender = Math.max(defenderFleet.size(), 6) > index.get(i)
-                        ? defenderFleet.get(index.get(i))
-                        : defenderFleetCombined.get(index.get(i) - 6);
-                int damage = (int) ydam.get(i).doubleValue();
-
-                defender.setNowhp(defender.getNowhp() - damage);
-
-                this.addDetail(attacker, defender, damage, Collections.singletonList(damage), Collections.singletonList(critical.get(i)),
-                        SortieAtTypeRaigeki.通常雷撃);
+        
+        if (index != null) {
+            for (int i = 0; i < index.size(); i++) {
+                if (index.get(i) != null) {
+                    for (int j = 0; j < index.get(i).size(); j++) {
+                        if (index.get(i).get(j) != null && index.get(i).get(j) >= 0) {
+                            Chara attacker = Math.max(attackerFleet.size(), 6) > i
+                                    ? attackerFleet.get(i)
+                                    : attackerFleetCombined.get(i - 6);
+                            Chara defender = Math.max(defenderFleet.size(), 6) > index.get(i).get(j)
+                                    ? defenderFleet.get(index.get(i).get(j))
+                                    : defenderFleetCombined.get(index.get(i).get(j) - 6);
+                            int damage = (int) ydam.get(i).get(j).doubleValue();
+            
+                            defender.setNowhp(defender.getNowhp() - damage);
+            
+                            this.addDetail(attacker, defender, damage, Collections.singletonList(damage), Collections.singletonList(critical.get(i).get(j)),
+                                    SortieAtTypeRaigeki.通常雷撃);
+                        }
+                    }
+                }
             }
         }
     }
