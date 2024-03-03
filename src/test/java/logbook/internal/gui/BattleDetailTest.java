@@ -11,14 +11,22 @@ import org.junit.jupiter.api.Test;
 import logbook.bean.BattleLog;
 import logbook.internal.BattleLogs;
 
+/**
+ *  戦闘ログ詳細画面テスト
+ *  
+ *  TODO:Labelのmock化
+ *  
+ *  @see logbook.bean.SortieBattleTest 戦闘情報
+ */
 class BattleDetailTest {
 
     /**
+     * 2023春イベント 潜水(空)マス
      * 
      * @throws IOException
      */
     @Test
-    void testSetDataBattleLog() throws IOException,NullPointerException {
+    void testSetDataBattleLog_2023_sensui_kuu() throws IOException,NullPointerException {
         Path p = Paths.get("./src/test/resources/logbook/battlelog/2023-03-21 05-25-27.json");
         try (InputStream inputStream = Files.newInputStream(p)) {
             BattleLog battleLog = BattleLogs.read(inputStream);
