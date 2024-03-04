@@ -1,6 +1,7 @@
 package logbook.bean;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.json.JsonObject;
@@ -9,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 import logbook.internal.JsonHelper;
+import logbook.internal.LoggerHolder;
 import lombok.Data;
 
 /**
@@ -1145,6 +1147,50 @@ public class BattleTypes {
         /** api_ecl */
         private List<Integer> ecl;
 
+        public List<List<Integer>> getNewFormatFrai(){
+            return convertIntegerList(this.frai);
+        }
+        
+        public List<List<Integer>> getNewFormatFcl(){
+            return convertIntegerList(this.fcl);
+        }
+
+        public List<List<Double>> getNewFormatFydam(){
+            return convertDoubleList(this.fydam);
+        }
+
+        public List<List<Integer>> getNewFormatErai(){
+            return convertIntegerList(this.erai);
+        }
+        
+        public List<List<Integer>> getNewFormatEcl(){
+            return convertIntegerList(this.ecl);
+        }
+
+        public List<List<Double>> getNewFormatEydam(){
+            return convertDoubleList(this.eydam);
+        }
+        
+        private List<List<Integer>> convertIntegerList(List<Integer> inputList) {
+            List<List<Integer>> convertList = new ArrayList<List<Integer>>();
+            for (Integer data : inputList) {
+                List<Integer> addList = new ArrayList<Integer>();
+                addList.add(data);
+                convertList.add(addList);
+            }
+            return convertList;
+        }
+        
+        private List<List<Double>> convertDoubleList(List<Double> inputList) {
+            List<List<Double>> convertList = new ArrayList<List<Double>>();
+            for (Double data : inputList) {
+                List<Double> addList = new ArrayList<Double>();
+                addList.add(data);
+                convertList.add(addList);
+            }
+            return convertList;
+        }
+
         /**
          * JsonObjectから{@link Raigeki}を構築します
          *
@@ -1197,7 +1243,117 @@ public class BattleTypes {
 
         /** api_eydam_list_items */
         private List<List<Double>> eydam;
+        
+        /**
+         * BattleLogから直接Bindされる場合の対応
+         * @param list
+         */
+        @SuppressWarnings("unchecked")
+        public void setFrai(List<?> list) {
+            if (list instanceof List<?>) {
+                if (!list.isEmpty() && list.get(0) instanceof List<?>) {
+                    this.frai = (List<List<Integer>>) list;                
+                } else if (!list.isEmpty() && list.get(0) instanceof Integer) {
+                    this.frai = convertIntegerList((List<Integer>)list);
+                }
+            }
+        }
 
+        /**
+         * BattleLogから直接Bindされる場合の対応
+         * @param list
+         */
+        @SuppressWarnings("unchecked")
+        public void setFcl(List<?> list) {
+            if (list instanceof List<?>) {
+                if (!list.isEmpty() && list.get(0) instanceof List<?>) {
+                    this.fcl = (List<List<Integer>>) list;                
+                } else if (!list.isEmpty() && list.get(0) instanceof Integer) {
+                    this.fcl = convertIntegerList((List<Integer>)list);
+                }
+            }
+        }
+
+        /**
+         * BattleLogから直接Bindされる場合の対応
+         * @param list
+         */
+        @SuppressWarnings("unchecked")
+        public void setFydam(List<?> list) {
+            if (list instanceof List<?>) {
+                if (!list.isEmpty() && list.get(0) instanceof List<?>) {
+                    this.fydam = (List<List<Double>>) list;                
+                } else if (!list.isEmpty() && list.get(0) instanceof Double) {
+                    this.fydam = convertDoubleList((List<Double>)list);
+                }
+            }
+        }
+
+        /**
+         * BattleLogから直接Bindされる場合の対応
+         * @param list
+         */
+        @SuppressWarnings("unchecked")
+        public void setErai(List<?> list) {
+            if (list instanceof List<?>) {
+                if (!list.isEmpty() && list.get(0) instanceof List<?>) {
+                    this.erai = (List<List<Integer>>) list;                
+                } else if (!list.isEmpty() && list.get(0) instanceof Integer) {
+                    this.erai = convertIntegerList((List<Integer>)list);
+                }
+            }
+        }
+
+        /**
+         * BattleLogから直接Bindされる場合の対応
+         * @param list
+         */
+        @SuppressWarnings("unchecked")
+        public void setEcl(List<?> list) {
+            if (list instanceof List<?>) {
+                if (!list.isEmpty() && list.get(0) instanceof List<?>) {
+                    this.ecl = (List<List<Integer>>) list;                
+                } else if (!list.isEmpty() && list.get(0) instanceof Integer) {
+                    this.ecl = convertIntegerList((List<Integer>)list);
+                }
+            }
+        }
+
+        /**
+         * BattleLogから直接Bindされる場合の対応
+         * @param list
+         */
+        @SuppressWarnings("unchecked")
+        public void setEydam(List<?> list) {
+            if (list instanceof List<?>) {
+                if (!list.isEmpty() && list.get(0) instanceof List<?>) {
+                    this.eydam = (List<List<Double>>) list;                
+                } else if (!list.isEmpty() && list.get(0) instanceof Double) {
+                    this.eydam = convertDoubleList((List<Double>)list);
+                }
+            }
+        }
+        
+        private List<List<Integer>> convertIntegerList(List<Integer> inputList) {
+            List<List<Integer>> convertList = new ArrayList<List<Integer>>();
+            for (Integer data : inputList) {
+                List<Integer> addList = new ArrayList<Integer>();
+                addList.add(data);
+                convertList.add(addList);
+            }
+            return convertList;
+        }
+        
+        private List<List<Double>> convertDoubleList(List<Double> inputList) {
+            List<List<Double>> convertList = new ArrayList<List<Double>>();
+            for (Double data : inputList) {
+                List<Double> addList = new ArrayList<Double>();
+                addList.add(data);
+                convertList.add(addList);
+            }
+            return convertList;
+        }
+        
         /**
          * JsonObjectから{@link Raigeki}を構築します
          *
@@ -1206,15 +1362,30 @@ public class BattleTypes {
          */
         public static Raigeki toRaigeki(JsonObject json) {
             Raigeki bean = new Raigeki();
-            JsonHelper.bind(json)
-                    .set("api_frai_list_items", bean::setFrai, JsonHelper.toList(JsonHelper::toIntegerList))
-                    .set("api_fcl_list_items", bean::setFcl, JsonHelper.toList(JsonHelper::toIntegerList))
-                    .setDoubleList("api_fdam", bean::setFdam)
-                    .set("api_fydam_list_items", bean::setFydam, JsonHelper.toList(JsonHelper::toDoubleList))
-                    .set("api_erai_list_items", bean::setErai, JsonHelper.toList(JsonHelper::toIntegerList))
-                    .set("api_ecl_list_items", bean::setEcl, JsonHelper.toList(JsonHelper::toIntegerList))
-                    .setDoubleList("api_edam", bean::setEdam)
-                    .set("api_eydam_list_items", bean::setEydam, JsonHelper.toList(JsonHelper::toDoubleList));
+            
+            if (json.containsKey("api_frai_list_items")) {
+                JsonHelper.bind(json)
+                        .set("api_frai_list_items", bean::setFrai, JsonHelper.toList(JsonHelper::toIntegerList))
+                        .set("api_fcl_list_items", bean::setFcl, JsonHelper.toList(JsonHelper::toIntegerList))
+                        .setDoubleList("api_fdam", bean::setFdam)
+                        .set("api_fydam_list_items", bean::setFydam, JsonHelper.toList(JsonHelper::toDoubleList))
+                        .set("api_erai_list_items", bean::setErai, JsonHelper.toList(JsonHelper::toIntegerList))
+                        .set("api_ecl_list_items", bean::setEcl, JsonHelper.toList(JsonHelper::toIntegerList))
+                        .setDoubleList("api_edam", bean::setEdam)
+                        .set("api_eydam_list_items", bean::setEydam, JsonHelper.toList(JsonHelper::toDoubleList));
+            } else if (json.containsKey("api_frai")) {
+                Raigeki20240229 oldBean = Raigeki20240229.toRaigeki(json);
+                bean.setFrai(oldBean.getNewFormatFrai());
+                bean.setFcl(oldBean.getNewFormatFcl());
+                bean.setFdam(oldBean.getFdam());
+                bean.setFydam(oldBean.getNewFormatFydam());
+                bean.setErai(oldBean.getNewFormatErai());
+                bean.setEcl(oldBean.getNewFormatEcl());
+                bean.setEdam(oldBean.getEdam());
+                bean.setEydam(oldBean.getNewFormatEydam());
+            } else {
+                LoggerHolder.get().warn("Raigekiクラスへのbindに失敗 : " + json);
+            }
             
             return bean;
         }
