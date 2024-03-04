@@ -63,9 +63,9 @@ public class ApiReqSortieBattleresult implements APIListenerSpi {
                         .orElse(1);
                 // 艦隊スナップショットを作る
                 BattleLog.snapshot(log, dockId);
-                // 戦闘ログの保存
+                // battlelogフォルダへ戦闘ログの保存
                 BattleLogs.write(log);
-
+                //海域・ドロップ報告書の保存
                 LogWriter.getInstance(BattleResultLogFormat::new)
                         .write(log);
                 if (AppConfig.get().isApplyResult()) {

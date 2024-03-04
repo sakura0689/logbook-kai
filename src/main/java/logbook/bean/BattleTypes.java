@@ -1220,28 +1220,28 @@ public class BattleTypes {
 
         private static final long serialVersionUID = -6678116833654857320L;
 
-        /** api_frai_list_items */
+        /** api_frai_list_items : 攻撃対象 0-6 雷撃しない null */
         private List<List<Integer>> frai;
         
-        /** api_fcl_list_items */
+        /** api_fcl_list_items : クリティカル 1-2  雷撃しない null */
         private List<List<Integer>> fcl;
 
-        /** api_fdam */
+        /** api_fdam : 与えられたダメージ */
         private List<Double> fdam;
 
-        /** api_fydam_list_items */
+        /** api_fydam_list_items : 敵に与えたダメージ */
         private List<List<Double>> fydam;
 
-        /** api_erai_list_items */
+        /** api_erai_list_items : 敵側の攻撃対象 0-6 雷撃しない null  */
         private List<List<Integer>> erai;
 
-        /** api_ecl_list_items */
+        /** api_ecl_list_items : 敵側のクリティカル 1-2 雷撃しない null  */
         private List<List<Integer>> ecl;
 
-        /** api_edam */
+        /** api_edam : 敵側の受けたダメージ */
         private List<Double> edam;
 
-        /** api_eydam_list_items */
+        /** api_eydam_list_items : 敵側の与えたダメージ　*/
         private List<List<Double>> eydam;
         
         /**
@@ -1251,9 +1251,11 @@ public class BattleTypes {
         @SuppressWarnings("unchecked")
         public void setFrai(List<?> list) {
             if (list instanceof List<?>) {
-                if (!list.isEmpty() && list.get(0) instanceof List<?>) {
+                if (list.get(0) == null || list.get(0) instanceof List<?>) {
+                    //nullかListデータなら新フォーマット
                     this.frai = (List<List<Integer>>) list;                
-                } else if (!list.isEmpty() && list.get(0) instanceof Integer) {
+                } else if (list.get(0) instanceof Integer) {
+                    //全データの存在する旧フォーマット
                     this.frai = convertIntegerList((List<Integer>)list);
                 }
             }
@@ -1266,9 +1268,11 @@ public class BattleTypes {
         @SuppressWarnings("unchecked")
         public void setFcl(List<?> list) {
             if (list instanceof List<?>) {
-                if (!list.isEmpty() && list.get(0) instanceof List<?>) {
+                if (list.get(0) == null || list.get(0) instanceof List<?>) {
+                    //nullかListデータなら新フォーマット
                     this.fcl = (List<List<Integer>>) list;                
-                } else if (!list.isEmpty() && list.get(0) instanceof Integer) {
+                } else if (list.get(0) instanceof Integer) {
+                    //全データの存在する旧フォーマット
                     this.fcl = convertIntegerList((List<Integer>)list);
                 }
             }
@@ -1281,9 +1285,11 @@ public class BattleTypes {
         @SuppressWarnings("unchecked")
         public void setFydam(List<?> list) {
             if (list instanceof List<?>) {
-                if (!list.isEmpty() && list.get(0) instanceof List<?>) {
+                if (list.get(0) == null || list.get(0) instanceof List<?>) {
+                    //nullかListデータなら新フォーマット
                     this.fydam = (List<List<Double>>) list;                
-                } else if (!list.isEmpty() && list.get(0) instanceof Double) {
+                } else if (list.get(0) instanceof Double) {
+                    //全データの存在する旧フォーマット
                     this.fydam = convertDoubleList((List<Double>)list);
                 }
             }
@@ -1296,9 +1302,11 @@ public class BattleTypes {
         @SuppressWarnings("unchecked")
         public void setErai(List<?> list) {
             if (list instanceof List<?>) {
-                if (!list.isEmpty() && list.get(0) instanceof List<?>) {
+                if (list.get(0) == null || list.get(0) instanceof List<?>) {
+                    //nullかListデータなら新フォーマット
                     this.erai = (List<List<Integer>>) list;                
-                } else if (!list.isEmpty() && list.get(0) instanceof Integer) {
+                } else if (list.get(0) instanceof Integer) {
+                    //全データの存在する旧フォーマット
                     this.erai = convertIntegerList((List<Integer>)list);
                 }
             }
@@ -1311,9 +1319,11 @@ public class BattleTypes {
         @SuppressWarnings("unchecked")
         public void setEcl(List<?> list) {
             if (list instanceof List<?>) {
-                if (!list.isEmpty() && list.get(0) instanceof List<?>) {
+                if (list.get(0) == null || list.get(0) instanceof List<?>) {
+                    //nullかListデータなら新フォーマット
                     this.ecl = (List<List<Integer>>) list;                
-                } else if (!list.isEmpty() && list.get(0) instanceof Integer) {
+                } else if (list.get(0) instanceof Integer) {
+                    //全データの存在する旧フォーマット
                     this.ecl = convertIntegerList((List<Integer>)list);
                 }
             }
@@ -1326,9 +1336,10 @@ public class BattleTypes {
         @SuppressWarnings("unchecked")
         public void setEydam(List<?> list) {
             if (list instanceof List<?>) {
-                if (!list.isEmpty() && list.get(0) instanceof List<?>) {
+                if (list.get(0) == null || list.get(0) instanceof List<?>) {
                     this.eydam = (List<List<Double>>) list;                
-                } else if (!list.isEmpty() && list.get(0) instanceof Double) {
+                } else if (list.get(0) instanceof Double) {
+                    //全データの存在する旧フォーマット
                     this.eydam = convertDoubleList((List<Double>)list);
                 }
             }
