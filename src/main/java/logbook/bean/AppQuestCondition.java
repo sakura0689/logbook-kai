@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import com.fasterxml.jackson.core.JsonParser.Feature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -245,7 +246,23 @@ public class AppQuestCondition implements Predicate<QuestCollect> {
                 sb.append(this.stype.stream().map(s -> s.equals("*") ? "任意の艦種" : s).collect(Collectors.joining("または")));
             }
             if (this.name != null) {
-                sb.append(this.name.stream().collect(Collectors.joining("または")));
+                int subListSize = 5;
+                if (this.name.size() > subListSize) {
+                    int numSubLists = (this.name.size() + subListSize - 1) / subListSize;
+                    List<LinkedHashSet<String>> subList = IntStream.range(0, numSubLists)
+                            .mapToObj(i -> this.name.stream()
+                                    .skip(i * subListSize)
+                                    .limit(subListSize)
+                                    .collect(Collectors.toCollection(LinkedHashSet::new)))
+                            .collect(Collectors.toList());
+                    
+                    sb.append(subList.stream()
+                            .map(subListItem -> String.join(" または ", subListItem))
+                            .collect(Collectors.joining(" または\n")));
+
+                } else {
+                    sb.append(this.name.stream().collect(Collectors.joining(" または ")));
+                }
             }
             if (this.difference) {
                 sb.append("以外");
