@@ -1,0 +1,20 @@
+/* [975] 精鋭「第十九駆逐隊」、全力出撃！ */
+{
+    "resetType" : "イヤリー",
+    "yearlyResetMonth": 5,
+    "filter" : {
+        "area": ["1-5", "2-3", "3-2", "5-3"],
+        "fleet": {
+            "operator": "AND",
+            "conditions": [
+                {"name": ["磯波改二","浦波改二","綾波改二", "敷波改二"], "count": 4, "operator": "GE"}
+            ]
+        }
+    },
+    "conditions" : [
+        {"boss": true, "area": ["1-5"], "rank": ["S"], "count": 1},
+        {"boss": true, "area": ["2-3"], "rank": ["S"], "count": 1},
+        {"boss": true, "area": ["3-2"], "rank": ["S"], "count": 1},
+        {"boss": true, "area": ["5-3"], "rank": ["S"], "count": 1}
+    ]
+}
