@@ -8,8 +8,13 @@
         "fleet": {
             "description": "米英艦艇3隻以上を含む空母を伴わない艦隊",
             "name": [
-                "Iowa","Colorado","South Dakota","Washington","Houston","Northampton","Atlanta","Helena","Honolulu","Fletcher","Johnston","Samuel B.Roberts","Scamp",
-                "Warspite","Nelson","Sheffield","Jervis","Janus"
+                "Iowa","Colorado","South Dakota","Washington","Maryland","Massachusetts","Nevada",
+                "Houston","Northampton","Tuscaloosa",
+                "Atlanta","Helena","Honolulu","Brooklyn",
+                "Fletcher","Johnston","Heywood L.E.","Samuel B.Roberts",
+                "Scamp","Salmon","Drum",
+                "Warspite","Nelson", "Rodney",
+                "Sheffield","Jervis","Janus", "Javelin"
             ], "count": 3, "operator": "GE"}
     },
     "conditions" : [
