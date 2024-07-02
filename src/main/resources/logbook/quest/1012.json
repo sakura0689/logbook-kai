@@ -1,0 +1,21 @@
+/* [1012]鵜来型海防艦、静かな海を防衛せよ！ */
+{
+    "type" : "出撃",
+    "resetType" : "イヤリー",
+    "yearlyResetMonth": 5,
+    "filter" : {
+        "area": ["1-1", "1-2", "1-5"],
+        "fleet": {
+            "description": "鵜来型海防艦を旗艦,随伴に海防艦を1-3隻の海防艦のみの艦隊",
+            "operator": "AND",
+            "conditions": [
+                {"name": ["鵜来", "稲木"], "order": 1},
+                {"stype": ["海防艦"], "count": 2, "operator": "GE"}
+            ]        }
+    },
+    "conditions" : [
+        {"boss": true, "area": ["1-1"], "rank": ["S"], "count": 3},
+        {"boss": true, "area": ["1-2"], "rank": ["S", "A"], "count": 2},
+        {"boss": true, "area": ["1-5"], "rank": ["S", "A"], "count": 2}
+    ]
+}
