@@ -1,0 +1,23 @@
+/* [1018] 「第三戦隊」第二小隊、鉄底海峡へ！ */
+{
+    "type": "出撃",
+    "resetType" : "イヤリー",
+    "yearlyResetMonth": 9,
+    "filter" : {
+        "area": ["5-1","5-3","5-4","5-5"],
+        "fleet": {
+            "operator": "AND",
+            "conditions": [
+                {"name": ["比叡", "霧島"], "count": 2, "operator": "EQ"},
+                {"stype": ["駆逐艦"], "count": 2, "operator": "GE"},
+                {"stype": ["*"], "count": 2, "operator": "GE"}
+            ]
+        }
+    },
+    "conditions" : [
+        {"boss": true, "area": ["5-1"], "rank": ["S", "A"], "count": 1},
+        {"boss": true, "area": ["5-3"], "rank": ["S", "A"], "count": 1},
+        {"boss": true, "area": ["5-4"], "rank": ["S", "A"], "count": 1},
+        {"boss": true, "area": ["5-5"], "rank": ["S", "A"], "count": 1}
+    ]
+}
