@@ -1,0 +1,22 @@
+/* [987] 【限定週間任務】秋の南瓜祭り、おかわりっ！ */
+{
+    "type": "出撃",
+    "resetType" : "ウィークリー",
+    "filter" : {
+        "area": ["1-5", "2-1", "3-1", "6-1"],
+        "fleet": {
+            "operator": "OR",
+            "conditions": [
+                {"name": ["迅鯨", "伊201", "伊47"], "count": 3, "operator": "GE"},
+                {"name": ["第四号海防艦", "第三〇号海防艦", "第二十二号海防艦"], "count": 3, "operator": "GE"},
+                {"name": ["阿武隈", "Brooklyn", "Johnston"], "count": 3, "operator": "GE"}
+            ]
+        }
+    },
+    "conditions" : [
+        {"boss": true, "area": ["1-5"], "rank": ["S", "A"], "count": 1},
+        {"boss": true, "area": ["2-1"], "rank": ["S", "A"], "count": 1},
+        {"boss": true, "area": ["3-1"], "rank": ["S", "A"], "count": 1},
+        {"boss": true, "area": ["6-1"], "rank": ["S", "A"], "count": 1}
+    ]
+}
