@@ -71,3 +71,29 @@ Import PAC Fileを選択し、前の手順で作成したPACファイルを選�
 作成したプロファイルを有効にします。
 
 ![SwitchySharp](images/chrome_4.png)
+
+## Chrome の場合(SwitchyOmega)
+
+### Chrome(SwitchyOmega) の場合 1/4
+
+"Chromeの場合1/4","Chromeの場合2/4"と共通の作業を行い、PACファイルを保存してください。
+
+### Chrome(SwitchyOmega) の場合 2/4
+
+SwitchyOmegaのオプションで新しいプロファイルを作成します。
+
+New profileから、ProfileNameを例として"艦これSwitchyOmega"と設定し、PAC Profileを選択します。
+
+![SwitchySharp](images/chrome_SO1.png)
+
+### Chrome(SwitchyOmega) の場合 3/4
+
+PACファイルをテキストエディタなどで開き、設定内容を"PAC Script"欄にコピーし、"Apply changes"で保存します。
+
+![SwitchySharp](images/chrome_SO2.png)
+
+### Chrome(SwitchyOmega) の場合 4/4
+
+作成したプロファイルを有効にします。
+
+![SwitchySharp](images/chrome_SO3.png)
