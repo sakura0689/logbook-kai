@@ -59,13 +59,17 @@ public enum SlotItemType {
     陸上偵察機(49, true),
     輸送機材(50, true),
     潜水艦装備(51, true),
+    陸戦部隊(52, true),
+    大型陸上機(53, true),
+    水上艦装備(54, true),
     噴式戦闘機(56, true),
     噴式戦闘爆撃機(57, true),
     噴式攻撃機(58, true),
     噴式偵察機(59, true),
     大型電探II(93, true),
     艦上偵察機II(94, true),
-
+    副砲II(95, true),
+    
     不明(-1, true);
 
     private final int item;

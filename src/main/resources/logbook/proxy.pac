@@ -1,82 +1,82 @@
 function FindProxyForURL(url, host) {
 
-    if ( isInNet(host, "203.104.209.71","255.255.255.255") ) {
+    if ( host == "w01y.kancolle-server.com" ) {
       return "PROXY 127.0.0.1:{port}";
     }
 
-    if ( isInNet(host, "203.104.209.87","255.255.255.255") ) {
+    if ( host == "w02k.kancolle-server.com" ) {
       return "PROXY 127.0.0.1:{port}";
     }
 
-    if ( isInNet(host, "125.6.184.215","255.255.255.255") ) {
+    if ( host == "w03s.kancolle-server.com" ) {
       return "PROXY 127.0.0.1:{port}";
     }
 
-    if ( isInNet(host, "203.104.209.183","255.255.255.255") ) {
+    if ( host == "w04m.kancolle-server.com" ) {
       return "PROXY 127.0.0.1:{port}";
     }
 
-    if ( isInNet(host, "203.104.209.150","255.255.255.255") ) {
+    if ( host == "w05o.kancolle-server.com" ) {
       return "PROXY 127.0.0.1:{port}";
     }
 
-    if ( isInNet(host, "203.104.209.134","255.255.255.255") ) {
+    if ( host == "w06t.kancolle-server.com" ) {
       return "PROXY 127.0.0.1:{port}";
     }
 
-    if ( isInNet(host, "203.104.209.167","255.255.255.255") ) {
+    if ( host == "w07l.kancolle-server.com" ) {
       return "PROXY 127.0.0.1:{port}";
     }
 
-    if ( isInNet(host, "203.104.209.199","255.255.255.255") ) {
+    if ( host == "w08r.kancolle-server.com" ) {
       return "PROXY 127.0.0.1:{port}";
     }
 
-    if ( isInNet(host, "125.6.189.7","255.255.255.255") ) {
+    if ( host == "w09s.kancolle-server.com" ) {
       return "PROXY 127.0.0.1:{port}";
     }
 
-    if ( isInNet(host, "125.6.189.39","255.255.255.255") ) {
+    if ( host == "w10b.kancolle-server.com" ) {
       return "PROXY 127.0.0.1:{port}";
     }
 
-    if ( isInNet(host, "125.6.189.71","255.255.255.255") ) {
+    if ( host == "w11t.kancolle-server.com" ) {
       return "PROXY 127.0.0.1:{port}";
     }
 
-    if ( isInNet(host, "125.6.189.103","255.255.255.255") ) {
+    if ( host == "w12p.kancolle-server.com" ) {
       return "PROXY 127.0.0.1:{port}";
     }
 
-    if ( isInNet(host, "125.6.189.135","255.255.255.255") ) {
+    if ( host == "w13b.kancolle-server.com" ) {
       return "PROXY 127.0.0.1:{port}";
     }
 
-    if ( isInNet(host, "125.6.189.167","255.255.255.255") ) {
+    if ( host == "w14h.kancolle-server.com" ) {
       return "PROXY 127.0.0.1:{port}";
     }
 
-    if ( isInNet(host, "125.6.189.215","255.255.255.255") ) {
+    if ( host == "w15p.kancolle-server.com" ) {
       return "PROXY 127.0.0.1:{port}";
     }
 
-    if ( isInNet(host, "125.6.189.247","255.255.255.255") ) {
+    if ( host == "w16s.kancolle-server.com" ) {
       return "PROXY 127.0.0.1:{port}";
     }
 
-    if ( isInNet(host, "203.104.209.23","255.255.255.255") ) {
+    if ( host == "w17k.kancolle-server.com" ) {
       return "PROXY 127.0.0.1:{port}";
     }
 
-    if ( isInNet(host, "203.104.209.39","255.255.255.255") ) {
+    if ( host == "w18i.kancolle-server.com" ) {
       return "PROXY 127.0.0.1:{port}";
     }
 
-    if ( isInNet(host, "203.104.209.55","255.255.255.255") ) {
+    if ( host == "w19s.kancolle-server.com" ) {
       return "PROXY 127.0.0.1:{port}";
     }
 
-    if ( isInNet(host, "203.104.209.102","255.255.255.255") ) {
+    if ( host == "w20h.kancolle-server.com" ) {
       return "PROXY 127.0.0.1:{port}";
     }
 
