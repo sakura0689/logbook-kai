@@ -49,10 +49,10 @@ import logbook.internal.BouyomiChanUtils.Params;
 import logbook.internal.Config;
 import logbook.internal.ShipImageCacheStrategy;
 import logbook.internal.ThreadManager;
-import logbook.internal.ToStringConverter;
 import logbook.internal.Tuple;
 import logbook.internal.Tuple.Pair;
 import logbook.internal.logger.LoggerHolder;
+import logbook.internal.util.ToStringConverter;
 import logbook.plugin.PluginContainer;
 import logbook.plugin.PluginServices;
 

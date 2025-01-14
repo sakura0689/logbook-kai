@@ -61,10 +61,10 @@ import logbook.internal.BattleLogs;
 import logbook.internal.BattleLogs.IUnit;
 import logbook.internal.BattleLogs.SimpleBattleLog;
 import logbook.internal.BattleLogs.Unit;
-import logbook.internal.ToStringConverter;
 import logbook.internal.Tuple;
 import logbook.internal.Tuple.Triplet;
 import logbook.internal.logger.LoggerHolder;
+import logbook.internal.util.ToStringConverter;
 
 /**
  * 戦闘ログのUIコントローラー

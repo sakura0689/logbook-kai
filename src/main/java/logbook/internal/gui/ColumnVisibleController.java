@@ -11,7 +11,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.CheckBoxListCell;
 import javafx.stage.WindowEvent;
 import logbook.bean.AppConfig;
-import logbook.internal.ToStringConverter;
+import logbook.internal.util.ToStringConverter;
 
 /**
  * テーブル列の表示・非表示の設定ダイアログを表示する

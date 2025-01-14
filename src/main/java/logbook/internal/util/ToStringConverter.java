@@ -1,4 +1,4 @@
-package logbook.internal;
+package logbook.internal.util;
 
 import java.util.function.Function;
 
