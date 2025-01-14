@@ -1,4 +1,4 @@
-package logbook.internal;
+package logbook.internal.bouyomi;
 
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -11,6 +11,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import logbook.bean.AppBouyomiConfig;
 import logbook.bean.AppBouyomiConfig.AppBouyomiText;
+import logbook.internal.ThreadManager;
+import logbook.internal.Tuple;
+import logbook.internal.Tuple.Pair;
 import logbook.internal.logger.LoggerHolder;
 import logbook.plugin.PluginServices;
 import lombok.Data;

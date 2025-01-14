@@ -1,4 +1,4 @@
-package logbook.internal;
+package logbook.internal.bouyomi;
 
 import java.io.IOException;
 import java.io.OutputStream;
