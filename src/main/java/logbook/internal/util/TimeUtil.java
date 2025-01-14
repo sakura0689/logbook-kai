@@ -1,9 +1,9 @@
-package logbook.internal;
+package logbook.internal.util;
 
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
-public class Time {
+public class TimeUtil {
 
     /**
      * 時間のテキスト表現

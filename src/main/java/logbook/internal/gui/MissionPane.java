@@ -19,8 +19,8 @@ import logbook.bean.BattleTypes.CombinedType;
 import logbook.bean.DeckPort;
 import logbook.bean.Mission;
 import logbook.bean.MissionCollection;
-import logbook.internal.Time;
 import logbook.internal.logger.LoggerHolder;
+import logbook.internal.util.TimeUtil;
 
 /**
  * 艦隊
@@ -161,7 +161,7 @@ public class MissionPane extends AnchorPane {
             // 遠征先
             this.name.setText(mission.map(Mission::getName).orElse(""));
             // 残り時間を更新
-            this.time.setText(Time.toString(now, "まもなく帰還します"));
+            this.time.setText(TimeUtil.toString(now, "まもなく帰還します"));
 
             // スタイルを更新
             if (now.compareTo(this.stage3) < 0) {

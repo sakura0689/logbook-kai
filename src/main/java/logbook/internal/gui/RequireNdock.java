@@ -17,7 +17,7 @@ import logbook.bean.Ship;
 import logbook.bean.ShipMst;
 import logbook.internal.Logs;
 import logbook.internal.Ships;
-import logbook.internal.Time;
+import logbook.internal.util.TimeUtil;
 
 /**
  * お風呂に入りたい艦娘
@@ -222,7 +222,7 @@ public class RequireNdock {
                         .map(s -> Ships.shipMst(s).map(ShipMst::getName).orElse(""))
                         .orElse(""))
                 .add(Integer.toString(this.lv.get()))
-                .add(Time.toString(this.time.get(), "修復完了"))
+                .add(TimeUtil.toString(this.time.get(), "修復完了"))
                 .add(this.end.get())
                 .add(Integer.toString(this.fuel.get()))
                 .add(Integer.toString(this.metal.get()))

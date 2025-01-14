@@ -8,8 +8,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import logbook.bean.AppCondition;
-import logbook.internal.Time;
 import logbook.internal.logger.LoggerHolder;
+import logbook.internal.util.TimeUtil;
 
 /**
  * 泊地修理タイマー
@@ -49,7 +49,7 @@ public class AkashiTimerPane extends AnchorPane {
     public void update() {
         long timer = AppCondition.get().getAkashiTimer();
         if (timer > 0) {
-            this.time.setText(Time.toString(Duration.ofMillis(System.currentTimeMillis() - timer), ""));
+            this.time.setText(TimeUtil.toString(Duration.ofMillis(System.currentTimeMillis() - timer), ""));
         } else {
             this.time.setText("");
         }
