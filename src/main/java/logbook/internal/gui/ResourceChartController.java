@@ -47,11 +47,11 @@ import javafx.util.StringConverter;
 import logbook.bean.AppConfig;
 import logbook.bean.AppViewConfig;
 import logbook.bean.AppViewConfig.ResourceChartConfig;
-import logbook.internal.LoggerHolder;
 import logbook.internal.Logs;
 import logbook.internal.Tuple.Pair;
 import logbook.internal.log.LogWriter;
 import logbook.internal.log.MaterialLogFormat;
+import logbook.internal.logger.LoggerHolder;
 
 /**
  * 資材チャート

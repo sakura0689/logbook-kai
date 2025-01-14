@@ -54,7 +54,7 @@ import logbook.constants.SlotItemType;
 import logbook.internal.Audios;
 import logbook.internal.BouyomiChanUtils;
 import logbook.internal.BouyomiChanUtils.Type;
-import logbook.internal.LoggerHolder;
+import logbook.internal.logger.LoggerHolder;
 import logbook.internal.Ships;
 import logbook.internal.Tuple;
 import logbook.internal.proxy.ProxyHolder;

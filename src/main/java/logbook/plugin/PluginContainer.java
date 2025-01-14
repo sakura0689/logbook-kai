@@ -6,7 +6,7 @@ import java.net.URLClassLoader;
 import java.util.ArrayList;
 import java.util.List;
 
-import logbook.internal.LoggerHolder;
+import logbook.internal.logger.LoggerHolder;
 
 /**
  * プラグインを管理します

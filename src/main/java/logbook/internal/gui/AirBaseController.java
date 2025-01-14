@@ -51,7 +51,7 @@ import logbook.bean.SlotItem;
 import logbook.bean.SlotItemCollection;
 import logbook.internal.AirBases;
 import logbook.internal.Items;
-import logbook.internal.LoggerHolder;
+import logbook.internal.logger.LoggerHolder;
 import logbook.plugin.PluginServices;
 
 /**

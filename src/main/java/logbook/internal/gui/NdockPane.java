@@ -16,9 +16,9 @@ import javafx.scene.layout.HBox;
 import logbook.bean.Ndock;
 import logbook.bean.Ship;
 import logbook.bean.ShipCollection;
-import logbook.internal.LoggerHolder;
 import logbook.internal.Ships;
 import logbook.internal.Time;
+import logbook.internal.logger.LoggerHolder;
 
 /**
  * 入渠ドック

@@ -11,8 +11,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import logbook.bean.Chara;
 import logbook.bean.SlotItem;
-import logbook.internal.LoggerHolder;
 import logbook.internal.Ships;
+import logbook.internal.logger.LoggerHolder;
 
 /**
  * 戦闘ログ詳細のフェーズの艦船

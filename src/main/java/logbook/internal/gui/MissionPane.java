@@ -19,8 +19,8 @@ import logbook.bean.BattleTypes.CombinedType;
 import logbook.bean.DeckPort;
 import logbook.bean.Mission;
 import logbook.bean.MissionCollection;
-import logbook.internal.LoggerHolder;
 import logbook.internal.Time;
+import logbook.internal.logger.LoggerHolder;
 
 /**
  * 艦隊

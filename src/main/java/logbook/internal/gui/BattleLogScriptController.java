@@ -32,7 +32,7 @@ import logbook.bean.BattleLog;
 import logbook.bean.BattleLogScriptCollection;
 import logbook.bean.BattleLogScriptCollection.BattleLogScript;
 import logbook.internal.BattleLogs;
-import logbook.internal.LoggerHolder;
+import logbook.internal.logger.LoggerHolder;
 import logbook.plugin.PluginServices;
 
 /**

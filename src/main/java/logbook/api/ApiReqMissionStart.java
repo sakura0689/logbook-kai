@@ -20,10 +20,10 @@ import logbook.bean.ShipCollection;
 import logbook.internal.Audios;
 import logbook.internal.BouyomiChanUtils;
 import logbook.internal.BouyomiChanUtils.Type;
-import logbook.internal.LoggerHolder;
 import logbook.internal.Missions;
 import logbook.internal.Tuple;
 import logbook.internal.gui.Tools;
+import logbook.internal.logger.LoggerHolder;
 import logbook.proxy.RequestMetaData;
 import logbook.proxy.ResponseMetaData;
 

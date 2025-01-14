@@ -27,8 +27,8 @@ import logbook.bean.ShipCollection;
 import logbook.bean.ShipLabelCollection;
 import logbook.bean.ShipMst;
 import logbook.constants.SeaArea;
-import logbook.internal.LoggerHolder;
 import logbook.internal.Ships;
+import logbook.internal.logger.LoggerHolder;
 
 /**
  * 所有艦娘一覧のコントローラ

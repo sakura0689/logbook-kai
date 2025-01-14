@@ -50,6 +50,7 @@ import logbook.bean.BattleLog;
 import logbook.internal.gui.BattleLogCollect;
 import logbook.internal.log.BattleResultLogFormat;
 import logbook.internal.log.LogWriter;
+import logbook.internal.logger.LoggerHolder;
 import lombok.Data;
 import lombok.Getter;
 

@@ -35,8 +35,8 @@ import javafx.application.Platform;
 import javafx.beans.property.ObjectProperty;
 import javafx.collections.ObservableList;
 import logbook.internal.BiImage;
-import logbook.internal.LoggerHolder;
 import logbook.internal.ThreadManager;
+import logbook.internal.logger.LoggerHolder;
 import lombok.Getter;
 import lombok.Setter;
 

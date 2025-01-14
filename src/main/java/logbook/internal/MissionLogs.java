@@ -18,6 +18,7 @@ import java.util.stream.Stream;
 import logbook.bean.AppConfig;
 import logbook.internal.log.LogWriter;
 import logbook.internal.log.MissionResultLogFormat;
+import logbook.internal.logger.LoggerHolder;
 import lombok.Data;
 
 /**

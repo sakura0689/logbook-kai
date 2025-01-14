@@ -39,8 +39,8 @@ import logbook.bean.Ship;
 import logbook.bean.ShipCollection;
 import logbook.bean.Stype;
 import logbook.bean.StypeCollection;
-import logbook.internal.LoggerHolder;
 import logbook.internal.Missions;
+import logbook.internal.logger.LoggerHolder;
 
 /**
  * 遠征確認画面

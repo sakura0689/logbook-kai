@@ -39,11 +39,11 @@ import logbook.bean.SlotItemCollection;
 import logbook.bean.SlotitemMst;
 import logbook.bean.SlotitemMstCollection;
 import logbook.internal.Items;
-import logbook.internal.LoggerHolder;
 import logbook.internal.ShipFilter;
 import logbook.internal.Ships;
 import logbook.internal.ToStringConverter;
 import logbook.internal.gui.PopupSelectbox.SelectboxCell;
+import logbook.internal.logger.LoggerHolder;
 import lombok.Getter;
 
 /**

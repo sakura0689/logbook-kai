@@ -38,11 +38,11 @@ import javafx.util.Duration;
 import logbook.bean.Mission;
 import logbook.bean.MissionCollection;
 import logbook.internal.BattleLogs.Unit;
-import logbook.internal.LoggerHolder;
 import logbook.internal.MissionLogs;
 import logbook.internal.MissionLogs.SimpleMissionLog;
 import logbook.internal.Tuple;
 import logbook.internal.Tuple.Pair;
+import logbook.internal.logger.LoggerHolder;
 
 /**
  * 遠征ログ

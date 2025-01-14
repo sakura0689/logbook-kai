@@ -32,6 +32,7 @@ import logbook.bean.AppConfig;
 import logbook.bean.ShipMst;
 import logbook.bean.ShipMstCollection;
 import logbook.bean.Spritesmith;
+import logbook.internal.logger.LoggerHolder;
 import logbook.proxy.ContentListenerSpi;
 import logbook.proxy.RequestMetaData;
 import logbook.proxy.ResponseMetaData;

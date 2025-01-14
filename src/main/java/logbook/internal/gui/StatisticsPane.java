@@ -31,7 +31,7 @@ import logbook.bean.Ship;
 import logbook.bean.ShipCollection;
 import logbook.constants.ExpTable;
 import logbook.constants.StatisticsShipTypeGroup;
-import logbook.internal.LoggerHolder;
+import logbook.internal.logger.LoggerHolder;
 
 /**
  * 所有艦娘一覧機能

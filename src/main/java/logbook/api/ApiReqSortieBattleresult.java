@@ -21,12 +21,12 @@ import logbook.internal.BattleLogs;
 import logbook.internal.BouyomiChanUtils;
 import logbook.internal.BouyomiChanUtils.Type;
 import logbook.internal.Config;
-import logbook.internal.LoggerHolder;
 import logbook.internal.Logs;
 import logbook.internal.PhaseState;
 import logbook.internal.gui.Tools;
 import logbook.internal.log.BattleResultLogFormat;
 import logbook.internal.log.LogWriter;
+import logbook.internal.logger.LoggerHolder;
 import logbook.proxy.RequestMetaData;
 import logbook.proxy.ResponseMetaData;
 

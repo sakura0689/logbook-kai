@@ -11,6 +11,7 @@ import java.util.stream.StreamSupport;
 
 import javafx.scene.media.AudioClip;
 import logbook.bean.AppConfig;
+import logbook.internal.logger.LoggerHolder;
 
 /**
  * オーディオに関するメソッドを集めたクラス

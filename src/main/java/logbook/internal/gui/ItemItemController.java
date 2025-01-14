@@ -59,8 +59,8 @@ import logbook.bean.SlotitemMst;
 import logbook.bean.SlotitemMstCollection;
 import logbook.common.Messages;
 import logbook.internal.Items;
-import logbook.internal.LoggerHolder;
 import logbook.internal.Ships;
+import logbook.internal.logger.LoggerHolder;
 import logbook.plugin.PluginServices;
 import lombok.Data;
 

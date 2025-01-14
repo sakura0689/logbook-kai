@@ -11,6 +11,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import logbook.bean.AppBouyomiConfig;
 import logbook.bean.AppBouyomiConfig.AppBouyomiText;
+import logbook.internal.logger.LoggerHolder;
 import logbook.plugin.PluginServices;
 import lombok.Data;
 

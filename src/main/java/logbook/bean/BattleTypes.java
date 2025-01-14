@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 import logbook.internal.JsonHelper;
-import logbook.internal.LoggerHolder;
+import logbook.internal.logger.LoggerHolder;
 import lombok.Data;
 
 /**

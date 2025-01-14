@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 
 import logbook.bean.AppConfig;
 import logbook.internal.gui.Main;
+import logbook.internal.logger.LoggerHolder;
 import logbook.internal.proxy.ProxyHolder;
 import logbook.plugin.JarBasedPlugin;
 import logbook.plugin.PluginContainer;
@@ -28,6 +29,10 @@ public final class Launcher {
      * @param args アプリケーション引数
      */
     public static void main(String[] args) {
+        if (LoggerHolder.get().isDebugEnabled()) {
+            LoggerHolder.get().debug("アプリケーションを起動します");
+        }
+        
         Launcher launcher = new Launcher();
         try {
             try {

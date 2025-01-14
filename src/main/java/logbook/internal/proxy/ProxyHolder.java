@@ -3,7 +3,7 @@ package logbook.internal.proxy;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import logbook.internal.LoggerHolder;
+import logbook.internal.logger.LoggerHolder;
 import logbook.plugin.PluginServices;
 import logbook.proxy.ProxyServerSpi;
 

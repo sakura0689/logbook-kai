@@ -8,7 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import logbook.bean.BattleTypes;
 import logbook.bean.BattleTypes.Stage1;
-import logbook.internal.LoggerHolder;
+import logbook.internal.logger.LoggerHolder;
 
 /**
  * Stage1 詳細

@@ -31,6 +31,7 @@ import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import logbook.internal.gui.InternalFXMLLoader;
 import logbook.internal.gui.Tools;
+import logbook.internal.logger.LoggerHolder;
 
 /**
  * アップデートチェック

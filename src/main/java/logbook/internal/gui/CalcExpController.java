@@ -44,8 +44,8 @@ import logbook.bean.ShipMst;
 import logbook.constants.ConvertShip;
 import logbook.constants.ExpTable;
 import logbook.constants.Rank;
-import logbook.internal.LoggerHolder;
 import logbook.internal.Ships;
+import logbook.internal.logger.LoggerHolder;
 
 public class CalcExpController extends WindowController {
 

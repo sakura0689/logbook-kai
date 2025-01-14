@@ -8,8 +8,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import logbook.bean.AppCondition;
-import logbook.internal.LoggerHolder;
 import logbook.internal.Time;
+import logbook.internal.logger.LoggerHolder;
 
 /**
  * 泊地修理タイマー

@@ -62,10 +62,10 @@ import logbook.bean.SlotitemEquiptypeCollection;
 import logbook.bean.SlotitemMst;
 import logbook.bean.SlotitemMstCollection;
 import logbook.internal.Items;
-import logbook.internal.LoggerHolder;
 import logbook.internal.Tuple;
 import logbook.internal.log.CreateitemLogFormat;
 import logbook.internal.log.LogWriter;
+import logbook.internal.logger.LoggerHolder;
 import lombok.EqualsAndHashCode;
 import lombok.val;
 
