@@ -47,11 +47,11 @@ import javafx.util.StringConverter;
 import logbook.bean.AppConfig;
 import logbook.bean.AppViewConfig;
 import logbook.bean.AppViewConfig.ResourceChartConfig;
-import logbook.internal.Logs;
 import logbook.internal.Tuple.Pair;
 import logbook.internal.log.LogWriter;
 import logbook.internal.log.MaterialLogFormat;
 import logbook.internal.logger.LoggerHolder;
+import logbook.internal.util.DateUtil;
 
 /**
  * 資材チャート
@@ -583,7 +583,7 @@ public class ResourceChartController extends WindowController {
             try {
                 String[] columns = line.split(",", -1);
                 // 日付
-                TemporalAccessor ta = Logs.DATE_FORMAT.parse(columns[0]);
+                TemporalAccessor ta = DateUtil.DATE_FORMAT.parse(columns[0]);
                 this.setDate(ZonedDateTime.of(LocalDateTime.from(ta), TIME_ZONE));
                 // 燃料
                 this.setFuel(Integer.parseInt(columns[1]));

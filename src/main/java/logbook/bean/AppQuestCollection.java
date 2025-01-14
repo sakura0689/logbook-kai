@@ -11,7 +11,7 @@ import java.util.concurrent.ConcurrentSkipListMap;
 
 import logbook.bean.QuestList.Quest;
 import logbook.internal.Config;
-import logbook.internal.Logs;
+import logbook.internal.util.DateUtil;
 import lombok.Data;
 import lombok.val;
 
@@ -38,7 +38,7 @@ public class AppQuestCollection implements Serializable {
 
             String exp = entry.getValue().getExpire();
             if (exp != null) {
-                TemporalAccessor ta = Logs.DATE_FORMAT.parse(exp);
+                TemporalAccessor ta = DateUtil.DATE_FORMAT.parse(exp);
                 ZonedDateTime exptime = ZonedDateTime.of(LocalDateTime.from(ta), ZoneId.of("Asia/Tokyo"));
                 // 期限切れを削除
                 if (now.compareTo(exptime) > 0) {

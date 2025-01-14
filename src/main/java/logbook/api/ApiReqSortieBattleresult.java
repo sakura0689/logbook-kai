@@ -21,12 +21,12 @@ import logbook.internal.BattleLogs;
 import logbook.internal.BouyomiChanUtils;
 import logbook.internal.BouyomiChanUtils.Type;
 import logbook.internal.Config;
-import logbook.internal.Logs;
 import logbook.internal.PhaseState;
 import logbook.internal.gui.Tools;
 import logbook.internal.log.BattleResultLogFormat;
 import logbook.internal.log.LogWriter;
 import logbook.internal.logger.LoggerHolder;
+import logbook.internal.util.DateUtil;
 import logbook.proxy.RequestMetaData;
 import logbook.proxy.ResponseMetaData;
 
@@ -56,7 +56,7 @@ public class ApiReqSortieBattleresult implements APIListenerSpi {
                 if (AppConfig.get().isIncludeRawData()) {
                     BattleLog.setRawData(log, BattleLog.RawData::setResult, data, req);
                 }
-                log.setTime(Logs.nowString());
+                log.setTime(DateUtil.nowString());
                 // 出撃艦隊
                 Integer dockId = Optional.ofNullable(log.getBattle())
                         .map(IFormation::getDockId)

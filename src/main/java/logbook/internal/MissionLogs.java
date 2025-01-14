@@ -19,6 +19,7 @@ import logbook.bean.AppConfig;
 import logbook.internal.log.LogWriter;
 import logbook.internal.log.MissionResultLogFormat;
 import logbook.internal.logger.LoggerHolder;
+import logbook.internal.util.DateUtil;
 import lombok.Data;
 
 /**
@@ -113,7 +114,7 @@ public class MissionLogs {
             this.setDateString(columns[0]);
             // 任務の更新時間が午前5時のため
             // 日付文字列を日本時間として解釈した後、GMT+04:00のタイムゾーンに変更します
-            TemporalAccessor ta = Logs.DATE_FORMAT.parse(columns[0]);
+            TemporalAccessor ta = DateUtil.DATE_FORMAT.parse(columns[0]);
             ZonedDateTime date = ZonedDateTime.of(LocalDateTime.from(ta), ZoneId.of("Asia/Tokyo"))
                     .withZoneSameInstant(ZoneId.of("GMT+04:00"));
             this.setDate(date);

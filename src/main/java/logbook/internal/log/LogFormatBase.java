@@ -3,12 +3,12 @@ package logbook.internal.log;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
-import logbook.internal.Logs;
+import logbook.internal.util.DateUtil;
 
 public abstract class LogFormatBase<T> implements LogFormat<T> {
 
     /** 日付書式 */
-    protected static final DateTimeFormatter DATE_FORMAT = Logs.DATE_FORMAT;
+    protected static final DateTimeFormatter DATE_FORMAT = DateUtil.DATE_FORMAT;
 
     /**
      * タイムゾーンをJSTとして現在の日付/時間を取得します
@@ -16,7 +16,7 @@ public abstract class LogFormatBase<T> implements LogFormat<T> {
      * @return 現在の日付/時間
      */
     protected static ZonedDateTime now() {
-        return Logs.now();
+        return DateUtil.now();
     }
 
     /**
@@ -25,7 +25,7 @@ public abstract class LogFormatBase<T> implements LogFormat<T> {
      * @return 現在の日付/時間
      */
     protected static String nowString() {
-        return Logs.nowString();
+        return DateUtil.nowString();
     }
     
     /**

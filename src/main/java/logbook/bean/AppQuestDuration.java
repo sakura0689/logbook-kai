@@ -11,9 +11,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import logbook.internal.BattleLogs;
 import logbook.internal.BattleLogs.SimpleBattleLog;
 import logbook.internal.Config;
-import logbook.internal.Logs;
 import logbook.internal.MissionLogs;
 import logbook.internal.MissionLogs.SimpleMissionLog;
+import logbook.internal.util.DateUtil;
 import lombok.Data;
 import lombok.val;
 
@@ -46,7 +46,7 @@ public class AppQuestDuration {
                 }
             }
             Duration duration = new Duration();
-            duration.setFrom(Logs.nowString());
+            duration.setFrom(DateUtil.nowString());
             durations.add(duration);
         }
         // 重複があれば削除
@@ -56,7 +56,7 @@ public class AppQuestDuration {
             }
         }
         // 期限切れの削除
-        String now = Logs.nowString();
+        String now = DateUtil.nowString();
         val iterator = this.map.entrySet().iterator();
         for (; iterator.hasNext();) {
             val entry = iterator.next();
@@ -79,7 +79,7 @@ public class AppQuestDuration {
                 synchronized (durations) {
                     for (Duration duration : durations) {
                         if (duration.getTo() == null) {
-                            duration.setTo(Logs.nowString());
+                            duration.setTo(DateUtil.nowString());
                             return;
                         }
                     }

@@ -15,8 +15,8 @@ import javafx.beans.property.StringProperty;
 import logbook.bean.DeckPort;
 import logbook.bean.Ship;
 import logbook.bean.ShipMst;
-import logbook.internal.Logs;
 import logbook.internal.Ships;
+import logbook.internal.util.DateUtil;
 import logbook.internal.util.TimeUtil;
 
 /**
@@ -263,7 +263,7 @@ public class RequireNdock {
      * @return 今からのテキスト表現
      */
     private static String endText(Duration d) {
-        ZonedDateTime dateTime = Logs.now().plus(d);
+        ZonedDateTime dateTime = DateUtil.now().plus(d);
         return DateTimeFormatter.ofPattern("H時m分s秒").format(dateTime);
     }
 }

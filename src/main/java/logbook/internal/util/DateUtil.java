@@ -1,4 +1,4 @@
-package logbook.internal;
+package logbook.internal.util;
 
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -8,7 +8,7 @@ import java.time.format.DateTimeFormatter;
  * ログの表示、書き込みで使用する
  *
  */
-public final class Logs {
+public final class DateUtil {
 
     /** 日付書式 */
     public static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");

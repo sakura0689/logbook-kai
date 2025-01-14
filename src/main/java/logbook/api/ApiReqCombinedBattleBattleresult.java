@@ -21,12 +21,12 @@ import logbook.internal.Audios;
 import logbook.internal.BattleLogs;
 import logbook.internal.BouyomiChanUtils;
 import logbook.internal.Config;
-import logbook.internal.Logs;
 import logbook.internal.PhaseState;
 import logbook.internal.BouyomiChanUtils.Type;
 import logbook.internal.gui.Tools;
 import logbook.internal.log.BattleResultLogFormat;
 import logbook.internal.log.LogWriter;
+import logbook.internal.util.DateUtil;
 import logbook.proxy.RequestMetaData;
 import logbook.proxy.ResponseMetaData;
 
@@ -54,7 +54,7 @@ public class ApiReqCombinedBattleBattleresult implements APIListenerSpi {
                 if (AppConfig.get().isIncludeRawData()) {
                     BattleLog.setRawData(log, BattleLog.RawData::setResult, data, req);
                 }
-                log.setTime(Logs.nowString());
+                log.setTime(DateUtil.nowString());
                 // 艦隊スナップショットを作る
                 if (log.getCombinedType() != CombinedType.未結成 && AppCondition.get().getDeckId() == 1) {
                     BattleLog.snapshot(log, 1, 2);
