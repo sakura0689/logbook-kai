@@ -57,12 +57,12 @@ import javafx.util.Duration;
 import logbook.bean.AppViewConfig;
 import logbook.bean.AppViewConfig.BattleLogConfig;
 import logbook.bean.BattleLog;
-import logbook.internal.BattleLogs;
-import logbook.internal.BattleLogs.IUnit;
-import logbook.internal.BattleLogs.SimpleBattleLog;
-import logbook.internal.BattleLogs.Unit;
 import logbook.internal.Tuple;
 import logbook.internal.Tuple.Triplet;
+import logbook.internal.kancolle.BattleLogs;
+import logbook.internal.kancolle.BattleLogs.IUnit;
+import logbook.internal.kancolle.BattleLogs.SimpleBattleLog;
+import logbook.internal.kancolle.BattleLogs.Unit;
 import logbook.internal.logger.LoggerHolder;
 import logbook.internal.util.ToStringConverter;
 

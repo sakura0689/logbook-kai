@@ -15,7 +15,7 @@ import logbook.bean.DeckPortCollection;
 import logbook.bean.Ship;
 import logbook.bean.ShipCollection;
 import logbook.bean.Stype;
-import logbook.internal.Ships;
+import logbook.internal.kancolle.Ships;
 import logbook.proxy.RequestMetaData;
 import logbook.proxy.ResponseMetaData;
 

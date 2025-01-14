@@ -8,11 +8,11 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import logbook.internal.BattleLogs;
-import logbook.internal.BattleLogs.SimpleBattleLog;
 import logbook.internal.Config;
-import logbook.internal.MissionLogs;
-import logbook.internal.MissionLogs.SimpleMissionLog;
+import logbook.internal.kancolle.BattleLogs;
+import logbook.internal.kancolle.MissionLogs;
+import logbook.internal.kancolle.BattleLogs.SimpleBattleLog;
+import logbook.internal.kancolle.MissionLogs.SimpleMissionLog;
 import logbook.internal.util.DateUtil;
 import lombok.Data;
 import lombok.val;

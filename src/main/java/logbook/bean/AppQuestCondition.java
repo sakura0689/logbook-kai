@@ -13,10 +13,10 @@ import java.util.stream.IntStream;
 import com.fasterxml.jackson.core.JsonParser.Feature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import logbook.internal.Operator;
-import logbook.internal.QuestCollect;
-import logbook.internal.QuestCollect.Count;
-import logbook.internal.QuestCollect.Rank;
+import logbook.internal.kancolle.Operator;
+import logbook.internal.kancolle.QuestCollect;
+import logbook.internal.kancolle.QuestCollect.Count;
+import logbook.internal.kancolle.QuestCollect.Rank;
 import logbook.internal.logger.LoggerHolder;
 import logbook.plugin.PluginServices;
 import lombok.Data;

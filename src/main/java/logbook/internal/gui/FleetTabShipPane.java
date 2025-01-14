@@ -11,7 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import logbook.bean.Ship;
 import logbook.bean.ShipMst;
-import logbook.internal.Ships;
+import logbook.internal.kancolle.Ships;
 import logbook.internal.logger.LoggerHolder;
 
 /**

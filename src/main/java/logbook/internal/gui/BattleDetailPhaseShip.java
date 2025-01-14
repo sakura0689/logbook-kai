@@ -11,7 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import logbook.bean.Chara;
 import logbook.bean.SlotItem;
-import logbook.internal.Ships;
+import logbook.internal.kancolle.Ships;
 import logbook.internal.logger.LoggerHolder;
 
 /**

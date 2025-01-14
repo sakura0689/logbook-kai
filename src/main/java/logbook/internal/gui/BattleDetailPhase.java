@@ -21,8 +21,8 @@ import logbook.bean.Chara;
 import logbook.bean.Enemy;
 import logbook.bean.Friend;
 import logbook.bean.Ship;
-import logbook.internal.PhaseState;
-import logbook.internal.Ships;
+import logbook.internal.kancolle.PhaseState;
+import logbook.internal.kancolle.Ships;
 import logbook.internal.logger.LoggerHolder;
 
 /**

@@ -4,7 +4,7 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import logbook.internal.BattleLogs.Unit;
+import logbook.internal.kancolle.BattleLogs.Unit;
 import lombok.Getter;
 import lombok.Setter;
 

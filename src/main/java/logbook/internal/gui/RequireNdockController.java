@@ -25,7 +25,7 @@ import logbook.bean.NdockCollection;
 import logbook.bean.Ship;
 import logbook.bean.ShipCollection;
 import logbook.bean.ShipMst;
-import logbook.internal.Ships;
+import logbook.internal.kancolle.Ships;
 import logbook.internal.logger.LoggerHolder;
 import logbook.internal.util.TimeUtil;
 

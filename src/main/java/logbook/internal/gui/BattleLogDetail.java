@@ -7,7 +7,7 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import logbook.internal.BattleLogs.SimpleBattleLog;
+import logbook.internal.kancolle.BattleLogs.SimpleBattleLog;
 import logbook.internal.util.DateUtil;
 
 /**

@@ -15,7 +15,7 @@ import javafx.beans.property.StringProperty;
 import logbook.bean.DeckPort;
 import logbook.bean.Ship;
 import logbook.bean.ShipMst;
-import logbook.internal.Ships;
+import logbook.internal.kancolle.Ships;
 import logbook.internal.util.DateUtil;
 import logbook.internal.util.TimeUtil;
 

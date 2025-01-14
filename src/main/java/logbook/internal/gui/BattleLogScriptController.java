@@ -31,7 +31,7 @@ import jdk.nashorn.api.scripting.JSObject;
 import logbook.bean.BattleLog;
 import logbook.bean.BattleLogScriptCollection;
 import logbook.bean.BattleLogScriptCollection.BattleLogScript;
-import logbook.internal.BattleLogs;
+import logbook.internal.kancolle.BattleLogs;
 import logbook.internal.logger.LoggerHolder;
 import logbook.plugin.PluginServices;
 

@@ -16,6 +16,7 @@ import logbook.bean.BattleTypes.ICombinedEcBattle;
 import logbook.bean.BattleTypes.IFormation;
 import logbook.bean.BattleTypes.Kouku;
 import logbook.bean.BattleTypes.Stage1;
+import logbook.internal.kancolle.Ships;
 import logbook.bean.MapStartNext;
 import logbook.bean.Ship;
 import logbook.bean.ShipMst;
@@ -24,7 +25,6 @@ import logbook.bean.SlotitemMst;
 import logbook.bean.SlotitemMstCollection;
 import logbook.bean.UseitemMst;
 import logbook.bean.UseitemMstCollection;
-import logbook.internal.Ships;
 
 /**
  * 海戦・ドロップ報告書

@@ -47,10 +47,10 @@ import logbook.bean.SlotItem;
 import logbook.bean.SlotitemMst;
 import logbook.bean.SlotitemMstCollection;
 import logbook.constants.Rank;
-import logbook.internal.Items;
-import logbook.internal.Mapping;
-import logbook.internal.PhaseState;
-import logbook.internal.Ships;
+import logbook.internal.kancolle.Items;
+import logbook.internal.kancolle.Mapping;
+import logbook.internal.kancolle.PhaseState;
+import logbook.internal.kancolle.Ships;
 import lombok.Getter;
 
 /**

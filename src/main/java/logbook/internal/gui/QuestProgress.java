@@ -19,8 +19,8 @@ import logbook.bean.AppQuestCondition;
 import logbook.bean.AppQuestCondition.Condition;
 import logbook.bean.AppQuestCondition.FilterCondition;
 import logbook.bean.AppQuestCondition.FleetCondition;
-import logbook.internal.QuestCollect;
 import logbook.internal.ThreadManager;
+import logbook.internal.kancolle.QuestCollect;
 import logbook.internal.logger.LoggerHolder;
 
 /**

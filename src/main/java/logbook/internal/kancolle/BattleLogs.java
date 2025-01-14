@@ -1,4 +1,4 @@
-package logbook.internal;
+package logbook.internal.kancolle;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

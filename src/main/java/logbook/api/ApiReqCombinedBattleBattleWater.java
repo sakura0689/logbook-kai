@@ -13,7 +13,7 @@ import logbook.bean.BattleLog;
 import logbook.bean.CombinedBattleBattleWater;
 import logbook.bean.Ship;
 import logbook.bean.ShipCollection;
-import logbook.internal.PhaseState;
+import logbook.internal.kancolle.PhaseState;
 import logbook.proxy.RequestMetaData;
 import logbook.proxy.ResponseMetaData;
 

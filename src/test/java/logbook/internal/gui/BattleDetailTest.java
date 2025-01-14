@@ -9,7 +9,7 @@ import java.nio.file.Paths;
 import org.junit.jupiter.api.Test;
 
 import logbook.bean.BattleLog;
-import logbook.internal.BattleLogs;
+import logbook.internal.kancolle.BattleLogs;
 
 /**
  *  戦闘ログ詳細画面テスト

@@ -10,10 +10,10 @@ import logbook.bean.AppCondition;
 import logbook.bean.AppConfig;
 import logbook.bean.BattleLog;
 import logbook.bean.BattleTypes.IFormation;
+import logbook.internal.kancolle.PhaseState;
 import logbook.bean.CombinedBattleEcBattle;
 import logbook.bean.Ship;
 import logbook.bean.ShipCollection;
-import logbook.internal.PhaseState;
 import logbook.proxy.RequestMetaData;
 import logbook.proxy.ResponseMetaData;
 

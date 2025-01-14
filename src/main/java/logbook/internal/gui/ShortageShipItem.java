@@ -6,7 +6,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import logbook.bean.Ship;
 import logbook.bean.ShipMst;
-import logbook.internal.Ships;
+import logbook.internal.kancolle.Ships;
 
 /**
  * 未改装の艦娘テーブルの行

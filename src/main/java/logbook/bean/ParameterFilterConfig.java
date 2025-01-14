@@ -1,6 +1,6 @@
 package logbook.bean;
 
-import logbook.internal.Operator;
+import logbook.internal.kancolle.Operator;
 import lombok.Data;
 
 /**

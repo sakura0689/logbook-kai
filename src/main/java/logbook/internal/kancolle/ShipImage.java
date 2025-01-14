@@ -1,4 +1,4 @@
-package logbook.internal;
+package logbook.internal.kancolle;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -28,6 +28,7 @@ import logbook.bean.SlotitemMstCollection;
 import logbook.constants.BannerIcon;
 import logbook.constants.ExpTable;
 import logbook.constants.SeaArea;
+import logbook.internal.ReferenceCache;
 
 class ShipImage {
 
