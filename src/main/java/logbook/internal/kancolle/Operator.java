@@ -1,4 +1,4 @@
-package logbook.internal;
+package logbook.internal.kancolle;
 
 public enum Operator {
     /** greater than or equal to */

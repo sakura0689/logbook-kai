@@ -1,4 +1,4 @@
-package logbook.internal;
+package logbook.internal.util;
 
 import java.io.IOException;
 import java.nio.file.DirectoryStream;
@@ -11,12 +11,13 @@ import java.util.stream.StreamSupport;
 
 import javafx.scene.media.AudioClip;
 import logbook.bean.AppConfig;
+import logbook.internal.logger.LoggerHolder;
 
 /**
  * オーディオに関するメソッドを集めたクラス
  *
  */
-public final class Audios {
+public final class AudiosUtil {
 
     private static final String SUPPORTED_FILES = "*.{aif,aiff,fxm,flv,m3u8,m3u8,mp3,mp4,m4a,m4v,wav}";
 

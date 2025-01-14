@@ -19,7 +19,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import logbook.bean.BattleTypes.CombinedType;
 import logbook.bean.BattleTypes.IFormation;
 import logbook.bean.BattleTypes.IMidnightBattle;
-import logbook.internal.LoggerHolder;
+import logbook.internal.logger.LoggerHolder;
 import logbook.proxy.RequestMetaData;
 import lombok.Data;
 

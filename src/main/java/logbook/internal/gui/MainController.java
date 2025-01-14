@@ -51,13 +51,13 @@ import logbook.bean.SlotitemMst;
 import logbook.bean.SlotitemMstCollection;
 import logbook.common.Messages;
 import logbook.constants.SlotItemType;
-import logbook.internal.Audios;
-import logbook.internal.BouyomiChanUtils;
-import logbook.internal.BouyomiChanUtils.Type;
-import logbook.internal.LoggerHolder;
-import logbook.internal.Ships;
+import logbook.internal.logger.LoggerHolder;
 import logbook.internal.Tuple;
+import logbook.internal.bouyomi.BouyomiChanUtils;
+import logbook.internal.bouyomi.BouyomiChanUtils.Type;
+import logbook.internal.kancolle.Ships;
 import logbook.internal.proxy.ProxyHolder;
+import logbook.internal.util.AudiosUtil;
 import logbook.plugin.PluginServices;
 import logbook.plugin.lifecycle.StartUp;
 
@@ -641,7 +641,7 @@ public class MainController extends WindowController {
     private void soundNotify(Path dir) {
         if (this.clip == null || !this.clip.isPlaying()) {
             try {
-                Path p = Audios.randomAudioFile(dir);
+                Path p = AudiosUtil.randomAudioFile(dir);
                 if (p != null) {
                     this.clip = new AudioClip(p.toUri().toString());
                     this.clip.setVolume(AppConfig.get().getSoundLevel() / 100D);

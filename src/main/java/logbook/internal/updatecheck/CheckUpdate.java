@@ -1,4 +1,4 @@
-package logbook.internal;
+package logbook.internal.updatecheck;
 
 import java.awt.Desktop;
 import java.io.ByteArrayInputStream;
@@ -29,8 +29,11 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
+import logbook.internal.Launcher;
+import logbook.internal.ThreadManager;
 import logbook.internal.gui.InternalFXMLLoader;
 import logbook.internal.gui.Tools;
+import logbook.internal.logger.LoggerHolder;
 
 /**
  * アップデートチェック

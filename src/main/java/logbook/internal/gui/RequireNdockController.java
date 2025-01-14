@@ -25,9 +25,9 @@ import logbook.bean.NdockCollection;
 import logbook.bean.Ship;
 import logbook.bean.ShipCollection;
 import logbook.bean.ShipMst;
-import logbook.internal.LoggerHolder;
-import logbook.internal.Ships;
-import logbook.internal.Time;
+import logbook.internal.kancolle.Ships;
+import logbook.internal.logger.LoggerHolder;
+import logbook.internal.util.TimeUtil;
 
 /**
  * お風呂に入りたい艦娘のコントローラー
@@ -218,7 +218,7 @@ public class RequireNdockController extends WindowController {
             super.updateItem(time, empty);
 
             if (!empty && time != null) {
-                this.setText(Time.toString(time, "修復完了"));
+                this.setText(TimeUtil.toString(time, "修復完了"));
             } else {
                 this.setText(null);
             }

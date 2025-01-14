@@ -14,7 +14,7 @@ import logbook.bean.BattleTypes.INSupport;
 import logbook.bean.BattleTypes.INightToDayBattle;
 import logbook.bean.BattleTypes.ISortieHougeki;
 import logbook.bean.BattleTypes.ISupport;
-import logbook.internal.JsonHelper;
+import logbook.internal.util.JsonHelper;
 import lombok.Data;
 
 /**

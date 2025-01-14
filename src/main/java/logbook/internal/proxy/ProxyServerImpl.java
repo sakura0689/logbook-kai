@@ -17,8 +17,8 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextArea;
 import logbook.bean.AppConfig;
 import logbook.common.Messages;
-import logbook.internal.LoggerHolder;
 import logbook.internal.gui.InternalFXMLLoader;
+import logbook.internal.logger.LoggerHolder;
 import logbook.proxy.ProxyServerSpi;
 
 /**

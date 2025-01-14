@@ -8,7 +8,7 @@ import javax.json.JsonObject;
 import logbook.bean.Mapinfo;
 import logbook.bean.Mapinfo.AirBase;
 import logbook.bean.Mapinfo.PlaneInfo;
-import logbook.internal.JsonHelper;
+import logbook.internal.util.JsonHelper;
 import logbook.proxy.RequestMetaData;
 import logbook.proxy.ResponseMetaData;
 

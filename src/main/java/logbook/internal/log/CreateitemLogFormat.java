@@ -8,8 +8,8 @@ import logbook.bean.Createitem;
 import logbook.bean.ShipMst;
 import logbook.bean.SlotitemEquiptypeCollection;
 import logbook.bean.SlotitemMst;
-import logbook.internal.Items;
-import logbook.internal.Ships;
+import logbook.internal.kancolle.Items;
+import logbook.internal.kancolle.Ships;
 
 /**
  * 開発報告書

@@ -3,7 +3,7 @@ package logbook.internal;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
-import logbook.internal.MissionLogs.SimpleMissionLog;
+import logbook.internal.kancolle.MissionLogs.SimpleMissionLog;
 
 class MissionLogsTest {
 

@@ -16,9 +16,9 @@ import javafx.scene.layout.HBox;
 import logbook.bean.Ndock;
 import logbook.bean.Ship;
 import logbook.bean.ShipCollection;
-import logbook.internal.LoggerHolder;
-import logbook.internal.Ships;
-import logbook.internal.Time;
+import logbook.internal.kancolle.Ships;
+import logbook.internal.logger.LoggerHolder;
+import logbook.internal.util.TimeUtil;
 
 /**
  * 入渠ドック
@@ -103,7 +103,7 @@ public class NdockPane extends HBox {
         // 残り時間を計算
         Duration d = Duration.ofMillis(this.ndock.getCompleteTime() - System.currentTimeMillis());
         // 残り時間を更新
-        this.time.setText(Time.toString(d, "修復完了"));
+        this.time.setText(TimeUtil.toString(d, "修復完了"));
 
         ObservableList<String> styleClass = this.getStyleClass();
 

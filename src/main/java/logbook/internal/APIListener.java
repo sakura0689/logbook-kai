@@ -21,6 +21,7 @@ import logbook.api.API;
 import logbook.api.APIListenerSpi;
 import logbook.common.Messages;
 import logbook.internal.Tuple.Pair;
+import logbook.internal.logger.LoggerHolder;
 import logbook.plugin.PluginServices;
 import logbook.proxy.ContentListenerSpi;
 import logbook.proxy.RequestMetaData;

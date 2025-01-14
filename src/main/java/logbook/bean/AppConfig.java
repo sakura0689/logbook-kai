@@ -10,7 +10,7 @@ import java.util.Set;
 
 import logbook.constants.Rank;
 import logbook.internal.Config;
-import logbook.internal.ShipImageCacheStrategy;
+import logbook.internal.kancolle.ShipImageCacheStrategy;
 import lombok.Data;
 
 /**

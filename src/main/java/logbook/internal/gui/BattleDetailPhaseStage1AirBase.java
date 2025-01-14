@@ -11,9 +11,9 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import logbook.bean.BattleTypes;
 import logbook.bean.BattleTypes.Stage1;
+import logbook.internal.logger.LoggerHolder;
 import logbook.bean.SlotitemMst;
 import logbook.bean.SlotitemMstCollection;
-import logbook.internal.LoggerHolder;
 
 /**
  * Stage1 基地航空隊編成情報

@@ -1,4 +1,4 @@
-package logbook.internal;
+package logbook.internal.kancolle;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -21,8 +21,8 @@ import logbook.bean.MapinfoMst;
 import logbook.bean.MapinfoMstCollection;
 import logbook.bean.ShipMst;
 import logbook.bean.Stype;
-import logbook.internal.BattleLogs.SimpleBattleLog;
-import logbook.internal.MissionLogs.SimpleMissionLog;
+import logbook.internal.kancolle.BattleLogs.SimpleBattleLog;
+import logbook.internal.kancolle.MissionLogs.SimpleMissionLog;
 import lombok.Data;
 
 /**

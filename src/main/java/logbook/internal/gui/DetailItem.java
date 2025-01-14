@@ -12,7 +12,7 @@ import logbook.bean.Ship;
 import logbook.bean.ShipCollection;
 import logbook.bean.SlotItem;
 import logbook.common.Messages;
-import logbook.internal.Ships;
+import logbook.internal.kancolle.Ships;
 import lombok.Getter;
 import lombok.Setter;
 

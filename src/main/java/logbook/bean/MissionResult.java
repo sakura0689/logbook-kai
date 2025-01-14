@@ -7,7 +7,7 @@ import java.util.List;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
 
-import logbook.internal.JsonHelper;
+import logbook.internal.util.JsonHelper;
 import lombok.Data;
 
 /**

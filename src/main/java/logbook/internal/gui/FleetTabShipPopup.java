@@ -16,9 +16,9 @@ import logbook.bean.SlotItem;
 import logbook.bean.SlotItemCollection;
 import logbook.bean.SlotitemMst;
 import logbook.bean.SlotitemMstCollection;
-import logbook.internal.Items;
-import logbook.internal.LoggerHolder;
-import logbook.internal.Ships;
+import logbook.internal.kancolle.Items;
+import logbook.internal.kancolle.Ships;
+import logbook.internal.logger.LoggerHolder;
 
 /**
  * 艦隊タブポップアップ

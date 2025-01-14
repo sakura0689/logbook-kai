@@ -7,8 +7,8 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import logbook.internal.Logs;
-import logbook.internal.MissionLogs.SimpleMissionLog;
+import logbook.internal.kancolle.MissionLogs.SimpleMissionLog;
+import logbook.internal.util.DateUtil;
 
 /**
  * 遠征ログの詳細行
@@ -339,7 +339,7 @@ public class MissionLogDetail {
     public static MissionLogDetail toMissionLogDetail(SimpleMissionLog log) {
         MissionLogDetail detail = new MissionLogDetail();
         // GMT+04:00のタイムゾーンになっているので日本時間に戻す
-        String date = Logs.DATE_FORMAT.format(log.getDate().withZoneSameInstant(ZoneId.of("Asia/Tokyo")));
+        String date = DateUtil.DATE_FORMAT.format(log.getDate().withZoneSameInstant(ZoneId.of("Asia/Tokyo")));
         detail.setDate(date);
         detail.setName(log.getName());
         detail.setResult(log.getResult());

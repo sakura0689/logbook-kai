@@ -8,7 +8,7 @@ import logbook.bean.Createship;
 import logbook.bean.ShipMst;
 import logbook.bean.ShipMstCollection;
 import logbook.bean.StypeCollection;
-import logbook.internal.Ships;
+import logbook.internal.kancolle.Ships;
 
 public class CreateshipLogFormat extends LogFormatBase<Createship> {
 

@@ -9,7 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
-import logbook.internal.LoggerHolder;
+import logbook.internal.logger.LoggerHolder;
 
 /**
  * {@link PopOver}のルートノードとして使用する。

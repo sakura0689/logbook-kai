@@ -1,4 +1,4 @@
-package logbook.internal;
+package logbook.internal.kancolle;
 
 import java.util.function.Function;
 import java.util.function.Predicate;

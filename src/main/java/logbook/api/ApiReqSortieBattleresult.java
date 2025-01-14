@@ -16,17 +16,17 @@ import logbook.bean.BattleResult;
 import logbook.bean.BattleTypes.IFormation;
 import logbook.bean.Ship;
 import logbook.bean.ShipCollection;
-import logbook.internal.Audios;
-import logbook.internal.BattleLogs;
-import logbook.internal.BouyomiChanUtils;
-import logbook.internal.BouyomiChanUtils.Type;
 import logbook.internal.Config;
-import logbook.internal.LoggerHolder;
-import logbook.internal.Logs;
-import logbook.internal.PhaseState;
+import logbook.internal.bouyomi.BouyomiChanUtils;
+import logbook.internal.bouyomi.BouyomiChanUtils.Type;
 import logbook.internal.gui.Tools;
+import logbook.internal.kancolle.BattleLogs;
+import logbook.internal.kancolle.PhaseState;
 import logbook.internal.log.BattleResultLogFormat;
 import logbook.internal.log.LogWriter;
+import logbook.internal.logger.LoggerHolder;
+import logbook.internal.util.AudiosUtil;
+import logbook.internal.util.DateUtil;
 import logbook.proxy.RequestMetaData;
 import logbook.proxy.ResponseMetaData;
 
@@ -56,7 +56,7 @@ public class ApiReqSortieBattleresult implements APIListenerSpi {
                 if (AppConfig.get().isIncludeRawData()) {
                     BattleLog.setRawData(log, BattleLog.RawData::setResult, data, req);
                 }
-                log.setTime(Logs.nowString());
+                log.setTime(DateUtil.nowString());
                 // 出撃艦隊
                 Integer dockId = Optional.ofNullable(log.getBattle())
                         .map(IFormation::getDockId)
@@ -90,7 +90,7 @@ public class ApiReqSortieBattleresult implements APIListenerSpi {
                         () -> Tools.Controls.showNotify(null, "ギミック解除", "海域に変化が確認されました。", Duration.seconds(15)));
                 // 通知音再生
                 if (AppConfig.get().isUseSound()) {
-                    Platform.runLater(Audios.playDefaultNotifySound());
+                    Platform.runLater(AudiosUtil.playDefaultNotifySound());
                 }
                 // 棒読みちゃん連携
                 if (AppBouyomiConfig.get().isEnable()) {
@@ -102,7 +102,7 @@ public class ApiReqSortieBattleresult implements APIListenerSpi {
                         () -> Tools.Controls.showNotify(null, "ギミック解除", "ギミックの達成を確認しました。", Duration.seconds(15)));
                 // 通知音再生
                 if (AppConfig.get().isUseSound()) {
-                    Platform.runLater(Audios.playDefaultNotifySound());
+                    Platform.runLater(AudiosUtil.playDefaultNotifySound());
                 }
                 // 棒読みちゃん連携
                 if (AppBouyomiConfig.get().isEnable()) {

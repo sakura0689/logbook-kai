@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.json.JsonObject;
 
-import logbook.internal.JsonHelper;
+import logbook.internal.util.JsonHelper;
 import logbook.proxy.RequestMetaData;
 import lombok.Data;
 

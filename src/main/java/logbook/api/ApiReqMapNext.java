@@ -23,13 +23,13 @@ import logbook.bean.DeckPortCollection;
 import logbook.bean.MapStartNext;
 import logbook.bean.Ship;
 import logbook.bean.ShipMst;
-import logbook.internal.Audios;
-import logbook.internal.BouyomiChanUtils;
-import logbook.internal.BouyomiChanUtils.Type;
-import logbook.internal.LoggerHolder;
-import logbook.internal.Ships;
 import logbook.internal.Tuple;
+import logbook.internal.bouyomi.BouyomiChanUtils;
+import logbook.internal.bouyomi.BouyomiChanUtils.Type;
 import logbook.internal.gui.Tools;
+import logbook.internal.kancolle.Ships;
+import logbook.internal.logger.LoggerHolder;
+import logbook.internal.util.AudiosUtil;
 import logbook.proxy.RequestMetaData;
 import logbook.proxy.ResponseMetaData;
 
@@ -87,7 +87,7 @@ public class ApiReqMapNext implements APIListenerSpi {
                         () -> Tools.Controls.showNotify(null, "ギミック解除", "海域に変化が確認されました。", Duration.seconds(15)));
                 // 通知音再生
                 if (AppConfig.get().isUseSound()) {
-                    Platform.runLater(Audios.playDefaultNotifySound());
+                    Platform.runLater(AudiosUtil.playDefaultNotifySound());
                 }
                 // 棒読みちゃん連携
                 if (AppBouyomiConfig.get().isEnable()) {
@@ -99,7 +99,7 @@ public class ApiReqMapNext implements APIListenerSpi {
                         () -> Tools.Controls.showNotify(null, "ギミック解除", "ギミックの達成を確認しました。", Duration.seconds(15)));
                 // 通知音再生
                 if (AppConfig.get().isUseSound()) {
-                    Platform.runLater(Audios.playDefaultNotifySound());
+                    Platform.runLater(AudiosUtil.playDefaultNotifySound());
                 }
                 // 棒読みちゃん連携
                 if (AppBouyomiConfig.get().isEnable()) {
@@ -117,7 +117,7 @@ public class ApiReqMapNext implements APIListenerSpi {
     private static void displayAlert(List<Ship> badlyShips) {
         try {
             Path dir = Paths.get(AppConfig.get().getAlertSoundDir());
-            Path p = Audios.randomAudioFile(dir);
+            Path p = AudiosUtil.randomAudioFile(dir);
             if (p != null) {
                 AudioClip clip = new AudioClip(p.toUri().toString());
                 clip.setVolume(AppConfig.get().getSoundLevel() / 100D);

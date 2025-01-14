@@ -16,6 +16,8 @@ import java.util.function.Supplier;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import logbook.internal.logger.LoggerHolder;
+
 /**
  * アプリケーションの設定を読み書きします
  *

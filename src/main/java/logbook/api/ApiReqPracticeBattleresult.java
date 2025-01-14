@@ -8,7 +8,7 @@ import logbook.bean.AppCondition;
 import logbook.bean.BattleLog;
 import logbook.bean.BattleResult;
 import logbook.bean.BattleTypes.IFormation;
-import logbook.internal.Logs;
+import logbook.internal.util.DateUtil;
 import logbook.proxy.RequestMetaData;
 import logbook.proxy.ResponseMetaData;
 
@@ -28,7 +28,7 @@ public class ApiReqPracticeBattleresult implements APIListenerSpi {
                 BattleLog log = AppCondition.get().getPracticeBattleResult();
                 if (log != null) {
                     log.setResult(result);
-                    log.setTime(Logs.nowString());
+                    log.setTime(DateUtil.nowString());
                     // 出撃艦隊
                     Integer dockId = Optional.ofNullable(log.getBattle())
                             .map(IFormation::getDockId)

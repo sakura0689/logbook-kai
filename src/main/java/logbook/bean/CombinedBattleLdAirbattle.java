@@ -11,7 +11,7 @@ import logbook.bean.BattleTypes.IFormation;
 import logbook.bean.BattleTypes.IKouku;
 import logbook.bean.BattleTypes.ILdAirbattle;
 import logbook.bean.BattleTypes.ISortieBattle;
-import logbook.internal.JsonHelper;
+import logbook.internal.util.JsonHelper;
 import lombok.Data;
 
 /**

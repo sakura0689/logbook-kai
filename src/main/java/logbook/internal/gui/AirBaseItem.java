@@ -13,8 +13,8 @@ import logbook.bean.SlotitemEquiptypeCollection;
 import logbook.bean.SlotitemMst;
 import logbook.common.Messages;
 import logbook.constants.SlotItemType;
-import logbook.internal.AirBases;
-import logbook.internal.Items;
+import logbook.internal.kancolle.AirBases;
+import logbook.internal.kancolle.Items;
 import lombok.Getter;
 import lombok.Setter;
 

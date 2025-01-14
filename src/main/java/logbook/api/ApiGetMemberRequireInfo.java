@@ -8,7 +8,7 @@ import logbook.bean.SlotItem;
 import logbook.bean.SlotItemCollection;
 import logbook.bean.Useitem;
 import logbook.bean.UseitemCollection;
-import logbook.internal.JsonHelper;
+import logbook.internal.util.JsonHelper;
 import logbook.proxy.RequestMetaData;
 import logbook.proxy.ResponseMetaData;
 

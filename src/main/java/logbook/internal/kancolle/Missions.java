@@ -1,4 +1,4 @@
-package logbook.internal;
+package logbook.internal.kancolle;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,6 +18,7 @@ import logbook.bean.AppConfig;
 import logbook.bean.Mission;
 import logbook.bean.MissionCollection;
 import logbook.bean.MissionCondition;
+import logbook.internal.ReferenceCache;
 import logbook.plugin.PluginServices;
 
 /**

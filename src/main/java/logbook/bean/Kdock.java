@@ -5,7 +5,7 @@ import java.io.Serializable;
 import javax.json.JsonObject;
 import javax.json.JsonValue;
 
-import logbook.internal.JsonHelper;
+import logbook.internal.util.JsonHelper;
 import lombok.Data;
 
 /**

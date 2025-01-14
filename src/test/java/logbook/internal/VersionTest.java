@@ -4,10 +4,12 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import logbook.internal.updatecheck.Version;
+
 public class VersionTest {
 
     /**
-     * {@link logbook.internal.Version#Version(int, int, int)} のためのテスト・メソッド。
+     * {@link logbook.internal.updatecheck.Version#Version(int, int, int)} のためのテスト・メソッド。
      */
     @Test
     public void testVersionIntIntInt() {
@@ -18,7 +20,7 @@ public class VersionTest {
     }
 
     /**
-     * {@link logbook.internal.Version#Version(java.lang.String)} のためのテスト・メソッド。
+     * {@link logbook.internal.updatecheck.Version#Version(java.lang.String)} のためのテスト・メソッド。
      */
     @Test
     public void testVersionString() {
@@ -49,7 +51,7 @@ public class VersionTest {
     }
 
     /**
-     * {@link logbook.internal.Version#compareTo(logbook.internal.Version)} のためのテスト・メソッド。
+     * {@link logbook.internal.updatecheck.Version#compareTo(logbook.internal.updatecheck.Version)} のためのテスト・メソッド。
      */
     @Test
     public void testCompareTo() {
@@ -98,7 +100,7 @@ public class VersionTest {
     }
 
     /**
-     * {@link logbook.internal.Version#getCurrent()} のためのテスト・メソッド。
+     * {@link logbook.internal.updatecheck.Version#getCurrent()} のためのテスト・メソッド。
      */
     @Test
     public void testGetCurrent() {

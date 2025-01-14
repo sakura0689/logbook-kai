@@ -37,12 +37,12 @@ import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import javafx.util.Duration;
 import logbook.bean.Mission;
 import logbook.bean.MissionCollection;
-import logbook.internal.BattleLogs.Unit;
-import logbook.internal.LoggerHolder;
-import logbook.internal.MissionLogs;
-import logbook.internal.MissionLogs.SimpleMissionLog;
 import logbook.internal.Tuple;
 import logbook.internal.Tuple.Pair;
+import logbook.internal.kancolle.MissionLogs;
+import logbook.internal.kancolle.BattleLogs.Unit;
+import logbook.internal.kancolle.MissionLogs.SimpleMissionLog;
+import logbook.internal.logger.LoggerHolder;
 
 /**
  * 遠征ログ

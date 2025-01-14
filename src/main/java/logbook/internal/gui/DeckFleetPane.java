@@ -12,7 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import logbook.bean.AppDeck.AppDeckFleet;
-import logbook.internal.LoggerHolder;
+import logbook.internal.logger.LoggerHolder;
 import lombok.Getter;
 
 /**

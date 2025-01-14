@@ -29,13 +29,13 @@ import logbook.bean.Ship;
 import logbook.bean.ShipCollection;
 import logbook.bean.SlotItem;
 import logbook.bean.SlotItemCollection;
-import logbook.internal.Audios;
-import logbook.internal.BouyomiChanUtils;
-import logbook.internal.BouyomiChanUtils.Type;
-import logbook.internal.JsonHelper;
+import logbook.internal.bouyomi.BouyomiChanUtils;
+import logbook.internal.bouyomi.BouyomiChanUtils.Type;
 import logbook.internal.gui.Tools;
 import logbook.internal.log.LogWriter;
 import logbook.internal.log.MaterialLogFormat;
+import logbook.internal.util.AudiosUtil;
+import logbook.internal.util.JsonHelper;
 import logbook.proxy.RequestMetaData;
 import logbook.proxy.ResponseMetaData;
 
@@ -246,7 +246,7 @@ public class ApiPortPort implements APIListenerSpi {
                                     javafx.util.Duration.seconds(15)));
                     // 通知音再生
                     if (AppConfig.get().isUseSound()) {
-                        Platform.runLater(Audios.playDefaultNotifySound());
+                        Platform.runLater(AudiosUtil.playDefaultNotifySound());
                     }
                     // 棒読みちゃん連携
                     if (AppBouyomiConfig.get().isEnable()) {

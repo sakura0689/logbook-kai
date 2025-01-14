@@ -1,4 +1,4 @@
-package logbook.internal;
+package logbook.internal.kancolle;
 
 import java.io.InputStream;
 import java.util.Collections;
@@ -12,6 +12,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import logbook.bean.MapinfoMst;
 import logbook.bean.MapinfoMstCollection;
+import logbook.internal.logger.LoggerHolder;
 import logbook.plugin.PluginServices;
 
 /**

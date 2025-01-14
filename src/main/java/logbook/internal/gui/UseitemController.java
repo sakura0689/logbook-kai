@@ -18,7 +18,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.WindowEvent;
 import logbook.bean.UseitemMstCollection;
-import logbook.internal.LoggerHolder;
+import logbook.internal.logger.LoggerHolder;
 
 /**
  * アイテム一覧のコントローラー

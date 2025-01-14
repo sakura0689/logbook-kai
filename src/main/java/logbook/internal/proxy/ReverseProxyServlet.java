@@ -27,8 +27,8 @@ import org.eclipse.jetty.http.HttpHeader;
 import org.eclipse.jetty.http.HttpVersion;
 
 import logbook.bean.AppConfig;
-import logbook.internal.LoggerHolder;
 import logbook.internal.ThreadManager;
+import logbook.internal.logger.LoggerHolder;
 import logbook.plugin.PluginServices;
 import logbook.proxy.ContentListenerSpi;
 import logbook.proxy.RequestMetaData;

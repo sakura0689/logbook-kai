@@ -12,7 +12,7 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 import logbook.bean.AppConfig;
-import logbook.internal.LoggerHolder;
+import logbook.internal.logger.LoggerHolder;
 
 /**
  * ログ書き込みをサポートします

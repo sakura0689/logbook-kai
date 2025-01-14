@@ -20,7 +20,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import logbook.bean.BattleLog;
 import logbook.bean.SortieBattle;
-import logbook.internal.BattleLogs.SimpleBattleLog;
+import logbook.internal.kancolle.BattleLogs.SimpleBattleLog;
 
 public class BattleLogsTest {
     @Test

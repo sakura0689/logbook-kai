@@ -2,7 +2,7 @@ package logbook.constants;
 
 import logbook.bean.Ship;
 import logbook.bean.Stype;
-import logbook.internal.Ships;
+import logbook.internal.kancolle.Ships;
 
 /**
  * 統計用艦種グループ

@@ -1,4 +1,4 @@
-package logbook.internal;
+package logbook.internal.kancolle;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -50,6 +50,8 @@ import logbook.bean.BattleLog;
 import logbook.internal.gui.BattleLogCollect;
 import logbook.internal.log.BattleResultLogFormat;
 import logbook.internal.log.LogWriter;
+import logbook.internal.logger.LoggerHolder;
+import logbook.internal.util.DateUtil;
 import lombok.Data;
 import lombok.Getter;
 
@@ -224,7 +226,7 @@ public class BattleLogs {
                     .minusDays(expires)
                     .withZoneSameInstant(ZoneId.of("Asia/Tokyo"));
             // 比較するためのファイル名(拡張子を含まない)
-            String expired = fileNameSafeDateString(Logs.DATE_FORMAT.format(exp));
+            String expired = fileNameSafeDateString(DateUtil.DATE_FORMAT.format(exp));
 
             Files.walkFileTree(dir, EnumSet.of(FileVisitOption.FOLLOW_LINKS), 2,
                     new DeleteExpiredVisitor(dir, expired));
@@ -560,7 +562,7 @@ public class BattleLogs {
             this.setDateString(columns[0]);
             // 任務の更新時間が午前5時のため
             // 日付文字列を日本時間として解釈した後、GMT+04:00のタイムゾーンに変更します
-            TemporalAccessor ta = Logs.DATE_FORMAT.parse(columns[0]);
+            TemporalAccessor ta = DateUtil.DATE_FORMAT.parse(columns[0]);
             ZonedDateTime date = ZonedDateTime.of(LocalDateTime.from(ta), ZoneId.of("Asia/Tokyo"))
                     .withZoneSameInstant(ZoneId.of("GMT+04:00"));
             this.setDate(date);

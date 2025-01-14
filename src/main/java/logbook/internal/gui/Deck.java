@@ -28,10 +28,10 @@ import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import logbook.bean.AppDeck;
 import logbook.bean.AppDeck.AppDeckFleet;
+import logbook.internal.util.ToStringConverter;
 import logbook.bean.AppDeckCollection;
 import logbook.bean.DeckPort;
 import logbook.bean.DeckPortCollection;
-import logbook.internal.ToStringConverter;
 
 /**
  * 編成記録

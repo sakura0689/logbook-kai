@@ -49,9 +49,9 @@ import logbook.bean.Mapinfo.AirBase;
 import logbook.bean.Mapinfo.PlaneInfo;
 import logbook.bean.SlotItem;
 import logbook.bean.SlotItemCollection;
-import logbook.internal.AirBases;
-import logbook.internal.Items;
-import logbook.internal.LoggerHolder;
+import logbook.internal.kancolle.AirBases;
+import logbook.internal.kancolle.Items;
+import logbook.internal.logger.LoggerHolder;
 import logbook.plugin.PluginServices;
 
 /**

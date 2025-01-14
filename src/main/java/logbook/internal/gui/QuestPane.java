@@ -20,8 +20,8 @@ import javafx.stage.Stage;
 import logbook.bean.AppQuest;
 import logbook.bean.AppQuestCollection;
 import logbook.bean.QuestList.Quest;
-import logbook.internal.LoggerHolder;
 import logbook.internal.ThreadManager;
+import logbook.internal.logger.LoggerHolder;
 import logbook.plugin.PluginServices;
 
 /**

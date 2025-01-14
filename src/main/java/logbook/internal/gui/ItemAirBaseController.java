@@ -35,8 +35,8 @@ import logbook.bean.SlotItemCollection;
 import logbook.bean.SlotitemMst;
 import logbook.bean.SlotitemMstCollection;
 import logbook.common.Messages;
-import logbook.internal.Items;
-import logbook.internal.LoggerHolder;
+import logbook.internal.kancolle.Items;
+import logbook.internal.logger.LoggerHolder;
 import logbook.plugin.PluginServices;
 
 /**

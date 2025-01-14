@@ -6,7 +6,7 @@ import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
 
 import logbook.bean.QuestList.Quest;
-import logbook.internal.Logs;
+import logbook.internal.util.DateUtil;
 import lombok.Data;
 
 /**
@@ -135,7 +135,7 @@ public class AppQuest implements Serializable {
                     .withZoneSameInstant(ZoneId.of("Asia/Tokyo"));
         }
         if (expire != null) {
-            bean.setExpire(Logs.DATE_FORMAT.format(expire));
+            bean.setExpire(DateUtil.DATE_FORMAT.format(expire));
         }
 
         return bean;

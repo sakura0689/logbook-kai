@@ -8,8 +8,8 @@ import javax.json.JsonObject;
 
 import logbook.constants.ShipType;
 import logbook.constants.SlotItemType;
-import logbook.internal.JsonHelper;
-import logbook.internal.Ships;
+import logbook.internal.kancolle.Ships;
+import logbook.internal.util.JsonHelper;
 import lombok.Data;
 
 /**

@@ -9,9 +9,9 @@ import javax.json.JsonObject;
 import logbook.bean.AppCondition;
 import logbook.bean.AppConfig;
 import logbook.bean.Material;
-import logbook.internal.JsonHelper;
 import logbook.internal.log.LogWriter;
 import logbook.internal.log.MaterialLogFormat;
+import logbook.internal.util.JsonHelper;
 import logbook.proxy.RequestMetaData;
 import logbook.proxy.ResponseMetaData;
 

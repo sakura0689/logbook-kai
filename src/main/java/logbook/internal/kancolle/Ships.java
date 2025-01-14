@@ -1,4 +1,4 @@
-package logbook.internal;
+package logbook.internal.kancolle;
 
 import java.io.InputStream;
 import java.nio.file.Path;
@@ -44,7 +44,9 @@ import logbook.bean.StypeCollection;
 import logbook.common.Messages;
 import logbook.constants.ShipType;
 import logbook.constants.SlotItemType;
+import logbook.internal.Tuple;
 import logbook.internal.Tuple.Pair;
+import logbook.internal.logger.LoggerHolder;
 import logbook.plugin.PluginServices;
 import lombok.AllArgsConstructor;
 import lombok.Data;

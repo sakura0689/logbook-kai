@@ -10,7 +10,7 @@ import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import logbook.bean.AppConfig;
-import logbook.internal.Version;
+import logbook.internal.updatecheck.Version;
 
 /**
  * JavaFx エントリ・ポイント クラス

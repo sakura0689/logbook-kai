@@ -15,7 +15,7 @@ import java.util.Locale;
 import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 
-import logbook.internal.LoggerHolder;
+import logbook.internal.logger.LoggerHolder;
 import logbook.plugin.PluginServices;
 
 /**

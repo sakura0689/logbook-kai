@@ -23,8 +23,8 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
-import logbook.internal.BattleLogs;
-import logbook.internal.BattleLogs.SimpleBattleLog;
+import logbook.internal.kancolle.BattleLogs;
+import logbook.internal.kancolle.BattleLogs.SimpleBattleLog;
 
 /**
  * 経験値チャート

@@ -12,7 +12,7 @@ import logbook.bean.BattleTypes.IKouku;
 import logbook.bean.BattleTypes.ISortieBattle;
 import logbook.bean.BattleTypes.ISortieHougeki;
 import logbook.bean.BattleTypes.ISupport;
-import logbook.internal.JsonHelper;
+import logbook.internal.util.JsonHelper;
 import lombok.Data;
 
 /**

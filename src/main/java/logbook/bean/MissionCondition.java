@@ -12,8 +12,8 @@ import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import logbook.internal.Items;
-import logbook.internal.Ships;
+import logbook.internal.kancolle.Items;
+import logbook.internal.kancolle.Ships;
 import lombok.Data;
 
 @Data

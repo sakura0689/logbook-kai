@@ -4,7 +4,7 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import logbook.internal.BattleLogs.IUnit;
+import logbook.internal.kancolle.BattleLogs.IUnit;
 
 /**
  * 集計行
