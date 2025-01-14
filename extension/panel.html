@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script src="./panel.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 10px;
+        }
+
+        .request {
+            margin-bottom: 0px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fdfdfd;
+        }
+
+        .request-header {
+            padding: 8px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .request-header:hover {
+            background-color: #ddd;
+        }
+
+        .request-body {
+            padding: 10px;
+            display: none;
+        }
+
+        .request-body h4 {
+            margin: 5px 0;
+            font-size: 1.1em;
+            color: #333;
+        }
+
+        .request-body pre {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 0.9em;
+        }
+
+        .request-body p {
+            margin: 5px 0;
+            font-size: 0.95em;
+        }
+    </style>
+</head>
+<body>
+    <h2>通信ログ</h2>
+    <div id="request"></div>
+</body>
+</html>

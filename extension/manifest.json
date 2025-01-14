@@ -1,0 +1,8 @@
+{
+  "manifest_version": 3,
+  "name": "航海日誌改",
+  "version": "1.0",
+  "description": "航海日誌改へ通信ログを送信します",
+  "host_permissions": ["*://www.dmm.com/netgame/social/-/gadgets/=/app_id=854854", "*://w10b.kancolle-server.com/*"],
+  "devtools_page": "devtools.html"
+}
