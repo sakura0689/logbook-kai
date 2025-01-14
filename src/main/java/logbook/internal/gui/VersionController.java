@@ -19,10 +19,10 @@ import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import logbook.internal.CheckUpdate;
 import logbook.internal.ThreadManager;
-import logbook.internal.Version;
 import logbook.internal.logger.LoggerHolder;
+import logbook.internal.updatecheck.CheckUpdate;
+import logbook.internal.updatecheck.Version;
 import logbook.plugin.PluginServices;
 
 /**

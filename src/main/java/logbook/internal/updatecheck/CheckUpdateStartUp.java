@@ -1,4 +1,4 @@
-package logbook.internal;
+package logbook.internal.updatecheck;
 
 import logbook.bean.AppConfig;
 import logbook.plugin.lifecycle.StartUp;

@@ -1,4 +1,4 @@
-package logbook.internal;
+package logbook.internal.updatecheck;
 
 import java.io.Serializable;
 import java.util.Arrays;
