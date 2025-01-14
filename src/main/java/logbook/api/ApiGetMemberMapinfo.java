@@ -3,7 +3,7 @@ package logbook.api;
 import javax.json.JsonObject;
 
 import logbook.bean.Mapinfo;
-import logbook.internal.JsonHelper;
+import logbook.internal.util.JsonHelper;
 import logbook.proxy.RequestMetaData;
 import logbook.proxy.ResponseMetaData;
 

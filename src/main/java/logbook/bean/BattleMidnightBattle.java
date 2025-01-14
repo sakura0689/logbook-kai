@@ -6,7 +6,7 @@ import java.util.List;
 import javax.json.JsonObject;
 
 import logbook.bean.BattleTypes.IMidnightBattle;
-import logbook.internal.JsonHelper;
+import logbook.internal.util.JsonHelper;
 import lombok.Data;
 
 /**

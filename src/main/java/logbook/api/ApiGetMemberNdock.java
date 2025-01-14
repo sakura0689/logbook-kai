@@ -12,7 +12,7 @@ import javax.json.JsonObject;
 import logbook.bean.Ndock;
 import logbook.bean.NdockCollection;
 import logbook.bean.ShipCollection;
-import logbook.internal.JsonHelper;
+import logbook.internal.util.JsonHelper;
 import logbook.proxy.RequestMetaData;
 import logbook.proxy.ResponseMetaData;
 

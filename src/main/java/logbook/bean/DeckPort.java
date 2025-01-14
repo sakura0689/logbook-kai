@@ -10,8 +10,8 @@ import javax.json.JsonObject;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import logbook.internal.JsonHelper;
 import logbook.internal.Ships;
+import logbook.internal.util.JsonHelper;
 import lombok.Data;
 
 /**

@@ -1,4 +1,4 @@
-package logbook.internal;
+package logbook.internal.util;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;

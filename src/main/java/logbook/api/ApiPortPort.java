@@ -32,10 +32,10 @@ import logbook.bean.SlotItemCollection;
 import logbook.internal.Audios;
 import logbook.internal.BouyomiChanUtils;
 import logbook.internal.BouyomiChanUtils.Type;
-import logbook.internal.JsonHelper;
 import logbook.internal.gui.Tools;
 import logbook.internal.log.LogWriter;
 import logbook.internal.log.MaterialLogFormat;
+import logbook.internal.util.JsonHelper;
 import logbook.proxy.RequestMetaData;
 import logbook.proxy.ResponseMetaData;
 

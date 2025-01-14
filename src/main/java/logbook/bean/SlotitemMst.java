@@ -7,7 +7,7 @@ import javax.json.JsonObject;
 
 import logbook.constants.SlotItemType;
 import logbook.constants.SlotitemMstTypeConst;
-import logbook.internal.JsonHelper;
+import logbook.internal.util.JsonHelper;
 import lombok.Data;
 
 /**

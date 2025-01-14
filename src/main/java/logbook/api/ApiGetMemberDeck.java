@@ -10,7 +10,7 @@ import javax.json.JsonObject;
 
 import logbook.bean.DeckPort;
 import logbook.bean.DeckPortCollection;
-import logbook.internal.JsonHelper;
+import logbook.internal.util.JsonHelper;
 import logbook.proxy.RequestMetaData;
 import logbook.proxy.ResponseMetaData;
 
