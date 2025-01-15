@@ -9,6 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import logbook.net.ResponseMetaData;
 
+/**
+ * OriginのHttpResponseからの情報を保持するクラスです
+ *
+ */
 public class ResponseMetaDataWrapper implements ResponseMetaData, Cloneable {
 
     private int status;

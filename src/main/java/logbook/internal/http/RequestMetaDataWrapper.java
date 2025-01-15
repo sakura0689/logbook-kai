@@ -16,6 +16,10 @@ import javax.servlet.http.HttpServletRequest;
 
 import logbook.net.RequestMetaData;
 
+/**
+ * OriginのHttpRequestからの情報を保持するクラスです
+ *
+ */
 public class RequestMetaDataWrapper implements RequestMetaData, Cloneable {
 
     private String contentType;
