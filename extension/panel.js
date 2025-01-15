@@ -36,6 +36,16 @@ chrome.devtools.network.onRequestFinished.addListener((request) => {
         requestsContainer.removeChild(requestsContainer.firstChild);
       }
 
+      // リクエストボディの取得（POSTの場合のみ）
+      let requestBodyHtml = "";
+      if (method === "POST" && request.request.postData) {
+        const postData = request.request.postData.text || "(No Request Body)";
+        requestBodyHtml = `
+          <h4>Request Body:</h4>
+          <pre>${postData}</pre>
+        `;
+      }
+
       // レスポンスの表示色を設定
       const responseColor =
         encoding === "base64" ? "rgba(255, 200, 200, 0.5)" : "rgba(200, 220, 255, 0.5)";
@@ -68,6 +78,7 @@ chrome.devtools.network.onRequestFinished.addListener((request) => {
           <p><strong>Query String:</strong> ${queryString}</p>
           <h4>Query Parameters:</h4>
           <pre>${JSON.stringify(queryParams, null, 2)}</pre>
+          ${requestBodyHtml}
           <h4>Response Body:</h4>
           <pre style="background-color: ${responseColor};">${content || "(No Response Body)"}</pre>
           ${timings}
