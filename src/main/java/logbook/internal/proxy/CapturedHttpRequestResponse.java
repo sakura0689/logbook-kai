@@ -5,34 +5,37 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class CaptureHolder {
+/**
+ * CaptureしたOriginのHttpRequest/HttpResponse情報を保持するクラスです
+ */
+public class CapturedHttpRequestResponse {
 
-    private List<byte[]> req = new ArrayList<>();
+    private List<byte[]> originReq = new ArrayList<>();
+    
+    private List<byte[]> originRes = new ArrayList<>();
 
-    private List<byte[]> res = new ArrayList<>();
-
-    public void putRequest(byte[] data) {
-        if (this.req.size() > 0 && Arrays.equals(this.req.get(this.req.size()-1), data)) {
+    public void putOriginRequest(byte[] data) {
+        if (this.originReq.size() > 0 && Arrays.equals(this.originReq.get(this.originReq.size()-1), data)) {
             // if the data is the same as the last one in this.req array, no need to add this to req as it is duplicated
             return;
         }
-        this.req.add(data);
+        this.originReq.add(data);
     }
 
-    public InputStream getRequest() {
-        return new ByteArrayInputStream2(this.req);
+    public InputStream getOriginRequest() {
+        return new ByteArrayInputStream2(this.originReq);
     }
 
-    public void putResponse(byte[] data) {
-        this.res.add(data);
+    public void putOriginResponse(byte[] data) {
+        this.originRes.add(data);
     }
 
-    public InputStream getResponse() {
-        return new ByteArrayInputStream2(this.res);
+    public InputStream getOriginResponse() {
+        return new ByteArrayInputStream2(this.originRes);
     }
 
     public void clear() {
-        this.req = null;
-        this.res = null;
+        this.originReq = null;
+        this.originRes = null;
     }
 }

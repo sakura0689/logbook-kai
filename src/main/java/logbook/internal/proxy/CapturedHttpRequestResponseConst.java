@@ -1,10 +1,9 @@
 package logbook.internal.proxy;
 
 /**
- * 動作に必要なデータのみ取得するためのフィルターです。
- *
+ * OriginのRequest/Responseを取得するための定義クラスです
  */
-public class Filter {
+public class CapturedHttpRequestResponseConst {
 
     /** キャプチャーするリクエストのバイトサイズ上限 */
     public static final int MAX_POST_FIELD_SIZE = 1024 * 1024 * 12;

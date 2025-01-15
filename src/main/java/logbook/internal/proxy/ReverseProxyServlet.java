@@ -65,7 +65,7 @@ public final class ReverseProxyServlet extends ProxyServlet {
         super.customizeProxyRequest(proxyRequest, request);
     }
 
-    /*
+    /**
      * レスポンスが帰ってきた
      */
     @Override
@@ -73,18 +73,18 @@ public final class ReverseProxyServlet extends ProxyServlet {
             Response proxyResponse,
             byte[] buffer, int offset, int length) throws IOException {
 
-        CaptureHolder holder = (CaptureHolder) request.getAttribute(Filter.CONTENT_HOLDER);
-        if (holder == null) {
-            holder = new CaptureHolder();
-            request.setAttribute(Filter.CONTENT_HOLDER, holder);
+        CapturedHttpRequestResponse capturedHttpRequestResponse = (CapturedHttpRequestResponse) request.getAttribute(CapturedHttpRequestResponseConst.CONTENT_HOLDER);
+        if (capturedHttpRequestResponse == null) {
+            capturedHttpRequestResponse = new CapturedHttpRequestResponse();
+            request.setAttribute(CapturedHttpRequestResponseConst.CONTENT_HOLDER, capturedHttpRequestResponse);
         }
-        // ストリームに書き込む
-        holder.putResponse(buffer);
+        // reponse bufferをキャプチャする
+        capturedHttpRequestResponse.putOriginResponse(buffer);
 
         super.onResponseContent(request, response, proxyResponse, buffer, offset, length);
     }
 
-    /*
+    /**
      * レスポンスが完了した
      */
     @Override
@@ -92,8 +92,8 @@ public final class ReverseProxyServlet extends ProxyServlet {
             Response proxyResponse) {
         try {
             if(response.getStatus() == HttpServletResponse.SC_OK) {
-                CaptureHolder holder = (CaptureHolder) request.getAttribute(Filter.CONTENT_HOLDER);
-                if (holder != null) {
+                CapturedHttpRequestResponse capturedHttpRequestResponse = (CapturedHttpRequestResponse) request.getAttribute(CapturedHttpRequestResponseConst.CONTENT_HOLDER);
+                if (capturedHttpRequestResponse != null) {
                     RequestMetaDataWrapper req = new RequestMetaDataWrapper();
                     req.set(request);
 
@@ -101,7 +101,7 @@ public final class ReverseProxyServlet extends ProxyServlet {
                     res.set(response);
 
                     Runnable task = () -> {
-                        this.invoke(req, res, holder);
+                        this.invoke(req, res, capturedHttpRequestResponse);
                     };
                     ThreadManager.getExecutorService().submit(task);
                 }
@@ -110,7 +110,7 @@ public final class ReverseProxyServlet extends ProxyServlet {
             LoggerHolder.get().warn("リバースプロキシ サーブレットで例外が発生 req=" + request, e);
         } finally {
             // Help GC
-            request.removeAttribute(Filter.CONTENT_HOLDER);
+            request.removeAttribute(CapturedHttpRequestResponseConst.CONTENT_HOLDER);
         }
         super.onResponseSuccess(request, response, proxyResponse);
     }
@@ -156,18 +156,28 @@ public final class ReverseProxyServlet extends ProxyServlet {
         }
     }
 
-    private void invoke(RequestMetaDataWrapper baseReq, ResponseMetaDataWrapper baseRes, CaptureHolder holder) {
+    /**
+     * ContentListenerSpiインターフェースの実装クラスを実行します
+     * 
+     * @param baseReq WrapしたHttpRequest情報
+     * @param baseRes WrapしたHttpResponse情報
+     * @param capturedHttpRequestResponse キャプチャしたOriginのHttpRequest/HttpResponse情報
+     * 
+     * @see logbook.internal.APIListener
+     * @see logbook.internal.ImageListener
+     */
+    private void invoke(RequestMetaDataWrapper baseReq, ResponseMetaDataWrapper baseRes, CapturedHttpRequestResponse capturedHttpRequestResponse) {
         try {
             if (this.listeners == null) {
                 this.listeners = PluginServices.instances(ContentListenerSpi.class).collect(Collectors.toList());
             }
             for (ContentListenerSpi listener : this.listeners) {
                 RequestMetaDataWrapper req = baseReq.clone();
-                req.set(holder.getRequest());
+                req.set(capturedHttpRequestResponse.getOriginRequest());
 
                 if (listener.test(req)) {
                     ResponseMetaDataWrapper res = baseRes.clone();
-                    res.set(holder.getResponse());
+                    res.set(capturedHttpRequestResponse.getOriginResponse());
 
                     Runnable task = () -> {
                         try {
@@ -179,7 +189,7 @@ public final class ReverseProxyServlet extends ProxyServlet {
                     ThreadManager.getExecutorService().submit(task);
                 }
             }
-            holder.clear();
+            capturedHttpRequestResponse.clear();
         } catch (Exception e) {
             LoggerHolder.get().warn("リバースプロキシ サーブレットで例外が発生 req=" + baseReq.getRequestURI(), e);
         }
