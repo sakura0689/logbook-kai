@@ -10,11 +10,11 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.stream.Collectors;
 
 import logbook.bean.AppConfig;
+import logbook.core.LogBookCoreContainer;
 import logbook.internal.gui.Main;
 import logbook.internal.logger.LoggerHolder;
 import logbook.internal.proxy.ProxyHolder;
 import logbook.plugin.JarBasedPlugin;
-import logbook.plugin.PluginContainer;
 import logbook.plugin.PluginInitExceptionHolder;
 
 /**
@@ -69,7 +69,7 @@ public final class Launcher {
         PluginInitExceptionHolder pluginInitExceptionHolder = new PluginInitExceptionHolder();
         
         Path dir = Paths.get(AppConfig.get().getPluginsDir());
-        PluginContainer container = PluginContainer.getInstance();
+        LogBookCoreContainer container = LogBookCoreContainer.getInstance();
 
         List<JarBasedPlugin> plugins = Collections.emptyList();
         if (AppConfig.get().isUsePlugin() && Files.isDirectory(dir)) {
@@ -131,7 +131,7 @@ public final class Launcher {
      */
     private void exitPlugin() {
         try {
-            PluginContainer container = PluginContainer.getInstance();
+            LogBookCoreContainer container = LogBookCoreContainer.getInstance();
             container.close();
         } catch (Exception e) {
             LoggerHolder.get().warn("プラグインのクローズ中に例外が発生", e); //$NON-NLS-1$

@@ -6,6 +6,8 @@ import java.util.ServiceLoader;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
+import logbook.core.LogBookCoreContainer;
+
 /**
  * サービスプロバイダに関するメソッドを集めたクラス
  *
@@ -21,7 +23,7 @@ public final class PluginServices {
      * @return クラスローダー
      */
     public static ClassLoader getClassLoader() {
-        PluginContainer container = PluginContainer.getInstance(); 
+        LogBookCoreContainer container = LogBookCoreContainer.getInstance(); 
         return container.getClassLoader();
     }
 

@@ -40,6 +40,7 @@ import javafx.stage.Screen;
 import javafx.util.Duration;
 import logbook.bean.AppBouyomiConfig;
 import logbook.bean.AppBouyomiConfig.AppBouyomiText;
+import logbook.core.LogBookCoreContainer;
 import logbook.bean.AppConfig;
 import logbook.bean.WindowLocation;
 import logbook.internal.Config;
@@ -53,7 +54,6 @@ import logbook.internal.bouyomi.BouyomiChanUtils.Params;
 import logbook.internal.kancolle.ShipImageCacheStrategy;
 import logbook.internal.logger.LoggerHolder;
 import logbook.internal.util.ToStringConverter;
-import logbook.plugin.PluginContainer;
 import logbook.plugin.PluginServices;
 
 /**
@@ -485,7 +485,7 @@ public class ConfigController extends WindowController {
         this.pluginLicense.setCellValueFactory(new PropertyValueFactory<>("license"));
         this.pluginLocation.setCellValueFactory(new PropertyValueFactory<>("location"));
 
-        PluginContainer.getInstance()
+        LogBookCoreContainer.getInstance()
                 .getPlugins()
                 .stream()
                 .map(DetailPlugin::toDetailPlugin)

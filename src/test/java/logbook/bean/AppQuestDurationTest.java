@@ -22,12 +22,12 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import logbook.bean.AppQuestDuration.Duration;
-import logbook.plugin.PluginContainer;
+import logbook.core.LogBookCoreContainer;
 
 public class AppQuestDurationTest {
     @Test
     public void test() throws IOException {
-        PluginContainer container = PluginContainer.getInstance();
+        LogBookCoreContainer container = LogBookCoreContainer.getInstance();
         container.init(Collections.emptyList());
         AppQuestDuration duration = new AppQuestDuration();
         Path p = Paths.get("./src/test/resources/logbook/bean/get_member_questlist.json");

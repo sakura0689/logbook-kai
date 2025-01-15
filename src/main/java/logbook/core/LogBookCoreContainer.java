@@ -1,4 +1,4 @@
-package logbook.plugin;
+package logbook.core;
 
 import java.io.IOException;
 import java.net.URL;
@@ -7,14 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import logbook.internal.logger.LoggerHolder;
+import logbook.plugin.JarBasedPlugin;
 
 /**
- * プラグインを管理します
- *
+ * 航海日誌で実行されるプラグイン含めた実行クラス群を管理するクラスです
  */
-public class PluginContainer {
+public class LogBookCoreContainer {
 
-    private static final PluginContainer container = new PluginContainer();
+    private static final LogBookCoreContainer container = new LogBookCoreContainer();
 
     private List<JarBasedPlugin> plugins;
 
@@ -22,7 +22,7 @@ public class PluginContainer {
 
     private boolean initialized;
 
-    private PluginContainer() {
+    private LogBookCoreContainer() {
     }
 
     /**
@@ -79,7 +79,7 @@ public class PluginContainer {
     public ClassLoader getClassLoader() {
         if (!this.initialized) {
             LoggerHolder.get().warn("PluginContainer not initialized", new IllegalStateException()); //$NON-NLS-1$
-            return PluginContainer.class.getClassLoader();
+            return LogBookCoreContainer.class.getClassLoader();
         }
         return this.classLoader;
     }
@@ -88,7 +88,7 @@ public class PluginContainer {
      * プラグインコンテナーのインスタンスを返します
      * @return プラグインコンテナーのインスタンス
      */
-    public static PluginContainer getInstance() {
+    public static LogBookCoreContainer getInstance() {
         return container;
     }
 }
