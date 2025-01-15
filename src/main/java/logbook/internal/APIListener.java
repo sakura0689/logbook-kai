@@ -22,10 +22,10 @@ import logbook.api.APIListenerSpi;
 import logbook.common.Messages;
 import logbook.internal.Tuple.Pair;
 import logbook.internal.logger.LoggerHolder;
+import logbook.net.RequestMetaData;
+import logbook.net.ResponseMetaData;
 import logbook.plugin.PluginServices;
 import logbook.proxy.ContentListenerSpi;
-import logbook.proxy.RequestMetaData;
-import logbook.proxy.ResponseMetaData;
 
 /**
  * APIを受け取りJSONをAPIListenerSpiを実装したサービスプロバイダに送ります

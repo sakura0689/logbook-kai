@@ -21,8 +21,8 @@
 通信のキャプチャ
  * [logbook.proxy.ContentListenerSpi](src/main/java/logbook/proxy/ContentListenerSpi.java)
   * 関連クラス
-    * [logbook.proxy.RequestMetaData](src/main/java/logbook/proxy/RequestMetaData.java)
-    * [logbook.proxy.ResponseMetaData](src/main/java/logbook/proxy/ResponseMetaData.java)
+    * [logbook.net.RequestMetaData](src/main/java/logbook/net/RequestMetaData.java)
+    * [logbook.net.ResponseMetaData](src/main/java/logbook/net/ResponseMetaData.java)
 
 APIのキャプチャ
  * [logbook.api.APIListenerSpi](src/main/java/logbook/api/APIListenerSpi.java)
@@ -30,4 +30,4 @@ APIのキャプチャ
 プロキシサーバー
  * [logbook.proxy.ProxyServerSpi](src/main/java/logbook/proxy/ProxyServerSpi.java)
   * プロキシサーバーの実装が複数存在する場合、デフォルト実装以外の実装を1つだけ選択します。実装の選択方法は未定義です。
-  * [デフォルト実装](src/main/java/logbook/internal/proxy/NettyProxyServer.java)
+  * [デフォルト実装](src/main/java/logbook/internal/proxy/ProxyServerImpl.java)

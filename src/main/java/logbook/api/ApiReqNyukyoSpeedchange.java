@@ -10,8 +10,8 @@ import logbook.bean.Ndock;
 import logbook.bean.NdockCollection;
 import logbook.bean.Ship;
 import logbook.bean.ShipCollection;
-import logbook.proxy.RequestMetaData;
-import logbook.proxy.ResponseMetaData;
+import logbook.net.RequestMetaData;
+import logbook.net.ResponseMetaData;
 
 /**
  * /kcsapi/api_req_nyukyo/speedchange

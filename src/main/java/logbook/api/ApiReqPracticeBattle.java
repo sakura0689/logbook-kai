@@ -7,9 +7,9 @@ import javax.json.JsonObject;
 import logbook.bean.AppCondition;
 import logbook.bean.BattleLog;
 import logbook.bean.BattleTypes.IFormation;
+import logbook.net.RequestMetaData;
+import logbook.net.ResponseMetaData;
 import logbook.bean.SortieBattle;
-import logbook.proxy.RequestMetaData;
-import logbook.proxy.ResponseMetaData;
 
 /**
  * /kcsapi/api_req_practice/battle

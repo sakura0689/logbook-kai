@@ -6,8 +6,8 @@ import javax.json.JsonObject;
 
 import logbook.bean.Ship;
 import logbook.bean.ShipCollection;
-import logbook.proxy.RequestMetaData;
-import logbook.proxy.ResponseMetaData;
+import logbook.net.RequestMetaData;
+import logbook.net.ResponseMetaData;
 
 /**
  * /kcsapi/api_req_kaisou/slot_exchange_index

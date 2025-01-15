@@ -12,8 +12,8 @@ import logbook.bean.Material;
 import logbook.internal.log.LogWriter;
 import logbook.internal.log.MaterialLogFormat;
 import logbook.internal.util.JsonHelper;
-import logbook.proxy.RequestMetaData;
-import logbook.proxy.ResponseMetaData;
+import logbook.net.RequestMetaData;
+import logbook.net.ResponseMetaData;
 
 /**
  * /kcsapi/api_get_member/material

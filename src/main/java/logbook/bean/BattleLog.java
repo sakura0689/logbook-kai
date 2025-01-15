@@ -20,7 +20,7 @@ import logbook.bean.BattleTypes.CombinedType;
 import logbook.bean.BattleTypes.IFormation;
 import logbook.bean.BattleTypes.IMidnightBattle;
 import logbook.internal.logger.LoggerHolder;
-import logbook.proxy.RequestMetaData;
+import logbook.net.RequestMetaData;
 import lombok.Data;
 
 /**

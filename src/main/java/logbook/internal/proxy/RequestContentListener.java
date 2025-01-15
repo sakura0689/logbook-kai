@@ -22,23 +22,23 @@ public final class RequestContentListener implements ContentListener {
         this.httpRequest = request;
     }
 
-    /*
+    /**
      * 必要なPOSTデータの場合キャプチャします
      */
     @Override
     public void onContent(Request request, ByteBuffer buffer) {
         int length = buffer.remaining();
 
-        if (((length > 0) && (length <= Filter.MAX_POST_FIELD_SIZE))) {
+        if (((length > 0) && (length <= CapturedHttpRequestResponseConst.MAX_POST_FIELD_SIZE))) {
             byte[] bytes = new byte[length];
             buffer.get(bytes);
 
-            CaptureHolder holder = (CaptureHolder) this.httpRequest.getAttribute(Filter.CONTENT_HOLDER);
-            if (holder == null) {
-                holder = new CaptureHolder();
-                this.httpRequest.setAttribute(Filter.CONTENT_HOLDER, holder);
+            CapturedHttpRequestResponse capturedHttpRequestResponse = (CapturedHttpRequestResponse) this.httpRequest.getAttribute(CapturedHttpRequestResponseConst.CONTENT_HOLDER);
+            if (capturedHttpRequestResponse == null) {
+                capturedHttpRequestResponse = new CapturedHttpRequestResponse();
+                this.httpRequest.setAttribute(CapturedHttpRequestResponseConst.CONTENT_HOLDER, capturedHttpRequestResponse);
             }
-            holder.putRequest(bytes);
+            capturedHttpRequestResponse.putOriginRequest(bytes);
         }
     }
 }

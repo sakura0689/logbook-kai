@@ -6,8 +6,8 @@ import javax.json.JsonObject;
 import logbook.bean.Useitem;
 import logbook.bean.UseitemCollection;
 import logbook.internal.util.JsonHelper;
-import logbook.proxy.RequestMetaData;
-import logbook.proxy.ResponseMetaData;
+import logbook.net.RequestMetaData;
+import logbook.net.ResponseMetaData;
 
 /**
  * /kcsapi/api_get_member/useitem

@@ -14,8 +14,8 @@ import logbook.bean.CombinedBattleSpMidnight;
 import logbook.bean.Ship;
 import logbook.bean.ShipCollection;
 import logbook.internal.kancolle.PhaseState;
-import logbook.proxy.RequestMetaData;
-import logbook.proxy.ResponseMetaData;
+import logbook.net.RequestMetaData;
+import logbook.net.ResponseMetaData;
 
 /**
  * /kcsapi/api_req_combined_battle/sp_midnight

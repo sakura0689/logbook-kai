@@ -38,8 +38,8 @@ import logbook.bean.UseitemMstCollection;
 import logbook.internal.Config;
 import logbook.internal.logger.LoggerHolder;
 import logbook.internal.util.JsonHelper;
-import logbook.proxy.RequestMetaData;
-import logbook.proxy.ResponseMetaData;
+import logbook.net.RequestMetaData;
+import logbook.net.ResponseMetaData;
 
 /**
  * /kcsapi/api_start2
