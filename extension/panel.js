@@ -40,14 +40,20 @@ chrome.devtools.network.onRequestFinished.addListener((request) => {
       const responseColor =
         encoding === "base64" ? "rgba(255, 200, 200, 0.5)" : "rgba(200, 220, 255, 0.5)";
 
-      // URIが"/kcs2/resources/"かつ、response timeが30ms以下の場合キャッシュとする
-      // TODO:もっとちゃんとした条件で判定したい
-      // NOTE:request.fromCacheがundefindになる
-      const isCacheLike = (uri.includes("/kcs2/") && request.time <= 30);
+      // URIが"/kcs2/"かつ、request.timings内の通信情報がない場合キャッシュからの取得とする
+      const isConnect = request.timings && request.timings.connect > 0 && request.timings.send > 0;
+      const isCacheLike = uri.includes("/kcs2/") && !isConnect;
 
       // 折り畳み時の背景色（キャッシュの場合は濃いグレー）
       const headerColor = isCacheLike ? "rgba(50, 50, 50, 0.8)" : "#eee";
       const endpointDisplay = isCacheLike ? `${endpoint} (Cache)` : `${endpoint} ${request.time.toFixed(3)}(ms)`;
+
+      const timings = request.timings
+        ? `
+          <h4>Timing Information:</h4>
+          <pre>${JSON.stringify(request.timings, null, 2)}</pre>
+        `
+        : "<p><strong>Timing Information:</strong> (No timing data available)</p>";
 
       const requestHtml = `
         <div class="request-header" style="cursor: pointer; background-color: ${headerColor};">
@@ -64,6 +70,7 @@ chrome.devtools.network.onRequestFinished.addListener((request) => {
           <pre>${JSON.stringify(queryParams, null, 2)}</pre>
           <h4>Response Body:</h4>
           <pre style="background-color: ${responseColor};">${content || "(No Response Body)"}</pre>
+          ${timings}
         </div>
       `;
 
