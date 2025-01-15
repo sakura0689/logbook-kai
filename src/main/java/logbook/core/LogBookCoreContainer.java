@@ -16,8 +16,10 @@ public class LogBookCoreContainer {
 
     private static final LogBookCoreContainer container = new LogBookCoreContainer();
 
+    /** plugin jarのリスト情報 */
     private List<JarBasedPlugin> plugins;
 
+    /** pluginのURL情報で初期化されたクラスローダー情報 */
     private URLClassLoader classLoader;
 
     private boolean initialized;
