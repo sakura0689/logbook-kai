@@ -27,7 +27,8 @@ import logbook.plugin.PluginContainer;
 public class AppQuestDurationTest {
     @Test
     public void test() throws IOException {
-        PluginContainer.getInstance().init(Collections.emptyList());
+        PluginContainer container = PluginContainer.getInstance();
+        container.init(Collections.emptyList());
         AppQuestDuration duration = new AppQuestDuration();
         Path p = Paths.get("./src/test/resources/logbook/bean/get_member_questlist.json");
         try (Reader reader = Files.newBufferedReader(p)) {

@@ -32,6 +32,17 @@ public class PluginContainer {
      */
     public synchronized void init(List<JarBasedPlugin> plugins) {
         if (!this.initialized) {
+            if (LoggerHolder.get().isDebugEnabled()) {
+                LoggerHolder.get().debug("プラグインコンテナの初期化");
+                if (plugins == null || plugins.size() == 0) {
+                    LoggerHolder.get().debug("プラグインコンテナの初期化:プラグイン情報がないのでDefaultで初期化します");
+                } else {
+                    for (JarBasedPlugin plugin : plugins) {
+                        LoggerHolder.get().debug("プラグインを検知 : " + plugin.getURL());
+                    }
+                }
+            }
+            
             URL[] urls = plugins.stream()
                     .map(JarBasedPlugin::getURL)
                     .toArray(URL[]::new);
