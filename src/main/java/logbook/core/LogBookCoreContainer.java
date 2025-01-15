@@ -28,9 +28,10 @@ public class LogBookCoreContainer {
     }
 
     /**
-     * プラグインコンテナを初期化します
+     * コンテナを初期化します
+     * プラグイン情報がある場合は、プラグインの情報も読み込める様にClassLoaderを初期化します
      *
-     * @param plugins プラグイン
+     * @param plugins プラグインのリスト
      */
     public synchronized void init(List<JarBasedPlugin> plugins) {
         if (!this.initialized) {
@@ -55,7 +56,7 @@ public class LogBookCoreContainer {
     }
 
     /**
-     * プラグインコンテナを閉じます
+     * コンテナが保持しているClassLoaderを閉じます
      *
      * @throws IOException {@link URLClassLoader#close()}
      */
@@ -64,7 +65,7 @@ public class LogBookCoreContainer {
     }
 
     /**
-     * このプラグインコンテナーが読み込んでいるプラグインのリストを返します
+     * このコンテナーが読み込んでいるプラグインのリストを返します
      * @return プラグインのリスト
      */
     public List<JarBasedPlugin> getPlugins() {
@@ -75,7 +76,7 @@ public class LogBookCoreContainer {
     }
 
     /**
-     * このプラグインコンテナーのクラスローダーを返します
+     * このコンテナーのクラスローダーを返します
      * @return クラスローダー
      */
     public ClassLoader getClassLoader() {
@@ -87,8 +88,8 @@ public class LogBookCoreContainer {
     }
 
     /**
-     * プラグインコンテナーのインスタンスを返します
-     * @return プラグインコンテナーのインスタンス
+     * コンテナーのインスタンスを返します
+     * @return インスタンス
      */
     public static LogBookCoreContainer getInstance() {
         return container;
