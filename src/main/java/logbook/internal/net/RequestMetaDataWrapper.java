@@ -1,4 +1,4 @@
-package logbook.internal.http;
+package logbook.internal.net;
 
 import java.io.IOException;
 import java.io.InputStream;
