@@ -31,6 +31,9 @@ public final class PluginServices {
      * @param <T> サービスプロバイダ
      * @param clazz プラグインのインターフェイス
      * @return clazzで指定されたサービスプロバイダインスタンス
+     * 
+     * @see https://docs.oracle.com/javase/jp/8/docs/api/java/util/ServiceLoader.html
+     * @see src/main/resource/META-INF/service
      */
     public static <T> Stream<T> instances(Class<T> clazz) {
         ServiceLoader<T> loader = ServiceLoader.load(clazz, getClassLoader());
