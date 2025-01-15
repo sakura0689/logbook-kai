@@ -9,8 +9,8 @@ import logbook.bean.Mapinfo;
 import logbook.bean.Mapinfo.AirBase;
 import logbook.bean.Mapinfo.PlaneInfo;
 import logbook.internal.util.JsonHelper;
-import logbook.proxy.RequestMetaData;
-import logbook.proxy.ResponseMetaData;
+import logbook.net.RequestMetaData;
+import logbook.net.ResponseMetaData;
 
 /**
  * /kcsapi/api_req_air_corps/set_plane

@@ -34,9 +34,9 @@ import logbook.bean.ShipMstCollection;
 import logbook.bean.Spritesmith;
 import logbook.internal.kancolle.ShipImageCacheStrategy;
 import logbook.internal.logger.LoggerHolder;
+import logbook.net.RequestMetaData;
+import logbook.net.ResponseMetaData;
 import logbook.proxy.ContentListenerSpi;
-import logbook.proxy.RequestMetaData;
-import logbook.proxy.ResponseMetaData;
 
 /**
  * 画像ファイルを処理します

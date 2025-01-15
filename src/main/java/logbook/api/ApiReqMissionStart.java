@@ -24,8 +24,8 @@ import logbook.internal.gui.Tools;
 import logbook.internal.kancolle.Missions;
 import logbook.internal.logger.LoggerHolder;
 import logbook.internal.util.AudiosUtil;
-import logbook.proxy.RequestMetaData;
-import logbook.proxy.ResponseMetaData;
+import logbook.net.RequestMetaData;
+import logbook.net.ResponseMetaData;
 
 /**
  * /kcsapi/api_req_mission/start

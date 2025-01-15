@@ -3,7 +3,7 @@ package logbook.bean;
 import java.io.Serializable;
 import java.util.List;
 
-import logbook.proxy.RequestMetaData;
+import logbook.net.RequestMetaData;
 import lombok.Data;
 
 /**

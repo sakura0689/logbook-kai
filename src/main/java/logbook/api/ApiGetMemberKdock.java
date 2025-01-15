@@ -11,8 +11,8 @@ import logbook.bean.CreateshipCollection;
 import logbook.bean.Kdock;
 import logbook.internal.log.CreateshipLogFormat;
 import logbook.internal.log.LogWriter;
-import logbook.proxy.RequestMetaData;
-import logbook.proxy.ResponseMetaData;
+import logbook.net.RequestMetaData;
+import logbook.net.ResponseMetaData;
 
 /**
  * /kcsapi/api_get_member/kdock

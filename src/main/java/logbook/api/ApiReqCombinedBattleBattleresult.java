@@ -27,8 +27,8 @@ import logbook.internal.log.BattleResultLogFormat;
 import logbook.internal.log.LogWriter;
 import logbook.internal.util.AudiosUtil;
 import logbook.internal.util.DateUtil;
-import logbook.proxy.RequestMetaData;
-import logbook.proxy.ResponseMetaData;
+import logbook.net.RequestMetaData;
+import logbook.net.ResponseMetaData;
 
 /**
  * /kcsapi/api_req_combined_battle/battleresult

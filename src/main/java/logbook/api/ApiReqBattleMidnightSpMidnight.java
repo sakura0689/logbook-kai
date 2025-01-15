@@ -12,10 +12,10 @@ import logbook.bean.BattleLog;
 import logbook.bean.BattleMidnightSpMidnight;
 import logbook.bean.BattleTypes.IFormation;
 import logbook.internal.kancolle.PhaseState;
+import logbook.net.RequestMetaData;
+import logbook.net.ResponseMetaData;
 import logbook.bean.Ship;
 import logbook.bean.ShipCollection;
-import logbook.proxy.RequestMetaData;
-import logbook.proxy.ResponseMetaData;
 
 /**
  * /kcsapi/api_req_battle_midnight/sp_midnight

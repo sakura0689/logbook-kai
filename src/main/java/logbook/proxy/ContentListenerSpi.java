@@ -1,5 +1,8 @@
 package logbook.proxy;
 
+import logbook.net.RequestMetaData;
+import logbook.net.ResponseMetaData;
+
 /**
  * レスポンスボディを受け入れるサービス・プロバイダ・インタフェース(SPI)です<br>
  * <br>

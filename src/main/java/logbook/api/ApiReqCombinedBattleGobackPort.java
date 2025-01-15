@@ -12,9 +12,9 @@ import logbook.bean.AppCondition;
 import logbook.bean.BattleLog;
 import logbook.bean.BattleResult;
 import logbook.bean.BattleResult.Escape;
+import logbook.net.RequestMetaData;
+import logbook.net.ResponseMetaData;
 import logbook.bean.Ship;
-import logbook.proxy.RequestMetaData;
-import logbook.proxy.ResponseMetaData;
 
 /**
  * /kcsapi/api_req_sortie/goback_port
