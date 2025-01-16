@@ -17,11 +17,11 @@ import org.eclipse.jetty.http.HttpHeader;
 import org.eclipse.jetty.http.HttpVersion;
 
 import logbook.bean.AppConfig;
+import logbook.core.LogBookCoreServices;
 import logbook.internal.ThreadManager;
 import logbook.internal.logger.LoggerHolder;
 import logbook.internal.net.RequestMetaDataWrapper;
 import logbook.internal.net.ResponseMetaDataWrapper;
-import logbook.plugin.PluginServices;
 import logbook.proxy.ContentListenerSpi;
 
 /**
@@ -169,7 +169,7 @@ public final class ReverseProxyServlet extends ProxyServlet {
     private void invoke(RequestMetaDataWrapper baseReq, ResponseMetaDataWrapper baseRes, CapturedHttpRequestResponse capturedHttpRequestResponse) {
         try {
             if (this.listeners == null) {
-                this.listeners = PluginServices.instances(ContentListenerSpi.class).collect(Collectors.toList());
+                this.listeners = LogBookCoreServices.instances(ContentListenerSpi.class).collect(Collectors.toList());
             }
             for (ContentListenerSpi listener : this.listeners) {
                 RequestMetaDataWrapper req = baseReq.clone();

@@ -20,11 +20,11 @@ import javax.json.JsonReader;
 import logbook.api.API;
 import logbook.api.APIListenerSpi;
 import logbook.common.Messages;
+import logbook.core.LogBookCoreServices;
 import logbook.internal.Tuple.Pair;
 import logbook.internal.logger.LoggerHolder;
 import logbook.net.RequestMetaData;
 import logbook.net.ResponseMetaData;
-import logbook.plugin.PluginServices;
 import logbook.proxy.ContentListenerSpi;
 
 /**
@@ -60,7 +60,7 @@ public final class APIListener implements ContentListenerSpi {
             return Stream.empty();
         };
         this.isAllEventExec = !this.allEventExec.isEmpty();
-        this.targetEventExec = PluginServices.instances(APIListenerSpi.class)
+        this.targetEventExec = LogBookCoreServices.instances(APIListenerSpi.class)
                 .flatMap(mapper)
                 .collect(Collectors.groupingBy(Pair::getKey));
         this.isDebugEnabled = LoggerHolder.get().isDebugEnabled();

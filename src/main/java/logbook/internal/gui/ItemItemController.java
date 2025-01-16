@@ -58,10 +58,10 @@ import logbook.bean.SlotitemEquiptype;
 import logbook.bean.SlotitemMst;
 import logbook.bean.SlotitemMstCollection;
 import logbook.common.Messages;
+import logbook.core.LogBookCoreServices;
 import logbook.internal.kancolle.Items;
 import logbook.internal.kancolle.Ships;
 import logbook.internal.logger.LoggerHolder;
-import logbook.plugin.PluginServices;
 import lombok.Data;
 
 /**
@@ -454,7 +454,7 @@ public class ItemItemController extends WindowController {
         protected void updateItem(Integer alv, boolean empty) {
             super.updateItem(alv, empty);
             if (!empty && alv != null && alv > 0) {
-                URL url = PluginServices.getResource("logbook/gui/alv" + alv + ".png");
+                URL url = LogBookCoreServices.getResource("logbook/gui/alv" + alv + ".png");
                 Pane pane = new StackPane(new ImageView(url.toString()));
                 pane.setPrefWidth(16);
                 pane.setPrefHeight(16);

@@ -51,6 +51,7 @@ import logbook.bean.SlotitemMst;
 import logbook.bean.SlotitemMstCollection;
 import logbook.common.Messages;
 import logbook.constants.SlotItemType;
+import logbook.core.LogBookCoreServices;
 import logbook.internal.logger.LoggerHolder;
 import logbook.internal.Tuple;
 import logbook.internal.bouyomi.BouyomiChanUtils;
@@ -58,7 +59,6 @@ import logbook.internal.bouyomi.BouyomiChanUtils.Type;
 import logbook.internal.kancolle.Ships;
 import logbook.internal.proxy.ProxyHolder;
 import logbook.internal.util.AudiosUtil;
-import logbook.plugin.PluginServices;
 import logbook.plugin.lifecycle.StartUp;
 
 /**
@@ -170,7 +170,7 @@ public class MainController extends WindowController {
             timeline.play();
 
             // 開始処理
-            PluginServices.instances(StartUp.class)
+            LogBookCoreServices.instances(StartUp.class)
                     .map(Thread::new)
                     .peek(t -> t.setDaemon(true))
                     .forEach(Thread::start);

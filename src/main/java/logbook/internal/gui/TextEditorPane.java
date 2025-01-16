@@ -15,8 +15,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
+import logbook.core.LogBookCoreServices;
 import logbook.internal.logger.LoggerHolder;
-import logbook.plugin.PluginServices;
 import netscape.javascript.JSObject;
 
 /**
@@ -47,7 +47,7 @@ class TextEditorPane extends AnchorPane {
     @FXML
     void initialize() {
         WebEngine engine = this.webview.getEngine();
-        engine.load(PluginServices.getResource("logbook/gui/text_editor_pane.html").toString());
+        engine.load(LogBookCoreServices.getResource("logbook/gui/text_editor_pane.html").toString());
         engine.getLoadWorker().stateProperty().addListener(
                 (ob, o, n) -> {
                     if (n == Worker.State.SUCCEEDED) {

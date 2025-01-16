@@ -31,9 +31,9 @@ import jdk.nashorn.api.scripting.JSObject;
 import logbook.bean.BattleLog;
 import logbook.bean.BattleLogScriptCollection;
 import logbook.bean.BattleLogScriptCollection.BattleLogScript;
+import logbook.core.LogBookCoreServices;
 import logbook.internal.kancolle.BattleLogs;
 import logbook.internal.logger.LoggerHolder;
-import logbook.plugin.PluginServices;
 
 /**
  * 高度な集計
@@ -84,7 +84,7 @@ public class BattleLogScriptController extends WindowController {
         script.setName("新しい集計");
 
         StringBuilder sb = new StringBuilder();
-        URL sample = PluginServices.getResource("logbook/gui/battlelog_script_sample.js");
+        URL sample = LogBookCoreServices.getResource("logbook/gui/battlelog_script_sample.js");
         try (BufferedReader reader = new BufferedReader(
                 new InputStreamReader(sample.openStream(), StandardCharsets.UTF_8))) {
             int len = 0;

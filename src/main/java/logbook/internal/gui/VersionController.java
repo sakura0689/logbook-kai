@@ -19,11 +19,11 @@ import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import logbook.core.LogBookCoreServices;
 import logbook.internal.ThreadManager;
 import logbook.internal.logger.LoggerHolder;
 import logbook.internal.updatecheck.CheckUpdate;
 import logbook.internal.updatecheck.Version;
-import logbook.plugin.PluginServices;
 
 /**
  * バージョン情報
@@ -55,7 +55,7 @@ public class VersionController extends WindowController {
             this.appName2.setText(Optional.ofNullable(this.getClass().getPackage())
                     .map(Package::getImplementationTitle)
                     .orElse(""));
-            try (InputStream in = PluginServices.getResourceAsStream("LICENSE")) {
+            try (InputStream in = LogBookCoreServices.getResourceAsStream("LICENSE")) {
                 try (BufferedReader reader = new BufferedReader(new InputStreamReader(in, StandardCharsets.UTF_8))) {
                     this.licensetext.setText(reader.lines()
                             .collect(Collectors.joining("\n")));

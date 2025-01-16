@@ -44,10 +44,10 @@ import logbook.bean.StypeCollection;
 import logbook.common.Messages;
 import logbook.constants.ShipType;
 import logbook.constants.SlotItemType;
+import logbook.core.LogBookCoreServices;
 import logbook.internal.Tuple;
 import logbook.internal.Tuple.Pair;
 import logbook.internal.logger.LoggerHolder;
-import logbook.plugin.PluginServices;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -190,7 +190,7 @@ public class Ships {
         SLOTITEM_TYPE_TP_MAP.put(SlotItemType.戦闘糧食, 1);
 
         // 付加的な情報の読み込み
-        InputStream is = PluginServices.getResourceAsStream("logbook/supplemental/ships.json");
+        InputStream is = LogBookCoreServices.getResourceAsStream("logbook/supplemental/ships.json");
         Optional<Map<Integer, ShipSupplementalInfo>> map = Optional.empty();
         if (is != null) {
             try {

@@ -1,4 +1,4 @@
-package logbook.plugin;
+package logbook.core;
 
 import java.io.InputStream;
 import java.net.URL;
@@ -8,8 +8,8 @@ import java.util.ServiceLoader;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
-import logbook.core.LogBookCoreContainer;
 import logbook.internal.logger.LoggerHolder;
+import logbook.plugin.JarBasedPlugin;
 
 /**
  * 航海日誌で実行されるプラグイン含めた実行クラスやリソース情報を提供するサービスです
@@ -18,9 +18,9 @@ import logbook.internal.logger.LoggerHolder;
  * 
  * @see logbook.internal.Launcher
  */
-public final class PluginServices {
+public final class LogBookCoreServices {
 
-    private PluginServices() {
+    private LogBookCoreServices() {
     }
 
     private static boolean isInitialized = false;

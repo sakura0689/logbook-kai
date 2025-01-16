@@ -27,9 +27,9 @@ import logbook.bean.SlotitemMst;
 import logbook.bean.SlotitemMstCollection;
 import logbook.common.Messages;
 import logbook.constants.SlotItemType;
+import logbook.core.LogBookCoreServices;
 import logbook.internal.ReferenceCache;
 import logbook.internal.logger.LoggerHolder;
-import logbook.plugin.PluginServices;
 import lombok.Data;
 
 /**
@@ -360,7 +360,7 @@ public class Items {
     public static Map<String, List<SlotitemEquiptype>> getCategories() {
         // 順番も保持したいので LinkedHashMap を使う
         LinkedHashMap<String, List<SlotitemEquiptype>> ret = new LinkedHashMap<String, List<SlotitemEquiptype>>(16);
-        try (InputStream is = PluginServices.getResourceAsStream("logbook/supplemental/equiptypes.json")) {
+        try (InputStream is = LogBookCoreServices.getResourceAsStream("logbook/supplemental/equiptypes.json")) {
             ObjectMapper mapper = new ObjectMapper();
             Equiptypes types = mapper.readValue(is, Equiptypes.class);
             Map<Integer, SlotitemEquiptype> map = SlotitemEquiptypeCollection.get().getEquiptypeMap();
