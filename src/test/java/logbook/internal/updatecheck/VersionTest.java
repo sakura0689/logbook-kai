@@ -1,4 +1,4 @@
-package logbook.internal;
+package logbook.internal.updatecheck;
 
 import static org.junit.Assert.assertEquals;
 
