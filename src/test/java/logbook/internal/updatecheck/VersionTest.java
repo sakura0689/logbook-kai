@@ -1,10 +1,8 @@
 package logbook.internal.updatecheck;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
-import org.junit.Test;
-
-import logbook.internal.updatecheck.Version;
+import org.junit.jupiter.api.Test;
 
 public class VersionTest {
 
