@@ -8,6 +8,8 @@ import java.nio.file.OpenOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
@@ -54,6 +56,9 @@ public class LogWriter<T> {
     /** オブジェクトを文字列に変換するコンバーター */
     private Function<T, String> converter;
 
+    /** 排他制御用のロック */
+    private final Lock lock = new ReentrantLock();
+    
     /**
      * ログ情報
      *
@@ -206,13 +211,21 @@ public class LogWriter<T> {
                 Files.createDirectories(parent);
             }
         }
-        try (OutputStream writer = Files.newOutputStream(path, this.options)) {
-            if (!Files.exists(path) || (Files.size(path) <= 0)) {
-                writer.write(this.header.getBytes(this.charset));
+        
+        // 排他制御の開始
+        lock.lock();
+        try {
+            try (OutputStream writer = Files.newOutputStream(path, this.options)) {
+                if (!Files.exists(path) || (Files.size(path) <= 0)) {
+                    writer.write(this.header.getBytes(this.charset));
+                    writer.write(this.delimiter.getBytes(this.charset));
+                }
+                writer.write(line.getBytes(this.charset));
                 writer.write(this.delimiter.getBytes(this.charset));
             }
-            writer.write(line.getBytes(this.charset));
-            writer.write(this.delimiter.getBytes(this.charset));
+        } finally {
+            // 排他制御の終了
+            lock.unlock();
         }
     }
 }
