@@ -1,13 +1,11 @@
-package logbook.plugin;
+package logbook.core;
 
 import java.util.Collections;
 
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
-import logbook.core.LogBookCoreContainer;
-
-class PluginContainerTest {
+class LogBookCoreContainerTest {
 
     @Test
     void test() {
