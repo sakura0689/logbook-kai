@@ -1,4 +1,4 @@
-package logbook.internal;
+package logbook.internal.kancolle;
 
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;

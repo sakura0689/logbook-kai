@@ -12,8 +12,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import logbook.bean.MapinfoMst;
 import logbook.bean.MapinfoMstCollection;
+import logbook.core.LogBookCoreServices;
 import logbook.internal.logger.LoggerHolder;
-import logbook.plugin.PluginServices;
 
 /**
  * セルNoと記号のマッピング
@@ -27,7 +27,7 @@ public class Mapping {
     private Map<String, String> mapping;
 
     private Mapping() {
-        InputStream is = PluginServices.getResourceAsStream("logbook/map/mapping.json");
+        InputStream is = LogBookCoreServices.getResourceAsStream("logbook/map/mapping.json");
         Map<String, String> mapping = Collections.emptyMap();
         if (is != null) {
             try {

@@ -15,8 +15,8 @@ import java.util.Locale;
 import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 
+import logbook.core.LogBookCoreServices;
 import logbook.internal.logger.LoggerHolder;
-import logbook.plugin.PluginServices;
 
 /**
  * 国際化対応
@@ -29,7 +29,7 @@ public class Messages {
     private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle.getBundle(
             BUNDLE_NAME,
             Locale.getDefault(),
-            PluginServices.getClassLoader(),
+            LogBookCoreServices.getClassLoader(),
             new UTF8Control());
 
     private Messages() {

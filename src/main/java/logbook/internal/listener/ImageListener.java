@@ -1,4 +1,4 @@
-package logbook.internal;
+package logbook.internal.listener;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -34,9 +34,9 @@ import logbook.bean.ShipMstCollection;
 import logbook.bean.Spritesmith;
 import logbook.internal.kancolle.ShipImageCacheStrategy;
 import logbook.internal.logger.LoggerHolder;
+import logbook.listener.ContentListenerSpi;
 import logbook.net.RequestMetaData;
 import logbook.net.ResponseMetaData;
-import logbook.proxy.ContentListenerSpi;
 
 /**
  * 画像ファイルを処理します
@@ -44,12 +44,24 @@ import logbook.proxy.ContentListenerSpi;
  */
 public class ImageListener implements ContentListenerSpi {
 
+    /**
+     * 処理対象URIか判定を行います
+     * 
+     * @param requestMetaData リクエストに含まれている情報
+     * @return 処理対象URIの場合true
+     */
     @Override
     public boolean test(RequestMetaData request) {
         String uri = request.getRequestURI();
         return uri.startsWith("/kcs2/resources/") || uri.startsWith("/kcs2/img/");
     }
 
+    /**
+     * レスポンスを処理します
+     * 
+     * @param requestMetaData リクエストに含まれている情報
+     * @param responseMetaData レスポンスに含まれている情報
+     */
     @Override
     public void accept(RequestMetaData request, ResponseMetaData response) {
         try {

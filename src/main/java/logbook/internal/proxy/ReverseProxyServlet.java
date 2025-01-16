@@ -17,12 +17,12 @@ import org.eclipse.jetty.http.HttpHeader;
 import org.eclipse.jetty.http.HttpVersion;
 
 import logbook.bean.AppConfig;
+import logbook.core.LogBookCoreServices;
 import logbook.internal.ThreadManager;
 import logbook.internal.logger.LoggerHolder;
 import logbook.internal.net.RequestMetaDataWrapper;
 import logbook.internal.net.ResponseMetaDataWrapper;
-import logbook.plugin.PluginServices;
-import logbook.proxy.ContentListenerSpi;
+import logbook.listener.ContentListenerSpi;
 
 /**
  * リバースプロキシ
@@ -163,13 +163,13 @@ public final class ReverseProxyServlet extends ProxyServlet {
      * @param baseRes WrapしたHttpResponse情報
      * @param capturedHttpRequestResponse キャプチャしたOriginのHttpRequest/HttpResponse情報
      * 
-     * @see logbook.internal.APIListener
-     * @see logbook.internal.ImageListener
+     * @see logbook.internal.listener.APIListener
+     * @see logbook.internal.listener.ImageListener
      */
     private void invoke(RequestMetaDataWrapper baseReq, ResponseMetaDataWrapper baseRes, CapturedHttpRequestResponse capturedHttpRequestResponse) {
         try {
             if (this.listeners == null) {
-                this.listeners = PluginServices.instances(ContentListenerSpi.class).collect(Collectors.toList());
+                this.listeners = LogBookCoreServices.getServiceProviders(ContentListenerSpi.class).collect(Collectors.toList());
             }
             for (ContentListenerSpi listener : this.listeners) {
                 RequestMetaDataWrapper req = baseReq.clone();

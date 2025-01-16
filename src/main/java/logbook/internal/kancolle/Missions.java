@@ -18,8 +18,8 @@ import logbook.bean.AppConfig;
 import logbook.bean.Mission;
 import logbook.bean.MissionCollection;
 import logbook.bean.MissionCondition;
+import logbook.core.LogBookCoreServices;
 import logbook.internal.ReferenceCache;
-import logbook.plugin.PluginServices;
 
 /**
  * 遠征
@@ -62,7 +62,7 @@ public class Missions {
             mission = Missions.getMission(34);
         }
 
-        InputStream is = PluginServices
+        InputStream is = LogBookCoreServices
                 .getResourceAsStream("logbook/mission/" + mission.getMapareaId() + "/" + mission.getDispNo() + ".json");
         if (is == null) {
             return Optional.empty();

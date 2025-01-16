@@ -11,7 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import logbook.bean.AppConfig;
-import logbook.plugin.PluginServices;
+import logbook.core.LogBookCoreServices;
 
 public final class InternalFXMLLoader {
 
@@ -23,20 +23,20 @@ public final class InternalFXMLLoader {
     }
 
     public static FXMLLoader load(String name) throws IOException {
-        URL url = PluginServices.getResource(name);
+        URL url = LogBookCoreServices.getResource(name);
         return load(url);
     }
 
     public static FXMLLoader load(URL url) throws IOException {
         FXMLLoader loader = new FXMLLoader(url);
-        loader.setClassLoader(PluginServices.getClassLoader());
+        loader.setClassLoader(LogBookCoreServices.getClassLoader());
         return loader;
     }
 
     public static Parent setGlobal(Parent root) {
         String fontSize = AppConfig.get().getFontSize();
         if (fontSize != null && !"default".equals(fontSize)) {
-            URL url = PluginServices.getResource("logbook/gui/application_" + fontSize + ".css");
+            URL url = LogBookCoreServices.getResource("logbook/gui/application_" + fontSize + ".css");
             if (url != null) {
                 root.getStylesheets().add(url.toString());
             }

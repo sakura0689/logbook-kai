@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import logbook.plugin.PluginServices;
+import logbook.core.LogBookCoreServices;
 
 /**
  * GUIを持つプラグインのインターフェイスです
@@ -37,7 +37,7 @@ public interface Plugin<T> {
      * @return GUI要素
      */
     public static <T extends Plugin<R>, R> List<R> getContent(Class<T> clazz) {
-        return PluginServices.instances(clazz)
+        return LogBookCoreServices.getServiceProviders(clazz)
                 .sorted(Comparator.comparingInt(Plugin::sortOrder))
                 .map(Plugin::getContent)
                 .filter(Objects::nonNull)

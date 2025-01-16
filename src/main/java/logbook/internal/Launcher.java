@@ -1,6 +1,5 @@
 package logbook.internal;
 
-import java.beans.ExceptionListener;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -11,11 +10,12 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.stream.Collectors;
 
 import logbook.bean.AppConfig;
+import logbook.core.LogBookCoreServices;
 import logbook.internal.gui.Main;
 import logbook.internal.logger.LoggerHolder;
 import logbook.internal.proxy.ProxyHolder;
 import logbook.plugin.JarBasedPlugin;
-import logbook.plugin.PluginContainer;
+import logbook.plugin.PluginInitExceptionHolder;
 
 /**
  * アプリケーション
@@ -65,26 +65,33 @@ public final class Launcher {
      *
      * @param args アプリケーション引数
      */
-    void initPlugin(String[] args) {
-        ExceptionListener listener = e -> LoggerHolder.get().warn("プラグインの初期化中に例外が発生", e); //$NON-NLS-1$
-
+    void initPlugin(String[] args) throws Exception {
+        PluginInitExceptionHolder pluginInitExceptionHolder = new PluginInitExceptionHolder();
+        
         Path dir = Paths.get(AppConfig.get().getPluginsDir());
-        PluginContainer container = PluginContainer.getInstance();
-
         List<JarBasedPlugin> plugins = Collections.emptyList();
         if (AppConfig.get().isUsePlugin() && Files.isDirectory(dir)) {
             try {
                 plugins = Files.list(dir)
                         .filter(Files::isRegularFile)
-                        .map(p -> JarBasedPlugin.toJarBasedPlugin(p, listener))
+                        .map(p -> JarBasedPlugin.toJarBasedPlugin(p, pluginInitExceptionHolder))
                         .filter(Objects::nonNull)
                         .collect(Collectors.toList());
 
             } catch (Exception e) {
-                listener.exceptionThrown(e);
+                pluginInitExceptionHolder.putException(e);
+            } finally {
+                if (pluginInitExceptionHolder.isInitError()) {
+                    List<Exception> errprlist = pluginInitExceptionHolder.getException();
+                    LoggerHolder.get().warn("プラグイン初期化処理でエラー発生");
+                    for (Exception e : errprlist) {
+                        LoggerHolder.get().warn("プラグイン初期化処理エラー", e);
+                    }
+                    LoggerHolder.get().warn("プラグイン情報を無視し、処理を継続します");
+                }
             }
         }
-        container.init(plugins);
+        LogBookCoreServices.init(plugins);
     }
 
     /**
@@ -122,8 +129,7 @@ public final class Launcher {
      */
     private void exitPlugin() {
         try {
-            PluginContainer container = PluginContainer.getInstance();
-            container.close();
+            LogBookCoreServices.closeContainer();
         } catch (Exception e) {
             LoggerHolder.get().warn("プラグインのクローズ中に例外が発生", e); //$NON-NLS-1$
         }

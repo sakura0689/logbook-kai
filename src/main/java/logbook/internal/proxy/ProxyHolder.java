@@ -3,8 +3,8 @@ package logbook.internal.proxy;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import logbook.core.LogBookCoreServices;
 import logbook.internal.logger.LoggerHolder;
-import logbook.plugin.PluginServices;
 import logbook.proxy.ProxyServerSpi;
 
 /**
@@ -18,7 +18,7 @@ public class ProxyHolder {
     static {
         Thread thread = null;
         try {
-            List<ProxyServerSpi> proxies = PluginServices.instances(ProxyServerSpi.class)
+            List<ProxyServerSpi> proxies = LogBookCoreServices.getServiceProviders(ProxyServerSpi.class)
                     .collect(Collectors.toList());
             ProxyServerSpi impl = null;
             for (ProxyServerSpi proxy : proxies) {

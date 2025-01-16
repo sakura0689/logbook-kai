@@ -11,11 +11,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import logbook.bean.AppBouyomiConfig;
 import logbook.bean.AppBouyomiConfig.AppBouyomiText;
+import logbook.core.LogBookCoreServices;
 import logbook.internal.ThreadManager;
 import logbook.internal.Tuple;
 import logbook.internal.Tuple.Pair;
 import logbook.internal.logger.LoggerHolder;
-import logbook.plugin.PluginServices;
 import lombok.Data;
 
 public class BouyomiChanUtils {
@@ -71,7 +71,7 @@ public class BouyomiChanUtils {
     public static BouyomiDefaultSettings getDefaultSettings() {
         ObjectMapper mapper = new ObjectMapper();
         BouyomiDefaultSettings settings;
-        try (InputStream is = PluginServices.getResourceAsStream("logbook/bouyomi/settings.json")) {
+        try (InputStream is = LogBookCoreServices.getResourceAsStream("logbook/bouyomi/settings.json")) {
             settings = mapper.readValue(is, BouyomiDefaultSettings.class);
         } catch (Exception e) {
             LoggerHolder.get().warn("設定ファイルの読み込みに失敗しました", e);

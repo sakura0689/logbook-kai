@@ -40,6 +40,7 @@ import javafx.stage.Screen;
 import javafx.util.Duration;
 import logbook.bean.AppBouyomiConfig;
 import logbook.bean.AppBouyomiConfig.AppBouyomiText;
+import logbook.core.LogBookCoreServices;
 import logbook.bean.AppConfig;
 import logbook.bean.WindowLocation;
 import logbook.internal.Config;
@@ -53,8 +54,6 @@ import logbook.internal.bouyomi.BouyomiChanUtils.Params;
 import logbook.internal.kancolle.ShipImageCacheStrategy;
 import logbook.internal.logger.LoggerHolder;
 import logbook.internal.util.ToStringConverter;
-import logbook.plugin.PluginContainer;
-import logbook.plugin.PluginServices;
 
 /**
  * 設定コントローラー
@@ -485,8 +484,7 @@ public class ConfigController extends WindowController {
         this.pluginLicense.setCellValueFactory(new PropertyValueFactory<>("license"));
         this.pluginLocation.setCellValueFactory(new PropertyValueFactory<>("location"));
 
-        PluginContainer.getInstance()
-                .getPlugins()
+        LogBookCoreServices.getPlugins()
                 .stream()
                 .map(DetailPlugin::toDetailPlugin)
                 .forEach(this.plugins::add);
@@ -749,12 +747,12 @@ public class ConfigController extends WindowController {
         try {
             ObjectMapper mapper = new ObjectMapper();
             List<?> list;
-            try (InputStream is = PluginServices.getResourceAsStream("logbook/capture_options/list.json")) {
+            try (InputStream is = LogBookCoreServices.getResourceAsStream("logbook/capture_options/list.json")) {
                 list = mapper.readValue(is, List.class);
             }
             for (Object path : list) {
                 Map<?, ?> option;
-                try (InputStream is = PluginServices.getResourceAsStream(path.toString())) {
+                try (InputStream is = LogBookCoreServices.getResourceAsStream(path.toString())) {
                     option = mapper.readValue(is, Map.class);
                 }
                 this.ffmpegTemplate.getItems().add(option);

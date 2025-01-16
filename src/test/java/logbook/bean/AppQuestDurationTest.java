@@ -19,15 +19,22 @@ import javax.json.JsonObject;
 import javax.json.JsonReader;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 import logbook.bean.AppQuestDuration.Duration;
-import logbook.plugin.PluginContainer;
+import logbook.core.LogBookCoreContainer;
 
 public class AppQuestDurationTest {
+    
+    @Before
+    public void before() {
+        LogBookCoreContainer container = LogBookCoreContainer.getInstance();
+        container.init(Collections.emptyList());
+    }
+    
     @Test
-    public void test() throws IOException {
-        PluginContainer.getInstance().init(Collections.emptyList());
+    public void test() throws IOException, Exception {
         AppQuestDuration duration = new AppQuestDuration();
         Path p = Paths.get("./src/test/resources/logbook/bean/get_member_questlist.json");
         try (Reader reader = Files.newBufferedReader(p)) {

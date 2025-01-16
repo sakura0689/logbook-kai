@@ -62,8 +62,8 @@ import javafx.stage.WindowEvent;
 import javafx.util.Duration;
 import logbook.bean.AppConfig;
 import logbook.bean.WindowLocation;
+import logbook.core.LogBookCoreServices;
 import logbook.internal.log.LogWriter;
-import logbook.plugin.PluginServices;
 
 /**
  * JavaFx Tools
@@ -93,7 +93,7 @@ public class Tools {
                     "logbook/gui/icon_16x16.png" };
 
             for (String uri : uris) {
-                try (InputStream is = PluginServices.getResourceAsStream(uri)) {
+                try (InputStream is = LogBookCoreServices.getResourceAsStream(uri)) {
                     stage.getIcons().add(new Image(is));
                 }
             }

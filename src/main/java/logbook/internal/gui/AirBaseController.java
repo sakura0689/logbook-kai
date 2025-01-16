@@ -47,12 +47,12 @@ import logbook.bean.MapareaCollection;
 import logbook.bean.Mapinfo;
 import logbook.bean.Mapinfo.AirBase;
 import logbook.bean.Mapinfo.PlaneInfo;
+import logbook.core.LogBookCoreServices;
 import logbook.bean.SlotItem;
 import logbook.bean.SlotItemCollection;
 import logbook.internal.kancolle.AirBases;
 import logbook.internal.kancolle.Items;
 import logbook.internal.logger.LoggerHolder;
-import logbook.plugin.PluginServices;
 
 /**
  * 基地航空隊
@@ -739,9 +739,9 @@ public class AirBaseController extends WindowController {
                 if (cond != null) {
                     URL url = null;
                     if (cond == 2) {
-                        url = PluginServices.getResource("logbook/gui/cond_orange.png");
+                        url = LogBookCoreServices.getResource("logbook/gui/cond_orange.png");
                     } else if (cond == 3) {
-                        url = PluginServices.getResource("logbook/gui/cond_red.png");
+                        url = LogBookCoreServices.getResource("logbook/gui/cond_red.png");
                     }
                     if (url != null) {
                         this.setGraphic(new ImageView(new Image(url.toString())));

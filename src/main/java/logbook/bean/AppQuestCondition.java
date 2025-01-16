@@ -13,12 +13,12 @@ import java.util.stream.IntStream;
 import com.fasterxml.jackson.core.JsonParser.Feature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import logbook.core.LogBookCoreServices;
 import logbook.internal.kancolle.Operator;
 import logbook.internal.kancolle.QuestCollect;
 import logbook.internal.kancolle.QuestCollect.Count;
 import logbook.internal.kancolle.QuestCollect.Rank;
 import logbook.internal.logger.LoggerHolder;
-import logbook.plugin.PluginServices;
 import lombok.Data;
 
 /**
@@ -53,7 +53,7 @@ public class AppQuestCondition implements Predicate<QuestCollect> {
      * @return 任務条件設定
      */
     public static AppQuestCondition loadFromResource(int questNo) {
-        InputStream is = PluginServices.getQuestResourceAsStream(questNo);
+        InputStream is = LogBookCoreServices.getQuestResourceAsStream(questNo);
         if (is != null) {
             try {
                 try {

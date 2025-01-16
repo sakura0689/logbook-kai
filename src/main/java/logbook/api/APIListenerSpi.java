@@ -13,7 +13,7 @@ import logbook.net.ResponseMetaData;
  * 実装クラスの完全修飾名を記述します
  *
  * @see logbook.api.API
- * @see logbook.internal.APIListener
+ * @see logbook.internal.listener.APIListener
  */
 public interface APIListenerSpi {
 
