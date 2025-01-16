@@ -7,8 +7,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import javax.json.JsonObject;
-
+import jakarta.json.JsonObject;
 import logbook.bean.AppCondition;
 import logbook.bean.DeckPort;
 import logbook.bean.DeckPortCollection;

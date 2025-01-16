@@ -4,8 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
 
-import javax.json.JsonObject;
-
+import jakarta.json.JsonObject;
 import logbook.constants.ShipType;
 import logbook.constants.SlotItemType;
 import logbook.internal.kancolle.Ships;

@@ -2,14 +2,13 @@ package logbook.api;
 
 import java.util.Optional;
 
-import javax.json.JsonObject;
-
+import jakarta.json.JsonObject;
 import logbook.bean.AppCondition;
 import logbook.bean.BattleLog;
 import logbook.bean.BattleTypes.IFormation;
+import logbook.bean.SortieBattle;
 import logbook.net.RequestMetaData;
 import logbook.net.ResponseMetaData;
-import logbook.bean.SortieBattle;
 
 /**
  * /kcsapi/api_req_practice/battle

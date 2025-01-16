@@ -3,8 +3,7 @@ package logbook.api;
 import java.util.List;
 import java.util.Map;
 
-import javax.json.JsonObject;
-
+import jakarta.json.JsonObject;
 import logbook.bean.Ship;
 import logbook.bean.ShipCollection;
 import logbook.internal.util.JsonHelper;

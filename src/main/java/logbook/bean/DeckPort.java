@@ -6,10 +6,9 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import javax.json.JsonObject;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.json.JsonObject;
 import logbook.internal.kancolle.Ships;
 import logbook.internal.util.JsonHelper;
 import lombok.Data;

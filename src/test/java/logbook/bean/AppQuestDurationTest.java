@@ -14,14 +14,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import javax.json.Json;
-import javax.json.JsonObject;
-import javax.json.JsonReader;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import jakarta.json.Json;
+import jakarta.json.JsonObject;
+import jakarta.json.JsonReader;
 import logbook.bean.AppQuestDuration.Duration;
 import logbook.core.LogBookCoreContainer;
 

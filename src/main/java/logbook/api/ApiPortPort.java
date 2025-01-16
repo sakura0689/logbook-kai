@@ -11,9 +11,8 @@ import java.util.Set;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-import javax.json.JsonArray;
-import javax.json.JsonObject;
-
+import jakarta.json.JsonArray;
+import jakarta.json.JsonObject;
 import javafx.application.Platform;
 import logbook.bean.AppBouyomiConfig;
 import logbook.bean.AppCondition;

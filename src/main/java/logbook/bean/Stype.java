@@ -4,8 +4,7 @@ import java.io.Serializable;
 import java.util.Map;
 import java.util.function.Function;
 
-import javax.json.JsonObject;
-
+import jakarta.json.JsonObject;
 import logbook.internal.util.JsonHelper;
 import lombok.Data;
 

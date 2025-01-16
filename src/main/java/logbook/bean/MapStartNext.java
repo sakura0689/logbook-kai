@@ -3,10 +3,9 @@ package logbook.bean;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.json.JsonObject;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.json.JsonObject;
 import logbook.internal.util.JsonHelper;
 import lombok.Data;
 

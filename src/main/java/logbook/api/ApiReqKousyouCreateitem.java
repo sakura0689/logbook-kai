@@ -2,8 +2,7 @@ package logbook.api;
 
 import java.util.Map;
 
-import javax.json.JsonObject;
-
+import jakarta.json.JsonObject;
 import logbook.bean.Createitem;
 import logbook.bean.SlotItem;
 import logbook.bean.SlotItemCollection;

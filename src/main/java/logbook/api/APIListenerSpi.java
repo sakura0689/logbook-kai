@@ -1,7 +1,6 @@
 package logbook.api;
 
-import javax.json.JsonObject;
-
+import jakarta.json.JsonObject;
 import logbook.net.RequestMetaData;
 import logbook.net.ResponseMetaData;
 

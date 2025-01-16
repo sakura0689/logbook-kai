@@ -2,8 +2,7 @@ package logbook.api;
 
 import java.util.Optional;
 
-import javax.json.JsonObject;
-
+import jakarta.json.JsonObject;
 import logbook.bean.AppCondition;
 import logbook.net.RequestMetaData;
 import logbook.net.ResponseMetaData;

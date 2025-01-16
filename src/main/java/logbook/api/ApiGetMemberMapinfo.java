@@ -1,7 +1,6 @@
 package logbook.api;
 
-import javax.json.JsonObject;
-
+import jakarta.json.JsonObject;
 import logbook.bean.Mapinfo;
 import logbook.internal.util.JsonHelper;
 import logbook.net.RequestMetaData;
