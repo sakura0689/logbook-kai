@@ -90,17 +90,17 @@
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-server</artifactId>
-            <version>9.0.7.v20131107</version>
+            <version>9.1.6.v20160112</version>
         </dependency>
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-servlet</artifactId>
-            <version>9.0.7.v20131107</version>
+            <version>9.1.6.v20160112</version>
         </dependency>
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-proxy</artifactId>
-            <version>9.0.7.v20131107</version>
+            <version>9.1.6.v20160112</version>
         </dependency>
         <dependency>
             <groupId>org.controlsfx</groupId>
