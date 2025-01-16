@@ -1,4 +1,4 @@
-package logbook.internal;
+package logbook.internal.listener;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -21,11 +21,13 @@ import logbook.api.API;
 import logbook.api.APIListenerSpi;
 import logbook.common.Messages;
 import logbook.core.LogBookCoreServices;
+import logbook.internal.ThreadManager;
+import logbook.internal.Tuple;
 import logbook.internal.Tuple.Pair;
 import logbook.internal.logger.LoggerHolder;
+import logbook.listener.ContentListenerSpi;
 import logbook.net.RequestMetaData;
 import logbook.net.ResponseMetaData;
-import logbook.proxy.ContentListenerSpi;
 
 /**
  * APIを受け取りJSONをAPIListenerSpiを実装したサービスプロバイダに送ります
@@ -80,12 +82,24 @@ public final class APIListener implements ContentListenerSpi {
         }
     }
 
+    /**
+     * 処理対象URIか判定を行います
+     * 
+     * @param requestMetaData リクエストに含まれている情報
+     * @return 処理対象URIの場合true
+     */
     @Override
     public boolean test(RequestMetaData requestMetaData) {
         String uri = requestMetaData.getRequestURI();
         return uri.startsWith("/kcsapi/") && (this.isAllEventExec || this.targetEventExec.containsKey(uri));
     }
 
+    /**
+     * レスポンスを処理します
+     * 
+     * @param requestMetaData リクエストに含まれている情報
+     * @param responseMetaData レスポンスに含まれている情報
+     */
     @Override
     public void accept(RequestMetaData requestMetaData, ResponseMetaData responseMetaData) {
         try {

@@ -22,7 +22,7 @@ import logbook.internal.ThreadManager;
 import logbook.internal.logger.LoggerHolder;
 import logbook.internal.net.RequestMetaDataWrapper;
 import logbook.internal.net.ResponseMetaDataWrapper;
-import logbook.proxy.ContentListenerSpi;
+import logbook.listener.ContentListenerSpi;
 
 /**
  * リバースプロキシ
@@ -163,8 +163,8 @@ public final class ReverseProxyServlet extends ProxyServlet {
      * @param baseRes WrapしたHttpResponse情報
      * @param capturedHttpRequestResponse キャプチャしたOriginのHttpRequest/HttpResponse情報
      * 
-     * @see logbook.internal.APIListener
-     * @see logbook.internal.ImageListener
+     * @see logbook.internal.listener.APIListener
+     * @see logbook.internal.listener.ImageListener
      */
     private void invoke(RequestMetaDataWrapper baseReq, ResponseMetaDataWrapper baseRes, CapturedHttpRequestResponse capturedHttpRequestResponse) {
         try {

@@ -9,8 +9,8 @@ import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
 import logbook.api.APIListenerSpi;
+import logbook.listener.ContentListenerSpi;
 import logbook.plugin.lifecycle.StartUp;
-import logbook.proxy.ContentListenerSpi;
 import logbook.proxy.ProxyServerSpi;
 
 class LogBookCoreServicesTest {
