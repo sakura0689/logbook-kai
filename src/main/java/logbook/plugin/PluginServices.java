@@ -2,31 +2,70 @@ package logbook.plugin;
 
 import java.io.InputStream;
 import java.net.URL;
+import java.util.Collections;
+import java.util.List;
 import java.util.ServiceLoader;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
 import logbook.core.LogBookCoreContainer;
+import logbook.internal.logger.LoggerHolder;
 
 /**
- * サービスプロバイダに関するメソッドを集めたクラス
+ * 航海日誌で実行されるプラグイン含めた実行クラスやリソース情報を提供するサービスです
  *
+ * 初期化処理は、logbook.internal.Launcherで実行されます
+ * 
+ * @see logbook.internal.Launcher
  */
 public final class PluginServices {
 
     private PluginServices() {
     }
 
+    private static boolean isInitialized = false;
+    
     /**
-     * プラグインコンテナーのクラスローダーを返します
+     * LogBookCoreContainerの初期化処理を行います
+     * 
+     * @param plugins
+     * 
+     * @see logbook.internal.Launcher
+     */
+    public static synchronized void init(List<JarBasedPlugin> plugins) throws Exception {
+        if (isInitialized) {
+            LoggerHolder.get().error("initが呼べるのは一度だけです");
+            throw new Exception("PluginServices.initを呼べるのは一度だけです");
+        }
+        
+        LogBookCoreContainer container = LogBookCoreContainer.getInstance();
+        if (plugins == null) {
+            plugins = Collections.emptyList();
+        }
+        container.init(getPlugins());
+        isInitialized = true;
+    }
+    
+    /**
+     * クラスローダーを返却します
      *
      * @return クラスローダー
      */
     public static ClassLoader getClassLoader() {
-        LogBookCoreContainer container = LogBookCoreContainer.getInstance(); 
+        LogBookCoreContainer container = LogBookCoreContainer.getInstance();
         return container.getClassLoader();
     }
-
+    
+    /**
+     * プラグイン一覧を返却します
+     *
+     * @return クラスローダー
+     */
+    public static List<JarBasedPlugin> getPlugins() {
+        LogBookCoreContainer container = LogBookCoreContainer.getInstance();
+        return container.getPlugins();
+    }
+    
     /**
      * サービスプロバイダを取得します。
      *
@@ -38,11 +77,12 @@ public final class PluginServices {
      * @see src/main/resource/META-INF/service
      */
     public static <T> Stream<T> instances(Class<T> clazz) {
-        ServiceLoader<T> loader = ServiceLoader.load(clazz, getClassLoader());
+        LogBookCoreContainer container = LogBookCoreContainer.getInstance();
+        ServiceLoader<T> loader = ServiceLoader.load(clazz, container.getClassLoader());
 
         return StreamSupport.stream(loader.spliterator(), false);
     }
-
+    
     /**
      * 指定された名前を持つリソースを検索します。
      *
@@ -51,7 +91,9 @@ public final class PluginServices {
      * @see ClassLoader#getResource(String)
      */
     public static URL getResource(String name) {
-        return getClassLoader().getResource(name);
+        LogBookCoreContainer container = LogBookCoreContainer.getInstance();
+        ClassLoader classLoader = container.getClassLoader();
+        return classLoader.getResource(name);
     }
 
     /**
@@ -62,7 +104,9 @@ public final class PluginServices {
      * @see ClassLoader#getResourceAsStream(String)
      */
     public static InputStream getResourceAsStream(String name) {
-        return getClassLoader().getResourceAsStream(name);
+        LogBookCoreContainer container = LogBookCoreContainer.getInstance();
+        ClassLoader classLoader = container.getClassLoader();
+        return classLoader.getResourceAsStream(name);
     }
 
     /**
@@ -87,5 +131,13 @@ public final class PluginServices {
     public static InputStream getQuestResourceAsStream(int questNo) {
         return getResourceAsStream("logbook/quest/" + questNo + ".json");
     }
-
+    
+    /**
+     * コンテナを終了します
+     * @throws Exception
+     */
+    public static synchronized void closeContainer() throws Exception {
+        LogBookCoreContainer container = LogBookCoreContainer.getInstance();
+        container.close();
+    }
 }

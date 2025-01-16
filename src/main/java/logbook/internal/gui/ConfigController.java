@@ -40,7 +40,6 @@ import javafx.stage.Screen;
 import javafx.util.Duration;
 import logbook.bean.AppBouyomiConfig;
 import logbook.bean.AppBouyomiConfig.AppBouyomiText;
-import logbook.core.LogBookCoreContainer;
 import logbook.bean.AppConfig;
 import logbook.bean.WindowLocation;
 import logbook.internal.Config;
@@ -485,8 +484,7 @@ public class ConfigController extends WindowController {
         this.pluginLicense.setCellValueFactory(new PropertyValueFactory<>("license"));
         this.pluginLocation.setCellValueFactory(new PropertyValueFactory<>("location"));
 
-        LogBookCoreContainer.getInstance()
-                .getPlugins()
+        PluginServices.getPlugins()
                 .stream()
                 .map(DetailPlugin::toDetailPlugin)
                 .forEach(this.plugins::add);
