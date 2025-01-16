@@ -42,7 +42,7 @@ public final class LogBookCoreServices {
         if (plugins == null) {
             plugins = Collections.emptyList();
         }
-        container.init(getPlugins());
+        container.init(plugins);
         isInitialized = true;
     }
     
