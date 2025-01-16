@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
 import logbook.api.APIListenerSpi;
@@ -14,15 +15,13 @@ import logbook.proxy.ProxyServerSpi;
 
 class LogBookCoreServicesTest {
 
-    @Test
-    void testInit() throws Exception {
+    @Before
+    void before() throws Exception {
         LogBookCoreServices.init(Collections.emptyList());
     }
     
     @Test
     void testGetServiceProviders() throws Exception {
-        LogBookCoreServices.init(Collections.emptyList());
-        
         List<APIListenerSpi> apiListenerSpiList =  LogBookCoreServices.getServiceProviders(APIListenerSpi.class).collect(Collectors.toList());
         Assert.assertEquals(67, apiListenerSpiList.size());
         
