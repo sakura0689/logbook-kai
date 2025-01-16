@@ -169,7 +169,7 @@ public final class ReverseProxyServlet extends ProxyServlet {
     private void invoke(RequestMetaDataWrapper baseReq, ResponseMetaDataWrapper baseRes, CapturedHttpRequestResponse capturedHttpRequestResponse) {
         try {
             if (this.listeners == null) {
-                this.listeners = LogBookCoreServices.instances(ContentListenerSpi.class).collect(Collectors.toList());
+                this.listeners = LogBookCoreServices.getServiceProviders(ContentListenerSpi.class).collect(Collectors.toList());
             }
             for (ContentListenerSpi listener : this.listeners) {
                 RequestMetaDataWrapper req = baseReq.clone();

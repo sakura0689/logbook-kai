@@ -170,7 +170,7 @@ public class MainController extends WindowController {
             timeline.play();
 
             // 開始処理
-            LogBookCoreServices.instances(StartUp.class)
+            LogBookCoreServices.getServiceProviders(StartUp.class)
                     .map(Thread::new)
                     .peek(t -> t.setDaemon(true))
                     .forEach(Thread::start);

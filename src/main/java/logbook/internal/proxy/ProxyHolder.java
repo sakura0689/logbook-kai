@@ -18,7 +18,7 @@ public class ProxyHolder {
     static {
         Thread thread = null;
         try {
-            List<ProxyServerSpi> proxies = LogBookCoreServices.instances(ProxyServerSpi.class)
+            List<ProxyServerSpi> proxies = LogBookCoreServices.getServiceProviders(ProxyServerSpi.class)
                     .collect(Collectors.toList());
             ProxyServerSpi impl = null;
             for (ProxyServerSpi proxy : proxies) {

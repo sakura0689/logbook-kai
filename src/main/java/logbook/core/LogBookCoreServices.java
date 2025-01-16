@@ -67,7 +67,8 @@ public final class LogBookCoreServices {
     }
     
     /**
-     * サービスプロバイダを取得します。
+     * 引数で渡されたクラスの実装サービスプロバイダを取得します。
+     * 設定ファイルは、src/main/resource/META-INF/service以下に存在する必要があります
      *
      * @param <T> サービスプロバイダ
      * @param clazz プラグインのインターフェイス
@@ -76,7 +77,7 @@ public final class LogBookCoreServices {
      * @see https://docs.oracle.com/javase/jp/8/docs/api/java/util/ServiceLoader.html
      * @see src/main/resource/META-INF/service
      */
-    public static <T> Stream<T> instances(Class<T> clazz) {
+    public static <T> Stream<T> getServiceProviders(Class<T> clazz) {
         LogBookCoreContainer container = LogBookCoreContainer.getInstance();
         ServiceLoader<T> loader = ServiceLoader.load(clazz, container.getClassLoader());
 

@@ -60,7 +60,7 @@ public final class APIListener implements ContentListenerSpi {
             return Stream.empty();
         };
         this.isAllEventExec = !this.allEventExec.isEmpty();
-        this.targetEventExec = LogBookCoreServices.instances(APIListenerSpi.class)
+        this.targetEventExec = LogBookCoreServices.getServiceProviders(APIListenerSpi.class)
                 .flatMap(mapper)
                 .collect(Collectors.groupingBy(Pair::getKey));
         this.isDebugEnabled = LoggerHolder.get().isDebugEnabled();
