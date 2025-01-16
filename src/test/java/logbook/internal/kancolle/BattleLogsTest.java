@@ -1,4 +1,4 @@
-package logbook.internal;
+package logbook.internal.kancolle;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
