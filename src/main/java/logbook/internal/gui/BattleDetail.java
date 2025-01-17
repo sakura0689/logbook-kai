@@ -5,7 +5,6 @@ import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.function.Supplier;
@@ -39,7 +38,6 @@ import logbook.bean.BattleTypes.Stage1;
 import logbook.bean.BattleTypes.Stage2;
 import logbook.bean.BattleTypes.SupportAiratack;
 import logbook.bean.BattleTypes.SupportInfo;
-import logbook.bean.CombinedBattleEachBattle;
 import logbook.bean.Ship;
 import logbook.bean.SlotItem;
 import logbook.bean.SlotitemMst;
@@ -256,10 +254,7 @@ public class BattleDetail extends WindowController {
      * @param battleDetailViewData
      */
     private void setInfo(BattleDetailViewData battleDetailViewData) {
-        PhaseState ps = new PhaseState(this.combinedType, this.battle, this.deckMap, this.itemMap, this.escape);
-        if (battleDetailViewData.isPractice()) {
-            ps.getAfterEnemy().forEach(enemy -> enemy.setPractice(true));
-        }
+        PhaseState ps = battleDetailViewData.getPhaseState();
         
         //出撃/進撃情報
         if (battleDetailViewData.isMapStartNextData()) {
@@ -273,28 +268,13 @@ public class BattleDetail extends WindowController {
         }
 
         // 艦隊行動
-        this.intercept.setText(BattleTypes.Intercept.toIntercept(this.battle.getFormation().get(2)).toString());
+        this.intercept.setText(battleDetailViewData.getInterceptViewString());
         // 味方陣形
-        this.fFormation.setText(BattleTypes.Formation.toFormation(this.battle.getFormation().get(0)).toString());
+        this.fFormation.setText(battleDetailViewData.getFriendFormationViewString());
         // 敵陣形
-        this.eFormation.setText(BattleTypes.Formation.toFormation(this.battle.getFormation().get(1)).toString());
+        this.eFormation.setText(battleDetailViewData.getEnemyFormationViewString());
         // 制空値計
-        if (this.battle instanceof CombinedBattleEachBattle) {
-            int friend = ps.getAfterFriend().stream()
-                    .filter(Objects::nonNull)
-                    .mapToInt(Ships::airSuperiority)
-                    .sum();
-            int friendCombined = ps.getAfterFriendCombined().stream()
-                    .filter(Objects::nonNull)
-                    .mapToInt(Ships::airSuperiority)
-                    .sum();
-            this.seiku.setText((friend + friendCombined) + "(" + friend + "+" + friendCombined + ")");
-        } else {
-            this.seiku.setText(Integer.toString(ps.getAfterFriend().stream()
-                    .filter(Objects::nonNull)
-                    .mapToInt(Ships::airSuperiority)
-                    .sum()));
-        }
+        this.seiku.setText(battleDetailViewData.getSeikuViewString());
 
         // 初期化
         this.dispSeiku.setText("");
@@ -379,15 +359,13 @@ public class BattleDetail extends WindowController {
      * @param battleDetailViewData
      */
     private void setPhase(BattleDetailViewData battleDetailViewData) {
-        PhaseState ps = new PhaseState(this.combinedType, this.battle, this.deckMap, this.itemMap, this.escape);
-        if (battleDetailViewData.isPractice()) {
-            ps.getAfterEnemy().forEach(enemy -> enemy.setPractice(true));
-        }
+        PhaseState ps = battleDetailViewData.getPhaseState();
 
         // 評価初期化
         Judge judge = new Judge();
         judge.setBefore(ps);
 
+        // 詳細初期化
         List<Node> phases = this.phase.getChildren();
         phases.clear();
 
