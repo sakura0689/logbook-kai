@@ -4,8 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.json.JsonObject;
-
+import jakarta.json.JsonObject;
 import logbook.bean.Mapinfo;
 import logbook.bean.Mapinfo.AirBase;
 import logbook.net.RequestMetaData;

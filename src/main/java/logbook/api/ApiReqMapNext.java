@@ -7,8 +7,7 @@ import java.util.Objects;
 import java.util.StringJoiner;
 import java.util.stream.Collectors;
 
-import javax.json.JsonObject;
-
+import jakarta.json.JsonObject;
 import javafx.application.Platform;
 import javafx.scene.image.ImageView;
 import javafx.scene.media.AudioClip;
@@ -18,11 +17,11 @@ import logbook.bean.AppCondition;
 import logbook.bean.AppConfig;
 import logbook.bean.BattleLog;
 import logbook.bean.BattleTypes.CombinedType;
-import logbook.common.Messages;
 import logbook.bean.DeckPortCollection;
 import logbook.bean.MapStartNext;
 import logbook.bean.Ship;
 import logbook.bean.ShipMst;
+import logbook.common.Messages;
 import logbook.internal.Tuple;
 import logbook.internal.bouyomi.BouyomiChanUtils;
 import logbook.internal.bouyomi.BouyomiChanUtils.Type;

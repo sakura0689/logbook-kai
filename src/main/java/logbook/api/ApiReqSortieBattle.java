@@ -4,18 +4,17 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import javax.json.JsonObject;
-
+import jakarta.json.JsonObject;
 import logbook.bean.AppCondition;
 import logbook.bean.AppConfig;
 import logbook.bean.BattleLog;
 import logbook.bean.BattleTypes.IFormation;
-import logbook.internal.kancolle.PhaseState;
-import logbook.net.RequestMetaData;
-import logbook.net.ResponseMetaData;
 import logbook.bean.Ship;
 import logbook.bean.ShipCollection;
 import logbook.bean.SortieBattle;
+import logbook.internal.kancolle.PhaseState;
+import logbook.net.RequestMetaData;
+import logbook.net.ResponseMetaData;
 
 /**
  * /kcsapi/api_req_sortie/battle

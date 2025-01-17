@@ -1,8 +1,7 @@
 package logbook.api;
 
-import javax.json.JsonArray;
-import javax.json.JsonObject;
-
+import jakarta.json.JsonArray;
+import jakarta.json.JsonObject;
 import logbook.bean.Basic;
 import logbook.bean.SlotItem;
 import logbook.bean.SlotItemCollection;

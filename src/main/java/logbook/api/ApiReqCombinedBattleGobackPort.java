@@ -6,15 +6,14 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
-import javax.json.JsonObject;
-
+import jakarta.json.JsonObject;
 import logbook.bean.AppCondition;
 import logbook.bean.BattleLog;
 import logbook.bean.BattleResult;
 import logbook.bean.BattleResult.Escape;
+import logbook.bean.Ship;
 import logbook.net.RequestMetaData;
 import logbook.net.ResponseMetaData;
-import logbook.bean.Ship;
 
 /**
  * /kcsapi/api_req_sortie/goback_port

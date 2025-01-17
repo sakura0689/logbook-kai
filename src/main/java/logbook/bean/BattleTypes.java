@@ -4,11 +4,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.json.JsonObject;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
+import jakarta.json.JsonObject;
 import logbook.internal.logger.LoggerHolder;
 import logbook.internal.util.JsonHelper;
 import lombok.Data;

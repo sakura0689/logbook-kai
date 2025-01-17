@@ -9,8 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.eclipse.jetty.client.HttpClient;
+import org.eclipse.jetty.client.HttpProxy;
 import org.eclipse.jetty.client.HttpRequest;
-import org.eclipse.jetty.client.api.ProxyConfiguration;
+import org.eclipse.jetty.client.ProxyConfiguration;
 import org.eclipse.jetty.client.api.Request;
 import org.eclipse.jetty.client.api.Response;
 import org.eclipse.jetty.http.HttpHeader;
@@ -133,7 +134,8 @@ public final class ReverseProxyServlet extends ProxyServlet {
             // ホスト
             String host = AppConfig.get().getProxyHost();
             // 設定する
-            client.setProxyConfiguration(new ProxyConfiguration(host, port));
+            ProxyConfiguration proxyConfig = client.getProxyConfiguration();
+            proxyConfig.getProxies().add(new HttpProxy(host, port));
         }
         return client;
     }

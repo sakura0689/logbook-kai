@@ -2,8 +2,7 @@ package logbook.bean;
 
 import java.util.List;
 
-import javax.json.JsonObject;
-
+import jakarta.json.JsonObject;
 import logbook.internal.util.JsonHelper;
 import lombok.Data;
 

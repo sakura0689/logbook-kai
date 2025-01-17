@@ -476,7 +476,7 @@ public class ProxyServlet extends HttpServlet {
         }
     }
 
-    private class ProxyRequestHandler extends Response.Listener.Empty {
+    private class ProxyRequestHandler extends Response.Listener.Adapter {
         // リトライのために記憶するデータ量
         private static final int RETRY_MAX_SIZE = 256 * 1024;
 

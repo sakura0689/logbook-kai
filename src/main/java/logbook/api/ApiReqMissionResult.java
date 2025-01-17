@@ -1,7 +1,6 @@
 package logbook.api;
 
-import javax.json.JsonObject;
-
+import jakarta.json.JsonObject;
 import logbook.bean.MissionResult;
 import logbook.internal.log.LogWriter;
 import logbook.internal.log.MissionResultLogFormat;

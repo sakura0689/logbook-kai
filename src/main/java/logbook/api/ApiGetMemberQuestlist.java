@@ -1,7 +1,6 @@
 package logbook.api;
 
-import javax.json.JsonObject;
-
+import jakarta.json.JsonObject;
 import logbook.bean.AppQuestCollection;
 import logbook.bean.QuestList;
 import logbook.net.RequestMetaData;

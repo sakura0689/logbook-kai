@@ -3,9 +3,8 @@ package logbook.bean;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.json.JsonObject;
-import javax.json.JsonValue;
-
+import jakarta.json.JsonObject;
+import jakarta.json.JsonValue;
 import logbook.internal.util.JsonHelper;
 import lombok.Data;
 

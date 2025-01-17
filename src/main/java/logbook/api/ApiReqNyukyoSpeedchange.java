@@ -4,8 +4,7 @@ import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import javax.json.JsonObject;
-
+import jakarta.json.JsonObject;
 import logbook.bean.Ndock;
 import logbook.bean.NdockCollection;
 import logbook.bean.Ship;

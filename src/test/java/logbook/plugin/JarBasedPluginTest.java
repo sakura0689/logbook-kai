@@ -1,13 +1,14 @@
 package logbook.plugin;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class JarBasedPluginTest {
 
@@ -25,9 +26,11 @@ public class JarBasedPluginTest {
      * {@link logbook.plugin.JarBasedPlugin} のためのテスト・メソッド。
      * @throws IOException
      */
-    @Test(expected = IOException.class)
+    @Test
     public void test2() throws IOException {
-        new JarBasedPlugin(Paths.get("--missing file--"));
+        assertThrows(IOException.class, () -> {
+            new JarBasedPlugin(Paths.get("--missing file--"));
+        });
     }
 
     /**
