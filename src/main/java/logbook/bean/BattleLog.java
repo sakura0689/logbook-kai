@@ -58,7 +58,7 @@ public class BattleLog implements Serializable {
     /** 日時(戦闘結果の取得日時) */
     private String time;
 
-    /** 先頭カウント */
+    /** 戦闘カウント */
     private Integer battleCount;
 
     /** ルート */

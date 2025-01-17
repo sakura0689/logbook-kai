@@ -32,6 +32,7 @@ class BattleDetailTest {
             BattleLog battleLog = BattleLogs.read(inputStream);
             BattleDetail battleDetail = new BattleDetail();
             try {
+                BattleDetailViewData viewData = new BattleDetailViewData(battleLog);
                 battleDetail.setData(battleLog);
             } catch (NullPointerException e) {
                 //TODO:内部データのMock化

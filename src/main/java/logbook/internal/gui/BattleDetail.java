@@ -9,7 +9,6 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
 
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -41,14 +40,12 @@ import logbook.bean.BattleTypes.Stage2;
 import logbook.bean.BattleTypes.SupportAiratack;
 import logbook.bean.BattleTypes.SupportInfo;
 import logbook.bean.CombinedBattleEachBattle;
-import logbook.bean.MapStartNext;
 import logbook.bean.Ship;
 import logbook.bean.SlotItem;
 import logbook.bean.SlotitemMst;
 import logbook.bean.SlotitemMstCollection;
 import logbook.constants.Rank;
 import logbook.internal.kancolle.Items;
-import logbook.internal.kancolle.Mapping;
 import logbook.internal.kancolle.PhaseState;
 import logbook.internal.kancolle.Ships;
 import lombok.Getter;
@@ -58,11 +55,6 @@ import lombok.Getter;
  *
  */
 public class BattleDetail extends WindowController {
-    /** 戦闘ログ */
-    private BattleLog log;
-
-    /** 出撃/進撃 */
-    private MapStartNext last;
 
     /** 連合艦隊 */
     private CombinedType combinedType;
@@ -84,12 +76,6 @@ public class BattleDetail extends WindowController {
 
     /** 戦果報告 */
     private BattleResult result;
-
-    /** 戦闘回数 */
-    private Integer battleCount;
-
-    /** ルート */
-    private List<String> routeList;
 
     /** ルート要素 */
     @FXML
@@ -167,9 +153,6 @@ public class BattleDetail extends WindowController {
     @FXML
     private Label exp;
 
-    /** 演習かどうか */
-    private boolean isPractice;
-
     /** 周期タイマー */
     private Timeline timeline = new Timeline();
 
@@ -195,27 +178,28 @@ public class BattleDetail extends WindowController {
      */
     void setData(BattleLog log) {
         if (log != null && log.getBattle() != null) {
-            this.log = log;
-        }
-        if (this.log != null) {
-            MapStartNext last = this.log.getNext().size() > 0 ? this.log.getNext().get(this.log.getNext().size() - 1) : null;
-            CombinedType combinedType = this.log.getCombinedType();
-            Map<Integer, List<Ship>> deckMap = this.log.getDeckMap();
-            Map<Integer, SlotItem> itemMap = this.log.getItemMap();
-            IFormation battle = this.log.getBattle();
-            IMidnightBattle midnight = this.log.getMidnight();
-            Set<Integer> escape = this.log.getEscape();
-            BattleResult result = this.log.getResult();
-            Integer battleCount = this.log.getBattleCount();
-            List<String> route = this.log.getRoute();
-            boolean isPractice = this.log.isPractice();
-            this.setData(last, combinedType, deckMap, escape, itemMap, battle, midnight, result, battleCount, route, isPractice);
+            BattleDetailViewData battleDetailViewData = new BattleDetailViewData(log);
+
+            CombinedType combinedType = log.getCombinedType();
+            Map<Integer, List<Ship>> deckMap = log.getDeckMap();
+            Map<Integer, SlotItem> itemMap = log.getItemMap();
+            IFormation battle = log.getBattle();
+            IMidnightBattle midnight = log.getMidnight();
+            Set<Integer> escape = log.getEscape();
+            BattleResult result = log.getResult();
+
+            int hashCode = battleDetailViewData.getHashCode();
+            if (this.hashCode == hashCode) {
+                return;
+            }
+            this.hashCode = hashCode;
+            
+            this.setData(combinedType, deckMap, escape, itemMap, battle, midnight, result, battleDetailViewData);
         }
     }
 
     /**
      * 戦況表示
-     * @param last 出撃/進撃
      * @param combinedType 連合艦隊
      * @param deckMap 艦隊スナップショット
      * @param escape 退避艦IDスナップショット
@@ -223,20 +207,11 @@ public class BattleDetail extends WindowController {
      * @param battle 戦闘
      * @param midnight 夜戦
      * @param result 戦果報告 
-     * @param battleCount 戦闘回数
-     * @param route ルート
-     * @param isPractice 演習かどうか
      */
-    void setData(MapStartNext last, CombinedType combinedType, Map<Integer, List<Ship>> deckMap, Set<Integer> escape,
+    void setData(CombinedType combinedType, Map<Integer, List<Ship>> deckMap, Set<Integer> escape,
             Map<Integer, SlotItem> itemMap, IFormation battle, IMidnightBattle midnight, BattleResult result,
-            Integer battleCount, List<String> route, boolean isPractice) {
-        int hashCode = Objects.hash(last, battle, midnight, result);
-        if (this.hashCode == hashCode) {
-            return;
-        }
-        this.hashCode = hashCode;
+            BattleDetailViewData battleDetailViewData) {
 
-        this.last = last;
         this.combinedType = combinedType;
         this.deckMap = deckMap;
         this.itemMap = itemMap;
@@ -244,10 +219,7 @@ public class BattleDetail extends WindowController {
         this.battle = battle;
         this.midnight = midnight;
         this.result = result;
-        this.battleCount = battleCount;
-        this.routeList = route;
-        this.isPractice = isPractice;
-        this.update();
+        this.update(battleDetailViewData);
     }
 
     /**
@@ -270,32 +242,31 @@ public class BattleDetail extends WindowController {
         }
     }
 
-    private void update() {
-        this.setInfo();
-        this.setPhase();
+    /**
+     * 画面情報を更新します
+     * @param battleDetailViewData
+     */
+    private void update(BattleDetailViewData battleDetailViewData) {
+        this.setInfo(battleDetailViewData);
+        this.setPhase(battleDetailViewData);
     }
 
-    private void setInfo() {
+    /**
+     * インフォメーション部分の表示を行います
+     * @param battleDetailViewData
+     */
+    private void setInfo(BattleDetailViewData battleDetailViewData) {
         PhaseState ps = new PhaseState(this.combinedType, this.battle, this.deckMap, this.itemMap, this.escape);
-        if (this.isPractice) {
+        if (battleDetailViewData.isPractice()) {
             ps.getAfterEnemy().forEach(enemy -> enemy.setPractice(true));
         }
-        // マス
-        if (this.last != null) {
-            boolean boss = this.last.getNo().equals(this.last.getBosscellNo()) || this.last.getEventId() == 5;
-            this.mapcell.setText(this.last.getMapareaId()
-                    + "-" + this.last.getMapinfoNo()
-                    + "-" + Mapping.getCell(this.last.getMapareaId(), this.last.getMapinfoNo(), this.last.getNo())
-                    + (boss ? "(ボス)" : ""));
+        
+        //出撃/進撃情報
+        if (battleDetailViewData.isMapStartNextData()) {
+            // マス
+            this.mapcell.setText(battleDetailViewData.getMapCellViewString());
             // ルート
-            if (this.routeList != null) {
-                this.route.setText(this.routeList.stream()
-                        .map(Mapping::getCell)
-                        .collect(Collectors.joining("→"))
-                        + Optional.ofNullable(this.battleCount).map(v -> "(戦闘" + v + "回)").orElse(""));
-            } else {
-                this.route.setText("");
-            }
+            this.route.setText(battleDetailViewData.getRouteViewString());
         } else {
             this.routeInfo.getChildren().clear();
             this.routeInfo.getChildren().add(new Label("演習詳細"));
@@ -404,11 +375,12 @@ public class BattleDetail extends WindowController {
     }
 
     /**
-     * 各フェイズの表示
+     * 戦闘フェイズ部分の表示を行います
+     * @param battleDetailViewData
      */
-    private void setPhase() {
+    private void setPhase(BattleDetailViewData battleDetailViewData) {
         PhaseState ps = new PhaseState(this.combinedType, this.battle, this.deckMap, this.itemMap, this.escape);
-        if (this.isPractice) {
+        if (battleDetailViewData.isPractice()) {
             ps.getAfterEnemy().forEach(enemy -> enemy.setPractice(true));
         }
 
