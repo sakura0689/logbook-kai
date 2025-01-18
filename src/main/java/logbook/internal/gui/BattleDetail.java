@@ -26,7 +26,6 @@ import logbook.bean.BattleLog;
 import logbook.bean.BattleResult;
 import logbook.bean.BattleTypes;
 import logbook.bean.BattleTypes.AirBaseAttack;
-import logbook.bean.BattleTypes.CombinedType;
 import logbook.bean.BattleTypes.IAirBaseAttack;
 import logbook.bean.BattleTypes.IFormation;
 import logbook.bean.BattleTypes.IKouku;
@@ -53,9 +52,6 @@ import lombok.Getter;
  *
  */
 public class BattleDetail extends WindowController {
-
-    /** 連合艦隊 */
-    private CombinedType combinedType;
 
     /** 艦隊スナップショット */
     private Map<Integer, List<Ship>> deckMap;
@@ -178,7 +174,6 @@ public class BattleDetail extends WindowController {
         if (log != null && log.getBattle() != null) {
             BattleDetailViewData battleDetailViewData = new BattleDetailViewData(log);
 
-            CombinedType combinedType = log.getCombinedType();
             Map<Integer, List<Ship>> deckMap = log.getDeckMap();
             Map<Integer, SlotItem> itemMap = log.getItemMap();
             IFormation battle = log.getBattle();
@@ -192,13 +187,12 @@ public class BattleDetail extends WindowController {
             }
             this.hashCode = hashCode;
             
-            this.setData(combinedType, deckMap, escape, itemMap, battle, midnight, result, battleDetailViewData);
+            this.setData(deckMap, escape, itemMap, battle, midnight, result, battleDetailViewData);
         }
     }
 
     /**
      * 戦況表示
-     * @param combinedType 連合艦隊
      * @param deckMap 艦隊スナップショット
      * @param escape 退避艦IDスナップショット
      * @param itemMap 装備
@@ -206,11 +200,10 @@ public class BattleDetail extends WindowController {
      * @param midnight 夜戦
      * @param result 戦果報告 
      */
-    void setData(CombinedType combinedType, Map<Integer, List<Ship>> deckMap, Set<Integer> escape,
+    void setData(Map<Integer, List<Ship>> deckMap, Set<Integer> escape,
             Map<Integer, SlotItem> itemMap, IFormation battle, IMidnightBattle midnight, BattleResult result,
             BattleDetailViewData battleDetailViewData) {
 
-        this.combinedType = combinedType;
         this.deckMap = deckMap;
         this.itemMap = itemMap;
         this.escape = escape;
@@ -276,7 +269,7 @@ public class BattleDetail extends WindowController {
         // 制空値計
         this.seiku.setText(battleDetailViewData.getSeikuViewString());
 
-        // 初期化
+        // 制空部分初期化
         this.dispSeiku.setText("");
         this.dispSeiku.getStyleClass().removeIf(n -> n.startsWith("dispseiku"));
         this.fTouchPlaneImage.setImage(null);
@@ -352,6 +345,31 @@ public class BattleDetail extends WindowController {
                 }
             }
         }
+
+        // 経験値
+        if (this.result != null) {
+            this.baseExp.setText(String.valueOf(this.result.getGetBaseExp()));
+            this.shipExp.setText(String.valueOf(this.result.getGetShipExp().stream()
+                    .mapToInt(Integer::intValue)
+                    .filter(i -> i > 0)
+                    .sum()
+                    + Optional.ofNullable(this.result.getGetShipExpCombined())
+                            .map(v -> v.stream()
+                                    .mapToInt(Integer::intValue)
+                                    .filter(i -> i > 0)
+                                    .sum())
+                            .orElse(0)));
+            this.exp.setText(this.result.getGetExp()
+                    + "(" + BigDecimal.valueOf(this.result.getGetExp())
+                            .divide(BigDecimal.valueOf(1428.571), 3, RoundingMode.FLOOR)
+                            .toPlainString()
+                    + ")");
+        } else {
+            this.baseExp.setText("?");
+            this.shipExp.setText("?");
+            this.exp.setText("?");
+        }
+        
     }
 
     /**
@@ -365,8 +383,9 @@ public class BattleDetail extends WindowController {
         Judge judge = new Judge();
         judge.setBefore(ps);
 
-        // 詳細初期化
+        // 詳細パネル
         List<Node> phases = this.phase.getChildren();
+        // 詳細パネル初期化
         phases.clear();
 
         BattleDetailPhase phaseBeforePane = new BattleDetailPhase(ps);
@@ -427,30 +446,9 @@ public class BattleDetail extends WindowController {
                 + "(味方損害率:" + BigDecimal.valueOf(judge.getFriendDamageRatio()).setScale(3, RoundingMode.FLOOR)
                 + "/敵損害率:" + BigDecimal.valueOf(judge.getEnemyDamageRatio()).setScale(3, RoundingMode.FLOOR) + ")");
 
-        // 経験値
-        if (this.result != null) {
-            this.baseExp.setText(String.valueOf(this.result.getGetBaseExp()));
-            this.shipExp.setText(String.valueOf(this.result.getGetShipExp().stream()
-                    .mapToInt(Integer::intValue)
-                    .filter(i -> i > 0)
-                    .sum()
-                    + Optional.ofNullable(this.result.getGetShipExpCombined())
-                            .map(v -> v.stream()
-                                    .mapToInt(Integer::intValue)
-                                    .filter(i -> i > 0)
-                                    .sum())
-                            .orElse(0)));
-            this.exp.setText(this.result.getGetExp()
-                    + "(" + BigDecimal.valueOf(this.result.getGetExp())
-                            .divide(BigDecimal.valueOf(1428.571), 3, RoundingMode.FLOOR)
-                            .toPlainString()
-                    + ")");
-        } else {
-            this.baseExp.setText("?");
-            this.shipExp.setText("?");
-            this.exp.setText("?");
-        }
-        ((BattleDetailPhase) phases.get(phases.size() - 1)).setExpanded(true);
+        //最終パネルを開いた状態にする
+        BattleDetailPhase lastPanel = (BattleDetailPhase)phases.get(phases.size() - 1); 
+        lastPanel.setExpanded(true);
     }
 
     /**
