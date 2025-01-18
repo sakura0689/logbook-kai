@@ -11,7 +11,7 @@ class LogBookCoreContainerTest {
     void test() {
         LogBookCoreContainer container = LogBookCoreContainer.getInstance();
         container.init(Collections.emptyList());
-        
+
         Assertions.assertEquals(0, container.getPlugins().size());
     }
 }

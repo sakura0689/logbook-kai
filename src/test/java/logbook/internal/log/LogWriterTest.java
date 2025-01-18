@@ -16,17 +16,17 @@ import org.junit.jupiter.api.Test;
 class LogWriterTest {
 
     private Path dummyFile;
-    
+
     @BeforeEach
     void setUp() throws IOException {
         dummyFile =  Files.createTempFile("testFile", ".txt");
     }
-    
+
     @Test
     void testWrite() throws IOException, InterruptedException {
         LogWriter logWriter = LogWriter.getInstance(DummyFormat::new);
         logWriter.filePath(this.dummyFile);
-        
+
         ExecutorService executor = Executors.newFixedThreadPool(10);
         for (int i = 0; i < 100; i++) {
             int lineNumber = i;
@@ -38,7 +38,7 @@ class LogWriterTest {
         while (!executor.isTerminated()) {
             Thread.sleep(100);
         }
-        
+
         List<String> content = Files.readAllLines(this.dummyFile);
         boolean isHeader = true;
         for (String line : content) {
@@ -49,7 +49,7 @@ class LogWriterTest {
             }
         }
     }
-    
+
     @AfterEach
     void tearDown() throws IOException {
         if (Files.exists(dummyFile)) {
@@ -77,6 +77,6 @@ class LogWriterTest {
         public String format(String value) {
             return value;
         }
-        
+
     }
 }
