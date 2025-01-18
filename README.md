@@ -7,11 +7,13 @@
 
 ## ****お知らせ****
 
+v22.1.4がJava8の最終版となります
+
+v23.0はJava11となります
+
 個人利用のため修正を行っておりますので、Issueは受け付けておりません。
 
 未対応:2021夏イベント 昼戦航空友軍 お世話になってないので仕様がわかりません 次イベントとかでお世話になったら対応すると思います　たぶん
-
-2023春イベ リアルがとんでもない激務で更新が遅くなりました モチベーション低下とかではないのでまだまだご安心を
 
 ## ****重要なお知らせ****
 航海日誌(logbook-kai)は[sanaehirotaka さん](https://github.com/sanaehirotaka/logbook-kai/)が開発されたものを引き継ぐ形で、2020年から[Sdk0815](https://github.com/Sdk0815/logbook-kai/)によってメンテナンスを継続してきましたが、諸般の事情により今後のメンテナンスを停止することといたしました。現状の最新版である `v21.7.1` が最終盤となります。公式Twitterアカウントも後日閉鎖する予定です。
@@ -65,18 +67,16 @@ MIT ライセンスの下で公開する、自由ソフトウェアです。
 ![Redhat](https://img.shields.io/badge/-Redhat-EE0000.svg?logo=red-hat)
 ![macOS](https://img.shields.io/badge/-macOS-333333.svg?logo=apple)
 
-Java 8u40以降のJava8がインストールされたWindows,LinuxまたはmacOSが必要です。
+Java11がインストールされたWindows,LinuxまたはmacOSが必要です。
 
 **次のJavaVMで動作確認されています。**
-- **[Liberica JDK version 8](https://bell-sw.com/pages/java-8u232/)**
-   - 新規に導入する場合、こちらを推奨します。JavaFXを利用しているため必ず**StandardではなくFullをダウンロード**してください。
-- [Oracle JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+- **[Liberica JDK version 11](https://bell-sw.com/pages/downloads/#jdk-11-lts)**
+   - 新規に導入する場合、こちらを推奨します。
+- [Oracle JDK 11](https://www.oracle.com/jp/java/technologies/javase/jdk11-archive-downloads.html)
    - ダウンロードにOTNアカウントが必要です。
 
 次のJavaVMではご利用いただけません。
-- バージョンが8ではないJavaVM
-- Amazon Corretto : 一部機能が動作しません(集計機能・自動アップデートが利用不可)。
-- AdoptOpenJDK : ライブラリが不足しているため起動しません。
+- バージョンが11ではないJavaVM
 
 ### [ダウンロード](https://github.com/sakura0689/logbook-kai/releases)
 
