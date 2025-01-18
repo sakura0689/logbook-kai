@@ -1,5 +1,7 @@
 package logbook.internal.gui;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -8,6 +10,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import logbook.bean.BattleLog;
+import logbook.bean.BattleResult;
 import logbook.bean.BattleTypes;
 import logbook.bean.BattleTypes.CombinedType;
 import logbook.bean.BattleTypes.IFormation;
@@ -183,7 +186,63 @@ public class BattleDetailViewData {
                     .sum());
             return seikuString;
         }
+    }
+    
+    /**
+     * 基礎経験値文字列を返却します
+     * @return
+     */
+    public String getGetBaseExpViewString() {
+        BattleResult battleResult = this.battleLog.getResult();
+        if (battleResult == null) {
+            return "?";
+        }
+        return String.valueOf(battleResult.getGetBaseExp());
+    }
+    
+    /**
+     * 艦娘経験値文字列を返却します
+     * @return
+     */
+    public String getShipExpViewString() {
+        BattleResult battleResult = this.battleLog.getResult();
+        if (battleResult == null) {
+            return "?";
+        }
         
+        String shipExpString = String.valueOf(battleResult.getGetShipExp().stream()
+                .mapToInt(Integer::intValue)
+                .filter(i -> i > 0)
+                .sum()
+                + Optional.ofNullable(battleResult.getGetShipExpCombined())
+                        .map(v -> v.stream()
+                                .mapToInt(Integer::intValue)
+                                .filter(i -> i > 0)
+                                .sum())
+                        .orElse(0));
+        
+        return shipExpString;
+    }
+
+    /**
+     * 提督経験値文字列を返却します
+     * @return
+     */
+    public String getGetExpViewString() {
+        BattleResult battleResult = this.battleLog.getResult();
+        if (battleResult == null) {
+            return "?";
+        }
+        //戦果
+        // 提督経験値 ÷ 10000/7 = 提督経験値 ÷ 1428.5714...
+        StringBuilder expSb = new StringBuilder();
+        expSb.append(battleResult.getGetExp());
+        expSb.append("(戦果:");
+        expSb.append(BigDecimal.valueOf(battleResult.getGetExp())
+                .divide(BigDecimal.valueOf(1428.571), 3, RoundingMode.FLOOR));
+        expSb.append(")");
+        
+        return expSb.toString();
     }
     
     /**
@@ -209,6 +268,9 @@ public class BattleDetailViewData {
         sb.append(SPACE).append("味方陣形:").append(getFriendFormationViewString()).append(System.lineSeparator());
         sb.append(SPACE).append("敵陣形:").append(getEnemyFormationViewString()).append(System.lineSeparator());
         sb.append(SPACE).append("制空値計:").append(getSeikuViewString()).append(System.lineSeparator());
+        sb.append(SPACE).append("基礎経験値:").append(getGetBaseExpViewString()).append(System.lineSeparator());
+        sb.append(SPACE).append("艦娘経験値:").append(getShipExpViewString()).append(System.lineSeparator());
+        sb.append(SPACE).append("提督経験値:").append(getGetExpViewString()).append(System.lineSeparator());
         sb.append("}").append(System.lineSeparator());
         return sb.toString();
     }

@@ -5,7 +5,6 @@ import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.Set;
 import java.util.function.Supplier;
 
@@ -23,7 +22,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.WindowEvent;
 import logbook.bean.BattleLog;
-import logbook.bean.BattleResult;
 import logbook.bean.BattleTypes;
 import logbook.bean.BattleTypes.AirBaseAttack;
 import logbook.bean.BattleTypes.IAirBaseAttack;
@@ -67,9 +65,6 @@ public class BattleDetail extends WindowController {
 
     /** 夜戦 */
     private IMidnightBattle midnight;
-
-    /** 戦果報告 */
-    private BattleResult result;
 
     /** ルート要素 */
     @FXML
@@ -179,7 +174,6 @@ public class BattleDetail extends WindowController {
             IFormation battle = log.getBattle();
             IMidnightBattle midnight = log.getMidnight();
             Set<Integer> escape = log.getEscape();
-            BattleResult result = log.getResult();
 
             int hashCode = battleDetailViewData.getHashCode();
             if (this.hashCode == hashCode) {
@@ -187,7 +181,7 @@ public class BattleDetail extends WindowController {
             }
             this.hashCode = hashCode;
             
-            this.setData(deckMap, escape, itemMap, battle, midnight, result, battleDetailViewData);
+            this.setData(deckMap, escape, itemMap, battle, midnight, battleDetailViewData);
         }
     }
 
@@ -198,10 +192,9 @@ public class BattleDetail extends WindowController {
      * @param itemMap 装備
      * @param battle 戦闘
      * @param midnight 夜戦
-     * @param result 戦果報告 
      */
     void setData(Map<Integer, List<Ship>> deckMap, Set<Integer> escape,
-            Map<Integer, SlotItem> itemMap, IFormation battle, IMidnightBattle midnight, BattleResult result,
+            Map<Integer, SlotItem> itemMap, IFormation battle, IMidnightBattle midnight, 
             BattleDetailViewData battleDetailViewData) {
 
         this.deckMap = deckMap;
@@ -209,7 +202,6 @@ public class BattleDetail extends WindowController {
         this.escape = escape;
         this.battle = battle;
         this.midnight = midnight;
-        this.result = result;
         this.update(battleDetailViewData);
     }
 
@@ -347,29 +339,9 @@ public class BattleDetail extends WindowController {
         }
 
         // 経験値
-        if (this.result != null) {
-            this.baseExp.setText(String.valueOf(this.result.getGetBaseExp()));
-            this.shipExp.setText(String.valueOf(this.result.getGetShipExp().stream()
-                    .mapToInt(Integer::intValue)
-                    .filter(i -> i > 0)
-                    .sum()
-                    + Optional.ofNullable(this.result.getGetShipExpCombined())
-                            .map(v -> v.stream()
-                                    .mapToInt(Integer::intValue)
-                                    .filter(i -> i > 0)
-                                    .sum())
-                            .orElse(0)));
-            this.exp.setText(this.result.getGetExp()
-                    + "(" + BigDecimal.valueOf(this.result.getGetExp())
-                            .divide(BigDecimal.valueOf(1428.571), 3, RoundingMode.FLOOR)
-                            .toPlainString()
-                    + ")");
-        } else {
-            this.baseExp.setText("?");
-            this.shipExp.setText("?");
-            this.exp.setText("?");
-        }
-        
+        this.baseExp.setText(battleDetailViewData.getGetBaseExpViewString());
+        this.shipExp.setText(battleDetailViewData.getShipExpViewString());
+        this.exp.setText(battleDetailViewData.getGetExpViewString());
     }
 
     /**
