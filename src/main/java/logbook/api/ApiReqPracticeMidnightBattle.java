@@ -1,6 +1,7 @@
 package logbook.api;
 
 import jakarta.json.JsonObject;
+
 import logbook.bean.AppCondition;
 import logbook.bean.BattleLog;
 import logbook.bean.BattleMidnightBattle;

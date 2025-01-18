@@ -24,7 +24,7 @@ public class ApiReqMapAnchorageRepair implements APIListenerSpi {
             .map(data -> data.getJsonArray("api_ship_data"))
             .ifPresent(this::apiShipData);
     }
-    
+
     /**
      * api_data.api_ship_data
      *
