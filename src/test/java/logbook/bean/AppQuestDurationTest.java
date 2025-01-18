@@ -14,9 +14,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import jakarta.json.Json;
 import jakarta.json.JsonObject;
@@ -26,8 +26,8 @@ import logbook.core.LogBookCoreContainer;
 
 public class AppQuestDurationTest {
     
-    @Before
-    public void before() {
+    @BeforeEach
+    public void setup() {
         LogBookCoreContainer container = LogBookCoreContainer.getInstance();
         container.init(Collections.emptyList());
     }
@@ -41,7 +41,7 @@ public class AppQuestDurationTest {
                 JsonObject json = jsonReader.readObject()
                         .getJsonObject("api_data");
                 QuestList list = QuestList.toQuestList(json);
-                Assert.assertNotNull(list);
+                Assertions.assertNotNull(list);
                 list.getList().stream()
                     .map(AppQuest::toAppQuest)
                     .filter(Objects::nonNull)
@@ -60,44 +60,44 @@ public class AppQuestDurationTest {
                 final String dtf = "yyyy-MM-dd HH:mm:ss";
                 
                 String daily = today.plusDays(1).withZoneSameInstant(ZoneId.of("Asia/Tokyo")).format(DateTimeFormatter.ofPattern(dtf));
-                Assert.assertNotNull(duration.getMap().get(daily));
+                Assertions.assertNotNull(duration.getMap().get(daily));
                 Map<Integer, List<Duration>> value = duration.getMap().get(daily);
-                Assert.assertNotNull(value.get(218));
-                Assert.assertNotNull(value.get(218).get(0).getTo());
+                Assertions.assertNotNull(value.get(218));
+                Assertions.assertNotNull(value.get(218).get(0).getTo());
 
                 String weekly = today.plusDays(8-today.getDayOfWeek().getValue()).withZoneSameInstant(ZoneId.of("Asia/Tokyo")).format(DateTimeFormatter.ofPattern(dtf));
-                Assert.assertNotNull(duration.getMap().get(weekly));
+                Assertions.assertNotNull(duration.getMap().get(weekly));
                 value = duration.getMap().get(weekly);
-                Assert.assertNotNull(value.get(220));
-                Assert.assertNull(value.get(220).get(0).getTo());
+                Assertions.assertNotNull(value.get(220));
+                Assertions.assertNull(value.get(220).get(0).getTo());
 
                 String monthly = today.minusDays(today.getDayOfMonth()-1).plusMonths(1).withZoneSameInstant(ZoneId.of("Asia/Tokyo")).format(DateTimeFormatter.ofPattern(dtf));
-                Assert.assertNotNull(duration.getMap().get(monthly));
+                Assertions.assertNotNull(duration.getMap().get(monthly));
                 value = duration.getMap().get(monthly);
-                Assert.assertNotNull(value.get(249));
-                Assert.assertNull(value.get(249).get(0).getTo());
+                Assertions.assertNotNull(value.get(249));
+                Assertions.assertNull(value.get(249).get(0).getTo());
 
                 String quarterly = today.plusMonths(3-today.getMonthValue()%3).withDayOfMonth(1).withZoneSameInstant(ZoneId.of("Asia/Tokyo")).format(DateTimeFormatter.ofPattern(dtf));
-                Assert.assertNotNull(duration.getMap().get(quarterly));
+                Assertions.assertNotNull(duration.getMap().get(quarterly));
                 value = duration.getMap().get(quarterly);
-                Assert.assertNotNull(value.get(861));
-                Assert.assertNull(value.get(861).get(0).getTo());
+                Assertions.assertNotNull(value.get(861));
+                Assertions.assertNull(value.get(861).get(0).getTo());
 
                 ZonedDateTime tmp = today.plusMonths(1).withDayOfMonth(1);
                 while (tmp.getMonthValue() != 8) {
                     tmp = tmp.plusMonths(1);
                 }
                 String yearly8 = tmp.withZoneSameInstant(ZoneId.of("Asia/Tokyo")).format(DateTimeFormatter.ofPattern(dtf));
-                Assert.assertNotNull(duration.getMap().get(yearly8));
+                Assertions.assertNotNull(duration.getMap().get(yearly8));
                 value = duration.getMap().get(yearly8);
-                Assert.assertNotNull(value.get(438));
-                Assert.assertNull(value.get(438).get(0).getTo());
+                Assertions.assertNotNull(value.get(438));
+                Assertions.assertNull(value.get(438).get(0).getTo());
                 
                 String once = "9999-12-31 05:00:00";
-                Assert.assertNotNull(duration.getMap().get(once));
+                Assertions.assertNotNull(duration.getMap().get(once));
                 value = duration.getMap().get(once);
-                Assert.assertNotNull(value.get(924));
-                Assert.assertNull(value.get(924).get(0).getTo());
+                Assertions.assertNotNull(value.get(924));
+                Assertions.assertNull(value.get(924).get(0).getTo());
             }
         }
     }
