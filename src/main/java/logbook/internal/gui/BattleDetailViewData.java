@@ -41,12 +41,43 @@ public class BattleDetailViewData {
     private PhaseState phaseState;
     
     /**
+     * 情報の更新があるか
+     */
+    private boolean isNewData = false;
+    
+    /**
      * デフォルトコンストラクタ
      */
     public BattleDetailViewData(BattleLog battleLog) {
         this.battleLog = battleLog;
         this.mapStartNext = battleLog.getNext().size() > 0 ? battleLog.getNext().get(battleLog.getNext().size() - 1) : null;
+        this.isNewData= true;
         
+        CombinedType combinedType = battleLog.getCombinedType();
+        IFormation battle = battleLog.getBattle();
+        Map<Integer, List<Ship>> deckMap = battleLog.getDeckMap();
+        Map<Integer, SlotItem> itemMap = battleLog.getItemMap();
+        Set<Integer> escape = battleLog.getEscape();
+
+        this.phaseState = new PhaseState(combinedType, battle, deckMap, itemMap, escape);
+        if (isPractice()) {
+            this.phaseState.getAfterEnemy().forEach(enemy -> enemy.setPractice(true));
+        }
+    }
+
+    /**
+     * コンストラクタ
+     * ハッシュが一致している場合、PhaseState情報を作成しません
+     */
+    public BattleDetailViewData(BattleLog battleLog, int hashCode) {
+        this.battleLog = battleLog;
+        this.mapStartNext = battleLog.getNext().size() > 0 ? battleLog.getNext().get(battleLog.getNext().size() - 1) : null;
+        
+        if (getHashCode() == hashCode) {
+            return;
+        }
+        isNewData = true;
+                
         CombinedType combinedType = battleLog.getCombinedType();
         IFormation battle = battleLog.getBattle();
         Map<Integer, List<Ship>> deckMap = battleLog.getDeckMap();
@@ -60,19 +91,27 @@ public class BattleDetailViewData {
     }
     
     /**
-     * 戦闘フェイズ情報を返却します
-     * @return
-     */
-    public PhaseState getPhaseState() {
-        return this.phaseState;
-    }
-    
-    /**
      * ハッシュを返却します
      * @return
      */
     public int getHashCode() {
         return Objects.hash(this.mapStartNext , this.battleLog.getBattle(), this.battleLog.getMidnight(), this.battleLog.getResult());
+    }
+
+    /**
+     * ハッシュ値が違う場合、更新データ存在する
+     * @return 画面更新処理フラグ
+     */
+    public boolean isNewData() {
+        return this.isNewData;
+    }
+    
+    /**
+     * 戦闘フェイズ情報を返却します
+     * @return
+     */
+    public PhaseState getPhaseState() {
+        return this.phaseState;
     }
     
     /**

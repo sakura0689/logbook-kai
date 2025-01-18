@@ -5,7 +5,6 @@ import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.function.Supplier;
 
 import javafx.animation.Animation;
@@ -36,7 +35,6 @@ import logbook.bean.BattleTypes.Stage2;
 import logbook.bean.BattleTypes.SupportAiratack;
 import logbook.bean.BattleTypes.SupportInfo;
 import logbook.bean.Ship;
-import logbook.bean.SlotItem;
 import logbook.bean.SlotitemMst;
 import logbook.bean.SlotitemMstCollection;
 import logbook.constants.Rank;
@@ -50,15 +48,6 @@ import lombok.Getter;
  *
  */
 public class BattleDetail extends WindowController {
-
-    /** 艦隊スナップショット */
-    private Map<Integer, List<Ship>> deckMap;
-
-    /** 装備スナップショット */
-    private Map<Integer, SlotItem> itemMap;
-
-    /** 退避艦IDスナップショット */
-    private Set<Integer> escape;
 
     /** 戦闘 */
     private IFormation battle;
@@ -167,42 +156,20 @@ public class BattleDetail extends WindowController {
      */
     void setData(BattleLog log) {
         if (log != null && log.getBattle() != null) {
-            BattleDetailViewData battleDetailViewData = new BattleDetailViewData(log);
+            BattleDetailViewData battleDetailViewData = new BattleDetailViewData(log, this.hashCode);
 
-            Map<Integer, List<Ship>> deckMap = log.getDeckMap();
-            Map<Integer, SlotItem> itemMap = log.getItemMap();
-            IFormation battle = log.getBattle();
-            IMidnightBattle midnight = log.getMidnight();
-            Set<Integer> escape = log.getEscape();
-
-            int hashCode = battleDetailViewData.getHashCode();
-            if (this.hashCode == hashCode) {
+            if (!battleDetailViewData.isNewData()){
+                //更新データなし。画面の更新を行わない
                 return;
             }
-            this.hashCode = hashCode;
+            //ハッシュコード更新
+            this.hashCode = battleDetailViewData.getHashCode();
             
-            this.setData(deckMap, escape, itemMap, battle, midnight, battleDetailViewData);
+            this.battle = log.getBattle();
+            this.midnight = log.getMidnight();
+
+            this.update(battleDetailViewData);
         }
-    }
-
-    /**
-     * 戦況表示
-     * @param deckMap 艦隊スナップショット
-     * @param escape 退避艦IDスナップショット
-     * @param itemMap 装備
-     * @param battle 戦闘
-     * @param midnight 夜戦
-     */
-    void setData(Map<Integer, List<Ship>> deckMap, Set<Integer> escape,
-            Map<Integer, SlotItem> itemMap, IFormation battle, IMidnightBattle midnight, 
-            BattleDetailViewData battleDetailViewData) {
-
-        this.deckMap = deckMap;
-        this.itemMap = itemMap;
-        this.escape = escape;
-        this.battle = battle;
-        this.midnight = midnight;
-        this.update(battleDetailViewData);
     }
 
     /**
