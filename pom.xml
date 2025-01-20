@@ -87,35 +87,36 @@
 		</plugins>
 	</build>
 	<dependencies>
+		<!-- https://gluonhq.com/products/javafx/ -->
 		<dependency>
 			<groupId>org.openjfx</groupId>
 			<artifactId>javafx-controls</artifactId>
-			<version>11.0.2</version>
+			<version>14.0.2.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.openjfx</groupId>
 			<artifactId>javafx-graphics</artifactId>
-			<version>11.0.2</version>
+			<version>14.0.2.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.openjfx</groupId>
 			<artifactId>javafx-fxml</artifactId>
-			<version>11.0.2</version>
+			<version>14.0.2.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.openjfx</groupId>
 			<artifactId>javafx-media</artifactId>
-			<version>11.0.2</version>
+			<version>14.0.2.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.openjfx</groupId>
 			<artifactId>javafx-web</artifactId>
-			<version>11.0.2</version>
+			<version>14.0.2.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.openjfx</groupId>
 			<artifactId>javafx-swing</artifactId>
-			<version>11.0.2</version>
+			<version>14.0.2.1</version>
 		</dependency>
 		<dependency>
 			<groupId>jakarta.json</groupId>
