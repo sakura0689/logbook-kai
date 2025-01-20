@@ -438,6 +438,9 @@ public class ShipTablePane extends VBox {
             this.labelValue.setConverter(new StringConverter<String>() {
                 @Override
                 public String toString(String object) {
+                    if (object == null) {
+                        return "";
+                    }
                     return object.equals(ShipFilter.LabelFilter.NO_LABEL) ? "(ラベルなし)" : object;
                 }
                 
