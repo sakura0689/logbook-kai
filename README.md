@@ -69,6 +69,7 @@ MIT ライセンスの下で公開する、自由ソフトウェアです。
 
 Java11がインストールされたWindows,LinuxまたはmacOSが必要です。
 
+
 **次のJavaVMで動作確認されています。**
 - **[Liberica JDK version 11](https://bell-sw.com/pages/downloads/#jdk-11-lts)**
    - 新規に導入する場合、こちらを推奨します。
@@ -77,6 +78,9 @@ Java11がインストールされたWindows,LinuxまたはmacOSが必要です�
 
 次のJavaVMではご利用いただけません。
 - バージョンが11ではないJavaVM
+
+**Macの場合、追加でJavaFx SDKをインストールしてください**
+- **[JavaFx version 17](https://gluonhq.com/products/javafx/)**
 
 ### [ダウンロード](https://github.com/sakura0689/logbook-kai/releases)
 
