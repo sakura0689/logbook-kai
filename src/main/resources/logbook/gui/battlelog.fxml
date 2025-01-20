@@ -106,8 +106,6 @@
                                  <children>
                                     <Label text="集計の種類" />
                                     <ChoiceBox fx:id="aggregateType" prefWidth="150.0" />
-                                    <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                                    <Button mnemonicParsing="false" onAction="#script" text="高度な集計" />
                                  </children>
                               </HBox>
                               <HBox>
