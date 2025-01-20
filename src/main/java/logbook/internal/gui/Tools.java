@@ -244,7 +244,19 @@ public class Tools {
          * @param message メッセージ
          */
         public static void showNotify(Node node, String title, String message) {
-            showNotify(node, title, message, Duration.seconds(5));
+            showNotify(node, title, message, Duration.seconds(5), WindowHolder.getInstance().getMainWindow());
+        }
+
+        /**
+         * 通知を表示する
+         *
+         * @param node グラフィック
+         * @param title タイトル
+         * @param message メッセージ
+         * @param ownerWindow 親Window
+         */
+        public static void showNotify(Node node, String title, String message, Stage ownerWindow) {
+            showNotify(node, title, message, Duration.seconds(5), ownerWindow);
         }
 
         /**
@@ -254,10 +266,27 @@ public class Tools {
          * @param title タイトル
          * @param message メッセージ
          * @param hide 消えるまでの秒数
+         * @param ownerWindow 親Window
          */
         public static void showNotify(Node node, String title, String message, Duration hide) {
             showNotify(node, title, message, hide, 
-                    Optional.ofNullable(AppConfig.get().getToastLocation()).map(Pos::valueOf).orElse(Pos.BOTTOM_RIGHT));
+                    Optional.ofNullable(AppConfig.get().getToastLocation()).map(Pos::valueOf).orElse(Pos.BOTTOM_RIGHT),
+                    WindowHolder.getInstance().getMainWindow());
+        }
+
+        /**
+         * 通知を表示する
+         *
+         * @param node グラフィック
+         * @param title タイトル
+         * @param message メッセージ
+         * @param hide 消えるまでの秒数
+         * @param ownerWindow 親Window
+         */
+        public static void showNotify(Node node, String title, String message, Duration hide, Stage ownerWindow) {
+            showNotify(node, title, message, hide, 
+                    Optional.ofNullable(AppConfig.get().getToastLocation()).map(Pos::valueOf).orElse(Pos.BOTTOM_RIGHT),
+                    ownerWindow);
         }
 
         /**
@@ -268,14 +297,16 @@ public class Tools {
          * @param message メッセージ
          * @param hide 消えるまでの秒数
          * @param pos 出す位置
+         * @param ownerWindow 親Window
          */
-        public static void showNotify(Node node, String title, String message, Duration hide, Pos position) {
+        public static void showNotify(Node node, String title, String message, Duration hide, Pos position, Stage ownerWindow) {
             Notifications notifications = Notifications.create()
                     .graphic(node)
                     .title(title)
                     .text(message)
                     .hideAfter(hide)
-                    .position(position);
+                    .position(position)
+                    .owner(ownerWindow);
             if (node == null) {
                 notifications.showInformation();
             } else {

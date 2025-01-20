@@ -52,11 +52,11 @@ import logbook.bean.SlotitemMstCollection;
 import logbook.common.Messages;
 import logbook.constants.SlotItemType;
 import logbook.core.LogBookCoreServices;
-import logbook.internal.logger.LoggerHolder;
 import logbook.internal.Tuple;
 import logbook.internal.bouyomi.BouyomiChanUtils;
 import logbook.internal.bouyomi.BouyomiChanUtils.Type;
 import logbook.internal.kancolle.Ships;
+import logbook.internal.logger.LoggerHolder;
 import logbook.internal.proxy.ProxyHolder;
 import logbook.internal.util.AudiosUtil;
 import logbook.plugin.lifecycle.StartUp;
@@ -150,7 +150,8 @@ public class MainController extends WindowController {
         try {
             // サーバーの起動に失敗した場合にダイアログを表示するために、UIスレッドの初期化後にサーバーを起動する必要がある
             ProxyHolder.getInstance().start();
-
+            WindowHolder.getInstance().setMainWindow(getWindow());
+            
             this.itemFormat = this.item.getText();
             this.shipFormat = this.ship.getText();
 
@@ -547,7 +548,7 @@ public class MainController extends WindowController {
     private void pushNotifyMission(DeckPort port) {
         if (AppConfig.get().isUseToast()) {
             String message = Messages.getString("mission.complete", port.getName()); //$NON-NLS-1$
-            Tools.Controls.showNotify(null, "遠征完了", message);
+            Tools.Controls.showNotify(null, "遠征完了", message, getWindow());
         }
         if (AppConfig.get().isUseSound()) {
             this.soundNotify(Paths.get(AppConfig.get().getMissionSoundDir()));
@@ -602,7 +603,7 @@ public class MainController extends WindowController {
 
             ImageView img = new ImageView(Ships.shipWithItemImage(ship));
 
-            Tools.Controls.showNotify(img, "修復完了", message);
+            Tools.Controls.showNotify(img, "修復完了", message, getWindow());
         }
         if (AppConfig.get().isUseSound()) {
             this.soundNotify(Paths.get(AppConfig.get().getNdockSoundDir()));

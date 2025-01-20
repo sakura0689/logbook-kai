@@ -40,9 +40,9 @@ import javafx.stage.Screen;
 import javafx.util.Duration;
 import logbook.bean.AppBouyomiConfig;
 import logbook.bean.AppBouyomiConfig.AppBouyomiText;
-import logbook.core.LogBookCoreServices;
 import logbook.bean.AppConfig;
 import logbook.bean.WindowLocation;
+import logbook.core.LogBookCoreServices;
 import logbook.internal.Config;
 import logbook.internal.ThreadManager;
 import logbook.internal.Tuple;
@@ -491,7 +491,7 @@ public class ConfigController extends WindowController {
         this.pluginTable.setItems(this.plugins);
 
         this.toastLocation.getSelectionModel().selectedItemProperty().addListener(
-                (ob, o, n) -> Tools.Controls.showNotify(null, "確認", "この位置に表示されます。", Duration.seconds(5), Pos.valueOf(n.getValue())));
+                (ob, o, n) -> Tools.Controls.showNotify(null, "確認", "この位置に表示されます。", Duration.seconds(5), Pos.valueOf(n.getValue()), WindowHolder.getInstance().getMainWindow()));
 
         this.bouyomiChanInit();
     }
