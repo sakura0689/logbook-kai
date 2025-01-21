@@ -144,13 +144,12 @@ public class MainController extends WindowController {
     private VBox questbox;
 
     private AudioClip clip;
-
+    
     @FXML
     void initialize() {
         try {
             // サーバーの起動に失敗した場合にダイアログを表示するために、UIスレッドの初期化後にサーバーを起動する必要がある
             ProxyHolder.getInstance().start();
-            WindowHolder.getInstance().setMainWindow(getWindow());
             
             this.itemFormat = this.item.getText();
             this.shipFormat = this.ship.getText();

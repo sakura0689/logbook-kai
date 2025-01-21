@@ -18,6 +18,11 @@ import logbook.internal.updatecheck.Version;
  */
 public class Main extends Application {
 
+    /**
+     * Launcherから呼び出され、アプリケーションの画面設定をロードします
+     * 
+     * @see logbook.internal.Lancher
+     */
     @Override
     public void start(Stage stage) throws Exception {
         String fxmlName = "main";
@@ -59,6 +64,9 @@ public class Main extends Application {
             }
         });
         Tools.Windows.defaultOpenAction(controller, null);
+
+        //アプリの表示設定情報を、Owner情報として保持します
+        WindowHolder.getInstance().setMainWindow(stage);
 
         stage.show();
     }
