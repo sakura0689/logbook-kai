@@ -471,12 +471,12 @@ public class CheckUpdate {
                             .filter(e -> !e.isDirectory() && e.getName().endsWith(".jar"))
                             .forEach(e -> {
                                 try {
-                                    Path target = Paths.get(targetDir.toString(), e.getName());
+                                    Path target = Paths.get(targetDir.toString() + "/update" , e.getName());
                                     Files.createDirectories(target.getParent());
                                     Files.copy(zipFile.getInputStream(e), target, StandardCopyOption.REPLACE_EXISTING);
-                                    updateMessage("更新完了: " + target);
+                                    updateMessage("/updateフォルダに更新ファイル取得完了: " + target);
                                 } catch (IOException ex) {
-                                    ex.printStackTrace();
+                                    LoggerHolder.get().error("ファイルの置き換え処理でエラー発生" , ex);
                                 }
                             });
                 }
@@ -485,7 +485,7 @@ public class CheckUpdate {
                 Files.deleteIfExists(tempZip);
                 Files.deleteIfExists(tempDir);
 
-                return "更新が完了しました。航海日誌を再起動してください。";
+                return "更新ファイルの取得が完了しました。航海日誌を再起動してください。";
             }
         };
 
