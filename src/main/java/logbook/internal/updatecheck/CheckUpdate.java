@@ -4,6 +4,7 @@ import java.awt.Desktop;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -12,10 +13,17 @@ import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.zip.ZipFile;
 
 import jakarta.json.Json;
 import jakarta.json.JsonArray;
@@ -31,7 +39,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.CheckBox;
+import javafx.scene.control.ListView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -40,6 +49,7 @@ import javafx.scene.text.TextFlow;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
+import logbook.internal.Launcher;
 import logbook.internal.ThreadManager;
 import logbook.internal.gui.InternalFXMLLoader;
 import logbook.internal.gui.Tools;
@@ -179,8 +189,7 @@ public class CheckUpdate {
     private static void openInfo(Version o, Version n, boolean isStartUp, Stage stage) {
         String message = "新しいバージョンがあります。ダウンロードサイトを開きますか？\n"
                 + "現在のバージョン:" + o + "\n"
-                + "新しいバージョン:" + n + "\n"
-                + "自動更新機能は修正中です";
+                + "新しいバージョン:" + n;
         if (isStartUp) {
             message += "\n※自動アップデートチェックは[その他]-[設定]から無効に出来ます";
         }
@@ -245,7 +254,6 @@ public class CheckUpdate {
         // ラベル部分
         TextFlow label = new TextFlow(
                 new Text("航海日誌 v" + version + "への更新を行います。\n"),
-                new Text("必ず更新の前に航海日誌を終了させてください。\n"),
                 new Text("更新の準備が出来ましたら[更新]を押して更新を行ってください。"));
         label.getStyleClass().add("info-label");
         vbox.getChildren().add(label);
@@ -275,22 +283,24 @@ public class CheckUpdate {
         // ボタンとチェックボックス
         StackPane stackPane2 = new StackPane();
         stackPane2.getStyleClass().add("button-container");
-        VBox vbox2 = new VBox();
-        vbox2.setAlignment(Pos.CENTER);
-        vbox2.getStyleClass().add("button-box");
+        HBox buttonBox = new HBox(10);
+        buttonBox.setAlignment(Pos.CENTER);
+        buttonBox.getStyleClass().add("button-box");
 
-        CheckBox check = new CheckBox("航海日誌を終了しました");
-        check.getStyleClass().add("checkbox");
+        Button updateButton = new Button("更新");
+        updateButton.getStyleClass().add("update-button");
+        updateButton.setOnAction(event -> startUpdateProcess(version, webEngine));
 
-        Button button = new Button("更新");
-        button.setDisable(true);
-        button.getStyleClass().add("update-button");
-
-        check.setOnAction(event -> button.setDisable(!check.isSelected()));
-        //        button.setOnAction(event -> update());
-
-        vbox2.getChildren().addAll(check, button);
-        stackPane2.getChildren().add(vbox2);
+        // 閉じるボタン
+        Button closeButton = new Button("閉じる");
+        closeButton.getStyleClass().add("close-button");
+        closeButton.setOnAction(event -> {
+            Stage stage = (Stage) closeButton.getScene().getWindow();
+            stage.close(); // 現在のウィンドウを閉じる
+        });
+        
+        buttonBox.getChildren().addAll(updateButton, closeButton);
+        stackPane2.getChildren().add(buttonBox);
 
         vbox.getChildren().addAll(stackPane1, stackPane2);
         pane.getChildren().add(vbox);
@@ -388,6 +398,7 @@ public class CheckUpdate {
 
         // UpdateWindowを開く
         Stage updateStage = new Stage();
+        updateStage.setTitle("航海日誌の更新");
         // 親ウィンドウの中央に表示
         updateStage.setX(mainStage.getX() + (mainStage.getWidth() - 600) / 2);
         updateStage.setY(mainStage.getY() + (mainStage.getHeight() - 400) / 2);
@@ -413,5 +424,128 @@ public class CheckUpdate {
             LoggerHolder.get().error("releaseJson:" + releaseJson, e);
         }
         return "";
+    }
+    
+    private static void startUpdateProcess(String version, WebEngine webEngine) {
+
+        Path targetDir;
+        try {
+            //MainClassであるLauncher.classの実行場所が、logbook-kai.jarのある場所
+            targetDir = new File(Launcher.class.getProtectionDomain().getCodeSource().getLocation().toURI())
+                .toPath()
+                .getParent();
+        } catch (Exception e) {
+            LoggerHolder.get().error("logbook-kai.jarの実行場所が見つかりませんでした" , e);
+            return;
+        }
+        
+        Map<WebEngine, Stage> logStages = new HashMap<WebEngine, Stage>();
+        
+        Task<String> updateTask = new Task<String>() {
+            @Override
+            protected String call() throws Exception {
+                // ダウンロードおよび更新処理のロジック
+                Path tempDir = Files.createTempDirectory("logbook-kai");
+                Path tempZip = tempDir.resolve("update.zip");
+
+                String downloadURL = OPEN_URL + "/download/" + "v" + version + "/" + "logbook-kai_" + version + ".zip";
+                // ダウンロード
+                for (int i = 0; i < 3; i++) {
+                    updateMessage("ダウンロード中... " + downloadURL);
+                    try (InputStream is = new URL(downloadURL).openStream()) {
+                        Files.copy(is, tempZip, StandardCopyOption.REPLACE_EXISTING);
+                    }
+
+                    if (Files.size(tempZip) > 0) {
+                        break;
+                    } else {
+                        updateMessage("再ダウンロードしています...");
+                    }
+                }
+
+                updateMessage("ダウンロード完了");
+                updateMessage("更新開始");
+
+                try (ZipFile zipFile = new ZipFile(tempZip.toFile())) {
+                    zipFile.stream()
+                            .filter(e -> !e.isDirectory() && e.getName().endsWith(".jar"))
+                            .forEach(e -> {
+                                try {
+                                    Path target = Paths.get(targetDir.toString(), e.getName());
+                                    Files.createDirectories(target.getParent());
+                                    Files.copy(zipFile.getInputStream(e), target, StandardCopyOption.REPLACE_EXISTING);
+                                    updateMessage("更新完了: " + target);
+                                } catch (IOException ex) {
+                                    ex.printStackTrace();
+                                }
+                            });
+                }
+
+                // 一時ファイルを削除
+                Files.deleteIfExists(tempZip);
+                Files.deleteIfExists(tempDir);
+
+                return "更新が完了しました。航海日誌を再起動してください。";
+            }
+        };
+
+        updateTask.messageProperty().addListener((obs, oldMessage, newMessage) -> {
+            Platform.runLater(() -> {
+                Stage logStage = logStages.get(webEngine);
+                if (logStage == null) {
+                    ListView<String> listView = new ListView<>();
+                    logStage = new Stage();
+                    Stage mainStage = WindowHolder.getInstance().getMainWindow();
+                    // 親ウィンドウの中央位置に表示
+                    logStage.setX(mainStage.getX() + (mainStage.getWidth() - 600) / 2);
+                    logStage.setY(mainStage.getY() + (mainStage.getHeight() - 400) / 2);
+                    
+                    logStage.setScene(new Scene(listView, 400, 300));
+                    logStage.initOwner(mainStage);
+                    logStage.setTitle("更新ログ");
+                    
+                    logStage.show();
+                    logStages.put(webEngine, logStage);
+                }
+                @SuppressWarnings("unchecked")
+                ListView<String> listView = (ListView<String>) logStage.getScene().getRoot();
+                listView.getItems().add(newMessage);
+            });
+        });
+        
+        updateTask.setOnSucceeded(event -> {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("更新完了");
+            alert.setContentText(updateTask.getValue());
+            
+            Stage logStage = logStages.get(webEngine);
+            if (logStage != null) {
+                alert.setX(logStage.getX());
+                alert.setY(logStage.getY());
+            }
+            
+            alert.showAndWait();
+            
+            // logStageを閉じる
+            if (logStage != null) {
+                logStage.close();
+            }
+        });
+
+        updateTask.setOnFailed(event -> {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("更新失敗");
+            alert.setContentText("エラーが発生しました: " + updateTask.getException().getMessage());
+
+            Stage logStage = logStages.get(webEngine);
+            if (logStage != null) {
+                alert.setX(logStage.getX());
+                alert.setY(logStage.getY());
+            }
+            
+            alert.showAndWait();
+        });
+
+        new Thread(updateTask).start();
     }
 }
