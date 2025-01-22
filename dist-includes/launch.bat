@@ -1,3 +1,6 @@
+REM UTF-8‘Î‰
+chcp 65001 >nul
+
 SET JVM_OPT=-XX:MaxMetaspaceSize=256M
 
 REM update/logbook-kai.jar ‚ª‘¶İ‚·‚é‚©Šm”F
