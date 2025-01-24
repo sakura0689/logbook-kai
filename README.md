@@ -9,7 +9,9 @@
 
 v22.1.4がJava8の最終版となります
 
-v23.0はJava11となります
+v23.0.4はJava11の最終版となります
+
+v24.0以降はJava17となります **updateの方法を変更しているため、v23.0.4以前からアップデートした方はlaunch.batも更新してください**
 
 個人利用のため修正を行っておりますので、Issueは受け付けておりません。
 
@@ -67,17 +69,18 @@ MIT ライセンスの下で公開する、自由ソフトウェアです。
 ![Redhat](https://img.shields.io/badge/-Redhat-EE0000.svg?logo=red-hat)
 ![macOS](https://img.shields.io/badge/-macOS-333333.svg?logo=apple)
 
-Java11がインストールされたWindows,LinuxまたはmacOSが必要です。
+Java17がインストールされたWindows,LinuxまたはmacOSが必要です。
 
 
 **次のJavaVMで動作確認されています。**
-- **[Liberica JDK version 11](https://bell-sw.com/pages/downloads/#jdk-11-lts)**
+- **[Liberica JDK version 17](https://bell-sw.com/pages/downloads/#jdk-17-lts)**
    - 新規に導入する場合、こちらを推奨します。
-- [Oracle JDK 11](https://www.oracle.com/jp/java/technologies/javase/jdk11-archive-downloads.html)
+- [Oracle JDK 17](https://www.oracle.com/jp/java/technologies/downloads/)
    - ダウンロードにOTNアカウントが必要です。
+   - 画面下部にJDK17のリンクがあります
 
 次のJavaVMではご利用いただけません。
-- バージョンが11ではないJavaVM
+- バージョンが17ではないJavaVM
 
 **Macの場合、追加でJavaFx SDKをインストールしてください**
 - **[JavaFx version 17](https://gluonhq.com/products/javafx/)**
