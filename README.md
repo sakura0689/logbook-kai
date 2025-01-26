@@ -91,7 +91,7 @@ Java17がインストールされたWindows,LinuxまたはmacOSが必要です�
 export JVM_OPT=-XX:MaxMetaspaceSize=256M
 export PATH_TO_FX=$HOME/Library/javafx-sdk-17.0.14/lib
 
-java $JVM_OPT --module-path $PATH_TO_FX --add-modules=javafx.controls,javafx.graphics,javafx.fxml,javafx.media,javafx.web,javafx.swing -jar logbook-kai.jar
+java $JVM_OPT --module-path $PATH_TO_FX --add-modules=javafx.controls,javafx.graphics,javafx.fxml,javafx.media,javafx.web,javafx.swing --add-exports=javafx.base/com.sun.javafx.event=ALL-UNNAMED -jar logbook-kai.jar
 ```
 
 ### [ダウンロード](https://github.com/sakura0689/logbook-kai/releases)
