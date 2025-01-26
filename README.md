@@ -85,6 +85,15 @@ Java17がインストールされたWindows,LinuxまたはmacOSが必要です�
 **Macの場合、追加でJavaFx SDKをインストールしてください**
 - **[JavaFx version 17](https://gluonhq.com/products/javafx/)**
 
+以下の設定で起動を確認しています
+
+```
+export JVM_OPT=-XX:MaxMetaspaceSize=256M
+export PATH_TO_FX=$HOME/Library/javafx-sdk-17.0.14/lib
+
+java $JVM_OPT --module-path $PATH_TO_FX --add-modules=javafx.controls,javafx.graphics,javafx.fxml,javafx.media,javafx.web,javafx.swing -jar logbook-kai.jar
+```
+
 ### [ダウンロード](https://github.com/sakura0689/logbook-kai/releases)
 
 **ご注意ください**
