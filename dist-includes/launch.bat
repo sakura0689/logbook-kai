@@ -1,16 +1,16 @@
-REM UTF-8‘Î‰
+REM UTF-8å¯¾å¿œ
 chcp 65001 >nul
 
 SET JVM_OPT=-XX:MaxMetaspaceSize=256M
 
-REM update/logbook-kai.jar ‚ª‘¶İ‚·‚é‚©Šm”F
+REM update/logbook-kai.jar ãŒå­˜åœ¨ã™ã‚‹ã‹ç¢ºèª
 IF EXIST update\logbook-kai.jar (
-    echo update/logbook-kai.jar ‚ğ ./logbook-kai.jar ‚ÉƒRƒs[‚µ‚Ä‚¢‚Ü‚·...
+    echo update/logbook-kai.jar ã‚’ ./logbook-kai.jar ã«ã‚³ãƒ”ãƒ¼ã—ã¦ã„ã¾ã™...
     COPY /Y update\logbook-kai.jar logbook-kai.jar
-    echo ƒRƒs[‚ªŠ®—¹‚µ‚Ü‚µ‚½B
+    echo ã‚³ãƒ”ãƒ¼ãŒå®Œäº†ã—ã¾ã—ãŸã€‚
 ) ELSE (
-    echo update/logbook-kai.jar ‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ‚Å‚µ‚½BƒRƒs[‚ğƒXƒLƒbƒv‚µ‚Ü‚·B
+    echo update/logbook-kai.jar ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã§ã—ãŸã€‚ã‚³ãƒ”ãƒ¼ã‚’ã‚¹ã‚­ãƒƒãƒ—ã—ã¾ã™ã€‚
 )
 
-REM ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ğ‹N“®
+REM ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‚’èµ·å‹•
 START javaw %JVM_OPT% -jar logbook-kai.jar
