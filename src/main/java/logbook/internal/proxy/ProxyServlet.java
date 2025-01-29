@@ -42,6 +42,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.logging.log4j.Logger;
 import org.eclipse.jetty.client.HttpClient;
 import org.eclipse.jetty.client.api.ContentProvider;
 import org.eclipse.jetty.client.api.Request;
@@ -55,9 +56,9 @@ import org.eclipse.jetty.http.HttpVersion;
 import org.eclipse.jetty.proxy.ConnectHandler;
 import org.eclipse.jetty.server.handler.ContextHandler;
 import org.eclipse.jetty.util.HttpCookieStore;
-import org.eclipse.jetty.util.log.Log;
-import org.eclipse.jetty.util.log.Logger;
 import org.eclipse.jetty.util.thread.QueuedThreadPool;
+
+import logbook.internal.logger.LoggerHolder;
 
 /**
  * Asynchronous ProxyServlet.
@@ -83,6 +84,9 @@ import org.eclipse.jetty.util.thread.QueuedThreadPool;
  * @see ConnectHandler
  */
 public class ProxyServlet extends HttpServlet {
+    
+    private static final Logger logger = LoggerHolder.get().getLogger();
+    
     private static final long serialVersionUID = 1L;
     protected static final String ASYNC_CONTEXT = ProxyServlet.class.getName() + ".asyncContext";
     private static final Set<String> HOP_HEADERS = new HashSet<>();
@@ -98,17 +102,12 @@ public class ProxyServlet extends HttpServlet {
         HOP_HEADERS.add("upgrade");
     }
 
-    transient protected Logger _log;
     private String _hostHeader;
     transient private HttpClient _client;
     private long _timeout;
-    protected boolean _isDebugEnabled;
 
     @Override
     public void init() throws ServletException {
-        this._log = this.createLogger();
-        this._isDebugEnabled = this._log.isDebugEnabled();
-
         ServletConfig config = this.getServletConfig();
 
         this._hostHeader = config.getInitParameter("hostHeader");
@@ -132,22 +131,13 @@ public class ProxyServlet extends HttpServlet {
         this._timeout = timeout;
     }
 
-    /**
-     * @return a logger instance with a name derived from this servlet's name.
-     */
-    protected Logger createLogger() {
-        String name = this.getServletConfig().getServletName();
-        name = name.replace('-', '.');
-        return Log.getLogger(name);
-    }
-
     @Override
     public void destroy() {
         try {
             this._client.stop();
-        } catch (Exception x) {
-            if (this._isDebugEnabled)
-                this._log.debug(x);
+        } catch (Exception e) {
+            if (logger.isDebugEnabled())
+                logger.debug("destroyでエラー発生", e);
         }
     }
 
@@ -268,11 +258,11 @@ public class ProxyServlet extends HttpServlet {
             throws ServletException, IOException {
         URI rewrittenURI = this.rewriteURI(request);
 
-        if (this._isDebugEnabled) {
+        if (logger.isDebugEnabled()) {
             StringBuffer uri = request.getRequestURL();
             if (request.getQueryString() != null)
                 uri.append("?").append(request.getQueryString());
-            this._log.debug("{} rewriting: {} -> {}", getRequestId(request), uri, rewrittenURI);
+            logger.debug("{} rewriting: {} -> {}", getRequestId(request), uri, rewrittenURI);
         }
 
         if (rewrittenURI == null) {
@@ -342,23 +332,23 @@ public class ProxyServlet extends HttpServlet {
     protected void onResponseContent(HttpServletRequest request, HttpServletResponse response, Response proxyResponse,
             byte[] buffer, int offset, int length) throws IOException {
         response.getOutputStream().write(buffer, offset, length);
-        if (this._isDebugEnabled) {
-            this._log.debug("{} proxying content to downstream: {} bytes", getRequestId(request), length);
+        if (logger.isDebugEnabled()) {
+            logger.debug("{} proxying content to downstream: {} bytes", getRequestId(request), length);
         }
     }
 
     protected void onResponseSuccess(HttpServletRequest request, HttpServletResponse response, Response proxyResponse) {
         AsyncContext asyncContext = (AsyncContext) request.getAttribute(ASYNC_CONTEXT);
         asyncContext.complete();
-        if (this._isDebugEnabled) {
-            this._log.debug("{} proxying successful", getRequestId(request));
+        if (logger.isDebugEnabled()) {
+            logger.debug("{} proxying successful", getRequestId(request));
         }
     }
 
     protected void onResponseFailure(HttpServletRequest request, HttpServletResponse response, Response proxyResponse,
             Throwable failure) {
-        if (this._isDebugEnabled) {
-            this._log.debug(getRequestId(request) + " proxying failed", failure);
+        if (logger.isDebugEnabled()) {
+            logger.debug(getRequestId(request) + " proxying failed", failure);
         }
         if (!response.isCommitted()) {
             if (failure instanceof TimeoutException)
@@ -454,8 +444,8 @@ public class ProxyServlet extends HttpServlet {
             if (!this._prefix.startsWith("/"))
                 throw new UnavailableException("Init parameter 'prefix' parameter must start with a '/'.");
 
-            if (this._isDebugEnabled) {
-                this._log.debug(config.getServletName() + " @ " + this._prefix + " to " + this._proxyTo);
+            if (logger.isDebugEnabled()) {
+                logger.debug(config.getServletName() + " @ " + this._prefix + " to " + this._proxyTo);
             }
         }
 
@@ -477,6 +467,8 @@ public class ProxyServlet extends HttpServlet {
     }
 
     private class ProxyRequestHandler extends Response.Listener.Adapter {
+        
+        private static final Logger logger = LoggerHolder.get().getLogger();
         // リトライのために記憶するデータ量
         private static final int RETRY_MAX_SIZE = 256 * 1024;
 
@@ -514,9 +506,8 @@ public class ProxyServlet extends HttpServlet {
 
                 @Override
                 protected ByteBuffer onRead(byte[] buffer, int offset, int length) {
-                    if (ProxyServlet.this._isDebugEnabled) {
-                        ProxyServlet.this._log
-                                .debug("{} proxying content to upstream: {} bytes", getRequestId(request), length);
+                    if (logger.isDebugEnabled()) {
+                        logger.debug("{} proxying content to upstream: {} bytes", getRequestId(request), length);
                     }
                     return super.onRead(buffer, offset, length);
                 }
@@ -544,15 +535,14 @@ public class ProxyServlet extends HttpServlet {
                                     ProxyRequestHandler.this.retryEnabled = false;
                                 }
                             }
-                            if (ProxyServlet.this._isDebugEnabled) {
-                                ProxyServlet.this._log
-                                        .debug("{} proxying content to upstream: {} bytes", getRequestId(request), length);
+                            if (logger.isDebugEnabled()) {
+                                logger.debug("{} proxying content to upstream: {} bytes", getRequestId(request), length);
                             }
                             return super.onRead(buffer, offset, length);
                         }
                     });
 
-            if (ProxyServlet.this._isDebugEnabled) {
+            if (logger.isDebugEnabled()) {
                 StringBuilder builder = new StringBuilder(this.request.getMethod());
                 builder.append(" ").append(this.request.getRequestURI());
                 String query = this.request.getQueryString();
@@ -574,7 +564,7 @@ public class ProxyServlet extends HttpServlet {
                 }
                 builder.append("\r\n");
 
-                ProxyServlet.this._log.debug("{} proxying to upstream:{}{}{}{}",
+                logger.debug("{} proxying to upstream:{}{}{}{}",
                         getRequestId(this.request),
                         System.lineSeparator(),
                         builder,
@@ -598,7 +588,7 @@ public class ProxyServlet extends HttpServlet {
         public void onHeaders(Response proxyResponse) {
             ProxyServlet.this.onResponseHeaders(this.request, this.response, proxyResponse);
 
-            if (ProxyServlet.this._isDebugEnabled) {
+            if (logger.isDebugEnabled()) {
                 StringBuilder builder = new StringBuilder("\r\n");
                 builder.append(this.request.getProtocol()).append(" ").append(this.response.getStatus()).append(" ")
                         .append(proxyResponse.getReason()).append("\r\n");
@@ -614,7 +604,7 @@ public class ProxyServlet extends HttpServlet {
                     }
                     builder.append("\r\n");
                 }
-                ProxyServlet.this._log.debug("{} proxying to downstream:{}{}{}{}{}",
+                logger.debug("{} proxying to downstream:{}{}{}{}{}",
                         getRequestId(this.request),
                         System.lineSeparator(),
                         proxyResponse,
@@ -664,16 +654,16 @@ public class ProxyServlet extends HttpServlet {
             if (this.retryEnabled) {
                 // 再度リトライはしない
                 this.retryEnabled = false;
-                if (ProxyServlet.this._isDebugEnabled) {
-                    ProxyServlet.this._log.debug("{} retrying proxy request", getRequestId(this.request));
+                if (logger.isDebugEnabled()) {
+                    logger.debug("{} retrying proxy request", getRequestId(this.request));
                 }
 
                 Request proxyRequest = ProxyServlet.this.createProxyRequest(this.request, this.response,
                         this.targetUri, this.createRetryContentProvider());
                 proxyRequest.send(this);
             } else {
-                if (ProxyServlet.this._isDebugEnabled) {
-                    ProxyServlet.this._log.debug("{} proxying complete", getRequestId(this.request));
+                if (logger.isDebugEnabled()) {
+                    logger.debug("{} proxying complete", getRequestId(this.request));
                 }
             }
         }
