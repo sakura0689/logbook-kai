@@ -22,6 +22,10 @@ public class LoggerHolder {
             this.logger = LogManager.getLogger(callerClass);
         }
 
+        public Logger getLogger() {
+            return this.logger; 
+        }
+        
         public boolean isDebugEnabled() {
             return this.logger.isDebugEnabled();
         }
