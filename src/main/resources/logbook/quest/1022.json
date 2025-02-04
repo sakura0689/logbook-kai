@@ -1,0 +1,20 @@
+/* 【期間限定任務】「三十二駆」月次戦闘哨戒！ */
+{
+    "type": "出撃",
+    "resetType" : "マンスリー",
+    "filter" : {
+        "area": ["2-3","4-1","5-1","7-1"],
+        "fleet": {
+            "operator": "AND",
+            "conditions": [
+                {"name": ["玉波", "涼波", "藤波", "早波", "浜波"], "count": 3, "operator": "GE"}
+            ]
+        }
+    },
+    "conditions" : [
+        {"boss": true, "area": ["2-3"], "rank": ["S", "A"], "count": 1},
+        {"boss": true, "area": ["4-1"], "rank": ["S", "A"], "count": 1},
+        {"boss": true, "area": ["5-1"], "rank": ["S", "A"], "count": 1},
+        {"boss": true, "area": ["7-1"], "rank": ["S", "A"], "count": 1}
+    ]
+}
