@@ -1,21 +1,21 @@
-/* [843]【節分任務:柊】節分拡張作戦二〇二四 精強即応！ */
+/* [843]【節分任務:柊】節分拡張作戦二〇二五 精強即応！ */
 {
     "resetType" : "マンスリー",
     "filter" : {
-        "area": ["2-3", "4-5", "5-5", "6-5"],
+        "area": ["2-3", "4-1", "5-1", "7-5"],
         "fleet": {
-            "description": "最上型2隻・軽空1・自由3の艦隊",
+            "description": "重巡2隻・軽空1・自由3の艦隊",
             "operator": "AND",
             "conditions": [
-                {"name": ["最上","三隈","鈴谷","熊野"], "count": 2, "operator": "GE"},
+                {"stype": ["重巡洋艦"], "count": 2, "operator": "GE"},
                 {"stype": ["軽空母"], "count": 1, "operator": "GE"}
             ]
         }
     },
     "conditions" : [
         {"boss": true, "area": ["2-3"], "rank": ["S"], "count": 1},
-        {"boss": true, "area": ["4-5"], "rank": ["S"], "count": 1},
-        {"boss": true, "area": ["5-5"], "rank": ["S"], "count": 1},
-        {"boss": true, "area": ["6-5"], "rank": ["S"], "count": 1}
+        {"boss": true, "area": ["4-1"], "rank": ["S"], "count": 1},
+        {"boss": true, "area": ["5-1"], "rank": ["S"], "count": 1},
+        {"boss": true, "area": ["7-5"], "rank": ["S"], "count": 1}
     ]
 }
