@@ -139,7 +139,11 @@ public final class APIListener implements ContentListenerSpi {
                         }
                         sb.append(new String(out.toByteArray(), StandardCharsets.UTF_8));
                         in.close();
+                    } else {
+                        sb.append("responseBody is null");
                     }
+                } else {
+                    sb.append("responseMetaData is null");
                 }
             } catch (Exception e2) {
                 sb.append(e2.toString());
