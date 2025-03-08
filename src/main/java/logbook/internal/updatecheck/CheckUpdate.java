@@ -476,6 +476,7 @@ public class CheckUpdate {
                 Files.deleteIfExists(tempZip);
                 Files.deleteIfExists(tempDir);
 
+                updateMessage("更新ファイルの取得が完了しました。航海日誌を再起動してください。");
                 return "更新ファイルの取得が完了しました。航海日誌を再起動してください。";
             }
         };
@@ -511,6 +512,7 @@ public class CheckUpdate {
             
             Stage logStage = logStages.get(webEngine);
             if (logStage != null) {
+                alert.initOwner(logStage);
                 alert.setX(logStage.getX());
                 alert.setY(logStage.getY());
             }
@@ -530,6 +532,7 @@ public class CheckUpdate {
 
             Stage logStage = logStages.get(webEngine);
             if (logStage != null) {
+                alert.initOwner(logStage);
                 alert.setX(logStage.getX());
                 alert.setY(logStage.getY());
             }
