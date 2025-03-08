@@ -364,26 +364,23 @@ public class CheckUpdate {
         // タスク成功時の処理
         fetchReleaseNotesTask.setOnSucceeded(event -> {
             String releaseJson = fetchReleaseNotesTask.getValue();
-            webEngine.reload(); // WebView を更新
             try {
                 String releaseNotes = extractReleaseNotes(releaseJson);
 
                 // JavaScript内でエスケープするために、リリースノートの内容を処理
                 String escapedReleaseNotes = releaseNotes
-                        .replace("'", "\\'") // シングルクォートのエスケープ
-                        .replace("\\", "\\\\") // バックスラッシュのエスケープ
-                        .replace("\r", "") // キャリッジリターンを削除
+                        .replace("'", "\\'")   // シングルクォートのエスケープ
+                        .replace("\\", "\\\\") // バックスラッシュのエスケープ                        
+                        .replace("\"", "\\\"") // ダブルクォートのエスケープ
+                        .replace("\r", "")     // キャリッジリターンを削除
                         .replace("\n", "\\n"); // 改行をJavaScript用のエスケープに変換
-                try {
-                    webEngine.executeScript("(function() {" +
-                            "if (window.marked && document.body) {" +
-                            "document.body.innerHTML = window.marked('" + escapedReleaseNotes + "');" +
-                            "}" +
-                            "})();");
-                } catch (Exception e) {
-                    LoggerHolder.get().error("releaseNotes:" + releaseNotes, e);
-                    throw e;
-                }
+
+                // WebViewにリリースノートを挿入
+                webEngine.executeScript("(function() {" +
+                        "if (window.marked && document.body) {" +
+                        "document.body.innerHTML = window.marked('" + escapedReleaseNotes + "');" +
+                        "}" +
+                        "})();");
             } catch (Exception e) {
                 LoggerHolder.get().error("releaseJson:" + releaseJson, e);
                 webEngine.executeScript("document.body.innerHTML = '<p>リリース情報の解析中にエラーが発生しました。</p>';");
