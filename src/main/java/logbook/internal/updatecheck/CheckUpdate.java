@@ -305,94 +305,85 @@ public class CheckUpdate {
         vbox.getChildren().addAll(stackPane1, stackPane2);
         pane.getChildren().add(vbox);
 
-        // リリースノートのリンク処理
-        webEngine.getLoadWorker().stateProperty().addListener((obs, oldState, newState) -> {
-            if (newState == Worker.State.SUCCEEDED) {
-                webEngine.executeScript(
-                        "(function() {" +
-                                "if (window.marked && document.body) {" +
-                                "document.body.innerHTML = window.marked('<p>リリース情報をここに表示します。</p>');" +
-                                "Array.from(document.getElementsByTagName('a')).forEach(function(a) {" +
-                                "a.addEventListener('click', function(e) {" +
-                                "e.preventDefault();" +
-                                "var href = a.getAttribute('href');" +
-                                "if (href) {" +
-                                "java.awt.Desktop.getDesktop().browse(new java.net.URI(href));" +
-                                "}" +
-                                "});" +
-                                "});" +
-                                "}" +
-                                "})();");
+        // リリースノート取得
+        try {
+            String apiUrl = RELEASES + "v" + version;
+            HttpURLConnection connection = (HttpURLConnection) new URL(apiUrl).openConnection();
+            connection.setConnectTimeout(10 * 1000); // 接続タイムアウトを10秒に設定
+            connection.setReadTimeout(10 * 1000); // 読み取りタイムアウトを10秒に設定
+            connection.setRequestMethod("GET");
+            connection.setRequestProperty("Accept", "application/vnd.github.v3+json");
+            connection.setRequestProperty("User-Agent", "JavaFX-App");
+
+            if (connection.getResponseCode() != 200) {
+                throw new Exception("GitHub API エラー: HTTP " + connection.getResponseCode());
             }
-        });
 
-        // リリース情報を取得するタスク
-        Task<String> fetchReleaseNotesTask = new Task<String>() {
-            @Override
-            protected String call() throws Exception {
-                String apiUrl = RELEASES + "v" + version;
-                HttpURLConnection connection = (HttpURLConnection) new URL(apiUrl).openConnection();
-                connection.setRequestMethod("GET");
-                connection.setRequestProperty("Accept", "application/vnd.github.v3+json");
-                connection.setRequestProperty("User-Agent", "JavaFX-App");
-
-                if (connection.getResponseCode() != 200) {
-                    throw new Exception("GitHub API エラー: HTTP " + connection.getResponseCode());
+            try (BufferedReader reader = new BufferedReader(
+                    new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8))) {
+                StringBuilder response = new StringBuilder();
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    response.append(line).append("\n");
                 }
-
-                try (BufferedReader reader = new BufferedReader(
-                        new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8))) {
-                    StringBuilder response = new StringBuilder();
-                    String line;
-                    while ((line = reader.readLine()) != null) {
-                        response.append(line).append("\n");
-                    }
-                    return response.toString();
-                }
-            }
-        };
-
-        // タスク失敗時の処理
-        fetchReleaseNotesTask.setOnFailed(event -> {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.initOwner(WindowHolder.getInstance().getMainWindow());
-            alert.setTitle("更新情報を取得できませんでした");
-            alert.setContentText(fetchReleaseNotesTask.getException().getMessage());
-            alert.showAndWait();
-        });
-
-        // タスク成功時の処理
-        fetchReleaseNotesTask.setOnSucceeded(event -> {
-            String releaseJson = fetchReleaseNotesTask.getValue();
-            webEngine.reload(); // WebView を更新
-            try {
-                String releaseNotes = extractReleaseNotes(releaseJson);
-
-                // JavaScript内でエスケープするために、リリースノートの内容を処理
-                String escapedReleaseNotes = releaseNotes
-                        .replace("'", "\\'") // シングルクォートのエスケープ
-                        .replace("\\", "\\\\") // バックスラッシュのエスケープ
-                        .replace("\r", "") // キャリッジリターンを削除
-                        .replace("\n", "\\n"); // 改行をJavaScript用のエスケープに変換
+                
+                String releaseJson = response.toString();
                 try {
-                    webEngine.executeScript("(function() {" +
-                            "if (window.marked && document.body) {" +
-                            "document.body.innerHTML = window.marked('" + escapedReleaseNotes + "');" +
-                            "}" +
-                            "})();");
+                    String releaseNotes = extractReleaseNotes(releaseJson);
+                    
+                    // JavaScript内でエスケープするために、リリースノートの内容を処理
+                    String escapedReleaseNotes = releaseNotes
+                            .replace("'", "\\'")   // シングルクォートのエスケープ
+                            .replace("\\", "\\\\") // バックスラッシュのエスケープ                        
+                            .replace("\"", "\\\"") // ダブルクォートのエスケープ
+                            .replace("\r", "")     // キャリッジリターンを削除
+                            .replace("\n", "\\n"); // 改行をJavaScript用のエスケープに変換
+    
+                    // WebViewにリリースノートを挿入
+                    webEngine.getLoadWorker().stateProperty().addListener((obs, oldState, newState) -> {
+                        if (newState == Worker.State.SUCCEEDED) {
+                            webEngine.executeScript(
+                                    "(function() {" +
+                                            "if (window.marked && document.body) {" +
+                                              "document.body.innerHTML = window.marked('" + escapedReleaseNotes + "');" +
+                                              "document.body.innerHTML += '<p><a href=\"" + OPEN_URL + "\" target=\"_blank\">Github Releaseページを開く</a></p>';" +
+                                            "}" +
+                                        "})();");
+                        }
+                    });
+
                 } catch (Exception e) {
-                    LoggerHolder.get().error("releaseNotes:" + releaseNotes, e);
-                    throw e;
+                    LoggerHolder.get().error("releaseJson:" + releaseJson, e);
+                    
+                    webEngine.getLoadWorker().stateProperty().addListener((obs, oldState, newState) -> {
+                        if (newState == Worker.State.SUCCEEDED) {
+                            webEngine.executeScript(
+                                    "(function() {" +
+                                            "if (window.marked && document.body) {" +
+                                              "document.body.innerHTML = '<p>リリース情報の解析中にエラーが発生しました。Githubのリリースノートから確認してください。</p>';" +
+                                              "document.body.innerHTML += '<p><a href=\"" + OPEN_URL + "\" target=\"_blank\">Github Releaseページを開く</a></p>';" +
+                                            "}" +
+                                          "})();");
+                        }
+                    });
                 }
-            } catch (Exception e) {
-                LoggerHolder.get().error("releaseJson:" + releaseJson, e);
-                webEngine.executeScript("document.body.innerHTML = '<p>リリース情報の解析中にエラーが発生しました。</p>';");
             }
-        });
+        } catch (Exception e) {
+            LoggerHolder.get().error("APIからのReleaseNoteJson情報の取得に失敗", e);
 
-        // 別スレッドでタスクを開始
-        new Thread(fetchReleaseNotesTask).start();
-
+            webEngine.getLoadWorker().stateProperty().addListener((obs, oldState, newState) -> {
+                if (newState == Worker.State.SUCCEEDED) {
+                    webEngine.executeScript(
+                            "(function() {" +
+                                  "if (window.marked && document.body) {" +
+                                    "document.body.innerHTML = '<p>リリース情報の取得に失敗しました。Githubのリリースノートから確認してください。</p>';" +
+                                    "document.body.innerHTML += '<p><a href=\"" + OPEN_URL + "\" target=\"_blank\">Github Releaseページを開く</a></p>';" +
+                                  "}" +
+                                "})();");
+                }
+            });
+        }
+                
         // スタイルシートを適用
         Scene scene = new Scene(pane);
 
@@ -485,6 +476,7 @@ public class CheckUpdate {
                 Files.deleteIfExists(tempZip);
                 Files.deleteIfExists(tempDir);
 
+                updateMessage("更新ファイルの取得が完了しました。航海日誌を再起動してください。");
                 return "更新ファイルの取得が完了しました。航海日誌を再起動してください。";
             }
         };
@@ -520,6 +512,7 @@ public class CheckUpdate {
             
             Stage logStage = logStages.get(webEngine);
             if (logStage != null) {
+                alert.initOwner(logStage);
                 alert.setX(logStage.getX());
                 alert.setY(logStage.getY());
             }
@@ -539,6 +532,7 @@ public class CheckUpdate {
 
             Stage logStage = logStages.get(webEngine);
             if (logStage != null) {
+                alert.initOwner(logStage);
                 alert.setX(logStage.getX());
                 alert.setY(logStage.getY());
             }
