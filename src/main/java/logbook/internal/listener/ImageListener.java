@@ -70,16 +70,27 @@ public class ImageListener implements ContentListenerSpi {
             if (uri.startsWith("/kcs2/resources/ship/")) {
                 this.ships(request, response);
             }
+            //MAP情報
+            else if (uri.startsWith("/kcs2/resources/map/")) {
+                this.maps(request, response, "map");
+            }
+            // ゲージ情報
+            else if (uri.startsWith("/kcs2/resources/gauge/")) {
+                this.images(request, response, "gauge");
+            }
             // 汎用画像
-            if (uri.startsWith("/kcs2/img/common/")) {
+            else if (uri.startsWith("/kcs2/img/common/")) {
                 this.images(request, response, "common");
             }
             // 任務関連画像
-            if (uri.startsWith("/kcs2/img/duty/")) {
+            else if (uri.startsWith("/kcs2/img/duty/")) {
                 this.images(request, response, "duty");
             }
-            if (uri.startsWith("/kcs2/img/sally/")) {
+            else if (uri.startsWith("/kcs2/img/sally/")) {
                 this.images(request, response, "sally");
+            }
+            else {
+                LoggerHolder.get().debug("処理対象外URIを検知:" + uri);
             }
         } catch (Exception e) {
             LoggerHolder.get().warn("画像ファイル処理中に例外が発生しました", e);
@@ -139,6 +150,40 @@ public class ImageListener implements ContentListenerSpi {
         String uri = request.getRequestURI();
         Path dir = Paths.get(AppConfig.get().getResourcesDir(), dirname);
         Path path = dir.resolve(Paths.get(URI.create(uri).getPath()).getFileName());
+        if (response.getResponseBody().isPresent()) {
+            this.write(response.getResponseBody().get(), path);
+
+            String filename = String.valueOf(path.getFileName());
+            // pngファイル
+            Path pngPath = null;
+            // jsonファイル
+            Path jsonPath = null;
+
+            // jsonファイルの場合
+            if (filename.endsWith(".json")) {
+                pngPath = path.resolveSibling(filename.replace(".json", ".png"));
+                jsonPath = path;
+            }
+            // pngファイルの場合
+            if (filename.endsWith(".png")) {
+                pngPath = path;
+                jsonPath = path.resolveSibling(filename.replace(".png", ".json"));
+            }
+            // 分解した画像の格納先
+            Path spriteDir = pngPath.resolveSibling(filename.substring(0, filename.lastIndexOf('.')));
+
+            this.sprite(spriteDir, pngPath, jsonPath);
+        }
+    }
+
+    private void maps(RequestMetaData request, ResponseMetaData response, String dirname) throws IOException {
+        String uri = request.getRequestURI();
+        Path dir = Paths.get(AppConfig.get().getResourcesDir(), dirname);
+
+        Path fullPath = Paths.get(URI.create(uri).getPath());
+        int pathCount = fullPath.getNameCount();
+        Path mapFilePath = fullPath.subpath(3, pathCount); // "kcs2/resources/map" を除外
+        Path path = dir.resolve(mapFilePath);
         if (response.getResponseBody().isPresent()) {
             this.write(response.getResponseBody().get(), path);
 
@@ -226,6 +271,7 @@ public class ImageListener implements ContentListenerSpi {
         try {
             this.move(temp, to);
         } catch (IOException e) {
+            LoggerHolder.get().warn("画像ファイル処理中に例外が発生しました", e);
             Files.deleteIfExists(temp);
         }
     }
