@@ -39,9 +39,11 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -256,8 +258,24 @@ public class CheckUpdate {
                 new Text("航海日誌 v" + version + "への更新を行います。\n"),
                 new Text("更新の準備が出来ましたら[更新]を押して更新を行ってください。"));
         label.getStyleClass().add("info-label");
-        vbox.getChildren().add(label);
-
+        
+        // "Github Releaseページを開く" リンク
+        Hyperlink githubLink = new Hyperlink("Github Releaseページを開く");
+        githubLink.setOnAction(event -> {
+            try {
+                Desktop.getDesktop().browse(new URI(OPEN_URL));
+            } catch (Exception e) {
+                LoggerHolder.get().error("Github Releaseページ表示時にエラー発生", e);
+            }
+        });
+        
+        Region spacer = new Region();
+        HBox.setHgrow(spacer, Priority.ALWAYS); 
+        
+        HBox labelBox = new HBox(5, label, spacer, githubLink);
+        labelBox.setAlignment(Pos.CENTER_LEFT);
+        vbox.getChildren().add(labelBox);
+        
         // WebViewコンテナ
         StackPane stackPane1 = new StackPane();
         stackPane1.getStyleClass().add("webview-container");
@@ -346,7 +364,6 @@ public class CheckUpdate {
                                     "(function() {" +
                                             "if (window.marked && document.body) {" +
                                               "document.body.innerHTML = window.marked('" + escapedReleaseNotes + "');" +
-                                              "document.body.innerHTML += '<p><a href=\"" + OPEN_URL + "\" target=\"_blank\">Github Releaseページを開く</a></p>';" +
                                             "}" +
                                         "})();");
                         }
@@ -361,7 +378,6 @@ public class CheckUpdate {
                                     "(function() {" +
                                             "if (window.marked && document.body) {" +
                                               "document.body.innerHTML = '<p>リリース情報の解析中にエラーが発生しました。Githubのリリースノートから確認してください。</p>';" +
-                                              "document.body.innerHTML += '<p><a href=\"" + OPEN_URL + "\" target=\"_blank\">Github Releaseページを開く</a></p>';" +
                                             "}" +
                                           "})();");
                         }
@@ -377,7 +393,6 @@ public class CheckUpdate {
                             "(function() {" +
                                   "if (window.marked && document.body) {" +
                                     "document.body.innerHTML = '<p>リリース情報の取得に失敗しました。Githubのリリースノートから確認してください。</p>';" +
-                                    "document.body.innerHTML += '<p><a href=\"" + OPEN_URL + "\" target=\"_blank\">Github Releaseページを開く</a></p>';" +
                                   "}" +
                                 "})();");
                 }
