@@ -347,8 +347,8 @@ public class FleetTabPane extends ScrollPane {
         // TP合計
         int tp = withoutEscape.stream().mapToInt(Ships::transportPoint).sum();
         this.tpsum.setText(tp + "/" + (int)(tp*7/10));
-        // 兵員輸送TP合計
-        int heiintp = withoutEscape.stream().mapToInt(Ships::transportPoint).sum();
+        // 兵員輸送TP合計(小数点以下切り捨て)
+        int heiintp = (int)withoutEscape.stream().mapToDouble(Ships::heiinTransportPoint).sum();
         this.heiintpsum.setText(heiintp + "/" + (int)(heiintp*7/10));
 
         // 艦隊速度 - 各艦の速度のうち最低の速度を艦隊の速度とする
