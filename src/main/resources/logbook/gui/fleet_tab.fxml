@@ -121,6 +121,13 @@
                                  </children>
                               </HBox>
                               <Label fx:id="speed" styleClass="value" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                              <HBox alignment="CENTER_LEFT" GridPane.columnIndex="0" GridPane.rowIndex="6">
+                                 <children>
+                                    <ImageView fx:id="heiintpsumImg" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Label text="兵員輸送TP(S/A):" />
+                                 </children>
+                              </HBox>
+                              <Label fx:id="heiintpsum" styleClass="value" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                            </children>
                         </GridPane>
                      </children>
