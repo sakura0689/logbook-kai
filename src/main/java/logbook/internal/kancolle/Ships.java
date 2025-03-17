@@ -43,6 +43,7 @@ import logbook.bean.Stype;
 import logbook.bean.StypeCollection;
 import logbook.common.Messages;
 import logbook.constants.ShipType;
+import logbook.constants.SlotItemMst;
 import logbook.constants.SlotItemType;
 import logbook.core.LogBookCoreServices;
 import logbook.internal.Tuple;
@@ -82,8 +83,12 @@ public class Ships {
     private static final Map<SlotItemType, Double> AALV_COEFFICIENT = new EnumMap<>(SlotItemType.class);
     /** 艦種ごとのTP */
     private static final Map<ShipType, Integer> SHIP_TYPE_TP_MAP = new HashMap<>();
+    /** 艦種ごとの兵員輸送TP */
+    private static final Map<ShipType, Double> SHIP_TYPE_HEIINTP_MAP = new HashMap<>();
     /** 装備種別ごとのTP */
     private static final Map<SlotItemType, Integer> SLOTITEM_TYPE_TP_MAP = new HashMap<>();
+    /** 装備種別ごとの兵員輸送TP */
+    private static final Map<Integer, Double> SLOTITEM_TYPE_HEIINTP_MAP = new HashMap<>();
 
     /** 艦娘付加情報 */
     private static final Map<Integer, ShipSupplementalInfo> ships;
@@ -183,11 +188,53 @@ public class Ships {
         SHIP_TYPE_TP_MAP.put(ShipType.揚陸艦, 12);
         SHIP_TYPE_TP_MAP.put(ShipType.潜水母艦, 7);
 
+        // 艦種ごとの兵員輸送TP
+        SHIP_TYPE_HEIINTP_MAP.put(ShipType.駆逐艦, 3.25D);
+        SHIP_TYPE_HEIINTP_MAP.put(ShipType.軽巡洋艦, 1.3D);
+        SHIP_TYPE_HEIINTP_MAP.put(ShipType.航空戦艦, 4.55D);
+        SHIP_TYPE_HEIINTP_MAP.put(ShipType.水上機母艦, 5.85D);
+        SHIP_TYPE_HEIINTP_MAP.put(ShipType.潜水空母, 0.65D);
+        SHIP_TYPE_HEIINTP_MAP.put(ShipType.練習巡洋艦, 3.9D);
+        SHIP_TYPE_HEIINTP_MAP.put(ShipType.航空巡洋艦, 2.6D);
+        SHIP_TYPE_HEIINTP_MAP.put(ShipType.補給艦, 9.75D);
+        SHIP_TYPE_HEIINTP_MAP.put(ShipType.揚陸艦, 7.8D);
+        SHIP_TYPE_HEIINTP_MAP.put(ShipType.潜水母艦, 4.55D);
+
         // 装備種別ごとのTP
         SLOTITEM_TYPE_TP_MAP.put(SlotItemType.簡易輸送部材, 5);
         SLOTITEM_TYPE_TP_MAP.put(SlotItemType.上陸用舟艇, 8);
         SLOTITEM_TYPE_TP_MAP.put(SlotItemType.特型内火艇, 2);
         SLOTITEM_TYPE_TP_MAP.put(SlotItemType.戦闘糧食, 1);
+
+        // 装備ごとの兵員輸送TP
+        SLOTITEM_TYPE_HEIINTP_MAP.put(SlotItemMst.大発動艇.getItemid(), 5.2D);        
+        SLOTITEM_TYPE_HEIINTP_MAP.put(SlotItemMst.大発動艇_八九式中戦車_陸戦隊.getItemid(), 14.2D);
+        SLOTITEM_TYPE_HEIINTP_MAP.put(SlotItemMst.特大発動艇.getItemid(), 5.2D);
+        SLOTITEM_TYPE_HEIINTP_MAP.put(SlotItemMst.特大発動艇_戦車第11連隊.getItemid(), 46.2D);
+        SLOTITEM_TYPE_HEIINTP_MAP.put(SlotItemMst.M4A1DD.getItemid(), 24.2D);
+        SLOTITEM_TYPE_HEIINTP_MAP.put(SlotItemMst.装甲艇_AB艇.getItemid(), 5.2D);
+        SLOTITEM_TYPE_HEIINTP_MAP.put(SlotItemMst.武装大発.getItemid(), 5.2D);
+        SLOTITEM_TYPE_HEIINTP_MAP.put(SlotItemMst.大発動艇_II号戦車_北アフリカ仕様.getItemid(), 21.2D);
+        SLOTITEM_TYPE_HEIINTP_MAP.put(SlotItemMst.特大発動艇_一式砲戦車.getItemid(), 40.2D);
+        SLOTITEM_TYPE_HEIINTP_MAP.put(SlotItemMst.特大発動艇_Ⅲ号戦車_北アフリカ仕様.getItemid(), 27.2D);
+        SLOTITEM_TYPE_HEIINTP_MAP.put(SlotItemMst.特大発動艇_チハ.getItemid(), 22.2D);
+        SLOTITEM_TYPE_HEIINTP_MAP.put(SlotItemMst.特大発動艇_チハ改.getItemid(), 28.2D);
+        SLOTITEM_TYPE_HEIINTP_MAP.put(SlotItemMst.特大発動艇_Ⅲ号戦車J型.getItemid(), 32.2D);
+        
+        SLOTITEM_TYPE_HEIINTP_MAP.put(SlotItemMst.特二式内火艇.getItemid(), 9.2D);
+        SLOTITEM_TYPE_HEIINTP_MAP.put(SlotItemMst.特四式内火艇.getItemid(), 6.2D);
+        SLOTITEM_TYPE_HEIINTP_MAP.put(SlotItemMst.特四式内火艇改.getItemid(), 8.2D);
+        
+        SLOTITEM_TYPE_HEIINTP_MAP.put(SlotItemMst.ドラム缶_輸送用.getItemid(), 3.25D);
+        
+        SLOTITEM_TYPE_HEIINTP_MAP.put(SlotItemMst.陸軍歩兵部隊.getItemid(), 15.0D);
+        SLOTITEM_TYPE_HEIINTP_MAP.put(SlotItemMst.九七式中戦車_チハ.getItemid(), 17.0D);
+        SLOTITEM_TYPE_HEIINTP_MAP.put(SlotItemMst.九七式中戦車_新砲塔_チハ改.getItemid(), 23.0D);
+        SLOTITEM_TYPE_HEIINTP_MAP.put(SlotItemMst.陸軍歩兵部隊_チハ改.getItemid(), 38.0D);
+
+        SLOTITEM_TYPE_HEIINTP_MAP.put(SlotItemMst.戦闘糧食.getItemid(), 0.65D);
+        SLOTITEM_TYPE_HEIINTP_MAP.put(SlotItemMst.秋刀魚の缶詰.getItemid(), 0.65D);
+        SLOTITEM_TYPE_HEIINTP_MAP.put(SlotItemMst.戦闘糧食_特別なおにぎり.getItemid(), 0.65D);
 
         // 付加的な情報の読み込み
         InputStream is = LogBookCoreServices.getResourceAsStream("logbook/supplemental/ships.json");
@@ -901,6 +948,36 @@ public class Ships {
                 .map(SLOTITEM_TYPE_TP_MAP::get)
                 .filter(Objects::nonNull)
                 .mapToInt(Integer::intValue)
+                .sum();
+        return value;
+    }
+
+    /**
+     * 兵員輸送TP (S勝利時)
+     *
+     * @param ship 艦娘
+     * @return 兵員輸送TP
+     */
+    public static Double heiinTransportPoint(Ship ship) {
+        Map<Integer, SlotItem> itemMap = SlotItemCollection.get()
+                .getSlotitemMap();
+        // 参考 https://docs.google.com/spreadsheets/d/1ynon3m-qL7XBtDgi1kOSluVEMUen_zx1a6Bi_f4JTc4/edit?gid=688531952#gid=688531952
+
+        
+        // 艦娘TP
+        Double value = shipMst(ship).map(ShipType::toShipType).map(SHIP_TYPE_HEIINTP_MAP::get).orElse(0D);
+        if (ship.getShipId() == 487) {
+            // 鬼怒改二は大発動艇を1つ内蔵
+            value += 8.0D;
+        }
+        // 装備TP
+        value += Stream.concat(ship.getSlot().stream(), Stream.of(ship.getSlotEx()))
+                .map(itemMap::get)
+                .filter(Objects::nonNull)
+                .map(SlotItem::getSlotitemId)
+                .map(SLOTITEM_TYPE_HEIINTP_MAP::get)
+                .filter(Objects::nonNull)
+                .mapToDouble(Double::doubleValue)
                 .sum();
         return value;
     }
