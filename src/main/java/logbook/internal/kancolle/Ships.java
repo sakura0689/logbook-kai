@@ -221,9 +221,9 @@ public class Ships {
         SLOTITEM_TYPE_HEIINTP_MAP.put(SlotItemMst.特大発動艇_チハ改.getItemid(), 28.2D);
         SLOTITEM_TYPE_HEIINTP_MAP.put(SlotItemMst.特大発動艇_Ⅲ号戦車J型.getItemid(), 32.2D);
         
-        SLOTITEM_TYPE_HEIINTP_MAP.put(SlotItemMst.特二式内火艇.getItemid(), 9.2D);
-        SLOTITEM_TYPE_HEIINTP_MAP.put(SlotItemMst.特四式内火艇.getItemid(), 6.2D);
-        SLOTITEM_TYPE_HEIINTP_MAP.put(SlotItemMst.特四式内火艇改.getItemid(), 8.2D);
+        SLOTITEM_TYPE_HEIINTP_MAP.put(SlotItemMst.特二式内火艇.getItemid(), 9.3D);
+        SLOTITEM_TYPE_HEIINTP_MAP.put(SlotItemMst.特四式内火艇.getItemid(), 6.3D);
+        SLOTITEM_TYPE_HEIINTP_MAP.put(SlotItemMst.特四式内火艇改.getItemid(), 8.3D);
         
         SLOTITEM_TYPE_HEIINTP_MAP.put(SlotItemMst.ドラム缶_輸送用.getItemid(), 3.25D);
         
