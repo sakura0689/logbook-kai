@@ -173,14 +173,23 @@ public class FleetTabPane extends ScrollPane {
     @FXML
     private Label speed;
     
-    /** 兵員輸送TP合計アイコン */
+    /** 兵員輸送TP合計アイコン(E2) */
     @FXML
-    private ImageView heiintpsumImg;
+    private ImageView heiintpsumImgE2;
 
-    /** 兵員輸送TP合計 */
+    /** 兵員輸送TP合計(E2) */
     @FXML
-    private Label heiintpsum;
+    private Label heiintpsumE2;
 
+    /** 兵員輸送TP合計アイコン(E5) */
+    @FXML
+    private ImageView heiintpsumImgE5;
+
+    /** 兵員輸送TP合計(E5) */
+    @FXML
+    private Label heiintpsumE5;
+
+    
     /** 注釈 */
     @FXML
     private VBox remark;
@@ -348,8 +357,11 @@ public class FleetTabPane extends ScrollPane {
         int tp = withoutEscape.stream().mapToInt(Ships::transportPoint).sum();
         this.tpsum.setText(tp + "/" + (int)(tp*7/10));
         // 兵員輸送TP合計(小数点以下切り捨て)
-        int heiintp = (int)withoutEscape.stream().mapToDouble(Ships::heiinTransportPoint).sum();
-        this.heiintpsum.setText(heiintp + "/" + (int)(heiintp*7/10));
+        int heiintpE2 = (int)withoutEscape.stream().mapToDouble(Ships::heiinTransportPointE2).sum();
+        this.heiintpsumE2.setText(heiintpE2 + "/" + (int)(heiintpE2*7/10));
+        
+        int heiintpE5 = (int)withoutEscape.stream().mapToDouble(Ships::heiinTransportPointE5).sum();
+        this.heiintpsumE5.setText(heiintpE5 + "/" + (int)(heiintpE5*7/10));
 
         // 艦隊速度 - 各艦の速度のうち最低の速度を艦隊の速度とする
         String label;
@@ -485,7 +497,8 @@ public class FleetTabPane extends ScrollPane {
         this.sakutekisumImg.setImage(Items.itemImageByType(11));
         this.tpsumImg.setImage(Items.itemImageByType(25));
         this.speedImg.setImage(Items.itemImageByType(19));
-        this.heiintpsumImg.setImage(Items.itemImageByType(36));
+        this.heiintpsumImgE2.setImage(Items.itemImageByType(36));
+        this.heiintpsumImgE5.setImage(Items.itemImageByType(36));
     }
 
     /**
