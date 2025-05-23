@@ -10,7 +10,7 @@ import java.util.Map;
 public class ExpTable {
 
     /** 艦娘MaxLv */
-    public static final int MAX_LEVEL = 180;
+    public static final int MAX_LEVEL = 185;
     
     /**
      * 経験値テーブルプリセット値
@@ -199,6 +199,11 @@ public class ExpTable {
         EXP_TABLE.put(178, 11600000);
         EXP_TABLE.put(179, 12100000);
         EXP_TABLE.put(180, 13000000);
+        EXP_TABLE.put(181, 13200000);
+        EXP_TABLE.put(182, 13600000);
+        EXP_TABLE.put(183, 14200000);
+        EXP_TABLE.put(184, 15000000);
+        EXP_TABLE.put(185, 16000000);
     }
 
     /**
