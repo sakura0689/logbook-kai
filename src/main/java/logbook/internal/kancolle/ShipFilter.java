@@ -125,21 +125,41 @@ public interface ShipFilter extends Predicate<ShipItem> {
             Map<Integer, SlotItem> itemMap = SlotItemCollection.get()
                     .getSlotitemMap();
             List<Supplier<String>> texts = Arrays.asList(
-                    () -> Ships.shipMst(ship.getShip()).map(ShipMst::getName).orElse(""),
-                    () -> Ships.shipMst(ship.getShip()).map(ShipMst::getYomi).orElse(""),
-                    () -> Items.slotitemMst(itemMap.get(ship.getSlot1())).map(SlotitemMst::getName).orElse(""),
-                    () -> Items.slotitemMst(itemMap.get(ship.getSlot2())).map(SlotitemMst::getName).orElse(""),
-                    () -> Items.slotitemMst(itemMap.get(ship.getSlot3())).map(SlotitemMst::getName).orElse(""),
-                    () -> Items.slotitemMst(itemMap.get(ship.getSlot4())).map(SlotitemMst::getName).orElse(""),
-                    () -> Items.slotitemMst(itemMap.get(ship.getSlot5())).map(SlotitemMst::getName).orElse(""),
-                    () -> Items.slotitemMst(itemMap.get(ship.getSlotEx())).map(SlotitemMst::getName).orElse(""));
+                    () -> lowerText(Ships.shipMst(ship.getShip()).map(ShipMst::getName).orElse("")),
+                    () -> customText(Ships.shipMst(ship.getShip()).map(ShipMst::getYomi).orElse("")),
+                    () -> lowerText(Items.slotitemMst(itemMap.get(ship.getSlot1())).map(SlotitemMst::getName).orElse("")),
+                    () -> lowerText(Items.slotitemMst(itemMap.get(ship.getSlot2())).map(SlotitemMst::getName).orElse("")),
+                    () -> lowerText(Items.slotitemMst(itemMap.get(ship.getSlot3())).map(SlotitemMst::getName).orElse("")),
+                    () -> lowerText(Items.slotitemMst(itemMap.get(ship.getSlot4())).map(SlotitemMst::getName).orElse("")),
+                    () -> lowerText(Items.slotitemMst(itemMap.get(ship.getSlot5())).map(SlotitemMst::getName).orElse("")),
+                    () -> lowerText(Items.slotitemMst(itemMap.get(ship.getSlotEx())).map(SlotitemMst::getName).orElse("")));
+            
+            String lowerText = this.text.toLowerCase();
             
             for (Supplier<String> supplier : texts) {
-                if (supplier.get().contains(this.text)) {
+                if (supplier.get().contains(lowerText)) {
                     return true;
                 }
             }
             return false;
+        }
+
+        private String lowerText(String input) {
+            String lower = input.toLowerCase();
+            return lower;
+        }
+
+        private String customText(String input) {
+            if ("ひびき".equals(input)) {
+                return "ひびき・ベールヌイ";
+            } else if ("たいよう".equals(input)) {
+                return "たいよう・かすがまる";
+            } else if ("うんよう".equals(input)) {
+                return "うんよう・やわたまる";
+            } else if ("ゆきかぜ".equals(input)) {
+                return "ゆきかぜ・DANYANG";
+            }
+            return input;
         }
     }
 
