@@ -1,0 +1,22 @@
+/* [953] 【梅雨限定任務】雨の南西諸島防衛戦！ */
+{
+    "type": "出撃",
+    "resetType" : "ウィークリー",
+    "filter" : {
+        "area": ["2-1", "2-2", "2-3"],
+        "fleet": {
+            "operator": "AND",
+            "conditions": [
+                {"stype": ["軽巡洋艦", "重雷装巡洋艦", "練習巡洋艦","重巡洋艦", "航空巡洋艦"], "order": 1},
+                {"stype": ["駆逐艦"], "count": 1, "operator": "GE"},
+                {"stype": ["海防艦"], "count": 1, "operator": "GE"},
+                {"stype": ["水上機母艦"], "count": 1, "operator": "GE"}
+            ]
+        }
+        },
+    "conditions" : [
+        {"boss": true, "area": ["2-1"], "rank": ["S", "A"], "count": 1},
+        {"boss": true, "area": ["2-2"], "rank": ["S", "A"], "count": 1},
+        {"boss": true, "area": ["2-3"], "rank": ["S", "A"], "count": 1}
+    ]
+}
