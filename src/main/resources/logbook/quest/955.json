@@ -1,0 +1,28 @@
+/* 【梅雨限定月間任務】西方海域統合作戦2025 */
+{
+    "resetType" : "マンスリー",
+    "filter" : {
+        "area": ["4-1", "4-2", "4-3", "4-4", "4-5"],
+        "fleet": {
+            "operator": "AND",
+            "conditions": [
+                {"stype": ["軽空母", "正規空母", "装甲空母"], "count": 1, "operator": "GE"},
+                {
+                    "operator": "OR",
+                    "conditions": [
+                        {"stype": ["重巡洋艦", "航空巡洋艦"], "count": 2, "operator": "GE"},
+                        {"name": ["秋月", "照月", "涼月", "初月", "冬月"], "count": 2, "operator": "GE"}
+                    ]
+                }
+                
+            ]
+        }
+    },
+    "conditions" : [
+        {"boss": true, "area": ["4-1"], "rank": ["S"], "count": 1},
+        {"boss": true, "area": ["4-2"], "rank": ["S"], "count": 1},
+        {"boss": true, "area": ["4-3"], "rank": ["S"], "count": 1},
+        {"boss": true, "area": ["4-4"], "rank": ["S"], "count": 1},
+        {"boss": true, "area": ["4-5"], "rank": ["S"], "count": 1}
+    ]
+}
