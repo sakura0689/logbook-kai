@@ -1,9 +1,12 @@
 package logbook.bean;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import jakarta.json.JsonObject;
+import logbook.internal.logger.LoggerHolder;
 import logbook.internal.util.JsonHelper;
+import logbook.internal.util.UnUsedKeyBindListener;
 import lombok.Data;
 
 /**
@@ -38,12 +41,26 @@ public class SlotItem implements Serializable {
      */
     public static SlotItem toSlotItem(JsonObject json) {
         SlotItem bean = new SlotItem();
-        JsonHelper.bind(json)
+
+        UnUsedKeyBindListener unUsedKeyBindListener = null;
+        if (LoggerHolder.get().isDebugEnabled()) {
+            unUsedKeyBindListener = new UnUsedKeyBindListener(json);
+        }
+
+        JsonHelper.bind(json, unUsedKeyBindListener)
                 .setInteger("api_id", bean::setId)
                 .setInteger("api_level", bean::setLevel)
                 .setInteger("api_alv", bean::setAlv)
                 .setBoolean("api_locked", bean::setLocked)
                 .setInteger("api_slotitem_id", bean::setSlotitemId);
+
+        if (LoggerHolder.get().isDebugEnabled()) {
+            Set<String> unUsedKey = unUsedKeyBindListener.getUnusedKeys();
+            for (String key : unUsedKey) {
+                LoggerHolder.get().debug("未使用のKeyを検出 : " + key);
+            }
+        }
+
         return bean;
     }
 }

@@ -2,13 +2,16 @@ package logbook.bean;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 import jakarta.json.JsonObject;
 import logbook.bean.BattleTypes.ICombinedBattle;
 import logbook.bean.BattleTypes.IFormation;
 import logbook.bean.BattleTypes.IMidnightBattle;
 import logbook.bean.BattleTypes.INSupport;
+import logbook.internal.logger.LoggerHolder;
 import logbook.internal.util.JsonHelper;
+import logbook.internal.util.UnUsedKeyBindListener;
 import lombok.Data;
 
 /**
@@ -91,7 +94,13 @@ public class CombinedBattleSpMidnight implements ICombinedBattle, IMidnightBattl
      */
     public static CombinedBattleSpMidnight toBattle(JsonObject json) {
         CombinedBattleSpMidnight bean = new CombinedBattleSpMidnight();
-        JsonHelper.bind(json)
+
+        UnUsedKeyBindListener unUsedKeyBindListener = null;
+        if (LoggerHolder.get().isDebugEnabled()) {
+            unUsedKeyBindListener = new UnUsedKeyBindListener(json);
+        }
+
+        JsonHelper.bind(json, unUsedKeyBindListener)
                 .setInteger("api_dock_id", bean::setDockId)
                 .setInteger("api_deck_id", bean::setDockId)
                 .setIntegerList("api_ship_ke", bean::setShipKe)
@@ -114,6 +123,14 @@ public class CombinedBattleSpMidnight implements ICombinedBattle, IMidnightBattl
                 .set("api_hougeki", bean::setHougeki, BattleTypes.MidnightHougeki::toMidnightHougeki)
                 .setInteger("api_n_support_flag", bean::setNSupportFlag)
                 .set("api_n_support_info", bean::setNSupportInfo, BattleTypes.SupportInfo::toSupportInfo);
+
+        if (LoggerHolder.get().isDebugEnabled()) {
+            Set<String> unUsedKey = unUsedKeyBindListener.getUnusedKeys();
+            for (String key : unUsedKey) {
+                LoggerHolder.get().debug("未使用のKeyを検出 : " + key);
+            }
+        }
+
         return bean;
     }
 }

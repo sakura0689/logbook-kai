@@ -2,11 +2,14 @@ package logbook.bean;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.json.JsonObject;
+import logbook.internal.logger.LoggerHolder;
 import logbook.internal.util.JsonHelper;
+import logbook.internal.util.UnUsedKeyBindListener;
 import lombok.Data;
 
 /**
@@ -154,10 +157,24 @@ public class BattleResult implements Serializable {
          */
         public static EnemyInfo toEnemyInfo(JsonObject json) {
             EnemyInfo bean = new EnemyInfo();
-            JsonHelper.bind(json)
+            
+            UnUsedKeyBindListener unUsedKeyBindListener = null;
+            if (LoggerHolder.get().isDebugEnabled()) {
+                unUsedKeyBindListener = new UnUsedKeyBindListener(json);
+            }
+            
+            JsonHelper.bind(json, unUsedKeyBindListener)
                     .setString("api_level", bean::setLevel)
                     .setString("api_rank", bean::setRank)
                     .setString("api_deck_name", bean::setDeckName);
+            
+            if (LoggerHolder.get().isDebugEnabled()) {
+                Set<String> unUsedKey = unUsedKeyBindListener.getUnusedKeys();
+                for (String key : unUsedKey) {
+                    LoggerHolder.get().debug("未使用のKeyを検出 : " + key);
+                }
+            }
+
             return bean;
         }
     }
@@ -190,11 +207,25 @@ public class BattleResult implements Serializable {
          */
         public static GetShip toGetShip(JsonObject json) {
             GetShip bean = new GetShip();
-            JsonHelper.bind(json)
+
+            UnUsedKeyBindListener unUsedKeyBindListener = null;
+            if (LoggerHolder.get().isDebugEnabled()) {
+                unUsedKeyBindListener = new UnUsedKeyBindListener(json);
+            }
+
+            JsonHelper.bind(json, unUsedKeyBindListener)
                     .setInteger("api_ship_id", bean::setShipId)
                     .setString("api_ship_type", bean::setShipType)
                     .setString("api_ship_name", bean::setShipName)
                     .setString("api_ship_getmes", bean::setShipGetmes);
+
+            if (LoggerHolder.get().isDebugEnabled()) {
+                Set<String> unUsedKey = unUsedKeyBindListener.getUnusedKeys();
+                for (String key : unUsedKey) {
+                    LoggerHolder.get().debug("未使用のKeyを検出 : " + key);
+                }
+            }
+
             return bean;
         }
     }
@@ -224,10 +255,24 @@ public class BattleResult implements Serializable {
          */
         public static GetEventitem toGetEventitem(JsonObject json) {
             GetEventitem bean = new GetEventitem();
-            JsonHelper.bind(json)
+
+            UnUsedKeyBindListener unUsedKeyBindListener = null;
+            if (LoggerHolder.get().isDebugEnabled()) {
+                unUsedKeyBindListener = new UnUsedKeyBindListener(json);
+            }
+
+            JsonHelper.bind(json, unUsedKeyBindListener)
                     .setInteger("api_type", bean::setType)
                     .setInteger("api_id", bean::setId)
                     .setInteger("api_value", bean::setValue);
+
+            if (LoggerHolder.get().isDebugEnabled()) {
+                Set<String> unUsedKey = unUsedKeyBindListener.getUnusedKeys();
+                for (String key : unUsedKey) {
+                    LoggerHolder.get().debug("未使用のKeyを検出 : " + key);
+                }
+            }
+
             return bean;
         }
     }
@@ -254,9 +299,23 @@ public class BattleResult implements Serializable {
          */
         public static Escape toEscape(JsonObject json) {
             Escape bean = new Escape();
-            JsonHelper.bind(json)
+
+            UnUsedKeyBindListener unUsedKeyBindListener = null;
+            if (LoggerHolder.get().isDebugEnabled()) {
+                unUsedKeyBindListener = new UnUsedKeyBindListener(json);
+            }
+
+            JsonHelper.bind(json, unUsedKeyBindListener)
                     .setIntegerList("api_escape_idx", bean::setEscapeIdx)
                     .setIntegerList("api_tow_idx", bean::setTowIdx);
+
+            if (LoggerHolder.get().isDebugEnabled()) {
+                Set<String> unUsedKey = unUsedKeyBindListener.getUnusedKeys();
+                for (String key : unUsedKey) {
+                    LoggerHolder.get().debug("未使用のKeyを検出 : " + key);
+                }
+            }
+
             return bean;
         }
     }
@@ -286,10 +345,24 @@ public class BattleResult implements Serializable {
          */
         public static LandingHp toLandingHp(JsonObject json) {
             LandingHp bean = new LandingHp();
-            JsonHelper.bind(json)
+
+            UnUsedKeyBindListener unUsedKeyBindListener = null;
+            if (LoggerHolder.get().isDebugEnabled()) {
+                unUsedKeyBindListener = new UnUsedKeyBindListener(json);
+            }
+
+            JsonHelper.bind(json, unUsedKeyBindListener)
                     .setInteger("api_now_hp", bean::setNowHp)
                     .setInteger("api_max_hp", bean::setMaxHp)
                     .setInteger("api_sub_value", bean::setSubValue);
+
+            if (LoggerHolder.get().isDebugEnabled()) {
+                Set<String> unUsedKey = unUsedKeyBindListener.getUnusedKeys();
+                for (String key : unUsedKey) {
+                    LoggerHolder.get().debug("未使用のKeyを検出 : " + key);
+                }
+            }
+
             return bean;
         }
     }
@@ -316,9 +389,23 @@ public class BattleResult implements Serializable {
          */
         public static Useitem toUseitem(JsonObject json) {
             Useitem bean = new Useitem();
-            JsonHelper.bind(json)
+
+            UnUsedKeyBindListener unUsedKeyBindListener = null;
+            if (LoggerHolder.get().isDebugEnabled()) {
+                unUsedKeyBindListener = new UnUsedKeyBindListener(json);
+            }
+
+            JsonHelper.bind(json, unUsedKeyBindListener)
                     .setInteger("api_useitem_id", bean::setUseitemId)
                     .setString("api_useitem_name", bean::setUseitemName);
+
+            if (LoggerHolder.get().isDebugEnabled()) {
+                Set<String> unUsedKey = unUsedKeyBindListener.getUnusedKeys();
+                for (String key : unUsedKey) {
+                    LoggerHolder.get().debug("未使用のKeyを検出 : " + key);
+                }
+            }
+
             return bean;
         }
     }
@@ -331,7 +418,13 @@ public class BattleResult implements Serializable {
      */
     public static BattleResult toBattleResult(JsonObject json) {
         BattleResult bean = new BattleResult();
-        JsonHelper.bind(json)
+
+        UnUsedKeyBindListener unUsedKeyBindListener = null;
+        if (LoggerHolder.get().isDebugEnabled()) {
+            unUsedKeyBindListener = new UnUsedKeyBindListener(json);
+        }
+
+        JsonHelper.bind(json, unUsedKeyBindListener)
                 .setString("api_win_rank", bean::setWinRank)
                 .setInteger("api_get_exp", bean::setGetExp)
                 .setInteger("api_mvp", bean::setMvp)
@@ -362,6 +455,14 @@ public class BattleResult implements Serializable {
                 .set("api_escape", bean::setEscape, Escape::toEscape)
                 .set("api_landing_hp", bean::setLandingHp, LandingHp::toLandingHp)
                 .setInteger("api_m1", bean::setM1);
+
+        if (LoggerHolder.get().isDebugEnabled()) {
+            Set<String> unUsedKey = unUsedKeyBindListener.getUnusedKeys();
+            for (String key : unUsedKey) {
+                LoggerHolder.get().debug("未使用のKeyを検出 : " + key);
+            }
+        }
+
         return bean;
     }
 }

@@ -3,10 +3,13 @@ package logbook.bean;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 import jakarta.json.JsonArray;
 import jakarta.json.JsonObject;
+import logbook.internal.logger.LoggerHolder;
 import logbook.internal.util.JsonHelper;
+import logbook.internal.util.UnUsedKeyBindListener;
 import lombok.Data;
 
 /**
@@ -89,10 +92,24 @@ public class MissionResult implements Serializable {
          */
         public static GetItem toGetItem(JsonObject json) {
             GetItem bean = new GetItem();
-            JsonHelper.bind(json)
+
+            UnUsedKeyBindListener unUsedKeyBindListener = null;
+            if (LoggerHolder.get().isDebugEnabled()) {
+                unUsedKeyBindListener = new UnUsedKeyBindListener(json);
+            }
+
+            JsonHelper.bind(json, unUsedKeyBindListener)
                     .setInteger("api_useitem_id", bean::setUseitemId)
                     .setString("api_useitem_name", bean::setUseitemName)
                     .setInteger("api_useitem_count", bean::setUseitemCount);
+
+            if (LoggerHolder.get().isDebugEnabled()) {
+                Set<String> unUsedKey = unUsedKeyBindListener.getUnusedKeys();
+                for (String key : unUsedKey) {
+                    LoggerHolder.get().debug("未使用のKeyを検出 : " + key);
+                }
+            }
+
             return bean;
         }
     }
@@ -105,7 +122,13 @@ public class MissionResult implements Serializable {
      */
     public static MissionResult toMissionResult(JsonObject json) {
         MissionResult bean = new MissionResult();
-        JsonHelper.bind(json)
+
+        UnUsedKeyBindListener unUsedKeyBindListener = null;
+        if (LoggerHolder.get().isDebugEnabled()) {
+            unUsedKeyBindListener = new UnUsedKeyBindListener(json);
+        }
+
+        JsonHelper.bind(json, unUsedKeyBindListener)
                 .setInteger("api_clear_result", bean::setClearResult)
                 .setString("api_detail", bean::setDetail)
                 .setInteger("api_get_exp", bean::setGetExp)
@@ -127,6 +150,14 @@ public class MissionResult implements Serializable {
                 .setIntegerList("api_useitem_flag", bean::setUseitemFlag)
                 .set("api_get_item1", bean::setGetItem1, GetItem::toGetItem)
                 .set("api_get_item2", bean::setGetItem2, GetItem::toGetItem);
+
+        if (LoggerHolder.get().isDebugEnabled()) {
+            Set<String> unUsedKey = unUsedKeyBindListener.getUnusedKeys();
+            for (String key : unUsedKey) {
+                LoggerHolder.get().debug("未使用のKeyを検出 : " + key);
+            }
+        }
+
         return bean;
     }
 }

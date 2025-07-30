@@ -4,13 +4,16 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.json.JsonObject;
 import logbook.internal.kancolle.Ships;
+import logbook.internal.logger.LoggerHolder;
 import logbook.internal.util.JsonHelper;
+import logbook.internal.util.UnUsedKeyBindListener;
 import lombok.Data;
 
 /**
@@ -81,12 +84,26 @@ public class DeckPort implements Serializable, Cloneable {
      */
     public static DeckPort toDeckPort(JsonObject json) {
         DeckPort bean = new DeckPort();
-        JsonHelper.bind(json)
+        
+        UnUsedKeyBindListener unUsedKeyBindListener = null;
+        if (LoggerHolder.get().isDebugEnabled()) {
+            unUsedKeyBindListener = new UnUsedKeyBindListener(json);
+        }
+ 
+        JsonHelper.bind(json, unUsedKeyBindListener)
                 .setInteger("api_flagship", bean::setFlagship)
                 .setInteger("api_id", bean::setId)
                 .setLongList("api_mission", bean::setMission)
                 .setString("api_name", bean::setName)
                 .setIntegerList("api_ship", bean::setShip);
+        
+        if (LoggerHolder.get().isDebugEnabled()) {
+            Set<String> unUsedKey = unUsedKeyBindListener.getUnusedKeys();
+            for (String key : unUsedKey) {
+                LoggerHolder.get().debug("未使用のKeyを検出 : " + key);
+            }
+        }
+
         return bean;
     }
 

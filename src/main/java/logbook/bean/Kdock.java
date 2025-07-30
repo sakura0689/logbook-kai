@@ -1,10 +1,13 @@
 package logbook.bean;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import jakarta.json.JsonObject;
 import jakarta.json.JsonValue;
+import logbook.internal.logger.LoggerHolder;
 import logbook.internal.util.JsonHelper;
+import logbook.internal.util.UnUsedKeyBindListener;
 import lombok.Data;
 
 /**
@@ -54,7 +57,13 @@ public class Kdock implements Serializable {
      */
     public static Kdock toKdock(JsonValue json) {
         Kdock bean = new Kdock();
-        JsonHelper.bind((JsonObject) json)
+
+        UnUsedKeyBindListener unUsedKeyBindListener = null;
+        if (LoggerHolder.get().isDebugEnabled()) {
+            unUsedKeyBindListener = new UnUsedKeyBindListener((JsonObject)json);
+        }
+
+        JsonHelper.bind((JsonObject) json, unUsedKeyBindListener)
                 .setInteger("api_id", bean::setId)
                 .setInteger("api_state", bean::setState)
                 .setInteger("api_created_ship_id", bean::setCreatedShipId)
@@ -65,6 +74,14 @@ public class Kdock implements Serializable {
                 .setInteger("api_item3", bean::setItem3)
                 .setInteger("api_item4", bean::setItem4)
                 .setInteger("api_item5", bean::setItem5);
+
+        if (LoggerHolder.get().isDebugEnabled()) {
+            Set<String> unUsedKey = unUsedKeyBindListener.getUnusedKeys();
+            for (String key : unUsedKey) {
+                LoggerHolder.get().debug("未使用のKeyを検出 : " + key);
+            }
+        }
+
         return bean;
     }
 }

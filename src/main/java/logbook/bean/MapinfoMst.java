@@ -2,9 +2,12 @@ package logbook.bean;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 import jakarta.json.JsonObject;
+import logbook.internal.logger.LoggerHolder;
 import logbook.internal.util.JsonHelper;
+import logbook.internal.util.UnUsedKeyBindListener;
 import lombok.Data;
 
 /**
@@ -57,7 +60,13 @@ public class MapinfoMst implements Serializable {
      */
     public static MapinfoMst toMapinfoMst(JsonObject json) {
         MapinfoMst bean = new MapinfoMst();
-        JsonHelper.bind(json)
+
+        UnUsedKeyBindListener unUsedKeyBindListener = null;
+        if (LoggerHolder.get().isDebugEnabled()) {
+            unUsedKeyBindListener = new UnUsedKeyBindListener(json);
+        }
+
+        JsonHelper.bind(json, unUsedKeyBindListener)
                 .setInteger("api_id", bean::setId)
                 .setInteger("api_maparea_id", bean::setMapareaId)
                 .setInteger("api_no", bean::setNo)
@@ -69,6 +78,14 @@ public class MapinfoMst implements Serializable {
                 .setInteger("api_max_maphp", bean::setMaxMaphp)
                 .setInteger("api_required_defeat_count", bean::setRequiredDefeatCount)
                 .setIntegerList("api_sally_flag", bean::setSallyFlag);
+
+        if (LoggerHolder.get().isDebugEnabled()) {
+            Set<String> unUsedKey = unUsedKeyBindListener.getUnusedKeys();
+            for (String key : unUsedKey) {
+                LoggerHolder.get().debug("未使用のKeyを検出 : " + key);
+            }
+        }
+
         return bean;
     }
 }

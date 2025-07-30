@@ -3,11 +3,14 @@ package logbook.bean;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import jakarta.json.JsonObject;
 import jakarta.json.JsonValue;
 import logbook.internal.Config;
+import logbook.internal.logger.LoggerHolder;
 import logbook.internal.util.JsonHelper;
+import logbook.internal.util.UnUsedKeyBindListener;
 import lombok.Data;
 
 /**
@@ -59,12 +62,26 @@ public class Mapinfo implements Serializable {
          */
         public static MapInfo toMapInfo(JsonValue json) {
             MapInfo bean = new MapInfo();
-            JsonHelper.bind((JsonObject) json)
+
+            UnUsedKeyBindListener unUsedKeyBindListener = null;
+            if (LoggerHolder.get().isDebugEnabled()) {
+                unUsedKeyBindListener = new UnUsedKeyBindListener((JsonObject)json);
+            }
+            
+            JsonHelper.bind((JsonObject) json, unUsedKeyBindListener)
                     .setInteger("api_id", bean::setId)
                     .setInteger("api_cleared", bean::setCleared)
                     .setInteger("api_exboss_flag", bean::setExbossFlag)
                     .setInteger("api_defeat_count", bean::setDefeatCount)
                     .setInteger("api_air_base_decks", bean::setAirBaseDecks);
+
+            if (LoggerHolder.get().isDebugEnabled()) {
+                Set<String> unUsedKey = unUsedKeyBindListener.getUnusedKeys();
+                for (String key : unUsedKey) {
+                    LoggerHolder.get().debug("未使用のKeyを検出 : " + key);
+                }
+            }
+
             return bean;
         }
     }
@@ -103,13 +120,25 @@ public class Mapinfo implements Serializable {
          */
         public static AirBase toAirBase(JsonValue json) {
             AirBase bean = new AirBase();
-            JsonHelper.bind((JsonObject) json)
+            
+            UnUsedKeyBindListener unUsedKeyBindListener = null;
+            if (LoggerHolder.get().isDebugEnabled()) {
+                unUsedKeyBindListener = new UnUsedKeyBindListener((JsonObject)json);
+            }
+            JsonHelper.bind((JsonObject)json, unUsedKeyBindListener)
                     .setInteger("api_area_id", bean::setAreaId)
                     .setInteger("api_rid", bean::setRid)
                     .setString("api_name", bean::setName)
                     .set("api_distance", bean::setDistance, Distance::toDistance)
                     .setInteger("api_action_kind", bean::setActionKind)
                     .set("api_plane_info", bean::setPlaneInfo, JsonHelper.toList(PlaneInfo::toPlaneInfo));
+
+            if (LoggerHolder.get().isDebugEnabled()) {
+                Set<String> unUsedKey = unUsedKeyBindListener.getUnusedKeys();
+                for (String key : unUsedKey) {
+                    LoggerHolder.get().debug("未使用のKeyを検出 : " + key);
+                }
+            }
             return bean;
         }
     }
@@ -136,9 +165,23 @@ public class Mapinfo implements Serializable {
          */
         public static Distance toDistance(JsonValue json) {
             Distance bean = new Distance();
-            JsonHelper.bind((JsonObject) json)
+
+            UnUsedKeyBindListener unUsedKeyBindListener = null;
+            if (LoggerHolder.get().isDebugEnabled()) {
+                unUsedKeyBindListener = new UnUsedKeyBindListener((JsonObject)json);
+            }
+
+            JsonHelper.bind((JsonObject) json, unUsedKeyBindListener)
                     .setInteger("api_base", bean::setBase)
                     .setInteger("api_bonus", bean::setBonus);
+            
+            if (LoggerHolder.get().isDebugEnabled()) {
+                Set<String> unUsedKey = unUsedKeyBindListener.getUnusedKeys();
+                for (String key : unUsedKey) {
+                    LoggerHolder.get().debug("未使用のKeyを検出 : " + key);
+                }
+            }
+
             return bean;
         }
     }
@@ -177,13 +220,27 @@ public class Mapinfo implements Serializable {
          */
         public static PlaneInfo toPlaneInfo(JsonValue json) {
             PlaneInfo bean = new PlaneInfo();
-            JsonHelper.bind((JsonObject) json)
+
+            UnUsedKeyBindListener unUsedKeyBindListener = null;
+            if (LoggerHolder.get().isDebugEnabled()) {
+                unUsedKeyBindListener = new UnUsedKeyBindListener((JsonObject)json);
+            }
+
+            JsonHelper.bind((JsonObject) json, unUsedKeyBindListener)
                     .setInteger("api_squadron_id", bean::setSquadronId)
                     .setInteger("api_state", bean::setState)
                     .setInteger("api_slotid", bean::setSlotid)
                     .setInteger("api_count", bean::setCount)
                     .setInteger("api_max_count", bean::setMaxCount)
                     .setInteger("api_cond", bean::setCond);
+
+            if (LoggerHolder.get().isDebugEnabled()) {
+                Set<String> unUsedKey = unUsedKeyBindListener.getUnusedKeys();
+                for (String key : unUsedKey) {
+                    LoggerHolder.get().debug("未使用のKeyを検出 : " + key);
+                }
+            }
+
             return bean;
         }
     }
