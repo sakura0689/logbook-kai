@@ -1,10 +1,13 @@
 package logbook.bean;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import jakarta.json.JsonObject;
 import logbook.internal.Config;
+import logbook.internal.logger.LoggerHolder;
 import logbook.internal.util.JsonHelper;
+import logbook.internal.util.UnUsedKeyBindListener;
 import lombok.Data;
 
 /**
@@ -63,7 +66,13 @@ public class Basic implements Serializable {
      * @return {@link Basic}
      */
     public static Basic updateBasic(Basic bean, JsonObject json) {
-        JsonHelper.bind(json)
+
+        UnUsedKeyBindListener unUsedKeyBindListener = null;
+        if (LoggerHolder.get().isDebugEnabled()) {
+            unUsedKeyBindListener = new UnUsedKeyBindListener(json);
+        }
+
+        JsonHelper.bind(json, unUsedKeyBindListener)
                 .setString("api_comment", bean::setComment)
                 .setInteger("api_count_deck", bean::setCountDeck)
                 .setInteger("api_count_kdock", bean::setCountKdock)
@@ -77,6 +86,14 @@ public class Basic implements Serializable {
                 .setInteger("api_max_slotitem", bean::setMaxSlotitem)
                 .setInteger("api_medals", bean::setMedals)
                 .setString("api_nickname", bean::setNickname);
+
+        if (LoggerHolder.get().isDebugEnabled()) {
+            Set<String> unUsedKey = unUsedKeyBindListener.getUnusedKeys();
+            for (String key : unUsedKey) {
+                LoggerHolder.get().debug("未使用のKeyを検出 : " + key);
+            }
+        }
+
         return bean;
     }
 

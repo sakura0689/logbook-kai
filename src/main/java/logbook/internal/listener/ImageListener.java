@@ -11,7 +11,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URI;
+import java.nio.file.AccessDeniedException;
+import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
@@ -226,6 +229,8 @@ public class ImageListener implements ContentListenerSpi {
                     .compareTo(Duration.ofMinutes(10)) > 0) {
                 return;
             }
+        } catch (NoSuchFileException ne) {
+            LoggerHolder.get().warn("画像ファイル処理中に例外が発生しました NoSuchFileException [src=" + imageSrc + "]");
         } catch (Exception e) {
             LoggerHolder.get().warn("画像ファイル処理中に例外が発生しました[src=" + imageSrc + "]", e);
         }
@@ -253,6 +258,12 @@ public class ImageListener implements ContentListenerSpi {
                         Files.deleteIfExists(temp);
                         throw e;
                     }
+                } catch (NoSuchFileException ne) {
+                    LoggerHolder.get().warn("画像ファイル処理中に例外が発生しました NoSuchFileException [src=" + imageSrc + "]");
+                } catch (AccessDeniedException ae) {
+                    LoggerHolder.get().warn("画像ファイル処理中に例外が発生しました AccessDeniedException [src=" + imageSrc + "]");
+                } catch (FileAlreadyExistsException fe) {
+                    LoggerHolder.get().warn("画像ファイル処理中に例外が発生しました FileAlreadyExistsException [src=" + imageSrc + "]");
                 } catch (Exception e) {
                     LoggerHolder.get().warn("画像ファイル処理中に例外が発生しました[src=" + imageSrc + "]", e);
                 }

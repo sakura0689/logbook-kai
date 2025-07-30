@@ -5,10 +5,13 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import jakarta.json.JsonObject;
 import logbook.constants.ShipType;
+import logbook.internal.logger.LoggerHolder;
 import logbook.internal.util.JsonHelper;
+import logbook.internal.util.UnUsedKeyBindListener;
 import lombok.Data;
 
 /**
@@ -182,7 +185,13 @@ public class ShipMst implements Serializable {
      */
     public static ShipMst toShip(JsonObject json) {
         ShipMst bean = new ShipMst();
-        JsonHelper.bind(json)
+        
+        UnUsedKeyBindListener unUsedKeyBindListener = null;
+        if (LoggerHolder.get().isDebugEnabled()) {
+            unUsedKeyBindListener = new UnUsedKeyBindListener(json);
+        }
+        
+        JsonHelper.bind(json, unUsedKeyBindListener)
                 .setInteger("api_id", bean::setId)
                 .setInteger("api_sortno", bean::setSortno)
                 .setInteger("api_sort_id", bean::setSortId)
@@ -207,6 +216,14 @@ public class ShipMst implements Serializable {
                 .setInteger("api_afterbull", bean::setAfterbull)
                 .setInteger("api_fuel_max", bean::setFuelMax)
                 .setInteger("api_bull_max", bean::setBullMax);
+
+        if (LoggerHolder.get().isDebugEnabled()) {
+            Set<String> unUsedKey = unUsedKeyBindListener.getUnusedKeys();
+            for (String key : unUsedKey) {
+                LoggerHolder.get().debug("未使用のKeyを検出 : " + key);
+            }
+        }
+
         return bean;
     }
 }

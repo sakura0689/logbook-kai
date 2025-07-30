@@ -2,10 +2,13 @@ package logbook.bean;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 import jakarta.json.JsonObject;
 import jakarta.json.JsonValue;
+import logbook.internal.logger.LoggerHolder;
 import logbook.internal.util.JsonHelper;
+import logbook.internal.util.UnUsedKeyBindListener;
 import lombok.Data;
 
 /**
@@ -81,7 +84,13 @@ public class QuestList implements Serializable {
         public static Quest toQuest(JsonValue value) {
             if (value instanceof JsonObject) {
                 Quest bean = new Quest();
-                JsonHelper.bind((JsonObject) value)
+                
+                UnUsedKeyBindListener unUsedKeyBindListener = null;
+                if (LoggerHolder.get().isDebugEnabled()) {
+                    unUsedKeyBindListener = new UnUsedKeyBindListener((JsonObject)value);
+                }
+
+                JsonHelper.bind((JsonObject) value, unUsedKeyBindListener)
                         .setInteger("api_no", bean::setNo)
                         .setInteger("api_category", bean::setCategory)
                         .setInteger("api_type", bean::setType)
@@ -92,6 +101,14 @@ public class QuestList implements Serializable {
                         .setInteger("api_bonus_flag", bean::setBonusFlag)
                         .setInteger("api_progress_flag", bean::setProgressFlag)
                         .setInteger("api_invalid_flag", bean::setInvalidFlag);
+                
+                if (LoggerHolder.get().isDebugEnabled()) {
+                    Set<String> unUsedKey = unUsedKeyBindListener.getUnusedKeys();
+                    for (String key : unUsedKey) {
+                        LoggerHolder.get().debug("未使用のKeyを検出 : " + key);
+                    }
+                }
+
                 return bean;
             } else {
                 return null;
@@ -107,13 +124,27 @@ public class QuestList implements Serializable {
      */
     public static QuestList toQuestList(JsonObject json) {
         QuestList bean = new QuestList();
-        JsonHelper.bind(json)
+
+        UnUsedKeyBindListener unUsedKeyBindListener = null;
+        if (LoggerHolder.get().isDebugEnabled()) {
+            unUsedKeyBindListener = new UnUsedKeyBindListener(json);
+        }
+
+        JsonHelper.bind(json, unUsedKeyBindListener)
                 .setInteger("api_count", bean::setCount)
                 .setInteger("api_completed_kind", bean::setCompletedKind)
                 .setInteger("api_page_count", bean::setPageCount)
                 .setInteger("api_disp_page", bean::setDispPage)
                 .set("api_list", bean::setList, JsonHelper.toList(Quest::toQuest))
                 .setInteger("api_exec_count", bean::setExecCount);
+
+        if (LoggerHolder.get().isDebugEnabled()) {
+            Set<String> unUsedKey = unUsedKeyBindListener.getUnusedKeys();
+            for (String key : unUsedKey) {
+                LoggerHolder.get().debug("未使用のKeyを検出 : " + key);
+            }
+        }
+
         return bean;
     }
 }

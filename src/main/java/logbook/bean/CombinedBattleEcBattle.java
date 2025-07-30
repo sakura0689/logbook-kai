@@ -2,6 +2,7 @@ package logbook.bean;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 import jakarta.json.JsonObject;
 import logbook.bean.BattleTypes.IAirBaseAttack;
@@ -11,7 +12,9 @@ import logbook.bean.BattleTypes.IKouku;
 import logbook.bean.BattleTypes.ISortieBattle;
 import logbook.bean.BattleTypes.ISortieHougeki;
 import logbook.bean.BattleTypes.ISupport;
+import logbook.internal.logger.LoggerHolder;
 import logbook.internal.util.JsonHelper;
+import logbook.internal.util.UnUsedKeyBindListener;
 import lombok.Data;
 
 /**
@@ -140,7 +143,13 @@ public class CombinedBattleEcBattle implements ICombinedEcBattle, ISortieBattle,
      */
     public static CombinedBattleEcBattle toBattle(JsonObject json) {
         CombinedBattleEcBattle bean = new CombinedBattleEcBattle();
-        JsonHelper.bind(json)
+
+        UnUsedKeyBindListener unUsedKeyBindListener = null;
+        if (LoggerHolder.get().isDebugEnabled()) {
+            unUsedKeyBindListener = new UnUsedKeyBindListener(json);
+        }
+        
+        JsonHelper.bind(json, unUsedKeyBindListener)
                 .set("api_air_base_injection", bean::setAirBaseInjection,
                         BattleTypes.AirBaseAttack::toAirBaseAttack)
                 .set("api_air_base_attack", bean::setAirBaseAttack,
@@ -180,6 +189,14 @@ public class CombinedBattleEcBattle implements ICombinedEcBattle, ISortieBattle,
                 .set("api_hougeki2", bean::setHougeki2, BattleTypes.Hougeki::toHougeki)
                 .set("api_hougeki3", bean::setHougeki3, BattleTypes.Hougeki::toHougeki)
                 .set("api_raigeki", bean::setRaigeki, BattleTypes.Raigeki::toRaigeki);
+        
+        if (LoggerHolder.get().isDebugEnabled()) {
+            Set<String> unUsedKey = unUsedKeyBindListener.getUnusedKeys();
+            for (String key : unUsedKey) {
+                LoggerHolder.get().debug("未使用のKeyを検出 : " + key);
+            }
+        }
+
         return bean;
     }
 }

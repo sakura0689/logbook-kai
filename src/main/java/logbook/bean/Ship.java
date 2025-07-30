@@ -3,12 +3,15 @@ package logbook.bean;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import jakarta.json.JsonObject;
 import logbook.constants.ShipType;
 import logbook.constants.SlotItemType;
 import logbook.internal.kancolle.Ships;
+import logbook.internal.logger.LoggerHolder;
 import logbook.internal.util.JsonHelper;
+import logbook.internal.util.UnUsedKeyBindListener;
 import lombok.Data;
 
 /**
@@ -186,7 +189,13 @@ public class Ship implements Chara, Serializable, Cloneable {
      */
     public static Ship toShip(JsonObject json) {
         Ship bean = new Ship();
-        JsonHelper.bind(json)
+
+        UnUsedKeyBindListener unUsedKeyBindListener = null;
+        if (LoggerHolder.get().isDebugEnabled()) {
+            unUsedKeyBindListener = new UnUsedKeyBindListener(json);
+        }
+
+        JsonHelper.bind(json, unUsedKeyBindListener)
                 .setInteger("api_id", bean::setId)
                 .setInteger("api_sortno", bean::setSortno)
                 .setInteger("api_ship_id", bean::setShipId)
@@ -219,6 +228,14 @@ public class Ship implements Chara, Serializable, Cloneable {
                 .setBoolean("api_locked", bean::setLocked)
                 .setBoolean("api_locked_equip", bean::setLockedEquip)
                 .setInteger("api_sally_area", bean::setSallyArea);
+
+        if (LoggerHolder.get().isDebugEnabled()) {
+            Set<String> unUsedKey = unUsedKeyBindListener.getUnusedKeys();
+            for (String key : unUsedKey) {
+                LoggerHolder.get().debug("未使用のKeyを検出 : " + key);
+            }
+        }
+
         return bean;
     }
 }

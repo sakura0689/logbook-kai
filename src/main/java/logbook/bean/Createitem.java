@@ -2,9 +2,12 @@ package logbook.bean;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 import jakarta.json.JsonObject;
+import logbook.internal.logger.LoggerHolder;
 import logbook.internal.util.JsonHelper;
+import logbook.internal.util.UnUsedKeyBindListener;
 import logbook.net.RequestMetaData;
 import lombok.Data;
 
@@ -57,11 +60,23 @@ public class Createitem implements Serializable {
         bean.setItem3(Integer.valueOf(req.getParameter("api_item3", "0")));
         bean.setItem4(Integer.valueOf(req.getParameter("api_item4", "0")));
 
-        JsonHelper.bind(json)
+        UnUsedKeyBindListener unUsedKeyBindListener = null;
+        if (LoggerHolder.get().isDebugEnabled()) {
+            unUsedKeyBindListener = new UnUsedKeyBindListener(json);
+        }
+
+        JsonHelper.bind(json, unUsedKeyBindListener)
                 .setBoolean("api_create_flag", bean::setCreateFlag)
                 .setIntegerList("api_material", bean::setMaterial)
                 .set("api_get_items", bean::setGetItems, JsonHelper.toList(SlotItem::toSlotItem))
                 .set("api_unset_items", bean::setUnsetItems, JsonHelper.toList(UnsetItems::toUnsetItems));
+
+        if (LoggerHolder.get().isDebugEnabled()) {
+            Set<String> unUsedKey = unUsedKeyBindListener.getUnusedKeys();
+            for (String key : unUsedKey) {
+                LoggerHolder.get().debug("未使用のKeyを検出 : " + key);
+            }
+        }
 
         Ship secretary = null;
         DeckPort port = DeckPortCollection.get()
@@ -98,9 +113,23 @@ public class Createitem implements Serializable {
          */
         public static UnsetItems toUnsetItems(JsonObject json) {
             UnsetItems bean = new UnsetItems();
-            JsonHelper.bind(json)
+
+            UnUsedKeyBindListener unUsedKeyBindListener = null;
+            if (LoggerHolder.get().isDebugEnabled()) {
+                unUsedKeyBindListener = new UnUsedKeyBindListener(json);
+            }
+
+            JsonHelper.bind(json, unUsedKeyBindListener)
                     .setInteger("api_type3", bean::setType3)
                     .setIntegerList("api_unsetslot", bean::setUnsetslot);
+
+            if (LoggerHolder.get().isDebugEnabled()) {
+                Set<String> unUsedKey = unUsedKeyBindListener.getUnusedKeys();
+                for (String key : unUsedKey) {
+                    LoggerHolder.get().debug("未使用のKeyを検出 : " + key);
+                }
+            }
+
             return bean;
         }
     }

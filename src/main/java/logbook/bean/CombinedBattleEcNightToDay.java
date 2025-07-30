@@ -2,6 +2,7 @@ package logbook.bean;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 import jakarta.json.JsonObject;
 import logbook.bean.BattleTypes.IAirBaseAttack;
@@ -13,7 +14,9 @@ import logbook.bean.BattleTypes.INSupport;
 import logbook.bean.BattleTypes.INightToDayBattle;
 import logbook.bean.BattleTypes.ISortieHougeki;
 import logbook.bean.BattleTypes.ISupport;
+import logbook.internal.logger.LoggerHolder;
 import logbook.internal.util.JsonHelper;
+import logbook.internal.util.UnUsedKeyBindListener;
 import lombok.Data;
 
 /**
@@ -169,7 +172,13 @@ public class CombinedBattleEcNightToDay implements ICombinedBattle, ICombinedEcB
      */
     public static CombinedBattleEcNightToDay toBattle(JsonObject json) {
         CombinedBattleEcNightToDay bean = new CombinedBattleEcNightToDay();
-        JsonHelper.bind(json)
+
+        UnUsedKeyBindListener unUsedKeyBindListener = null;
+        if (LoggerHolder.get().isDebugEnabled()) {
+            unUsedKeyBindListener = new UnUsedKeyBindListener(json);
+        }
+
+        JsonHelper.bind(json, unUsedKeyBindListener)
                 .setInteger("api_deck_id", bean::setDockId)
                 .setIntegerList("api_formation", bean::setFormation)
                 .setIntegerList("api_f_nowhps", bean::setFNowhps)
@@ -216,6 +225,14 @@ public class CombinedBattleEcNightToDay implements ICombinedBattle, ICombinedEcB
                 .set("api_hougeki2", bean::setHougeki2, BattleTypes.Hougeki::toHougeki)
                 .set("api_hougeki3", bean::setHougeki3, BattleTypes.Hougeki::toHougeki)
                 .set("api_raigeki", bean::setRaigeki, BattleTypes.Raigeki::toRaigeki);
+        
+        if (LoggerHolder.get().isDebugEnabled()) {
+            Set<String> unUsedKey = unUsedKeyBindListener.getUnusedKeys();
+            for (String key : unUsedKey) {
+                LoggerHolder.get().debug("未使用のKeyを検出 : " + key);
+            }
+        }
+
         return bean;
     }
 }

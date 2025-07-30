@@ -2,11 +2,14 @@ package logbook.bean;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.json.JsonObject;
+import logbook.internal.logger.LoggerHolder;
 import logbook.internal.util.JsonHelper;
+import logbook.internal.util.UnUsedKeyBindListener;
 import lombok.Data;
 
 /**
@@ -116,7 +119,13 @@ public class MapStartNext implements Serializable {
      */
     public static MapStartNext toMapStartNext(JsonObject json) {
         MapStartNext bean = new MapStartNext();
-        JsonHelper.bind(json)
+
+        UnUsedKeyBindListener unUsedKeyBindListener = null;
+        if (LoggerHolder.get().isDebugEnabled()) {
+            unUsedKeyBindListener = new UnUsedKeyBindListener(json);
+        }
+
+        JsonHelper.bind(json, unUsedKeyBindListener)
                 .setInteger("api_rashin_flg", bean::setRashinFlg)
                 .setInteger("api_rashin_id", bean::setRashinId)
                 .setInteger("api_maparea_id", bean::setMapareaId)
@@ -139,6 +148,14 @@ public class MapStartNext implements Serializable {
                 .set("api_destruction_battle", bean::setDestructionBattle, DestructionBattle::toDestructionBattle)
                 .setInteger("api_m1", bean::setM1)
                 .setInteger("api_m2", bean::setM2);
+
+        if (LoggerHolder.get().isDebugEnabled()) {
+            Set<String> unUsedKey = unUsedKeyBindListener.getUnusedKeys();
+            for (String key : unUsedKey) {
+                LoggerHolder.get().debug("未使用のKeyを検出 : " + key);
+            }
+        }
+
         return bean;
     }
 
@@ -162,10 +179,23 @@ public class MapStartNext implements Serializable {
 
         public static DestructionBattle toDestructionBattle(JsonObject json) {
             DestructionBattle bean = new DestructionBattle();
-            JsonHelper.bind(json)
+
+            UnUsedKeyBindListener unUsedKeyBindListener = null;
+            if (LoggerHolder.get().isDebugEnabled()) {
+                unUsedKeyBindListener = new UnUsedKeyBindListener(json);
+            }
+
+            JsonHelper.bind(json, unUsedKeyBindListener)
                     .setInteger("api_lost_kind", bean::setLostKind)
                     .setInteger("api_m1", bean::setM1)
                     .setInteger("api_m2", bean::setM2);
+
+            if (LoggerHolder.get().isDebugEnabled()) {
+                Set<String> unUsedKey = unUsedKeyBindListener.getUnusedKeys();
+                for (String key : unUsedKey) {
+                    LoggerHolder.get().debug("未使用のKeyを検出 : " + key);
+                }
+            }
 
             return bean;
         }

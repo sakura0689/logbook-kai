@@ -2,11 +2,14 @@ package logbook.bean;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 import jakarta.json.JsonObject;
 import logbook.constants.SlotItemType;
 import logbook.constants.SlotitemMstTypeConst;
+import logbook.internal.logger.LoggerHolder;
 import logbook.internal.util.JsonHelper;
+import logbook.internal.util.UnUsedKeyBindListener;
 import lombok.Data;
 
 /**
@@ -164,7 +167,13 @@ public class SlotitemMst implements Serializable {
      */
     public static SlotitemMst toSlotitem(JsonObject json) {
         SlotitemMst bean = new SlotitemMst();
-        JsonHelper.bind(json)
+
+        UnUsedKeyBindListener unUsedKeyBindListener = null;
+        if (LoggerHolder.get().isDebugEnabled()) {
+            unUsedKeyBindListener = new UnUsedKeyBindListener(json);
+        }
+
+        JsonHelper.bind(json, unUsedKeyBindListener)
                 .setInteger("api_id", bean::setId)
                 .setInteger("api_sortno", bean::setSortno)
                 .setString("api_name", bean::setName)
@@ -190,6 +199,14 @@ public class SlotitemMst implements Serializable {
                 .setInteger("api_rare", bean::setRare)
                 .setInteger("api_cost", bean::setCost)
                 .setInteger("api_distance", bean::setDistance);
+
+        if (LoggerHolder.get().isDebugEnabled()) {
+            Set<String> unUsedKey = unUsedKeyBindListener.getUnusedKeys();
+            for (String key : unUsedKey) {
+                LoggerHolder.get().debug("未使用のKeyを検出 : " + key);
+            }
+        }
+
         return bean;
     }
 }

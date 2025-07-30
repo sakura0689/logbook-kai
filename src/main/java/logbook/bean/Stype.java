@@ -2,10 +2,13 @@ package logbook.bean;
 
 import java.io.Serializable;
 import java.util.Map;
+import java.util.Set;
 import java.util.function.Function;
 
 import jakarta.json.JsonObject;
+import logbook.internal.logger.LoggerHolder;
 import logbook.internal.util.JsonHelper;
+import logbook.internal.util.UnUsedKeyBindListener;
 import lombok.Data;
 
 /**
@@ -52,13 +55,27 @@ public class Stype implements Serializable {
                 .toMap(t, Integer::valueOf, JsonHelper::toInteger);
 
         Stype bean = new Stype();
-        JsonHelper.bind(json)
+
+        UnUsedKeyBindListener unUsedKeyBindListener = null;
+        if (LoggerHolder.get().isDebugEnabled()) {
+            unUsedKeyBindListener = new UnUsedKeyBindListener(json);
+        }
+
+        JsonHelper.bind(json, unUsedKeyBindListener)
                 .setInteger("api_id", bean::setId)
                 .setInteger("api_sortno", bean::setSortno)
                 .setString("api_name", bean::setName)
                 .setInteger("api_scnt", bean::setScnt)
                 .setInteger("api_kcnt", bean::setKcnt)
                 .set("api_equip_type", bean::setEquipType, equipTypeFunc);
+
+        if (LoggerHolder.get().isDebugEnabled()) {
+            Set<String> unUsedKey = unUsedKeyBindListener.getUnusedKeys();
+            for (String key : unUsedKey) {
+                LoggerHolder.get().debug("未使用のKeyを検出 : " + key);
+            }
+        }
+
         return bean;
     }
 }
