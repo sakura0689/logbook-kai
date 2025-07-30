@@ -10,6 +10,16 @@
         </RollingFile>
     </Appenders>
     <Loggers>
+        <Logger name="logbook.internal.listener" level="INFO" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="ROLLING"/>
+        </Logger>
+
+        <Logger name="logbook.bean" level="INFO" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="ROLLING"/>
+        </Logger>
+    
         <Root level="INFO">
             <AppenderRef ref="STDOUT" />
             <AppenderRef ref="ROLLING" />
