@@ -46,6 +46,7 @@ import logbook.bean.NdockCollection;
 import logbook.bean.Ship;
 import logbook.bean.ShipCollection;
 import logbook.bean.ShipMst;
+import logbook.bean.SlotItem;
 import logbook.bean.SlotItemCollection;
 import logbook.bean.SlotitemMst;
 import logbook.bean.SlotitemMstCollection;
@@ -145,6 +146,15 @@ public class MainController extends WindowController {
 
     private AudioClip clip;
     
+    //所属装備:現在値
+    private Integer lastSlotitem = 0;
+    //所属装備:最大値
+    private Integer lastMaxSlotitem = 0;
+    //所属艦娘:現在値
+    private Integer lastChara = 0;
+    //所属艦娘:最大値
+    private Integer lastMaxChara = 0;
+    
     @FXML
     void initialize() {
         try {
@@ -157,16 +167,19 @@ public class MainController extends WindowController {
             // メニューにメイン画面のコントローラを渡す
             this.mainMenuController.setParentController(this);
 
-            Timeline timeline = new Timeline(1);
-            timeline.setCycleCount(Animation.INDEFINITE);
-            timeline.getKeyFrames().add(new KeyFrame(
-                    javafx.util.Duration.seconds(1),
-                    this::update));
-
             // 古い任務を除く
-            AppQuestCollection.get()
-                    .update();
+            AppQuestCollection.get().update();
 
+            Timeline labelTimeline = new Timeline(
+                    new KeyFrame(javafx.util.Duration.seconds(3), this::labelUpdate)
+                );
+            labelTimeline.setCycleCount(Animation.INDEFINITE);
+            labelTimeline.play();
+
+            Timeline timeline = new Timeline(
+                    new KeyFrame(javafx.util.Duration.millis(500), this::update)
+                );
+            timeline.setCycleCount(Animation.INDEFINITE);
             timeline.play();
 
             // 開始処理
@@ -220,16 +233,28 @@ public class MainController extends WindowController {
     }
 
     /**
+     * 画面の更新(ラベル部分)
+     *
+     * @param e
+     */
+    void labelUpdate(ActionEvent e) {
+        try {
+            // 所有装備/所有艦娘
+            this.button();
+            // 戦果
+            this.achievement();
+        } catch (Exception ex) {
+            LoggerHolder.get().error("ラベルの更新に失敗しました", ex);
+        }
+    }
+
+    /**
      * 画面の更新
      *
      * @param e
      */
     void update(ActionEvent e) {
         try {
-            // 所有装備/所有艦娘
-            this.button();
-            // 戦果
-            this.achievement();
             // 艦隊タブ・遠征
             this.checkPort();
             // 泊地修理タイマー
@@ -257,40 +282,50 @@ public class MainController extends WindowController {
     private void button() {
         // 装備
         Map<Integer, SlotitemMst> itemMstMap = SlotitemMstCollection.get().getSlotitemMap();
-        long slotitem = SlotItemCollection.get()
-                .getSlotitemMap()
-                .values()
-                .stream()
-                .filter(item -> SlotItemType.toSlotItemType(itemMstMap.get(item.getSlotitemId())).isCount())
-                .count();
-        Integer maxSlotitem = Basic.get()
-                .getMaxSlotitem();
-        this.item.setText(MessageFormat.format(this.itemFormat, slotitem, maxSlotitem));
-
-        boolean itemFully = maxSlotitem - slotitem <= AppConfig.get().getItemFullyThreshold();
-        if (itemFully) {
-            if (!this.item.getStyleClass().contains(FULLY_CLASS)) {
-                this.item.getStyleClass().add(FULLY_CLASS);
+        Integer slotitem = 0;
+        for (SlotItem item : SlotItemCollection.get().getSlotitemMap().values()) {
+            if (SlotItemType.toSlotItemType(itemMstMap.get(item.getSlotitemId())).isCount()) {
+                slotitem++;
             }
-        } else {
-            this.item.getStyleClass().remove(FULLY_CLASS);
+        }
+        Integer maxSlotitem = Basic.get().getMaxSlotitem();
+
+        if (!slotitem.equals(lastSlotitem) || !maxSlotitem.equals(lastMaxSlotitem)) {
+            lastSlotitem = slotitem;
+            lastMaxSlotitem = maxSlotitem;
+
+            this.item.setText(MessageFormat.format(this.itemFormat, slotitem, maxSlotitem));
+
+            boolean itemFully = maxSlotitem - slotitem <= AppConfig.get().getItemFullyThreshold();
+            if (itemFully) {
+                if (!this.item.getStyleClass().contains(FULLY_CLASS)) {
+                    this.item.getStyleClass().add(FULLY_CLASS);
+                }
+            } else {
+                this.item.getStyleClass().remove(FULLY_CLASS);
+            }
         }
 
         // 艦娘
         Integer chara = ShipCollection.get()
                 .getShipMap()
                 .size();
-        Integer maxChara = Basic.get()
-                .getMaxChara();
-        this.ship.setText(MessageFormat.format(this.shipFormat, chara, maxChara));
+        Integer maxChara = Basic.get().getMaxChara();
+        
+        if (!chara.equals(lastChara) || !maxChara.equals(lastMaxChara)) {
+            lastChara = chara;
+            lastMaxChara = maxChara;
+            
+            this.ship.setText(MessageFormat.format(this.shipFormat, chara, maxChara));
 
-        boolean shipFully = maxChara - chara <= AppConfig.get().getShipFullyThreshold();
-        if (shipFully) {
-            if (!this.ship.getStyleClass().contains(FULLY_CLASS)) {
-                this.ship.getStyleClass().add(FULLY_CLASS);
+            boolean shipFully = maxChara - chara <= AppConfig.get().getShipFullyThreshold();
+            if (shipFully) {
+                if (!this.ship.getStyleClass().contains(FULLY_CLASS)) {
+                    this.ship.getStyleClass().add(FULLY_CLASS);
+                }
+            } else {
+                this.ship.getStyleClass().remove(FULLY_CLASS);
             }
-        } else {
-            this.ship.getStyleClass().remove(FULLY_CLASS);
         }
     }
 
