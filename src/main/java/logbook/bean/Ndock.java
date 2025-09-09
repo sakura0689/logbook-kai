@@ -68,6 +68,8 @@ public class Ndock implements Serializable {
         
         if (LoggerHolder.get().isDebugEnabled()) {
             Set<String> unUsedKey = unUsedKeyBindListener.getUnusedKeys();
+            unUsedKey.removeIf("api_member_id"::equals); //提督id
+            unUsedKey.removeIf("api_complete_time_str"::equals); //終了時間文字列 api_complete_timeで十分
             for (String key : unUsedKey) {
                 LoggerHolder.get().debug("未使用のKeyを検出 : " + key);
             }

@@ -44,6 +44,7 @@ public class Material implements Serializable {
 
         if (LoggerHolder.get().isDebugEnabled()) {
             Set<String> unUsedKey = unUsedKeyBindListener.getUnusedKeys();
+            unUsedKey.removeIf("api_member_id"::equals); //提督id
             for (String key : unUsedKey) {
                 LoggerHolder.get().debug("未使用のKeyを検出 : " + key);
             }

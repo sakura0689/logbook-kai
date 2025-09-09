@@ -77,8 +77,11 @@ public class Mapinfo implements Serializable {
 
             if (LoggerHolder.get().isDebugEnabled()) {
                 Set<String> unUsedKey = unUsedKeyBindListener.getUnusedKeys();
+                // ゲージ関係の機能は現状作成予定がないため意図して除外する
+                unUsedKey.removeIf("api_gauge_num"::equals); //ゲージ本数 1,2,3..
+                unUsedKey.removeIf("api_gauge_type"::equals); //1=撃破ゲージ 2=HPゲージ 3=揚陸(TP)ゲージ
                 for (String key : unUsedKey) {
-                    LoggerHolder.get().debug("未使用のKeyを検出 : " + key);
+                    LoggerHolder.get().debug("未使用のKeyを検出 : " + key + ":" + ((JsonObject)json).get(key));
                 }
             }
 
