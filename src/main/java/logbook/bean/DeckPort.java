@@ -99,6 +99,8 @@ public class DeckPort implements Serializable, Cloneable {
         
         if (LoggerHolder.get().isDebugEnabled()) {
             Set<String> unUsedKey = unUsedKeyBindListener.getUnusedKeys();
+            unUsedKey.removeIf("api_member_id"::equals); //提督id
+            unUsedKey.removeIf("api_name_id"::equals); //
             for (String key : unUsedKey) {
                 LoggerHolder.get().debug("未使用のKeyを検出 : " + key);
             }

@@ -104,6 +104,8 @@ public class QuestList implements Serializable {
                 
                 if (LoggerHolder.get().isDebugEnabled()) {
                     Set<String> unUsedKey = unUsedKeyBindListener.getUnusedKeys();
+                    unUsedKey.removeIf("api_label_type"::equals); //任務アイコン種別 1=単発,2=デイリー,3=ウィークリー,6=マンスリー api_typeで十分
+                    unUsedKey.removeIf("api_voice_id"::equals); //任務達成ボイスid
                     for (String key : unUsedKey) {
                         LoggerHolder.get().debug("未使用のKeyを検出 : " + key);
                     }

@@ -151,8 +151,9 @@ public class MapStartNext implements Serializable {
 
         if (LoggerHolder.get().isDebugEnabled()) {
             Set<String> unUsedKey = unUsedKeyBindListener.getUnusedKeys();
+            unUsedKey.removeIf("api_e_deck_info"::equals); //次マスの敵情報
             for (String key : unUsedKey) {
-                LoggerHolder.get().debug("未使用のKeyを検出 : " + key);
+                LoggerHolder.get().debug("未使用のKeyを検出 : " + key + ":" + json.get(key));
             }
         }
 

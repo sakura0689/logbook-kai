@@ -164,7 +164,7 @@ public class SortieBattle
         if (LoggerHolder.get().isDebugEnabled()) {
             Set<String> unUsedKey = unUsedKeyBindListener.getUnusedKeys();
             for (String key : unUsedKey) {
-                LoggerHolder.get().debug("未使用のKeyを検出 : " + key);
+                LoggerHolder.get().debug("未使用のKeyを検出 : " + key + ":" + json.get(key));
             }
         }
 
