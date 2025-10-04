@@ -217,11 +217,11 @@ public class LogWriter<T> {
         try {
             try (OutputStream writer = Files.newOutputStream(path, this.options)) {
                 if (!Files.exists(path) || (Files.size(path) <= 0)) {
-                    writer.write(this.header.getBytes(this.charset));
-                    writer.write(this.delimiter.getBytes(this.charset));
+                    String head = this.header + this.delimiter;
+                    writer.write(head.getBytes(this.charset));
                 }
-                writer.write(line.getBytes(this.charset));
-                writer.write(this.delimiter.getBytes(this.charset));
+                String entry = line + this.delimiter;
+                writer.write(entry.getBytes(this.charset));
             }
         } finally {
             // 排他制御の終了
