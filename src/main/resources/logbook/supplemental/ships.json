@@ -2898,6 +2898,12 @@
     "min_kaihi" : 39,
     "min_sakuteki" : 28
   }, {
+    "id" : 502,
+    "name" : "三隈改二",
+    "min_taisen" : 0,
+    "min_kaihi" : 38,
+    "min_sakuteki" : 25
+  }, {
     "id" : 503,
     "name" : "鈴谷改二",
     "min_taisen" : 0,
@@ -2915,6 +2921,12 @@
     "min_taisen" : 0,
     "min_kaihi" : 39,
     "min_sakuteki" : 24
+  }, {
+    "id" : 507,
+    "name" : "三隈改二特",
+    "min_taisen" : 0,
+    "min_kaihi" : 35,
+    "min_sakuteki" : 32
   }, {
     "id" : 508,
     "name" : "鈴谷航改二",
@@ -3288,6 +3300,12 @@
     "min_kaihi" : 22,
     "min_sakuteki" : 12
   }, {
+    "id" : 572,
+    "name" : "Rodney",
+    "min_taisen" : 0,
+    "min_kaihi" : 21,
+    "min_sakuteki" : 12
+  }, {
     "id" : 573,
     "name" : "陸奥改二",
     "min_taisen" : 0,
@@ -3312,6 +3330,12 @@
     "min_kaihi" : 23,
     "min_sakuteki" : 14
   }, {
+    "id" : 577,
+    "name" : "Rodney改",
+    "min_taisen" : 0,
+    "min_kaihi" : 22,
+    "min_sakuteki" : 13
+  }, {
     "id" : 578,
     "name" : "朝霜改二",
     "min_taisen" : 29,
@@ -3335,6 +3359,12 @@
     "min_taisen" : 0,
     "min_kaihi" : 26,
     "min_sakuteki" : 40
+  }, {
+    "id" : 582,
+    "name" : "夏雲",
+    "min_taisen" : 21,
+    "min_kaihi" : 40,
+    "min_sakuteki" : 5
   }, {
     "id" : 583,
     "name" : "峯雲",
@@ -3395,6 +3425,12 @@
     "min_taisen" : 0,
     "min_kaihi" : 39,
     "min_sakuteki" : 17
+  }, {
+    "id" : 593,
+    "name" : "榛名改二乙",
+    "min_taisen" : 0,
+    "min_kaihi" : 38,
+    "min_sakuteki" : 16
   }, {
     "id" : 594,
     "name" : "赤城改二",
@@ -3620,6 +3656,12 @@
   }, {
     "id" : 632,
     "name" : "有明",
+    "min_taisen" : 21,
+    "min_kaihi" : 43,
+    "min_sakuteki" : 5
+  }, {
+    "id" : 633,
+    "name" : "夕暮",
     "min_taisen" : 21,
     "min_kaihi" : 43,
     "min_sakuteki" : 5
@@ -3930,6 +3972,12 @@
     "min_kaihi" : 38,
     "min_sakuteki" : 13
   }, {
+    "id" : 694,
+    "name" : "霧島改二丙",
+    "min_taisen" : 0,
+    "min_kaihi" : 39,
+    "min_sakuteki" : 16
+  }, {
     "id" : 695,
     "name" : "秋霜改",
     "min_taisen" : 28,
@@ -4074,6 +4122,120 @@
     "min_kaihi" : 46,
     "min_sakuteki" : 12
   }, {
+    "id" : 719,
+    "name" : "伊201改",
+    "min_taisen" : 0,
+    "min_kaihi" : 43,
+    "min_sakuteki" : 13
+  }, {
+    "id" : 720,
+    "name" : "早潮改",
+    "min_taisen" : 26,
+    "min_kaihi" : 44,
+    "min_sakuteki" : 9
+  }, {
+    "id" : 721,
+    "name" : "夏雲改",
+    "min_taisen" : 24,
+    "min_kaihi" : 42,
+    "min_sakuteki" : 6
+  }, {
+    "id" : 722,
+    "name" : "Brooklyn改",
+    "min_taisen" : 0,
+    "min_kaihi" : 37,
+    "min_sakuteki" : 22
+  }, {
+    "id" : 723,
+    "name" : "Ranger改",
+    "min_taisen" : 0,
+    "min_kaihi" : 34,
+    "min_sakuteki" : 40
+  }, {
+    "id" : 724,
+    "name" : "Jean Bart改",
+    "min_taisen" : 0,
+    "min_kaihi" : 38,
+    "min_sakuteki" : 15
+  }, {
+    "id" : 725,
+    "name" : "夕暮改",
+    "min_taisen" : 16,
+    "min_kaihi" : 43,
+    "min_sakuteki" : 6
+  }, {
+    "id" : 726,
+    "name" : "Heywood L.E.改",
+    "min_taisen" : 52,
+    "min_kaihi" : 45,
+    "min_sakuteki" : 20
+  }, {
+    "id" : 727,
+    "name" : "第百一号輸送艦改",
+    "min_taisen" : 0,
+    "min_kaihi" : 36,
+    "min_sakuteki" : 3
+  }, {
+    "id" : 728,
+    "name" : "第二十二号海防艦改",
+    "min_taisen" : 33,
+    "min_kaihi" : 47,
+    "min_sakuteki" : 4
+  }, {
+    "id" : 729,
+    "name" : "白雲改",
+    "min_taisen" : 24,
+    "min_kaihi" : 43,
+    "min_sakuteki" : 5
+  }, {
+    "id" : 730,
+    "name" : "稲木改",
+    "min_taisen" : 46,
+    "min_kaihi" : 46,
+    "min_sakuteki" : 4
+  }, {
+    "id" : 731,
+    "name" : "C.Cappellini改",
+    "min_taisen" : 0,
+    "min_kaihi" : 18,
+    "min_sakuteki" : 7
+  }, {
+    "id" : 732,
+    "name" : "Drum改",
+    "min_taisen" : 0,
+    "min_kaihi" : 18,
+    "min_sakuteki" : 12
+  }, {
+    "id" : 733,
+    "name" : "Valiant改",
+    "min_taisen" : 0,
+    "min_kaihi" : 29,
+    "min_sakuteki" : 18
+  }, {
+    "id" : 734,
+    "name" : "Phoenix改",
+    "min_taisen" : 0,
+    "min_kaihi" : 37,
+    "min_sakuteki" : 22
+  }, {
+    "id" : 735,
+    "name" : "Lexington改",
+    "min_taisen" : 0,
+    "min_kaihi" : 22,
+    "min_sakuteki" : 46
+  }, {
+    "id" : 736,
+    "name" : "榧改",
+    "min_taisen" : 32,
+    "min_kaihi" : 36,
+    "min_sakuteki" : 16
+  }, {
+    "id" : 737,
+    "name" : "Richard P.Leary改",
+    "min_taisen" : 53,
+    "min_kaihi" : 45,
+    "min_sakuteki" : 21
+  }, {
     "id" : 877,
     "name" : "Conte di Cavour",
     "min_taisen" : 0,
@@ -4091,6 +4253,12 @@
     "min_taisen" : 0,
     "min_kaihi" : 31,
     "min_sakuteki" : 18
+  }, {
+    "id" : 881,
+    "name" : "伊201",
+    "min_taisen" : 0,
+    "min_kaihi" : 39,
+    "min_sakuteki" : 8
   }, {
     "id" : 882,
     "name" : "伊203",
@@ -4116,6 +4284,12 @@
     "min_kaihi" : 31,
     "min_sakuteki" : 39
   }, {
+    "id" : 886,
+    "name" : "早潮",
+    "min_taisen" : 22,
+    "min_kaihi" : 42,
+    "min_sakuteki" : 9
+  }, {
     "id" : 887,
     "name" : "伊203改",
     "min_taisen" : 0,
@@ -4134,11 +4308,29 @@
     "min_kaihi" : 35,
     "min_sakuteki" : 37
   }, {
+    "id" : 891,
+    "name" : "Salmon",
+    "min_taisen" : 0,
+    "min_kaihi" : 15,
+    "min_sakuteki" : 10
+  }, {
+    "id" : 892,
+    "name" : "Drum",
+    "min_taisen" : 0,
+    "min_kaihi" : 17,
+    "min_sakuteki" : 11
+  }, {
     "id" : 893,
     "name" : "Janus改",
     "min_taisen" : 53,
     "min_kaihi" : 47,
     "min_sakuteki" : 12
+  }, {
+    "id" : 894,
+    "name" : "鳳翔改二",
+    "min_taisen" : 33,
+    "min_kaihi" : 36,
+    "min_sakuteki" : 43
   }, {
     "id" : 895,
     "name" : "昭南",
@@ -4146,11 +4338,41 @@
     "min_kaihi" : 39,
     "min_sakuteki" : 3
   }, {
+    "id" : 896,
+    "name" : "Brooklyn",
+    "min_taisen" : 0,
+    "min_kaihi" : 31,
+    "min_sakuteki" : 18
+  }, {
+    "id" : 897,
+    "name" : "Salmon改",
+    "min_taisen" : 0,
+    "min_kaihi" : 16,
+    "min_sakuteki" : 12
+  }, {
+    "id" : 898,
+    "name" : "第二十二号海防艦",
+    "min_taisen" : 30,
+    "min_kaihi" : 39,
+    "min_sakuteki" : 2
+  }, {
+    "id" : 899,
+    "name" : "鳳翔改二戦",
+    "min_taisen" : 34,
+    "min_kaihi" : 33,
+    "min_sakuteki" : 36
+  }, {
     "id" : 900,
     "name" : "山汐丸",
     "min_taisen" : 23,
     "min_kaihi" : 14,
     "min_sakuteki" : 13
+  }, {
+    "id" : 901,
+    "name" : "Javelin",
+    "min_taisen" : 40,
+    "min_kaihi" : 44,
+    "min_sakuteki" : 10
   }, {
     "id" : 903,
     "name" : "天霧改二",
@@ -4158,16 +4380,484 @@
     "min_kaihi" : 54,
     "min_sakuteki" : 10
   }, {
+    "id" : 904,
+    "name" : "能美",
+    "min_taisen" : 38,
+    "min_kaihi" : 41,
+    "min_sakuteki" : 3
+  }, {
+    "id" : 905,
+    "name" : "倉橋",
+    "min_taisen" : 40,
+    "min_kaihi" : 40,
+    "min_sakuteki" : 3
+  }, {
+    "id" : 906,
+    "name" : "Javelin改",
+    "min_taisen" : 53,
+    "min_kaihi" : 47,
+    "min_sakuteki" : 12
+  }, {
     "id" : 908,
     "name" : "天霧改二丁",
     "min_taisen" : 25,
     "min_kaihi" : 53,
     "min_sakuteki" : 10
   }, {
+    "id" : 909,
+    "name" : "能美改",
+    "min_taisen" : 39,
+    "min_kaihi" : 52,
+    "min_sakuteki" : 5
+  }, {
+    "id" : 910,
+    "name" : "倉橋改",
+    "min_taisen" : 40,
+    "min_kaihi" : 54,
+    "min_sakuteki" : 5
+  }, {
+    "id" : 911,
+    "name" : "大和改二",
+    "min_taisen" : 0,
+    "min_kaihi" : 28,
+    "min_sakuteki" : 18
+  }, {
+    "id" : 913,
+    "name" : "Maryland",
+    "min_taisen" : 0,
+    "min_kaihi" : 19,
+    "min_sakuteki" : 9
+  }, {
+    "id" : 915,
+    "name" : "早潮改二",
+    "min_taisen" : 30,
+    "min_kaihi" : 47,
+    "min_sakuteki" : 10
+  }, {
+    "id" : 916,
+    "name" : "大和改二重",
+    "min_taisen" : 16,
+    "min_kaihi" : 25,
+    "min_sakuteki" : 20
+  }, {
+    "id" : 918,
+    "name" : "Maryland改",
+    "min_taisen" : 0,
+    "min_kaihi" : 22,
+    "min_sakuteki" : 16
+  }, {
+    "id" : 920,
+    "name" : "Samuel B.Roberts Mk.II",
+    "min_taisen" : 51,
+    "min_kaihi" : 48,
+    "min_sakuteki" : 15
+  }, {
+    "id" : 921,
+    "name" : "鵜来",
+    "min_taisen" : 42,
+    "min_kaihi" : 38,
+    "min_sakuteki" : 3
+  }, {
+    "id" : 922,
+    "name" : "稲木",
+    "min_taisen" : 41,
+    "min_kaihi" : 37,
+    "min_sakuteki" : 3
+  }, {
+    "id" : 923,
+    "name" : "Tuscaloosa",
+    "min_taisen" : 0,
+    "min_kaihi" : 36,
+    "min_sakuteki" : 15
+  }, {
+    "id" : 924,
+    "name" : "Nevada",
+    "min_taisen" : 0,
+    "min_kaihi" : 20,
+    "min_sakuteki" : 8
+  }, {
+    "id" : 925,
+    "name" : "Langley",
+    "min_taisen" : 16,
+    "min_kaihi" : 22,
+    "min_sakuteki" : 40
+  }, {
+    "id" : 926,
+    "name" : "鵜来改",
+    "min_taisen" : 48,
+    "min_kaihi" : 52,
+    "min_sakuteki" : 5
+  }, {
+    "id" : 927,
+    "name" : "Valiant",
+    "min_taisen" : 0,
+    "min_kaihi" : 25,
+    "min_sakuteki" : 15
+  }, {
+    "id" : 928,
+    "name" : "Tuscaloosa改",
+    "min_taisen" : 0,
+    "min_kaihi" : 37,
+    "min_sakuteki" : 16
+  }, {
+    "id" : 929,
+    "name" : "Nevada改",
+    "min_taisen" : 0,
+    "min_kaihi" : 27,
+    "min_sakuteki" : 13
+  }, {
+    "id" : 930,
+    "name" : "Langley改",
+    "min_taisen" : 18,
+    "min_kaihi" : 30,
+    "min_sakuteki" : 50
+  }, {
+    "id" : 931,
+    "name" : "Ranger",
+    "min_taisen" : 0,
+    "min_kaihi" : 28,
+    "min_sakuteki" : 38
+  }, {
+    "id" : 933,
+    "name" : "Massachusetts",
+    "min_taisen" : 0,
+    "min_kaihi" : 27,
+    "min_sakuteki" : 15
+  }, {
+    "id" : 934,
+    "name" : "C.Cappellini",
+    "min_taisen" : 0,
+    "min_kaihi" : 17,
+    "min_sakuteki" : 5
+  }, {
+    "id" : 935,
+    "name" : "Jean Bart",
+    "min_taisen" : 0,
+    "min_kaihi" : 35,
+    "min_sakuteki" : 12
+  }, {
+    "id" : 936,
+    "name" : "Nevada改 Mod.2",
+    "min_taisen" : 0,
+    "min_kaihi" : 27,
+    "min_sakuteki" : 15
+  }, {
+    "id" : 938,
+    "name" : "Massachusetts改",
+    "min_taisen" : 0,
+    "min_kaihi" : 35,
+    "min_sakuteki" : 18
+  }, {
+    "id" : 939,
+    "name" : "UIT-24",
+    "min_taisen" : 0,
+    "min_kaihi" : 21,
+    "min_sakuteki" : 9
+  }, {
+    "id" : 940,
+    "name" : "伊503",
+    "min_taisen" : 0,
+    "min_kaihi" : 23,
+    "min_sakuteki" : 10
+  }, {
+    "id" : 941,
+    "name" : "Heywood L.E.",
+    "min_taisen" : 49,
+    "min_kaihi" : 43,
+    "min_sakuteki" : 20
+  }, {
+    "id" : 942,
+    "name" : "Richard P.Leary",
+    "min_taisen" : 49,
+    "min_kaihi" : 43,
+    "min_sakuteki" : 20
+  }, {
+    "id" : 943,
+    "name" : "熊野丸",
+    "min_taisen" : 22,
+    "min_kaihi" : 14,
+    "min_sakuteki" : 13
+  }, {
+    "id" : 944,
+    "name" : "平安丸",
+    "min_taisen" : 0,
+    "min_kaihi" : 14,
+    "min_sakuteki" : 11
+  }, {
+    "id" : 945,
+    "name" : "第百一号輸送艦",
+    "min_taisen" : 0,
+    "min_kaihi" : 29,
+    "min_sakuteki" : 2
+  }, {
+    "id" : 948,
+    "name" : "熊野丸改",
+    "min_taisen" : 30,
+    "min_kaihi" : 16,
+    "min_sakuteki" : 15
+  }, {
+    "id" : 949,
+    "name" : "平安丸改",
+    "min_taisen" : 0,
+    "min_kaihi" : 16,
+    "min_sakuteki" : 18
+  }, {
+    "id" : 951,
+    "name" : "天津風改二",
+    "min_taisen" : 29,
+    "min_kaihi" : 56,
+    "min_sakuteki" : 10
+  }, {
+    "id" : 952,
+    "name" : "Phoenix",
+    "min_taisen" : 0,
+    "min_kaihi" : 31,
+    "min_sakuteki" : 18
+  }, {
+    "id" : 953,
+    "name" : "朝日",
+    "min_taisen" : 0,
+    "min_kaihi" : 6,
+    "min_sakuteki" : 1
+  }, {
+    "id" : 954,
+    "name" : "榛名改二丙",
+    "min_taisen" : 0,
+    "min_kaihi" : 38,
+    "min_sakuteki" : 16
+  }, {
+    "id" : 955,
+    "name" : "清霜改二",
+    "min_taisen" : 28,
+    "min_kaihi" : 45,
+    "min_sakuteki" : 9
+  }, {
+    "id" : 956,
+    "name" : "早霜改二",
+    "min_taisen" : 28,
+    "min_kaihi" : 49,
+    "min_sakuteki" : 11
+  }, {
+    "id" : 957,
+    "name" : "General Belgrano",
+    "min_taisen" : 0,
+    "min_kaihi" : 38,
+    "min_sakuteki" : 40
+  }, {
+    "id" : 958,
+    "name" : "朝日改",
+    "min_taisen" : 0,
+    "min_kaihi" : 5,
+    "min_sakuteki" : 1
+  }, {
+    "id" : 959,
+    "name" : "深雪改二",
+    "min_taisen" : 25,
+    "min_kaihi" : 48,
+    "min_sakuteki" : 13
+  }, {
+    "id" : 960,
+    "name" : "清霜改二丁",
+    "min_taisen" : 27,
+    "min_kaihi" : 45,
+    "min_sakuteki" : 12
+  }, {
+    "id" : 961,
+    "name" : "時雨改三",
+    "min_taisen" : 39,
+    "min_kaihi" : 63,
+    "min_sakuteki" : 12
+  }, {
+    "id" : 962,
+    "name" : "Mogador",
+    "min_taisen" : 32,
+    "min_kaihi" : 53,
+    "min_sakuteki" : 8
+  }, {
+    "id" : 964,
+    "name" : "白雲",
+    "min_taisen" : 19,
+    "min_kaihi" : 37,
+    "min_sakuteki" : 3
+  }, {
+    "id" : 965,
+    "name" : "Gloire",
+    "min_taisen" : 0,
+    "min_kaihi" : 32,
+    "min_sakuteki" : 20
+  }, {
+    "id" : 966,
+    "name" : "Lexington",
+    "min_taisen" : 0,
+    "min_kaihi" : 21,
+    "min_sakuteki" : 40
+  }, {
+    "id" : 967,
+    "name" : "Mogador改",
+    "min_taisen" : 38,
+    "min_kaihi" : 58,
+    "min_sakuteki" : 11
+  }, {
+    "id" : 968,
+    "name" : "初月改二",
+    "min_taisen" : 32,
+    "min_kaihi" : 54,
+    "min_sakuteki" : 12
+  }, {
+    "id" : 969,
+    "name" : "Richelieu Deux",
+    "min_taisen" : 0,
+    "min_kaihi" : 40,
+    "min_sakuteki" : 19
+  }, {
+    "id" : 970,
+    "name" : "Gloire改",
+    "min_taisen" : 0,
+    "min_kaihi" : 38,
+    "min_sakuteki" : 24
+  }, {
+    "id" : 971,
+    "name" : "伊36",
+    "min_taisen" : 0,
+    "min_kaihi" : 10,
+    "min_sakuteki" : 9
+  }, {
+    "id" : 972,
+    "name" : "伊41",
+    "min_taisen" : 0,
+    "min_kaihi" : 12,
+    "min_sakuteki" : 10
+  }, {
+    "id" : 975,
+    "name" : "春雨改二",
+    "min_taisen" : 29,
+    "min_kaihi" : 49,
+    "min_sakuteki" : 10
+  }, {
+    "id" : 976,
+    "name" : "伊36改",
+    "min_taisen" : 0,
+    "min_kaihi" : 12,
+    "min_sakuteki" : 10
+  }, {
+    "id" : 977,
+    "name" : "伊41改",
+    "min_taisen" : 0,
+    "min_kaihi" : 14,
+    "min_sakuteki" : 11
+  }, {
+    "id" : 979,
+    "name" : "稲木改二",
+    "min_taisen" : 47,
+    "min_kaihi" : 47,
+    "min_sakuteki" : 5
+  }, {
+    "id" : 981,
+    "name" : "藤波改二",
+    "min_taisen" : 29,
+    "min_kaihi" : 47,
+    "min_sakuteki" : 12
+  }, {
+    "id" : 983,
+    "name" : "浜波改二",
+    "min_taisen" : 30,
+    "min_kaihi" : 46,
+    "min_sakuteki" : 10
+  }, {
+    "id" : 984,
+    "name" : "Wahoo",
+    "min_taisen" : 0,
+    "min_kaihi" : 17,
+    "min_sakuteki" : 12
+  }, {
+    "id" : 986,
+    "name" : "白雪改二",
+    "min_taisen" : 26,
+    "min_kaihi" : 49,
+    "min_sakuteki" : 13
+  }, {
+    "id" : 987,
+    "name" : "初雪改二",
+    "min_taisen" : 27,
+    "min_kaihi" : 48,
+    "min_sakuteki" : 14
+  }, {
+    "id" : 989,
+    "name" : "Wahoo改",
+    "min_taisen" : 0,
+    "min_kaihi" : 18,
+    "min_sakuteki" : 14
+  }, {
+    "id" : 992,
+    "name" : "杉",
+    "min_taisen" : 28,
+    "min_kaihi" : 29,
+    "min_sakuteki" : 8
+  }, {
+    "id" : 994,
+    "name" : "榧",
+    "min_taisen" : 27,
+    "min_kaihi" : 30,
+    "min_sakuteki" : 8
+  }, {
+    "id" : 995,
+    "name" : "大泊",
+    "min_taisen" : 12,
+    "min_kaihi" : 14,
+    "min_sakuteki" : 7
+  }, {
+    "id" : 997,
+    "name" : "杉改",
+    "min_taisen" : 32,
+    "min_kaihi" : 34,
+    "min_sakuteki" : 16
+  }, {
+    "id" : 1000,
+    "name" : "大泊改",
+    "min_taisen" : 14,
+    "min_kaihi" : 18,
+    "min_sakuteki" : 8
+  }, {
+    "id" : 1001,
+    "name" : "Киров",
+    "min_taisen" : 15,
+    "min_kaihi" : 32,
+    "min_sakuteki" : 13
+  }, {
+    "id" : 1003,
+    "name" : "しまね丸",
+    "min_taisen" : 24,
+    "min_kaihi" : 14,
+    "min_sakuteki" : 13
+  }, {
+    "id" : 1005,
+    "name" : "Minneapolis",
+    "min_taisen" : 0,
+    "min_kaihi" : 33,
+    "min_sakuteki" : 15
+  }, {
+    "id" : 1006,
+    "name" : "Киров改",
+    "min_taisen" : 26,
+    "min_kaihi" : 39,
+    "min_sakuteki" : 14
+  }, {
+    "id" : 1008,
+    "name" : "しまね丸改",
+    "min_taisen" : 28,
+    "min_kaihi" : 15,
+    "min_sakuteki" : 22
+  }, {
+    "id" : 1010,
+    "name" : "Minneapolis改",
+    "min_taisen" : 0,
+    "min_kaihi" : 34,
+    "min_sakuteki" : 16
+  }, {
     "id" : 1496,
     "name" : "Colorado改",
     "min_taisen" : 0,
     "min_kaihi" : 22,
     "min_sakuteki" : 16
- } ]
+  } ]
 }
