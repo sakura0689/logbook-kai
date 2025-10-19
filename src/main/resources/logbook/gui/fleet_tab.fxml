@@ -38,18 +38,22 @@
                            <children>
                               <HBox alignment="CENTER_LEFT">
                                  <children>
-                                    <ImageView fx:id="airSuperiorityImg" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
-                                    <Label text="制空値:" />
+                                    <ImageView fx:id="lvsumImg" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Label text="艦娘Lv合計:" />
                                  </children>
                               </HBox>
-                              <Label fx:id="airSuperiority" styleClass="value" GridPane.columnIndex="1" />
-                              <HBox alignment="CENTER_LEFT" GridPane.columnIndex="2">
+                              <Label fx:id="lvsum" styleClass="value" GridPane.columnIndex="1" />
+                              <HBox GridPane.columnIndex="2">
                                  <children>
-                                    <ImageView fx:id="touchPlaneStartProbabilityImg" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
-                                    <Label text="触接開始率:" />
+                                    <Label prefHeight="24.0" text="疲労回復:">
+                                       <padding>
+                                          <Insets left="24.0" />
+                                       </padding>
+                                    </Label>
                                  </children>
                               </HBox>
-                              <Label fx:id="touchPlaneStartProbability" styleClass="value" GridPane.columnIndex="3" />
+                              <Label fx:id="cond" styleClass="value" GridPane.columnIndex="3" />
+                                                         
                               <HBox alignment="CENTER_LEFT" GridPane.rowIndex="1">
                                  <children>
                                     <ImageView fx:id="decision33Img" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
@@ -62,23 +66,15 @@
                                     <Button fx:id="branchCoefficientButton" mnemonicParsing="false" onAction="#changeBranchCoefficient" text="分岐点係数:1" />
                                  </children>
                               </HBox>
+
                               <HBox alignment="CENTER_LEFT" GridPane.rowIndex="2">
                                  <children>
-                                    <ImageView fx:id="lvsumImg" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
-                                    <Label text="艦娘Lv合計:" />
+                                    <ImageView fx:id="touchPlaneStartProbabilityImg" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Label text="触接開始率:" />
                                  </children>
                               </HBox>
-                              <Label fx:id="lvsum" styleClass="value" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <HBox GridPane.columnIndex="2" GridPane.rowIndex="2">
-                                 <children>
-                                    <Label prefHeight="24.0" text="疲労回復:">
-                                       <padding>
-                                          <Insets left="24.0" />
-                                       </padding>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                              <Label fx:id="cond" styleClass="value" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                              <Label fx:id="touchPlaneStartProbability" styleClass="value" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
                               <HBox alignment="CENTER_LEFT" GridPane.rowIndex="3">
                                  <children>
                                     <ImageView fx:id="karyokusumImg" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
@@ -86,41 +82,79 @@
                                  </children>
                               </HBox>
                               <Label fx:id="karyokusum" styleClass="value" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                              <HBox alignment="CENTER_LEFT" GridPane.columnIndex="2" GridPane.rowIndex="3">
-                                 <children>
-                                    <ImageView fx:id="taikusumImg" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
-                                    <Label text="対空合計:" />
-                                 </children>
-                              </HBox>
-                              <Label fx:id="taikusum" styleClass="value" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+
                               <HBox alignment="CENTER_LEFT" GridPane.rowIndex="4">
                                  <children>
-                                    <ImageView fx:id="taissumImg" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
-                                    <Label text="対潜合計:" />
+                                    <ImageView fx:id="airSuperiorityImg" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Label text="制空値:" />
                                  </children>
                               </HBox>
-                              <Label fx:id="taissum" styleClass="value" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                              <HBox alignment="CENTER_LEFT" GridPane.columnIndex="2" GridPane.rowIndex="4">
-                                 <children>
-                                    <ImageView fx:id="sakutekisumImg" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
-                                    <Label text="索敵合計:" />
-                                 </children>
-                              </HBox>
-                              <Label fx:id="sakutekisum" styleClass="value" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-                              <HBox alignment="CENTER_LEFT" GridPane.columnIndex="0" GridPane.rowIndex="5">
-                                 <children>
-                                    <ImageView fx:id="tpsumImg" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
-                                    <Label text="TP(S/A):" />
-                                 </children>
-                              </HBox>
-                              <Label fx:id="tpsum" styleClass="value" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                              <HBox GridPane.columnIndex="2" GridPane.rowIndex="5">
+                              <Label fx:id="airSuperiority" styleClass="value" GridPane.columnIndex="1" GridPane.rowIndex="4"/>                              
+
+                              <HBox GridPane.columnIndex="2" GridPane.rowIndex="4">
                                  <children>
                                     <ImageView fx:id="speedImg" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
                                     <Label prefHeight="24.0" text="艦隊速度:"/>
                                  </children>
                               </HBox>
-                              <Label fx:id="speed" styleClass="value" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                              <Label fx:id="speed" styleClass="value" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                              
+                              <HBox alignment="CENTER_LEFT" GridPane.rowIndex="5">
+                                 <children>
+                                    <ImageView fx:id="taikyuImg" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Label text="耐久合計:" />
+                                 </children>
+                              </HBox>
+                              <Label fx:id="taikyusum" styleClass="value" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+
+                              <HBox alignment="CENTER_LEFT" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                                 <children>
+                                    <ImageView fx:id="raisouImg" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Label text="雷装合計:" />
+                                 </children>
+                              </HBox>
+                              <Label fx:id="raisousum" styleClass="value" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+
+                              <HBox alignment="CENTER_LEFT" GridPane.rowIndex="6">
+                                 <children>
+                                    <ImageView fx:id="kaihiImg" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Label text="回避合計:" />
+                                 </children>
+                              </HBox>
+                              <Label fx:id="kaihisum" styleClass="value" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+
+                              <HBox alignment="CENTER_LEFT" GridPane.columnIndex="2" GridPane.rowIndex="6">
+                                 <children>
+                                    <ImageView fx:id="taikusumImg" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Label text="対空合計:" />
+                                 </children>
+                              </HBox>
+                              <Label fx:id="taikusum" styleClass="value" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+
+                              <HBox alignment="CENTER_LEFT" GridPane.rowIndex="7">
+                                 <children>
+                                    <ImageView fx:id="taissumImg" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Label text="対潜合計:" />
+                                 </children>
+                              </HBox>
+                              <Label fx:id="taissum" styleClass="value" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+
+                              <HBox alignment="CENTER_LEFT" GridPane.columnIndex="2" GridPane.rowIndex="7">
+                                 <children>
+                                    <ImageView fx:id="tpsumImg" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Label text="TP(S/A):" />
+                                 </children>
+                              </HBox>
+                              <Label fx:id="tpsum" styleClass="value" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+
+                              <HBox alignment="CENTER_LEFT" GridPane.rowIndex="8">
+                                 <children>
+                                    <ImageView fx:id="sakutekisumImg" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Label text="索敵合計:" />
+                                 </children>
+                              </HBox>
+                              <Label fx:id="sakutekisum" styleClass="value" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+
                            </children>
                         </GridPane>
                      </children>

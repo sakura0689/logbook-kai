@@ -317,20 +317,6 @@ public class MainMenuController extends WindowController {
     }
 
     /**
-     * 自動プロキシ構成スクリプトファイル生成
-     *
-     * @param e ActionEvent
-     */
-    @FXML
-    void createPacFile(ActionEvent e) {
-        try {
-            InternalFXMLLoader.showWindow("logbook/gui/create_pac_file.fxml", this.parentController.getWindow(), "自動プロキシ構成スクリプトファイル生成");
-        } catch (Exception ex) {
-            LoggerHolder.get().error("自動プロキシ構成スクリプトファイル生成の初期化に失敗しました", ex);
-        }
-    }
-
-    /**
      * 設定
      *
      * @param e ActionEvent

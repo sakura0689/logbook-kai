@@ -172,7 +172,32 @@ public class FleetTabPane extends ScrollPane {
     /** 艦隊速度 */
     @FXML
     private Label speed;
-        
+    
+    /** 耐久アイコン */
+    @FXML
+    private ImageView taikyuImg;
+
+    /** 耐久 */
+    @FXML
+    private Label taikyusum;
+    
+    /** 雷装アイコン */
+    @FXML
+    private ImageView raisouImg;
+
+    /** 雷装 */
+    @FXML
+    private Label raisousum;
+
+    /** 回避アイコン */
+    @FXML
+    private ImageView kaihiImg;
+
+    /** 回避 */
+    @FXML
+    private Label kaihisum;
+
+    
     /** 注釈 */
     @FXML
     private VBox remark;
@@ -340,6 +365,13 @@ public class FleetTabPane extends ScrollPane {
         int tp = withoutEscape.stream().mapToInt(Ships::transportPoint).sum();
         this.tpsum.setText(tp + "/" + (int)(tp*7/10));
 
+        // 耐久合計
+        this.taikyusum.setText(Integer.toString(withoutEscape.stream().mapToInt(ship -> ship.getMaxhp()).sum()));
+        // 雷装合計
+        this.raisousum.setText(Integer.toString(withoutEscape.stream().mapToInt(ship -> ship.getRaisou().get(0)).sum()));
+        // 回避合計
+        this.kaihisum.setText(Integer.toString(withoutEscape.stream().mapToInt(ship -> ship.getKaihi().get(0)).sum()));
+
         // 艦隊速度 - 各艦の速度のうち最低の速度を艦隊の速度とする
         String label;
         int speed = this.shipList.stream().map(Ship::getSoku).mapToInt(Integer::intValue).min().orElse(0);
@@ -474,6 +506,9 @@ public class FleetTabPane extends ScrollPane {
         this.sakutekisumImg.setImage(Items.itemImageByType(11));
         this.tpsumImg.setImage(Items.itemImageByType(25));
         this.speedImg.setImage(Items.itemImageByType(19));
+        this.taikyuImg.setImage(Items.itemImageByType(23));
+        this.raisouImg.setImage(Items.itemImageByType(5));
+        this.kaihiImg.setImage(Items.itemImageByType(54));
     }
 
     /**
