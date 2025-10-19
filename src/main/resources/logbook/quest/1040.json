@@ -1,0 +1,19 @@
+/* [1040] 【期間限定任務】Halloween狼隊、夜の襲撃！ */
+{
+    "type": "出撃",
+    "resetType" : "ウィークリー",
+    "filter" : {
+        "area": ["2-1", "2-2"],
+        "fleet": {
+            "operator": "AND",
+            "conditions": [
+                {"name": ["Tuscaloosa", "朧",  "夕立",  "野分",  "早波",  "熊野丸",  "迅鯨"], "order": 1},
+                {"name": ["Tuscaloosa", "朧",  "夕立",  "野分",  "早波",  "熊野丸",  "迅鯨"], "count": 3, "operator": "GE"}
+            ]
+        }
+    },
+    "conditions" : [
+        {"boss": true, "area": ["2-1"], "rank": ["S"], "count": 2},
+        {"boss": true, "area": ["2-2"], "rank": ["S"], "count": 2}
+    ]
+}
