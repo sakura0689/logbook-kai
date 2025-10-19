@@ -99,6 +99,30 @@
                               </HBox>
                               <Label fx:id="speed" styleClass="value" GridPane.columnIndex="3" GridPane.rowIndex="4" />
                               
+                              <HBox alignment="CENTER_LEFT" GridPane.rowIndex="5">
+                                 <children>
+                                    <ImageView fx:id="taikyuImg" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Label text="耐久合計:" />
+                                 </children>
+                              </HBox>
+                              <Label fx:id="taikyusum" styleClass="value" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+
+                              <HBox alignment="CENTER_LEFT" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                                 <children>
+                                    <ImageView fx:id="raisouImg" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Label text="雷装合計:" />
+                                 </children>
+                              </HBox>
+                              <Label fx:id="raisousum" styleClass="value" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+
+                              <HBox alignment="CENTER_LEFT" GridPane.rowIndex="6">
+                                 <children>
+                                    <ImageView fx:id="kaihiImg" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Label text="回避合計:" />
+                                 </children>
+                              </HBox>
+                              <Label fx:id="kaihisum" styleClass="value" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+
                               <HBox alignment="CENTER_LEFT" GridPane.columnIndex="2" GridPane.rowIndex="6">
                                  <children>
                                     <ImageView fx:id="taikusumImg" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
