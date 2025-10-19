@@ -1,0 +1,19 @@
+/* [1039] 【期間限定任務】Halloween海上護衛隊出撃！ */
+{
+    "type": "出撃",
+    "resetType" : "ウィークリー",
+    "filter" : {
+        "area": ["1-2", "1-4", "1-5"],
+        "fleet": {
+            "operator": "AND",
+            "conditions": [
+                {"name": ["阿武隈", "曙",  "朝潮",  "巻波",  "浜波",  "鵜来",  "稲木", "能美",  "第四号海防艦",  "第三〇号海防艦",  "第二十二号海防艦"], "count": 4, "operator": "GE"}
+            ]
+        }
+    },
+    "conditions" : [
+        {"boss": true, "area": ["1-2"], "rank": ["S"], "count": 1},
+        {"boss": true, "area": ["1-4"], "rank": ["S"], "count": 1},
+        {"boss": true, "area": ["1-5"], "rank": ["S"], "count": 1}
+    ]
+}
