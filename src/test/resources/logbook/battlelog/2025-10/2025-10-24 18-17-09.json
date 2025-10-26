@@ -1,0 +1,1843 @@
+{
+    "combinedType": "未結成",
+    "next": [
+        {
+            "rashinFlg": 0,
+            "rashinId": 0,
+            "mapareaId": 2,
+            "mapinfoNo": 1,
+            "no": 8,
+            "colorNo": 5,
+            "eventId": 5,
+            "eventKind": 1,
+            "next": 0,
+            "bosscellNo": 8,
+            "bosscomp": 1,
+            "eventmap": null,
+            "commentKind": 0,
+            "productionKind": 0,
+            "enemy": null,
+            "happening": null,
+            "itemget": null,
+            "selectRoute": null,
+            "fromNo": null,
+            "destructionBattle": null,
+            "m1": null,
+            "m2": null
+        }
+    ],
+    "battle": {
+        "@class": "logbook.bean.SortieBattle",
+        "airBaseInjection": null,
+        "airBaseAttack": null,
+        "dockId": 1,
+        "shipKe": [
+            1524,
+            1525,
+            1525,
+            1522,
+            1575,
+            1575
+        ],
+        "shipLv": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+        ],
+        "midnightFlag": false,
+        "search": [
+            1,
+            1
+        ],
+        "formation": [
+            1,
+            3,
+            1
+        ],
+        "stageFlag": [
+            1,
+            1,
+            1
+        ],
+        "injectionKouku": null,
+        "kouku": {
+            "planeFrom": [
+                [
+                    2,
+                    3,
+                    4
+                ],
+                [
+                    2,
+                    3
+                ]
+            ],
+            "stage1": {
+                "dispSeiku": 1,
+                "touchPlane": [
+                    343,
+                    -1
+                ],
+                "fcount": 108,
+                "ecount": 180,
+                "elostcount": 84,
+                "flostcount": 1
+            },
+            "stage2": {
+                "airFire": null,
+                "fcount": 105,
+                "ecount": 59,
+                "elostcount": 18,
+                "flostcount": 11
+            },
+            "stage3": {
+                "fraiFlag": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    1
+                ],
+                "eraiFlag": [
+                    0,
+                    1,
+                    0,
+                    0,
+                    0,
+                    1
+                ],
+                "fbakFlag": [
+                    1,
+                    0,
+                    0,
+                    1,
+                    0,
+                    0
+                ],
+                "ebakFlag": [
+                    0,
+                    1,
+                    0,
+                    0,
+                    1,
+                    1
+                ],
+                "fclFlag": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "eclFlag": [
+                    0,
+                    1,
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "fdam": [
+                    9.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.1
+                ],
+                "edam": [
+                    0.0,
+                    265.0,
+                    0.0,
+                    0.0,
+                    64.1,
+                    232.0
+                ]
+            },
+            "stage3Combined": null
+        },
+        "supportFlag": 0,
+        "supportInfo": null,
+        "openingFlag": true,
+        "openingAtack": {
+            "frai": [
+                null,
+                null,
+                null,
+                [
+                    2
+                ],
+                null,
+                null,
+                null
+            ],
+            "fcl": [
+                null,
+                null,
+                null,
+                [
+                    1
+                ],
+                null,
+                null,
+                null
+            ],
+            "fdam": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "fydam": [
+                null,
+                null,
+                null,
+                [
+                    49.0
+                ],
+                null,
+                null,
+                null
+            ],
+            "erai": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+            ],
+            "ecl": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+            ],
+            "edam": [
+                0.0,
+                0.0,
+                49.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "eydam": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+            ]
+        },
+        "openingTaisenFlag": false,
+        "openingTaisen": null,
+        "houraiFlag": [
+            1,
+            0,
+            0,
+            0
+        ],
+        "hougeki1": {
+            "atList": [
+                2,
+                0,
+                1,
+                4
+            ],
+            "atType": [
+                7,
+                0,
+                0,
+                2
+            ],
+            "dfList": [
+                [
+                    3
+                ],
+                [
+                    4
+                ],
+                [
+                    0
+                ],
+                [
+                    2,
+                    2
+                ]
+            ],
+            "siList": [
+                [
+                    56,
+                    476,
+                    343
+                ],
+                [
+                    1509
+                ],
+                [
+                    -1
+                ],
+                [
+                    50,
+                    50
+                ]
+            ],
+            "clList": [
+                [
+                    1
+                ],
+                [
+                    1
+                ],
+                [
+                    1
+                ],
+                [
+                    1,
+                    1
+                ]
+            ],
+            "damage": [
+                [
+                    202.1
+                ],
+                [
+                    17.0
+                ],
+                [
+                    149.0
+                ],
+                [
+                    46.0,
+                    25.0
+                ]
+            ],
+            "atEflag": [
+                0,
+                1,
+                0,
+                0
+            ]
+        },
+        "raigeki": null,
+        "hougeki2": null,
+        "hougeki3": null,
+        "fmaxhps": [
+            38,
+            70,
+            66,
+            66,
+            53,
+            36
+        ],
+        "fnowhps": [
+            35,
+            70,
+            66,
+            57,
+            39,
+            36
+        ],
+        "enowhps": [
+            90,
+            88,
+            88,
+            60,
+            35,
+            35
+        ],
+        "eslot": [
+            [
+                1509,
+                1509,
+                1512,
+                1528,
+                -1
+            ],
+            [
+                1520,
+                1517,
+                1524,
+                -1,
+                -1
+            ],
+            [
+                1520,
+                1517,
+                1524,
+                -1,
+                -1
+            ],
+            [
+                1505,
+                1506,
+                1525,
+                1525,
+                -1
+            ],
+            [
+                1502,
+                1545,
+                1542,
+                -1,
+                -1
+            ],
+            [
+                1502,
+                1545,
+                1542,
+                -1,
+                -1
+            ]
+        ],
+        "fparam": [
+            [
+                40,
+                0,
+                34,
+                34
+            ],
+            [
+                47,
+                0,
+                81,
+                74
+            ],
+            [
+                48,
+                0,
+                88,
+                72
+            ],
+            [
+                78,
+                92,
+                88,
+                75
+            ],
+            [
+                77,
+                62,
+                79,
+                75
+            ],
+            [
+                74,
+                94,
+                59,
+                52
+            ]
+        ],
+        "emaxhps": [
+            90,
+            88,
+            88,
+            60,
+            35,
+            35
+        ],
+        "eparam": [
+            [
+                85,
+                0,
+                70,
+                85
+            ],
+            [
+                0,
+                0,
+                40,
+                55
+            ],
+            [
+                0,
+                0,
+                40,
+                55
+            ],
+            [
+                58,
+                42,
+                30,
+                60
+            ],
+            [
+                38,
+                60,
+                30,
+                22
+            ],
+            [
+                38,
+                60,
+                30,
+                22
+            ]
+        ]
+    },
+    "midnight": null,
+    "result": {
+        "winRank": "S",
+        "getExp": 720,
+        "mvp": 3,
+        "memberLv": 120,
+        "memberExp": 73819925,
+        "getBaseExp": 220,
+        "getShipExp": [
+            -1,
+            396,
+            264,
+            528,
+            264,
+            264,
+            264
+        ],
+        "getExpLvup": [
+            [
+                556045,
+                564500
+            ],
+            [
+                2648689,
+                2760000
+            ],
+            [
+                1472179,
+                1525000
+            ],
+            [
+                1799511,
+                1860000
+            ],
+            [
+                1000000
+            ],
+            [
+                2546365,
+                2640000
+            ]
+        ],
+        "dests": 6,
+        "destsf": 1,
+        "lostFlag": null,
+        "questName": "南西諸島近海",
+        "questLevel": 3,
+        "enemyInfo": {
+            "level": "",
+            "rank": "",
+            "deckName": "敵主力艦隊"
+        },
+        "firstClear": 0,
+        "mapcellIncentive": false,
+        "getFlag": [
+            0,
+            1,
+            0
+        ],
+        "getUseitem": null,
+        "getShip": {
+            "shipId": 62,
+            "shipType": "重巡洋艦",
+            "shipName": "妙高",
+            "shipGetmes": "私、妙高型重巡洋艦、妙高と申します。<br>共に頑張りましょう。"
+        },
+        "getEventitem": null,
+        "getExmapRate": 0,
+        "getExmapUseitemId": 0,
+        "mvpCombined": null,
+        "getShipExpCombined": null,
+        "getExpLvupCombined": null,
+        "getEventflag": 0,
+        "escapeFlag": false,
+        "escape": null,
+        "landingHp": null,
+        "m1": null,
+        "m2": null
+    },
+    "deckMap": {
+        "1": [
+            {
+                "id": 77821,
+                "sortno": 439,
+                "shipId": 639,
+                "lv": 90,
+                "exp": [
+                    556045,
+                    8455,
+                    55
+                ],
+                "nowhp": 35,
+                "maxhp": 38,
+                "soku": 5,
+                "leng": 2,
+                "slot": [
+                    193985,
+                    182379,
+                    210924,
+                    -1,
+                    -1
+                ],
+                "onslot": [
+                    2,
+                    2,
+                    2,
+                    0,
+                    0
+                ],
+                "slotEx": -1,
+                "kyouka": [
+                    32,
+                    0,
+                    20,
+                    17,
+                    0,
+                    0,
+                    0
+                ],
+                "backs": 5,
+                "fuel": 18,
+                "bull": 6,
+                "slotnum": 3,
+                "ndockTime": 2640000,
+                "ndockItem": [
+                    2,
+                    5
+                ],
+                "srate": 4,
+                "cond": 57,
+                "karyoku": [
+                    58,
+                    40
+                ],
+                "raisou": [
+                    0,
+                    0
+                ],
+                "taiku": [
+                    40,
+                    34
+                ],
+                "soukou": [
+                    34,
+                    34
+                ],
+                "kaihi": [
+                    36,
+                    39
+                ],
+                "taisen": [
+                    0,
+                    0
+                ],
+                "sakuteki": [
+                    47,
+                    44
+                ],
+                "lucky": [
+                    16,
+                    60
+                ],
+                "locked": true,
+                "lockedEquip": false,
+                "sallyArea": 0
+            },
+            {
+                "id": 8773,
+                "sortno": 488,
+                "shipId": 888,
+                "lv": 139,
+                "exp": [
+                    2648689,
+                    111311,
+                    7
+                ],
+                "nowhp": 70,
+                "maxhp": 70,
+                "soku": 10,
+                "leng": 4,
+                "slot": [
+                    135204,
+                    123082,
+                    197353,
+                    103893,
+                    -1
+                ],
+                "onslot": [
+                    20,
+                    20,
+                    13,
+                    6,
+                    0
+                ],
+                "slotEx": 166673,
+                "kyouka": [
+                    47,
+                    0,
+                    49,
+                    38,
+                    11,
+                    0,
+                    0
+                ],
+                "backs": 8,
+                "fuel": 36,
+                "bull": 36,
+                "slotnum": 4,
+                "ndockTime": 0,
+                "ndockItem": [
+                    0,
+                    0
+                ],
+                "srate": 4,
+                "cond": 79,
+                "karyoku": [
+                    60,
+                    47
+                ],
+                "raisou": [
+                    38,
+                    0
+                ],
+                "taiku": [
+                    96,
+                    81
+                ],
+                "soukou": [
+                    75,
+                    74
+                ],
+                "kaihi": [
+                    94,
+                    75
+                ],
+                "taisen": [
+                    70,
+                    46
+                ],
+                "sakuteki": [
+                    121,
+                    80
+                ],
+                "lucky": [
+                    53,
+                    98
+                ],
+                "locked": true,
+                "lockedEquip": true,
+                "sallyArea": 0
+            },
+            {
+                "id": 58017,
+                "sortno": 360,
+                "shipId": 560,
+                "lv": 125,
+                "exp": [
+                    1472179,
+                    52821,
+                    3
+                ],
+                "nowhp": 66,
+                "maxhp": 66,
+                "soku": 10,
+                "leng": 4,
+                "slot": [
+                    108454,
+                    36544,
+                    167223,
+                    190277,
+                    -1
+                ],
+                "onslot": [
+                    17,
+                    15,
+                    15,
+                    2,
+                    0
+                ],
+                "slotEx": 166959,
+                "kyouka": [
+                    48,
+                    0,
+                    55,
+                    35,
+                    4,
+                    0,
+                    0
+                ],
+                "backs": 7,
+                "fuel": 24,
+                "bull": 27,
+                "slotnum": 4,
+                "ndockTime": 0,
+                "ndockItem": [
+                    0,
+                    0
+                ],
+                "srate": 4,
+                "cond": 97,
+                "karyoku": [
+                    61,
+                    48
+                ],
+                "raisou": [
+                    41,
+                    0
+                ],
+                "taiku": [
+                    119,
+                    88
+                ],
+                "soukou": [
+                    73,
+                    72
+                ],
+                "kaihi": [
+                    80,
+                    67
+                ],
+                "taisen": [
+                    71,
+                    48
+                ],
+                "sakuteki": [
+                    101,
+                    77
+                ],
+                "lucky": [
+                    46,
+                    93
+                ],
+                "locked": true,
+                "lockedEquip": true,
+                "sallyArea": 0
+            },
+            {
+                "id": 4925,
+                "sortno": 307,
+                "shipId": 507,
+                "lv": 130,
+                "exp": [
+                    1799511,
+                    60489,
+                    19
+                ],
+                "nowhp": 57,
+                "maxhp": 66,
+                "soku": 10,
+                "leng": 2,
+                "slot": [
+                    4329,
+                    209676,
+                    201312,
+                    114868,
+                    -1
+                ],
+                "onslot": [
+                    2,
+                    3,
+                    6,
+                    2,
+                    0
+                ],
+                "slotEx": 177831,
+                "kyouka": [
+                    47,
+                    46,
+                    53,
+                    34,
+                    5,
+                    0,
+                    0
+                ],
+                "backs": 8,
+                "fuel": 36,
+                "bull": 45,
+                "slotnum": 4,
+                "ndockTime": 7230000,
+                "ndockItem": [
+                    17,
+                    32
+                ],
+                "srate": 4,
+                "cond": 51,
+                "karyoku": [
+                    119,
+                    78
+                ],
+                "raisou": [
+                    115,
+                    92
+                ],
+                "taiku": [
+                    104,
+                    88
+                ],
+                "soukou": [
+                    77,
+                    75
+                ],
+                "kaihi": [
+                    94,
+                    75
+                ],
+                "taisen": [
+                    6,
+                    0
+                ],
+                "sakuteki": [
+                    118,
+                    89
+                ],
+                "lucky": [
+                    17,
+                    77
+                ],
+                "locked": true,
+                "lockedEquip": true,
+                "sallyArea": 0
+            },
+            {
+                "id": 118073,
+                "sortno": 528,
+                "shipId": 928,
+                "lv": 99,
+                "exp": [
+                    1000000,
+                    0,
+                    0
+                ],
+                "nowhp": 39,
+                "maxhp": 53,
+                "soku": 10,
+                "leng": 2,
+                "slot": [
+                    668,
+                    11935,
+                    21828,
+                    196141,
+                    -1
+                ],
+                "onslot": [
+                    1,
+                    1,
+                    2,
+                    5,
+                    0
+                ],
+                "slotEx": 0,
+                "kyouka": [
+                    32,
+                    62,
+                    47,
+                    34,
+                    0,
+                    0,
+                    0
+                ],
+                "backs": 6,
+                "fuel": 24,
+                "bull": 39,
+                "slotnum": 4,
+                "ndockTime": 13365000,
+                "ndockItem": [
+                    17,
+                    33
+                ],
+                "srate": 4,
+                "cond": 51,
+                "karyoku": [
+                    100,
+                    77
+                ],
+                "raisou": [
+                    62,
+                    62
+                ],
+                "taiku": [
+                    94,
+                    79
+                ],
+                "soukou": [
+                    75,
+                    75
+                ],
+                "kaihi": [
+                    77,
+                    77
+                ],
+                "taisen": [
+                    2,
+                    0
+                ],
+                "sakuteki": [
+                    74,
+                    57
+                ],
+                "lucky": [
+                    20,
+                    90
+                ],
+                "locked": true,
+                "lockedEquip": true,
+                "sallyArea": 0
+            },
+            {
+                "id": 34,
+                "sortno": 144,
+                "shipId": 144,
+                "lv": 138,
+                "exp": [
+                    2546365,
+                    93635,
+                    18
+                ],
+                "nowhp": 36,
+                "maxhp": 36,
+                "soku": 10,
+                "leng": 2,
+                "slot": [
+                    24257,
+                    27172,
+                    187101,
+                    -1,
+                    -1
+                ],
+                "onslot": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "slotEx": 141357,
+                "kyouka": [
+                    57,
+                    57,
+                    43,
+                    38,
+                    10,
+                    0,
+                    2
+                ],
+                "backs": 6,
+                "fuel": 9,
+                "bull": 12,
+                "slotnum": 3,
+                "ndockTime": 0,
+                "ndockItem": [
+                    0,
+                    0
+                ],
+                "srate": 4,
+                "cond": 51,
+                "karyoku": [
+                    85,
+                    74
+                ],
+                "raisou": [
+                    102,
+                    94
+                ],
+                "taiku": [
+                    80,
+                    59
+                ],
+                "soukou": [
+                    52,
+                    52
+                ],
+                "kaihi": [
+                    119,
+                    89
+                ],
+                "taisen": [
+                    93,
+                    69
+                ],
+                "sakuteki": [
+                    75,
+                    49
+                ],
+                "lucky": [
+                    32,
+                    65
+                ],
+                "locked": true,
+                "lockedEquip": true,
+                "sallyArea": 0
+            }
+        ]
+    },
+    "itemMap": {
+        "36544": {
+            "id": 36544,
+            "level": 0,
+            "alv": 7,
+            "locked": true,
+            "slotitemId": 545
+        },
+        "24257": {
+            "id": 24257,
+            "level": 10,
+            "alv": null,
+            "locked": true,
+            "slotitemId": 122
+        },
+        "193985": {
+            "id": 193985,
+            "level": 0,
+            "alv": null,
+            "locked": false,
+            "slotitemId": 90
+        },
+        "21828": {
+            "id": 21828,
+            "level": 6,
+            "alv": null,
+            "locked": true,
+            "slotitemId": 124
+        },
+        "190277": {
+            "id": 190277,
+            "level": 0,
+            "alv": 7,
+            "locked": true,
+            "slotitemId": 56
+        },
+        "123082": {
+            "id": 123082,
+            "level": 2,
+            "alv": 7,
+            "locked": true,
+            "slotitemId": 144
+        },
+        "209676": {
+            "id": 209676,
+            "level": 2,
+            "alv": null,
+            "locked": true,
+            "slotitemId": 520
+        },
+        "166673": {
+            "id": 166673,
+            "level": 10,
+            "alv": null,
+            "locked": true,
+            "slotitemId": 478
+        },
+        "103893": {
+            "id": 103893,
+            "level": 2,
+            "alv": 7,
+            "locked": true,
+            "slotitemId": 54
+        },
+        "668": {
+            "id": 668,
+            "level": 10,
+            "alv": null,
+            "locked": true,
+            "slotitemId": 50
+        },
+        "11935": {
+            "id": 11935,
+            "level": 10,
+            "alv": null,
+            "locked": true,
+            "slotitemId": 50
+        },
+        "187101": {
+            "id": 187101,
+            "level": 3,
+            "alv": null,
+            "locked": true,
+            "slotitemId": 517
+        },
+        "201312": {
+            "id": 201312,
+            "level": 0,
+            "alv": 7,
+            "locked": true,
+            "slotitemId": 490
+        },
+        "27172": {
+            "id": 27172,
+            "level": 10,
+            "alv": null,
+            "locked": true,
+            "slotitemId": 122
+        },
+        "177831": {
+            "id": 177831,
+            "level": 4,
+            "alv": null,
+            "locked": true,
+            "slotitemId": 412
+        },
+        "135204": {
+            "id": 135204,
+            "level": 2,
+            "alv": 7,
+            "locked": true,
+            "slotitemId": 343
+        },
+        "108454": {
+            "id": 108454,
+            "level": 0,
+            "alv": 7,
+            "locked": true,
+            "slotitemId": 343
+        },
+        "182379": {
+            "id": 182379,
+            "level": 0,
+            "alv": null,
+            "locked": false,
+            "slotitemId": 90
+        },
+        "4329": {
+            "id": 4329,
+            "level": 4,
+            "alv": null,
+            "locked": true,
+            "slotitemId": 520
+        },
+        "197353": {
+            "id": 197353,
+            "level": 0,
+            "alv": 7,
+            "locked": true,
+            "slotitemId": 475
+        },
+        "166959": {
+            "id": 166959,
+            "level": 10,
+            "alv": null,
+            "locked": true,
+            "slotitemId": 478
+        },
+        "210924": {
+            "id": 210924,
+            "level": 0,
+            "alv": null,
+            "locked": false,
+            "slotitemId": 28
+        },
+        "196141": {
+            "id": 196141,
+            "level": 2,
+            "alv": 7,
+            "locked": true,
+            "slotitemId": 118
+        },
+        "141357": {
+            "id": 141357,
+            "level": 8,
+            "alv": null,
+            "locked": true,
+            "slotitemId": 412
+        },
+        "167223": {
+            "id": 167223,
+            "level": 0,
+            "alv": 7,
+            "locked": true,
+            "slotitemId": 476
+        },
+        "114868": {
+            "id": 114868,
+            "level": 0,
+            "alv": null,
+            "locked": true,
+            "slotitemId": 364
+        }
+    },
+    "escape": [],
+    "time": "2025-10-24 18:17:09",
+    "battleCount": 3,
+    "route": [
+        "2-1-3",
+        "2-1-5",
+        "2-1-9",
+        "2-1-8"
+    ],
+    "raw": {
+        "battle": {
+            "uri": "/kcsapi/api_req_sortie/battle",
+            "api_data": {
+                "api_deck_id": 1,
+                "api_formation": [
+                    1,
+                    3,
+                    1
+                ],
+                "api_f_nowhps": [
+                    35,
+                    70,
+                    66,
+                    57,
+                    39,
+                    36
+                ],
+                "api_f_maxhps": [
+                    38,
+                    70,
+                    66,
+                    66,
+                    53,
+                    36
+                ],
+                "api_fParam": [
+                    [
+                        40,
+                        0,
+                        34,
+                        34
+                    ],
+                    [
+                        47,
+                        0,
+                        81,
+                        74
+                    ],
+                    [
+                        48,
+                        0,
+                        88,
+                        72
+                    ],
+                    [
+                        78,
+                        92,
+                        88,
+                        75
+                    ],
+                    [
+                        77,
+                        62,
+                        79,
+                        75
+                    ],
+                    [
+                        74,
+                        94,
+                        59,
+                        52
+                    ]
+                ],
+                "api_ship_ke": [
+                    1524,
+                    1525,
+                    1525,
+                    1522,
+                    1575,
+                    1575
+                ],
+                "api_ship_lv": [
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1
+                ],
+                "api_e_nowhps": [
+                    90,
+                    88,
+                    88,
+                    60,
+                    35,
+                    35
+                ],
+                "api_e_maxhps": [
+                    90,
+                    88,
+                    88,
+                    60,
+                    35,
+                    35
+                ],
+                "api_eSlot": [
+                    [
+                        1509,
+                        1509,
+                        1512,
+                        1528,
+                        -1
+                    ],
+                    [
+                        1520,
+                        1517,
+                        1524,
+                        -1,
+                        -1
+                    ],
+                    [
+                        1520,
+                        1517,
+                        1524,
+                        -1,
+                        -1
+                    ],
+                    [
+                        1505,
+                        1506,
+                        1525,
+                        1525,
+                        -1
+                    ],
+                    [
+                        1502,
+                        1545,
+                        1542,
+                        -1,
+                        -1
+                    ],
+                    [
+                        1502,
+                        1545,
+                        1542,
+                        -1,
+                        -1
+                    ]
+                ],
+                "api_eParam": [
+                    [
+                        85,
+                        0,
+                        70,
+                        85
+                    ],
+                    [
+                        0,
+                        0,
+                        40,
+                        55
+                    ],
+                    [
+                        0,
+                        0,
+                        40,
+                        55
+                    ],
+                    [
+                        58,
+                        42,
+                        30,
+                        60
+                    ],
+                    [
+                        38,
+                        60,
+                        30,
+                        22
+                    ],
+                    [
+                        38,
+                        60,
+                        30,
+                        22
+                    ]
+                ],
+                "api_smoke_type": 0,
+                "api_balloon_cell": 0,
+                "api_atoll_cell": 0,
+                "api_midnight_flag": 0,
+                "api_search": [
+                    1,
+                    1
+                ],
+                "api_stage_flag": [
+                    1,
+                    1,
+                    1
+                ],
+                "api_kouku": {
+                    "api_plane_from": [
+                        [
+                            2,
+                            3,
+                            4
+                        ],
+                        [
+                            2,
+                            3
+                        ]
+                    ],
+                    "api_stage1": {
+                        "api_f_count": 108,
+                        "api_f_lostcount": 1,
+                        "api_e_count": 180,
+                        "api_e_lostcount": 84,
+                        "api_disp_seiku": 1,
+                        "api_touch_plane": [
+                            343,
+                            -1
+                        ]
+                    },
+                    "api_stage2": {
+                        "api_f_count": 105,
+                        "api_f_lostcount": 11,
+                        "api_e_count": 59,
+                        "api_e_lostcount": 18
+                    },
+                    "api_stage3": {
+                        "api_frai_flag": [
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            1
+                        ],
+                        "api_erai_flag": [
+                            0,
+                            1,
+                            0,
+                            0,
+                            0,
+                            1
+                        ],
+                        "api_fbak_flag": [
+                            1,
+                            0,
+                            0,
+                            1,
+                            0,
+                            0
+                        ],
+                        "api_ebak_flag": [
+                            0,
+                            1,
+                            0,
+                            0,
+                            1,
+                            1
+                        ],
+                        "api_fcl_flag": [
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        "api_ecl_flag": [
+                            0,
+                            1,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        "api_fdam": [
+                            9,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0.1
+                        ],
+                        "api_edam": [
+                            0,
+                            265,
+                            0,
+                            0,
+                            64.1,
+                            232
+                        ],
+                        "api_f_sp_list": [
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            null
+                        ],
+                        "api_e_sp_list": [
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            null
+                        ]
+                    }
+                },
+                "api_support_flag": 0,
+                "api_support_info": null,
+                "api_opening_taisen_flag": 0,
+                "api_opening_taisen": null,
+                "api_opening_flag": 1,
+                "api_opening_atack": {
+                    "api_frai_list_items": [
+                        null,
+                        null,
+                        null,
+                        [
+                            2
+                        ],
+                        null,
+                        null,
+                        null
+                    ],
+                    "api_fcl_list_items": [
+                        null,
+                        null,
+                        null,
+                        [
+                            1
+                        ],
+                        null,
+                        null,
+                        null
+                    ],
+                    "api_fdam": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "api_fydam_list_items": [
+                        null,
+                        null,
+                        null,
+                        [
+                            49
+                        ],
+                        null,
+                        null,
+                        null
+                    ],
+                    "api_erai_list_items": [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null
+                    ],
+                    "api_ecl_list_items": [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null
+                    ],
+                    "api_edam": [
+                        0,
+                        0,
+                        49,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "api_eydam_list_items": [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null
+                    ]
+                },
+                "api_hourai_flag": [
+                    1,
+                    0,
+                    0,
+                    0
+                ],
+                "api_hougeki1": {
+                    "api_at_eflag": [
+                        0,
+                        1,
+                        0,
+                        0
+                    ],
+                    "api_at_list": [
+                        2,
+                        0,
+                        1,
+                        4
+                    ],
+                    "api_at_type": [
+                        7,
+                        0,
+                        0,
+                        2
+                    ],
+                    "api_df_list": [
+                        [
+                            3
+                        ],
+                        [
+                            4
+                        ],
+                        [
+                            0
+                        ],
+                        [
+                            2,
+                            2
+                        ]
+                    ],
+                    "api_si_list": [
+                        [
+                            "56",
+                            "476",
+                            "343"
+                        ],
+                        [
+                            1509
+                        ],
+                        [
+                            -1
+                        ],
+                        [
+                            "50",
+                            "50"
+                        ]
+                    ],
+                    "api_cl_list": [
+                        [
+                            1
+                        ],
+                        [
+                            1
+                        ],
+                        [
+                            1
+                        ],
+                        [
+                            1,
+                            1
+                        ]
+                    ],
+                    "api_damage": [
+                        [
+                            202.1
+                        ],
+                        [
+                            17
+                        ],
+                        [
+                            149
+                        ],
+                        [
+                            46,
+                            25
+                        ]
+                    ]
+                },
+                "api_hougeki2": null,
+                "api_hougeki3": null,
+                "api_raigeki": null
+            }
+        },
+        "midnight": null,
+        "result": {
+            "uri": "/kcsapi/api_req_sortie/battleresult",
+            "api_data": {
+                "api_ship_id": [
+                    1524,
+                    1525,
+                    1525,
+                    1522,
+                    1575,
+                    1575
+                ],
+                "api_win_rank": "S",
+                "api_get_exp": 720,
+                "api_mvp": 3,
+                "api_member_lv": 120,
+                "api_member_exp": 73819925,
+                "api_get_base_exp": 220,
+                "api_get_ship_exp": [
+                    -1,
+                    396,
+                    264,
+                    528,
+                    264,
+                    264,
+                    264
+                ],
+                "api_get_exp_lvup": [
+                    [
+                        556045,
+                        564500
+                    ],
+                    [
+                        2648689,
+                        2760000
+                    ],
+                    [
+                        1472179,
+                        1525000
+                    ],
+                    [
+                        1799511,
+                        1860000
+                    ],
+                    [
+                        1000000
+                    ],
+                    [
+                        2546365,
+                        2640000
+                    ]
+                ],
+                "api_dests": 6,
+                "api_destsf": 1,
+                "api_quest_name": "南西諸島近海",
+                "api_quest_level": 3,
+                "api_enemy_info": {
+                    "api_level": "",
+                    "api_rank": "",
+                    "api_deck_name": "敵主力艦隊"
+                },
+                "api_first_clear": 0,
+                "api_mapcell_incentive": 0,
+                "api_get_flag": [
+                    0,
+                    1,
+                    0
+                ],
+                "api_get_ship": {
+                    "api_ship_id": 62,
+                    "api_ship_type": "重巡洋艦",
+                    "api_ship_name": "妙高",
+                    "api_ship_getmes": "私、妙高型重巡洋艦、妙高と申します。<br>共に頑張りましょう。"
+                },
+                "api_get_eventflag": 0,
+                "api_get_exmap_rate": 0,
+                "api_get_exmap_useitem_id": 0,
+                "api_escape_flag": 0,
+                "api_escape": null
+            }
+        }
+    },
+    "practice": false
+}

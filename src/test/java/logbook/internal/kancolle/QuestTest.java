@@ -23,9 +23,11 @@ class QuestTest {
         Path testConfigPath = Paths.get("./target/test-classes/logbook/config");
         Config testConfig = new Config(testConfigPath);
         
-        Path testButtlePath = Paths.get("./target/test-classes/logbook/buttlelog");
+        Path testBattlePath = Paths.get("./target/test-classes/logbook/testlog");
+        Path testBattleLogPath = Paths.get("./target/test-classes/logbook/battlelog");
         AppConfig mockAppConfig = mock(AppConfig.class);
-        when(mockAppConfig.getReportPath()).thenReturn(testButtlePath.toString());
+        when(mockAppConfig.getReportPath()).thenReturn(testBattlePath.toString());
+        when(mockAppConfig.getBattleLogDir()).thenReturn(testBattleLogPath.toString());
         
         try (MockedStatic<Config> mockedConfig = mockStatic(Config.class);
                 MockedStatic<AppConfig> mockedAppConfig = mockStatic(AppConfig.class)) {
