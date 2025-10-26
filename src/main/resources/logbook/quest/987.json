@@ -5,10 +5,10 @@
     "filter" : {
         "area": ["4-2", "4-3", "4-4"],
         "fleet": {
-            "operator": "OR",
+            "operator": "AND",
             "conditions": [
                 {"name": ["Roma", "Luigi Torelli",  "Maestrale",  "Grecale",  "Libeccio",  "Scirocco",  "Jervis", "Minneapolis",  "村雨",  "夕立",  "朧",  "曙"], "order": 1},
-                {"name": ["Roma", "Luigi Torelli",  "Maestrale",  "Grecale",  "Libeccio",  "Scirocco",  "Jervis", "Minneapolis",  "村雨",  "夕立",  "朧",  "曙"], "count": 3, "operator": "GE"}
+                {"name": ["Roma", "Luigi Torelli",  "Maestrale",  "Grecale",  "Libeccio",  "Scirocco",  "Jervis", "Minneapolis",  "村雨",  "夕立",  "朧",  "曙"], "count": 2, "operator": "GE"}
             ]
         }
     },

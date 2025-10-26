@@ -1,0 +1,136 @@
+{
+    "quest": {
+        "210": {
+            "no": 210,
+            "quest": {
+                "no": 210,
+                "category": 2,
+                "type": 1,
+                "state": 2,
+                "title": "敵艦隊を10回邀撃せよ！",
+                "detail": "艦隊全力出撃！遊弋する敵艦隊を10回邀撃せよ！",
+                "getMaterial": [
+                    150,
+                    150,
+                    200,
+                    100
+                ],
+                "bonusFlag": 1,
+                "progressFlag": 0,
+                "invalidFlag": 0
+            },
+            "expire": "2025-10-27 05:00:00",
+            "active": true
+        },
+        "218": {
+            "no": 218,
+            "quest": {
+                "no": 218,
+                "category": 2,
+                "type": 1,
+                "state": 2,
+                "title": "敵補給艦を3隻撃沈せよ！",
+                "detail": "艦隊を出撃させ、敵補給艦を捕捉、これを撃滅せよ！",
+                "getMaterial": [
+                    100,
+                    50,
+                    200,
+                    50
+                ],
+                "bonusFlag": 1,
+                "progressFlag": 0,
+                "invalidFlag": 0
+            },
+            "expire": "2025-10-27 05:00:00",
+            "active": true
+        },
+        "221": {
+            "no": 221,
+            "quest": {
+                "no": 221,
+                "category": 2,
+                "type": 2,
+                "state": 2,
+                "title": "ろ号作戦",
+                "detail": "1週間の全力出撃を行い、敵輸送船団を捕捉・撃滅、敵の補給路を寸断せよ！",
+                "getMaterial": [
+                    400,
+                    0,
+                    800,
+                    0
+                ],
+                "bonusFlag": 1,
+                "progressFlag": 0,
+                "invalidFlag": 0
+            },
+            "expire": "2025-10-27 05:00:00",
+            "active": true
+        },
+        "229": {
+            "no": 229,
+            "quest": {
+                "no": 229,
+                "category": 2,
+                "type": 2,
+                "state": 2,
+                "title": "敵東方艦隊を撃滅せよ！",
+                "detail": "西方海域に出撃し、敵東方艦隊の主力を捕捉、これを撃滅せよ！",
+                "getMaterial": [
+                    400,
+                    0,
+                    0,
+                    700
+                ],
+                "bonusFlag": 1,
+                "progressFlag": 0,
+                "invalidFlag": 0
+            },
+            "expire": "2025-10-27 05:00:00",
+            "active": true
+        },
+        "241": {
+            "no": 241,
+            "quest": {
+                "no": 241,
+                "category": 2,
+                "type": 2,
+                "state": 1,
+                "title": "敵北方艦隊主力を撃滅せよ！",
+                "detail": "北方海域の深部に出撃し、敵北方艦隊の主力艦隊を捕捉、これを撃滅せよ！",
+                "getMaterial": [
+                    300,
+                    300,
+                    400,
+                    300
+                ],
+                "bonusFlag": 1,
+                "progressFlag": 0,
+                "invalidFlag": 0
+            },
+            "expire": "2025-10-27 05:00:00",
+            "active": false
+        },
+        "1040": {
+            "no": 1040,
+            "quest": {
+                "no": 1040,
+                "category": 2,
+                "type": 1,
+                "state": 2,
+                "title": "ハロウィンテスト対象任務",
+                "detail": "ハロウィンテスト対象任務",
+                "getMaterial": [
+                    100,
+                    100,
+                    100,
+                    100
+                ],
+                "bonusFlag": 1,
+                "progressFlag": 0,
+                "invalidFlag": 0
+            },
+            "expire": "2025-10-27 05:00:00",
+            "active": true
+        }
+    }
+}

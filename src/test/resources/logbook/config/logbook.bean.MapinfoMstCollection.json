@@ -1,0 +1,2402 @@
+{
+    "mapinfo": {
+        "11": {
+            "id": 11,
+            "mapareaId": 1,
+            "no": 1,
+            "name": "鎮守府正面海域",
+            "level": 1,
+            "opetext": "近海警備",
+            "infotext": "鎮守府正面近海の<br>警備に出動せよ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": null,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "12": {
+            "id": 12,
+            "mapareaId": 1,
+            "no": 2,
+            "name": "南西諸島沖",
+            "level": 1,
+            "opetext": "南西諸島沖警備",
+            "infotext": "南西諸島沖に接近する<br>敵前衛艦隊を捕捉、迎撃せよ！",
+            "item": [
+                32,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": null,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "13": {
+            "id": 13,
+            "mapareaId": 1,
+            "no": 3,
+            "name": "製油所地帯沿岸",
+            "level": 2,
+            "opetext": "海上護衛作戦",
+            "infotext": "製油所地帯沿岸部の<br>海上輸送ラインを防衛せよ！",
+            "item": [
+                31,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": null,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "14": {
+            "id": 14,
+            "mapareaId": 1,
+            "no": 4,
+            "name": "南西諸島防衛線",
+            "level": 3,
+            "opetext": "南1号作戦",
+            "infotext": "南西諸島の防衛ライン上の<br>敵侵攻艦隊を捕捉、<br>全力出撃でこれを撃滅せよ！",
+            "item": [
+                33,
+                34,
+                32,
+                0
+            ],
+            "maxMaphp": null,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "15": {
+            "id": 15,
+            "mapareaId": 1,
+            "no": 5,
+            "name": "鎮守府近海",
+            "level": 5,
+            "opetext": "鎮守府近海対潜哨戒",
+            "infotext": "なるべく小編成の対潜哨戒部隊を<br>編成し、鎮守府近海に出没する敵<br>潜水艦を捜索。これを捕捉制圧、<br>近海の安全な航行を実現せよ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": null,
+            "requiredDefeatCount": 4,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "16": {
+            "id": 16,
+            "mapareaId": 1,
+            "no": 6,
+            "name": "鎮守府近海航路",
+            "level": 5,
+            "opetext": "輸送船団護衛作戦",
+            "infotext": "対潜及び防空能力に優れた艦艇<br>を基幹戦力とした艦隊を編成、<br>輸送船団航路の護衛にあたれ！",
+            "item": [
+                31,
+                32,
+                33,
+                34
+            ],
+            "maxMaphp": null,
+            "requiredDefeatCount": 7,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "21": {
+            "id": 21,
+            "mapareaId": 2,
+            "no": 1,
+            "name": "南西諸島近海",
+            "level": 3,
+            "opetext": "南西諸島哨戒",
+            "infotext": "艦隊を南西諸島方面に展開！<br>同海域の哨戒を実施、同水域に<br>侵入した敵を排除、南西航路の<br>安全を確保せよ！",
+            "item": [
+                33,
+                2,
+                0,
+                0
+            ],
+            "maxMaphp": null,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "22": {
+            "id": 22,
+            "mapareaId": 2,
+            "no": 2,
+            "name": "バシー海峡",
+            "level": 4,
+            "opetext": "柳作戦",
+            "infotext": "艦隊をバシー海峡に展開せよ！<br>同方面の制海権を確保し、南方<br>からの資源輸送の安全に務め、<br>防衛体制を強化せよ！",
+            "item": [
+                34,
+                2,
+                0,
+                0
+            ],
+            "maxMaphp": null,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "23": {
+            "id": 23,
+            "mapareaId": 2,
+            "no": 3,
+            "name": "東部オリョール海",
+            "level": 5,
+            "opetext": "オリョール哨戒",
+            "infotext": "オリョール海に進出、同海域を<br>哨戒。敵通商破壊艦隊を排除、<br>我が方り海上輸送ラインの防衛<br>に努めよ！",
+            "item": [
+                31,
+                32,
+                0,
+                0
+            ],
+            "maxMaphp": null,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "24": {
+            "id": 24,
+            "mapareaId": 2,
+            "no": 4,
+            "name": "沖ノ島海域",
+            "level": 6,
+            "opetext": "あ号艦隊決戦",
+            "infotext": "沖ノ島海域に襲来した有力な敵<br>機動部隊を迎撃する。艦隊全力<br>出撃で、これを捕捉撃滅せよ！",
+            "item": [
+                32,
+                31,
+                1,
+                3
+            ],
+            "maxMaphp": null,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "25": {
+            "id": 25,
+            "mapareaId": 2,
+            "no": 5,
+            "name": "沖ノ島沖",
+            "level": 8,
+            "opetext": "沖ノ島沖戦闘哨戒",
+            "infotext": "同方面に敵艦隊接近の兆候が報告<br>された。巡洋艦を中心とした哨戒<br>部隊を編成、敵艦隊の動向を探れ",
+            "item": [
+                31,
+                33,
+                0,
+                0
+            ],
+            "maxMaphp": null,
+            "requiredDefeatCount": 4,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "31": {
+            "id": 31,
+            "mapareaId": 3,
+            "no": 1,
+            "name": "モーレイ海",
+            "level": 4,
+            "opetext": "モーレイ海哨戒",
+            "infotext": "北方海域に艦隊を進出させ、<br>モーレイ海を哨戒せよ！",
+            "item": [
+                32,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": null,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "32": {
+            "id": 32,
+            "mapareaId": 3,
+            "no": 2,
+            "name": "キス島沖",
+            "level": 5,
+            "opetext": "キス島撤退作戦",
+            "infotext": "駆逐艦を主力とした高速艦隊で、<br>敵に包囲された北方海域キス島に<br>突入！守備隊を無事収容せよ！",
+            "item": [
+                32,
+                10,
+                0,
+                0
+            ],
+            "maxMaphp": null,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "33": {
+            "id": 33,
+            "mapareaId": 3,
+            "no": 3,
+            "name": "アルフォンシーノ方面",
+            "level": 7,
+            "opetext": "アルフォンシーノ方面進出",
+            "infotext": "空母2隻以上を擁する空母機動<br>部隊などの有力な艦隊をもって<br>北方海域に進出。同戦力により<br>敵情の強行偵察を敢行せよ！",
+            "item": [
+                11,
+                12,
+                0,
+                0
+            ],
+            "maxMaphp": null,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "34": {
+            "id": 34,
+            "mapareaId": 3,
+            "no": 4,
+            "name": "北方海域全域",
+            "level": 9,
+            "opetext": "北方海域艦隊決戦",
+            "infotext": "北方海域奥地に敵艦隊の大規模<br>泊地を発見！我が艦隊の総力を<br>挙げてこれを撃滅せよ！",
+            "item": [
+                34,
+                11,
+                12,
+                0
+            ],
+            "maxMaphp": null,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "35": {
+            "id": 35,
+            "mapareaId": 3,
+            "no": 5,
+            "name": "北方AL海域",
+            "level": 9,
+            "opetext": "北方海域戦闘哨戒",
+            "infotext": "北方海域に敵増援の動きがある。<br>中規模の水上打撃部隊を派遣し、<br>敵増援を捕捉、これを撃滅せよ！",
+            "item": [
+                32,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": null,
+            "requiredDefeatCount": 4,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "41": {
+            "id": 41,
+            "mapareaId": 4,
+            "no": 1,
+            "name": "ジャム島沖",
+            "level": 5,
+            "opetext": "ジャム島攻略作戦",
+            "infotext": "西方作戦の第一段階として艦隊を<br>ジャム島攻略に展開！作戦を実施<br>せよ！　(対潜警戒も厳とせよ)",
+            "item": [
+                31,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": null,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "42": {
+            "id": 42,
+            "mapareaId": 4,
+            "no": 2,
+            "name": "カレー洋海域",
+            "level": 6,
+            "opetext": "カレー洋制圧戦",
+            "infotext": "カレー洋の制圧作戦を行う。同方<br>面資源地帯を確保しつつ、カレー<br>半島水域の敵艦隊を無力化せよ！",
+            "item": [
+                33,
+                34,
+                0,
+                0
+            ],
+            "maxMaphp": null,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "43": {
+            "id": 43,
+            "mapareaId": 4,
+            "no": 3,
+            "name": "リランカ島",
+            "level": 7,
+            "opetext": "リランカ島空襲",
+            "infotext": "空母を伴った艦隊を編成し、リラ<br>ンカ島の敵母港に展開する敵艦隊<br>への攻撃を行う。艦隊、出撃！",
+            "item": [
+                31,
+                34,
+                0,
+                0
+            ],
+            "maxMaphp": null,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "44": {
+            "id": 44,
+            "mapareaId": 4,
+            "no": 4,
+            "name": "カスガダマ島",
+            "level": 8,
+            "opetext": "カスガダマ沖海戦",
+            "infotext": "カレー洋西方の敵哨戒線を突破、<br>カスガダマ島沖深く進出し、敵東<br>方艦隊中枢部隊を捕捉撃滅せよ！",
+            "item": [
+                31,
+                33,
+                0,
+                0
+            ],
+            "maxMaphp": null,
+            "requiredDefeatCount": 4,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "45": {
+            "id": 45,
+            "mapareaId": 4,
+            "no": 5,
+            "name": "カレー洋リランカ島沖",
+            "level": 9,
+            "opetext": "深海東洋艦隊漸減作戦",
+            "infotext": "我が艦隊により大打撃を受けた<br>敵東洋艦隊がリランカ島の港湾<br>に再集結しつつある。遊撃部隊<br>を編成し、敵増援を撃滅せよ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": null,
+            "requiredDefeatCount": 5,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "51": {
+            "id": 51,
+            "mapareaId": 5,
+            "no": 1,
+            "name": "南方海域前面",
+            "level": 8,
+            "opetext": "南方海域進出作戦",
+            "infotext": "練度の高い水上打撃部隊を編成<br>し、南方海域への進出を図れ！<br>艦隊、南方へ進出せよ！",
+            "item": [
+                33,
+                32,
+                0,
+                0
+            ],
+            "maxMaphp": null,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "52": {
+            "id": 52,
+            "mapareaId": 5,
+            "no": 2,
+            "name": "珊瑚諸島沖",
+            "level": 9,
+            "opetext": "珊瑚諸島沖海戦",
+            "infotext": "MO作戦を実施する。空母機動<br>部隊を展開、これを支援せよ！<br>敵機動部隊を捜索、撃滅せよ！",
+            "item": [
+                34,
+                32,
+                0,
+                0
+            ],
+            "maxMaphp": null,
+            "requiredDefeatCount": 4,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "53": {
+            "id": 53,
+            "mapareaId": 5,
+            "no": 3,
+            "name": "サブ島沖海域",
+            "level": 9,
+            "opetext": "第一次サーモン沖海戦",
+            "infotext": "鉄底海峡に突入、敵泊地に我が<br>水上打撃部隊による夜戦突撃を<br>敢行、敵後方の輸送艦を叩け！",
+            "item": [
+                33,
+                32,
+                0,
+                0
+            ],
+            "maxMaphp": null,
+            "requiredDefeatCount": 5,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "54": {
+            "id": 54,
+            "mapareaId": 5,
+            "no": 4,
+            "name": "サーモン海域",
+            "level": 10,
+            "opetext": "東京急行",
+            "infotext": "南方海域に有力な艦隊を投入し<br>鼠輸送作戦を敢行、可能であれ<br>ば同方面の敵艦隊も撃滅せよ！",
+            "item": [
+                32,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": null,
+            "requiredDefeatCount": 5,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "55": {
+            "id": 55,
+            "mapareaId": 5,
+            "no": 5,
+            "name": "サーモン海域北方",
+            "level": 12,
+            "opetext": "第二次サーモン海戦",
+            "infotext": "南方海域に敵の有力な機動部隊<br>の接近が確認された。空母機動<br>部隊を以て、これを迎撃せよ！",
+            "item": [
+                31,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": null,
+            "requiredDefeatCount": 5,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "61": {
+            "id": 61,
+            "mapareaId": 6,
+            "no": 1,
+            "name": "中部海域哨戒線",
+            "level": 8,
+            "opetext": "潜水艦作戦",
+            "infotext": "有力な潜水艦隊を編成し、中部<br>海域哨戒線に進出せよ。敵艦隊<br>を発見、これを漸減撃滅せよ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": null,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "62": {
+            "id": 62,
+            "mapareaId": 6,
+            "no": 2,
+            "name": "MS諸島沖",
+            "level": 9,
+            "opetext": "MS諸島防衛戦",
+            "infotext": "MS諸島沖前面に展開し、同諸島<br>方面に接近しつつある敵攻略部<br>隊を捕捉、全力で撃滅せよ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": null,
+            "requiredDefeatCount": 3,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "63": {
+            "id": 63,
+            "mapareaId": 6,
+            "no": 3,
+            "name": "グアノ環礁沖海域",
+            "level": 7,
+            "opetext": "K作戦",
+            "infotext": "飛行艇または水上偵察機を装備<br>した水上機母艦・軽巡・駆逐艦<br>による艦隊を同方面へ進出、航<br>空偵察「Ｋ作戦」を実施せよ！",
+            "item": [
+                34,
+                32,
+                3,
+                0
+            ],
+            "maxMaphp": null,
+            "requiredDefeatCount": 4,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "64": {
+            "id": 64,
+            "mapareaId": 6,
+            "no": 4,
+            "name": "中部北海域ピーコック島沖",
+            "level": 9,
+            "opetext": "離島再攻略作戦",
+            "infotext": "水雷戦隊を基幹とした攻略部隊<br>または空母最大二隻を擁する機<br>動部隊による中部海域離島攻略<br>作戦を発動！艦隊、出撃せよ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": null,
+            "requiredDefeatCount": 5,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "65": {
+            "id": 65,
+            "mapareaId": 6,
+            "no": 5,
+            "name": "KW環礁沖海域",
+            "level": 7,
+            "opetext": "空母機動部隊迎撃戦",
+            "infotext": "中部海域最前線に有力な敵機動<br>部隊が襲来した！同戦域に展開<br>する基地航空隊と協同し、敵艦<br>隊を迎撃、これを撃滅せよ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": null,
+            "requiredDefeatCount": 6,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "71": {
+            "id": 71,
+            "mapareaId": 7,
+            "no": 1,
+            "name": "ブルネイ泊地沖",
+            "level": 5,
+            "opetext": "ブルネイ泊地沖哨戒",
+            "infotext": "燃料の豊かなブルネイ泊地近海<br>に敵潜水艦の跳梁が見られる。<br>これを捜索制圧し、重要拠点で<br>ある同泊地周辺の安全を図れ！",
+            "item": [
+                31,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": null,
+            "requiredDefeatCount": 3,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "72": {
+            "id": 72,
+            "mapareaId": 7,
+            "no": 2,
+            "name": "タウイタウイ泊地沖",
+            "level": 8,
+            "opetext": "セレベス海戦闘哨戒",
+            "infotext": "我が機動部隊の出撃拠点である<br>タウイタウイ泊地沖に敵戦力の<br>跳梁が確認されている。哨戒を<br>厳として、これらを制圧せよ！",
+            "item": [
+                31,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": null,
+            "requiredDefeatCount": 3,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "461": {
+            "id": 461,
+            "mapareaId": 46,
+            "no": 1,
+            "name": "マカッサル沖/バリ島沖",
+            "level": 7,
+            "opetext": "八駆見参！バリ島沖海戦",
+            "infotext": "「南方作戦」が開始された！<br>バリ島上陸作戦を実施、反撃<br>する敵水上艦隊を捕捉、これ<br>を撃滅せよ。駆逐隊、出撃！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "462": {
+            "id": 462,
+            "mapareaId": 46,
+            "no": 2,
+            "name": "ジャワ沖/ダーウィン沖",
+            "level": 9,
+            "opetext": "強襲！第二次ジャワ沖海戦",
+            "infotext": "「南方作戦」を推進するため<br>豪州ダーウィン基地とジャワ<br>沖の敵艦隊を攻撃、同方面に<br>おける敵戦力の漸減を図れ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "463": {
+            "id": 463,
+            "mapareaId": 46,
+            "no": 3,
+            "name": "ジャワ海/スラバヤ沖",
+            "level": 13,
+            "opetext": "激突！スラバヤ沖海戦",
+            "infotext": "いよいよ南方ジャワ島方面の<br>作戦を敢行する！巡洋艦戦力<br>を基幹とする艦隊を展開し、<br>敵艦隊戦力を捕捉撃滅せよ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                0,
+                7,
+                0
+            ]
+        },
+        "464": {
+            "id": 464,
+            "mapareaId": 46,
+            "no": 4,
+            "name": "バタビア沖",
+            "level": 15,
+            "opetext": "バタビア沖海戦",
+            "infotext": "いよいよ決戦！バタビアへの<br>上陸作戦を実施、さらに敵深<br>海合同艦隊残存部隊を撃滅、<br>「南方作戦」を完遂せよ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                7,
+                0
+            ]
+        },
+        "465": {
+            "id": 465,
+            "mapareaId": 46,
+            "no": 5,
+            "name": "ダバオ沖/太平洋南西部",
+            "level": 14,
+            "opetext": "ダバオ沖哨戒線",
+            "infotext": "ダバオ沖の哨戒を実施する！<br>出没する敵潜水艦群を捕捉、<br>対潜掃蕩部隊でこれを制圧！<br>敵機動部隊にも警戒せよ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                7,
+                0
+            ]
+        },
+        "466": {
+            "id": 466,
+            "mapareaId": 46,
+            "no": 6,
+            "name": "ソロモン諸島沖",
+            "level": 16,
+            "opetext": "激闘！第三次ソロモン海戦",
+            "infotext": "敵南方反攻作戦を迎撃する！<br>ソロモン海鉄底海峡方面の前<br>線部隊に戦力補充！さらに敵<br>主力を艦隊決戦で撃滅せよ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                7,
+                0
+            ]
+        },
+        "471": {
+            "id": 471,
+            "mapareaId": 47,
+            "no": 1,
+            "name": "期間限定海域:マニラ沖",
+            "level": 13,
+            "opetext": "桃の節句！沖に立つ波",
+            "infotext": "比島方面への深海侵攻部隊を<br>迎撃する！同方面へ救援物資<br>を輸送、敵物資集積地を破砕<br>及び敵主力を捜索撃滅せよ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                7,
+                0
+            ]
+        },
+        "481": {
+            "id": 481,
+            "mapareaId": 48,
+            "no": 1,
+            "name": "オホーツク海千島列島沖",
+            "level": 7,
+            "opetext": "鎮魂、キ504船団",
+            "infotext": "我が本土周辺の島嶼防衛強化<br>の一環として千島列島方面へ<br>兵站輸送を実施！敵潜警戒も<br>十分に！キ504船団、抜錨！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "482": {
+            "id": 482,
+            "mapareaId": 48,
+            "no": 2,
+            "name": "南西諸島沖",
+            "level": 9,
+            "opetext": "瀬底島、その先へ――",
+            "infotext": "南西諸島沖縄方面の島嶼防衛<br>作戦を発動する！連合艦隊を<br>もって、同方面に侵攻する敵<br>を迎撃、敵戦力を撃破せよ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                0,
+                7,
+                0
+            ]
+        },
+        "483": {
+            "id": 483,
+            "mapareaId": 48,
+            "no": 3,
+            "name": "四国沖/九州西方五島列島沖",
+            "level": 12,
+            "opetext": "五島列島沖海底の祈り",
+            "infotext": "五島列島沖の海底に謎の動き<br>が観測された。また、敵機動<br>部隊も接近中だ。深海艦隊を<br>捜索、これを捕捉撃滅せよ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                7,
+                0
+            ]
+        },
+        "484": {
+            "id": 484,
+            "mapareaId": 48,
+            "no": 4,
+            "name": "小笠原諸島沖",
+            "level": 14,
+            "opetext": "反転！敵任務部隊を撃て！",
+            "infotext": "敵侵攻に備え、小笠原諸島の<br>島嶼要塞群防衛力強化の為、<br>輸送部隊を投入する。敵艦隊<br>の動向にも十分注意せよ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                7,
+                0
+            ]
+        },
+        "485": {
+            "id": 485,
+            "mapareaId": 48,
+            "no": 5,
+            "name": "ニューブリテン島沖 ソロモン諸島西部沖",
+            "level": 13,
+            "opetext": "南方戦線 島嶼海上輸送作戦",
+            "infotext": "南方戦線での島嶼部海上輸送<br>作戦を実施する！コロンバン<br>ガラ島周辺の制海権を確保、<br>ツルブへの輸送を実施せよ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                7,
+                0
+            ]
+        },
+        "486": {
+            "id": 486,
+            "mapareaId": 48,
+            "no": 6,
+            "name": "ソロモン諸島沖",
+            "level": 15,
+            "opetext": "鉄底海峡の死闘",
+            "infotext": "ソロモン諸島周辺に敵の新型<br>戦艦が投入された！同海域の<br>制海権を確保するため、水上<br>打撃部隊を投入する。抜錨！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                0,
+                7,
+                0
+            ]
+        },
+        "487": {
+            "id": 487,
+            "mapareaId": 48,
+            "no": 7,
+            "name": "ソロモン諸島沖 サンタ・クルーズ諸島沖",
+            "level": 17,
+            "opetext": "決戦！南太平洋海戦",
+            "infotext": "遂に敵は虎の子たる空母機動<br>部隊を南方に投入してきた！<br>我が機動部隊精鋭全力でこれ<br>を邀撃！雌雄を決する！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                7,
+                0
+            ]
+        },
+        "73": {
+            "id": 73,
+            "mapareaId": 7,
+            "no": 3,
+            "name": "ペナン島沖",
+            "level": 8,
+            "opetext": "マラッカ海峡を抜けて",
+            "infotext": "精強な重巡及び駆逐艦を中核<br>とする小艦隊でマラッカ海峡<br>を突破する。ペナン島沖の敵<br>戦力を撃破して、前進せよ！",
+            "item": [
+                34,
+                31,
+                0,
+                0
+            ],
+            "maxMaphp": null,
+            "requiredDefeatCount": 3,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "491": {
+            "id": 491,
+            "mapareaId": 49,
+            "no": 1,
+            "name": "地中海マルタ島沖",
+            "level": 7,
+            "opetext": "発動！MG1作戦",
+            "infotext": "地中海マルタ島への輸送作戦<br>を実施する！これを阻止せん<br>とする敵艦隊を撃破し、輸送<br>作戦を完遂せよ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "492": {
+            "id": 492,
+            "mapareaId": 49,
+            "no": 2,
+            "name": "バレンツ海",
+            "level": 9,
+            "opetext": "バレンツ海海戦",
+            "infotext": "北方友軍への輸送作戦を実施<br>する！敵基地航空及び艦隊に<br>よる妨害が予想される。精鋭<br>戦力で阻止艦隊を突破せよ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                6,
+                0
+            ]
+        },
+        "493": {
+            "id": 493,
+            "mapareaId": 49,
+            "no": 3,
+            "name": "ノルウェー北岬沖/北極海",
+            "level": 13,
+            "opetext": "PQ17船団を護衛せよ！",
+            "infotext": "北極海航路の大規模輸送船団<br>を我が欧州派遣艦隊の総力で<br>護衛し、同輸送作戦を成功に<br>導け！護衛艦隊、抜錨せよ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                0,
+                7,
+                0
+            ]
+        },
+        "494": {
+            "id": 494,
+            "mapareaId": 49,
+            "no": 4,
+            "name": "ルソン島沖/オルモック沖",
+            "level": 16,
+            "opetext": "竹の輝き",
+            "infotext": "台湾方面への輸送船団護衛を<br>完遂後、比島方面の防衛強化<br>のため多号作戦を実施、機を<br>捉え、反撃作戦を実施せよ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                7,
+                0
+            ]
+        },
+        "501": {
+            "id": 501,
+            "mapareaId": 50,
+            "no": 1,
+            "name": "台湾/南沙諸島/比島方面沖",
+            "level": 7,
+            "opetext": "第三十一戦隊、展開せよ！",
+            "infotext": "第三十一戦隊で大型艦を南沙<br>諸島まで護衛、さらに比島方<br>面地上作戦を支援後、同方面<br>海域の敵潜を捜索掃蕩せよ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "502": {
+            "id": 502,
+            "mapareaId": 50,
+            "no": 2,
+            "name": "ソロモン方面/レンネル島沖",
+            "level": 9,
+            "opetext": "第六艦隊の戦い",
+            "infotext": "潜水艦を基軸戦力とした第六<br>艦隊をソロモン海域へ展開！<br>第三艦隊と共に敵水上部隊を<br>牽制、敵艦を捕捉撃滅せよ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                7,
+                0
+            ]
+        },
+        "503": {
+            "id": 503,
+            "mapareaId": 50,
+            "no": 3,
+            "name": "タサファロング泊地沖",
+            "level": 13,
+            "opetext": "ルンガ沖夜戦",
+            "infotext": "精鋭水雷戦隊により友軍陸上<br>部隊への鼠輸送作戦を実施！<br>同輸送を阻止せんとする敵と<br>遭遇した際は之を撃滅せよ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                7,
+                0
+            ]
+        },
+        "504": {
+            "id": 504,
+            "mapareaId": 50,
+            "no": 4,
+            "name": "ラバウル沖/ビスマルク諸島沖/ソロモン諸島沖",
+            "level": 16,
+            "opetext": "ラバウル空襲！ 遊撃部隊、出撃せり！",
+            "infotext": "ラバウルに進出した遊撃部隊<br>と基地航空隊、そして各艦隊<br>を連携させ、敵攻勢を迎撃！<br>敵の空襲にも十分注意せよ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                7,
+                1
+            ]
+        },
+        "505": {
+            "id": 505,
+            "mapareaId": 50,
+            "no": 5,
+            "name": "アイアンボトムサウンド",
+            "level": 17,
+            "opetext": "第二次ルンガ沖夜戦",
+            "infotext": "いよいよソロモン方面に侵攻<br>した敵戦力と雌雄を決する時<br>が来た！我が最精鋭二水戦出<br>撃！ルンガ沖の暁に勝利を！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                7,
+                1
+            ]
+        },
+        "511": {
+            "id": 511,
+            "mapareaId": 51,
+            "no": 1,
+            "name": "アレクサンドリア沖/クレタ島沖",
+            "level": 8,
+            "opetext": "MA3作戦",
+            "infotext": "スエズ運河より地中海方面へ<br>進出！周辺海域を制圧しつつ<br>マルタ島への増援輸送作戦を<br>実施せよ！特務艦隊、出撃！",
+            "item": [
+                32,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                0,
+                1
+            ]
+        },
+        "512": {
+            "id": 512,
+            "mapareaId": 51,
+            "no": 2,
+            "name": "地中海/マルタ島沖/ティレニア海",
+            "level": 13,
+            "opetext": "カラブリア岬沖海戦",
+            "infotext": "地中海の要衝マルタ島へ基地<br>航空隊を進出し、これと協同<br>して地中海の敵港湾拠点及び<br>敵水上艦隊主力を撃滅せよ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                7,
+                1
+            ]
+        },
+        "513": {
+            "id": 513,
+            "mapareaId": 51,
+            "no": 3,
+            "name": "ジブラルタル沖/地中海/マルタ島沖",
+            "level": 17,
+            "opetext": "増援輸送！ペデスタル作戦",
+            "infotext": "地中海の戦いの生命線となる<br>マルタ島への本格的増援輸送<br>作戦、「ペデスタル作戦」を<br>開始する！艦隊、出撃せよ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                7,
+                1
+            ]
+        },
+        "521": {
+            "id": 521,
+            "mapareaId": 52,
+            "no": 1,
+            "name": "三陸沖/北海道根室半島沖",
+            "level": 6,
+            "opetext": "北方近海の哨戒",
+            "infotext": "大湊より、出撃！三陸沖から<br>北海道根室沖の海域を哨戒、<br>北方近海の安全確保を図れ！<br>第百四戦隊、抜錨ッ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "522": {
+            "id": 522,
+            "mapareaId": 52,
+            "no": 2,
+            "name": "昭南方面～本土航路",
+            "level": 12,
+            "opetext": "南号作戦",
+            "infotext": "昭南(シンガポール)より日本<br>本土方面に戦略物資を輸送す<br>る南号作戦を実施せよ！対潜<br>警戒を厳に！ヒ船団、抜錨！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "523": {
+            "id": 523,
+            "mapareaId": 52,
+            "no": 3,
+            "name": "八丈島沖/房総半島東方沖",
+            "level": 16,
+            "opetext": "八丈島沖絶対哨戒線",
+            "infotext": "八丈島の防備を固め、同海域<br>周辺の敵潜水艦を制圧！また<br>呉より来援する連合艦隊と共<br>に敵機動部隊群を迎撃せよ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                7,
+                1
+            ]
+        },
+        "74": {
+            "id": 74,
+            "mapareaId": 7,
+            "no": 4,
+            "name": "昭南本土航路",
+            "level": 9,
+            "opetext": "ヒ船団海上護衛作戦",
+            "infotext": "南方から本土方面に重要資源を<br>輸送するヒ船団。同船団を敵潜<br>及び敵機動部隊から護る海上護<br>衛作戦を発動する！抜錨せよ！",
+            "item": [
+                34,
+                31,
+                0,
+                0
+            ],
+            "maxMaphp": null,
+            "requiredDefeatCount": 5,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "531": {
+            "id": 531,
+            "mapareaId": 53,
+            "no": 1,
+            "name": "九州沖/南西諸島方面",
+            "level": 6,
+            "opetext": "南西諸島の哨戒",
+            "infotext": "九州方面より艦隊を展開し、<br>佐世保、那覇などの南西諸島<br>方面の要港周辺を哨戒！海上<br>輸送路の安全を図れ！",
+            "item": [
+                31,
+                32,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "532": {
+            "id": 532,
+            "mapareaId": 53,
+            "no": 2,
+            "name": "高雄警備府～比島北部沖",
+            "level": 9,
+            "opetext": "アパリ防衛輸送",
+            "infotext": "台湾よりバシー海峡を越え、<br>比島北部友軍へ防衛輸送作戦<br>を実施！また、南西方面艦隊<br>と協力、制海権を確保せよ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "533": {
+            "id": 533,
+            "mapareaId": 53,
+            "no": 3,
+            "name": "関東/太平洋沖",
+            "level": 13,
+            "opetext": "捷三号作戦警戒",
+            "infotext": "我が本土強襲を企図する深海<br>機動部隊を八丈島沖で捕捉、<br>我が捷号作戦主力を以て、敵<br>艦隊を邀撃せよ！艦隊出撃！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                0,
+                7,
+                0
+            ]
+        },
+        "534": {
+            "id": 534,
+            "mapareaId": 53,
+            "no": 4,
+            "name": "昭南～マニラ航路",
+            "level": 15,
+            "opetext": "シマ船団護衛作戦",
+            "infotext": "第十六戦隊で南西方面の基地<br>航空隊を圧迫する敵地上戦力<br>を撃破！その後、昭南マニラ<br>間の船団護衛を実施せよ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "535": {
+            "id": 535,
+            "mapareaId": 53,
+            "no": 5,
+            "name": "東シナ海～北九州沖",
+            "level": 17,
+            "opetext": "北九州防空戦",
+            "infotext": "九州沖に出撃した敵機動部隊<br>を捜索撃滅しつつ、敵超重爆<br>より北九州の空を防空せよ！<br>艦隊及び防空迎撃隊、出撃！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                7,
+                1
+            ]
+        },
+        "541": {
+            "id": 541,
+            "mapareaId": 54,
+            "no": 1,
+            "name": "ニューブリテン島ラバウル沖",
+            "level": 6,
+            "opetext": "ラバウル基地への進出",
+            "infotext": "Ｒ方面作戦の拠点基地となる<br>ラバウルに艦隊を進出せよ。<br>敵潜水艦、空襲などへの警戒<br>も厳に。艦隊、抜錨！",
+            "item": [
+                32,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "542": {
+            "id": 542,
+            "mapareaId": 54,
+            "no": 2,
+            "name": "ショートランド沖/レカタ沖",
+            "level": 9,
+            "opetext": "進出！R方面航空部隊",
+            "infotext": "ラバウルより進発、ショート<br>ランド及びレカタ方面に水上<br>機基地を設営すべく輸送作戦<br>を実施せよ！警戒を厳に！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                0,
+                1
+            ]
+        },
+        "543": {
+            "id": 543,
+            "mapareaId": 54,
+            "no": 3,
+            "name": "ビスマルク海/ダンピール海峡沖",
+            "level": 14,
+            "opetext": "死闘！ 東部ニューギニア方面護衛隊",
+            "infotext": "ビスマルク海を越えてラエへ<br>増援輸送作戦を実施せよ！<br>戦局により、敵基地航空牽制<br>のため、連合艦隊投入も実施！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                7,
+                1
+            ]
+        },
+        "544": {
+            "id": 544,
+            "mapareaId": 54,
+            "no": 4,
+            "name": "豊後水道/佐世保沖/坊ノ岬沖",
+            "level": 15,
+            "opetext": "豊後水道を抜けて",
+            "infotext": "南西諸島への本格侵攻を開始<br>した敵を、我が第二艦隊主力<br>によって迎撃する！作戦に先<br>駆けて前路掃蕩を実施せよ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                7,
+                1
+            ]
+        },
+        "545": {
+            "id": 545,
+            "mapareaId": 54,
+            "no": 5,
+            "name": "坊ノ岬沖/台湾沖/南西諸島海域",
+            "level": 17,
+            "opetext": "血戦！異聞坊ノ岬沖海戦",
+            "infotext": "いよいよ決戦！大和を中核と<br>した、我が第二艦隊の精鋭が<br>沖縄救援に突入する！各艦隊<br>と基地航空との連携も重要！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                7,
+                1
+            ]
+        },
+        "551": {
+            "id": 551,
+            "mapareaId": 55,
+            "no": 1,
+            "name": "インド洋/アラビア海",
+            "level": 6,
+            "opetext": "遠征艦隊、西へ！",
+            "infotext": "反攻上陸作戦「トーチ作戦」<br>に参加するため、遠征艦隊を<br>西方に派遣する！同進路上の<br>前路掃討を実施せよ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "552": {
+            "id": 552,
+            "mapareaId": 55,
+            "no": 2,
+            "name": "アラビア海/アデン湾/紅海",
+            "level": 9,
+            "opetext": "アデン湾を抜けて",
+            "infotext": "海上輸送によって航空基地を<br>前進し、艦隊主力を展開して<br>アデン湾周辺の安全を確保！<br>スエズ運河へ前進せよ！",
+            "item": [
+                31,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                7,
+                0
+            ]
+        },
+        "553": {
+            "id": 553,
+            "mapareaId": 55,
+            "no": 3,
+            "name": "スエズ湾/地中海",
+            "level": 13,
+            "opetext": "アレクサンドリアの風",
+            "infotext": "スエズ運河を抜けて、地中海<br>方面へ進出！基地航空隊と連<br>携し、アレクサンドリアより<br>進発、地中海を突破せよ！",
+            "item": [
+                32,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                7,
+                0
+            ]
+        },
+        "554": {
+            "id": 554,
+            "mapareaId": 55,
+            "no": 4,
+            "name": "大西洋/ジブラルタル沖",
+            "level": 12,
+            "opetext": "トーチ作戦任務部隊、抜錨！",
+            "infotext": "北アフリカ方面への反攻上陸<br>「トーチ作戦」を開始する！<br>英国及び米東海岸方面からも<br>艦隊進発！作戦開始位置へ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                7,
+                1
+            ]
+        },
+        "555": {
+            "id": 555,
+            "mapareaId": 55,
+            "no": 5,
+            "name": "ジブラルタル沖/北アフリカ沖",
+            "level": 15,
+            "opetext": "反攻上陸！トーチ作戦",
+            "infotext": "いよいよ北アフリカ沿岸へ着<br>上陸作戦を開始する！兵力を<br>陸揚げした後、敵地上戦力を<br>撃滅せよ！敵反撃に注意を！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                7,
+                1
+            ]
+        },
+        "556": {
+            "id": 556,
+            "mapareaId": 55,
+            "no": 6,
+            "name": "カサブランカ沖",
+            "level": 17,
+            "opetext": "カサブランカ沖海戦",
+            "infotext": "大反攻上陸作戦「トーチ」の<br>総仕上げ、要衝カサブランカ<br>攻略作戦を実施する！戦艦を<br>含む在泊艦隊を無力化せよ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                7,
+                1
+            ]
+        },
+        "75": {
+            "id": 75,
+            "mapareaId": 7,
+            "no": 5,
+            "name": "ジャワ島沖",
+            "level": 11,
+            "opetext": "スラバヤ沖海戦・バタビア沖海戦",
+            "infotext": "ジャワ島東部に攻略部隊を揚陸<br>する！有力なる艦隊でスラバヤ<br>沖にて敵の迎撃戦力を撃破し、<br>敵残存艦隊も猛追！撃滅せよ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": null,
+            "requiredDefeatCount": 2,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "561": {
+            "id": 561,
+            "mapareaId": 56,
+            "no": 1,
+            "name": "日本本土近海哨戒圏",
+            "level": 7,
+            "opetext": "S21作戦",
+            "infotext": "本土近海を跳梁し、我が海上<br>輸送路及び水上艦艇への脅威<br>となる敵潜水艦を捕捉、殲滅<br>する！敵機動部隊にも警戒！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "562": {
+            "id": 562,
+            "mapareaId": 56,
+            "no": 2,
+            "name": "南西諸島沖/台湾沖",
+            "level": 12,
+            "opetext": "第二水雷戦隊 海上遊撃戦",
+            "infotext": "沖縄南西諸島方面に襲来した<br>敵侵攻部隊兵站を分断する！<br>精鋭第二水雷戦隊、海上遊<br>撃戦を展開、暁に勝利を！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                7,
+                1
+            ]
+        },
+        "563": {
+            "id": 563,
+            "mapareaId": 56,
+            "no": 3,
+            "name": "九州沖/四国沖/八丈島沖",
+            "level": 14,
+            "opetext": "敵空襲部隊を討て！",
+            "infotext": "いよいよ敵機動部隊が呉方面<br>及び関東地区への空襲を開始<br>した。我が全戦力を挙げて、<br>これを邀撃する！艦隊出撃！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                7,
+                1
+            ]
+        },
+        "564": {
+            "id": 564,
+            "mapareaId": 56,
+            "no": 4,
+            "name": "小笠原諸島航路/父島沖",
+            "level": 9,
+            "opetext": "伊号輸送作戦",
+            "infotext": "小笠原方面及び硫黄島の防備<br>を固めるため、横須賀鎮守府<br>配備の艦艇を中心に伊号輸送<br>作戦を実施する！艦隊抜錨！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                0,
+                1
+            ]
+        },
+        "565": {
+            "id": 565,
+            "mapareaId": 56,
+            "no": 5,
+            "name": "父島沖/硫黄島沖",
+            "level": 15,
+            "opetext": "出撃！八幡部隊",
+            "infotext": "小笠原方面の要衝、硫黄島に<br>侵攻部隊が襲来した！有力な<br>基地航空部隊を前線に展開、<br>艦隊と共にこれを邀撃せよ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                7,
+                1
+            ]
+        },
+        "566": {
+            "id": 566,
+            "mapareaId": 56,
+            "no": 6,
+            "name": "硫黄島沖",
+            "level": 17,
+            "opetext": "決戦！硫黄島逆上陸作戦",
+            "infotext": "いよいよ決戦だ！艦隊の全力<br>を挙げて硫黄島に向い、現地<br>で奮戦を続ける小笠原兵団を<br>救援する！艦隊、出撃せよ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                7,
+                1
+            ]
+        },
+        "571": {
+            "id": 571,
+            "mapareaId": 57,
+            "no": 1,
+            "name": "横須賀鎮守府/呉鎮守府沖",
+            "level": 5,
+            "opetext": "本土近海哨戒遭遇戦",
+            "infotext": "欧州方面の反攻上陸作戦参加<br>の前に内地及び周辺海上輸送<br>航路の脅威を排除する！艦隊<br>出撃！制海権を確保せよ！",
+            "item": [
+                31,
+                32,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "572": {
+            "id": 572,
+            "mapareaId": 57,
+            "no": 2,
+            "name": "南沙諸島沖/カムラン湾沖",
+            "level": 7,
+            "opetext": "朝日、再び",
+            "infotext": "昭南本土航路及び同周辺南沙<br>諸島海域制海権を確保せよ！<br>カムラン湾沖に出没する通商<br>破壊部隊を捜索、撃滅せよ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "573": {
+            "id": 573,
+            "mapareaId": 57,
+            "no": 3,
+            "name": "八戸港沖/三陸沖",
+            "level": 9,
+            "opetext": "八戸の盾",
+            "infotext": "三陸沖に接近中の敵機動部隊<br>を遊撃する！八戸付近の防御<br>を固め、連合艦隊主力を以て<br>敵機動部隊を捕捉撃滅せよ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "574": {
+            "id": 574,
+            "mapareaId": 57,
+            "no": 4,
+            "name": "津軽海峡/北海道釧路沖",
+            "level": 12,
+            "opetext": "鎮魂の北海道厚岸沖",
+            "infotext": "北海道千島方面の海上輸送を<br>確かなものにするため、第五<br>艦隊、そして一水戦や諸艦隊<br>の力を結集、敵を撃滅せよ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                0,
+                1
+            ]
+        },
+        "575": {
+            "id": 575,
+            "mapareaId": 57,
+            "no": 5,
+            "name": "大西洋/イギリス海峡沖",
+            "level": 13,
+            "opetext": "大西洋の壁",
+            "infotext": "大西洋の壁を乗り越え、欧州<br>反攻大作戦を支援するため、<br>我が艦隊を大西洋方面に派遣<br>する。艦隊、抜錨せよ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                0,
+                1
+            ]
+        },
+        "576": {
+            "id": 576,
+            "mapareaId": 57,
+            "no": 6,
+            "name": "ポートランド島沖/ライム湾",
+            "level": 15,
+            "opetext": "タイガー演習",
+            "infotext": "ノルマンディー上陸作戦実施<br>に先立ち、周辺部の敵戦力の<br>無力化と上陸部隊の事前演習<br>を実施する！作戦発動用意！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                0,
+                1
+            ]
+        },
+        "577": {
+            "id": 577,
+            "mapareaId": 57,
+            "no": 7,
+            "name": "ノルマンディー沖",
+            "level": 18,
+            "opetext": "ノルマンディー上陸作戦",
+            "infotext": "全ての作戦準備は整った！<br>今こそノルマンディー上陸<br>作戦を実施する時！全艦隊<br>発進せよ！暁に勝利を！",
+            "item": [
+                32,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                7,
+                1
+            ]
+        },
+        "581": {
+            "id": 581,
+            "mapareaId": 58,
+            "no": 1,
+            "name": "日本列島沖/呉Q基地",
+            "level": 7,
+            "opetext": "Q基地へ",
+            "infotext": "敵前線環礁泊地の機動部隊<br>を殲滅するため作戦を実施<br>する！Q基地で改良特四式<br>内火艇を受領せよ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "582": {
+            "id": 582,
+            "mapareaId": 58,
+            "no": 2,
+            "name": "九州南方沖/マリアナ諸島方面",
+            "level": 12,
+            "opetext": "竜巻作戦",
+            "infotext": "「竜巻作戦」を発動する！<br>ウルシー環礁まで前進した<br>敵機動部隊の航空母艦を本<br>作戦で痛撃する！出撃！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                0,
+                1
+            ]
+        },
+        "583": {
+            "id": 583,
+            "mapareaId": 58,
+            "no": 3,
+            "name": "マリアナ諸島/ウルシー環礁沖",
+            "level": 15,
+            "opetext": "泊地突入！龍巻作戦",
+            "infotext": "「竜巻作戦」を発展させた<br>「龍巻作戦」で、今度こそ<br>環礁泊地の敵空母群を殲滅<br>する！暁の環礁に勝利を！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                7,
+                1
+            ]
+        },
+        "584": {
+            "id": 584,
+            "mapareaId": 58,
+            "no": 4,
+            "name": "サイパン沖/マーシャル諸島沖正面",
+            "level": 17,
+            "opetext": "新Z作戦改",
+            "infotext": "竜巻作戦によって前線を大<br>きく押し戻した。今こそ、<br>総力決戦「新Z作戦改」で<br>敵を撃滅する！全力出撃！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                7,
+                1
+            ]
+        },
+        "591": {
+            "id": 591,
+            "mapareaId": 59,
+            "no": 1,
+            "name": "ケルト海/イギリス海峡",
+            "level": 6,
+            "opetext": "発動！カタパルト作戦",
+            "infotext": "大西洋戦域各方面において<br>深海勢力が侵食しないよう<br>各港湾の警備と制圧を実施<br>する。艦隊、出撃せよ！",
+            "item": [
+                32,
+                34,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                0,
+                0
+            ]
+        },
+        "592": {
+            "id": 592,
+            "mapareaId": 59,
+            "no": 2,
+            "name": "ジブラルタル/アルボラン海",
+            "level": 11,
+            "opetext": "メルセルケビール海戦",
+            "infotext": "艦隊を地中海方面に展開！<br>北アフリカの要港オラン港<br>方面の潜在敵艦隊を奇襲、<br>これの無力化を実施せよ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                7,
+                0
+            ]
+        },
+        "593": {
+            "id": 593,
+            "mapareaId": 59,
+            "no": 3,
+            "name": "北大西洋/フリータウン/ダカール",
+            "level": 15,
+            "opetext": "激突！ダカール沖海戦",
+            "infotext": "大西洋方面の艦隊戦力を結<br>集、フリータウンへ展開！<br>同地よりダカールの敵勢力<br>を強襲、これを撃滅せよ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                7,
+                1
+            ]
+        },
+        "594": {
+            "id": 594,
+            "mapareaId": 59,
+            "no": 4,
+            "name": "太平洋南部/ダバオ沖/ビアク島沖",
+            "level": 16,
+            "opetext": "ビアク沖遭遇戦",
+            "infotext": "太平洋南部戦域への敵侵攻<br>艦隊を捕捉、タウイタウイ<br>からの増援により、これを<br>撃滅せよ！艦隊、出撃！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                7,
+                1
+            ]
+        },
+        "595": {
+            "id": 595,
+            "mapareaId": 59,
+            "no": 5,
+            "name": "ラバウル沖/珊瑚海方面",
+            "level": 18,
+            "opetext": "第二次珊瑚海海戦",
+            "infotext": "太平洋戦域の反攻作戦、新<br>MO作戦を実施する！<br>我が精鋭機動部隊、出撃！<br>暁の水平線に勝利を！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                7,
+                1
+            ]
+        },
+        "601": {
+            "id": 601,
+            "mapareaId": 60,
+            "no": 1,
+            "name": "大湊警備府/津軽海峡/北海道東部",
+            "level": 7,
+            "opetext": "北海道防衛作戦",
+            "infotext": "深海棲艦極東艦隊が北海道<br>東部に来襲！陽動の可能性<br>があるが、各艦隊は直ちに<br>迎撃せよ！艦隊、出撃ッ！",
+            "item": [
+                31,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                0,
+                1
+            ]
+        },
+        "602": {
+            "id": 602,
+            "mapareaId": 60,
+            "no": 2,
+            "name": "北海道北東沖/宗谷海峡沖",
+            "level": 12,
+            "opetext": "音威子府防衛線",
+            "infotext": "敵侵攻部隊の主力が稚内に<br>上陸、南下を続けている。<br>有力な増援兵力を輸送し、<br>音威子府で敵を迎撃せよ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                7,
+                1
+            ]
+        },
+        "603": {
+            "id": 603,
+            "mapareaId": 60,
+            "no": 3,
+            "name": "北海道北東沖/留萌沖正面/樺太南部沖",
+            "level": 15,
+            "opetext": "留萌沖艦隊決戦",
+            "infotext": "敵侵攻主力が留萌方面へと<br>上陸を開始した！我が連合<br>艦隊主力を同敵橋頭堡へと<br>突入！北海道を防衛せよ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                7,
+                1
+            ]
+        },
+        "604": {
+            "id": 604,
+            "mapareaId": 60,
+            "no": 4,
+            "name": "カムラン湾沖/昭南方面航路/南シナ海",
+            "level": 14,
+            "opetext": "南沙諸島沖の戦雲",
+            "infotext": "敵深海勢力がミンドロ島へ<br>の上陸侵攻を開始！これに<br>対応するために、南西方面<br>より艦隊戦力を展開せよ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                7,
+                1
+            ]
+        },
+        "605": {
+            "id": 605,
+            "mapareaId": 60,
+            "no": 5,
+            "name": "ミンドロ島沖/キャビテ沖/サンホセ沖",
+            "level": 16,
+            "opetext": "第二次礼号作戦",
+            "infotext": "ミンドロ島への反撃作戦の<br>中核となる礼号作戦部隊は<br>敵サンホセ泊地へ突入！<br>敵物資集積地を撃破せよ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                7,
+                1
+            ]
+        },
+        "606": {
+            "id": 606,
+            "mapareaId": 60,
+            "no": 6,
+            "name": "南沙諸島沖/カムラン湾沖",
+            "level": 18,
+            "opetext": "第二遊撃部隊の帰投",
+            "infotext": "礼号作戦部隊は見事作戦を<br>成功させ帰投中！第四航空<br>戦隊は同隊を収容し、追撃<br>の敵任務部隊を撃滅せよ！",
+            "item": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "maxMaphp": 300,
+            "requiredDefeatCount": null,
+            "sallyFlag": [
+                1,
+                7,
+                1
+            ]
+        }
+    }
+}
