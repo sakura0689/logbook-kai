@@ -7,8 +7,8 @@
         "fleet": {
             "operator": "AND",
             "conditions": [
-                {"name": ["Tuscaloosa", "朧",  "夕立",  "野分",  "早波",  "熊野丸",  "迅鯨改"], "order": 1},
-                {"name": ["Tuscaloosa", "朧",  "夕立",  "野分",  "早波",  "熊野丸",  "迅鯨改"], "count": 2, "operator": "GE"}
+                {"name": ["Tuscaloosa", "朧",  "夕立",  "野分",  "早波",  "熊野丸",  "迅鯨改"], "count": 3, "operator": "GE"},
+                {"name": ["Tuscaloosa", "朧",  "夕立",  "野分",  "早波",  "熊野丸",  "迅鯨改"], "order": 1}
             ]
         }
     },
