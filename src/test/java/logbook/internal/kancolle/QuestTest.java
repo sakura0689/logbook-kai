@@ -10,6 +10,7 @@ import java.util.concurrent.ConcurrentSkipListMap;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 
+import logbook.bean.AppConfig;
 import logbook.bean.AppQuest;
 import logbook.bean.AppQuestCollection;
 import logbook.bean.AppQuestCondition;
@@ -22,8 +23,14 @@ class QuestTest {
         Path testConfigPath = Paths.get("./target/test-classes/logbook/config");
         Config testConfig = new Config(testConfigPath);
         
-        try (MockedStatic<Config> mocked = mockStatic(Config.class)) {
-            mocked.when(Config::getDefault).thenReturn(testConfig);
+        Path testButtlePath = Paths.get("./target/test-classes/logbook/buttlelog");
+        AppConfig mockAppConfig = mock(AppConfig.class);
+        when(mockAppConfig.getReportPath()).thenReturn(testButtlePath.toString());
+        
+        try (MockedStatic<Config> mockedConfig = mockStatic(Config.class);
+                MockedStatic<AppConfig> mockedAppConfig = mockStatic(AppConfig.class)) {
+            mockedConfig.when(Config::getDefault).thenReturn(testConfig);
+            mockedAppConfig.when(AppConfig::get).thenReturn(mockAppConfig);
             
             AppQuestCollection appQuestCollection = AppQuestCollection.get();        
             ConcurrentSkipListMap<Integer,AppQuest> questList = appQuestCollection.getQuest(); 
