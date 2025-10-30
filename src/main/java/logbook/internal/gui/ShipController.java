@@ -11,6 +11,7 @@ import java.util.stream.Stream;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -26,6 +27,7 @@ import logbook.bean.Ship;
 import logbook.bean.ShipCollection;
 import logbook.bean.ShipLabelCollection;
 import logbook.bean.ShipMst;
+import logbook.bean.SlotItemCollection;
 import logbook.constants.SeaArea;
 import logbook.internal.kancolle.Ships;
 import logbook.internal.logger.LoggerHolder;
@@ -101,6 +103,9 @@ public class ShipController extends WindowController {
             // 統計タブ
             this.addStatistics();
 
+            // ShipControllerが開いたときに装備更新リスナーを登録
+            SlotItemCollection.get().addUpdateListener(this::onSlotItemUpdated);
+            
             this.timeline = new Timeline();
             this.timeline.setCycleCount(Timeline.INDEFINITE);
             this.timeline.getKeyFrames().add(new KeyFrame(
@@ -220,6 +225,19 @@ public class ShipController extends WindowController {
     }
 
     /**
+     * 装備更新イベントリスナー
+     */
+    private void onSlotItemUpdated() {
+        // ShipTablePaneが存在する場合のみ更新
+        Platform.runLater(() -> {
+            Tab selected = this.tab.getSelectionModel().getSelectedItem();
+            if (selected != null && selected.getContent() instanceof ShipTablePane) {
+                ((ShipTablePane) selected.getContent()).refreshSlotItems();
+            }
+        });
+    }
+    
+    /**
      * 画面の更新
      *
      * @param e ActionEvent
@@ -240,5 +258,6 @@ public class ShipController extends WindowController {
         if (this.timeline != null) {
             this.timeline.stop();
         }
+        SlotItemCollection.get().removeUpdateListener(this::onSlotItemUpdated);
     }
 }

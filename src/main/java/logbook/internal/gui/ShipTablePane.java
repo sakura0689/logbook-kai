@@ -19,6 +19,7 @@ import java.util.TreeSet;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.controlsfx.control.ToggleSwitch;
 import org.controlsfx.control.textfield.TextFields;
@@ -26,6 +27,7 @@ import org.controlsfx.control.textfield.TextFields;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import javafx.application.Platform;
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -602,6 +604,22 @@ public class ShipTablePane extends VBox {
     }
 
     /**
+     * 装備情報のリフレッシュ処理
+     * 
+     * 詳細はSlotItemCollectionに記載した
+     * 
+     * @see SlotItemCollection
+     */
+    public void refreshSlotItems() {
+        Platform.runLater(() -> {
+            Stream.of(slot1, slot2, slot3, slot4, slot5).forEach(col -> {
+                col.setVisible(false);
+                col.setVisible(true);
+            });
+        });
+    }
+    
+    /**
      * 艦種:すべて
      */
     @FXML
@@ -1048,9 +1066,6 @@ public class ShipTablePane extends VBox {
      */
     private static class ItemImageCell extends TableCell<ShipItem, Integer> {
 
-        private Map<Integer, SlotItem> itemMap = SlotItemCollection.get()
-                .getSlotitemMap();
-
         @Override
         protected void updateItem(Integer itemId, boolean empty) {
             super.updateItem(itemId, empty);
@@ -1061,7 +1076,8 @@ public class ShipTablePane extends VBox {
                 } else {
                     this.getStyleClass().removeAll("none");
                 }
-                SlotItem item = this.itemMap.get(itemId);
+                
+                SlotItem item = SlotItemCollection.get().getSlotitemMap().get(itemId);
                 if (item != null) {
                     if (AppConfig.get().isHideItemImageFromShipTablePane()) {
                         this.setGraphic(null);
