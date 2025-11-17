@@ -1,0 +1,26 @@
+/* [1019] 「第三戦隊」第二小隊、鉄底海峡へ！ */
+{
+    "type": "出撃",
+    "resetType" : "単発",
+    "filter" : {
+        "area": ["4-5","5-5","6-5"],
+        "fleet": {
+            "operator": "AND",
+            "conditions": [
+                {"name": ["比叡改二丙", "霧島改二丙"], "count": 2, "operator": "EQ"},                
+                {
+                    "operator": "OR",
+                    "conditions": [
+                        {"name": ["夕雲", "巻雲", "風雲", "長波", "巻波", "高波", "玉波", "涼波", "藤波", "早波", "浜波", "沖波", "岸波", "朝霜", "早霜", "秋霜", "清霜"], "count": 2, "operator": "GE"},
+                        {"name": ["白露", "時雨", "村雨", "夕立", "春雨", "五月雨", "海風", "山風", "江風", "涼風"], "count": 2, "operator": "GE"}
+                    ]
+                }
+            ]
+        }
+    },
+    "conditions" : [
+        {"boss": true, "area": ["4-5"], "rank": ["S"], "count": 2},
+        {"boss": true, "area": ["5-5"], "rank": ["S"], "count": 2},
+        {"boss": true, "area": ["6-5"], "rank": ["S"], "count": 2}
+    ]
+}
