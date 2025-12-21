@@ -133,7 +133,13 @@ public class MainController extends WindowController {
     private TitledPane ndockPane;
 
     @FXML
+    private TitledPane supplyPane;
+
+    @FXML
     private VBox akashiTimer;
+
+    @FXML
+    private VBox nosakiTimer;
 
     @FXML
     private VBox ndockbox;
@@ -259,6 +265,8 @@ public class MainController extends WindowController {
             this.checkPort();
             // 泊地修理タイマー
             this.akashiTimer();
+            // 母港給糧タイマー
+            this.nosakiTimer();
             // 入渠ドック
             this.ndock();
             // 任務
@@ -486,6 +494,25 @@ public class MainController extends WindowController {
                 nodes.add(new AkashiTimerPane());
             } else {
                 ((AkashiTimerPane) nodes.get(0)).update();
+            }
+        }
+    }
+
+    /**
+     * 母港給糧タイマー
+     */
+    private void nosakiTimer() {
+        ObservableList<Node> nodes = this.nosakiTimer.getChildren();
+
+        if (AppCondition.get().getNosakiTimer() == 0) {
+            if (!nodes.isEmpty()) {
+                nodes.clear();
+            }
+        } else {
+            if (nodes.isEmpty()) {
+                nodes.add(new NosakiTimerPane());
+            } else {
+                ((NosakiTimerPane) nodes.get(0)).update();
             }
         }
     }
