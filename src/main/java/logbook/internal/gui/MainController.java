@@ -84,6 +84,9 @@ public class MainController extends WindowController {
     /** 入渠ドックコレクションのハッシュ・コード */
     private long ndockHashCode;
 
+    /** 給糧コレクションのハッシュ・コード */
+    private long supplyHashCode;
+
     /** 任務コレクションのハッシュ・コード */
     private long questHashCode;
 
@@ -269,6 +272,8 @@ public class MainController extends WindowController {
             this.nosakiTimer();
             // 入渠ドック
             this.ndock();
+            // 給糧
+            this.supply();
             // 任務
             this.quest();
 
@@ -546,6 +551,21 @@ public class MainController extends WindowController {
                     ((NdockPane) node).update();
                 }
             }
+        }
+    }
+
+    /**
+     * 給糧の更新
+     */
+    private void supply() {
+        boolean show = AppConfig.get().isShowSupply();
+        long newHashCode = show ? 1 : 0;
+        if (this.supplyHashCode != newHashCode) {
+            this.supplyPane.setVisible(show);
+            this.supplyPane.setManaged(show);
+
+            // ハッシュ・コードの更新
+            this.supplyHashCode = newHashCode;
         }
     }
 
