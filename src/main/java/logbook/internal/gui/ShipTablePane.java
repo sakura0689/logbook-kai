@@ -89,7 +89,7 @@ public class ShipTablePane extends VBox {
     /** フィルターペイン */
     @FXML
     private FlowPane filters;
-    
+
     /** テキスト */
     @FXML
     private ToggleSwitch textFilter;
@@ -316,27 +316,27 @@ public class ShipTablePane extends VBox {
 
     /** 装備1 */
     @FXML
-    private TableColumn<ShipItem, Integer> slot1;
+    private TableColumn<ShipItem, SlotItem> slot1;
 
     /** 装備2 */
     @FXML
-    private TableColumn<ShipItem, Integer> slot2;
+    private TableColumn<ShipItem, SlotItem> slot2;
 
     /** 装備3 */
     @FXML
-    private TableColumn<ShipItem, Integer> slot3;
+    private TableColumn<ShipItem, SlotItem> slot3;
 
     /** 装備4 */
     @FXML
-    private TableColumn<ShipItem, Integer> slot4;
+    private TableColumn<ShipItem, SlotItem> slot4;
 
     /** 装備5 */
     @FXML
-    private TableColumn<ShipItem, Integer> slot5;
+    private TableColumn<ShipItem, SlotItem> slot5;
 
     /** 補強 */
     @FXML
-    private TableColumn<ShipItem, Integer> slotEx;
+    private TableColumn<ShipItem, SlotItem> slotEx;
 
     /** 艦娘達 */
     private final Supplier<List<Ship>> shipSupplier;
@@ -355,6 +355,9 @@ public class ShipTablePane extends VBox {
 
     /** 艦娘一覧のハッシュ・コード */
     private int shipsHashCode;
+
+    /** 装備一覧のハッシュ・コード */
+    private int slotItemHashCode;
 
     /** 艦隊名 */
     private String fleetName;
@@ -402,8 +405,6 @@ public class ShipTablePane extends VBox {
         }
     }
 
-
-
     @FXML
     void initialize() {
         try {
@@ -423,7 +424,7 @@ public class ShipTablePane extends VBox {
                 this.parameterFilters.add(new ParameterFilterPane.ShipItemParameterFilterPane());
             }
             this.filters.getChildren().addAll(1, this.parameterFilters);
-            
+
             // フィルターのバインド
             this.textFilter.selectedProperty().addListener((ob, ov, nv) -> {
                 this.textValue.setDisable(!nv);
@@ -443,7 +444,7 @@ public class ShipTablePane extends VBox {
                     }
                     return object.equals(ShipFilter.LabelFilter.NO_LABEL) ? "(ラベルなし)" : object;
                 }
-                
+
                 @Override
                 public String fromString(String string) {
                     return string;
@@ -513,17 +514,17 @@ public class ShipTablePane extends VBox {
                     this.setText(Ships.lengText(i));
                 }
             });
-            this.slot1.setCellValueFactory(new PropertyValueFactory<>("slot1"));
+            this.slot1.setCellValueFactory(new PropertyValueFactory<>("slot1Item"));
             this.slot1.setCellFactory(p -> new ItemImageCell());
-            this.slot2.setCellValueFactory(new PropertyValueFactory<>("slot2"));
+            this.slot2.setCellValueFactory(new PropertyValueFactory<>("slot2Item"));
             this.slot2.setCellFactory(p -> new ItemImageCell());
-            this.slot3.setCellValueFactory(new PropertyValueFactory<>("slot3"));
+            this.slot3.setCellValueFactory(new PropertyValueFactory<>("slot3Item"));
             this.slot3.setCellFactory(p -> new ItemImageCell());
-            this.slot4.setCellValueFactory(new PropertyValueFactory<>("slot4"));
+            this.slot4.setCellValueFactory(new PropertyValueFactory<>("slot4Item"));
             this.slot4.setCellFactory(p -> new ItemImageCell());
-            this.slot5.setCellValueFactory(new PropertyValueFactory<>("slot5"));
+            this.slot5.setCellValueFactory(new PropertyValueFactory<>("slot5Item"));
             this.slot5.setCellFactory(p -> new ItemImageCell());
-            this.slotEx.setCellValueFactory(new PropertyValueFactory<>("slotEx"));
+            this.slotEx.setCellValueFactory(new PropertyValueFactory<>("slotExItem"));
             this.slotEx.setCellFactory(p -> new ItemImageCell());
 
             this.table.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
@@ -567,9 +568,11 @@ public class ShipTablePane extends VBox {
             }
             List<Ship> ships = this.shipSupplier.get();
 
-            if (this.shipsHashCode != ships.hashCode()) {
+            Map<Integer, SlotItem> slotItemMap = SlotItemCollection.get().getSlotitemMap();
+            if (this.shipsHashCode != ships.hashCode() || this.slotItemHashCode != slotItemMap.hashCode()) {
                 // ハッシュ・コードが変わっている場合画面の更新
                 this.shipsHashCode = ships.hashCode();
+                this.slotItemHashCode = slotItemMap.hashCode();
 
                 this.shipItems.clear();
                 this.shipItems.addAll(ships.stream()
@@ -823,6 +826,7 @@ public class ShipTablePane extends VBox {
 
     /**
      * 艦種フィルタのチェックボックス
+     * 
      * @return 艦種フィルタのチェックボックス
      */
     private List<CheckBox> typeCheckBox() {
@@ -868,6 +872,7 @@ public class ShipTablePane extends VBox {
 
     /**
      * 艦娘フィルターを作成する
+     * 
      * @return 艦娘フィルター
      */
     private Predicate<ShipItem> createFilter() {
@@ -888,8 +893,9 @@ public class ShipTablePane extends VBox {
                     .types(types)
                     .build());
         }
-        for (Predicate<ShipItem> parameterFilter : this.parameterFilters.stream().map(ParameterFilterPane::filterProperty).map(ReadOnlyObjectProperty::get)
-            .filter(Objects::nonNull).collect(Collectors.toList())) {
+        for (Predicate<ShipItem> parameterFilter : this.parameterFilters.stream()
+                .map(ParameterFilterPane::filterProperty).map(ReadOnlyObjectProperty::get)
+                .filter(Objects::nonNull).collect(Collectors.toList())) {
             filter = this.filterAnd(filter, parameterFilter);
         }
         if (this.labelFilter.isSelected()) {
@@ -994,11 +1000,11 @@ public class ShipTablePane extends VBox {
                 .filter(CheckBox::isSelected)
                 .map(CheckBox::getText)
                 .collect(Collectors.toList()));
-        
+
         // パラメーターフィルター
         config.setParameterFilters(this.parameterFilters.stream()
-            .map(ParameterFilterPane::saveConfig)
-            .collect(Collectors.toList()));
+                .map(ParameterFilterPane::saveConfig)
+                .collect(Collectors.toList()));
 
         // ラベル
         config.setLabelEnabled(this.labelFilter.isSelected());
@@ -1046,22 +1052,18 @@ public class ShipTablePane extends VBox {
      * 装備画像のセル
      *
      */
-    private static class ItemImageCell extends TableCell<ShipItem, Integer> {
-
-        private Map<Integer, SlotItem> itemMap = SlotItemCollection.get()
-                .getSlotitemMap();
+    private static class ItemImageCell extends TableCell<ShipItem, SlotItem> {
 
         @Override
-        protected void updateItem(Integer itemId, boolean empty) {
-            super.updateItem(itemId, empty);
+        protected void updateItem(SlotItem item, boolean empty) {
+            super.updateItem(item, empty);
 
             if (!empty) {
-                if (itemId == 0) {
+                if (item == null) {
                     this.getStyleClass().add("none");
                 } else {
                     this.getStyleClass().removeAll("none");
                 }
-                SlotItem item = this.itemMap.get(itemId);
                 if (item != null) {
                     if (AppConfig.get().isHideItemImageFromShipTablePane()) {
                         this.setGraphic(null);
@@ -1290,7 +1292,6 @@ public class ShipTablePane extends VBox {
             }
         }
     }
-
 
     @Data
     @AllArgsConstructor
