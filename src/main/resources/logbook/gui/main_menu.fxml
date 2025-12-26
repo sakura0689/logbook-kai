@@ -60,6 +60,7 @@
             <MenuItem mnemonicParsing="false" onAction="#resourceChart" text="資材チャート" />
             <MenuItem mnemonicParsing="false" onAction="#expChart" text="経験値チャート" />
             <MenuItem mnemonicParsing="false" onAction="#deck" text="編成記録" />
+            <MenuItem mnemonicParsing="false" onAction="#questConditionEdit" text="任務条件編集" />
             <SeparatorMenuItem mnemonicParsing="false" />
             <MenuItem mnemonicParsing="false" onAction="#config" text="設定">
                    <accelerator>

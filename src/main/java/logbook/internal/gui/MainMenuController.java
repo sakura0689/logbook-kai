@@ -317,6 +317,20 @@ public class MainMenuController extends WindowController {
     }
 
     /**
+     * 任務条件編集
+     *
+     * @param e ActionEvent
+     */
+    @FXML
+    void questConditionEdit(ActionEvent e) {
+        try {
+            InternalFXMLLoader.showWindow("logbook/gui/quest_condition_edit.fxml", this.parentController.getWindow(), "任務条件編集");
+        } catch (Exception ex) {
+            LoggerHolder.get().error("任務条件編集の初期化に失敗しました", ex);
+        }
+    }
+
+    /**
      * 設定
      *
      * @param e ActionEvent
@@ -372,7 +386,7 @@ public class MainMenuController extends WindowController {
      * プラグインのMenuItemを追加します
      *
      * @param serviceClass サービスプロバイダインターフェイス
-     * @param items MenuItemの追加先
+     * @param items        MenuItemの追加先
      */
     private <S extends Plugin<MenuItem>> void addMenuItem(Class<S> serviceClass, ObservableList<MenuItem> items) {
         List<MenuItem> addItem = Plugin.getContent(serviceClass);
