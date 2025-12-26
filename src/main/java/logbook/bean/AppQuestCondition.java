@@ -65,7 +65,19 @@ public class AppQuestCondition implements Predicate<QuestCollect> {
                 }
             } catch (Exception e) {
                 LoggerHolder.get().info("任務設定ファイルが読み込めませんでした。", e);
+                return null;
             }
+        }
+
+        try {
+            java.nio.file.Path customPath = java.nio.file.Paths.get("./customquest/" + questNo + ".json");
+            if (java.nio.file.Files.exists(customPath)) {
+                ObjectMapper mapper = new ObjectMapper();
+                mapper.enable(Feature.ALLOW_COMMENTS);
+                return mapper.readValue(customPath.toFile(), AppQuestCondition.class);
+            }
+        } catch (Exception e) {
+            LoggerHolder.get().info("カスタム任務設定ファイルが読み込めませんでした: " + questNo, e);
         }
         return null;
     }
@@ -255,7 +267,7 @@ public class AppQuestCondition implements Predicate<QuestCollect> {
                                     .limit(subListSize)
                                     .collect(Collectors.toCollection(LinkedHashSet::new)))
                             .collect(Collectors.toList());
-                    
+
                     sb.append(subList.stream()
                             .map(subListItem -> String.join(" または ", subListItem))
                             .collect(Collectors.joining(" または\n")));
@@ -298,20 +310,20 @@ public class AppQuestCondition implements Predicate<QuestCollect> {
         private String toStringOperator() {
             StringBuilder sb = new StringBuilder();
             switch (this.operator) {
-            case "AND":
-                sb.append("次の条件を全て満たす");
-                break;
-            case "OR":
-                sb.append("次の条件のいずれか少なくとも1つを満たす");
-                break;
-            case "NAND":
-                sb.append("次の条件のいずれか少なくとも1つを満たさない");
-                break;
-            case "NOR":
-                sb.append("次の条件を全て満たさない");
-                break;
-            default:
-                break;
+                case "AND":
+                    sb.append("次の条件を全て満たす");
+                    break;
+                case "OR":
+                    sb.append("次の条件のいずれか少なくとも1つを満たす");
+                    break;
+                case "NAND":
+                    sb.append("次の条件のいずれか少なくとも1つを満たさない");
+                    break;
+                case "NOR":
+                    sb.append("次の条件を全て満たさない");
+                    break;
+                default:
+                    break;
             }
             if (this.description != null) {
                 sb.append("(" + this.description + ")");
@@ -356,7 +368,7 @@ public class AppQuestCondition implements Predicate<QuestCollect> {
 
         /** カウント */
         private int count;
-        
+
         /** 遠征名 */
         private List<String> missions;
 
@@ -385,12 +397,12 @@ public class AppQuestCondition implements Predicate<QuestCollect> {
                     sb.append("任意の遠征");
                 } else {
                     List<String> labels = this.missions.stream()
-                        .map(name -> MissionCollection.get().getMissionMap().values().stream()
-                                .filter(mission -> mission.getName().equals(name))
-                                .map(mission -> "「" + mission.getDispNo() + " " + mission.getName() + "」")
-                                .findAny()
-                                .orElse(name))
-                        .collect(Collectors.toList());
+                            .map(name -> MissionCollection.get().getMissionMap().values().stream()
+                                    .filter(mission -> mission.getName().equals(name))
+                                    .map(mission -> "「" + mission.getDispNo() + " " + mission.getName() + "」")
+                                    .findAny()
+                                    .orElse(name))
+                            .collect(Collectors.toList());
                     sb.append(String.join("または", labels));
                 }
                 sb.append("を").append(this.count).append("回成功");
@@ -447,6 +459,7 @@ public class AppQuestCondition implements Predicate<QuestCollect> {
 
         /**
          * 遠征カウント
+         * 
          * @param t 集計結果
          * @return カウント
          */
@@ -459,9 +472,9 @@ public class AppQuestCondition implements Predicate<QuestCollect> {
             }
         }
 
-        
         /**
          * カウント
+         * 
          * @param t 集計結果
          * @return カウント
          */

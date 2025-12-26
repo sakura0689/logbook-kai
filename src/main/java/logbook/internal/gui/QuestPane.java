@@ -77,64 +77,65 @@ public class QuestPane extends HBox {
             Quest quest = this.quest.getQuest();
 
             switch (quest.getCategory()) {
-            case 1:
-                this.getStyleClass().add("deck");
-                break;
-            case 2:
-            case 8:
-            case 9:
-                this.getStyleClass().add("sortie");
-                break;
-            case 3:
-                this.getStyleClass().add("practice");
-                break;
-            case 4:
-                this.getStyleClass().add("mission");
-                break;
-            case 5:
-                this.getStyleClass().add("supply");
-                break;
-            case 6:
-                this.getStyleClass().add("kousyou");
-                break;
-            case 7:
-                this.getStyleClass().add("kaisou");
-                break;
-            default:
-                break;
+                case 1:
+                    this.getStyleClass().add("deck");
+                    break;
+                case 2:
+                case 8:
+                case 9:
+                    this.getStyleClass().add("sortie");
+                    break;
+                case 3:
+                    this.getStyleClass().add("practice");
+                    break;
+                case 4:
+                    this.getStyleClass().add("mission");
+                    break;
+                case 5:
+                    this.getStyleClass().add("supply");
+                    break;
+                case 6:
+                    this.getStyleClass().add("kousyou");
+                    break;
+                case 7:
+                    this.getStyleClass().add("kaisou");
+                    break;
+                default:
+                    break;
             }
             if (!this.quest.isActive()) {
                 this.getStyleClass().add("inactive");
             }
             switch (quest.getProgressFlag()) {
-            case 1:
-                this.progress.setStartAngle(90);
-                this.progress.setRadiusX(5);
-                this.progress.setRadiusY(5);
-                this.progress.setLength(360 * 0.5);
-                break;
-            case 2:
-                this.progress.setStartAngle(45);
-                this.progress.setRadiusX(5);
-                this.progress.setRadiusY(5);
-                this.progress.setLength(360 * 0.8);
-                break;
-            default:
-                if (quest.getState() == 3) {
+                case 1:
+                    this.progress.setStartAngle(90);
                     this.progress.setRadiusX(5);
                     this.progress.setRadiusY(5);
-                } else {
-                    this.progress.setRadiusX(2);
-                    this.progress.setRadiusY(2);
-                }
-                this.progress.setLength(360);
-                break;
+                    this.progress.setLength(360 * 0.5);
+                    break;
+                case 2:
+                    this.progress.setStartAngle(45);
+                    this.progress.setRadiusX(5);
+                    this.progress.setRadiusY(5);
+                    this.progress.setLength(360 * 0.8);
+                    break;
+                default:
+                    if (quest.getState() == 3) {
+                        this.progress.setRadiusX(5);
+                        this.progress.setRadiusY(5);
+                    } else {
+                        this.progress.setRadiusX(2);
+                        this.progress.setRadiusY(2);
+                    }
+                    this.progress.setLength(360);
+                    break;
             }
             this.name.setText(quest.getTitle());
             this.detail.setText(quest.getDetail().replaceAll("<br>", ""));
             this.setOnContextMenuRequested(this::showContextMenu);
 
-            if (LogBookCoreServices.getQuestResource(quest.getNo()) == null) {
+            if (LogBookCoreServices.getQuestResource(quest.getNo()) == null
+                && LogBookCoreServices.getCustomQuestResource(quest.getNo()) == null) {
                 this.condition.setVisible(false);
             }
         } catch (Exception e) {

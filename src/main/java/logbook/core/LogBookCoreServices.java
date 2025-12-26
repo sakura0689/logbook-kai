@@ -24,7 +24,7 @@ public final class LogBookCoreServices {
     }
 
     private static boolean isInitialized = false;
-    
+
     /**
      * LogBookCoreContainerの初期化処理を行います
      * 
@@ -37,7 +37,7 @@ public final class LogBookCoreServices {
             LoggerHolder.get().error("initが呼べるのは一度だけです");
             throw new Exception("PluginServices.initを呼べるのは一度だけです");
         }
-        
+
         LogBookCoreContainer container = LogBookCoreContainer.getInstance();
         if (plugins == null) {
             plugins = Collections.emptyList();
@@ -45,7 +45,7 @@ public final class LogBookCoreServices {
         container.init(plugins);
         isInitialized = true;
     }
-    
+
     /**
      * クラスローダーを返却します
      *
@@ -55,7 +55,7 @@ public final class LogBookCoreServices {
         LogBookCoreContainer container = LogBookCoreContainer.getInstance();
         return container.getClassLoader();
     }
-    
+
     /**
      * プラグイン一覧を返却します
      *
@@ -65,12 +65,12 @@ public final class LogBookCoreServices {
         LogBookCoreContainer container = LogBookCoreContainer.getInstance();
         return container.getPlugins();
     }
-    
+
     /**
      * 引数で渡されたクラスの実装サービスプロバイダを取得します。
      * 設定ファイルは、src/main/resource/META-INF/service以下に存在する必要があります
      *
-     * @param <T> サービスプロバイダ
+     * @param <T>   サービスプロバイダ
      * @param clazz プラグインのインターフェイス
      * @return clazzで指定されたサービスプロバイダインスタンス
      * 
@@ -83,7 +83,7 @@ public final class LogBookCoreServices {
 
         return StreamSupport.stream(loader.spliterator(), false);
     }
-    
+
     /**
      * 指定された名前を持つリソースを検索します。
      *
@@ -122,8 +122,26 @@ public final class LogBookCoreServices {
     }
 
     /**
+     * カスタム任務のリソースを取得します。
+     * 
+     * @param questNo 任務No
+     * @return リソースを読み込むためのURL
+     */
+    public static URL getCustomQuestResource(int questNo) {
+        try {
+            java.nio.file.Path path = java.nio.file.Paths.get("./customquest/" + questNo + ".json");
+            if (java.nio.file.Files.exists(path)) {
+                return path.toUri().toURL();
+            }
+        } catch (Exception e) {
+            return null;
+        }
+        return null;
+    }
+
+    /**
      * 任務のリソースを読み込む入力ストリームを返します。
-     *（どのコードが任務のリソースを使用しているかわかりやすくするため専用のメソッドを用意）
+     * （どのコードが任務のリソースを使用しているかわかりやすくするため専用のメソッドを用意）
      *
      * @param questNo 任務No
      * @return リソースを読み込むための入力ストリーム
@@ -132,9 +150,10 @@ public final class LogBookCoreServices {
     public static InputStream getQuestResourceAsStream(int questNo) {
         return getResourceAsStream("logbook/quest/" + questNo + ".json");
     }
-    
+
     /**
      * コンテナを終了します
+     * 
      * @throws Exception
      */
     public static synchronized void closeContainer() throws Exception {
