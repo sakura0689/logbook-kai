@@ -70,7 +70,7 @@ public class QuestConditionEditController extends WindowController {
             this.questSelector.setVisibleRowCount(20);
 
             // カテゴリフィルタ (2, 8, 9)
-            List<Integer> targetCategories = Arrays.asList(2, 8, 9);
+            List<Integer> targetCategories = Arrays.asList(2, 8, 9, 10);
 
             List<AppQuest> quests = AppQuestCollection.get().getQuest().values().stream()
                     .filter(q -> q.getQuest() != null)
@@ -190,6 +190,8 @@ public class QuestConditionEditController extends WindowController {
                 return "出撃(2)";
             case 9:
                 return "出撃(3)";
+            case 10:
+                return "出撃(4)";
             default:
                 return "その他";
         }
