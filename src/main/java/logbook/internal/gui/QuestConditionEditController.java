@@ -327,6 +327,12 @@ public class QuestConditionEditController extends WindowController {
                 filter.setArea(Arrays.stream(areaText.split(","))
                         .map(String::trim)
                         .filter(s -> !s.isEmpty())
+                        .map(s -> {
+                            if ("7-2-1".equals(s) || "7-2-2".equals(s)) {
+                                return "7-2";
+                            }
+                            return s;
+                        })
                         .collect(Collectors.toSet()));
             }
 
@@ -397,17 +403,19 @@ public class QuestConditionEditController extends WindowController {
 
                 // Compare Operator
                 ComboBox<String> opCombo = (ComboBox<String>) row.getChildren().get(idx++);
-                String op = opCombo.getSelectionModel().getSelectedItem();
-                switch (op) {
-                    case "以上":
-                        sub.setOperator("GE");
-                        break;
-                    case "等しい":
-                        sub.setOperator("EQ");
-                        break;
-                    case "以下":
-                        sub.setOperator("LE");
-                        break;
+                if (sub.getOrder() == null) {
+                    String op = opCombo.getSelectionModel().getSelectedItem();
+                    switch (op) {
+                        case "以上":
+                            sub.setOperator("GE");
+                            break;
+                        case "等しい":
+                            sub.setOperator("EQ");
+                            break;
+                        case "以下":
+                            sub.setOperator("LE");
+                            break;
+                    }
                 }
 
                 subConditions.add(sub);
@@ -432,7 +440,17 @@ public class QuestConditionEditController extends WindowController {
 
                 logbook.bean.AppQuestCondition.Condition cond = new logbook.bean.AppQuestCondition.Condition();
                 cond.setBoss(true); // Default
-                cond.setArea(new java.util.LinkedHashSet<>(Arrays.asList(areaLabel.getText())));
+
+                String labelText = areaLabel.getText();
+                if ("7-2-1".equals(labelText)) {
+                    cond.setArea(new java.util.LinkedHashSet<>(Arrays.asList("7-2")));
+                    cond.setCell("G");
+                } else if ("7-2-2".equals(labelText)) {
+                    cond.setArea(new java.util.LinkedHashSet<>(Arrays.asList("7-2")));
+                    cond.setCell("M");
+                } else {
+                    cond.setArea(new java.util.LinkedHashSet<>(Arrays.asList(labelText)));
+                }
 
                 java.util.LinkedHashSet<String> ranks = new java.util.LinkedHashSet<>();
                 if (s.isSelected())
