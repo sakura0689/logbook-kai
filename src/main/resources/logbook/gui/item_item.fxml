@@ -48,6 +48,23 @@
                           </children>
                          </GridPane>
                       </TitledPane>
+                      <ToggleSwitch fx:id="remodelFilter" prefWidth="0.0" style="-fx-font-weight: bold;" text="改修" />
+                      <TitledPane fx:id="allAvailableDays" animated="false" expanded="false" text="改修日フィルター">
+                         <content>
+                            <FlowPane hgap="10" vgap="5">
+                               <children>
+                                  <CheckBox fx:id="remodelDayAll" text="すべて" allowIndeterminate="true" />
+                                  <CheckBox fx:id="remodelDaySun" text="日" />
+                                  <CheckBox fx:id="remodelDayMon" text="月" />
+                                  <CheckBox fx:id="remodelDayTue" text="火" />
+                                  <CheckBox fx:id="remodelDayWed" text="水" />
+                                  <CheckBox fx:id="remodelDayThu" text="木" />
+                                  <CheckBox fx:id="remodelDayFri" text="金" />
+                                  <CheckBox fx:id="remodelDaySat" text="土" />
+                               </children>
+                            </FlowPane>
+                         </content>
+                      </TitledPane>
                       </VBox>
                    </content>
                     </TitledPane>

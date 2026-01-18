@@ -1,0 +1,3652 @@
+[ {
+  "SlotItem" : "10cm連装高角砲",
+  "Improvement" : [ {
+    "SupportShip" : "吹雪改二",
+    "DayOfWeek" : [ "火", "水" ]
+  }, {
+    "SupportShip" : "冬月",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "白雪改二",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  }, {
+    "SupportShip" : "涼月",
+    "DayOfWeek" : [ "水", "木", "金" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "10cm連装高角砲+高射装置",
+  "Improvement" : [ {
+    "SupportShip" : "秋月",
+    "DayOfWeek" : [ "木", "金", "土" ]
+  }, {
+    "SupportShip" : "照月",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "涼月",
+    "DayOfWeek" : [ "日", "月", "火", "土" ]
+  }, {
+    "SupportShip" : "初月",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  }, {
+    "SupportShip" : "冬月",
+    "DayOfWeek" : [ "日", "月", "金", "土" ]
+  }, {
+    "SupportShip" : "初月改二",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "10cm連装高角砲改",
+  "Improvement" : [ {
+    "SupportShip" : "白雪改二",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  }, {
+    "SupportShip" : "初月改二",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  }, {
+    "SupportShip" : "涼月",
+    "DayOfWeek" : [ "水", "木", "金" ]
+  }, {
+    "SupportShip" : "冬月",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "10cm連装高角砲改+高射装置改",
+  "Improvement" : [ {
+    "SupportShip" : "初月改二",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "木", "金", "土" ]
+}, {
+  "SlotItem" : "12cm単装砲",
+  "Improvement" : [ {
+    "SupportShip" : "睦月 如月",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "12cm単装砲改二",
+  "Improvement" : [ {
+    "SupportShip" : "睦月改二",
+    "DayOfWeek" : [ "月", "火", "水", "木", "金" ]
+  }, {
+    "SupportShip" : "如月改二",
+    "DayOfWeek" : [ "日", "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "12cm単装高角砲E型",
+  "Improvement" : [ {
+    "SupportShip" : "御蔵",
+    "DayOfWeek" : [ "木", "金", "土" ]
+  }, {
+    "SupportShip" : "日振",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "大東",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "昭南",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "鵜来 日振改",
+    "DayOfWeek" : [ "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "稲木",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "12cm単装高角砲E型改",
+  "Improvement" : [ {
+    "SupportShip" : "稲木改二",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水", "木" ]
+}, {
+  "SlotItem" : "12.7cm連装砲A型",
+  "Improvement" : [ {
+    "SupportShip" : "吹雪",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  }, {
+    "SupportShip" : "白雪*",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "深雪",
+    "DayOfWeek" : [ "木", "金", "土" ]
+  }, {
+    "SupportShip" : "磯波改 浦波*",
+    "DayOfWeek" : [ "日", "月", "金", "土" ]
+  }, {
+    "SupportShip" : "白雪改二 磯波改二",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "浦波改",
+    "DayOfWeek" : [ "月" ]
+  }, {
+    "SupportShip" : "浦波改二",
+    "DayOfWeek" : [ "日", "月", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "12.7cm連装砲A型改二",
+  "Improvement" : [ {
+    "SupportShip" : "吹雪改二",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "叢雲改二",
+    "DayOfWeek" : [ "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "磯波改二",
+    "DayOfWeek" : [ "木", "金", "土" ]
+  }, {
+    "SupportShip" : "浦波改二",
+    "DayOfWeek" : [ "日", "土" ]
+  }, {
+    "SupportShip" : "深雪改二",
+    "DayOfWeek" : [ "日", "月", "火", "水" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "12.7cm連装砲A型改三(戦時改修)+高射装置",
+  "Improvement" : [ {
+    "SupportShip" : "吹雪改二",
+    "DayOfWeek" : [ "日", "土" ]
+  }, {
+    "SupportShip" : "磯波改二",
+    "DayOfWeek" : [ "日", "月", "金", "土" ]
+  }, {
+    "SupportShip" : "浦波改*",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "木", "金", "土" ]
+}, {
+  "SlotItem" : "試製 長12.7cm連装砲A型改四",
+  "Improvement" : [ {
+    "SupportShip" : "浦波改二",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "木", "金", "土" ]
+}, {
+  "SlotItem" : "12.7cm連装砲B型改二",
+  "Improvement" : [ {
+    "SupportShip" : "綾波改二 夕立改二",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  }, {
+    "SupportShip" : "江風改二",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水", "木" ]
+}, {
+  "SlotItem" : "12.7cm連装砲B型改四(戦時改修)+高射装置",
+  "Improvement" : [ {
+    "SupportShip" : "敷波改二",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "白露改二",
+    "DayOfWeek" : [ "月", "火", "水", "木", "金" ]
+  }, {
+    "SupportShip" : "時雨改二",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  }, {
+    "SupportShip" : "時雨改三",
+    "DayOfWeek" : [ "日", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "12.7cm連装砲C型改二",
+  "Improvement" : [ {
+    "SupportShip" : "村雨改二 荒潮改二",
+    "DayOfWeek" : [ "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "満潮改二",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "雪風改*",
+    "DayOfWeek" : [ "木", "金", "土" ]
+  }, {
+    "SupportShip" : "時雨改三",
+    "DayOfWeek" : [ "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "春雨改二",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  }, {
+    "SupportShip" : "親潮改二 早潮改二 天津風改二",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "12.7cm連装砲C型改三",
+  "Improvement" : [ {
+    "SupportShip" : "時雨改三",
+    "DayOfWeek" : [ "水", "木", "金" ]
+  }, {
+    "SupportShip" : "村雨改二",
+    "DayOfWeek" : [ "日", "月", "火" ]
+  }, {
+    "SupportShip" : "春雨改二",
+    "DayOfWeek" : [ "日", "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "親潮改二",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  }, {
+    "SupportShip" : "早潮改二",
+    "DayOfWeek" : [ "水", "木", "金" ]
+  }, {
+    "SupportShip" : "天津風改二",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "12.7cm連装砲C型改三H",
+  "Improvement" : [ {
+    "SupportShip" : "春雨改二",
+    "DayOfWeek" : [ "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "12.7cm連装砲D型改二",
+  "Improvement" : [ {
+    "SupportShip" : "夕雲改",
+    "DayOfWeek" : [ "日", "水", "木" ]
+  }, {
+    "SupportShip" : "夕雲改二",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "長波改二 浜波改二",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "藤波改二",
+    "DayOfWeek" : [ "日", "月", "火", "水", "金", "土" ]
+  }, {
+    "SupportShip" : "朝霜改二 清霜改二",
+    "DayOfWeek" : [ "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "早霜改二",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "12.7cm単装高角砲(後期型)",
+  "Improvement" : [ {
+    "SupportShip" : "由良改二",
+    "DayOfWeek" : [ "日", "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "択捉改",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  }, {
+    "SupportShip" : "日振改",
+    "DayOfWeek" : [ "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "12.7cm単装高角砲改二",
+  "Improvement" : [ {
+    "SupportShip" : "松",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "12.7cm連装高角砲(後期型)",
+  "Improvement" : [ {
+    "SupportShip" : "天龍改二",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "那珂改二",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "12.7cm単装砲",
+  "Improvement" : [ {
+    "SupportShip" : "Z1",
+    "DayOfWeek" : [ "日", "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "Z3",
+    "DayOfWeek" : [ "日", "月", "火", "金", "土" ]
+  }, {
+    "SupportShip" : "Libeccio",
+    "DayOfWeek" : [ "日", "月", "火", "金", "土" ]
+  }, {
+    "SupportShip" : "Maestrale改",
+    "DayOfWeek" : [ "日", "月", "火", "金", "土" ]
+  }, {
+    "SupportShip" : "Grecale改",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "5inch単装砲 Mk.30",
+  "Improvement" : [ {
+    "SupportShip" : "Samuel B.Roberts",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "Johnston",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "Fletcher",
+    "DayOfWeek" : [ "日", "月", "火", "土" ]
+  }, {
+    "SupportShip" : "Heywood L.E.",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "Richard P.Leary",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "5inch単装砲 Mk.30改",
+  "Improvement" : [ {
+    "SupportShip" : "Fletcher",
+    "DayOfWeek" : [ "水", "木", "金" ]
+  }, {
+    "SupportShip" : "Heywood L.E.",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  }, {
+    "SupportShip" : "Richard P.Leary",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水", "木", "金" ]
+}, {
+  "SlotItem" : "QF 4.7inch砲 Mk.XII改",
+  "Improvement" : [ {
+    "SupportShip" : "Jervis",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "13.8cm連装砲",
+  "Improvement" : [ {
+    "SupportShip" : "Mogador",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "13.8cm連装砲改",
+  "Improvement" : [ {
+    "SupportShip" : "Mogador改",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "木", "金", "土" ]
+}, {
+  "SlotItem" : "130mm B-13連装砲",
+  "Improvement" : [ {
+    "SupportShip" : "Ташкент",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "14cm連装砲",
+  "Improvement" : [ {
+    "SupportShip" : "夕張",
+    "DayOfWeek" : [ "月", "木" ]
+  }, {
+    "SupportShip" : "夕張改二",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  }, {
+    "SupportShip" : "夕張改二特",
+    "DayOfWeek" : [ "火", "水", "木" ]
+  }, {
+    "SupportShip" : "鹿島",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水", "木" ]
+}, {
+  "SlotItem" : "14cm連装砲改",
+  "Improvement" : [ {
+    "SupportShip" : "夕張",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  }, {
+    "SupportShip" : "鹿島 香取",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "14cm連装砲改二",
+  "Improvement" : [ {
+    "SupportShip" : "夕張改二",
+    "DayOfWeek" : [ "火", "水" ]
+  }, {
+    "SupportShip" : "香取改",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水", "木" ]
+}, {
+  "SlotItem" : "15.2cm連装砲",
+  "Improvement" : [ {
+    "SupportShip" : "阿賀野",
+    "DayOfWeek" : [ "木", "金", "土" ]
+  }, {
+    "SupportShip" : "能代",
+    "DayOfWeek" : [ "日", "月", "金", "土" ]
+  }, {
+    "SupportShip" : "能代改二",
+    "DayOfWeek" : [ "金", "土" ]
+  }, {
+    "SupportShip" : "矢矧",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "15.2cm連装砲改",
+  "Improvement" : [ {
+    "SupportShip" : "酒匂",
+    "DayOfWeek" : [ "日", "月", "火", "土" ]
+  }, {
+    "SupportShip" : "矢矧",
+    "DayOfWeek" : [ "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "能代",
+    "DayOfWeek" : [ "火", "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "15.2cm連装砲改二",
+  "Improvement" : [ {
+    "SupportShip" : "能代改二",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "木", "金", "土" ]
+}, {
+  "SlotItem" : "15.5cm三連装砲",
+  "Improvement" : [ {
+    "SupportShip" : "最上* 最上改二特",
+    "DayOfWeek" : [ "金", "土" ]
+  }, {
+    "SupportShip" : "大淀",
+    "DayOfWeek" : [ "日", "月", "金", "土" ]
+  }, {
+    "SupportShip" : "大淀改",
+    "DayOfWeek" : [ "月", "火" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "金", "土" ]
+}, {
+  "SlotItem" : "15.5cm三連装砲改",
+  "Improvement" : [ {
+    "SupportShip" : "大淀",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "金", "土" ]
+}, {
+  "SlotItem" : "20.3cm連装砲",
+  "Improvement" : [ {
+    "SupportShip" : "青葉",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "衣笠",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "20.3cm(2号)連装砲",
+  "Improvement" : [ {
+    "SupportShip" : "衣笠改二",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "妙高",
+    "DayOfWeek" : [ "日", "月", "火" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "木", "金", "土" ]
+}, {
+  "SlotItem" : "20.3cm(3号)連装砲",
+  "Improvement" : [ {
+    "SupportShip" : "三隈",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  }, {
+    "SupportShip" : "熊野改*",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "試製20.3cm(4号)連装砲",
+  "Improvement" : [ {
+    "SupportShip" : "三隈改二",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "木", "金", "土" ]
+}, {
+  "SlotItem" : "SKC34 20.3cm連装砲",
+  "Improvement" : [ {
+    "SupportShip" : "Prinz Eugen改",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  }, {
+    "SupportShip" : "Zara due",
+    "DayOfWeek" : [ "日", "月", "火", "水" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木" ]
+}, {
+  "SlotItem" : "6inch三連装速射砲 Mk.16",
+  "Improvement" : [ {
+    "SupportShip" : "Phoenix",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "木", "金", "土" ]
+}, {
+  "SlotItem" : "6inch三連装速射砲 Mk.16 mod.2",
+  "Improvement" : [ {
+    "SupportShip" : "Phoenix",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水" ]
+}, {
+  "SlotItem" : "8inch三連装砲 Mk.9",
+  "Improvement" : [ {
+    "SupportShip" : "Houston",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "8inch三連装砲 Mk.9 mod.2",
+  "Improvement" : [ {
+    "SupportShip" : "Houston",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "15.2cm三連装主砲",
+  "Improvement" : [ {
+    "SupportShip" : "Gloire",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "Bofors 15.2cm連装砲 Model 1930",
+  "Improvement" : [ {
+    "SupportShip" : "Gotland",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "Gotland andra",
+    "DayOfWeek" : [ "日", "月", "火", "水" ]
+  }, {
+    "SupportShip" : "L.d.S.D.d.Abruzzi",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "G.Garibaldi",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "Киров改",
+    "DayOfWeek" : [ "日", "月", "火", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "21cm単装主砲",
+  "Improvement" : [ {
+    "SupportShip" : "Norge",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "30.5cm三連装砲",
+  "Improvement" : [ {
+    "SupportShip" : "Гангут",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "30.5cm三連装砲改",
+  "Improvement" : [ {
+    "SupportShip" : "Гангут",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "Conte di Cavour",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  }, {
+    "SupportShip" : "Conte di Cavour nuovo",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "Conte di Cavour",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  }, {
+    "SupportShip" : "Conte di Cavour nuovo",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  }, {
+    "SupportShip" : "Nevada",
+    "DayOfWeek" : [ "月", "水", "木" ]
+  }, {
+    "SupportShip" : "Nevada改 Mod.2",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  }, {
+    "SupportShip" : "Nevada",
+    "DayOfWeek" : [ "月", "水", "木" ]
+  }, {
+    "SupportShip" : "Nevada改 Mod.2",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "35.6cm連装砲",
+  "Improvement" : [ {
+    "SupportShip" : "扶桑",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  }, {
+    "SupportShip" : "山城",
+    "DayOfWeek" : [ "火", "水", "木", "金" ]
+  } ],
+  "AllAvailableDays" : [ "日", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "35.6cm連装砲(ダズル迷彩)",
+  "Improvement" : [ {
+    "SupportShip" : "榛名",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水", "木" ]
+}, {
+  "SlotItem" : "試製35.6cm三連装砲",
+  "Improvement" : [ {
+    "SupportShip" : "金剛改二*",
+    "DayOfWeek" : [ "水", "木" ]
+  }, {
+    "SupportShip" : "扶桑改二",
+    "DayOfWeek" : [ "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "山城改二",
+    "DayOfWeek" : [ "火", "水", "木", "金" ]
+  }, {
+    "SupportShip" : "比叡改二",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  }, {
+    "SupportShip" : "榛名改二*",
+    "DayOfWeek" : [ "木", "金" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "35.6cm連装砲改",
+  "Improvement" : [ {
+    "SupportShip" : "金剛改二丙",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  }, {
+    "SupportShip" : "比叡改二丙",
+    "DayOfWeek" : [ "木", "金", "土" ]
+  }, {
+    "SupportShip" : "霧島",
+    "DayOfWeek" : [ "日", "月", "火", "水" ]
+  }, {
+    "SupportShip" : "霧島改二丙",
+    "DayOfWeek" : [ "日", "月" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "35.6cm連装砲改二",
+  "Improvement" : [ {
+    "SupportShip" : "霧島改二丙",
+    "DayOfWeek" : [ "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "火", "水", "木" ]
+}, {
+  "SlotItem" : "35.6cm連装砲改三丙",
+  "Improvement" : [ {
+    "SupportShip" : "霧島改二丙",
+    "DayOfWeek" : [ "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "火", "水", "木" ]
+}, {
+  "SlotItem" : "35.6cm三連装砲改(ダズル迷彩仕様)",
+  "Improvement" : [ {
+    "SupportShip" : "榛名改二",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水", "木" ]
+}, {
+  "SlotItem" : "35.6cm連装砲改三(ダズル迷彩仕様)",
+  "Improvement" : [ {
+    "SupportShip" : "榛名改二乙 榛名改二丙",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水" ]
+}, {
+  "SlotItem" : "38cm連装砲",
+  "Improvement" : [ {
+    "SupportShip" : "Bismarck",
+    "DayOfWeek" : [ "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "木", "金", "土" ]
+}, {
+  "SlotItem" : "38cm連装砲改",
+  "Improvement" : [ {
+    "SupportShip" : "Bismarck",
+    "DayOfWeek" : [ "日", "月", "火" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火" ]
+}, {
+  "SlotItem" : "38cm四連装砲",
+  "Improvement" : [ {
+    "SupportShip" : "Richelieu",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "38cm四連装砲改",
+  "Improvement" : [ {
+    "SupportShip" : "Richelieu改",
+    "DayOfWeek" : [ "日", "月", "土" ]
+  }, {
+    "SupportShip" : "Jean Bart改",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "土" ]
+}, {
+  "SlotItem" : "38cm四連装砲改 deux",
+  "Improvement" : [ {
+    "SupportShip" : "Richelieu改*",
+    "DayOfWeek" : [ "火", "水", "木" ]
+  }, {
+    "SupportShip" : "Jean Bart改",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水", "木" ]
+}, {
+  "SlotItem" : "38.1cm Mk.I連装砲",
+  "Improvement" : [ {
+    "SupportShip" : "Warspite",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "Valiant",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "Warspite",
+    "DayOfWeek" : [ "火", "水" ]
+  }, {
+    "SupportShip" : "Littorio",
+    "DayOfWeek" : [ "火", "水", "木", "金" ]
+  }, {
+    "SupportShip" : "Roma",
+    "DayOfWeek" : [ "日", "月", "土" ]
+  }, {
+    "SupportShip" : "Littorio",
+    "DayOfWeek" : [ "日", "月", "土" ]
+  }, {
+    "SupportShip" : "Roma",
+    "DayOfWeek" : [ "火", "水", "木", "金" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "41cm連装砲",
+  "Improvement" : [ {
+    "SupportShip" : "長門",
+    "DayOfWeek" : [ "火", "金", "土" ]
+  }, {
+    "SupportShip" : "陸奥",
+    "DayOfWeek" : [ "日", "月", "木" ]
+  }, {
+    "SupportShip" : "陸奥改二",
+    "DayOfWeek" : [ "日", "月" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "木", "金", "土" ]
+}, {
+  "SlotItem" : "試製41cm三連装砲",
+  "Improvement" : [ {
+    "SupportShip" : "長門改",
+    "DayOfWeek" : [ "日", "月", "水", "木" ]
+  }, {
+    "SupportShip" : "陸奥改",
+    "DayOfWeek" : [ "火", "水", "金", "土" ]
+  }, {
+    "SupportShip" : "陸奥改二",
+    "DayOfWeek" : [ "火", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "41cm三連装砲改",
+  "Improvement" : [ {
+    "SupportShip" : "長門改二",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  }, {
+    "SupportShip" : "陸奥改二",
+    "DayOfWeek" : [ "日", "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "41cm連装砲改二",
+  "Improvement" : [ {
+    "SupportShip" : "陸奥改二",
+    "DayOfWeek" : [ "日", "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "41cm三連装砲改二",
+  "Improvement" : [ {
+    "SupportShip" : "伊勢改二",
+    "DayOfWeek" : [ "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "16inch Mk.I連装砲",
+  "Improvement" : [ {
+    "SupportShip" : "Colorado",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "16inch Mk.V連装砲",
+  "Improvement" : [ {
+    "SupportShip" : "Colorado",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水", "木" ]
+}, {
+  "SlotItem" : "16inch Mk.VIII連装砲改",
+  "Improvement" : [ {
+    "SupportShip" : "Colorado改",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水", "木" ]
+}, {
+  "SlotItem" : "16inch三連装砲 Mk.6",
+  "Improvement" : [ {
+    "SupportShip" : "South Dakota",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "Washington",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "16inch三連装砲 Mk.6 mod.2",
+  "Improvement" : [ {
+    "SupportShip" : "South Dakota",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木" ]
+  }, {
+    "SupportShip" : "Washington",
+    "DayOfWeek" : [ "火", "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "16inch三連装砲 Mk.7",
+  "Improvement" : [ {
+    "SupportShip" : "Iowa",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "16inch三連装砲 Mk.7+GFCS",
+  "Improvement" : [ {
+    "SupportShip" : "Iowa",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "木", "金", "土" ]
+}, {
+  "SlotItem" : "16inch Mk.I三連装砲",
+  "Improvement" : [ {
+    "SupportShip" : "Nelson",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  }, {
+    "SupportShip" : "Rodney",
+    "DayOfWeek" : [ "日", "月", "火", "水" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木" ]
+}, {
+  "SlotItem" : "16inch Mk.I三連装砲+AFCT改",
+  "Improvement" : [ {
+    "SupportShip" : "Nelson",
+    "DayOfWeek" : [ "火", "水", "木" ]
+  }, {
+    "SupportShip" : "Rodney",
+    "DayOfWeek" : [ "日", "月", "火", "水" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木" ]
+}, {
+  "SlotItem" : "16inch Mk.I三連装砲改+FCR type284",
+  "Improvement" : [ {
+    "SupportShip" : "Nelson改",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  }, {
+    "SupportShip" : "Rodney改",
+    "DayOfWeek" : [ "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "試製46cm連装砲",
+  "Improvement" : [ {
+    "SupportShip" : "大和",
+    "DayOfWeek" : [ "日", "月" ]
+  }, {
+    "SupportShip" : "武蔵",
+    "DayOfWeek" : [ "火", "水" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水" ]
+}, {
+  "SlotItem" : "46cm三連装砲",
+  "Improvement" : [ {
+    "SupportShip" : "大和",
+    "DayOfWeek" : [ "火", "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "大和改",
+    "DayOfWeek" : [ "火", "水", "木" ]
+  }, {
+    "SupportShip" : "大和改二",
+    "DayOfWeek" : [ "火" ]
+  }, {
+    "SupportShip" : "武蔵",
+    "DayOfWeek" : [ "日", "月" ]
+  }, {
+    "SupportShip" : "武蔵改",
+    "DayOfWeek" : [ "月" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "46cm三連装砲改",
+  "Improvement" : [ {
+    "SupportShip" : "大和改",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  }, {
+    "SupportShip" : "大和改二",
+    "DayOfWeek" : [ "月", "火" ]
+  }, {
+    "SupportShip" : "武蔵改",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "金", "土" ]
+}, {
+  "SlotItem" : "試製51cm連装砲",
+  "Improvement" : [ {
+    "SupportShip" : "大和改",
+    "DayOfWeek" : [ "月", "火" ]
+  }, {
+    "SupportShip" : "武蔵改",
+    "DayOfWeek" : [ "月", "水" ]
+  }, {
+    "SupportShip" : "武蔵改二",
+    "DayOfWeek" : [ "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水", "木" ]
+}, {
+  "SlotItem" : "51cm連装砲",
+  "Improvement" : [ {
+    "SupportShip" : "武蔵改二",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "金", "土" ]
+}, {
+  "SlotItem" : "90mm単装高角砲",
+  "Improvement" : [ {
+    "SupportShip" : "Littorio",
+    "DayOfWeek" : [ "月", "金" ]
+  }, {
+    "SupportShip" : "Roma",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "木", "金", "土" ]
+}, {
+  "SlotItem" : "15.2cm単装砲",
+  "Improvement" : [ {
+    "SupportShip" : "金剛",
+    "DayOfWeek" : [ "日", "月", "土" ]
+  }, {
+    "SupportShip" : "金剛改二",
+    "DayOfWeek" : [ "日", "月" ]
+  }, {
+    "SupportShip" : "金剛改二丙",
+    "DayOfWeek" : [ "月" ]
+  }, {
+    "SupportShip" : "山城",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  }, {
+    "SupportShip" : "阿賀野",
+    "DayOfWeek" : [ "日", "月", "火" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "土" ]
+}, {
+  "SlotItem" : "15.5cm三連装副砲",
+  "Improvement" : [ {
+    "SupportShip" : "大和 武蔵改",
+    "DayOfWeek" : [ "金", "土" ]
+  }, {
+    "SupportShip" : "武蔵",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  }, {
+    "SupportShip" : "武蔵改二",
+    "DayOfWeek" : [ "日" ]
+  } ],
+  "AllAvailableDays" : [ "日", "金", "土" ]
+}, {
+  "SlotItem" : "15.5cm三連装副砲改",
+  "Improvement" : [ {
+    "SupportShip" : "大和改",
+    "DayOfWeek" : [ "金", "土" ]
+  }, {
+    "SupportShip" : "武蔵改",
+    "DayOfWeek" : [ "日", "月" ]
+  }, {
+    "SupportShip" : "大和改二",
+    "DayOfWeek" : [ "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "武蔵改二",
+    "DayOfWeek" : [ "月", "火" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "OTO 152mm三連装速射砲",
+  "Improvement" : [ {
+    "SupportShip" : "Littorio",
+    "DayOfWeek" : [ "日", "火", "水", "土" ]
+  }, {
+    "SupportShip" : "Roma",
+    "DayOfWeek" : [ "日", "月", "木", "金" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "15.2cm三連装砲",
+  "Improvement" : [ {
+    "SupportShip" : "Richelieu",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水", "木" ]
+}, {
+  "SlotItem" : "12.7cm連装高角砲",
+  "Improvement" : [ {
+    "SupportShip" : "摩耶改二",
+    "DayOfWeek" : [ "金", "土" ]
+  }, {
+    "SupportShip" : "鈴谷",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  }, {
+    "SupportShip" : "熊野",
+    "DayOfWeek" : [ "日", "月", "土" ]
+  }, {
+    "SupportShip" : "三隈",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "木", "金", "土" ]
+}, {
+  "SlotItem" : "8cm高角砲",
+  "Improvement" : [ {
+    "SupportShip" : "熊野航改二",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  }, {
+    "SupportShip" : "鈴谷改二",
+    "DayOfWeek" : [ "火", "水", "木" ]
+  }, {
+    "SupportShip" : "熊野改二",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  }, {
+    "SupportShip" : "矢矧",
+    "DayOfWeek" : [ "日", "月", "火" ]
+  }, {
+    "SupportShip" : "能代",
+    "DayOfWeek" : [ "日", "月" ]
+  }, {
+    "SupportShip" : "阿賀野",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "8cm高角砲改+増設機銃",
+  "Improvement" : [ {
+    "SupportShip" : "鈴谷航改二",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  }, {
+    "SupportShip" : "鈴谷改二 矢矧 酒匂",
+    "DayOfWeek" : [ "火", "水", "木" ]
+  }, {
+    "SupportShip" : "熊野改二",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "10cm連装高角砲(砲架)",
+  "Improvement" : [ {
+    "SupportShip" : "大淀",
+    "DayOfWeek" : [ "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "火", "水", "木" ]
+}, {
+  "SlotItem" : "10cm連装高角砲改+増設機銃",
+  "Improvement" : [ {
+    "SupportShip" : "武蔵改二",
+    "DayOfWeek" : [ "木", "金", "土" ]
+  }, {
+    "SupportShip" : "大淀改",
+    "DayOfWeek" : [ "日", "月", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "木", "金", "土" ]
+}, {
+  "SlotItem" : "10cm連装高角砲群 集中配備",
+  "Improvement" : [ {
+    "SupportShip" : "大和改二",
+    "DayOfWeek" : [ "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "水", "木" ]
+}, {
+  "SlotItem" : "12cm単装高角砲+25mm機銃増備",
+  "Improvement" : [ {
+    "SupportShip" : "宗谷",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "速吸",
+    "DayOfWeek" : [ "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "12.7cm高角砲+高射装置",
+  "Improvement" : [ {
+    "SupportShip" : "摩耶改二",
+    "DayOfWeek" : [ "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "木", "金", "土" ]
+}, {
+  "SlotItem" : "15cm単装副砲",
+  "Improvement" : [ {
+    "SupportShip" : "Eidsvold",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "53cm連装魚雷",
+  "Improvement" : [ {
+    "SupportShip" : "神風改",
+    "DayOfWeek" : [ "日", "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "龍田改二",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "61cm三連装魚雷",
+  "Improvement" : [ {
+    "SupportShip" : "吹雪* 深雪改二",
+    "DayOfWeek" : [ "木", "金", "土" ]
+  }, {
+    "SupportShip" : "深雪* 磯波* 敷波",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "磯波改二",
+    "DayOfWeek" : [ "日", "月", "火", "水" ]
+  }, {
+    "SupportShip" : "叢雲",
+    "DayOfWeek" : [ "日", "月", "火" ]
+  }, {
+    "SupportShip" : "綾波",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "61cm三連装(酸素)魚雷",
+  "Improvement" : [ {
+    "SupportShip" : "吹雪改二",
+    "DayOfWeek" : [ "木", "金" ]
+  }, {
+    "SupportShip" : "深雪改二",
+    "DayOfWeek" : [ "日", "月", "火", "水" ]
+  }, {
+    "SupportShip" : "磯波改二 浦波改二",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  }, {
+    "SupportShip" : "綾波改二",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "敷波改二",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "61cm三連装(酸素)魚雷後期型",
+  "Improvement" : [ {
+    "SupportShip" : "深雪改二",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "磯波改二",
+    "DayOfWeek" : [ "火", "水", "木" ]
+  }, {
+    "SupportShip" : "綾波改二",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  }, {
+    "SupportShip" : "初霜改二",
+    "DayOfWeek" : [ "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "61cm四連装(酸素)魚雷",
+  "Improvement" : [ {
+    "SupportShip" : "大井 北上",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "浜波",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "浜波改二",
+    "DayOfWeek" : [ "月", "火", "水", "木", "金" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "61cm四連装(酸素)魚雷後期型",
+  "Improvement" : [ {
+    "SupportShip" : "時雨改二",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  }, {
+    "SupportShip" : "時雨改三",
+    "DayOfWeek" : [ "月", "火" ]
+  }, {
+    "SupportShip" : "陽炎改二",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  }, {
+    "SupportShip" : "親潮改二",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  }, {
+    "SupportShip" : "長波改二",
+    "DayOfWeek" : [ "木", "金", "土" ]
+  }, {
+    "SupportShip" : "浜波改二",
+    "DayOfWeek" : [ "日", "土" ]
+  }, {
+    "SupportShip" : "朝霜改二",
+    "DayOfWeek" : [ "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "清霜改二*",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "61cm五連装(酸素)魚雷",
+  "Improvement" : [ {
+    "SupportShip" : "島風",
+    "DayOfWeek" : [ "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "水", "木" ]
+}, {
+  "SlotItem" : "試製61cm六連装(酸素)魚雷",
+  "Improvement" : [ {
+    "SupportShip" : "初月",
+    "DayOfWeek" : [ "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "島風",
+    "DayOfWeek" : [ "日", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "甲標的 甲型",
+  "Improvement" : [ {
+    "SupportShip" : "日進",
+    "DayOfWeek" : [ "日", "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "千代田甲*",
+    "DayOfWeek" : [ "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "日", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "甲標的 丙型",
+  "Improvement" : [ {
+    "SupportShip" : "日進",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "金", "土" ]
+}, {
+  "SlotItem" : "533mm 三連装魚雷",
+  "Improvement" : [ {
+    "SupportShip" : "Ташкент",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "533mm 三連装魚雷(53-39型)",
+  "Improvement" : [ {
+    "SupportShip" : "Верный",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "Ташкент改",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "木", "金", "土" ]
+}, {
+  "SlotItem" : "533mm五連装魚雷(初期型)",
+  "Improvement" : [ {
+    "SupportShip" : "Samuel B.Roberts",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  }, {
+    "SupportShip" : "Johnston",
+    "DayOfWeek" : [ "火", "水", "木" ]
+  }, {
+    "SupportShip" : "Heywood L.E.",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "Richard P.Leary",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "後期型艦首魚雷(4門)",
+  "Improvement" : [ {
+    "SupportShip" : "伊201",
+    "DayOfWeek" : [ "火", "水", "木", "金" ]
+  }, {
+    "SupportShip" : "伊203",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "後期型艦首魚雷(6門)",
+  "Improvement" : [ {
+    "SupportShip" : "伊58改",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  }, {
+    "SupportShip" : "伊13",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "伊14",
+    "DayOfWeek" : [ "日", "月", "火", "水" ]
+  }, {
+    "SupportShip" : "伊36",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "潜水艦53cm艦首魚雷(8門)",
+  "Improvement" : [ {
+    "SupportShip" : "伊400",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "木", "金", "土" ]
+}, {
+  "SlotItem" : "後期型53cm艦首魚雷(8門)",
+  "Improvement" : [ {
+    "SupportShip" : "伊47",
+    "DayOfWeek" : [ "木", "金" ]
+  }, {
+    "SupportShip" : "伊401",
+    "DayOfWeek" : [ "日", "月", "土" ]
+  }, {
+    "SupportShip" : "伊400",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "21inch艦首魚雷発射管6門(初期型)",
+  "Improvement" : [ {
+    "SupportShip" : "Scamp",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  }, {
+    "SupportShip" : "Wahoo",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "21inch艦首魚雷発射管6門(後期型)",
+  "Improvement" : [ {
+    "SupportShip" : "Scamp",
+    "DayOfWeek" : [ "日", "月", "金", "土" ]
+  }, {
+    "SupportShip" : "Wahoo",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "潜水艦後部魚雷発射管4門(初期型)",
+  "Improvement" : [ {
+    "SupportShip" : "Scamp",
+    "DayOfWeek" : [ "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "火", "水", "木" ]
+}, {
+  "SlotItem" : "21inch艦首魚雷発射管4門(初期型)",
+  "Improvement" : [ {
+    "SupportShip" : "Salmon",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "木", "金", "土" ]
+}, {
+  "SlotItem" : "21inch艦首魚雷発射管4門(後期型)",
+  "Improvement" : [ {
+    "SupportShip" : "Salmon",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "木", "金", "土" ]
+}, {
+  "SlotItem" : "13号対空電探",
+  "Improvement" : [ {
+    "SupportShip" : "五十鈴改二",
+    "DayOfWeek" : [ "日", "月", "金", "土" ]
+  }, {
+    "SupportShip" : "時雨",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  }, {
+    "SupportShip" : "時雨改二",
+    "DayOfWeek" : [ "日", "土" ]
+  }, {
+    "SupportShip" : "秋月",
+    "DayOfWeek" : [ "火", "水", "木" ]
+  }, {
+    "SupportShip" : "照月",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "13号対空電探改",
+  "Improvement" : [ {
+    "SupportShip" : "初霜改二",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  }, {
+    "SupportShip" : "雪風",
+    "DayOfWeek" : [ "日", "月", "火", "水" ]
+  }, {
+    "SupportShip" : "磯風改*",
+    "DayOfWeek" : [ "木", "金", "土" ]
+  }, {
+    "SupportShip" : "梅改",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "13号対空電探改(後期型)",
+  "Improvement" : [ {
+    "SupportShip" : "朝霜改二",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  }, {
+    "SupportShip" : "清霜改二",
+    "DayOfWeek" : [ "日", "水", "木" ]
+  }, {
+    "SupportShip" : "清霜改二丁 梅改",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  }, {
+    "SupportShip" : "藤波改二",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "22号対水上電探",
+  "Improvement" : [ {
+    "SupportShip" : "日向",
+    "DayOfWeek" : [ "日", "月", "金", "土" ]
+  }, {
+    "SupportShip" : "日向改*",
+    "DayOfWeek" : [ "月" ]
+  }, {
+    "SupportShip" : "夕雲",
+    "DayOfWeek" : [ "月", "火", "金", "土" ]
+  }, {
+    "SupportShip" : "夕雲改二",
+    "DayOfWeek" : [ "月", "火" ]
+  }, {
+    "SupportShip" : "島風",
+    "DayOfWeek" : [ "木", "金", "土" ]
+  }, {
+    "SupportShip" : "村雨改二",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "木", "金", "土" ]
+}, {
+  "SlotItem" : "22号対水上電探改四",
+  "Improvement" : [ {
+    "SupportShip" : "金剛改二*",
+    "DayOfWeek" : [ "火", "木", "金" ]
+  }, {
+    "SupportShip" : "妙高改二",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "羽黒改二",
+    "DayOfWeek" : [ "日", "月", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "木", "金", "土" ]
+}, {
+  "SlotItem" : "22号対水上電探改四(後期調整型)",
+  "Improvement" : [ {
+    "SupportShip" : "時雨改二",
+    "DayOfWeek" : [ "木", "金" ]
+  }, {
+    "SupportShip" : "満潮改二",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "木", "金", "土" ]
+}, {
+  "SlotItem" : "逆探(E27)+22号対水上電探改四(後期調整型)",
+  "Improvement" : [ {
+    "SupportShip" : "清霜改二",
+    "DayOfWeek" : [ "木", "金", "土" ]
+  }, {
+    "SupportShip" : "朝霜改二",
+    "DayOfWeek" : [ "月", "火" ]
+  }, {
+    "SupportShip" : "藤波改二",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "33号対水上電探",
+  "Improvement" : [ {
+    "SupportShip" : "夕張",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  }, {
+    "SupportShip" : "夕張改二",
+    "DayOfWeek" : [ "月", "木" ]
+  }, {
+    "SupportShip" : "黒潮改二",
+    "DayOfWeek" : [ "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "SG レーダー(初期型)",
+  "Improvement" : [ {
+    "SupportShip" : "Fletcher 改 Mod.2",
+    "DayOfWeek" : [ "水", "木" ]
+  }, {
+    "SupportShip" : "FletcherMkII",
+    "DayOfWeek" : [ "火", "水", "木" ]
+  }, {
+    "SupportShip" : "Maryland改",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  }, {
+    "SupportShip" : "Heywood L.E.改 Richard P.Leary改",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "21号対空電探",
+  "Improvement" : [ {
+    "SupportShip" : "伊勢 伊勢改二",
+    "DayOfWeek" : [ "日", "月", "金", "土" ]
+  }, {
+    "SupportShip" : "伊勢改",
+    "DayOfWeek" : [ "月" ]
+  }, {
+    "SupportShip" : "日向",
+    "DayOfWeek" : [ "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "日向改*",
+    "DayOfWeek" : [ "水", "木" ]
+  }, {
+    "SupportShip" : "最上*",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  }, {
+    "SupportShip" : "最上改二特",
+    "DayOfWeek" : [ "木" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "21号対空電探改",
+  "Improvement" : [ {
+    "SupportShip" : "大和",
+    "DayOfWeek" : [ "日", "木" ]
+  }, {
+    "SupportShip" : "大和改二",
+    "DayOfWeek" : [ "日" ]
+  }, {
+    "SupportShip" : "武蔵",
+    "DayOfWeek" : [ "火", "水", "木" ]
+  }, {
+    "SupportShip" : "武蔵改二",
+    "DayOfWeek" : [ "水" ]
+  } ],
+  "AllAvailableDays" : [ "日", "火", "水", "木" ]
+}, {
+  "SlotItem" : "21号対空電探改二",
+  "Improvement" : [ {
+    "SupportShip" : "最上改二",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水", "木" ]
+}, {
+  "SlotItem" : "32号対水上電探",
+  "Improvement" : [ {
+    "SupportShip" : "伊勢 伊勢改二",
+    "DayOfWeek" : [ "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "伊勢改",
+    "DayOfWeek" : [ "水", "木" ]
+  }, {
+    "SupportShip" : "日向",
+    "DayOfWeek" : [ "日", "月", "火" ]
+  }, {
+    "SupportShip" : "日向改",
+    "DayOfWeek" : [ "月", "火" ]
+  }, {
+    "SupportShip" : "日向改二",
+    "DayOfWeek" : [ "日", "月" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "32号対水上電探改",
+  "Improvement" : [ {
+    "SupportShip" : "伊勢 伊勢改二",
+    "DayOfWeek" : [ "日", "月", "火" ]
+  }, {
+    "SupportShip" : "伊勢改",
+    "DayOfWeek" : [ "月", "火" ]
+  }, {
+    "SupportShip" : "日向",
+    "DayOfWeek" : [ "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "日向改",
+    "DayOfWeek" : [ "水", "木" ]
+  }, {
+    "SupportShip" : "日向改二",
+    "DayOfWeek" : [ "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "42号対空電探",
+  "Improvement" : [ {
+    "SupportShip" : "北上 酒匂",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "金", "土" ]
+}, {
+  "SlotItem" : "42号対空電探改二",
+  "Improvement" : [ {
+    "SupportShip" : "霧島改二丙",
+    "DayOfWeek" : [ "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "火", "水", "木" ]
+}, {
+  "SlotItem" : "FuMO25 レーダー",
+  "Improvement" : [ {
+    "SupportShip" : "Prinz Eugen改",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水", "木" ]
+}, {
+  "SlotItem" : "SK レーダー",
+  "Improvement" : [ {
+    "SupportShip" : "Gambier Bay",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水", "木" ]
+}, {
+  "SlotItem" : "SK+SG レーダー",
+  "Improvement" : [ {
+    "SupportShip" : "Saratoga",
+    "DayOfWeek" : [ "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "Gambier BayMk.II",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "15m二重測距儀+21号電探改二",
+  "Improvement" : [ {
+    "SupportShip" : "大和改二",
+    "DayOfWeek" : [ "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "水", "木" ]
+}, {
+  "SlotItem" : "潜水艦搭載電探&水防式望遠鏡",
+  "Improvement" : [ {
+    "SupportShip" : "伊401",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  }, {
+    "SupportShip" : "伊8",
+    "DayOfWeek" : [ "火", "水", "木", "金" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水", "木", "金" ]
+}, {
+  "SlotItem" : "潜水艦搭載電探&逆探(E27)",
+  "Improvement" : [ {
+    "SupportShip" : "伊400",
+    "DayOfWeek" : [ "木", "金", "土" ]
+  }, {
+    "SupportShip" : "伊401",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  }, {
+    "SupportShip" : "伊36改",
+    "DayOfWeek" : [ "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "日", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "SJレーダー+潜水艦司令塔装備",
+  "Improvement" : [ {
+    "SupportShip" : "Drum改",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "九三式水中聴音機",
+  "Improvement" : [ {
+    "SupportShip" : "夕張",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  }, {
+    "SupportShip" : "香取改",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  }, {
+    "SupportShip" : "時雨",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "時雨改三",
+    "DayOfWeek" : [ "日" ]
+  } ],
+  "AllAvailableDays" : [ "日", "木", "金", "土" ]
+}, {
+  "SlotItem" : "三式水中探信儀",
+  "Improvement" : [ {
+    "SupportShip" : "五十鈴改二",
+    "DayOfWeek" : [ "日", "火", "水" ]
+  }, {
+    "SupportShip" : "夕張",
+    "DayOfWeek" : [ "火", "水" ]
+  } ],
+  "AllAvailableDays" : [ "日", "火", "水" ]
+}, {
+  "SlotItem" : "三式水中探信儀改",
+  "Improvement" : [ {
+    "SupportShip" : "時雨",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  }, {
+    "SupportShip" : "時雨改三",
+    "DayOfWeek" : [ "月", "火" ]
+  }, {
+    "SupportShip" : "山風改二",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "四式水中聴音機",
+  "Improvement" : [ {
+    "SupportShip" : "五十鈴改二",
+    "DayOfWeek" : [ "木", "金", "土" ]
+  }, {
+    "SupportShip" : "夕張改二",
+    "DayOfWeek" : [ "月", "木" ]
+  }, {
+    "SupportShip" : "香取改",
+    "DayOfWeek" : [ "月", "火" ]
+  }, {
+    "SupportShip" : "秋月",
+    "DayOfWeek" : [ "日" ]
+  }, {
+    "SupportShip" : "照月",
+    "DayOfWeek" : [ "水" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "Type124 ASDIC",
+  "Improvement" : [ {
+    "SupportShip" : "Jervis",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "Janus",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  }, {
+    "SupportShip" : "Jervis",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  }, {
+    "SupportShip" : "Javelin",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "零式水中聴音機",
+  "Improvement" : [ {
+    "SupportShip" : "比叡",
+    "DayOfWeek" : [ "水", "木", "金" ]
+  } ],
+  "AllAvailableDays" : [ "水", "木", "金" ]
+}, {
+  "SlotItem" : "三式爆雷投射機",
+  "Improvement" : [ {
+    "SupportShip" : "五十鈴改二",
+    "DayOfWeek" : [ "水", "木" ]
+  }, {
+    "SupportShip" : "黒潮改二",
+    "DayOfWeek" : [ "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "日振",
+    "DayOfWeek" : [ "月", "火", "木" ]
+  }, {
+    "SupportShip" : "日振改",
+    "DayOfWeek" : [ "火", "木" ]
+  }, {
+    "SupportShip" : "大東",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "三式爆雷投射機 集中配備",
+  "Improvement" : [ {
+    "SupportShip" : "日振改",
+    "DayOfWeek" : [ "月", "水" ]
+  }, {
+    "SupportShip" : "大東改",
+    "DayOfWeek" : [ "火", "水" ]
+  }, {
+    "SupportShip" : "鵜来",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "金", "土" ]
+}, {
+  "SlotItem" : "九五式爆雷",
+  "Improvement" : [ {
+    "SupportShip" : "那珂改二",
+    "DayOfWeek" : [ "火", "水", "木" ]
+  }, {
+    "SupportShip" : "神風",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "占守",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "択捉",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "二式爆雷",
+  "Improvement" : [ {
+    "SupportShip" : "白露改二",
+    "DayOfWeek" : [ "日", "土" ]
+  }, {
+    "SupportShip" : "御蔵改",
+    "DayOfWeek" : [ "水", "木", "金" ]
+  }, {
+    "SupportShip" : "屋代改",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  }, {
+    "SupportShip" : "倉橋改",
+    "DayOfWeek" : [ "木", "金", "土" ]
+  }, {
+    "SupportShip" : "日振改",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  }, {
+    "SupportShip" : "大東改",
+    "DayOfWeek" : [ "日", "月", "火" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "二式爆雷改二",
+  "Improvement" : [ {
+    "SupportShip" : "時雨改二",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水" ]
+}, {
+  "SlotItem" : "二式12cm迫撃砲改",
+  "Improvement" : [ {
+    "SupportShip" : "日進",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  }, {
+    "SupportShip" : "あきつ丸改",
+    "DayOfWeek" : [ "木", "金" ]
+  }, {
+    "SupportShip" : "山汐丸",
+    "DayOfWeek" : [ "日", "月", "火" ]
+  }, {
+    "SupportShip" : "神風",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "7.7mm機銃",
+  "Improvement" : [ {
+    "SupportShip" : "朝風",
+    "DayOfWeek" : [ "火", "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "松風",
+    "DayOfWeek" : [ "日", "月", "火", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "12.7mm単装機銃",
+  "Improvement" : [ {
+    "SupportShip" : "暁",
+    "DayOfWeek" : [ "火", "水" ]
+  }, {
+    "SupportShip" : "響",
+    "DayOfWeek" : [ "木", "金" ]
+  }, {
+    "SupportShip" : "雷",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  }, {
+    "SupportShip" : "電",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "25mm単装機銃",
+  "Improvement" : [ {
+    "SupportShip" : "鬼怒",
+    "DayOfWeek" : [ "木" ]
+  }, {
+    "SupportShip" : "白雪",
+    "DayOfWeek" : [ "火", "水", "木" ]
+  }, {
+    "SupportShip" : "皐月",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  }, {
+    "SupportShip" : "文月",
+    "DayOfWeek" : [ "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "潮",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "宗谷 (特務艦)*",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "25mm連装機銃",
+  "Improvement" : [ {
+    "SupportShip" : "五十鈴改二",
+    "DayOfWeek" : [ "日", "土" ]
+  }, {
+    "SupportShip" : "鬼怒",
+    "DayOfWeek" : [ "水" ]
+  }, {
+    "SupportShip" : "皐月",
+    "DayOfWeek" : [ "月", "火" ]
+  }, {
+    "SupportShip" : "文月",
+    "DayOfWeek" : [ "日", "月", "火" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "土" ]
+}, {
+  "SlotItem" : "25mm三連装機銃",
+  "Improvement" : [ {
+    "SupportShip" : "摩耶",
+    "DayOfWeek" : [ "火", "水", "木" ]
+  }, {
+    "SupportShip" : "摩耶改二",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木" ]
+  }, {
+    "SupportShip" : "五十鈴改二",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  }, {
+    "SupportShip" : "鬼怒改二",
+    "DayOfWeek" : [ "月", "火" ]
+  }, {
+    "SupportShip" : "皐月改二",
+    "DayOfWeek" : [ "水", "木" ]
+  }, {
+    "SupportShip" : "村雨改二",
+    "DayOfWeek" : [ "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "浜波",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "浜波改二",
+    "DayOfWeek" : [ "月", "火", "水", "木", "金" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "25mm三連装機銃 集中配備",
+  "Improvement" : [ {
+    "SupportShip" : "摩耶改二",
+    "DayOfWeek" : [ "火", "水", "木" ]
+  }, {
+    "SupportShip" : "鬼怒改二",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  }, {
+    "SupportShip" : "浜波改二",
+    "DayOfWeek" : [ "日", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "毘式40mm連装機銃",
+  "Improvement" : [ {
+    "SupportShip" : "春雨 大鯨",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "春雨改二",
+    "DayOfWeek" : [ "月", "火" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "12cm30連装噴進砲",
+  "Improvement" : [ {
+    "SupportShip" : "伊勢改*",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  }, {
+    "SupportShip" : "日向改*",
+    "DayOfWeek" : [ "月", "火" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "金", "土" ]
+}, {
+  "SlotItem" : "12cm30連装噴進砲改二",
+  "Improvement" : [ {
+    "SupportShip" : "伊勢改",
+    "DayOfWeek" : [ "月", "火" ]
+  }, {
+    "SupportShip" : "伊勢改二",
+    "DayOfWeek" : [ "日", "月", "火" ]
+  }, {
+    "SupportShip" : "日向改",
+    "DayOfWeek" : [ "水", "木" ]
+  }, {
+    "SupportShip" : "日向改二",
+    "DayOfWeek" : [ "月", "火" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木" ]
+}, {
+  "SlotItem" : "2cm 四連装FlaK 38",
+  "Improvement" : [ {
+    "SupportShip" : "Z1",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "金", "土" ]
+}, {
+  "SlotItem" : "91式高射装置",
+  "Improvement" : [ {
+    "SupportShip" : "摩耶 秋月",
+    "DayOfWeek" : [ "日", "月", "金", "土" ]
+  }, {
+    "SupportShip" : "照月",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "木", "金", "土" ]
+}, {
+  "SlotItem" : "94式高射装置",
+  "Improvement" : [ {
+    "SupportShip" : "秋月 照月",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "涼月",
+    "DayOfWeek" : [ "日", "月", "金", "土" ]
+  }, {
+    "SupportShip" : "初月",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  }, {
+    "SupportShip" : "初月改二",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  }, {
+    "SupportShip" : "吹雪改二",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "摩耶改二",
+    "DayOfWeek" : [ "日", "月", "火", "水" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "大発動艇",
+  "Improvement" : [ {
+    "SupportShip" : "阿武隈改二",
+    "DayOfWeek" : [ "日", "月", "金", "土" ]
+  }, {
+    "SupportShip" : "皐月改二",
+    "DayOfWeek" : [ "日", "月", "火", "水" ]
+  }, {
+    "SupportShip" : "あきつ丸",
+    "DayOfWeek" : [ "日", "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "龍田改二",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  }, {
+    "SupportShip" : "鬼怒改二",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "浦波改二",
+    "DayOfWeek" : [ "木", "金" ]
+  }, {
+    "SupportShip" : "神州丸",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  }, {
+    "SupportShip" : "清霜改二丁",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "大発動艇(八九式中戦車&陸戦隊)",
+  "Improvement" : [ {
+    "SupportShip" : "阿武隈改二",
+    "DayOfWeek" : [ "火", "水", "木" ]
+  }, {
+    "SupportShip" : "皐月改二",
+    "DayOfWeek" : [ "木", "金", "土" ]
+  }, {
+    "SupportShip" : "あきつ丸",
+    "DayOfWeek" : [ "日", "月", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "特大発動艇",
+  "Improvement" : [ {
+    "SupportShip" : "鬼怒改二",
+    "DayOfWeek" : [ "日", "月", "金", "土" ]
+  }, {
+    "SupportShip" : "あきつ丸",
+    "DayOfWeek" : [ "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "武装大発",
+  "Improvement" : [ {
+    "SupportShip" : "神州丸",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "木", "金", "土" ]
+}, {
+  "SlotItem" : "装甲艇(AB艇)",
+  "Improvement" : [ {
+    "SupportShip" : "神州丸",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水" ]
+}, {
+  "SlotItem" : "特二式内火艇",
+  "Improvement" : [ {
+    "SupportShip" : "伊8",
+    "DayOfWeek" : [ "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "伊58",
+    "DayOfWeek" : [ "日", "月", "金", "土" ]
+  }, {
+    "SupportShip" : "伊401",
+    "DayOfWeek" : [ "火", "水", "木" ]
+  }, {
+    "SupportShip" : "伊36",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "陸軍歩兵部隊",
+  "Improvement" : [ {
+    "SupportShip" : "第百一号輸送艦",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "艦載型 四式20cm対地噴進砲",
+  "Improvement" : [ {
+    "SupportShip" : "秋津洲改",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  }, {
+    "SupportShip" : "大潮改二",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "荒潮改二",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "三式弾",
+  "Improvement" : [ {
+    "SupportShip" : "金剛",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  }, {
+    "SupportShip" : "比叡",
+    "DayOfWeek" : [ "水", "木", "金" ]
+  }, {
+    "SupportShip" : "比叡改二丙",
+    "DayOfWeek" : [ "水" ]
+  }, {
+    "SupportShip" : "榛名",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "榛名改二",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  }, {
+    "SupportShip" : "霧島",
+    "DayOfWeek" : [ "日", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "三式弾改",
+  "Improvement" : [ {
+    "SupportShip" : "陸奥改二",
+    "DayOfWeek" : [ "水", "木" ]
+  }, {
+    "SupportShip" : "金剛改二*",
+    "DayOfWeek" : [ "水", "土" ]
+  }, {
+    "SupportShip" : "比叡改二丙",
+    "DayOfWeek" : [ "日", "月" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "水", "木", "土" ]
+}, {
+  "SlotItem" : "三式弾改二",
+  "Improvement" : [ {
+    "SupportShip" : "金剛改二丙",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "金", "土" ]
+}, {
+  "SlotItem" : "九一式徹甲弾",
+  "Improvement" : [ {
+    "SupportShip" : "比叡",
+    "DayOfWeek" : [ "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "比叡改二",
+    "DayOfWeek" : [ "木", "金", "土" ]
+  }, {
+    "SupportShip" : "霧島",
+    "DayOfWeek" : [ "日", "月", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "一式徹甲弾",
+  "Improvement" : [ {
+    "SupportShip" : "金剛",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  }, {
+    "SupportShip" : "榛名",
+    "DayOfWeek" : [ "日", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "金", "土" ]
+}, {
+  "SlotItem" : "一式徹甲弾改",
+  "Improvement" : [ {
+    "SupportShip" : "清霜",
+    "DayOfWeek" : [ "金", "土" ]
+  }, {
+    "SupportShip" : "金剛改二丙",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  }, {
+    "SupportShip" : "陸奥改二",
+    "DayOfWeek" : [ "月", "火" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "金", "土" ]
+}, {
+  "SlotItem" : "強化型艦本式缶",
+  "Improvement" : [ {
+    "SupportShip" : "天津風",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "島風",
+    "DayOfWeek" : [ "火", "水" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "新型高温高圧缶",
+  "Improvement" : [ {
+    "SupportShip" : "天津風改",
+    "DayOfWeek" : [ "火", "水", "木" ]
+  }, {
+    "SupportShip" : "天津風改二",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  }, {
+    "SupportShip" : "島風",
+    "DayOfWeek" : [ "月", "火", "金" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水", "木", "金" ]
+}, {
+  "SlotItem" : "増設バルジ(中型艦)",
+  "Improvement" : [ {
+    "SupportShip" : "Zara due",
+    "DayOfWeek" : [ "月" ]
+  }, {
+    "SupportShip" : "酒匂",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  }, {
+    "SupportShip" : "Верный",
+    "DayOfWeek" : [ "日", "月", "火", "水" ]
+  }, {
+    "SupportShip" : "長波",
+    "DayOfWeek" : [ "日", "月", "火", "水" ]
+  }, {
+    "SupportShip" : "高波",
+    "DayOfWeek" : [ "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "艦本新設計 増設バルジ(中型艦)",
+  "Improvement" : [ {
+    "SupportShip" : "Zara due",
+    "DayOfWeek" : [ "日", "月" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月" ]
+}, {
+  "SlotItem" : "増設バルジ(大型艦)",
+  "Improvement" : [ {
+    "SupportShip" : "長門 武蔵*",
+    "DayOfWeek" : [ "木", "金", "土" ]
+  }, {
+    "SupportShip" : "陸奥 大和",
+    "DayOfWeek" : [ "水", "木", "金" ]
+  }, {
+    "SupportShip" : "陸奥改二",
+    "DayOfWeek" : [ "月", "火" ]
+  }, {
+    "SupportShip" : "大和改二",
+    "DayOfWeek" : [ "金" ]
+  }, {
+    "SupportShip" : "Conte di Cavour",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "艦本新設計 増設バルジ(大型艦)",
+  "Improvement" : [ {
+    "SupportShip" : "大和",
+    "DayOfWeek" : [ "日", "土" ]
+  }, {
+    "SupportShip" : "武蔵",
+    "DayOfWeek" : [ "日", "火" ]
+  }, {
+    "SupportShip" : "武蔵改二",
+    "DayOfWeek" : [ "月" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "土" ]
+}, {
+  "SlotItem" : "プリエーゼ式水中防御隔壁",
+  "Improvement" : [ {
+    "SupportShip" : "Littorio",
+    "DayOfWeek" : [ "火", "水", "木" ]
+  }, {
+    "SupportShip" : "Conte di Cavour nuovo",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水", "木" ]
+}, {
+  "SlotItem" : "熟練甲板要員+航空整備員",
+  "Improvement" : [ {
+    "SupportShip" : "翔鶴",
+    "DayOfWeek" : [ "日", "月", "火", "水", "土" ]
+  }, {
+    "SupportShip" : "Hornet",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "熟練見張員",
+  "Improvement" : [ {
+    "SupportShip" : "鳥海",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  }, {
+    "SupportShip" : "高波",
+    "DayOfWeek" : [ "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "綾波",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "探照灯",
+  "Improvement" : [ {
+    "SupportShip" : "青葉 綾波",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  }, {
+    "SupportShip" : "鳥海",
+    "DayOfWeek" : [ "日", "月", "金", "土" ]
+  }, {
+    "SupportShip" : "神通",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  }, {
+    "SupportShip" : "暁",
+    "DayOfWeek" : [ "木", "金", "土" ]
+  }, {
+    "SupportShip" : "秋雲",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "96式150cm探照灯",
+  "Improvement" : [ {
+    "SupportShip" : "比叡",
+    "DayOfWeek" : [ "日", "月", "火", "土" ]
+  }, {
+    "SupportShip" : "霧島",
+    "DayOfWeek" : [ "月", "火", "水", "木", "金" ]
+  }, {
+    "SupportShip" : "霧島改二丙",
+    "DayOfWeek" : [ "月", "金" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "発煙装置(煙幕)",
+  "Improvement" : [ {
+    "SupportShip" : "深雪改",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水" ]
+}, {
+  "SlotItem" : "戦闘糧食",
+  "Improvement" : [ {
+    "SupportShip" : "阿賀野",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  }, {
+    "SupportShip" : "長波",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "艦隊通信アンテナ",
+  "Improvement" : [ {
+    "SupportShip" : "大淀改",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "木", "金", "土" ]
+}, {
+  "SlotItem" : "九六式艦戦",
+  "Improvement" : [ {
+    "SupportShip" : "鳳翔",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "鳳翔改二",
+    "DayOfWeek" : [ "日", "月", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "九六式艦戦改",
+  "Improvement" : [ {
+    "SupportShip" : "鳳翔",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "金", "土" ]
+}, {
+  "SlotItem" : "零式艦戦21型",
+  "Improvement" : [ {
+    "SupportShip" : "赤城",
+    "DayOfWeek" : [ "木", "金", "土" ]
+  }, {
+    "SupportShip" : "加賀",
+    "DayOfWeek" : [ "日", "月", "火" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "木", "金", "土" ]
+}, {
+  "SlotItem" : "零式艦戦21型(熟練)",
+  "Improvement" : [ {
+    "SupportShip" : "赤城",
+    "DayOfWeek" : [ "木", "金", "土" ]
+  }, {
+    "SupportShip" : "加賀",
+    "DayOfWeek" : [ "日", "月", "火" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "木", "金", "土" ]
+}, {
+  "SlotItem" : "零式艦戦32型",
+  "Improvement" : [ {
+    "SupportShip" : "赤城",
+    "DayOfWeek" : [ "日", "月" ]
+  }, {
+    "SupportShip" : "加賀",
+    "DayOfWeek" : [ "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "水", "木" ]
+}, {
+  "SlotItem" : "零式艦戦32型(熟練)",
+  "Improvement" : [ {
+    "SupportShip" : "赤城",
+    "DayOfWeek" : [ "日", "月" ]
+  }, {
+    "SupportShip" : "加賀",
+    "DayOfWeek" : [ "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "水", "木" ]
+}, {
+  "SlotItem" : "零式艦戦52型",
+  "Improvement" : [ {
+    "SupportShip" : "翔鶴",
+    "DayOfWeek" : [ "火", "水", "木" ]
+  }, {
+    "SupportShip" : "翔鶴改二甲",
+    "DayOfWeek" : [ "木" ]
+  }, {
+    "SupportShip" : "龍鳳*",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  }, {
+    "SupportShip" : "瑞鶴",
+    "DayOfWeek" : [ "日", "月", "水" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "零式艦戦52型(熟練)",
+  "Improvement" : [ {
+    "SupportShip" : "翔鶴",
+    "DayOfWeek" : [ "木", "金", "土" ]
+  }, {
+    "SupportShip" : "瑞鶴",
+    "DayOfWeek" : [ "日", "月", "水" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "零戦52型丙(六〇一空)",
+  "Improvement" : [ {
+    "SupportShip" : "大鳳",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "大鳳改",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  }, {
+    "SupportShip" : "雲龍",
+    "DayOfWeek" : [ "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "零戦52型丙(付岩井小隊)",
+  "Improvement" : [ {
+    "SupportShip" : "瑞鶴",
+    "DayOfWeek" : [ "火", "木" ]
+  } ],
+  "AllAvailableDays" : [ "火", "木" ]
+}, {
+  "SlotItem" : "零戦52型甲(付岩本小隊)",
+  "Improvement" : [ {
+    "SupportShip" : "瑞鶴",
+    "DayOfWeek" : [ "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "金", "土" ]
+}, {
+  "SlotItem" : "零式艦戦53型(岩本隊)",
+  "Improvement" : [ {
+    "SupportShip" : "瑞鶴",
+    "DayOfWeek" : [ "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "金", "土" ]
+}, {
+  "SlotItem" : "零式艦戦64型(制空戦闘機仕様)",
+  "Improvement" : [ {
+    "SupportShip" : "鳳翔改二",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水", "木" ]
+}, {
+  "SlotItem" : "紫電改二",
+  "Improvement" : [ {
+    "SupportShip" : "飛龍改二",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  }, {
+    "SupportShip" : "鈴谷航改二",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  }, {
+    "SupportShip" : "能代改二",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木" ]
+  }, {
+    "SupportShip" : "矢矧改二*",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  }, {
+    "SupportShip" : "酒匂改",
+    "DayOfWeek" : [ "日", "月", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "紫電改四",
+  "Improvement" : [ {
+    "SupportShip" : "熊野航改二",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水", "木" ]
+}, {
+  "SlotItem" : "試製烈風 後期型",
+  "Improvement" : [ {
+    "SupportShip" : "大鳳改",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  }, {
+    "SupportShip" : "翔鶴改二*",
+    "DayOfWeek" : [ "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "金", "土" ]
+}, {
+  "SlotItem" : "烈風 一一型",
+  "Improvement" : [ {
+    "SupportShip" : "翔鶴改二",
+    "DayOfWeek" : [ "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "金", "土" ]
+}, {
+  "SlotItem" : "Bf109T改",
+  "Improvement" : [ {
+    "SupportShip" : "Graf Zeppelin",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "Re.2001 OR改",
+  "Improvement" : [ {
+    "SupportShip" : "Aquila",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "F4F-3",
+  "Improvement" : [ {
+    "SupportShip" : "Saratoga",
+    "DayOfWeek" : [ "日", "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "Saratoga改",
+    "DayOfWeek" : [ "金", "土" ]
+  }, {
+    "SupportShip" : "Saratoga MK.II*",
+    "DayOfWeek" : [ "火", "水" ]
+  } ],
+  "AllAvailableDays" : [ "日", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "F4F-4",
+  "Improvement" : [ {
+    "SupportShip" : "Saratoga",
+    "DayOfWeek" : [ "月", "火" ]
+  }, {
+    "SupportShip" : "Saratoga改",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  }, {
+    "SupportShip" : "Saratoga MK.II*",
+    "DayOfWeek" : [ "月", "木" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水", "木" ]
+}, {
+  "SlotItem" : "F6F-3",
+  "Improvement" : [ {
+    "SupportShip" : "Saratoga改",
+    "DayOfWeek" : [ "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "火", "水", "木" ]
+}, {
+  "SlotItem" : "F6F-5",
+  "Improvement" : [ {
+    "SupportShip" : "Saratoga MK.II Mod.2",
+    "DayOfWeek" : [ "火", "水", "木" ]
+  }, {
+    "SupportShip" : "Saratoga MK.II",
+    "DayOfWeek" : [ "日", "月", "火" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木" ]
+}, {
+  "SlotItem" : "F4U-2 Night Corsair",
+  "Improvement" : [ {
+    "SupportShip" : "Gambier Bay Mk.II",
+    "DayOfWeek" : [ "日", "月", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "金", "土" ]
+}, {
+  "SlotItem" : "Fulmar",
+  "Improvement" : [ {
+    "SupportShip" : "Ark Royal",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  }, {
+    "SupportShip" : "Victorious",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "Seafire Mk.III改",
+  "Improvement" : [ {
+    "SupportShip" : "Victorious 改",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "FR-1 Fireball",
+  "Improvement" : [ {
+    "SupportShip" : "Gambier Bay Mk.II",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "金", "土" ]
+}, {
+  "SlotItem" : "九九式艦爆",
+  "Improvement" : [ {
+    "SupportShip" : "蒼龍",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "飛龍",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  }, {
+    "SupportShip" : "瑞鳳",
+    "DayOfWeek" : [ "日", "月", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "九九式艦爆二二型",
+  "Improvement" : [ {
+    "SupportShip" : "翔鶴",
+    "DayOfWeek" : [ "日", "月", "金", "土" ]
+  }, {
+    "SupportShip" : "瑞鳳",
+    "DayOfWeek" : [ "日", "月", "火" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "金", "土" ]
+}, {
+  "SlotItem" : "九九式艦爆二二型(熟練)",
+  "Improvement" : [ {
+    "SupportShip" : "瑞鶴",
+    "DayOfWeek" : [ "金", "土" ]
+  }, {
+    "SupportShip" : "瑞鳳改二",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  }, {
+    "SupportShip" : "瑞鳳改二乙",
+    "DayOfWeek" : [ "水" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水", "金", "土" ]
+}, {
+  "SlotItem" : "九九式艦爆(江草隊)",
+  "Improvement" : [ {
+    "SupportShip" : "蒼龍改二",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "木", "金", "土" ]
+}, {
+  "SlotItem" : "彗星",
+  "Improvement" : [ {
+    "SupportShip" : "翔鶴",
+    "DayOfWeek" : [ "金" ]
+  }, {
+    "SupportShip" : "大鳳",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  }, {
+    "SupportShip" : "龍鳳改*",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  }, {
+    "SupportShip" : "瑞鳳",
+    "DayOfWeek" : [ "火", "水" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水", "木", "金" ]
+}, {
+  "SlotItem" : "彗星一二型甲",
+  "Improvement" : [ {
+    "SupportShip" : "龍鳳改",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  }, {
+    "SupportShip" : "瑞鳳",
+    "DayOfWeek" : [ "火", "水" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水" ]
+}, {
+  "SlotItem" : "零式艦戦62型(爆戦)",
+  "Improvement" : [ {
+    "SupportShip" : "鈴谷航改二",
+    "DayOfWeek" : [ "日", "月" ]
+  }, {
+    "SupportShip" : "翔鶴",
+    "DayOfWeek" : [ "日", "月" ]
+  }, {
+    "SupportShip" : "隼鷹",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  }, {
+    "SupportShip" : "瑞鶴",
+    "DayOfWeek" : [ "火", "木" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "木", "金", "土" ]
+}, {
+  "SlotItem" : "零式艦戦63型(爆戦)",
+  "Improvement" : [ {
+    "SupportShip" : "鈴谷航改二",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  }, {
+    "SupportShip" : "熊野航改二",
+    "DayOfWeek" : [ "火", "水", "木", "金" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水", "木", "金" ]
+}, {
+  "SlotItem" : "零式艦戦64型(複座KMX搭載機)",
+  "Improvement" : [ {
+    "SupportShip" : "八幡丸",
+    "DayOfWeek" : [ "日", "月", "火", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "土" ]
+}, {
+  "SlotItem" : "零式艦戦64型(熟練爆戦)",
+  "Improvement" : [ {
+    "SupportShip" : "鳳翔改二",
+    "DayOfWeek" : [ "火", "水" ]
+  } ],
+  "AllAvailableDays" : [ "火", "水" ]
+}, {
+  "SlotItem" : "試製 明星(増加試作機)",
+  "Improvement" : [ {
+    "SupportShip" : "瑞鳳",
+    "DayOfWeek" : [ "木", "金", "土" ]
+  }, {
+    "SupportShip" : "八幡丸",
+    "DayOfWeek" : [ "水", "木", "金" ]
+  } ],
+  "AllAvailableDays" : [ "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "明星改",
+  "Improvement" : [ {
+    "SupportShip" : "瑞鳳",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "八幡丸",
+    "DayOfWeek" : [ "水", "木", "金" ]
+  } ],
+  "AllAvailableDays" : [ "日", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "九九式練爆二二型改(夜間装備実験機)",
+  "Improvement" : [ {
+    "SupportShip" : "龍鳳改二戊",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "木", "金", "土" ]
+}, {
+  "SlotItem" : "Ju87C改",
+  "Improvement" : [ {
+    "SupportShip" : "Graf Zeppelin",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "Re.2001 CB改",
+  "Improvement" : [ {
+    "SupportShip" : "Aquila",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "金", "土" ]
+}, {
+  "SlotItem" : "SBD",
+  "Improvement" : [ {
+    "SupportShip" : "Hornet",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  }, {
+    "SupportShip" : "Saratoga",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "Saratoga改",
+    "DayOfWeek" : [ "日", "月", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "SBD(Yellow Wings)",
+  "Improvement" : [ {
+    "SupportShip" : "Lexington",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "SBD VB-2(爆撃飛行隊)",
+  "Improvement" : [ {
+    "SupportShip" : "Lexington改",
+    "DayOfWeek" : [ "日", "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "SBD-5",
+  "Improvement" : [ {
+    "SupportShip" : "Hornet改",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "Langley",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "SB2C-3",
+  "Improvement" : [ {
+    "SupportShip" : "Intrepid",
+    "DayOfWeek" : [ "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "SB2C-5",
+  "Improvement" : [ {
+    "SupportShip" : "Intrepid",
+    "DayOfWeek" : [ "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "FM-2",
+  "Improvement" : [ {
+    "SupportShip" : "Gambier Bay",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水", "木" ]
+}, {
+  "SlotItem" : "F4U-1D",
+  "Improvement" : [ {
+    "SupportShip" : "Gambier Bay Mk.II",
+    "DayOfWeek" : [ "日", "月", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "金", "土" ]
+}, {
+  "SlotItem" : "Skua",
+  "Improvement" : [ {
+    "SupportShip" : "Ark Royal",
+    "DayOfWeek" : [ "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "水", "木" ]
+}, {
+  "SlotItem" : "F4U-4",
+  "Improvement" : [ {
+    "SupportShip" : "Intrepid改",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  }, {
+    "SupportShip" : "Langley改",
+    "DayOfWeek" : [ "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "九七式艦攻",
+  "Improvement" : [ {
+    "SupportShip" : "飛龍",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "蒼龍",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  }, {
+    "SupportShip" : "鳳翔",
+    "DayOfWeek" : [ "火", "水", "木" ]
+  }, {
+    "SupportShip" : "龍鳳*",
+    "DayOfWeek" : [ "月", "火" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "九七式艦攻(熟練)",
+  "Improvement" : [ {
+    "SupportShip" : "鳳翔",
+    "DayOfWeek" : [ "日", "月", "金", "土" ]
+  }, {
+    "SupportShip" : "神鷹",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "龍鳳*",
+    "DayOfWeek" : [ "月", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "九七式艦攻(九三一空)",
+  "Improvement" : [ {
+    "SupportShip" : "春日丸",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  }, {
+    "SupportShip" : "八幡丸",
+    "DayOfWeek" : [ "日", "月", "火", "土" ]
+  }, {
+    "SupportShip" : "神鷹",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "九七式艦攻改 試製三号戊型(空六号電探改装備機)",
+  "Improvement" : [ {
+    "SupportShip" : "龍鳳改",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "瑞鳳改二乙",
+    "DayOfWeek" : [ "月", "火" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "木", "金", "土" ]
+}, {
+  "SlotItem" : "九七式艦攻(友永隊)",
+  "Improvement" : [ {
+    "SupportShip" : "飛龍改二",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "木", "金", "土" ]
+}, {
+  "SlotItem" : "天山",
+  "Improvement" : [ {
+    "SupportShip" : "翔鶴",
+    "DayOfWeek" : [ "火", "水", "木" ]
+  }, {
+    "SupportShip" : "瑞鶴",
+    "DayOfWeek" : [ "水", "木" ]
+  }, {
+    "SupportShip" : "大鳳 龍鳳*",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "大鳳改",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "天山一二型甲",
+  "Improvement" : [ {
+    "SupportShip" : "龍鳳改二戊",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "木", "金", "土" ]
+}, {
+  "SlotItem" : "流星",
+  "Improvement" : [ {
+    "SupportShip" : "大鳳",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "金", "土" ]
+}, {
+  "SlotItem" : "流星改",
+  "Improvement" : [ {
+    "SupportShip" : "大鳳改",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "金", "土" ]
+}, {
+  "SlotItem" : "Swordfish",
+  "Improvement" : [ {
+    "SupportShip" : "Ark Royal",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水", "木" ]
+}, {
+  "SlotItem" : "Swordfish Mk.II(熟練)",
+  "Improvement" : [ {
+    "SupportShip" : "Ark Royal",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "金", "土" ]
+}, {
+  "SlotItem" : "TBD",
+  "Improvement" : [ {
+    "SupportShip" : "Ranger",
+    "DayOfWeek" : [ "日", "月", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "金", "土" ]
+}, {
+  "SlotItem" : "TBD(Yellow Wings)",
+  "Improvement" : [ {
+    "SupportShip" : "Lexington",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "TBF",
+  "Improvement" : [ {
+    "SupportShip" : "Ranger改",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  }, {
+    "SupportShip" : "Langley",
+    "DayOfWeek" : [ "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "Barracuda Mk.II",
+  "Improvement" : [ {
+    "SupportShip" : "Victorious",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水", "木" ]
+}, {
+  "SlotItem" : "Barracuda Mk.III",
+  "Improvement" : [ {
+    "SupportShip" : "Victorious",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水", "木" ]
+}, {
+  "SlotItem" : "試製景雲(艦偵型)",
+  "Improvement" : [ {
+    "SupportShip" : "翔鶴改二甲",
+    "DayOfWeek" : [ "火", "水" ]
+  }, {
+    "SupportShip" : "瑞鶴改二甲",
+    "DayOfWeek" : [ "日", "月", "火" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水" ]
+}, {
+  "SlotItem" : "二式艦上偵察機",
+  "Improvement" : [ {
+    "SupportShip" : "蒼龍",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "SBD VS-2(偵察飛行隊)",
+  "Improvement" : [ {
+    "SupportShip" : "Lexington改",
+    "DayOfWeek" : [ "月", "火" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火" ]
+}, {
+  "SlotItem" : "零式水上偵察機",
+  "Improvement" : [ {
+    "SupportShip" : "千歳甲*",
+    "DayOfWeek" : [ "金", "土" ]
+  }, {
+    "SupportShip" : "千代田甲*",
+    "DayOfWeek" : [ "水", "木" ]
+  }, {
+    "SupportShip" : "秋津洲改",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "瑞穂",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  }, {
+    "SupportShip" : "利根",
+    "DayOfWeek" : [ "日", "月", "火", "金", "土" ]
+  }, {
+    "SupportShip" : "筑摩",
+    "DayOfWeek" : [ "火", "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "零式水上偵察機11型乙",
+  "Improvement" : [ {
+    "SupportShip" : "由良改二",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "木", "金", "土" ]
+}, {
+  "SlotItem" : "零式水上観測機",
+  "Improvement" : [ {
+    "SupportShip" : "武蔵",
+    "DayOfWeek" : [ "木", "金", "土" ]
+  }, {
+    "SupportShip" : "武蔵改",
+    "DayOfWeek" : [ "木" ]
+  }, {
+    "SupportShip" : "瑞穂",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "九八式水上偵察機(夜偵)",
+  "Improvement" : [ {
+    "SupportShip" : "川内改二",
+    "DayOfWeek" : [ "日", "月", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "木", "金", "土" ]
+}, {
+  "SlotItem" : "紫雲",
+  "Improvement" : [ {
+    "SupportShip" : "大淀",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  }, {
+    "SupportShip" : "大淀改",
+    "DayOfWeek" : [ "月", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水", "木" ]
+}, {
+  "SlotItem" : "零式小型水上機",
+  "Improvement" : [ {
+    "SupportShip" : "伊36",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  }, {
+    "SupportShip" : "伊41",
+    "DayOfWeek" : [ "日", "月", "火", "水" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木" ]
+}, {
+  "SlotItem" : "零式小型水上機(熟練)",
+  "Improvement" : [ {
+    "SupportShip" : "伊41改",
+    "DayOfWeek" : [ "日", "月", "火", "水" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水" ]
+}, {
+  "SlotItem" : "Ar196改",
+  "Improvement" : [ {
+    "SupportShip" : "Bismarck",
+    "DayOfWeek" : [ "火", "水" ]
+  }, {
+    "SupportShip" : "Prinz Eugen",
+    "DayOfWeek" : [ "日", "月", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "金", "土" ]
+}, {
+  "SlotItem" : "Ro.43水偵",
+  "Improvement" : [ {
+    "SupportShip" : "Italia",
+    "DayOfWeek" : [ "日", "土" ]
+  }, {
+    "SupportShip" : "Roma改",
+    "DayOfWeek" : [ "火", "水" ]
+  }, {
+    "SupportShip" : "Zara due",
+    "DayOfWeek" : [ "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "OS2U",
+  "Improvement" : [ {
+    "SupportShip" : "Iowa Houston",
+    "DayOfWeek" : [ "水", "木" ]
+  }, {
+    "SupportShip" : "Colorado",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "SOC Seagull",
+  "Improvement" : [ {
+    "SupportShip" : "Northampton",
+    "DayOfWeek" : [ "日", "月", "火", "金", "土" ]
+  }, {
+    "SupportShip" : "Helena",
+    "DayOfWeek" : [ "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "Phoenix",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "SOC Seagull 後期型(熟練)",
+  "Improvement" : [ {
+    "SupportShip" : "Phoenix",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "木", "金", "土" ]
+}, {
+  "SlotItem" : "S9 Osprey",
+  "Improvement" : [ {
+    "SupportShip" : "Gotland",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "木", "金", "土" ]
+}, {
+  "SlotItem" : "Swordfish Mk.II改(水偵型)",
+  "Improvement" : [ {
+    "SupportShip" : "Warspite 神威",
+    "DayOfWeek" : [ "木", "金", "土" ]
+  }, {
+    "SupportShip" : "Commandant Teste",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "木", "金", "土" ]
+}, {
+  "SlotItem" : "Fairey Seafox改",
+  "Improvement" : [ {
+    "SupportShip" : "Gotland andra",
+    "DayOfWeek" : [ "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "木", "金", "土" ]
+}, {
+  "SlotItem" : "Loire 130M",
+  "Improvement" : [ {
+    "SupportShip" : "Richelieu",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  }, {
+    "SupportShip" : "Jean Bart",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "瑞雲",
+  "Improvement" : [ {
+    "SupportShip" : "伊勢改* 日向改*",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  }, {
+    "SupportShip" : "最上改*",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  }, {
+    "SupportShip" : "最上改二",
+    "DayOfWeek" : [ "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "瑞雲(六三四空)",
+  "Improvement" : [ {
+    "SupportShip" : "伊勢改* 日向改*",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "金", "土" ]
+}, {
+  "SlotItem" : "瑞雲12型",
+  "Improvement" : [ {
+    "SupportShip" : "最上改二",
+    "DayOfWeek" : [ "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "金", "土" ]
+}, {
+  "SlotItem" : "瑞雲12型(六三四空)",
+  "Improvement" : [ {
+    "SupportShip" : "山城改二",
+    "DayOfWeek" : [ "日", "月", "土" ]
+  }, {
+    "SupportShip" : "伊勢改*",
+    "DayOfWeek" : [ "火", "水", "木" ]
+  }, {
+    "SupportShip" : "最上改二",
+    "DayOfWeek" : [ "日", "月" ]
+  }, {
+    "SupportShip" : "日向改",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  }, {
+    "SupportShip" : "日向改二",
+    "DayOfWeek" : [ "水", "木", "金" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "瑞雲改二(六三四空)",
+  "Improvement" : [ {
+    "SupportShip" : "日向改二",
+    "DayOfWeek" : [ "火", "水", "木" ]
+  }, {
+    "SupportShip" : "最上改二",
+    "DayOfWeek" : [ "火", "水", "木" ]
+  }, {
+    "SupportShip" : "最上改二特",
+    "DayOfWeek" : [ "火", "水" ]
+  } ],
+  "AllAvailableDays" : [ "火", "水", "木" ]
+}, {
+  "SlotItem" : "Laté 298B",
+  "Improvement" : [ {
+    "SupportShip" : "Commandant Teste",
+    "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "Swordfish(水上機型)",
+  "Improvement" : [ {
+    "SupportShip" : "神威",
+    "DayOfWeek" : [ "日", "月", "火" ]
+  }, {
+    "SupportShip" : "Commandant Teste",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "Gotland",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  }, {
+    "SupportShip" : "Warspite",
+    "DayOfWeek" : [ "水", "木", "金" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "Swordfish Mk.III改(水上機型)",
+  "Improvement" : [ {
+    "SupportShip" : "Gotland andra",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "木", "金", "土" ]
+}, {
+  "SlotItem" : "二式水戦改",
+  "Improvement" : [ {
+    "SupportShip" : "瑞穂",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "金", "土" ]
+}, {
+  "SlotItem" : "二式水戦改(熟練)",
+  "Improvement" : [ {
+    "SupportShip" : "瑞穂",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "金", "土" ]
+}, {
+  "SlotItem" : "強風改",
+  "Improvement" : [ {
+    "SupportShip" : "瑞穂",
+    "DayOfWeek" : [ "火", "水", "木" ]
+  }, {
+    "SupportShip" : "鈴谷改二*",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水", "木" ]
+}, {
+  "SlotItem" : "強風改二",
+  "Improvement" : [ {
+    "SupportShip" : "最上改二",
+    "DayOfWeek" : [ "日", "月", "金", "土" ]
+  }, {
+    "SupportShip" : "最上改二特",
+    "DayOfWeek" : [ "日", "月" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "金", "土" ]
+}, {
+  "SlotItem" : "Ro.44水上戦闘機",
+  "Improvement" : [ {
+    "SupportShip" : "Zara due",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "木", "金", "土" ]
+}, {
+  "SlotItem" : "Ro.44水上戦闘機bis",
+  "Improvement" : [ {
+    "SupportShip" : "Zara due",
+    "DayOfWeek" : [ "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "金", "土" ]
+}, {
+  "SlotItem" : "九六式陸攻",
+  "Improvement" : [ {
+    "SupportShip" : "扶桑",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "木", "金", "土" ]
+}, {
+  "SlotItem" : "一式陸攻",
+  "Improvement" : [ {
+    "SupportShip" : "山城",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "木", "金", "土" ]
+}, {
+  "SlotItem" : "一式陸攻 二二型甲",
+  "Improvement" : [ {
+    "SupportShip" : "霧島",
+    "DayOfWeek" : [ "木", "金", "土" ]
+  }, {
+    "SupportShip" : "霧島改二丙",
+    "DayOfWeek" : [ "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "木", "金", "土" ]
+}, {
+  "SlotItem" : "一式陸攻 三四型",
+  "Improvement" : [ {
+    "SupportShip" : "榛名",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "金", "土" ]
+}, {
+  "SlotItem" : "爆装一式戦 隼III型改(65戦隊)",
+  "Improvement" : [ {
+    "SupportShip" : "神威",
+    "DayOfWeek" : [ "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "四式重爆 飛龍",
+  "Improvement" : [ {
+    "SupportShip" : "神州丸",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "木", "金", "土" ]
+}, {
+  "SlotItem" : "Do 17 Z-2",
+  "Improvement" : [ {
+    "SupportShip" : "Bismarck",
+    "DayOfWeek" : [ "日", "月", "金", "土" ]
+  }, {
+    "SupportShip" : "Prinz Eugen改",
+    "DayOfWeek" : [ "火", "水" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "金", "土" ]
+}, {
+  "SlotItem" : "一式陸攻(八幡部隊)",
+  "Improvement" : [ {
+    "SupportShip" : "長門改二",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "木", "金", "土" ]
+}, {
+  "SlotItem" : "一式陸攻(野中隊)",
+  "Improvement" : [ {
+    "SupportShip" : "宗谷 (特務艦)*",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水" ]
+}, {
+  "SlotItem" : "銀河",
+  "Improvement" : [ {
+    "SupportShip" : "能代",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  }, {
+    "SupportShip" : "酒匂",
+    "DayOfWeek" : [ "水", "木", "金" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水", "木", "金" ]
+}, {
+  "SlotItem" : "深山",
+  "Improvement" : [ {
+    "SupportShip" : "大淀",
+    "DayOfWeek" : [ "火", "水", "木" ]
+  }, {
+    "SupportShip" : "大淀改",
+    "DayOfWeek" : [ "火", "水" ]
+  }, {
+    "SupportShip" : "鹿島",
+    "DayOfWeek" : [ "月", "水" ]
+  }, {
+    "SupportShip" : "潮",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "SM.79",
+  "Improvement" : [ {
+    "SupportShip" : "Zara",
+    "DayOfWeek" : [ "火", "水", "木" ]
+  }, {
+    "SupportShip" : "Pola",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  }, {
+    "SupportShip" : "Pola改",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水", "木" ]
+}, {
+  "SlotItem" : "SM.79 bis",
+  "Improvement" : [ {
+    "SupportShip" : "Zara due",
+    "DayOfWeek" : [ "火", "水" ]
+  }, {
+    "SupportShip" : "Pola",
+    "DayOfWeek" : [ "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "火", "水", "木" ]
+}, {
+  "SlotItem" : "一式戦 隼II型",
+  "Improvement" : [ {
+    "SupportShip" : "春日丸 あきつ丸",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  }, {
+    "SupportShip" : "あきつ丸改",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  }, {
+    "SupportShip" : "神威",
+    "DayOfWeek" : [ "日", "月", "火", "水" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木" ]
+}, {
+  "SlotItem" : "一式戦 隼III型甲",
+  "Improvement" : [ {
+    "SupportShip" : "あきつ丸",
+    "DayOfWeek" : [ "月", "火" ]
+  }, {
+    "SupportShip" : "春日丸",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  }, {
+    "SupportShip" : "神威",
+    "DayOfWeek" : [ "木", "金" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水", "木", "金" ]
+}, {
+  "SlotItem" : "三式戦 飛燕",
+  "Improvement" : [ {
+    "SupportShip" : "春日丸 あきつ丸",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  }, {
+    "SupportShip" : "あきつ丸改",
+    "DayOfWeek" : [ "日", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "金", "土" ]
+}, {
+  "SlotItem" : "三式戦 飛燕一型丁",
+  "Improvement" : [ {
+    "SupportShip" : "宗谷 (特務艦)*",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "木", "金", "土" ]
+}, {
+  "SlotItem" : "二式複戦 屠龍",
+  "Improvement" : [ {
+    "SupportShip" : "神州丸",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  }, {
+    "SupportShip" : "山汐丸",
+    "DayOfWeek" : [ "水", "木", "金" ]
+  }, {
+    "SupportShip" : "熊野丸",
+    "DayOfWeek" : [ "火", "水", "木" ]
+  }, {
+    "SupportShip" : "宗谷 (特務艦)*",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "二式複戦 屠龍 丙型",
+  "Improvement" : [ {
+    "SupportShip" : "山汐丸改",
+    "DayOfWeek" : [ "月", "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水", "木" ]
+}, {
+  "SlotItem" : "キ96",
+  "Improvement" : [ {
+    "SupportShip" : "山汐丸改",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "金", "土" ]
+}, {
+  "SlotItem" : "Spitfire Mk.I",
+  "Improvement" : [ {
+    "SupportShip" : "Warspite",
+    "DayOfWeek" : [ "日", "月", "土" ]
+  }, {
+    "SupportShip" : "Ark Royal",
+    "DayOfWeek" : [ "月", "火" ]
+  }, {
+    "SupportShip" : "Jervis",
+    "DayOfWeek" : [ "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "土" ]
+}, {
+  "SlotItem" : "Spitfire Mk.V",
+  "Improvement" : [ {
+    "SupportShip" : "Nelson",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "Ark Royal",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "木", "金", "土" ]
+}, {
+  "SlotItem" : "雷電",
+  "Improvement" : [ {
+    "SupportShip" : "響改",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  }, {
+    "SupportShip" : "宗谷 (特務艦)*",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "紫電一一型",
+  "Improvement" : [ {
+    "SupportShip" : "赤城 加賀",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水" ]
+}, {
+  "SlotItem" : "紫電二一型 紫電改",
+  "Improvement" : [ {
+    "SupportShip" : "榛名*",
+    "DayOfWeek" : [ "月", "火", "水" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火", "水" ]
+}, {
+  "SlotItem" : "カ号観測機",
+  "Improvement" : [ {
+    "SupportShip" : "伊勢改二",
+    "DayOfWeek" : [ "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "水", "木" ]
+}, {
+  "SlotItem" : "オ号観測機改",
+  "Improvement" : [ {
+    "SupportShip" : "日向改二",
+    "DayOfWeek" : [ "月", "火" ]
+  } ],
+  "AllAvailableDays" : [ "月", "火" ]
+}, {
+  "SlotItem" : "オ号観測機改二",
+  "Improvement" : [ {
+    "SupportShip" : "日向改二",
+    "DayOfWeek" : [ "水", "木", "金" ]
+  } ],
+  "AllAvailableDays" : [ "水", "木", "金" ]
+}, {
+  "SlotItem" : "S-51J",
+  "Improvement" : [ {
+    "SupportShip" : "日向改二",
+    "DayOfWeek" : [ "日", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "土" ]
+}, {
+  "SlotItem" : "S-51J改",
+  "Improvement" : [ {
+    "SupportShip" : "日向改二",
+    "DayOfWeek" : [ "日", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "土" ]
+}, {
+  "SlotItem" : "三式指揮連絡機(対潜)",
+  "Improvement" : [ {
+    "SupportShip" : "山汐丸",
+    "DayOfWeek" : [ "日", "月", "火", "土" ]
+  }, {
+    "SupportShip" : "熊野丸",
+    "DayOfWeek" : [ "日", "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "三式指揮連絡機改",
+  "Improvement" : [ {
+    "SupportShip" : "山汐丸",
+    "DayOfWeek" : [ "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "熊野丸改",
+    "DayOfWeek" : [ "日", "月", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "月", "水", "木", "金", "土" ]
+}, {
+  "SlotItem" : "三式指揮連絡機改二",
+  "Improvement" : [ {
+    "SupportShip" : "熊野丸改",
+    "DayOfWeek" : [ "日", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "木", "金", "土" ]
+} ]

@@ -3,7 +3,9 @@ package logbook.internal.gui;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -21,6 +23,13 @@ import org.controlsfx.control.textfield.TextFields;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import jakarta.json.Json;
+import jakarta.json.JsonArray;
+import jakarta.json.JsonObject;
+import jakarta.json.JsonReader;
+import jakarta.json.JsonValue;
+import logbook.internal.util.JsonHelper;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -62,7 +71,10 @@ import logbook.core.LogBookCoreServices;
 import logbook.internal.kancolle.Items;
 import logbook.internal.kancolle.Ships;
 import logbook.internal.logger.LoggerHolder;
+
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * 所有装備一覧のUIコントローラー
@@ -88,6 +100,38 @@ public class ItemItemController extends WindowController {
     /** テキスト */
     @FXML
     private ComboBox<String> textValue;
+
+    /** 改修フィルター */
+    @FXML
+    private ToggleSwitch remodelFilter;
+
+    /** 改修日フィルター */
+    @FXML
+    private TitledPane allAvailableDays;
+
+    @FXML
+    private CheckBox remodelDayAll;
+
+    @FXML
+    private CheckBox remodelDaySun;
+
+    @FXML
+    private CheckBox remodelDayMon;
+
+    @FXML
+    private CheckBox remodelDayTue;
+
+    @FXML
+    private CheckBox remodelDayWed;
+
+    @FXML
+    private CheckBox remodelDayThu;
+
+    @FXML
+    private CheckBox remodelDayFri;
+
+    @FXML
+    private CheckBox remodelDaySat;
 
     @FXML
     private GridPane typeFilterPane;
@@ -226,10 +270,10 @@ public class ItemItemController extends WindowController {
             // カテゴリを調べて存在するものだけ表示する
             Map<Integer, SlotitemMst> slotitemMap = SlotitemMstCollection.get().getSlotitemMap();
             Set<Integer> existingTypes = SlotItemCollection.get().getSlotitemMap().values().stream()
-                .map(SlotItem::getSlotitemId)
-                .map(slotitemMap::get)
-                .map(mst -> mst.getType().get(2))
-                .collect(Collectors.toSet());
+                    .map(SlotItem::getSlotitemId)
+                    .map(slotitemMap::get)
+                    .map(mst -> mst.getType().get(2))
+                    .collect(Collectors.toSet());
             Map<String, List<SlotitemEquiptype>> categories = Items.getCategories();
             final AtomicInteger row = new AtomicInteger(1);
             final List<CheckBox> categoryCheckBoxes = new ArrayList<CheckBox>();
@@ -272,7 +316,6 @@ public class ItemItemController extends WindowController {
                 this.allTypes.setDisable(!n);
             });
 
-
             this.parameterFilters = IntStream.range(0, 3).mapToObj(i -> new ParameterFilterPane.ItemParameterFilterPane()).collect(Collectors.toList());
             this.filters.getChildren().addAll(this.parameterFilters);
             this.parameterFilters.forEach(f -> f.filterProperty().addListener(this::filterAction));
@@ -306,14 +349,45 @@ public class ItemItemController extends WindowController {
             this.detailTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
             this.detailTable.setOnKeyPressed(TableTool::defaultOnKeyPressedHandler);
             // 行を作る
+            Map<String, Collection<String>> kousyouMap = new HashMap<>();
+            try (JsonReader reader = Json
+                    .createReader(LogBookCoreServices.getResourceAsStream("logbook/kousyou/kousyou.json"))) {
+                JsonArray array = reader.readArray();
+                for (JsonValue val : array) {
+                    JsonObject obj = (JsonObject) val;
+                    String name = obj.getString("SlotItem", null);
+                    JsonArray days = obj.getJsonArray("AllAvailableDays");
+                    if (name != null && days != null) {
+                        kousyouMap.put(name, JsonHelper.toStringList(days));
+                    }
+                }
+            } catch (Exception e) {
+                LoggerHolder.get().error("kousyou.jsonの読み込みに失敗しました", e);
+            }
+
             ObservableList<Item> items = SlotitemMstCollection.get()
                     .getSlotitemMap()
                     .values()
                     .stream()
-                    .map(Item::toItem)
+                    .map(mst -> (Item) RemodelItem.toRemodelItem(mst, kousyouMap))
                     .filter(e -> e.getCount() > 0)
                     .sorted(Comparator.comparing(Item::getType3).thenComparing(Comparator.comparing(Item::getName)))
                     .collect(Collectors.toCollection(FXCollections::observableArrayList));
+            // 改修フィルター
+            this.allAvailableDays.disableProperty().bind(this.remodelFilter.selectedProperty().not());
+            List<CheckBox> remodelDays = new ArrayList<>();
+            remodelDays.add(this.remodelDaySun);
+            remodelDays.add(this.remodelDayMon);
+            remodelDays.add(this.remodelDayTue);
+            remodelDays.add(this.remodelDayWed);
+            remodelDays.add(this.remodelDayThu);
+            remodelDays.add(this.remodelDayFri);
+            remodelDays.add(this.remodelDaySat);
+            Tools.Controls.bindChildCheckBoxes(this.remodelDayAll, remodelDays);
+            this.remodelFilter.selectedProperty().addListener(this::filterAction);
+            this.allAvailableDays.expandedProperty().addListener((ob, o, n) -> saveConfig());
+            remodelDays.forEach(cb -> cb.selectedProperty().addListener(this::filterAction));
+
             // テキストフィルター
             this.textValue.setItems(items.stream()
                     .map(Item::typeProperty)
@@ -341,7 +415,7 @@ public class ItemItemController extends WindowController {
             this.typeTable.getSelectionModel()
                     .selectedItemProperty()
                     .addListener(this::detail);
-            
+
             loadConfig();
         } catch (Exception e) {
             LoggerHolder.get().error("FXMLの初期化に失敗しました", e);
@@ -355,30 +429,68 @@ public class ItemItemController extends WindowController {
         createFilter();
         saveConfig();
     }
-    
+
     private void createFilter() {
         Predicate<Item> filter = ItemFilter.DefaultFilter.builder()
                 .typeFilter(this.textFilter.isSelected())
                 .typeValue(this.textValue.getValue() == null ? "" : this.textValue.getValue())
                 .build();
         filter = filterAnd(filter, this.parameterFilters.stream()
-            .map(ParameterFilterPane::filterProperty)
-            .map(ReadOnlyObjectProperty::get)
-            .filter(Objects::nonNull)
-            .reduce((acc, val) -> filterAnd(acc, val))
-            .orElse(null));
+                .map(ParameterFilterPane::filterProperty)
+                .map(ReadOnlyObjectProperty::get)
+                .filter(Objects::nonNull)
+                .reduce((acc, val) -> filterAnd(acc, val))
+                .orElse(null));
         if (this.typeFilter.isSelected()) {
             Set<Integer> selectedTypes = getSelectedTypes();
             filter = filterAnd(filter, (item) -> selectedTypes.contains(item.getType2()));
         }
+        if (this.remodelFilter.isSelected()) {
+            Set<String> selectedRemodelDays = getSelectedRemodelDays();
+            filter = filterAnd(filter, (item) -> {
+                if (item instanceof RemodelItem) {
+                    Set<String> itemDays = ((RemodelItem) item).getRemodelDays();
+                    // AllAvailableDays情報を持っていないItemは非表示
+                    if (itemDays.isEmpty()) {
+                        return false;
+                    }
+                    // 改修可能日フィルターがすべてOFFの場合は、改修可能な装備をすべて表示する
+                    if (selectedRemodelDays.isEmpty()) {
+                        return true;
+                    }
+                    // ひとつでもONの場合は、ONの曜日に改修可能な装備を表示する
+                    return itemDays.stream().anyMatch(selectedRemodelDays::contains);
+                }
+                return false;
+            });
+        }
         this.types.setPredicate(filter);
     }
-    
+
     private Set<Integer> getSelectedTypes() {
         return this.typeFilters.entrySet().stream()
                 .filter(entry -> entry.getValue().isSelected())
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toSet());
+    }
+
+    private Set<String> getSelectedRemodelDays() {
+        Set<String> days = new java.util.HashSet<>();
+        if (this.remodelDaySun.isSelected())
+            days.add("日");
+        if (this.remodelDayMon.isSelected())
+            days.add("月");
+        if (this.remodelDayTue.isSelected())
+            days.add("火");
+        if (this.remodelDayWed.isSelected())
+            days.add("水");
+        if (this.remodelDayThu.isSelected())
+            days.add("木");
+        if (this.remodelDayFri.isSelected())
+            days.add("金");
+        if (this.remodelDaySat.isSelected())
+            days.add("土");
+        return days;
     }
 
     private <T> Predicate<T> filterAnd(Predicate<T> base, Predicate<T> add) {
@@ -392,8 +504,8 @@ public class ItemItemController extends WindowController {
      * 右ペインに詳細表示するリスナー
      *
      * @param observable 値が変更されたObservableValue
-     * @param oldValue 古い値
-     * @param value 新しい値
+     * @param oldValue   古い値
+     * @param value      新しい値
      */
     private void detail(ObservableValue<? extends Item> observable, Item oldValue, Item value) {
         this.details.clear();
@@ -606,26 +718,45 @@ public class ItemItemController extends WindowController {
     private void loadConfig() {
         this.disableFilterUpdate = true;
         try {
-            Optional.ofNullable(AppItemTableConfig.get()).map(AppItemTableConfig::getItemTabConfig).ifPresent(config -> {
-                this.filter.setExpanded(config.isFilterExpanded());
-                this.textFilter.setSelected(config.isTextFilterEnabled());
-                Optional.ofNullable(config.getTextFilter()).ifPresent(this.textValue::setValue);
-                Optional.ofNullable(config.getParameterFilters()).ifPresent((list) -> {
-                    for (int i = 0; i < Math.min(list.size(), this.parameterFilters.size()); i++) {
-                        this.parameterFilters.get(i).loadConfig(list.get(i));
-                    }
-                });
-                this.typeFilter.setSelected(config.isTypeFilterEnabled());
-                this.typeFilterTitledPane.setExpanded(config.isTypeFilterExpanded());
-                Optional.ofNullable(config.getSelectedTypes()).ifPresent(types -> {
-                    types.stream().map(this.typeFilters::get).forEach(checkbox -> checkbox.setSelected(true));
-                });
-            });
+            Optional.ofNullable(AppItemTableConfig.get()).map(AppItemTableConfig::getItemTabConfig)
+                    .ifPresent(config -> {
+                        this.filter.setExpanded(config.isFilterExpanded());
+                        this.textFilter.setSelected(config.isTextFilterEnabled());
+                        Optional.ofNullable(config.getTextFilter()).ifPresent(this.textValue::setValue);
+                        Optional.ofNullable(config.getParameterFilters()).ifPresent((list) -> {
+                            for (int i = 0; i < Math.min(list.size(), this.parameterFilters.size()); i++) {
+                                this.parameterFilters.get(i).loadConfig(list.get(i));
+                            }
+                        });
+                        this.typeFilter.setSelected(config.isTypeFilterEnabled());
+                        this.typeFilterTitledPane.setExpanded(config.isTypeFilterExpanded());
+                        Optional.ofNullable(config.getSelectedTypes()).ifPresent(types -> {
+                            types.stream().map(this.typeFilters::get).forEach(checkbox -> checkbox.setSelected(true));
+                        });
+                        this.remodelFilter.setSelected(config.isRemodelFilterEnabled());
+                        this.allAvailableDays.setExpanded(config.isRemodelDayFilterExpanded());
+                        Optional.ofNullable(config.getSelectedRemodelDays()).ifPresent(days -> {
+                            if (days.contains("日"))
+                                this.remodelDaySun.setSelected(true);
+                            if (days.contains("月"))
+                                this.remodelDayMon.setSelected(true);
+                            if (days.contains("火"))
+                                this.remodelDayTue.setSelected(true);
+                            if (days.contains("水"))
+                                this.remodelDayWed.setSelected(true);
+                            if (days.contains("木"))
+                                this.remodelDayThu.setSelected(true);
+                            if (days.contains("金"))
+                                this.remodelDayFri.setSelected(true);
+                            if (days.contains("土"))
+                                this.remodelDaySat.setSelected(true);
+                        });
+                    });
         } finally {
             this.disableFilterUpdate = false;
         }
     }
-    
+
     private void saveConfig() {
         if (this.disableFilterUpdate) {
             return;
@@ -638,6 +769,9 @@ public class ItemItemController extends WindowController {
         itemTabConfig.setTypeFilterEnabled(this.typeFilter.isSelected());
         itemTabConfig.setTypeFilterExpanded(this.typeFilterTitledPane.isExpanded());
         itemTabConfig.setSelectedTypes(getSelectedTypes());
+        itemTabConfig.setRemodelFilterEnabled(this.remodelFilter.isSelected());
+        itemTabConfig.setRemodelDayFilterExpanded(this.allAvailableDays.isExpanded());
+        itemTabConfig.setSelectedRemodelDays(getSelectedRemodelDays());
         itemTabConfig.setParameterFilters(this.parameterFilters.stream().map(ParameterFilterPane::saveConfig).collect(Collectors.toList()));
         config.setItemTabConfig(itemTabConfig);
     }
@@ -656,6 +790,40 @@ public class ItemItemController extends WindowController {
             kfi.id = item.getSlotitemId();
             kfi.lv = item.getLevel();
             return kfi;
+        }
+    }
+    
+    private static class RemodelItem extends Item {
+        @Getter
+        @Setter
+        private Set<String> remodelDays = new java.util.HashSet<>();
+
+        public static RemodelItem toRemodelItem(SlotitemMst slotitem, Map<String, Collection<String>> kousyouMap) {
+            Item item = Item.toItem(slotitem);
+            RemodelItem remodelItem = new RemodelItem();
+            // Copy properties
+            remodelItem.setId(item.getId());
+            remodelItem.setType2(item.getType2());
+            remodelItem.setType3(item.getType3());
+            remodelItem.setName(item.getName());
+            remodelItem.setType(item.getType());
+            remodelItem.setCount(item.getCount());
+            remodelItem.setHoug(item.getHoug());
+            remodelItem.setHoum(item.getHoum());
+            remodelItem.setLeng(item.getLeng());
+            remodelItem.setLuck(item.getLuck());
+            remodelItem.setHouk(item.getHouk());
+            remodelItem.setBaku(item.getBaku());
+            remodelItem.setRaig(item.getRaig());
+            remodelItem.setSaku(item.getSaku());
+            remodelItem.setTais(item.getTais());
+            remodelItem.setTyku(item.getTyku());
+            remodelItem.setSouk(item.getSouk());
+
+            if (kousyouMap.containsKey(remodelItem.getName())) {
+                remodelItem.getRemodelDays().addAll(kousyouMap.get(remodelItem.getName()));
+            }
+            return remodelItem;
         }
     }
 }
