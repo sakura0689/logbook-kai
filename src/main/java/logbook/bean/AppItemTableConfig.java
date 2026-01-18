@@ -18,10 +18,10 @@ public class AppItemTableConfig {
 
     /** 装備タブの設定 */
     private ItemTabConfig itemTabConfig;
-    
+
     /** 基地航空隊タブの設定 */
     private AirbaseTabConfig airbaseTabConfig;
-    
+
     /**
      * 装備タブの設定
      */
@@ -48,6 +48,14 @@ public class AppItemTableConfig {
         /** パラメータフィルター */
         private List<ParameterFilterConfig> parameterFilters;
 
+        /** 改修フィルターがオンだったかどうか */
+        private boolean remodelFilterEnabled;
+
+        /** 改修日フィルターが展開されていたかどうか */
+        private boolean remodelDayFilterExpanded;
+
+        /** オンだった改修日 */
+        private Collection<String> selectedRemodelDays;
     }
 
     /**
@@ -69,7 +77,7 @@ public class AppItemTableConfig {
      * アプリケーションのデフォルト設定ディレクトリから<code>AppItemTableConfig</code>を取得します、
      * これは次の記述と同等です
      * <blockquote>
-     *     <code>Config.getDefault().get(AppItemTableConfig.class, AppItemTableConfig::new)</code>
+     * <code>Config.getDefault().get(AppItemTableConfig.class, AppItemTableConfig::new)</code>
      * </blockquote>
      *
      * @return <code>AppShipTableConfig</code>
