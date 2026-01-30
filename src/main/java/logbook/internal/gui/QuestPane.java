@@ -134,8 +134,10 @@ public class QuestPane extends HBox {
             this.detail.setText(quest.getDetail().replaceAll("<br>", ""));
             this.setOnContextMenuRequested(this::showContextMenu);
 
-            if (LogBookCoreServices.getQuestResource(quest.getNo()) == null
-                && LogBookCoreServices.getCustomQuestResource(quest.getNo()) == null) {
+            if (LogBookCoreServices.getQuestResource(quest.getNo(), true) == null //恒常
+                && LogBookCoreServices.getQuestResource(quest.getNo(), false) == null //期間限定
+                && LogBookCoreServices.getCustomQuestResource(quest.getNo()) == null //カスタム設定
+                ) {
                 this.condition.setVisible(false);
             }
         } catch (Exception e) {

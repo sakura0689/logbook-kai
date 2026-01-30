@@ -115,10 +115,15 @@ public final class LogBookCoreServices {
      * （どのコードが任務のリソースを使用しているかわかりやすくするため専用のメソッドを用意）
      * 
      * @param questNo 任務No
+     * @param isRegularQuest true:恒常任務, false:期間限定任務
      * @return リソースを読み込むためのURL
      */
-    public static URL getQuestResource(int questNo) {
-        return getResource("logbook/quest/" + questNo + ".json");
+    public static URL getQuestResource(int questNo, boolean isRegularQuest) {
+        if (isRegularQuest) {
+            return getResource("logbook/quest/" + questNo + ".json");
+        } else {
+            return getResource("logbook/eventquest/" + questNo + ".json");
+        }
     }
 
     /**
@@ -144,11 +149,16 @@ public final class LogBookCoreServices {
      * （どのコードが任務のリソースを使用しているかわかりやすくするため専用のメソッドを用意）
      *
      * @param questNo 任務No
+     * @param isRegularQuest true:恒常任務, false:期間限定任務
      * @return リソースを読み込むための入力ストリーム
      * @see ClassLoader#getResourceAsStream(String)
      */
-    public static InputStream getQuestResourceAsStream(int questNo) {
-        return getResourceAsStream("logbook/quest/" + questNo + ".json");
+    public static InputStream getQuestResourceAsStream(int questNo, boolean isRegularQuest) {
+        if (isRegularQuest) {
+            return getResourceAsStream("logbook/quest/" + questNo + ".json");
+        } else {
+            return getResourceAsStream("logbook/eventquest/" + questNo + ".json");
+        }
     }
 
     /**
