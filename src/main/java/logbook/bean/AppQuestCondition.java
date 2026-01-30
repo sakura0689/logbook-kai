@@ -53,7 +53,7 @@ public class AppQuestCondition implements Predicate<QuestCollect> {
      * @return 任務条件設定
      */
     public static AppQuestCondition loadFromResource(int questNo) {
-        InputStream is = LogBookCoreServices.getQuestResourceAsStream(questNo);
+        InputStream is = LogBookCoreServices.getQuestResourceAsStream(questNo, true);
         if (is != null) {
             try {
                 try {
@@ -69,6 +69,7 @@ public class AppQuestCondition implements Predicate<QuestCollect> {
             }
         }
 
+        //期間限定任務条件を上書きするカスタム設定があるなら、カスタム設定を優先する
         try {
             java.nio.file.Path customPath = java.nio.file.Paths.get("./customquest/" + questNo + ".json");
             if (java.nio.file.Files.exists(customPath)) {
@@ -79,6 +80,24 @@ public class AppQuestCondition implements Predicate<QuestCollect> {
         } catch (Exception e) {
             LoggerHolder.get().info("カスタム任務設定ファイルが読み込めませんでした: " + questNo, e);
         }
+        
+        //期間限定任務
+        InputStream eventis = LogBookCoreServices.getQuestResourceAsStream(questNo, false);
+        if (eventis != null) {
+            try {
+                try {
+                    ObjectMapper mapper = new ObjectMapper();
+                    mapper.enable(Feature.ALLOW_COMMENTS);
+                    return mapper.readValue(eventis, AppQuestCondition.class);
+                } finally {
+                    eventis.close();
+                }
+            } catch (Exception e) {
+                LoggerHolder.get().info("任務設定ファイルが読み込めませんでした。", e);
+                return null;
+            }
+        }
+
         return null;
     }
 

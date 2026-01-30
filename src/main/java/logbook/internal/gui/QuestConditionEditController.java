@@ -75,7 +75,7 @@ public class QuestConditionEditController extends WindowController {
             List<AppQuest> quests = AppQuestCollection.get().getQuest().values().stream()
                     .filter(q -> q.getQuest() != null)
                     .filter(q -> targetCategories.contains(q.getQuest().getCategory()))
-                    .filter(q -> LogBookCoreServices.getQuestResource(q.getNo()) == null)
+                    .filter(q -> LogBookCoreServices.getQuestResource(q.getNo(), true) == null) //恒常任務
                     .collect(Collectors.toList());
 
             this.questSelector.setItems(FXCollections.observableArrayList(quests));
