@@ -1,5 +1,6 @@
 package logbook.internal.kancolle;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -23,6 +24,8 @@ import logbook.bean.ShipMst;
 import logbook.bean.Stype;
 import logbook.internal.kancolle.BattleLogs.SimpleBattleLog;
 import logbook.internal.kancolle.MissionLogs.SimpleMissionLog;
+import logbook.internal.logger.LoggerHolder;
+import logbook.internal.util.DateUtil;
 import lombok.Data;
 
 /**
@@ -80,7 +83,7 @@ public class QuestCollect {
     public static QuestCollect collect(AppQuest quest, AppQuestCondition condition) {
         if (condition.getType() == Type.遠征) {
             return missionCollect(quest, condition);
-        } else{
+        } else {
             return battleCollect(quest, condition);
         }
     }
@@ -90,11 +93,26 @@ public class QuestCollect {
         List<SimpleMissionLog> logs = AppQuestDuration.get().getMissionCondition(quest)
                 .orElse(Collections.emptyList());
         collect.setMissions(logs.stream()
+                .filter(log -> {
+                    if (condition.getStartDate() == null)
+                        return true;
+                    try {
+                        boolean isCount = LocalDateTime.parse(log.getDateString(), DateUtil.DATE_FORMAT)
+                                .compareTo(LocalDateTime.parse(condition.getStartDate(), DateUtil.DATE_FORMAT)) >= 0; 
+                        if (LoggerHolder.get().isDebugEnabled()) {
+                            LoggerHolder.get().debug(log.getDateString() + " : " + condition.getStartDate() + " : " + isCount);
+                        }
+                        return isCount;
+                    } catch (Exception e) {
+                        LoggerHolder.get().warn("遠征ログの日付パースエラー: " + log.getDateString(), e);
+                        return false;
+                    }
+                })
                 .filter(log -> !"失敗".equals(log.getResult()))
                 .collect(Collectors.groupingBy(SimpleMissionLog::getName, Collectors.counting())));
         return collect;
     }
-    
+
     private static QuestCollect battleCollect(AppQuest quest, AppQuestCondition condition) {
         QuestCollect collect = new QuestCollect();
         List<SimpleBattleLog> logs = AppQuestDuration.get().getCondition(quest)
