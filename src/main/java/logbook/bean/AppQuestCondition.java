@@ -37,6 +37,9 @@ public class AppQuestCondition implements Predicate<QuestCollect> {
     /** イヤリーのリセット月（イヤリー8月なら8） */
     private Integer yearlyResetMonth;
 
+    /** 任務開始日時 */
+    private String startDate;
+
     /** フィルター条件 */
     private FilterCondition filter;
 
@@ -69,7 +72,7 @@ public class AppQuestCondition implements Predicate<QuestCollect> {
             }
         }
 
-        //期間限定任務条件を上書きするカスタム設定があるなら、カスタム設定を優先する
+        // 期間限定任務条件を上書きするカスタム設定があるなら、カスタム設定を優先する
         try {
             java.nio.file.Path customPath = java.nio.file.Paths.get("./customquest/" + questNo + ".json");
             if (java.nio.file.Files.exists(customPath)) {
@@ -80,8 +83,8 @@ public class AppQuestCondition implements Predicate<QuestCollect> {
         } catch (Exception e) {
             LoggerHolder.get().info("カスタム任務設定ファイルが読み込めませんでした: " + questNo, e);
         }
-        
-        //期間限定任務
+
+        // 期間限定任務
         InputStream eventis = LogBookCoreServices.getQuestResourceAsStream(questNo, false);
         if (eventis != null) {
             try {
