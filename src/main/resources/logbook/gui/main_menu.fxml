@@ -60,7 +60,8 @@
             <MenuItem mnemonicParsing="false" onAction="#resourceChart" text="資材チャート" />
             <MenuItem mnemonicParsing="false" onAction="#expChart" text="経験値チャート" />
             <MenuItem mnemonicParsing="false" onAction="#deck" text="編成記録" />
-            <MenuItem mnemonicParsing="false" onAction="#questConditionEdit" text="任務条件編集" />
+            <MenuItem mnemonicParsing="false" onAction="#questConditionEdit" text="戦闘任務条件編集" />
+            <MenuItem mnemonicParsing="false" onAction="#arsenalQuestConditionEdit" text="工廠任務受領設定" />
             <SeparatorMenuItem mnemonicParsing="false" />
             <MenuItem mnemonicParsing="false" onAction="#config" text="設定">
                    <accelerator>

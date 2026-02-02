@@ -134,11 +134,40 @@ public class QuestPane extends HBox {
             this.detail.setText(quest.getDetail().replaceAll("<br>", ""));
             this.setOnContextMenuRequested(this::showContextMenu);
 
-            if (LogBookCoreServices.getQuestResource(quest.getNo(), true) == null //恒常
-                && LogBookCoreServices.getQuestResource(quest.getNo(), false) == null //期間限定
-                && LogBookCoreServices.getCustomQuestResource(quest.getNo()) == null //カスタム設定
-                ) {
+            if (LogBookCoreServices.getQuestResource(quest.getNo(), true) == null // 恒常
+                    && LogBookCoreServices.getQuestResource(quest.getNo(), false) == null // 期間限定
+                    && LogBookCoreServices.getCustomQuestResource(quest.getNo()) == null // カスタム設定
+            ) {
                 this.condition.setVisible(false);
+            }
+
+            // 工廠任務の備考を表示
+            if (quest.getCategory() == 6) {
+                java.nio.file.Path path = java.nio.file.Paths.get("./arsenalquest/" + quest.getNo() + ".json");
+                if (java.nio.file.Files.exists(path)) {
+                    com.fasterxml.jackson.databind.ObjectMapper mapper = new com.fasterxml.jackson.databind.ObjectMapper();
+                    try {
+                        logbook.bean.ArsenalQuestSetting setting = mapper.readValue(path.toFile(),
+                                logbook.bean.ArsenalQuestSetting.class);
+                        String comment = setting.getComment();
+                        if (comment != null && !comment.isEmpty()) {
+                            Label commentLabel = new Label(comment);
+                            commentLabel.setWrapText(true);
+                            // 備考を少し目立たせる（赤色）
+                            commentLabel.setStyle("-fx-text-fill: red;");
+                            this.infomation.getChildren().add(commentLabel);
+                        }
+                        if (setting.isDiscard()) {
+                            // 背景色を赤系にする（原色の赤以外）
+                            this.setStyle("-fx-background-color: #ffe0e0;");
+                            // 文字色をグレーにする
+                            this.name.setOpacity(0.5);
+                            this.name.setStyle("-fx-text-fill: gray;");
+                        }
+                    } catch (IOException e) {
+                        LoggerHolder.get().warn("工廠任務設定の読み込みに失敗しました", e);
+                    }
+                }
             }
         } catch (Exception e) {
             LoggerHolder.get().error("FXMLの初期化に失敗しました", e);

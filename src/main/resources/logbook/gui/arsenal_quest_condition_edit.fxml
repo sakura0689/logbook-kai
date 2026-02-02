@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="400.0" prefWidth="600.0" spacing="10.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logbook.internal.gui.ArsenalQuestConditionEditController">
+   <children>
+      <VBox spacing="5.0">
+         <children>
+            <Label text="工廠任務" />
+            <ComboBox fx:id="questSelector" prefWidth="550.0" />
+         </children>
+      </VBox>
+      <TitledPane animated="false" collapsible="false" text="受領設定" VBox.vgrow="ALWAYS">
+         <content>
+            <VBox spacing="10.0">
+               <children>
+                  <CheckBox fx:id="discard" mnemonicParsing="false" text="この任務は受領しない" />
+                  <VBox spacing="5.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <Label text="備考" />
+                        <TextArea fx:id="comment" promptText="備考を入力してください" VBox.vgrow="ALWAYS" />
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </content>
+      </TitledPane>
+      <HBox alignment="CENTER_RIGHT" spacing="10.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#save" text="保存" />
+         </children>
+      </HBox>
+   </children>
+</VBox>
