@@ -62,10 +62,13 @@ public class ArsenalQuestConditionEditController extends WindowController {
                 }
             });
 
-            // 工廠任務(Category=6)のみ抽出
+            // 工廠任務(Category=6, 11) を抽出
             List<AppQuest> quests = AppQuestCollection.get().getQuest().values().stream()
                     .filter(q -> q.getQuest() != null)
-                    .filter(q -> q.getQuest().getCategory() == 6)
+                    .filter(q -> {
+                        int cat = q.getQuest().getCategory();
+                        return cat == 6 || cat == 11;
+                    })
                     .collect(Collectors.toList());
 
             this.questSelector.setItems(FXCollections.observableArrayList(quests));
