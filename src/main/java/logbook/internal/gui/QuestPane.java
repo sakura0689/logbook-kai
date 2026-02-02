@@ -142,7 +142,8 @@ public class QuestPane extends HBox {
             }
 
             // 工廠任務の備考を表示
-            if (quest.getCategory() == 6) {
+            int category = quest.getCategory();
+            if (category == 6 || category == 11) {
                 java.nio.file.Path path = java.nio.file.Paths.get("./arsenalquest/" + quest.getNo() + ".json");
                 if (java.nio.file.Files.exists(path)) {
                     com.fasterxml.jackson.databind.ObjectMapper mapper = new com.fasterxml.jackson.databind.ObjectMapper();
