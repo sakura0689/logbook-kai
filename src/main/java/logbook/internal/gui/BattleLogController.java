@@ -15,6 +15,7 @@ import java.util.function.Predicate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.controlsfx.control.CheckComboBox;
 
@@ -94,11 +95,11 @@ public class BattleLogController extends WindowController {
     @FXML
     private TreeTableColumn<BattleLogCollect, String> unit;
 
-    /** 出撃  */
+    /** 出撃 */
     @FXML
     private TreeTableColumn<BattleLogCollect, String> start;
 
-    /** 勝利  */
+    /** 勝利 */
     @FXML
     private TreeTableColumn<BattleLogCollect, String> win;
 
@@ -244,6 +245,16 @@ public class BattleLogController extends WindowController {
     /** 海域短縮名のパターン（1-2など） */
     private static final Pattern AREA_SHORTNAME_PATTERN = Pattern.compile("^([0-9]+)-([0-9]+)$");
 
+    private static final List<String> RANK_ORDER = List.of("S", "A", "B", "C", "D", "E");
+    private static final List<String> INTERCEPT_ORDER = List.of("Ｔ字戦有利", "同航戦", "反航戦", "Ｔ字戦不利");
+    private static final List<String> FORMATION_ORDER = List.of("単縦陣", "複縦陣", "輪形陣", "梯形陣", "単横陣", "警戒陣", "第一警戒航行序列", "第二警戒航行序列", "第三警戒航行序列", "第四警戒航行序列");
+    private static final List<String> DISPSEIKU_ORDER = List.of("制空権確保", "航空優勢", "制空均衡", "航空劣勢", "制空権喪失");
+
+    private static final Comparator<String> RANK_COMPARATOR = createFixedOrderComparator(RANK_ORDER);
+    private static final Comparator<String> INTERCEPT_COMPARATOR = createFixedOrderComparator(INTERCEPT_ORDER);
+    private static final Comparator<String> FORMATION_COMPARATOR = createFixedOrderComparator(FORMATION_ORDER);
+    private static final Comparator<String> DISPSEIKU_COMPARATOR = createFixedOrderComparator(DISPSEIKU_ORDER);
+    
     @FXML
     void initialize() {
         try {
@@ -417,23 +428,24 @@ public class BattleLogController extends WindowController {
 
     private static int getSortOrder(String areaShortName) {
         return Optional.ofNullable(areaShortName)
-            .map(AREA_SHORTNAME_PATTERN::matcher)
-            .filter(Matcher::matches)
-            .map(m -> {
-                try {
-                    int mapArea = Integer.parseInt(m.group(1));
-                    int mapNo = Integer.parseInt(m.group(2));
-                    return mapArea * 1000 + mapNo;
-                } catch (Throwable e) {
-                    // ignore parse error
-                    return null;
-                }
-            })
-            .orElse(Integer.MAX_VALUE);
+                .map(AREA_SHORTNAME_PATTERN::matcher)
+                .filter(Matcher::matches)
+                .map(m -> {
+                    try {
+                        int mapArea = Integer.parseInt(m.group(1));
+                        int mapNo = Integer.parseInt(m.group(2));
+                        return mapArea * 1000 + mapNo;
+                    } catch (Throwable e) {
+                        // ignore parse error
+                        return null;
+                    }
+                })
+                .orElse(Integer.MAX_VALUE);
     }
 
     /**
      * ログをセット
+     * 
      * @param unit 集計単位
      */
     private void addTree(IUnit unit) {
@@ -479,7 +491,7 @@ public class BattleLogController extends WindowController {
             areaValue.setArea(area);
             areaValue.setAreaShortName(name.get2());
             areaValue.setAreaSortOrder(name.get3());
-            
+
             TreeItem<BattleLogCollect> areaRoot = new TreeItem<BattleLogCollect>(areaValue);
 
             // 海域ボス
@@ -526,9 +538,9 @@ public class BattleLogController extends WindowController {
             AppViewConfig.get().setBattleLogConfig(config);
         }
         config.setCustomUnits(this.userUnit.stream()
-                .map(u -> new BattleLogConfig.CustomUnit(u.getFrom().toLocalDate().toEpochDay(), u.getTo().toLocalDate().toEpochDay()))
-                .collect(Collectors.toList())
-        );
+                .map(u -> new BattleLogConfig.CustomUnit(u.getFrom().toLocalDate().toEpochDay(),
+                        u.getTo().toLocalDate().toEpochDay()))
+                .collect(Collectors.toList()));
     }
 
     /**
@@ -577,14 +589,14 @@ public class BattleLogController extends WindowController {
         TreeItem<BattleLogCollect> item = this.collect.getSelectionModel().getSelectedItem();
         if (item != null && this.userUnit.contains(item.getValue().getCollectUnit()) && this.collect.getRoot().getChildren().contains(item)) {
             Tools.Controls.alert(Alert.AlertType.CONFIRMATION, "削除", "集計("+item.getValue().getUnit()+")を削除してよろしいですか？", this.getWindow())
-                .filter(op -> op == ButtonType.OK)
-                .ifPresent(type -> {
-                    this.collect.getRoot().getChildren().remove(item);
-                    IUnit unit = item.getValue().getCollectUnit();
-                    this.userUnit.remove(unit);
-                    this.logMap.remove(unit);
-                    saveConfig();
-                });
+                    .filter(op -> op == ButtonType.OK)
+                    .ifPresent(type -> {
+                        this.collect.getRoot().getChildren().remove(item);
+                        IUnit unit = item.getValue().getCollectUnit();
+                        this.userUnit.remove(unit);
+                        this.logMap.remove(unit);
+                        saveConfig();
+                    });
         }
     }
 
@@ -649,8 +661,8 @@ public class BattleLogController extends WindowController {
      * 右ペインに詳細表示するリスナー
      *
      * @param observable 値が変更されたObservableValue
-     * @param oldValue 古い値
-     * @param value 新しい値
+     * @param oldValue   古い値
+     * @param value      新しい値
      */
     private void detail(ObservableValue<? extends TreeItem<BattleLogCollect>> observable,
             TreeItem<BattleLogCollect> oldValue, TreeItem<BattleLogCollect> value) {
@@ -699,29 +711,93 @@ public class BattleLogController extends WindowController {
             }
             this.filteredDetails.setPredicate(predicate);
         };
-        filterBase.add(this.addFilterColumn(this.detail, this.area, listener, BattleLogDetail::getArea));
-        filterBase.add(this.addFilterColumn(this.detail, this.cell, listener, BattleLogDetail::getCell));
-        filterBase.add(this.addFilterColumn(this.detail, this.boss, listener, BattleLogDetail::getBoss));
-        filterBase.add(this.addFilterColumn(this.detail, this.rank, listener, BattleLogDetail::getRank));
-        filterBase.add(this.addFilterColumn(this.detail, this.intercept, listener, BattleLogDetail::getIntercept));
-        filterBase.add(this.addFilterColumn(this.detail, this.fformation, listener, BattleLogDetail::getFformation));
-        filterBase.add(this.addFilterColumn(this.detail, this.eformation, listener, BattleLogDetail::getEformation));
-        filterBase.add(this.addFilterColumn(this.detail, this.dispseiku, listener, BattleLogDetail::getDispseiku));
-        filterBase.add(this.addFilterColumn(this.detail, this.ftouch, listener, BattleLogDetail::getFtouch));
-        filterBase.add(this.addFilterColumn(this.detail, this.etouch, listener, BattleLogDetail::getEtouch));
-        filterBase.add(this.addFilterColumn(this.detail, this.efleet, listener, BattleLogDetail::getEfleet));
-        filterBase.add(this.addFilterColumn(this.detail, this.dropType, listener, BattleLogDetail::getDropType));
-        filterBase.add(this.addFilterColumn(this.detail, this.dropShip, listener, BattleLogDetail::getDropShip));
-        filterBase.add(this.addFilterColumn(this.detail, this.dropItem, listener, BattleLogDetail::getDropItem));
-        filterBase.add(this.addFilterColumn(this.detail, this.shipExp, listener, BattleLogDetail::getShipExp));
-        filterBase.add(this.addFilterColumn(this.detail, this.exp, listener, BattleLogDetail::getExp));
+        // 海域: 表示を 海域名(ID) に変更し、IDでソート
+        filterBase.add(this.addFilterColumn(this.detail, this.area, listener,
+                d -> {
+                    String a = d.getArea();
+                    String s = d.getAreaShortName();
+                    return (s != null && !s.isEmpty()) ? a + "(" + s + ")" : a;
+                },
+                AREA_COMPARATOR).predicate);
+
+        filterBase.add(this.addFilterColumn(this.detail, this.cell, listener, BattleLogDetail::getCell).predicate);
+        filterBase.add(this.addFilterColumn(this.detail, this.boss, listener, BattleLogDetail::getBoss).predicate);
+
+        // ランク: S, A, B, C, D, E
+        filterBase.add(this.addFilterColumn(this.detail, this.rank, listener, BattleLogDetail::getRank, RANK_COMPARATOR).predicate);
+
+        // 艦隊行動
+        filterBase.add(this.addFilterColumn(this.detail, this.intercept, listener, BattleLogDetail::getIntercept, INTERCEPT_COMPARATOR).predicate);
+
+        // 味方陣形
+        filterBase.add(this.addFilterColumn(this.detail, this.fformation, listener, BattleLogDetail::getFformation, FORMATION_COMPARATOR).predicate);
+
+        // 敵陣形
+        filterBase.add(this.addFilterColumn(this.detail, this.eformation, listener, BattleLogDetail::getEformation, FORMATION_COMPARATOR).predicate);
+
+        // 制空権
+        filterBase.add(this.addFilterColumn(this.detail, this.dispseiku, listener, BattleLogDetail::getDispseiku, DISPSEIKU_COMPARATOR).predicate);
+
+        filterBase.add(this.addFilterColumn(this.detail, this.ftouch, listener, BattleLogDetail::getFtouch).predicate);
+        filterBase.add(this.addFilterColumn(this.detail, this.etouch, listener, BattleLogDetail::getEtouch).predicate);
+        filterBase.add(this.addFilterColumn(this.detail, this.efleet, listener, BattleLogDetail::getEfleet).predicate);
+
+        // ドロップ艦種
+        FilterColumn<BattleLogDetail, String> dropTypeFilter = this.addFilterColumn(this.detail, this.dropType, listener, BattleLogDetail::getDropType);
+        filterBase.add(dropTypeFilter.predicate);
+
+        // ドロップ艦娘
+        FilterColumn<BattleLogDetail, String> dropShipFilter = this.addFilterColumn(this.detail, this.dropShip, listener, BattleLogDetail::getDropShip);
+        filterBase.add(dropShipFilter.predicate);
+
+        filterBase.add(this.addFilterColumn(this.detail, this.dropItem, listener, BattleLogDetail::getDropItem).predicate);
+        filterBase.add(this.addFilterColumn(this.detail, this.shipExp, listener, BattleLogDetail::getShipExp).predicate);
+        filterBase.add(this.addFilterColumn(this.detail, this.exp, listener, BattleLogDetail::getExp).predicate);
+
+        // ドロップ艦種が変更されたらドロップ艦娘の選択肢を更新する
+        dropTypeFilter.comboBox.getCheckModel().getCheckedItems().addListener((ListChangeListener<String>) c -> {
+            ObservableList<String> selectedTypes = dropTypeFilter.comboBox.getCheckModel().getCheckedItems();
+            ObservableList<String> shipItems = dropShipFilter.comboBox.getItems();
+
+            // 現在の選択を保存
+            List<String> currentSelectedShips = new ArrayList<>(dropShipFilter.comboBox.getCheckModel().getCheckedItems());
+
+            shipItems.clear();
+
+            Stream<BattleLogDetail> stream = this.detail.getItems().stream();
+            if (!selectedTypes.isEmpty()) {
+                stream = stream.filter(d -> selectedTypes.contains(d.getDropType()));
+            }
+
+            shipItems.addAll(stream
+                    .map(BattleLogDetail::getDropShip)
+                    .filter(Objects::nonNull)
+                    .distinct()
+                    .sorted()
+                    .collect(Collectors.toList()));
+
+            // 選択を復元（新しいリストに含まれているものだけ）
+            for (String ship : currentSelectedShips) {
+                if (shipItems.contains(ship)) {
+                    dropShipFilter.comboBox.getCheckModel().check(ship);
+                }
+            }
+        });
     }
 
     /**
      * 列をフィルターに追加する
      */
-    private <S, T> Predicate<S> addFilterColumn(TableView<S> table, TableColumn<S, T> column,
+    private <S, T> FilterColumn<S, T> addFilterColumn(TableView<S> table, TableColumn<S, T> column,
             ListChangeListener<Object> listener, Function<S, T> getter) {
+        return this.addFilterColumn(table, column, listener, getter, null);
+    }
+
+    /**
+     * 列をフィルターに追加する
+     */
+    private <S, T> FilterColumn<S, T> addFilterColumn(TableView<S> table, TableColumn<S, T> column,
+            ListChangeListener<Object> listener, Function<S, T> getter, Comparator<T> comparator) {
         VBox box = new VBox();
         box.getChildren().add(new Label(Tools.Tables.getColumnName(column)));
         CheckComboBox<T> comboBox = new CheckComboBox<>();
@@ -731,13 +807,19 @@ public class BattleLogController extends WindowController {
                 return "(空白)";
             return str;
         }));
-        comboBox.getItems().addAll(
-                table.getItems().stream()
-                        .map(column::getCellData)
-                        .filter(Objects::nonNull)
-                        .distinct()
-                        .sorted()
-                        .collect(Collectors.toList()));
+
+        Stream<T> stream = table.getItems().stream()
+                .map(getter)
+                .filter(Objects::nonNull)
+                .distinct();
+
+        if (comparator != null) {
+            stream = stream.sorted(comparator);
+        } else {
+            stream = stream.sorted();
+        }
+
+        comboBox.getItems().addAll(stream.collect(Collectors.toList()));
         box.getChildren().add(comboBox);
         this.filterPane.getChildren().add(box);
 
@@ -748,7 +830,54 @@ public class BattleLogController extends WindowController {
             return comboBox.getCheckModel().getCheckedItems().isEmpty()
                     || comboBox.getCheckModel().getCheckedItems().contains(getter.apply(o));
         };
-        return filter;
+        return new FilterColumn<>(filter, comboBox);
+    }
+
+    /**
+     * フィルターカラム
+     */
+    private static class FilterColumn<S, T> {
+        public final Predicate<S> predicate;
+        public final CheckComboBox<T> comboBox;
+
+        public FilterColumn(Predicate<S> predicate, CheckComboBox<T> comboBox) {
+            this.predicate = predicate;
+            this.comboBox = comboBox;
+        }
+    }
+
+    /**
+     * 順序付きリストのインデックスでソートするComparatorを生成
+     */
+    private static <T> Comparator<T> createFixedOrderComparator(List<T> order) {
+        return (o1, o2) -> {
+            int i1 = order.indexOf(o1);
+            int i2 = order.indexOf(o2);
+            if (i1 == -1)
+                i1 = Integer.MAX_VALUE;
+            if (i2 == -1)
+                i2 = Integer.MAX_VALUE;
+            return Integer.compare(i1, i2);
+        };
+    }
+
+    private static final Comparator<String> AREA_COMPARATOR = (s1, s2) -> {
+        // "鎮守府正面海域(1-1)" -> "1-1"
+        int order1 = extractAreaSortOrder(s1);
+        int order2 = extractAreaSortOrder(s2);
+        return Integer.compare(order1, order2);
+    };
+
+    private static int extractAreaSortOrder(String text) {
+        if (text == null)
+            return Integer.MAX_VALUE;
+        int startIndex = text.lastIndexOf('(');
+        int endIndex = text.lastIndexOf(')');
+        if (startIndex != -1 && endIndex != -1 && startIndex < endIndex) {
+            String shortName = text.substring(startIndex + 1, endIndex);
+            return getSortOrder(shortName);
+        }
+        return Integer.MAX_VALUE;
     }
 
     /**
