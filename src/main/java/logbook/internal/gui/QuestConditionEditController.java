@@ -75,7 +75,7 @@ public class QuestConditionEditController extends WindowController {
             List<AppQuest> quests = AppQuestCollection.get().getQuest().values().stream()
                     .filter(q -> q.getQuest() != null)
                     .filter(q -> targetCategories.contains(q.getQuest().getCategory()))
-                    .filter(q -> LogBookCoreServices.getQuestResource(q.getNo(), true) == null) //恒常任務
+                    .filter(q -> LogBookCoreServices.getQuestResource(q.getNo(), true) == null) // 恒常任務
                     .collect(Collectors.toList());
 
             this.questSelector.setItems(FXCollections.observableArrayList(quests));
@@ -137,6 +137,189 @@ public class QuestConditionEditController extends WindowController {
             this.filterArea.setText("");
             this.fleetConditionsBox.getChildren().clear();
             this.conditionsBox.getChildren().clear();
+
+            // Load existing custom conditions
+            this.loadQuestData(quest);
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    private void loadQuestData(Quest quest) {
+        java.nio.file.Path file = java.nio.file.Paths.get("./customquest/" + quest.getNo() + ".json");
+        if (!java.nio.file.Files.exists(file)) {
+            return;
+        }
+
+        try {
+            com.fasterxml.jackson.databind.ObjectMapper mapper = new com.fasterxml.jackson.databind.ObjectMapper();
+            mapper.enable(com.fasterxml.jackson.core.JsonParser.Feature.ALLOW_COMMENTS);
+
+            // Register MixIns to safely ignore unknown properties or handle specific fields
+            // if necessary
+            // Note: The MixIns defined in this class are abstract and used for writing.
+            // For reading, standard mapping should suffice if the JSON matches the bean
+            // structure.
+
+            logbook.bean.AppQuestCondition condition = mapper.readValue(file.toFile(),
+                    logbook.bean.AppQuestCondition.class);
+
+            if (condition != null) {
+                // ResetType
+                if (condition.getResetType() != null) {
+                    this.resetType.getSelectionModel().select(condition.getResetType());
+                }
+                if (condition.getYearlyResetMonth() != null) {
+                    this.yearlyResetMonth.setText(String.valueOf(condition.getYearlyResetMonth()));
+                }
+
+                // Filter Area
+                // Note: Reconstruct Filter Text from Achievement Conditions to support 7-2-1
+                // etc.
+                // The logic below will handle setting filterArea.setText handles the simple
+                // case if no achievement conditions exist.
+
+                // Reconstruct Filter Text from Achievement Conditions to support 7-2-1 etc.
+                if (condition.getConditions() != null) {
+                    List<String> areas = new java.util.ArrayList<>();
+                    for (logbook.bean.AppQuestCondition.Condition cond : condition.getConditions()) {
+                        if (cond.getArea() != null && !cond.getArea().isEmpty()) {
+                            String area = cond.getArea().iterator().next();
+                            if ("7-2".equals(area)) {
+                                if ("G".equals(cond.getCell())) {
+                                    area = "7-2-1";
+                                } else if ("M".equals(cond.getCell())) {
+                                    area = "7-2-2";
+                                }
+                            } else if ("7-3".equals(area)) {
+                                if ("E".equals(cond.getCell())) {
+                                    area = "7-3-1";
+                                } else if ("P".equals(cond.getCell())) {
+                                    area = "7-3-2";
+                                }
+                            } else if ("7-5".equals(area)) {
+                                if ("K".equals(cond.getCell())) {
+                                    area = "7-5-1";
+                                } else if ("Q".equals(cond.getCell())) {
+                                    area = "7-5-2";
+                                } else if ("T".equals(cond.getCell())) {
+                                    area = "7-5-3";
+                                }
+                            }
+                            areas.add(area);
+                        }
+                    }
+                    String joined = String.join(",", areas);
+                    this.filterArea.setText(joined);
+                }
+
+                // If filterArea is empty but filter.area exists (no conditions case?)
+                if (this.filterArea.getText().isEmpty() && condition.getFilter() != null
+                        && condition.getFilter().getArea() != null) {
+                    this.filterArea.setText(String.join(",", condition.getFilter().getArea()));
+                }
+
+                // Fleet Conditions
+                if (condition.getFilter() != null && condition.getFilter().getFleet() != null) {
+                    logbook.bean.AppQuestCondition.FleetCondition fleet = condition.getFilter().getFleet();
+                    String globalOp = fleet.getOperator(); // AND or OR
+
+                    if (fleet.getConditions() != null) {
+                        for (logbook.bean.AppQuestCondition.FleetCondition sub : fleet.getConditions()) {
+                            this.addFleetCondition(null);
+                            HBox row = (HBox) this.fleetConditionsBox.getChildren()
+                                    .get(this.fleetConditionsBox.getChildren().size() - 1);
+
+                            int idx = 0;
+                            // Logic (Row 2+)
+                            if (this.fleetConditionsBox.getChildren().size() > 1) {
+                                ComboBox<String> logicCombo = (ComboBox<String>) row.getChildren().get(idx++);
+                                logicCombo.getSelectionModel().select("OR".equals(globalOp) ? "または" : "かつ");
+                            }
+
+                            // Type/Name
+                            ComboBox<String> typeCombo = (ComboBox<String>) row.getChildren().get(idx++);
+                            boolean isStype = sub.getStype() != null && !sub.getStype().isEmpty();
+                            typeCombo.getSelectionModel().select(isStype ? "艦種" : "艦名");
+
+                            // Text
+                            TextField tf = (TextField) row.getChildren().get(idx++);
+                            if (isStype) {
+                                tf.setText(String.join(",", sub.getStype()));
+                            } else if (sub.getName() != null) {
+                                tf.setText(String.join(",", sub.getName()));
+                            }
+
+                            // Flagship
+                            if (this.fleetConditionsBox.getChildren().size() == 1) {
+                                CheckBox fs = (CheckBox) row.getChildren().get(idx++);
+                                fs.setSelected(sub.getOrder() != null && sub.getOrder() == 1);
+                            }
+
+                            // Count
+                            TextField cf = (TextField) row.getChildren().get(idx++);
+                            if (sub.getCount() != null) {
+                                cf.setText(String.valueOf(sub.getCount()));
+                            }
+                            idx++; // Unit
+
+                            // Compare
+                            ComboBox<String> opCombo = (ComboBox<String>) row.getChildren().get(idx++);
+                            if (sub.getOperator() != null) {
+                                switch (sub.getOperator()) {
+                                    case "GE":
+                                        opCombo.getSelectionModel().select("以上");
+                                        break;
+                                    case "EQ":
+                                        opCombo.getSelectionModel().select("等しい");
+                                        break;
+                                    case "LE":
+                                        opCombo.getSelectionModel().select("以下");
+                                        break;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                // Achievement Conditions (Rows are already created by filterArea listener)
+                if (condition.getConditions() != null) {
+                    for (int i = 0; i < condition.getConditions().size(); i++) {
+                        if (i >= this.conditionsBox.getChildren().size())
+                            break;
+
+                        logbook.bean.AppQuestCondition.Condition cond = condition.getConditions().get(i);
+                        HBox row = (HBox) this.conditionsBox.getChildren().get(i);
+
+                        // row children: Label(Area), (Label, TextField)?, S, A, B, Count, Label
+                        int idx = 1;
+                        // Check if cell field exists
+                        if (row.getChildren().size() > 6) {
+                            idx++; // Label("マス")
+                            TextField cellField = (TextField) row.getChildren().get(idx++);
+                            if (cond.getCell() != null) {
+                                cellField.setText(cond.getCell());
+                            } else if (cond.getCells() != null && !cond.getCells().isEmpty()) {
+                                cellField.setText(String.join(",", cond.getCells()));
+                            }
+                        }
+
+                        CheckBox s = (CheckBox) row.getChildren().get(idx++);
+                        CheckBox a = (CheckBox) row.getChildren().get(idx++);
+                        CheckBox b = (CheckBox) row.getChildren().get(idx++);
+                        TextField countField = (TextField) row.getChildren().get(idx++);
+
+                        if (cond.getRank() != null) {
+                            s.setSelected(cond.getRank().contains("S"));
+                            a.setSelected(cond.getRank().contains("A"));
+                            b.setSelected(cond.getRank().contains("B"));
+                        }
+                        countField.setText(String.valueOf(cond.getCount()));
+                    }
+                }
+            }
+
+        } catch (Exception e) {
+            LoggerHolder.get().error("カスタム任務設定の読み込みに失敗しました", e);
         }
     }
 
@@ -164,7 +347,33 @@ public class QuestConditionEditController extends WindowController {
                 count.setPrefWidth(50);
                 Label countLabel = new Label("回");
 
-                row.getChildren().addAll(label, checkS, checkA, checkB, count, countLabel);
+                row.getChildren().add(label);
+
+                // マス入力欄を追加 (7-2, 7-3, 7-5)
+                if (val.startsWith("7-2") || val.startsWith("7-3") || val.startsWith("7-5")) {
+                    row.getChildren().add(new Label("マス"));
+                    TextField cellField = new TextField();
+                    cellField.setPrefWidth(40);
+                    // 初期値を設定
+                    if (val.equals("7-2-1")) {
+                        cellField.setText("G");
+                    } else if (val.equals("7-2-2")) {
+                        cellField.setText("M");
+                    } else if (val.equals("7-3-1")) {
+                        cellField.setText("E");
+                    } else if (val.equals("7-3-2")) {
+                        cellField.setText("P");
+                    } else if (val.equals("7-5-1")) {
+                        cellField.setText("K");
+                    } else if (val.equals("7-5-2")) {
+                        cellField.setText("Q");
+                    } else if (val.equals("7-5-3")) {
+                        cellField.setText("T");
+                    }
+                    row.getChildren().add(cellField);
+                }
+
+                row.getChildren().addAll(checkS, checkA, checkB, count, countLabel);
                 this.conditionsBox.getChildren().add(row);
             }
         }
@@ -295,6 +504,7 @@ public class QuestConditionEditController extends WindowController {
         }
     }
 
+    @SuppressWarnings("unchecked")
     @FXML
     void save(javafx.event.ActionEvent e) {
         AppQuest appQuest = this.questSelector.getSelectionModel().getSelectedItem();
@@ -330,6 +540,12 @@ public class QuestConditionEditController extends WindowController {
                         .map(s -> {
                             if ("7-2-1".equals(s) || "7-2-2".equals(s)) {
                                 return "7-2";
+                            }
+                            if ("7-3-1".equals(s) || "7-3-2".equals(s)) {
+                                return "7-3";
+                            }
+                            if ("7-5-1".equals(s) || "7-5-2".equals(s) || "7-5-3".equals(s)) {
+                                return "7-5";
                             }
                             return s;
                         })
@@ -431,12 +647,21 @@ public class QuestConditionEditController extends WindowController {
             // Achievement Conditions
             for (javafx.scene.Node node : this.conditionsBox.getChildren()) {
                 HBox row = (HBox) node;
-                // Label(Area), S, A, B, Count, Label
+                // Label(Area), [Label, TextField]?, S, A, B, Count, Label
                 Label areaLabel = (Label) row.getChildren().get(0);
-                CheckBox s = (CheckBox) row.getChildren().get(1);
-                CheckBox a = (CheckBox) row.getChildren().get(2);
-                CheckBox b = (CheckBox) row.getChildren().get(3);
-                TextField countField = (TextField) row.getChildren().get(4);
+
+                int idx = 1;
+                String cellValue = null;
+                if (row.getChildren().size() > 6) {
+                    idx++; // Label("マス")
+                    TextField cellField = (TextField) row.getChildren().get(idx++);
+                    cellValue = cellField.getText();
+                }
+
+                CheckBox s = (CheckBox) row.getChildren().get(idx++);
+                CheckBox a = (CheckBox) row.getChildren().get(idx++);
+                CheckBox b = (CheckBox) row.getChildren().get(idx++);
+                TextField countField = (TextField) row.getChildren().get(idx++);
 
                 logbook.bean.AppQuestCondition.Condition cond = new logbook.bean.AppQuestCondition.Condition();
                 cond.setBoss(true); // Default
@@ -448,8 +673,34 @@ public class QuestConditionEditController extends WindowController {
                 } else if ("7-2-2".equals(labelText)) {
                     cond.setArea(new java.util.LinkedHashSet<>(Arrays.asList("7-2")));
                     cond.setCell("M");
+                } else if ("7-3-1".equals(labelText)) {
+                    cond.setArea(new java.util.LinkedHashSet<>(Arrays.asList("7-3")));
+                    cond.setCell("E");
+                } else if ("7-3-2".equals(labelText)) {
+                    cond.setArea(new java.util.LinkedHashSet<>(Arrays.asList("7-3")));
+                    cond.setCell("P");
+                } else if ("7-5-1".equals(labelText)) {
+                    cond.setArea(new java.util.LinkedHashSet<>(Arrays.asList("7-5")));
+                    cond.setCell("K");
+                } else if ("7-5-2".equals(labelText)) {
+                    cond.setArea(new java.util.LinkedHashSet<>(Arrays.asList("7-5")));
+                    cond.setCell("Q");
+                } else if ("7-5-3".equals(labelText)) {
+                    cond.setArea(new java.util.LinkedHashSet<>(Arrays.asList("7-5")));
+                    cond.setCell("T");
                 } else {
                     cond.setArea(new java.util.LinkedHashSet<>(Arrays.asList(labelText)));
+                }
+
+                // マス入力を反映 (ユーザー入力を優先)
+                if (cellValue != null && !cellValue.isEmpty()) {
+                    if (cellValue.contains(",")) {
+                        cond.setCells(new java.util.LinkedHashSet<>(Arrays.asList(cellValue.split(","))));
+                        cond.setCell(null);
+                    } else {
+                        cond.setCell(cellValue);
+                        cond.setCells(null);
+                    }
                 }
 
                 java.util.LinkedHashSet<String> ranks = new java.util.LinkedHashSet<>();
