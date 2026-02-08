@@ -15,7 +15,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.TextArea;
 import javafx.util.StringConverter;
+import logbook.constants.StatisticsShipTypeGroup;
 import logbook.bean.AppQuest;
 import logbook.bean.AppQuestCollection;
 import logbook.bean.QuestList.Quest;
@@ -502,6 +506,26 @@ public class QuestConditionEditController extends WindowController {
                 }
             }
         }
+    }
+
+    /**
+     * 艦種一覧を表示
+     *
+     * @param e ActionEvent
+     */
+    @FXML
+    void showShipTypeList(javafx.event.ActionEvent e) {
+        StringBuilder sb = new StringBuilder();
+        for (StatisticsShipTypeGroup group : StatisticsShipTypeGroup.values()) {
+            sb.append(String.join(", ", group.getGroup())).append("\n");
+        }
+
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.initOwner(this.questSelector.getScene().getWindow());
+        alert.setTitle("艦種一覧");
+        alert.setHeaderText("艦種グループに含まれる艦種");
+        alert.getDialogPane().setContent(new TextArea(sb.toString()));
+        alert.showAndWait();
     }
 
     @SuppressWarnings("unchecked")

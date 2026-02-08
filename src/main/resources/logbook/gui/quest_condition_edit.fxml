@@ -47,7 +47,12 @@
                         <TextField fx:id="filterArea" promptText="例: 1-1, 1-2" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
-                  <Label text="艦隊条件" />
+                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                     <children>
+                        <Label text="艦隊条件" />
+                        <Button mnemonicParsing="false" onAction="#showShipTypeList" text="艦種一覧" />
+                     </children>
+                  </HBox>
                   <VBox fx:id="fleetConditionsBox" spacing="5.0" />
                   <Button mnemonicParsing="false" onAction="#addFleetCondition" text="艦隊条件追加" />
                </children>
