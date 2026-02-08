@@ -1,5 +1,8 @@
 package logbook.constants;
 
+import java.util.Arrays;
+import java.util.List;
+
 import logbook.bean.Ship;
 import logbook.bean.Stype;
 import logbook.internal.kancolle.Ships;
@@ -25,12 +28,21 @@ public enum StatisticsShipTypeGroup {
         this.group = shipTypes;
     }
 
+    /**
+     * グループに含まれる艦種を取得します
+     * 
+     * @return 艦種リスト
+     */
+    public List<String> getGroup() {
+        return Arrays.asList(this.group);
+    }
+
     public static StatisticsShipTypeGroup toTypeGroup(Ship ship) {
         Stype stype = Ships.stype(ship).orElse(null);
         if (stype != null) {
             String name = stype.getName();
             for (StatisticsShipTypeGroup group : values()) {
-                for (String v : group.group) {
+                for (String v : group.getGroup()) {
                     if (v.equals(name))
                         return group;
                 }

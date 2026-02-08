@@ -15,7 +15,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.TextArea;
 import javafx.util.StringConverter;
+import logbook.constants.StatisticsShipTypeGroup;
 import logbook.bean.AppQuest;
 import logbook.bean.AppQuestCollection;
 import logbook.bean.QuestList.Quest;
@@ -249,10 +253,18 @@ public class QuestConditionEditController extends WindowController {
                                 tf.setText(String.join(",", sub.getName()));
                             }
 
-                            // Flagship
+                            // Flagship / Second Ship
                             if (this.fleetConditionsBox.getChildren().size() == 1) {
                                 CheckBox fs = (CheckBox) row.getChildren().get(idx++);
                                 fs.setSelected(sub.getOrder() != null && sub.getOrder() == 1);
+                            } else if (this.fleetConditionsBox.getChildren().size() == 2) {
+                                // 2行目で、かつ要素数が足りてる(チェックボックスがある)場合
+                                // Flagshipチェックボックスを追加するかどうかの判定は addFleetCondition で行われているので
+                                // ここでは単に取得してセットする
+                                if (idx < row.getChildren().size() && row.getChildren().get(idx) instanceof CheckBox) {
+                                    CheckBox ss = (CheckBox) row.getChildren().get(idx++);
+                                    ss.setSelected(sub.getOrder() != null && sub.getOrder() == 2);
+                                }
                             }
 
                             // Count
@@ -429,7 +441,7 @@ public class QuestConditionEditController extends WindowController {
         // Type/Name Selector
         ComboBox<String> typeSelector = new ComboBox<>(FXCollections.observableArrayList("艦種", "艦名"));
         typeSelector.getSelectionModel().select("艦種"); // Default
-        typeSelector.setPrefWidth(80);
+        typeSelector.setPrefWidth(70);
         row.getChildren().add(typeSelector);
 
         TextField text = new TextField();
@@ -451,22 +463,58 @@ public class QuestConditionEditController extends WindowController {
 
         row.getChildren().add(text);
 
+        TextField count = new TextField();
+        count.setPrefWidth(30);
+        Label unit = new Label("隻");
+
+        ComboBox<String> compare = new ComboBox<>(FXCollections.observableArrayList("以上", "等しい", "以下"));
+
         // 旗艦チェックボックス (1行目のみ)
+        CheckBox flagship = null;
         if (rowsInfo == 0) {
-            CheckBox flagship = new CheckBox("旗艦");
+            flagship = new CheckBox("旗艦");
             row.getChildren().add(flagship);
+        } else if (rowsInfo == 1) {
+            // 2行目のみ、かつ1行目が旗艦指定の場合に「二番艦」を追加
+            HBox firstRow = (HBox) this.fleetConditionsBox.getChildren().get(0);
+            // 1行目の要素構造: [Type], [Text], [Flagship], [Count], [Unit], [Compare], [Del]
+            // Flagship は index 2 にあるはず
+            if (firstRow.getChildren().size() > 2 && firstRow.getChildren().get(2) instanceof CheckBox) {
+                CheckBox firstFlagship = (CheckBox) firstRow.getChildren().get(2);
+                if (firstFlagship.isSelected()) {
+                    CheckBox secondShip = new CheckBox("二番艦");
+                    row.getChildren().add(secondShip);
+
+                    // 2番艦チェックボックスの制御
+                    secondShip.selectedProperty().addListener((ob, o, n) -> {
+                        this.updateInputControl(n, count, compare);
+                    });
+                    // 隻数入力欄の制御
+                    count.textProperty().addListener((ob, o, n) -> {
+                        this.updateCheckboxControl(n, secondShip);
+                    });
+                }
+            }
         }
 
-        TextField count = new TextField();
-        count.setPrefWidth(50);
-        Label unit = new Label("隻");
         row.getChildren().addAll(count, unit);
 
         // 比較演算子
-        ComboBox<String> compare = new ComboBox<>(FXCollections.observableArrayList("以上", "等しい", "以下"));
         compare.getSelectionModel().select("以上");
         compare.setPrefWidth(80);
         row.getChildren().add(compare);
+
+        // 旗艦チェックボックスの制御
+        if (flagship != null) {
+            CheckBox f = flagship;
+            f.selectedProperty().addListener((ob, o, n) -> {
+                this.updateInputControl(n, count, compare);
+            });
+            // 隻数入力欄の制御
+            count.textProperty().addListener((ob, o, n) -> {
+                this.updateCheckboxControl(n, f);
+            });
+        }
 
         Button remove = new Button("削除");
         remove.setOnAction(ev -> {
@@ -502,6 +550,58 @@ public class QuestConditionEditController extends WindowController {
                 }
             }
         }
+    }
+
+    /**
+     * 入力制御の更新
+     * 
+     * @param selected 選択状態
+     * @param count    隻数入力欄
+     * @param compare  比較演算子
+     */
+    private void updateInputControl(boolean selected, TextField count, ComboBox<String> compare) {
+        if (selected) {
+            count.setText("");
+            count.setDisable(true);
+            compare.setDisable(true);
+        } else {
+            count.setDisable(false);
+            compare.setDisable(false);
+        }
+    }
+
+    /**
+     * 入力制御の更新（隻数入力時）
+     * 
+     * @param text     入力内容
+     * @param checkbox チェックボックス
+     */
+    private void updateCheckboxControl(String text, CheckBox checkbox) {
+        if (text != null && !text.isEmpty()) {
+            checkbox.setDisable(true);
+        } else {
+            checkbox.setDisable(false);
+        }
+    }
+
+    /**
+     * 艦種一覧を表示
+     *
+     * @param e ActionEvent
+     */
+    @FXML
+    void showShipTypeList(javafx.event.ActionEvent e) {
+        StringBuilder sb = new StringBuilder();
+        for (StatisticsShipTypeGroup group : StatisticsShipTypeGroup.values()) {
+            sb.append(String.join(", ", group.getGroup())).append("\n");
+        }
+
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.initOwner(this.questSelector.getScene().getWindow());
+        alert.setTitle("艦種一覧");
+        alert.setHeaderText("艦種グループに含まれる艦種");
+        alert.getDialogPane().setContent(new TextArea(sb.toString()));
+        alert.showAndWait();
     }
 
     @SuppressWarnings("unchecked")
@@ -598,11 +698,15 @@ public class QuestConditionEditController extends WindowController {
                     }
                 }
 
-                // Flagship (Row 1 only)
-                if (i == 0) {
-                    CheckBox fs = (CheckBox) row.getChildren().get(idx++);
-                    if (fs.isSelected()) {
-                        sub.setOrder(1);
+                // Flagship / Second Ship
+                if (idx < row.getChildren().size() && row.getChildren().get(idx) instanceof CheckBox) {
+                    CheckBox cb = (CheckBox) row.getChildren().get(idx++);
+                    if (cb.isSelected()) {
+                        if (i == 0) {
+                            sub.setOrder(1); // Flagship
+                        } else if (i == 1) {
+                            sub.setOrder(2); // Second Ship
+                        }
                     }
                 }
 
