@@ -463,9 +463,16 @@ public class QuestConditionEditController extends WindowController {
 
         row.getChildren().add(text);
 
+        TextField count = new TextField();
+        count.setPrefWidth(30);
+        Label unit = new Label("隻");
+
+        ComboBox<String> compare = new ComboBox<>(FXCollections.observableArrayList("以上", "等しい", "以下"));
+
         // 旗艦チェックボックス (1行目のみ)
+        CheckBox flagship = null;
         if (rowsInfo == 0) {
-            CheckBox flagship = new CheckBox("旗艦");
+            flagship = new CheckBox("旗艦");
             row.getChildren().add(flagship);
         } else if (rowsInfo == 1) {
             // 2行目のみ、かつ1行目が旗艦指定の場合に「二番艦」を追加
@@ -477,20 +484,37 @@ public class QuestConditionEditController extends WindowController {
                 if (firstFlagship.isSelected()) {
                     CheckBox secondShip = new CheckBox("二番艦");
                     row.getChildren().add(secondShip);
+
+                    // 2番艦チェックボックスの制御
+                    secondShip.selectedProperty().addListener((ob, o, n) -> {
+                        this.updateInputControl(n, count, compare);
+                    });
+                    // 隻数入力欄の制御
+                    count.textProperty().addListener((ob, o, n) -> {
+                        this.updateCheckboxControl(n, secondShip);
+                    });
                 }
             }
         }
 
-        TextField count = new TextField();
-        count.setPrefWidth(30);
-        Label unit = new Label("隻");
         row.getChildren().addAll(count, unit);
 
         // 比較演算子
-        ComboBox<String> compare = new ComboBox<>(FXCollections.observableArrayList("以上", "等しい", "以下"));
         compare.getSelectionModel().select("以上");
         compare.setPrefWidth(80);
         row.getChildren().add(compare);
+
+        // 旗艦チェックボックスの制御
+        if (flagship != null) {
+            CheckBox f = flagship;
+            f.selectedProperty().addListener((ob, o, n) -> {
+                this.updateInputControl(n, count, compare);
+            });
+            // 隻数入力欄の制御
+            count.textProperty().addListener((ob, o, n) -> {
+                this.updateCheckboxControl(n, f);
+            });
+        }
 
         Button remove = new Button("削除");
         remove.setOnAction(ev -> {
@@ -525,6 +549,38 @@ public class QuestConditionEditController extends WindowController {
                     }
                 }
             }
+        }
+    }
+
+    /**
+     * 入力制御の更新
+     * 
+     * @param selected 選択状態
+     * @param count    隻数入力欄
+     * @param compare  比較演算子
+     */
+    private void updateInputControl(boolean selected, TextField count, ComboBox<String> compare) {
+        if (selected) {
+            count.setText("");
+            count.setDisable(true);
+            compare.setDisable(true);
+        } else {
+            count.setDisable(false);
+            compare.setDisable(false);
+        }
+    }
+
+    /**
+     * 入力制御の更新（隻数入力時）
+     * 
+     * @param text     入力内容
+     * @param checkbox チェックボックス
+     */
+    private void updateCheckboxControl(String text, CheckBox checkbox) {
+        if (text != null && !text.isEmpty()) {
+            checkbox.setDisable(true);
+        } else {
+            checkbox.setDisable(false);
         }
     }
 
