@@ -253,10 +253,18 @@ public class QuestConditionEditController extends WindowController {
                                 tf.setText(String.join(",", sub.getName()));
                             }
 
-                            // Flagship
+                            // Flagship / Second Ship
                             if (this.fleetConditionsBox.getChildren().size() == 1) {
                                 CheckBox fs = (CheckBox) row.getChildren().get(idx++);
                                 fs.setSelected(sub.getOrder() != null && sub.getOrder() == 1);
+                            } else if (this.fleetConditionsBox.getChildren().size() == 2) {
+                                // 2行目で、かつ要素数が足りてる(チェックボックスがある)場合
+                                // Flagshipチェックボックスを追加するかどうかの判定は addFleetCondition で行われているので
+                                // ここでは単に取得してセットする
+                                if (idx < row.getChildren().size() && row.getChildren().get(idx) instanceof CheckBox) {
+                                    CheckBox ss = (CheckBox) row.getChildren().get(idx++);
+                                    ss.setSelected(sub.getOrder() != null && sub.getOrder() == 2);
+                                }
                             }
 
                             // Count
@@ -433,7 +441,7 @@ public class QuestConditionEditController extends WindowController {
         // Type/Name Selector
         ComboBox<String> typeSelector = new ComboBox<>(FXCollections.observableArrayList("艦種", "艦名"));
         typeSelector.getSelectionModel().select("艦種"); // Default
-        typeSelector.setPrefWidth(80);
+        typeSelector.setPrefWidth(70);
         row.getChildren().add(typeSelector);
 
         TextField text = new TextField();
@@ -459,10 +467,22 @@ public class QuestConditionEditController extends WindowController {
         if (rowsInfo == 0) {
             CheckBox flagship = new CheckBox("旗艦");
             row.getChildren().add(flagship);
+        } else if (rowsInfo == 1) {
+            // 2行目のみ、かつ1行目が旗艦指定の場合に「二番艦」を追加
+            HBox firstRow = (HBox) this.fleetConditionsBox.getChildren().get(0);
+            // 1行目の要素構造: [Type], [Text], [Flagship], [Count], [Unit], [Compare], [Del]
+            // Flagship は index 2 にあるはず
+            if (firstRow.getChildren().size() > 2 && firstRow.getChildren().get(2) instanceof CheckBox) {
+                CheckBox firstFlagship = (CheckBox) firstRow.getChildren().get(2);
+                if (firstFlagship.isSelected()) {
+                    CheckBox secondShip = new CheckBox("二番艦");
+                    row.getChildren().add(secondShip);
+                }
+            }
         }
 
         TextField count = new TextField();
-        count.setPrefWidth(50);
+        count.setPrefWidth(30);
         Label unit = new Label("隻");
         row.getChildren().addAll(count, unit);
 
@@ -622,11 +642,15 @@ public class QuestConditionEditController extends WindowController {
                     }
                 }
 
-                // Flagship (Row 1 only)
-                if (i == 0) {
-                    CheckBox fs = (CheckBox) row.getChildren().get(idx++);
-                    if (fs.isSelected()) {
-                        sub.setOrder(1);
+                // Flagship / Second Ship
+                if (idx < row.getChildren().size() && row.getChildren().get(idx) instanceof CheckBox) {
+                    CheckBox cb = (CheckBox) row.getChildren().get(idx++);
+                    if (cb.isSelected()) {
+                        if (i == 0) {
+                            sub.setOrder(1); // Flagship
+                        } else if (i == 1) {
+                            sub.setOrder(2); // Second Ship
+                        }
                     }
                 }
 
