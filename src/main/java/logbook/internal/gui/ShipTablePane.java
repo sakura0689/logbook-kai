@@ -40,6 +40,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ChoiceDialog;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Labeled;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableCell;
@@ -206,6 +207,14 @@ public class ShipTablePane extends VBox {
     @FXML
     private CheckBox missionValue;
 
+    /** 艦型 */
+    @FXML
+    private ToggleSwitch ctypeFilter;
+
+    /** 艦型 */
+    @FXML
+    private ComboBox<String> ctypeValue;
+
     /** テーブル */
     @FXML
     private TableView<ShipItem> table;
@@ -365,6 +374,9 @@ public class ShipTablePane extends VBox {
     /** パラメータによるフィルター */
     private List<ParameterFilterPane.ShipItemParameterFilterPane> parameterFilters;
 
+    /** 艦型IDと表示名のマップ */
+    private Map<String, Integer> ctypeMap = new HashMap<>();
+
     /**
      * 所有艦娘一覧のテーブルのコンストラクタ
      *
@@ -456,6 +468,9 @@ public class ShipTablePane extends VBox {
             this.missionFilter.selectedProperty().addListener((ob, ov, nv) -> {
                 this.missionValue.setDisable(!nv);
             });
+            this.ctypeFilter.selectedProperty().addListener((ob, ov, nv) -> {
+                this.ctypeValue.setDisable(!nv);
+            });
 
             this.textFilter.selectedProperty().addListener(this::filterAction);
             this.textValue.textProperty().addListener(this::filterAction);
@@ -468,6 +483,8 @@ public class ShipTablePane extends VBox {
             this.slotExValue.selectedProperty().addListener(this::filterAction);
             this.missionFilter.selectedProperty().addListener(this::filterAction);
             this.missionValue.selectedProperty().addListener(this::filterAction);
+            this.ctypeFilter.selectedProperty().addListener(this::filterAction);
+            this.ctypeValue.getSelectionModel().selectedItemProperty().addListener(this::filterAction);
 
             // カラムとオブジェクトのバインド
             this.row.setCellFactory(TableTool.getRowCountCellFactory());
@@ -579,10 +596,63 @@ public class ShipTablePane extends VBox {
                         .map(ShipItem::toShipItem)
                         .collect(Collectors.toList()));
 
+                this.updateCtype();
                 this.updateLabel();
             }
         } catch (Exception e) {
             LoggerHolder.get().error("画面の更新に失敗しました", e);
+        }
+    }
+
+    /**
+     * 艦型の更新
+     */
+    private void updateCtype() {
+        this.ctypeMap.clear();
+        Map<Integer, String> idToName = new HashMap<>();
+
+        // 所有艦娘から艦型IDを集める
+        // 図鑑ID順
+        this.shipItems.stream()
+                .map(ShipItem::getShip)
+                .map(Ships::shipMst)
+                .filter(Optional::isPresent)
+                .map(Optional::get)
+                .filter(mst -> mst.getCtype() != null)
+                .forEach(mst -> {
+                    Integer ctype = mst.getCtype();
+                    if (!idToName.containsKey(ctype)) {
+                        // 艦型IDに対応する名前（代表艦名 + "型"）を生成
+                        String shipName = mst.getName();
+                        int index = shipName.indexOf("改");
+                        if (index > 0) {
+                            shipName = shipName.substring(0, index);
+                        }
+                        String name = ctype + " - " + shipName + "型";
+                        idToName.put(ctype, name);
+                    }
+                });
+
+        // リストを作成し、ID順にソート
+        List<Integer> sortedIds = new ArrayList<>(idToName.keySet());
+        Collections.sort(sortedIds);
+
+        List<String> items = new ArrayList<>();
+        for (Integer id : sortedIds) {
+            String name = idToName.get(id);
+            this.ctypeMap.put(name, id);
+            items.add(name);
+        }
+
+        String current = this.ctypeValue.getValue();
+        this.ctypeValue.getItems().clear();
+        this.ctypeValue.getItems().add(null); // 選択解除用
+        this.ctypeValue.getItems().addAll(items);
+
+        if (current != null && this.ctypeValue.getItems().contains(current)) {
+            this.ctypeValue.setValue(current);
+        } else {
+            this.ctypeValue.setValue(null);
         }
     }
 
@@ -913,6 +983,18 @@ public class ShipTablePane extends VBox {
                     .mission(this.missionValue.isSelected())
                     .build());
         }
+        if (this.ctypeFilter.isSelected()) {
+            Set<Integer> ctypes = new HashSet<>();
+            String selected = this.ctypeValue.getValue();
+            if (selected != null && this.ctypeMap.containsKey(selected)) {
+                ctypes.add(this.ctypeMap.get(selected));
+            }
+            if (!ctypes.isEmpty()) {
+                filter = this.filterAnd(filter, ShipFilter.CtypeFilter.builder()
+                        .ctypes(ctypes)
+                        .build());
+            }
+        }
         return filter;
     }
 
@@ -968,6 +1050,10 @@ public class ShipTablePane extends VBox {
         this.missionFilter.setSelected(config.isMissionEnabled());
         this.missionValue.setSelected(config.isMissionValue());
 
+        // 艦型
+        this.ctypeFilter.setSelected(config.isCtypeEnabled());
+        this.ctypeValue.setValue(config.getCtypeValue());
+
         // フィルターの更新再開
         this.disableFilterUpdate = false;
 
@@ -1017,6 +1103,10 @@ public class ShipTablePane extends VBox {
         // 遠征
         config.setMissionEnabled(this.missionFilter.isSelected());
         config.setMissionValue(this.missionValue.isSelected());
+
+        // 艦型
+        config.setCtypeEnabled(this.ctypeFilter.isSelected());
+        config.setCtypeValue(this.ctypeValue.getValue());
 
         AppShipTableConfig.get()
                 .getTabConfig()
@@ -1313,7 +1403,8 @@ public class ShipTablePane extends VBox {
         private int slotEx;
 
         public static KancolleFleetanalysisItem toItem(Ship ship) {
-            return new KancolleFleetanalysisItem(ship.getShipId(), ship.getLv(), ship.getKyouka(), ship.getExp(), ship.getSlotEx());
+            return new KancolleFleetanalysisItem(ship.getShipId(), ship.getLv(), ship.getKyouka(), ship.getExp(),
+                    ship.getSlotEx());
         }
     }
 }
