@@ -609,10 +609,11 @@ public class ShipTablePane extends VBox {
      */
     private void updateCtype() {
         this.ctypeMap.clear();
-        Map<Integer, String> idToName = new HashMap<>();
 
-        // 所有艦娘から艦型IDを集める
-        // 図鑑ID順
+        // 艦型ID -> その艦型の中でSortIdが最小の艦娘Mst
+        Map<Integer, ShipMst> ctypeToRepresentative = new HashMap<>();
+
+        // 所有艦娘から艦型IDを集め、代表（SortId最小）を選出
         this.shipItems.stream()
                 .map(ShipItem::getShip)
                 .map(Ships::shipMst)
@@ -621,25 +622,32 @@ public class ShipTablePane extends VBox {
                 .filter(mst -> mst.getCtype() != null)
                 .forEach(mst -> {
                     Integer ctype = mst.getCtype();
-                    if (!idToName.containsKey(ctype)) {
-                        // 艦型IDに対応する名前（代表艦名 + "型"）を生成
-                        String shipName = mst.getName();
-                        int index = shipName.indexOf("改");
-                        if (index > 0) {
-                            shipName = shipName.substring(0, index);
-                        }
-                        String name = ctype + " - " + shipName + "型";
-                        idToName.put(ctype, name);
-                    }
+                    ctypeToRepresentative.merge(ctype, mst, (oldMst, newMst) -> {
+                        int oldSort = oldMst.getSortId() != null ? oldMst.getSortId() : Integer.MAX_VALUE;
+                        int newSort = newMst.getSortId() != null ? newMst.getSortId() : Integer.MAX_VALUE;
+                        return oldSort < newSort ? oldMst : newMst;
+                    });
                 });
 
-        // リストを作成し、ID順にソート
-        List<Integer> sortedIds = new ArrayList<>(idToName.keySet());
-        Collections.sort(sortedIds);
+        // ソート用のリスト作成
+        List<ShipMst> sortedMsts = new ArrayList<>(ctypeToRepresentative.values());
+        sortedMsts.sort(Comparator.comparing(ShipMst::getStype, Comparator.nullsLast(Comparator.naturalOrder()))
+                .thenComparing(ShipMst::getCtype, Comparator.nullsLast(Comparator.naturalOrder()))
+                // ctypeが一意なら以降は到達しないが、念のため
+                .thenComparing(mst -> mst.getSortId() != null ? mst.getSortId() : Integer.MAX_VALUE));
 
         List<String> items = new ArrayList<>();
-        for (Integer id : sortedIds) {
-            String name = idToName.get(id);
+        for (ShipMst mst : sortedMsts) {
+            Integer id = mst.getCtype();
+
+            // 艦型IDに対応する名前（代表艦名 + "型"）を生成
+            String shipName = mst.getName();
+            int index = shipName.indexOf("改");
+            if (index > 0) {
+                shipName = shipName.substring(0, index);
+            }
+            String name = id + " - " + shipName + "型";
+
             this.ctypeMap.put(name, id);
             items.add(name);
         }
