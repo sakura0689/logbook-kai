@@ -16,7 +16,7 @@ public class AppShipTableConfig {
 
     /** 開いていたタブ */
     private int tabIndex;
-    
+
     /** タブ別の設定 */
     private Map<String, AppShipTableTabConfig> tabConfig = new LinkedHashMap<>();
 
@@ -62,13 +62,19 @@ public class AppShipTableConfig {
 
         /** 遠征 */
         private boolean missionValue;
+
+        /** 艦型 */
+        private boolean ctypeEnabled;
+
+        /** 艦型 */
+        private String ctypeValue;
     }
 
     /**
      * アプリケーションのデフォルト設定ディレクトリから<code>AppShipTableConfig</code>を取得します、
      * これは次の記述と同等です
      * <blockquote>
-     *     <code>Config.getDefault().get(AppShipTableConfig.class, AppShipTableConfig::new)</code>
+     * <code>Config.getDefault().get(AppShipTableConfig.class, AppShipTableConfig::new)</code>
      * </blockquote>
      *
      * @return <code>AppShipTableConfig</code>

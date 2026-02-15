@@ -114,28 +114,34 @@ public interface ShipFilter extends Predicate<ShipItem> {
             if (ship == null) {
                 return false;
             }
-            
+
             if (this.text.isEmpty()) {
                 return true;
             } else if (this.text.length() == 1 && this.text.matches("^[\\u3040-\\u309F]+$")) {
-                //ひらがな1文字はマッチ対象が多すぎるため検索しない
+                // ひらがな1文字はマッチ対象が多すぎるため検索しない
                 return true;
             }
-            
+
             Map<Integer, SlotItem> itemMap = SlotItemCollection.get()
                     .getSlotitemMap();
             List<Supplier<String>> texts = Arrays.asList(
                     () -> lowerText(Ships.shipMst(ship.getShip()).map(ShipMst::getName).orElse("")),
                     () -> customText(Ships.shipMst(ship.getShip()).map(ShipMst::getYomi).orElse("")),
-                    () -> lowerText(Items.slotitemMst(itemMap.get(ship.getSlot1())).map(SlotitemMst::getName).orElse("")),
-                    () -> lowerText(Items.slotitemMst(itemMap.get(ship.getSlot2())).map(SlotitemMst::getName).orElse("")),
-                    () -> lowerText(Items.slotitemMst(itemMap.get(ship.getSlot3())).map(SlotitemMst::getName).orElse("")),
-                    () -> lowerText(Items.slotitemMst(itemMap.get(ship.getSlot4())).map(SlotitemMst::getName).orElse("")),
-                    () -> lowerText(Items.slotitemMst(itemMap.get(ship.getSlot5())).map(SlotitemMst::getName).orElse("")),
-                    () -> lowerText(Items.slotitemMst(itemMap.get(ship.getSlotEx())).map(SlotitemMst::getName).orElse("")));
-            
+                    () -> lowerText(
+                            Items.slotitemMst(itemMap.get(ship.getSlot1())).map(SlotitemMst::getName).orElse("")),
+                    () -> lowerText(
+                            Items.slotitemMst(itemMap.get(ship.getSlot2())).map(SlotitemMst::getName).orElse("")),
+                    () -> lowerText(
+                            Items.slotitemMst(itemMap.get(ship.getSlot3())).map(SlotitemMst::getName).orElse("")),
+                    () -> lowerText(
+                            Items.slotitemMst(itemMap.get(ship.getSlot4())).map(SlotitemMst::getName).orElse("")),
+                    () -> lowerText(
+                            Items.slotitemMst(itemMap.get(ship.getSlot5())).map(SlotitemMst::getName).orElse("")),
+                    () -> lowerText(
+                            Items.slotitemMst(itemMap.get(ship.getSlotEx())).map(SlotitemMst::getName).orElse("")));
+
             String lowerText = this.text.toLowerCase();
-            
+
             for (Supplier<String> supplier : texts) {
                 if (supplier.get().contains(lowerText)) {
                     return true;
@@ -176,6 +182,23 @@ public interface ShipFilter extends Predicate<ShipItem> {
             return this.mission == DeckPortCollection.get()
                     .getMissionShips()
                     .contains(ship.getId());
+        }
+    }
+
+    @Builder
+    public static class CtypeFilter implements ShipFilter {
+
+        /** 艦型 */
+        private Set<Integer> ctypes;
+
+        @Override
+        public boolean test(ShipItem ship) {
+            if (ship == null)
+                return false;
+            return Ships.shipMst(ship.getShip())
+                    .map(ShipMst::getCtype)
+                    .map(this.ctypes::contains)
+                    .orElse(false);
         }
     }
 }

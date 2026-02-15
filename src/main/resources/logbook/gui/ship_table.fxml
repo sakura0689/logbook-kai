@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuItem?>
@@ -63,6 +64,12 @@
                               </VBox>
                               <VBox fillWidth="false">
                                  <children>
+                                    <ToggleSwitch fx:id="ctypeFilter" prefWidth="0.0" text="艦型" />
+                                    <ComboBox fx:id="ctypeValue" disable="true" prefWidth="150.0" visibleRowCount="30" />
+                                 </children>
+                              </VBox>
+                              <VBox fillWidth="false">
+                                 <children>
                                     <ToggleSwitch fx:id="labelFilter" prefWidth="0.0" text="ラベル" />
                                     <ChoiceBox fx:id="labelValue" disable="true" />
                                  </children>
@@ -79,6 +86,7 @@
                                     <CheckBox fx:id="missionValue" disable="true" mnemonicParsing="false" selected="true" text="遠征中" />
                                  </children>
                               </VBox>
+
                            </children>
                         </FlowPane>
                      </children>
