@@ -18,6 +18,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.scene.control.TableView;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
+import logbook.bean.AppDeck.AppDeckFleet;
+import logbook.bean.AppDeck.AppDeckShip;
 import logbook.bean.Basic;
 import logbook.bean.DeckPortCollection;
 import logbook.bean.Ship;
@@ -57,7 +59,7 @@ public class DeckBuilder {
                 .map(ShipItem::getShip)
                 .collect(Collectors.toList()), null);
     }
-    
+
     /**
      * 選択された基地航空隊の機体リストをクリップボードにコピーする。
      * 艦隊部分は現在の艦隊が入る。
@@ -77,7 +79,7 @@ public class DeckBuilder {
         }
         copyToClipboard(ShipCollection.get().getShipMap().values(), all);
     }
-    
+
     /**
      * 選択された基地航空隊をクリップボードにコピーする。
      * 艦隊部分は現在の艦隊が入る。
@@ -86,10 +88,54 @@ public class DeckBuilder {
      */
     public static void airbaseSelectionCopy(List<AirBase> airbases) {
         List<Airbase> list = IntStream.range(1, 4)
-            .mapToObj(id -> airbases.stream().filter(ab -> ab.getRid() == id).findAny())
-            .map(ab -> ab.map(Airbase::new).orElse(new Airbase()))
-            .collect(Collectors.toList());
+                .mapToObj(id -> airbases.stream().filter(ab -> ab.getRid() == id).findAny())
+                .map(ab -> ab.map(Airbase::new).orElse(new Airbase()))
+                .collect(Collectors.toList());
         copyToClipboard(ShipCollection.get().getShipMap().values(), list);
+    }
+
+    /**
+     * 艦隊リストをデッキビルダー形式のJSONに変換する。
+     *
+     * @param fleets 艦隊リスト
+     * @return JSON
+     */
+    public static String toJson(List<AppDeckFleet> fleets) {
+        Map<String, Object> data = new TreeMap<>();
+        data.put("version", 4);
+        Optional.ofNullable(Basic.get().getLevel()).ifPresent(lv -> data.put("hqlv", lv));
+
+        for (int i = 0; i < fleets.size(); i++) {
+            final int fleetIndex = i + 1;
+            AppDeckFleet fleet = fleets.get(i);
+            Map<String, DeckBuilder.Kanmusu> fleetMap = new TreeMap<>();
+            List<AppDeckShip> ships = fleet.getShips();
+            for (int j = 0; j < ships.size(); j++) {
+                final int shipIndex = j + 1;
+                Optional.ofNullable(ships.get(j))
+                        .map(DeckBuilder.Kanmusu::new)
+                        .ifPresent(kanmusu -> fleetMap.put("s" + shipIndex, kanmusu));
+            }
+            data.put("f" + fleetIndex, fleetMap);
+        }
+
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            return mapper.writeValueAsString(data);
+        } catch (JsonProcessingException e) {
+            return "";
+        }
+    }
+
+    /**
+     * 編成をデッキビルダー形式のJSONに変換する。
+     *
+     * @param fleet 艦隊
+     * @param index 艦隊番号(1-4)
+     * @return JSON
+     */
+    public static String toJson(AppDeckFleet fleet, int index) {
+        return toJson(java.util.Collections.singletonList(fleet));
     }
 
     private static void copyToClipboard(Collection<Ship> ships, List<Airbase> airbase) {
@@ -102,12 +148,12 @@ public class DeckBuilder {
             Map<String, DeckBuilder.Kanmusu> fleet = new TreeMap<>();
             Optional.ofNullable(port.getShip()).ifPresent(list -> {
                 for (int i = 0; i < list.size(); i++) {
-                    final int index = i+1;
+                    final int index = i + 1;
                     Optional.ofNullable(list.get(i))
-                        .filter(targets::contains)
-                        .map(shipsMap::get)
-                        .map(DeckBuilder.Kanmusu::new)
-                        .ifPresent(kanmusu -> fleet.put("s" + index, kanmusu));
+                            .filter(targets::contains)
+                            .map(shipsMap::get)
+                            .map(DeckBuilder.Kanmusu::new)
+                            .ifPresent(kanmusu -> fleet.put("s" + index, kanmusu));
                 }
             });
             data.put("f" + port.getId(), fleet);
@@ -116,11 +162,11 @@ public class DeckBuilder {
             for (int a = 0; a < airbase.size(); a++) {
                 Airbase ab = airbase.get(a);
                 if (ab.getList() != null && ab.getList().size() > 0) {
-                    data.put("a" + (a+1), ab);
+                    data.put("a" + (a + 1), ab);
                     List<AirBaseItem> planes = ab.getList();
                     for (int i = 0; i < planes.size(); i++) {
                         Item item = new Item(planes.get(i));
-                        ab.getItems().put("i" + (i+1), item);
+                        ab.getItems().put("i" + (i + 1), item);
                     }
                 }
             }
@@ -141,13 +187,19 @@ public class DeckBuilder {
         private final int id;
         private final Integer rf;
         private final Integer mas;
-        
+
+        Item(int id, Integer rf) {
+            this.id = id;
+            this.rf = rf;
+            this.mas = null;
+        }
+
         Item(SlotItem item) {
             this.id = item.getSlotitemId();
             this.rf = item.getLevel();
             this.mas = item.getAlv();
         }
-        
+
         Item(AirBaseItem item) {
             this.id = item.getId();
             this.rf = item.getLevel();
@@ -161,7 +213,31 @@ public class DeckBuilder {
         private final int lv;
         private final int luck;
         private Map<String, DeckBuilder.Item> items;
-        
+
+        Kanmusu(AppDeckShip ship) {
+            Integer instanceId = ship.getShipId();
+            Ship currentShip = ShipCollection.get().getShipMap().get(instanceId);
+            this.id = currentShip != null ? currentShip.getShipId() : 0;
+            // AppDeckShipはLvとLuckを持っていないためShip情報から取得する
+            this.lv = currentShip != null ? currentShip.getLv() : 1;
+            this.luck = currentShip != null ? currentShip.getLucky().get(0) : 0;
+            this.items = new TreeMap<>();
+            List<Integer> itemsIds = ship.getItems();
+            List<Integer> itemLvs = ship.getItemLvs();
+            for (int i = 0; i < itemsIds.size(); i++) {
+                Integer itemId = itemsIds.get(i);
+                if (itemId != null) {
+                    final int index = i + 1;
+                    DeckBuilder.Item item = new DeckBuilder.Item(itemId, itemLvs.get(i));
+                    if (index <= 5) {
+                        this.items.put("i" + index, item);
+                    } else {
+                        this.items.put("ix", item);
+                    }
+                }
+            }
+        }
+
         Kanmusu(Ship ship) {
             this.id = ship.getShipId();
             this.lv = ship.getLv();
@@ -169,38 +245,39 @@ public class DeckBuilder {
             this.items = new TreeMap<>();
             Map<Integer, SlotItem> slotitemMap = SlotItemCollection.get().getSlotitemMap();
             Optional.ofNullable(ship.getSlot())
-                .ifPresent(slot -> {
-                    for (int i = 0; i < slot.size(); i++) {
-                        final int index = i+1;
-                        Optional.ofNullable(slot.get(i))
-                            .map(slotitemMap::get)
-                            .map(DeckBuilder.Item::new)
-                            .ifPresent(item -> this.items.put("i"+(index), item));
-                    }
-                });
+                    .ifPresent(slot -> {
+                        for (int i = 0; i < slot.size(); i++) {
+                            final int index = i + 1;
+                            Optional.ofNullable(slot.get(i))
+                                    .map(slotitemMap::get)
+                                    .map(DeckBuilder.Item::new)
+                                    .ifPresent(item -> this.items.put("i" + (index), item));
+                        }
+                    });
             Optional.ofNullable(ship.getSlotEx())
-                .map(slotitemMap::get)
-                .map(DeckBuilder.Item::new)
-                .ifPresent(item -> this.items.put("ix", item));
+                    .map(slotitemMap::get)
+                    .map(DeckBuilder.Item::new)
+                    .ifPresent(item -> this.items.put("ix", item));
         }
     }
-    
+
     @Data
     private static class Airbase {
-        private int mode = 1;     // default
+        private int mode = 1; // default
         private final Map<String, DeckBuilder.Item> items = new TreeMap<>();
         @JsonIgnore
         private List<AirBaseItem> list;
-        
+
         Airbase() {
             this.list = new ArrayList<>();
         }
-        
+
         Airbase(AirBase ab) {
             this.mode = ab.getActionKind();
             if (ab != null && ab.getPlaneInfo() != null) {
                 Map<Integer, SlotItem> map = SlotItemCollection.get().getSlotitemMap();
-                this.list = ab.getPlaneInfo().stream().map(PlaneInfo::getSlotid).map(map::get).map(AirBaseItem::toAirBaseItem).collect(Collectors.toList());
+                this.list = ab.getPlaneInfo().stream().map(PlaneInfo::getSlotid).map(map::get)
+                        .map(AirBaseItem::toAirBaseItem).collect(Collectors.toList());
             }
         }
     }

@@ -92,5 +92,11 @@ public class DeckFleetPane extends VBox {
         this.fleetName.textProperty().addListener((ob, o, n) -> this.modified.set(true));
         // メモの変更を検知
         this.fleetDescription.textProperty().addListener((ob, o, n) -> this.modified.set(true));
+
+        // 子の変更を検知
+        this.modified.addListener((ob, o, n) -> {
+            // 特に何もしない（上位が検知する）
+        });
     }
+
 }

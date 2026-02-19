@@ -48,6 +48,8 @@
                      <children>
                         <TextField fx:id="deckName" promptText="編成名を入力..." styleClass="deckName" />
                         <TilePane fx:id="fleets" prefColumns="2" prefRows="2" VBox.vgrow="ALWAYS" />
+                        <javafx.scene.control.Label text="編成情報(デッキビルダー形式)" />
+                        <javafx.scene.control.TextArea fx:id="deckJson" editable="false" prefHeight="100.0" promptText="編成情報" styleClass="deckJson" wrapText="true" />
                      </children>
                   </VBox>
                </content>
