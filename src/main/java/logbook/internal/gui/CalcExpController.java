@@ -119,6 +119,9 @@ public class CalcExpController extends WindowController {
     @FXML
     private TableColumn<ShortageShipItem, Integer> afterLv;
 
+    @FXML
+    private TableColumn<ShortageShipItem, String> equipments;
+
     /** 艦娘のコンボボックスに表示する */
     private ObservableList<ShipWrapper> ships = FXCollections.observableArrayList();
 
@@ -157,6 +160,7 @@ public class CalcExpController extends WindowController {
         this.ship.setCellFactory(p -> new ShipImageTableCell());
         this.lv.setCellValueFactory(new PropertyValueFactory<>("lv"));
         this.afterLv.setCellValueFactory(new PropertyValueFactory<>("afterLv"));
+        this.equipments.setCellValueFactory(new PropertyValueFactory<>("equipments"));
 
         // 未改装の艦娘
         this.shortageShip.setItems(this.item);
@@ -271,7 +275,7 @@ public class CalcExpController extends WindowController {
                 .orElse(0);
         int goal;
         if ((oldShip != null && !oldShip.getId().equals(newShip.getId())) || afterLv > newShip.getLv()) {
-            goal = Math.min(Math.max(afterLv, newShip.getLv() + 1),  ExpTable.MAX_LEVEL);
+            goal = Math.min(Math.max(afterLv, newShip.getLv() + 1), ExpTable.MAX_LEVEL);
         } else {
             int nowGoalLv = Optional.ofNullable(this.goalLv.getValue()).orElse(0);
             goal = Math.min(Math.max(Math.max(afterLv, newShip.getLv() + 1), nowGoalLv), ExpTable.MAX_LEVEL);
@@ -428,7 +432,7 @@ public class CalcExpController extends WindowController {
      */
     private boolean isOutput(ShortageShipItem ship) {
         if (ship.getAfterLv() > 0) {
-            //未改修運用艦ラベルチェック
+            // 未改修運用艦ラベルチェック
             Set<String> labels = ShipLabelCollection.get().getLabels().get(ship.getId());
             if (labels != null && labels.contains("未改修運用艦")) {
                 return false;
@@ -441,7 +445,7 @@ public class CalcExpController extends WindowController {
         }
         return false;
     }
-    
+
     /**
      * チャートを作る
      */
@@ -492,10 +496,10 @@ public class CalcExpController extends WindowController {
     /**
      * 戦闘で得られる経験値を計算します
      *
-     * @param baseexp 海域Exp
-     * @param eval 評価倍率
+     * @param baseexp    海域Exp
+     * @param eval       評価倍率
      * @param isFlagship 旗艦
-     * @param isMvp MVP
+     * @param isMvp      MVP
      * @return 得られる経験値
      */
     private static int getExp(int baseexp, double eval, boolean isFlagship, boolean isMvp) {
@@ -513,7 +517,7 @@ public class CalcExpController extends WindowController {
      * 必要経験値を1回あたりの経験値で割った数値を計算します。端数は切り上げされます
      *
      * @param needexp 必要経験値
-     * @param exp 1回あたりの経験値
+     * @param exp     1回あたりの経験値
      * @return
      */
     private static int getCount(int needexp, int exp) {
@@ -557,6 +561,7 @@ public class CalcExpController extends WindowController {
 
         /**
          * 艦娘を取得します。
+         * 
          * @return 艦娘
          */
         public Ship getShip() {
