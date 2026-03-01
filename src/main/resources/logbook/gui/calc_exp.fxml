@@ -177,6 +177,7 @@
                         <TableColumn fx:id="ship" prefWidth="260.0" text="艦娘" />
                         <TableColumn fx:id="lv" prefWidth="50.0" text="Lv" />
                         <TableColumn fx:id="afterLv" prefWidth="50.0" text="改装Lv" />
+                        <TableColumn fx:id="equipments" prefWidth="200.0" text="改装取得装備" />
                      </columns>
                   </TableView>
                </children>

@@ -4,6 +4,8 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import logbook.bean.Ship;
 import logbook.bean.ShipMst;
 import logbook.internal.kancolle.Ships;
@@ -26,8 +28,12 @@ public class ShortageShipItem {
     /** 改装Lv */
     private IntegerProperty afterLv = new SimpleIntegerProperty();
 
+    /** 改装取得装備 */
+    private StringProperty equipments = new SimpleStringProperty("");
+
     /**
      * IDを取得します。
+     * 
      * @return ID
      */
     public IntegerProperty idProperty() {
@@ -36,6 +42,7 @@ public class ShortageShipItem {
 
     /**
      * IDを取得します。
+     * 
      * @return ID
      */
     public Integer getId() {
@@ -44,6 +51,7 @@ public class ShortageShipItem {
 
     /**
      * IDを設定します。
+     * 
      * @param id ID
      */
     public void setId(Integer id) {
@@ -52,6 +60,7 @@ public class ShortageShipItem {
 
     /**
      * 艦娘を取得します。
+     * 
      * @return 艦娘
      */
     public ObjectProperty<Ship> shipProperty() {
@@ -60,6 +69,7 @@ public class ShortageShipItem {
 
     /**
      * 艦娘を取得します。
+     * 
      * @return 艦娘
      */
     public Ship getShip() {
@@ -68,6 +78,7 @@ public class ShortageShipItem {
 
     /**
      * 艦娘を設定します。
+     * 
      * @param ship 艦娘
      */
     public void setShip(Ship ship) {
@@ -76,6 +87,7 @@ public class ShortageShipItem {
 
     /**
      * Lvを取得します。
+     * 
      * @return Lv
      */
     public IntegerProperty lvProperty() {
@@ -84,6 +96,7 @@ public class ShortageShipItem {
 
     /**
      * Lvを取得します。
+     * 
      * @return Lv
      */
     public Integer getLv() {
@@ -92,6 +105,7 @@ public class ShortageShipItem {
 
     /**
      * Lvを設定します。
+     * 
      * @param lv Lv
      */
     public void setLv(Integer lv) {
@@ -100,6 +114,7 @@ public class ShortageShipItem {
 
     /**
      * 改装Lvを取得します。
+     * 
      * @return 改装Lv
      */
     public IntegerProperty afterLvProperty() {
@@ -108,6 +123,7 @@ public class ShortageShipItem {
 
     /**
      * 改装Lvを取得します。
+     * 
      * @return 改装Lv
      */
     public Integer getAfterLv() {
@@ -116,10 +132,38 @@ public class ShortageShipItem {
 
     /**
      * 改装Lvを設定します。
+     * 
      * @param afterLv 改装Lv
      */
     public void setAfterLv(Integer afterLv) {
         this.afterLv.set(afterLv);
+    }
+
+    /**
+     * 改装取得装備を取得します。
+     * 
+     * @return 改装取得装備
+     */
+    public StringProperty equipmentsProperty() {
+        return this.equipments;
+    }
+
+    /**
+     * 改装取得装備を取得します。
+     * 
+     * @return 改装取得装備
+     */
+    public String getEquipments() {
+        return this.equipments.get();
+    }
+
+    /**
+     * 改装取得装備を設定します。
+     * 
+     * @param equipments 改装取得装備
+     */
+    public void setEquipments(String equipments) {
+        this.equipments.set(equipments);
     }
 
     /**
@@ -133,7 +177,25 @@ public class ShortageShipItem {
         item.setId(ship.getId());
         item.setShip(ship);
         item.setLv(ship.getLv());
-        item.setAfterLv(Ships.shipMst(ship).map(ShipMst::getAfterlv).orElse(0));
+
+        ShipMst shipMst = Ships.shipMst(ship).orElse(null);
+        item.setAfterLv(shipMst != null && shipMst.getAfterlv() != null ? shipMst.getAfterlv() : 0);
+
+        String equipmentsStr = "";
+        if (shipMst != null && shipMst.getAftershipid() != null && shipMst.getAftershipid() != 0) {
+            java.util.List<Integer> itemIds = Ships.shipItems(shipMst.getAftershipid()).orElse(null);
+            if (itemIds != null && !itemIds.isEmpty()) {
+                java.util.Map<Integer, logbook.bean.SlotitemMst> itemMap = logbook.bean.SlotitemMstCollection.get()
+                        .getSlotitemMap();
+                equipmentsStr = itemIds.stream()
+                        .map(itemMap::get)
+                        .filter(java.util.Objects::nonNull)
+                        .map(logbook.bean.SlotitemMst::getName)
+                        .collect(java.util.stream.Collectors.joining(", "));
+            }
+        }
+        item.setEquipments(equipmentsStr);
+
         return item;
     }
 }

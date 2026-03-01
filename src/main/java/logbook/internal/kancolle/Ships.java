@@ -120,7 +120,7 @@ public class Ships {
         // 大型電探：0.6
         VIEW_COEFFICIENT.put(SlotItemType.大型電探, 0.6D);
         // ソナー：0.6
-        VIEW_COEFFICIENT.put(SlotItemType.ソナー,  0.6D);
+        VIEW_COEFFICIENT.put(SlotItemType.ソナー, 0.6D);
         // 特殊潜航艇：0.6
         VIEW_COEFFICIENT.put(SlotItemType.特殊潜航艇, 0.6D);
         // オートジャイロ：0.6
@@ -223,7 +223,7 @@ public class Ships {
         SLOTITEM_TYPE_TP_MAP.put(SlotItemType.戦闘糧食, 1);
 
         // 装備ごとの兵員輸送TP(E2)
-        SLOTITEM_TYPE_HEIINTPE2_MAP.put(SlotItemMst.大発動艇.getItemid(), 5.2D);        
+        SLOTITEM_TYPE_HEIINTPE2_MAP.put(SlotItemMst.大発動艇.getItemid(), 5.2D);
         SLOTITEM_TYPE_HEIINTPE2_MAP.put(SlotItemMst.大発動艇_八九式中戦車_陸戦隊.getItemid(), 14.2D);
         SLOTITEM_TYPE_HEIINTPE2_MAP.put(SlotItemMst.特大発動艇.getItemid(), 5.2D);
         SLOTITEM_TYPE_HEIINTPE2_MAP.put(SlotItemMst.特大発動艇_戦車第11連隊.getItemid(), 46.2D);
@@ -236,13 +236,13 @@ public class Ships {
         SLOTITEM_TYPE_HEIINTPE2_MAP.put(SlotItemMst.特大発動艇_チハ.getItemid(), 22.2D);
         SLOTITEM_TYPE_HEIINTPE2_MAP.put(SlotItemMst.特大発動艇_チハ改.getItemid(), 28.2D);
         SLOTITEM_TYPE_HEIINTPE2_MAP.put(SlotItemMst.特大発動艇_Ⅲ号戦車J型.getItemid(), 32.2D);
-        
+
         SLOTITEM_TYPE_HEIINTPE2_MAP.put(SlotItemMst.特二式内火艇.getItemid(), 9.3D);
         SLOTITEM_TYPE_HEIINTPE2_MAP.put(SlotItemMst.特四式内火艇.getItemid(), 6.3D);
         SLOTITEM_TYPE_HEIINTPE2_MAP.put(SlotItemMst.特四式内火艇改.getItemid(), 8.3D);
-        
+
         SLOTITEM_TYPE_HEIINTPE2_MAP.put(SlotItemMst.ドラム缶_輸送用.getItemid(), 3.25D);
-        
+
         SLOTITEM_TYPE_HEIINTPE2_MAP.put(SlotItemMst.陸軍歩兵部隊.getItemid(), 15.0D);
         SLOTITEM_TYPE_HEIINTPE2_MAP.put(SlotItemMst.九七式中戦車_チハ.getItemid(), 17.0D);
         SLOTITEM_TYPE_HEIINTPE2_MAP.put(SlotItemMst.九七式中戦車_新砲塔_チハ改.getItemid(), 23.0D);
@@ -253,7 +253,7 @@ public class Ships {
         SLOTITEM_TYPE_HEIINTPE2_MAP.put(SlotItemMst.戦闘糧食_特別なおにぎり.getItemid(), 0.65D);
 
         // 装備ごとの兵員輸送TP(E5)
-        SLOTITEM_TYPE_HEIINTPE5_MAP.put(SlotItemMst.大発動艇.getItemid(), 6.4D);        
+        SLOTITEM_TYPE_HEIINTPE5_MAP.put(SlotItemMst.大発動艇.getItemid(), 6.4D);
         SLOTITEM_TYPE_HEIINTPE5_MAP.put(SlotItemMst.大発動艇_八九式中戦車_陸戦隊.getItemid(), 12.4D);
         SLOTITEM_TYPE_HEIINTPE5_MAP.put(SlotItemMst.特大発動艇.getItemid(), 6.4D);
         SLOTITEM_TYPE_HEIINTPE5_MAP.put(SlotItemMst.特大発動艇_戦車第11連隊.getItemid(), 18.4D);
@@ -266,13 +266,13 @@ public class Ships {
         SLOTITEM_TYPE_HEIINTPE5_MAP.put(SlotItemMst.特大発動艇_チハ.getItemid(), 17.4D);
         SLOTITEM_TYPE_HEIINTPE5_MAP.put(SlotItemMst.特大発動艇_チハ改.getItemid(), 19.4D);
         SLOTITEM_TYPE_HEIINTPE5_MAP.put(SlotItemMst.特大発動艇_Ⅲ号戦車J型.getItemid(), 21.4D);
-        
+
         SLOTITEM_TYPE_HEIINTPE5_MAP.put(SlotItemMst.特二式内火艇.getItemid(), 19.6D);
         SLOTITEM_TYPE_HEIINTPE5_MAP.put(SlotItemMst.特四式内火艇.getItemid(), 16.6D);
         SLOTITEM_TYPE_HEIINTPE5_MAP.put(SlotItemMst.特四式内火艇改.getItemid(), 19.6D);
-        
+
         SLOTITEM_TYPE_HEIINTPE5_MAP.put(SlotItemMst.ドラム缶_輸送用.getItemid(), 4.0D);
-        
+
         SLOTITEM_TYPE_HEIINTPE5_MAP.put(SlotItemMst.陸軍歩兵部隊.getItemid(), 5.0D);
         SLOTITEM_TYPE_HEIINTPE5_MAP.put(SlotItemMst.九七式中戦車_チハ.getItemid(), 8.0D);
         SLOTITEM_TYPE_HEIINTPE5_MAP.put(SlotItemMst.九七式中戦車_新砲塔_チハ改.getItemid(), 10.0D);
@@ -290,8 +290,20 @@ public class Ships {
                 try {
                     ObjectMapper mapper = new ObjectMapper();
                     mapper.enable(Feature.ALLOW_COMMENTS);
-                    Map<String, List<ShipSupplementalInfo>> json = mapper.readValue(is, new TypeReference<Map<String, List<ShipSupplementalInfo>>>() {});
-                    map = Optional.ofNullable(json.get("ships")).map(list -> list.stream().collect(Collectors.toMap(ship -> ship.getId(), ship -> ship)));
+                    com.fasterxml.jackson.databind.JsonNode rootNode = mapper.readTree(is);
+                    List<ShipSupplementalInfo> list = null;
+                    if (rootNode != null) {
+                        if (rootNode.isArray()) {
+                            list = mapper.convertValue(rootNode, new TypeReference<List<ShipSupplementalInfo>>() {
+                            });
+                        } else if (rootNode.has("ships")) {
+                            list = mapper.convertValue(rootNode.get("ships"),
+                                    new TypeReference<List<ShipSupplementalInfo>>() {
+                                    });
+                        }
+                    }
+                    map = Optional.ofNullable(list)
+                            .map(l -> l.stream().collect(Collectors.toMap(ship -> ship.getId(), ship -> ship)));
                 } finally {
                     is.close();
                 }
@@ -376,7 +388,7 @@ public class Ships {
     /**
      * 艦娘が退避状態か判定します
      *
-     * @param ship 退避
+     * @param ship   退避
      * @param escape 退避艦ID
      * @return 退避状態の場合true
      */
@@ -484,9 +496,9 @@ public class Ships {
     /**
      * キャラクターの画像を取得します(装備画像付き)
      *
-     * @param chara キャラクター
+     * @param chara   キャラクター
      * @param itemMap 装備Map
-     * @param escape 退避艦ID
+     * @param escape  退避艦ID
      * @return 艦娘の画像
      * @throws IllegalStateException このメソッドがJavaFXアプリケーション・スレッド以外のスレッドで呼び出された場合
      */
@@ -510,9 +522,9 @@ public class Ships {
     /**
      * キャラクターの画像を取得します(装備画像付き、状態バナー無し)
      *
-     * @param chara キャラクター
+     * @param chara   キャラクター
      * @param itemMap 装備Map
-     * @param escape 退避艦ID
+     * @param escape  退避艦ID
      * @return 艦娘の画像
      * @throws IllegalStateException このメソッドがJavaFXアプリケーション・スレッド以外のスレッドで呼び出された場合
      */
@@ -581,6 +593,20 @@ public class Ships {
                     .get(mst.get().getStype());
         }
         return Optional.ofNullable(stype);
+    }
+
+    /**
+     * 指定された艦船IDの初期装備一覧（ShipSupplementalInfo から）を取得します
+     * 
+     * @param shipId 艦船ID
+     * @return 装備IDのリスト。情報がない場合はOptional.empty()
+     */
+    public static Optional<List<Integer>> shipItems(int shipId) {
+        ShipSupplementalInfo supp = ships.get(shipId);
+        if (supp != null) {
+            return Optional.ofNullable(supp.getItem());
+        }
+        return Optional.empty();
     }
 
     /**
@@ -699,7 +725,7 @@ public class Ships {
      * 制空加算(改修効果)
      *
      * @param itemMst 装備定義
-     * @param item 装備
+     * @param item    装備
      * @return 加算される制空値
      */
     public static double airSuperiorityTykuAdditional(SlotitemMst itemMst, SlotItem item) {
@@ -720,7 +746,7 @@ public class Ships {
      * 制空ボーナス値
      *
      * @param itemMst 装備定義
-     * @param item 装備
+     * @param item    装備
      * @return 制空ボーナス値
      */
     public static double airSuperiorityBonus(SlotitemMst itemMst, SlotItem item) {
@@ -844,7 +870,7 @@ public class Ships {
     /**
      * 判定式(33)
      *
-     * @param ships 艦娘達
+     * @param ships             艦娘達
      * @param branchCoefficient 分岐点係数
      * @return 判定式(33)
      */
@@ -862,7 +888,7 @@ public class Ships {
                     .filter(Objects::nonNull);
         };
 
-        //  索敵スコア＝(装備倍率×装備索敵値)の和＋√(各艦娘の素索敵)の和－[0.4×司令部レベル(端数切り上げ)]＋2×(6－出撃艦数)
+        // 索敵スコア＝(装備倍率×装備索敵値)の和＋√(各艦娘の素索敵)の和－[0.4×司令部レベル(端数切り上げ)]＋2×(6－出撃艦数)
 
         // (装備係数(索敵)×(装備索敵値+改修係数(索敵)×√★))の和
         double itemView = ships.stream()
@@ -899,6 +925,7 @@ public class Ships {
     /**
      * 触接開始率
      * 参考 http://wikiwiki.jp/kancolle/?%B9%D2%B6%F5%C0%EF
+     * 
      * @param ships 艦娘達
      * @return 触接開始率
      */
@@ -951,13 +978,13 @@ public class Ships {
             Integer houm = item.getHoum();
             if (houm != null) {
                 switch (houm) {
-                case 0:
-                case 1:
-                    return 1.12D;
-                case 2:
-                    return 1.17D;
-                default:
-                    return 1.2D;
+                    case 0:
+                    case 1:
+                        return 1.12D;
+                    case 2:
+                        return 1.17D;
+                    default:
+                        return 1.2D;
                 }
             }
         }
@@ -975,9 +1002,9 @@ public class Ships {
                 .getSlotitemMap();
         Map<Integer, SlotitemMst> itemMstMap = SlotitemMstCollection.get()
                 .getSlotitemMap();
-        // 参考 https://wikiwiki.jp/kancolle/%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E6%B5%B7%E5%9F%9F%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88/%E8%BC%B8%E9%80%81%E8%B3%87%E6%BA%90%E9%87%8F%E3%81%AE%E8%A8%88%E7%AE%97_2019%E7%A7%8B
+        // 参考
+        // https://wikiwiki.jp/kancolle/%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E6%B5%B7%E5%9F%9F%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88/%E8%BC%B8%E9%80%81%E8%B3%87%E6%BA%90%E9%87%8F%E3%81%AE%E8%A8%88%E7%AE%97_2019%E7%A7%8B
 
-        
         // 艦娘TP
         int value = shipMst(ship).map(ShipType::toShipType).map(SHIP_TYPE_TP_MAP::get).orElse(0);
         if (ship.getShipId() == 487) {
@@ -1007,9 +1034,9 @@ public class Ships {
     public static Double heiinTransportPointE2(Ship ship) {
         Map<Integer, SlotItem> itemMap = SlotItemCollection.get()
                 .getSlotitemMap();
-        // 参考 https://docs.google.com/spreadsheets/d/1ynon3m-qL7XBtDgi1kOSluVEMUen_zx1a6Bi_f4JTc4/edit?gid=688531952#gid=688531952
+        // 参考
+        // https://docs.google.com/spreadsheets/d/1ynon3m-qL7XBtDgi1kOSluVEMUen_zx1a6Bi_f4JTc4/edit?gid=688531952#gid=688531952
 
-        
         // 艦娘TP
         Double value = shipMst(ship).map(ShipType::toShipType).map(SHIP_TYPE_HEIINTPE2_MAP::get).orElse(0D);
         if (ship.getShipId() == 487) {
@@ -1037,9 +1064,9 @@ public class Ships {
     public static Double heiinTransportPointE5(Ship ship) {
         Map<Integer, SlotItem> itemMap = SlotItemCollection.get()
                 .getSlotitemMap();
-        // 参考 https://docs.google.com/spreadsheets/d/167ccOcDqswVXIq3C1yG_5Twke1PLkw8jz5j7390jd9E/edit?gid=535926345#gid=535926345
+        // 参考
+        // https://docs.google.com/spreadsheets/d/167ccOcDqswVXIq3C1yG_5Twke1PLkw8jz5j7390jd9E/edit?gid=535926345#gid=535926345
 
-        
         // 艦娘TP
         Double value = shipMst(ship).map(ShipType::toShipType).map(SHIP_TYPE_HEIINTPE5_MAP::get).orElse(0D);
         if (ship.getShipId() == 487) {
@@ -1058,7 +1085,6 @@ public class Ships {
         return value;
     }
 
-    
     /**
      * キャラクターの名前を取得します
      *
@@ -1099,16 +1125,16 @@ public class Ships {
         if (soku == null)
             return "";
         switch (soku) {
-        case 0:
-            return "基地";
-        case 5:
-            return "低速";
-        case 10:
-            return "高速";
-        case 15:
-            return "高速+";
-        case 20:
-            return "最速";
+            case 0:
+                return "基地";
+            case 5:
+                return "低速";
+            case 10:
+                return "高速";
+            case 15:
+                return "高速+";
+            case 20:
+                return "最速";
         }
         return "";
     }
@@ -1123,14 +1149,14 @@ public class Ships {
         if (leng == null)
             return "";
         switch (leng) {
-        case 1:
-            return "短";
-        case 2:
-            return "中";
-        case 3:
-            return "長";
-        case 4:
-            return "超長";
+            case 1:
+                return "短";
+            case 2:
+                return "中";
+            case 3:
+                return "長";
+            case 4:
+                return "超長";
         }
         return "";
     }
@@ -1143,20 +1169,20 @@ public class Ships {
      */
     private static int skillLevel(int level) {
         switch (level) {
-        case 1:
-            return 10;
-        case 2:
-            return 25;
-        case 3:
-            return 40;
-        case 4:
-            return 55;
-        case 5:
-            return 70;
-        case 6:
-            return 85;
-        case 7:
-            return 100;
+            case 1:
+                return 10;
+            case 2:
+                return 25;
+            case 3:
+                return 40;
+            case 4:
+                return 55;
+            case 5:
+                return 70;
+            case 6:
+                return 85;
+            case 7:
+                return 100;
         }
         return 0;
     }
@@ -1169,18 +1195,18 @@ public class Ships {
      */
     private static int skillBonus1(int skill) {
         switch (skill) {
-        case 2:
-            return 2;
-        case 3:
-            return 5;
-        case 4:
-            return 9;
-        case 5:
-            return 14;
-        case 6:
-            return 14;
-        case 7:
-            return 22;
+            case 2:
+                return 2;
+            case 3:
+                return 5;
+            case 4:
+                return 9;
+            case 5:
+                return 14;
+            case 6:
+                return 14;
+            case 7:
+                return 22;
         }
         return 0;
     }
@@ -1193,18 +1219,18 @@ public class Ships {
      */
     private static int skillBonus2(int skill) {
         switch (skill) {
-        case 2:
-            return 1;
-        case 3:
-            return 1;
-        case 4:
-            return 1;
-        case 5:
-            return 3;
-        case 6:
-            return 3;
-        case 7:
-            return 6;
+            case 2:
+                return 1;
+            case 3:
+                return 1;
+            case 4:
+                return 1;
+            case 5:
+                return 3;
+            case 6:
+                return 3;
+            case 7:
+                return 6;
         }
         return 0;
     }
@@ -1233,6 +1259,7 @@ public class Ships {
 
     /**
      * キャラクターのHP割合
+     * 
      * @param chara キャラクター
      * @return HP割合
      */
@@ -1269,7 +1296,8 @@ public class Ships {
 
     /**
      * 装備のパラメータを合計する
-     * @param ship 艦娘
+     * 
+     * @param ship   艦娘
      * @param mapper 合計するパラメータを返す mapper
      * @return
      */
@@ -1279,8 +1307,9 @@ public class Ships {
 
     /**
      * 装備のパラメータを合計する
-     * @param ship 艦娘
-     * @param mapper 合計するパラメータを返す mapper
+     * 
+     * @param ship                 艦娘
+     * @param mapper               合計するパラメータを返す mapper
      * @param excludeEmptyAircraft 搭載数が0のスロットを除外するかどうか
      * @return
      */
@@ -1290,21 +1319,21 @@ public class Ships {
         for (int i = 0; i < ship.getSlot().size(); i++) {
             final int index = i;
             Items.slotitemMst(items.get(ship.getSlot().get(i)))
-                .filter(item -> {
-                    if (Items.isAircraft(item) && excludeEmptyAircraft) {
-                        // 航空機なら搭載数が1以上のときのみ加算する
-                        Integer onSlot = (index < ship.getOnslot().size()) ? ship.getOnslot().get(index) : -1;
-                        return onSlot.intValue() > 0;
-                    } else {
-                        // それ以外は常に加算
-                        return true;
-                    }
-                })
-                .ifPresent(list::add);
+                    .filter(item -> {
+                        if (Items.isAircraft(item) && excludeEmptyAircraft) {
+                            // 航空機なら搭載数が1以上のときのみ加算する
+                            Integer onSlot = (index < ship.getOnslot().size()) ? ship.getOnslot().get(index) : -1;
+                            return onSlot.intValue() > 0;
+                        } else {
+                            // それ以外は常に加算
+                            return true;
+                        }
+                    })
+                    .ifPresent(list::add);
         }
         // exslot は航空機が乗らない
         Items.slotitemMst(items.get(ship.getSlotEx())).ifPresent(list::add);
-        
+
         return list.stream()
                 .map(mapper)
                 .mapToInt(i -> i.intValue())
@@ -1313,6 +1342,7 @@ public class Ships {
 
     /**
      * 対潜値（素）を計算します。
+     * 
      * @param ship 艦娘
      * @return 対潜値（素）
      */
@@ -1320,7 +1350,8 @@ public class Ships {
         ShipSupplementalInfo supp = ships.get(ship.getShipId());
         if (supp != null) {
             // 付加情報あり、（Lv99の値 - Lv1の値)*Lv/99 + Lv1の値 + 近代化改修分
-            return (ship.getTaisen().get(1) - supp.getMinTaisen()) * ship.getLv() / 99 + supp.getMinTaisen() + ship.getKyouka().get(6);
+            return (ship.getTaisen().get(1) - supp.getMinTaisen()) * ship.getLv() / 99 + supp.getMinTaisen()
+                    + ship.getKyouka().get(6);
         }
         // 付加情報なし、現在値 - 装備増分
         return ship.getTaisen().get(0) - sumItemParam(ship, SlotitemMst::getTais);
@@ -1328,6 +1359,7 @@ public class Ships {
 
     /**
      * 索敵値（素）を計算します。
+     * 
      * @param ship 艦娘
      * @return 索敵値（素）
      */
@@ -1343,6 +1375,7 @@ public class Ships {
 
     /**
      * 回避値（素）を計算します。
+     * 
      * @param ship 艦娘
      * @return 回避値（素）
      */
@@ -1374,6 +1407,9 @@ public class Ships {
         /** 最小索敵値 */
         @JsonProperty("min_sakuteki")
         private int minSakuteki;
+        /** 装備アイテムリスト */
+        @JsonProperty("item")
+        private List<Integer> item;
     }
 
 }

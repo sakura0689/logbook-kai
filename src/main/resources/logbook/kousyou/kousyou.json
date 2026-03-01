@@ -266,6 +266,9 @@
   }, {
     "SupportShip" : "早霜改二",
     "DayOfWeek" : [ "日", "金", "土" ]
+  }, {
+    "SupportShip" : "早波改二",
+    "DayOfWeek" : [ "日", "月", "火" ]
   } ],
   "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
 }, {
@@ -1133,6 +1136,13 @@
   } ],
   "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
 }, {
+  "SlotItem" : "5inch連装砲 Mk.28 mod.2",
+  "Improvement" : [ {
+    "SupportShip" : "Iowa",
+    "DayOfWeek" : [ "火", "水", "木" ]
+  } ],
+  "AllAvailableDays" : [ "火", "水", "木" ]
+}, {
   "SlotItem" : "53cm連装魚雷",
   "Improvement" : [ {
     "SupportShip" : "神風改",
@@ -1711,8 +1721,14 @@
   }, {
     "SupportShip" : "夕張",
     "DayOfWeek" : [ "火", "水" ]
+  }, {
+    "SupportShip" : "早波",
+    "DayOfWeek" : [ "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "早波改二",
+    "DayOfWeek" : [ "水", "木", "金", "土" ]
   } ],
-  "AllAvailableDays" : [ "日", "火", "水" ]
+  "AllAvailableDays" : [ "日", "火", "水", "木", "金", "土" ]
 }, {
   "SlotItem" : "三式水中探信儀改",
   "Improvement" : [ {
@@ -1724,6 +1740,9 @@
   }, {
     "SupportShip" : "山風改二",
     "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "早波改二",
+    "DayOfWeek" : [ "水", "木", "金", "土" ]
   } ],
   "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
 }, {
@@ -1785,6 +1804,9 @@
   }, {
     "SupportShip" : "大東",
     "DayOfWeek" : [ "日", "金", "土" ]
+  }, {
+    "SupportShip" : "早波改二",
+    "DayOfWeek" : [ "水", "木", "金", "土" ]
   } ],
   "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
 }, {
@@ -1969,7 +1991,7 @@
 }, {
   "SlotItem" : "毘式40mm連装機銃",
   "Improvement" : [ {
-    "SupportShip" : "春雨 大鯨",
+    "SupportShip" : "春雨* 大鯨",
     "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
   }, {
     "SupportShip" : "春雨改二",
@@ -2520,6 +2542,9 @@
     "SupportShip" : "飛龍改二",
     "DayOfWeek" : [ "日", "金", "土" ]
   }, {
+    "SupportShip" : "飛龍改三",
+    "DayOfWeek" : [ "月", "火" ]
+  }, {
     "SupportShip" : "鈴谷航改二",
     "DayOfWeek" : [ "月", "火", "水", "木" ]
   }, {
@@ -2538,6 +2563,9 @@
   "Improvement" : [ {
     "SupportShip" : "熊野航改二",
     "DayOfWeek" : [ "月", "火", "水", "木" ]
+  }, {
+    "SupportShip" : "飛龍改三",
+    "DayOfWeek" : [ "水", "木" ]
   } ],
   "AllAvailableDays" : [ "月", "火", "水", "木" ]
 }, {
@@ -2557,6 +2585,13 @@
     "DayOfWeek" : [ "金", "土" ]
   } ],
   "AllAvailableDays" : [ "金", "土" ]
+}, {
+  "SlotItem" : "震電改二(艦戦型改二)",
+  "Improvement" : [ {
+    "SupportShip" : "飛龍改三",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "金", "土" ]
 }, {
   "SlotItem" : "Bf109T改",
   "Improvement" : [ {
@@ -2960,6 +2995,16 @@
   } ],
   "AllAvailableDays" : [ "日", "木", "金", "土" ]
 }, {
+  "SlotItem" : "天山一二型(友永隊)",
+  "Improvement" : [ {
+    "SupportShip" : "飛龍改二",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  }, {
+    "SupportShip" : "飛龍改三",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "金", "土" ]
+}, {
   "SlotItem" : "流星",
   "Improvement" : [ {
     "SupportShip" : "大鳳",
@@ -2970,6 +3015,13 @@
   "SlotItem" : "流星改",
   "Improvement" : [ {
     "SupportShip" : "大鳳改",
+    "DayOfWeek" : [ "日", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "日", "金", "土" ]
+}, {
+  "SlotItem" : "流星改(友永隊)",
+  "Improvement" : [ {
+    "SupportShip" : "飛龍改三",
     "DayOfWeek" : [ "日", "金", "土" ]
   } ],
   "AllAvailableDays" : [ "日", "金", "土" ]
@@ -3040,6 +3092,12 @@
   "Improvement" : [ {
     "SupportShip" : "蒼龍",
     "DayOfWeek" : [ "日", "月", "火", "水", "木", "金", "土" ]
+  }, {
+    "SupportShip" : "Ark Royal",
+    "DayOfWeek" : [ "金", "土" ]
+  }, {
+    "SupportShip" : "Victorious",
+    "DayOfWeek" : [ "日", "金", "土" ]
   } ],
   "AllAvailableDays" : [ "日", "月", "火", "水", "木", "金", "土" ]
 }, {
@@ -3587,6 +3645,16 @@
     "DayOfWeek" : [ "月", "火", "水" ]
   } ],
   "AllAvailableDays" : [ "月", "火", "水" ]
+}, {
+  "SlotItem" : "試製 震電(局地戦闘機)",
+  "Improvement" : [ {
+    "SupportShip" : "長門改二",
+    "DayOfWeek" : [ "水" ]
+  }, {
+    "SupportShip" : "加賀 改二護",
+    "DayOfWeek" : [ "水", "木", "金", "土" ]
+  } ],
+  "AllAvailableDays" : [ "水", "木", "金", "土" ]
 }, {
   "SlotItem" : "カ号観測機",
   "Improvement" : [ {
