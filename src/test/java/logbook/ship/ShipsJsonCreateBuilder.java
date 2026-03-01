@@ -53,7 +53,8 @@ public class ShipsJsonCreateBuilder {
                             if (item != null) {
                                 String itemName = item.getString("name");
                                 int itemId = item.getInt("id");
-                                itemNameToId.put(itemName, itemId);
+                                String normalizedMasterName = normalizeItemName(itemName);
+                                itemNameToId.put(normalizedMasterName, itemId);
                             }
                         }
                     }
@@ -127,8 +128,10 @@ public class ShipsJsonCreateBuilder {
                                 Integer itemId = itemNameToId.get(normalizedName);
                                 if (itemId != null) {
                                     itemArrayBuilder.add(itemId);
+                                    System.out.println("  Found item: " + itemName + " (Normalized: " + normalizedName
+                                            + ") -> ID: " + itemId);
                                 } else {
-                                    System.err.println("Warning: Item ID not found for " + itemName + " (Normalized: "
+                                    System.err.println("  Warning: Item ID not found for " + itemName + " (Normalized: "
                                             + normalizedName + ")");
                                 }
                             }
@@ -270,14 +273,13 @@ public class ShipsJsonCreateBuilder {
 
                         if (!tds.isEmpty()) {
                             Element itemCell = tds.get(tds.size() - 1);
-                            String item = itemCell.text().trim();
+                            String equipStr = itemCell.text().trim();
 
                             // フィルタリング
-                            if (item.isEmpty() || item.equals("装備不可") || item.equals("-") || item.equals("未装備") ||
-                                    item.equals("編集") || item.equals("追加") || item.contains("対空CI") ||
-                                    item.matches("^[〇×◯？?△□x＋\\+].*") || item.matches("\\*\\d+") ||
-                                    item.contains("変動") || item.contains("なし") || item.contains("（")
-                                    || item.contains("(")) {
+                            if (equipStr.isEmpty() || equipStr.equals("-") || equipStr.equals("未装備") ||
+                                    equipStr.equals("編集") || equipStr.equals("追加") || equipStr.contains("対空CI") ||
+                                    equipStr.matches("^[〇×◯？?△□x＋\\+].*") || equipStr.matches("\\*\\d+") ||
+                                    equipStr.contains("変動") || equipStr.equals("なし") || equipStr.equals("装備不可")) {
                                 continue;
                             }
 
@@ -294,7 +296,7 @@ public class ShipsJsonCreateBuilder {
                                     items.add(aText);
                                 }
                             } else {
-                                items.add(item);
+                                items.add(equipStr);
                             }
                         }
                     }
