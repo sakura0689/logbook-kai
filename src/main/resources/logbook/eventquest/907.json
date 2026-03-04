@@ -1,7 +1,7 @@
 /* [907] 【桃の節句】南西諸島海域、春の戦闘哨戒！ */
 {
     "type": "出撃",
-    "resetType" : "ウィークリー",
+    "resetType" : "単発",
     "filter" : {
         "area": ["2-1", "2-2", "2-3"],
         "fleet": {"stype": ["駆逐艦", "海防艦"], "count": 4, "operator": "GE"}
