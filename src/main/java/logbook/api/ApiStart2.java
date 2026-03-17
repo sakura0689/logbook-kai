@@ -5,8 +5,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import jakarta.json.Json;
 import jakarta.json.JsonArray;
@@ -61,6 +63,36 @@ public class ApiStart2 implements APIListenerSpi {
             this.apiMstMaparea(data.getJsonArray("api_mst_maparea"));
             this.apiMstMapinfo(data.getJsonArray("api_mst_mapinfo"));
             this.store(data);
+            
+            if (LoggerHolder.get().isDebugEnabled()) {
+                Set<String> remainingKeys = new HashSet<>(data.keySet());
+                remainingKeys.remove("api_mst_ship");
+                remainingKeys.remove("api_mst_shipgraph");
+                remainingKeys.remove("api_mst_slotitem_equiptype");
+                remainingKeys.remove("api_mst_stype");
+                remainingKeys.remove("api_mst_slotitem");
+                remainingKeys.remove("api_mst_useitem");
+                remainingKeys.remove("api_mst_mission");
+                remainingKeys.remove("api_mst_maparea");
+                remainingKeys.remove("api_mst_mapinfo");
+                
+                remainingKeys.remove("api_mst_equip_exslot"); //拡張Slot装備可能カテゴリ
+                remainingKeys.remove("api_mst_furniture"); //家具
+                remainingKeys.remove("api_mst_furnituregraph"); //家具
+                remainingKeys.remove("api_mst_bgm"); //BGM
+                remainingKeys.remove("api_mst_mapbgm"); //BGM
+                remainingKeys.remove("api_mst_payitem"); //アイテム屋商品一覧                
+                
+                if (!remainingKeys.isEmpty()) {
+                    for (String key : remainingKeys) {
+                        try {
+                            LoggerHolder.get().debug("未使用key:" + key + " data:" + data.get(key));
+                        } catch (Exception e) {
+                            LoggerHolder.get().debug("未使用key:" + key, e);
+                        }
+                    }
+                }
+            }
         }
         Config.getDefault().store();
     }
