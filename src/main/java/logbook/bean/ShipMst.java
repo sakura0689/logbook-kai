@@ -219,6 +219,12 @@ public class ShipMst implements Serializable {
 
         if (LoggerHolder.get().isDebugEnabled()) {
             Set<String> unUsedKey = unUsedKeyBindListener.getUnusedKeys();
+            unUsedKey.remove("api_backs"); //ドロップ背景
+            unUsedKey.remove("api_getmes"); //ドロップメッセージ
+            unUsedKey.remove("api_broken"); //解体資材
+            unUsedKey.remove("api_buildtime"); //建造時間
+            unUsedKey.remove("api_voicef"); //ボイス設定フラグ
+            
             for (String key : unUsedKey) {
                 LoggerHolder.get().debug("未使用のKeyを検出 : " + key);
             }

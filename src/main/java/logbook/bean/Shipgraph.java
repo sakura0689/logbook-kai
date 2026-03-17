@@ -108,6 +108,8 @@ public class Shipgraph {
 
         if (LoggerHolder.get().isDebugEnabled()) {
             Set<String> unUsedKey = unUsedKeyBindListener.getUnusedKeys();
+            unUsedKey.remove("api_pab"); //僚艦夜戦突撃演出用の座標
+            
             for (String key : unUsedKey) {
                 LoggerHolder.get().debug("未使用のKeyを検出 : " + key);
             }
