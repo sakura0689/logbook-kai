@@ -122,6 +122,9 @@ public class CalcExpController extends WindowController {
     @FXML
     private TableColumn<ShortageShipItem, String> equipments;
 
+    @FXML
+    private TableColumn<ShortageShipItem, String> upgradeMaterials;
+
     /** 艦娘のコンボボックスに表示する */
     private ObservableList<ShipWrapper> ships = FXCollections.observableArrayList();
 
@@ -161,6 +164,7 @@ public class CalcExpController extends WindowController {
         this.lv.setCellValueFactory(new PropertyValueFactory<>("lv"));
         this.afterLv.setCellValueFactory(new PropertyValueFactory<>("afterLv"));
         this.equipments.setCellValueFactory(new PropertyValueFactory<>("equipments"));
+        this.upgradeMaterials.setCellValueFactory(new PropertyValueFactory<>("upgradeMaterials"));
 
         // 未改装の艦娘
         this.shortageShip.setItems(this.item);
