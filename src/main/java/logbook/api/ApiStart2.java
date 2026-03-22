@@ -18,6 +18,8 @@ import jakarta.json.JsonWriter;
 import jakarta.json.JsonWriterFactory;
 import jakarta.json.stream.JsonGenerator;
 import logbook.bean.AppConfig;
+import logbook.bean.EquipExslotShip;
+import logbook.bean.EquipExslotShipCollection;
 import logbook.bean.Maparea;
 import logbook.bean.MapareaCollection;
 import logbook.bean.MapinfoMst;
@@ -28,6 +30,10 @@ import logbook.bean.ShipMst;
 import logbook.bean.ShipMstCollection;
 import logbook.bean.Shipgraph;
 import logbook.bean.ShipgraphCollection;
+import logbook.bean.Shipupgrade;
+import logbook.bean.ShipupgradeCollection;
+import logbook.bean.SlotitemEquipLimitExslotCollection;
+import logbook.bean.SlotitemEquipShipCollection;
 import logbook.bean.SlotitemEquiptype;
 import logbook.bean.SlotitemEquiptypeCollection;
 import logbook.bean.SlotitemMst;
@@ -62,6 +68,10 @@ public class ApiStart2 implements APIListenerSpi {
             this.apiMstMission(data.getJsonArray("api_mst_mission"));
             this.apiMstMaparea(data.getJsonArray("api_mst_maparea"));
             this.apiMstMapinfo(data.getJsonArray("api_mst_mapinfo"));
+            this.apiMstShipupgrade(data.getJsonArray("api_mst_shipupgrade"));
+            this.apiMstEquipLimitExslot(data.getJsonObject("api_mst_equip_limit_exslot"));
+            this.apiMstEquipShip(data.getJsonObject("api_mst_equip_ship"));
+            this.apiMstEquipExslotShip(data.getJsonObject("api_mst_equip_exslot_ship"));
             this.store(data);
             
             if (LoggerHolder.get().isDebugEnabled()) {
@@ -82,6 +92,10 @@ public class ApiStart2 implements APIListenerSpi {
                 remainingKeys.remove("api_mst_bgm"); //BGM
                 remainingKeys.remove("api_mst_mapbgm"); //BGM
                 remainingKeys.remove("api_mst_payitem"); //アイテム屋商品一覧                
+                remainingKeys.remove("api_mst_shipupgrade"); //艦娘特殊改装情報
+                remainingKeys.remove("api_mst_equip_limit_exslot"); //艦娘別補強スロット装備制限
+                remainingKeys.remove("api_mst_equip_ship"); //艦娘別装備制限
+                remainingKeys.remove("api_mst_equip_exslot_ship"); //装備別補強スロット装備追加条件
                 
                 if (!remainingKeys.isEmpty()) {
                     for (String key : remainingKeys) {
@@ -199,9 +213,65 @@ public class ApiStart2 implements APIListenerSpi {
     }
 
     /**
+     * api_data.api_mst_shipupgrade
+     *
+     * @param array api_mst_shipupgrade
+     */
+    private void apiMstShipupgrade(JsonArray array) {
+        if (array != null) {
+            ShipupgradeCollection.get()
+                    .setShipupgradeMap(JsonHelper.toMap(array, Shipupgrade::getId, Shipupgrade::toShipupgrade));
+        }
+    }
+
+    /**
+     * api_data.api_mst_equip_limit_exslot
+     *
+     * @param json api_mst_equip_limit_exslot
+     */
+    private void apiMstEquipLimitExslot(JsonObject json) {
+        if (json != null) {
+            SlotitemEquipLimitExslotCollection.get()
+                    .setShipLimitMap(JsonHelper.toMap(json, Integer::valueOf, JsonHelper::toIntegerSet));
+        }
+    }
+
+    /**
+     * api_data.api_mst_equip_ship
+     *
+     * @param json api_mst_equip_ship
+     */
+    private void apiMstEquipShip(JsonObject json) {
+        if (json != null) {
+            SlotitemEquipShipCollection.get()
+                    .setEquipShipMap(JsonHelper.toMap(json, Integer::valueOf, v -> {
+                        JsonObject obj = (JsonObject) v;
+                        JsonObject equipType = obj.getJsonObject("api_equip_type");
+                        if (equipType != null) {
+                            return JsonHelper.toMap(equipType, Integer::valueOf, JsonHelper::checkedToIntegerList);
+                        }
+                        return Collections.emptyMap();
+                    }));
+        }
+    }
+
+    /**
+     * api_data.api_mst_equip_exslot_ship
+     *
+     * @param json api_mst_equip_exslot_ship
+     */
+    private void apiMstEquipExslotShip(JsonObject json) {
+        if (json != null) {
+            EquipExslotShipCollection.get()
+                    .setEquipExslotShipMap(
+                            JsonHelper.toMap(json, Integer::valueOf, EquipExslotShip::toEquipExslotShip));
+        }
+    }
+
+    /**
      * store
      * 
-     * @param obj api_data
+     * @param root api_data
      */
     private void store(JsonObject root) {
         if (AppConfig.get().isStoreApiStart2()) {
