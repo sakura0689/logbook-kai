@@ -33,26 +33,26 @@ public class Shipupgrade implements Serializable {
     /** api_upgrade_level */
     private Integer upgradeLevel;
 
-    /** api_drawing_count */
-    private Integer drawingCount;
+    /** api_drawing_count 改装設計図 */
+    private Integer drawingCount = 0;
 
-    /** api_catapult_count */
-    private Integer catapultCount;
+    /** api_catapult_count 試製甲板カタパルト */
+    private Integer catapultCount = 0;
 
-    /** api_report_count */
-    private Integer reportCount;
+    /** api_report_count 戦闘詳報 */
+    private Integer reportCount = 0;
 
-    /** api_aviation_mat_count */
-    private Integer aviationMatCount;
+    /** api_aviation_mat_count 新型航空兵装資材 */
+    private Integer aviationMatCount = 0;
 
-    /** api_arms_mat_count */
-    private Integer armsMatCount;
+    /** api_arms_mat_count 新型兵装資材 */
+    private Integer armsMatCount = 0;
 
-    /** api_tech_count */
-    private Integer techCount;
+    /** api_tech_count 海外艦最新技術 */
+    private Integer techCount = 0;
 
-    /** api_boiler_count */
-    private Integer boilerCount;
+    /** api_boiler_count 新型高温高圧缶 */
+    private Integer boilerCount = 0;
 
     /** api_sortno */
     private Integer sortno;

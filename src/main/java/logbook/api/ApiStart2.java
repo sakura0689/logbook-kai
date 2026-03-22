@@ -220,7 +220,7 @@ public class ApiStart2 implements APIListenerSpi {
     private void apiMstShipupgrade(JsonArray array) {
         if (array != null) {
             ShipupgradeCollection.get()
-                    .setShipupgradeMap(JsonHelper.toMap(array, Shipupgrade::getId, Shipupgrade::toShipupgrade));
+                    .setShipupgradeMap(JsonHelper.toMap(array, Shipupgrade::getCurrentShipId, Shipupgrade::toShipupgrade));
         }
     }
 
