@@ -14,7 +14,7 @@ import lombok.Data;
  *
  */
 @Data
-public class Shipupgrade implements Serializable {
+public class ShipUpgrade implements Serializable {
 
     private static final long serialVersionUID = -2428543534571278156L;
 
@@ -58,13 +58,13 @@ public class Shipupgrade implements Serializable {
     private Integer sortno;
 
     /**
-     * JsonObjectから{@link Shipupgrade}を構築します
+     * JsonObjectから{@link ShipUpgrade}を構築します
      *
      * @param json JsonObject
-     * @return {@link Shipupgrade}
+     * @return {@link ShipUpgrade}
      */
-    public static Shipupgrade toShipupgrade(JsonObject json) {
-        Shipupgrade bean = new Shipupgrade();
+    public static ShipUpgrade toShipUpgrade(JsonObject json) {
+        ShipUpgrade bean = new ShipUpgrade();
 
         UnUsedKeyBindListener unUsedKeyBindListener = null;
         if (LoggerHolder.get().isDebugEnabled()) {

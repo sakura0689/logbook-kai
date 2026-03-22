@@ -30,8 +30,8 @@ import logbook.bean.ShipMst;
 import logbook.bean.ShipMstCollection;
 import logbook.bean.Shipgraph;
 import logbook.bean.ShipgraphCollection;
-import logbook.bean.Shipupgrade;
-import logbook.bean.ShipupgradeCollection;
+import logbook.bean.ShipUpgrade;
+import logbook.bean.ShipUpgradeCollection;
 import logbook.bean.SlotitemEquipLimitExslotCollection;
 import logbook.bean.SlotitemEquipShipCollection;
 import logbook.bean.SlotitemEquiptype;
@@ -68,7 +68,7 @@ public class ApiStart2 implements APIListenerSpi {
             this.apiMstMission(data.getJsonArray("api_mst_mission"));
             this.apiMstMaparea(data.getJsonArray("api_mst_maparea"));
             this.apiMstMapinfo(data.getJsonArray("api_mst_mapinfo"));
-            this.apiMstShipupgrade(data.getJsonArray("api_mst_shipupgrade"));
+            this.apiMstShipUpgrade(data.getJsonArray("api_mst_shipupgrade"));
             this.apiMstEquipLimitExslot(data.getJsonObject("api_mst_equip_limit_exslot"));
             this.apiMstEquipShip(data.getJsonObject("api_mst_equip_ship"));
             this.apiMstEquipExslotShip(data.getJsonObject("api_mst_equip_exslot_ship"));
@@ -217,10 +217,10 @@ public class ApiStart2 implements APIListenerSpi {
      *
      * @param array api_mst_shipupgrade
      */
-    private void apiMstShipupgrade(JsonArray array) {
+    private void apiMstShipUpgrade(JsonArray array) {
         if (array != null) {
-            ShipupgradeCollection.get()
-                    .setShipupgradeMap(JsonHelper.toMap(array, Shipupgrade::getCurrentShipId, Shipupgrade::toShipupgrade));
+            ShipUpgradeCollection.get()
+                    .setShipUpgradeMap(JsonHelper.toMap(array, ShipUpgrade::getCurrentShipId, ShipUpgrade::toShipUpgrade));
         }
     }
 
