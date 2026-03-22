@@ -31,6 +31,9 @@ public class ShortageShipItem {
     /** 改装取得装備 */
     private StringProperty equipments = new SimpleStringProperty("");
 
+    /** 改装資材 */
+    private StringProperty upgradeMaterials = new SimpleStringProperty("");
+
     /**
      * IDを取得します。
      * 
@@ -167,6 +170,33 @@ public class ShortageShipItem {
     }
 
     /**
+     * 改装資材を取得します。
+     * 
+     * @return 改装資材
+     */
+    public StringProperty upgradeMaterialsProperty() {
+        return this.upgradeMaterials;
+    }
+
+    /**
+     * 改装資材を取得します。
+     * 
+     * @return 改装資材
+     */
+    public String getUpgradeMaterials() {
+        return this.upgradeMaterials.get();
+    }
+
+    /**
+     * 改装資材を設定します。
+     * 
+     * @param upgradeMaterials 改装資材
+     */
+    public void setUpgradeMaterials(String upgradeMaterials) {
+        this.upgradeMaterials.set(upgradeMaterials);
+    }
+
+    /**
      * 未改装の艦娘テーブルの行を作成します
      *
      * @param ship 艦娘
@@ -195,6 +225,29 @@ public class ShortageShipItem {
             }
         }
         item.setEquipments(equipmentsStr);
+
+        String upgradeMaterialsStr = "";
+        logbook.bean.ShipUpgrade upgrade = logbook.bean.ShipUpgradeCollection.get().getShipUpgradeMap()
+                .get(ship.getShipId());
+        if (upgrade != null) {
+            java.util.StringJoiner sj = new java.util.StringJoiner(", ");
+            if (upgrade.getDrawingCount() > 0)
+                sj.add("改装設計図 " + upgrade.getDrawingCount());
+            if (upgrade.getCatapultCount() > 0)
+                sj.add("試製甲板カタパルト " + upgrade.getCatapultCount());
+            if (upgrade.getReportCount() > 0)
+                sj.add("戦闘詳報 " + upgrade.getReportCount());
+            if (upgrade.getAviationMatCount() > 0)
+                sj.add("新型航空兵装資材 " + upgrade.getAviationMatCount());
+            if (upgrade.getArmsMatCount() > 0)
+                sj.add("新型兵装資材 " + upgrade.getArmsMatCount());
+            if (upgrade.getTechCount() > 0)
+                sj.add("海外艦最新技術 " + upgrade.getTechCount());
+            if (upgrade.getBoilerCount() > 0)
+                sj.add("新型高温高圧缶 " + upgrade.getBoilerCount());
+            upgradeMaterialsStr = sj.toString();
+        }
+        item.setUpgradeMaterials(upgradeMaterialsStr);
 
         return item;
     }
