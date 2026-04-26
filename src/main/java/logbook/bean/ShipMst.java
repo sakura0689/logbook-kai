@@ -226,7 +226,7 @@ public class ShipMst implements Serializable {
             unUsedKey.remove("api_voicef"); //ボイス設定フラグ
             
             for (String key : unUsedKey) {
-                LoggerHolder.get().debug("未使用のKeyを検出 : " + key);
+                LoggerHolder.get().debug("未使用のKeyを検出 : " + key + ":" + json.get(key));
             }
         }
 

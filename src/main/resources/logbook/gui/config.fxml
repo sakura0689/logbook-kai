@@ -290,6 +290,7 @@
                               <RowConstraints prefHeight="30.0" vgrow="SOMETIMES" />
                               <RowConstraints prefHeight="30.0" vgrow="SOMETIMES" />
                               <RowConstraints prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
                               <CheckBox fx:id="connectionClose" mnemonicParsing="false" text="通信エラーの抑止(Connection: closeヘッダを追加)*" GridPane.columnSpan="2147483647" />
@@ -305,6 +306,7 @@
                               <CheckBox fx:id="storeApiStart2" mnemonicParsing="false" onAction="#storeApiStart2" text="api_start2" GridPane.rowIndex="7" />
                               <TextField fx:id="storeApiStart2Dir" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                               <Button fx:id="storeApiStart2DirRef" mnemonicParsing="false" onAction="#selectApiStart2Dir" text="参照..." GridPane.columnIndex="2" GridPane.rowIndex="7" />
+                              <CheckBox fx:id="performanceLog" mnemonicParsing="false" text="パフォーマンスログ出力" GridPane.columnSpan="2147483647" GridPane.rowIndex="8" />
                            </children>
                         </GridPane>
                      </children>

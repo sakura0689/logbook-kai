@@ -304,6 +304,10 @@ public class ConfigController extends WindowController {
     @FXML
     private TextField proxyHost;
 
+    /** パフォーマンスログ出力 */
+    @FXML
+    private CheckBox performanceLog;
+
     @FXML
     private CheckBox storeInternal;
 
@@ -468,6 +472,7 @@ public class ConfigController extends WindowController {
         this.useProxy.setSelected(conf.isUseProxy());
         this.proxyPort.setText(Integer.toString(conf.getProxyPort()));
         this.proxyHost.setText(conf.getProxyHost());
+        this.performanceLog.setSelected(conf.isPerformanceLog());
         this.ffmpegPath.setText(conf.getFfmpegPath());
         this.setFFmpegTemplate();
         this.ffmpegArgs.setText(conf.getFfmpegArgs());
@@ -590,6 +595,7 @@ public class ConfigController extends WindowController {
         conf.setUseProxy(this.useProxy.isSelected());
         conf.setProxyHost(this.proxyHost.getText());
         conf.setProxyPort(this.toInt(this.proxyPort.getText()));
+        conf.setPerformanceLog(this.performanceLog.isSelected());
         conf.setStoreApiStart2(this.storeApiStart2.isSelected());
         conf.setStoreApiStart2Dir(this.storeApiStart2Dir.getText());
         

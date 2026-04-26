@@ -34,6 +34,8 @@ public class RequestMetaDataWrapper implements RequestMetaData, Cloneable {
 
     private Optional<InputStream> requestBody;
 
+    private Map<String, String> headers;
+
     @Override
     public String getContentType() {
         return this.contentType;
@@ -88,11 +90,33 @@ public class RequestMetaDataWrapper implements RequestMetaData, Cloneable {
         this.requestBody = requestBody;
     }
 
+    @Override
+    public Optional<String> getHeader(String name) {
+        if (this.headers != null && name != null) {
+            return Optional.ofNullable(this.headers.get(name.toLowerCase()));
+        }
+        return Optional.empty();
+    }
+
+    public void setHeaders(Map<String, String> headers) {
+        this.headers = headers;
+    }
+
     public void set(HttpServletRequest req) {
         this.setContentType(req.getContentType());
         this.setMethod(req.getMethod().toString());
         this.setQueryString(req.getQueryString());
         this.setRequestURI(req.getRequestURI());
+        
+        Map<String, String> headerMap = new LinkedHashMap<>();
+        java.util.Enumeration<String> headerNames = req.getHeaderNames();
+        if (headerNames != null) {
+            while (headerNames.hasMoreElements()) {
+                String headerName = headerNames.nextElement();
+                headerMap.put(headerName.toLowerCase(), req.getHeader(headerName));
+            }
+        }
+        this.setHeaders(headerMap);
     }
 
     public void set(InputStream body) {
@@ -136,6 +160,9 @@ public class RequestMetaDataWrapper implements RequestMetaData, Cloneable {
         clone.setRequestURI(this.getRequestURI());
         clone.setParameterMap(this.getParameterMap());
         clone.setRequestBody(this.getRequestBody());
+        if (this.headers != null) {
+            clone.setHeaders(new LinkedHashMap<>(this.headers));
+        }
         return clone;
     }
 }

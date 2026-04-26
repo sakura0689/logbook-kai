@@ -70,4 +70,11 @@ public interface RequestMetaData {
      * @return リクエストに含まれるメッセージボディ
      */
     Optional<InputStream> getRequestBody();
+
+    /**
+     * リクエストのヘッダーを返します
+     * @param name ヘッダー名
+     * @return ヘッダーの値
+     */
+    Optional<String> getHeader(String name);
 }
