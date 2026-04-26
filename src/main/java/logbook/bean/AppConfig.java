@@ -133,6 +133,12 @@ public final class AppConfig implements Serializable {
     /** 起動時にアップデートチェック */
     private boolean checkUpdate = true;
 
+    /** パフォーマンスログ出力 */
+    private boolean performanceLog = false;
+
+    /** パフォーマンスログ出力先ディレクトリ */
+    private String performanceDir = "performancelog";
+
     /** 通信エラーの抑止 */
     private boolean connectionClose = true;
 
