@@ -26,4 +26,11 @@ public interface ResponseMetaData {
      * @return レスポンスに含まれるメッセージボディ
      */
     Optional<InputStream> getResponseBody();
+
+    /**
+     * レスポンスのヘッダーを返します
+     * @param name ヘッダー名
+     * @return ヘッダーの値
+     */
+    Optional<String> getHeader(String name);
 }

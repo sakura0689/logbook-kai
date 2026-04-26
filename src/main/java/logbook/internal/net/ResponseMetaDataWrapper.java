@@ -21,6 +21,8 @@ public class ResponseMetaDataWrapper implements ResponseMetaData, Cloneable {
 
     private Optional<InputStream> responseBody;
 
+    private java.util.Map<String, String> headers;
+
     @Override
     public int getStatus() {
         return this.status;
@@ -48,9 +50,30 @@ public class ResponseMetaDataWrapper implements ResponseMetaData, Cloneable {
         this.responseBody = responseBody;
     }
 
+    @Override
+    public Optional<String> getHeader(String name) {
+        if (this.headers != null && name != null) {
+            return Optional.ofNullable(this.headers.get(name.toLowerCase()));
+        }
+        return Optional.empty();
+    }
+
+    public void setHeaders(java.util.Map<String, String> headers) {
+        this.headers = headers;
+    }
+
     public void set(HttpServletResponse res) {
         this.setStatus(res.getStatus());
         this.setContentType(res.getContentType());
+        
+        java.util.Map<String, String> headerMap = new java.util.LinkedHashMap<>();
+        java.util.Collection<String> headerNames = res.getHeaderNames();
+        if (headerNames != null) {
+            for (String headerName : headerNames) {
+                headerMap.put(headerName.toLowerCase(), res.getHeader(headerName));
+            }
+        }
+        this.setHeaders(headerMap);
     }
 
     public void set(InputStream body) throws IOException {
@@ -63,6 +86,9 @@ public class ResponseMetaDataWrapper implements ResponseMetaData, Cloneable {
         clone.setStatus(this.getStatus());
         clone.setContentType(this.getContentType());
         clone.setResponseBody(this.getResponseBody());
+        if (this.headers != null) {
+            clone.setHeaders(new java.util.LinkedHashMap<>(this.headers));
+        }
         return clone;
     }
 
