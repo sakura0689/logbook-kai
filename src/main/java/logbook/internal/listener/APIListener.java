@@ -48,7 +48,7 @@ public final class APIListener implements ContentListenerSpi {
 
     /** 全てのURLで実行される設定がされているフラグ */
     private final boolean isAllEventExec;
-    
+
     public APIListener() {
         Function<APIListenerSpi, Stream<Pair<String, APIListenerSpi>>> mapper = impl -> {
             API target = impl.getClass().getAnnotation(API.class);
@@ -65,7 +65,7 @@ public final class APIListener implements ContentListenerSpi {
                 .flatMap(mapper)
                 .collect(Collectors.groupingBy(Pair::getKey));
         this.isDebugEnabled = LoggerHolder.get().isDebugEnabled();
-        
+
         if (this.isDebugEnabled) {
             LoggerHolder.get().debug("APIListener initialize done");
             LoggerHolder.get().debug("targetEventExec設定情報");
@@ -96,7 +96,7 @@ public final class APIListener implements ContentListenerSpi {
     /**
      * レスポンスを処理します
      * 
-     * @param requestMetaData リクエストに含まれている情報
+     * @param requestMetaData  リクエストに含まれている情報
      * @param responseMetaData レスポンスに含まれている情報
      */
     @Override
@@ -150,7 +150,7 @@ public final class APIListener implements ContentListenerSpi {
 
     void send(RequestMetaData req, ResponseMetaData res, JsonObject json) {
         String uri = req.getRequestURI();
-        
+
         List<Pair<String, APIListenerSpi>> pairs = this.targetEventExec.getOrDefault(uri, Collections.emptyList());
         for (Pair<String, APIListenerSpi> pair : pairs) {
             Runnable task = () -> this.createTask(pair, json, req, res);
@@ -163,17 +163,127 @@ public final class APIListener implements ContentListenerSpi {
         }
     }
 
+    /**
+     * APIアノテーションで設定されたURLにマッチする、各APIListenerSpiを実行します
+     * 
+     * <pre>
+     * &#64;API("/kcsapi/url/url")
+     * public class ApiImplementsClass implements APIListenerSpi
+     * </pre>
+     * 
+     * @param pair
+     * @param json
+     * @param req
+     * @param res
+     */
     private void createTask(Pair<String, APIListenerSpi> pair, JsonObject json, RequestMetaData req,
             ResponseMetaData res) {
         try {
+            long start = System.currentTimeMillis();
             if (this.isDebugEnabled) {
                 String className = pair.getValue().getClass().getName();
                 LoggerHolder.get().debug(Messages.getString("APIListener.0", className, req.getRequestURI()));
             }
+
+            // 処理実行
             pair.getValue().accept(json, req, res);
+
+            long end = System.currentTimeMillis();
+
+            boolean isPerfLog = logbook.bean.AppConfig.get().isPerformanceLog();
+            if (this.isDebugEnabled || isPerfLog) {
+                PerformanceMetrics metrics = this.getPerformanceMetrics(req, res, start, end);
+                if (this.isDebugEnabled) {
+                    this.writeDebugLog(metrics);
+                }
+                if (isPerfLog) {
+                    this.writePerformanceLog(metrics);
+                }
+            }
         } catch (Exception e) {
             LoggerHolder.get().warn(Messages.getString("APIListener.1"), e); //$NON-NLS-1$
             LoggerHolder.get().warn(json.toString());
         }
+    }
+
+    private PerformanceMetrics getPerformanceMetrics(RequestMetaData req, ResponseMetaData res, long start, long end) {
+        PerformanceMetrics metrics = new PerformanceMetrics();
+        metrics.uri = req.getRequestURI();
+        metrics.receivedat = req.getHeader("x-koukainissikai-receivedat").map(s -> {
+            try {
+                return Long.parseLong(s);
+            } catch (Exception e) {
+                return 0L;
+            }
+        }).orElse(0L);
+        metrics.requestat = req.getHeader("x-koukainissikai-requestat").map(s -> {
+            try {
+                return Long.parseLong(s);
+            } catch (Exception e) {
+                return 0L;
+            }
+        }).orElse(0L);
+        metrics.responseat = res.getHeader("x-koukainissikai-responseat").map(s -> {
+            try {
+                return Long.parseLong(s);
+            } catch (Exception e) {
+                return 0L;
+            }
+        }).orElse(0L);
+        metrics.start = start;
+        metrics.end = end;
+        return metrics;
+    }
+
+    private void writeDebugLog(PerformanceMetrics metrics) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("\n");
+        sb.append("uri: ").append(metrics.uri).append("\n");
+        sb.append("req.x-koukainissikai-receivedat: ").append(metrics.receivedat).append("\n");
+        sb.append("req.x-koukainissikai-requestat: ").append(metrics.requestat).append("\n");
+        sb.append("res.x-koukainissikai-responseat: ").append(metrics.responseat).append("\n");
+        sb.append("accept.start: ").append(metrics.start).append("\n");
+        sb.append("accept.end: ").append(metrics.end).append("\n");
+        sb.append("受信から通信処理開始: ").append(metrics.requestat - metrics.receivedat).append("ms\n");
+        sb.append("通信処理: ").append(metrics.responseat - metrics.requestat).append("ms\n");
+        sb.append("航海日誌処理: ").append(metrics.end - metrics.start).append("ms\n");
+        sb.append("総合計: ").append(metrics.end - metrics.receivedat).append("ms");
+        LoggerHolder.get().debug(sb.toString());
+    }
+
+    private void writePerformanceLog(PerformanceMetrics metrics) {
+        try {
+            java.time.ZonedDateTime now = java.time.ZonedDateTime.now(java.time.ZoneId.systemDefault());
+            String month = java.time.format.DateTimeFormatter.ofPattern("yyyy-MM").format(now);
+            String day = java.time.format.DateTimeFormatter.ofPattern("yyyyMMdd").format(now);
+
+            java.io.File dir = new java.io.File(logbook.bean.AppConfig.get().getPerformanceDir(), month);
+            if (!dir.exists()) {
+                dir.mkdirs();
+            }
+            java.io.File file = new java.io.File(dir, day + ".log");
+
+            String timestamp = java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS").format(now);
+            String csv = String.format("%s,%s,%d,%d,%d,%d,%d,%d,%d,%d,%d%n",
+                    timestamp, metrics.uri, metrics.receivedat, metrics.requestat, metrics.responseat, metrics.start, metrics.end,
+                    (metrics.requestat - metrics.receivedat),
+                    (metrics.responseat - metrics.requestat),
+                    (metrics.end - metrics.start),
+                    (metrics.end - metrics.receivedat));
+
+            java.nio.file.Files.write(file.toPath(), csv.getBytes(java.nio.charset.StandardCharsets.UTF_8),
+                    java.nio.file.StandardOpenOption.CREATE, java.nio.file.StandardOpenOption.APPEND);
+        } catch (Exception e) {
+            LoggerHolder.get().warn("パフォーマンスログの書き込みに失敗しました", e);
+        }
+    }
+
+    private static class PerformanceMetrics {
+        String uri;
+        long receivedat;
+        long requestat;
+        long responseat;
+        long start;
+        long end;
     }
 }
