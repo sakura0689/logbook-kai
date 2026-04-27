@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="300.0" stylesheets="@default.css" xmlns="http://javafx.com/javafx/8.0.162" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logbook.internal.gui.ProbCalcController">
+   <children>
+      <HBox alignment="CENTER_LEFT" spacing="5.0">
+         <children>
+            <Label text="ドロップ確率:" />
+            <TextField fx:id="probInput" prefWidth="80.0" />
+            <Label text="\%" />
+         </children>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" spacing="5.0">
+         <children>
+            <Label text="上限値:" />
+            <TextField fx:id="limitInput" prefWidth="60.0" text="100" />
+            <Label text="回" />
+            <Label text="増分:" />
+            <TextField fx:id="stepInput" prefWidth="60.0" text="10" />
+            <Label text="回" />
+         </children>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="0.0" />
+         </padding>
+      </HBox>
+      <TableView fx:id="resultTable" VBox.vgrow="ALWAYS">
+        <columns>
+          <TableColumn prefWidth="100.0" text="出撃回数">
+             <cellValueFactory>
+                <PropertyValueFactory property="countString" />
+             </cellValueFactory>
+          </TableColumn>
+          <TableColumn prefWidth="130.0" text="1隻以上ドロップする確率">
+             <cellValueFactory>
+                <PropertyValueFactory property="probString" />
+             </cellValueFactory>
+          </TableColumn>
+        </columns>
+      </TableView>
+   </children>
+</VBox>
