@@ -275,6 +275,20 @@ public class MainMenuController extends WindowController {
     }
 
     /**
+     * 確率計算機
+     *
+     * @param e ActionEvent
+     */
+    @FXML
+    void probCalc(ActionEvent e) {
+        try {
+            InternalFXMLLoader.showWindow("logbook/gui/prob_calc.fxml", this.parentController.getWindow(), "確率計算機");
+        } catch (Exception ex) {
+            LoggerHolder.get().error("確率計算機の初期化に失敗しました", ex);
+        }
+    }
+
+    /**
      * 資材チャート
      *
      * @param e ActionEvent

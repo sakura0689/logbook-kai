@@ -53,6 +53,7 @@
                       <KeyCodeCombination alt="UP" code="C" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                    </accelerator></MenuItem>
             <MenuItem mnemonicParsing="false" onAction="#missionCheck" text="遠征条件確認" />
+            <MenuItem mnemonicParsing="false" onAction="#probCalc" text="確率計算機" />
          </items>
       </Menu>
       <Menu fx:id="ext" mnemonicParsing="false" text="その他">
