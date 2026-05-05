@@ -42,6 +42,9 @@ public class ArsenalQuestConditionEditController extends WindowController {
     private TextArea comment;
 
     @FXML
+    private TextArea questDetail;
+
+    @FXML
     void initialize() {
         try {
             this.questSelector.setConverter(new StringConverter<AppQuest>() {
@@ -76,6 +79,14 @@ public class ArsenalQuestConditionEditController extends WindowController {
             this.questSelector.getSelectionModel().selectedItemProperty().addListener((ob, o, n) -> {
                 if (n != null) {
                     this.loadSetting(n);
+                    Quest quest = n.getQuest();
+                    if (quest != null) {
+                        this.questDetail.setText(quest.getDetail());
+                    } else {
+                        this.questDetail.setText("");
+                    }
+                } else {
+                    this.questDetail.setText("");
                 }
             });
 
