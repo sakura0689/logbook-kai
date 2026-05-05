@@ -18,6 +18,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.TextArea;
 import javafx.util.StringConverter;
 import logbook.bean.AppQuest;
@@ -65,12 +66,46 @@ public class ArsenalQuestConditionEditController extends WindowController {
                 }
             });
 
+            this.questSelector.setCellFactory(lv -> new ListCell<AppQuest>() {
+                @Override
+                protected void updateItem(AppQuest item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (empty || item == null) {
+                        setText(null);
+                        setGraphic(null);
+                        setStyle("");
+                        setOpacity(1.0);
+                    } else {
+                        Quest quest = item.getQuest();
+                        if (quest != null) {
+                            setText(String.format("%d: %s", quest.getNo(), quest.getTitle()));
+                            if (isDiscard(item)) {
+                                setStyle("-fx-text-fill: gray;");
+                                setOpacity(0.5);
+                            } else {
+                                setStyle("");
+                                setOpacity(1.0);
+                            }
+                        }
+                    }
+                }
+            });
+            this.questSelector.setButtonCell(this.questSelector.getCellFactory().call(null));
+
             // 工廠任務(Category=6, 11) を抽出
             List<AppQuest> quests = AppQuestCollection.get().getQuest().values().stream()
                     .filter(q -> q.getQuest() != null)
                     .filter(q -> {
                         int cat = q.getQuest().getCategory();
                         return cat == 6 || cat == 11;
+                    })
+                    .sorted((q1, q2) -> {
+                        boolean d1 = this.isDiscard(q1);
+                        boolean d2 = this.isDiscard(q2);
+                        if (d1 != d2) {
+                            return d1 ? 1 : -1;
+                        }
+                        return Integer.compare(q1.getQuest().getNo(), q2.getQuest().getNo());
                     })
                     .collect(Collectors.toList());
 
@@ -155,5 +190,19 @@ public class ArsenalQuestConditionEditController extends WindowController {
 
     private Path getSettingPath(AppQuest quest) {
         return Paths.get("./arsenalquest/" + quest.getQuest().getNo() + ".json");
+    }
+
+    private boolean isDiscard(AppQuest quest) {
+        Path path = this.getSettingPath(quest);
+        if (Files.exists(path)) {
+            ObjectMapper mapper = new ObjectMapper();
+            try {
+                ArsenalQuestSetting setting = mapper.readValue(path.toFile(), ArsenalQuestSetting.class);
+                return setting.isDiscard();
+            } catch (IOException e) {
+                // ignore
+            }
+        }
+        return false;
     }
 }
