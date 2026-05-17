@@ -103,6 +103,7 @@ public class KousyouGenerator {
             System.out.println("Verification Successful: All SlotItems found in Master Data.");
         } else {
             System.err.println("Verification Failed: The following SlotItems were NOT found in Master Data:");
+            System.err.println("[Update this file]test/resources/logbook/config/logbook.bean.SlotitemMstCollection.json");
             for (String s : missing) {
                 System.err.println(" - " + s);
             }

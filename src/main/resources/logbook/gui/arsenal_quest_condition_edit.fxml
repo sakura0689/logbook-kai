@@ -17,6 +17,12 @@
             <ComboBox fx:id="questSelector" prefWidth="550.0" />
          </children>
       </VBox>
+      <VBox spacing="5.0">
+         <children>
+            <Label text="任務詳細" />
+            <TextArea fx:id="questDetail" editable="false" prefRowCount="3" wrapText="true" />
+         </children>
+      </VBox>
       <TitledPane animated="false" collapsible="false" text="受領設定" VBox.vgrow="ALWAYS">
          <content>
             <VBox spacing="10.0">
