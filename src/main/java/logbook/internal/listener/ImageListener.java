@@ -19,7 +19,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.nio.file.attribute.FileTime;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.time.Duration;
+import java.util.HexFormat;
 import java.util.function.BiConsumer;
 
 import javax.imageio.IIOImage;
@@ -62,7 +65,7 @@ public class ImageListener implements ContentListenerSpi {
     /**
      * レスポンスを処理します
      * 
-     * @param requestMetaData リクエストに含まれている情報
+     * @param requestMetaData  リクエストに含まれている情報
      * @param responseMetaData レスポンスに含まれている情報
      */
     @Override
@@ -71,28 +74,26 @@ public class ImageListener implements ContentListenerSpi {
             String uri = request.getRequestURI();
             // 艦娘画像
             if (uri.startsWith("/kcs2/resources/ship/")) {
-                this.ships(request, response);
+                this.handleShipImages(request, response);
             }
-            //MAP情報
+            // MAP情報
             else if (uri.startsWith("/kcs2/resources/map/")) {
-                this.maps(request, response, "map");
+                this.handleMapImages(request, response, "map");
             }
             // ゲージ情報
             else if (uri.startsWith("/kcs2/resources/gauge/")) {
-                this.images(request, response, "gauge");
+                this.handleImages(request, response, "gauge");
             }
             // 汎用画像
             else if (uri.startsWith("/kcs2/img/common/")) {
-                this.images(request, response, "common");
+                this.handleImages(request, response, "common");
             }
             // 任務関連画像
             else if (uri.startsWith("/kcs2/img/duty/")) {
-                this.images(request, response, "duty");
-            }
-            else if (uri.startsWith("/kcs2/img/sally/")) {
-                this.images(request, response, "sally");
-            }
-            else {
+                this.handleImages(request, response, "duty");
+            } else if (uri.startsWith("/kcs2/img/sally/")) {
+                this.handleImages(request, response, "sally");
+            } else {
                 LoggerHolder.get().debug("処理対象外URIを検知:" + uri);
             }
         } catch (Exception e) {
@@ -100,22 +101,36 @@ public class ImageListener implements ContentListenerSpi {
         }
     }
 
-    private void ships(RequestMetaData request, ResponseMetaData response) throws IOException {
+    /**
+     * 艦娘画像の処理を実施します
+     * 
+     * @param request  リクエスト
+     * @param response レスポンス
+     * @throws IOException 入出力例外が発生した場合
+     */
+    private void handleShipImages(RequestMetaData request, ResponseMetaData response) throws IOException {
         String uri = URI.create(request.getRequestURI()).getPath();
         String name = null;
 
+        String fileExtension = null;
+        if (AppConfig.get().isShipImageCompress()) {
+            fileExtension = ".jpg";
+        } else {
+            fileExtension = ".png";
+        }
+
         if (uri.contains("/banner/"))
-            name = "1.png";
+            name = "1" + fileExtension;
         if (uri.contains("/banner_dmg/"))
-            name = "3.png";
+            name = "3" + fileExtension;
         if (uri.contains("/card/"))
-            name = "5.png";
+            name = "5" + fileExtension;
         if (uri.contains("/card_dmg/"))
-            name = "7.png";
+            name = "7" + fileExtension;
         if (uri.contains("/full/"))
-            name = "17.png";
+            name = "17" + fileExtension;
         if (uri.contains("/full_dmg/"))
-            name = "19.png";
+            name = "19" + fileExtension;
 
         if (name != null) {
             ShipImageCacheStrategy strategy = AppConfig.get().getShipImageCacheStrategy();
@@ -134,27 +149,78 @@ public class ImageListener implements ContentListenerSpi {
         ShipMst shipMst = ShipMstCollection.get()
                 .getShipMap()
                 .get(Integer.parseInt(shipid));
+
         if (response.getResponseBody().isPresent()) {
-            // 画像ファイルを再圧縮するオプション
-            InputStream is;
-            if (AppConfig.get().isShipImageCompress()) {
-                is = this.compressImage(response.getResponseBody().get());
-                name = name.replace(".png", ".jpg");
-            } else {
-                is = response.getResponseBody().get();
+            byte[] imageBytes = response.getResponseBody().get().readAllBytes();
+            Path path = ShipMst.getResourcePathDir(shipMst).resolve(name);
+
+            String md5 = calculateMD5(imageBytes);
+            if (this.md5Matches(md5, path)) {
+                // 一致しているなら更新はない
+                return;
             }
-            Path path = ShipMst.getResourcePathDir(shipMst)
-                    .resolve(name);
-            this.write(is, path);
+
+            if (AppConfig.get().isShipImageCompress()) {
+                // 画像ファイルをjpgに再圧縮する
+                imageBytes = this.compressImage(new ByteArrayInputStream(imageBytes));
+            }
+            this.write(new ByteArrayInputStream(imageBytes), path, md5);
         }
     }
 
-    private void images(RequestMetaData request, ResponseMetaData response, String dirname) throws IOException {
+    /**
+     * MD5値を計算します
+     * 
+     * @param bytes
+     * @return
+     */
+    private String calculateMD5(byte[] bytes) {
+        try {
+            byte[] hash = MessageDigest.getInstance("MD5").digest(bytes);
+            return HexFormat.of().formatHex(hash);
+        } catch (NoSuchAlgorithmException e) {
+            LoggerHolder.get().warn("MD5処理中に例外が発生しました", e);
+            return "";
+        }
+    }
+
+    /**
+     * MD5が一致するかチェックします。
+     * 
+     * @param md5  MD5値
+     * @param path 保存先画像ファイルのパス
+     * @return 一致する場合はtrue、不一致またはファイル不在な場合はfalse
+     */
+    private boolean md5Matches(String md5, Path path) {
+        Path md5Path = this.getMd5Path(path);
+
+        if (!Files.exists(md5Path)) {
+            return false;
+        }
+
+        try {
+            String storedMd5 = Files.readString(md5Path).trim();
+            return md5.equals(storedMd5);
+        } catch (IOException e) {
+            LoggerHolder.get().warn("MD5ファイル読込中に例外が発生しました", e);
+            return false;
+        }
+    }
+
+    /**
+     * 汎用画像（ゲージ、コモン、出撃、任務など）を保存し、必要に応じてスプライト分解を行います。
+     * 
+     * @param request  リクエスト
+     * @param response レスポンス
+     * @param dirname  保存先のディレクトリ名
+     * @throws IOException 入出力例外が発生した場合
+     */
+    private void handleImages(RequestMetaData request, ResponseMetaData response, String dirname) throws IOException {
         String uri = request.getRequestURI();
         Path dir = Paths.get(AppConfig.get().getResourcesDir(), dirname);
         Path path = dir.resolve(Paths.get(URI.create(uri).getPath()).getFileName());
         if (response.getResponseBody().isPresent()) {
-            this.write(response.getResponseBody().get(), path);
+            this.write(response.getResponseBody().get(), path, "");
 
             String filename = String.valueOf(path.getFileName());
             // pngファイル
@@ -179,7 +245,16 @@ public class ImageListener implements ContentListenerSpi {
         }
     }
 
-    private void maps(RequestMetaData request, ResponseMetaData response, String dirname) throws IOException {
+    /**
+     * マップ画像を保存し、必要に応じてスプライト分解を行います。
+     * 
+     * @param request  リクエスト
+     * @param response レスポンス
+     * @param dirname  保存先のディレクトリ名
+     * @throws IOException 入出力例外が発生した場合
+     */
+    private void handleMapImages(RequestMetaData request, ResponseMetaData response, String dirname)
+            throws IOException {
         String uri = request.getRequestURI();
         Path dir = Paths.get(AppConfig.get().getResourcesDir(), dirname);
 
@@ -188,7 +263,7 @@ public class ImageListener implements ContentListenerSpi {
         Path mapFilePath = fullPath.subpath(3, pathCount); // "kcs2/resources/map" を除外
         Path path = dir.resolve(mapFilePath);
         if (response.getResponseBody().isPresent()) {
-            this.write(response.getResponseBody().get(), path);
+            this.write(response.getResponseBody().get(), path, "");
 
             String filename = String.valueOf(path.getFileName());
             // pngファイル
@@ -213,6 +288,14 @@ public class ImageListener implements ContentListenerSpi {
         }
     }
 
+    /**
+     * 画像ファイルをスプライト情報に基づいて分解します。
+     * 
+     * @param storeDir 分解した画像の格納先ディレクトリ
+     * @param imageSrc スプライト画像（元画像）のパス
+     * @param jsonSrc  スプライト情報（JSON）のパス
+     * @throws IOException 入出力例外が発生した場合
+     */
     private void sprite(Path storeDir, Path imageSrc, Path jsonSrc) throws IOException {
         if (!Files.exists(imageSrc) || !Files.exists(jsonSrc)) {
             return;
@@ -276,7 +359,7 @@ public class ImageListener implements ContentListenerSpi {
         return Files.createTempFile("ImageListener-", "");
     }
 
-    private void write(InputStream from, Path to) throws IOException {
+    private void write(InputStream from, Path to, String md5) throws IOException {
         Path temp = this.tempFile();
         Files.copy(from, temp, StandardCopyOption.REPLACE_EXISTING);
         try {
@@ -284,6 +367,14 @@ public class ImageListener implements ContentListenerSpi {
         } catch (IOException e) {
             LoggerHolder.get().warn("画像ファイル処理中に例外が発生しました", e);
             Files.deleteIfExists(temp);
+        }
+
+        if (!"".equals(md5)) {
+            try {
+                Files.writeString(this.getMd5Path(to), md5);
+            } catch (IOException e) {
+                LoggerHolder.get().warn("MD5ファイル書き込み中に例外が発生しました", e);
+            }
         }
     }
 
@@ -298,12 +389,22 @@ public class ImageListener implements ContentListenerSpi {
     }
 
     /**
+     * 指定されたパスのファイル名に ".md5" を付与したパスを返却します。
+     * 
+     * @param path 元のパス
+     * @return ".md5" が付与されたパス
+     */
+    private Path getMd5Path(Path path) {
+        return path.resolveSibling(path.getFileName().toString() + ".md5");
+    }
+
+    /**
      * 画像をjpeg形式で再圧縮します。
      *
      * @param in InputStream
      * @return InputStream
      */
-    private InputStream compressImage(InputStream in) {
+    private byte[] compressImage(InputStream in) {
         try {
             BufferedImage image = ImageIO.read(in);
 
@@ -332,7 +433,7 @@ public class ImageListener implements ContentListenerSpi {
                     writer.dispose();
                 }
             }
-            return new ByteArrayInputStream(out.toByteArray());
+            return out.toByteArray();
         } catch (Exception e) {
             return null;
         }
