@@ -271,12 +271,12 @@ public class ImageListener implements ContentListenerSpi {
             // jsonファイル
             Path jsonPath = null;
 
-            // jsonファイルの場合
+            // jsonファイルの場合、分割元のpngファイルを設定
             if (filename.endsWith(".json")) {
                 pngPath = path.resolveSibling(filename.replace(".json", ".png"));
                 jsonPath = path;
             }
-            // pngファイルの場合
+            // pngファイルの場合、分割条件のjsonファイルを設定
             if (filename.endsWith(".png")) {
                 pngPath = path;
                 jsonPath = path.resolveSibling(filename.replace(".png", ".json"));
