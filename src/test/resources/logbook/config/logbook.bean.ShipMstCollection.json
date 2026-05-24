@@ -21232,8 +21232,8 @@
             "yomi": "ふぶき",
             "stype": 2,
             "ctype": 12,
-            "afterlv": 0,
-            "aftershipid": 0,
+            "afterlv": 95,
+            "aftershipid": 1035,
             "taik": [
                 31,
                 49
@@ -21269,8 +21269,8 @@
                 0,
                 0
             ],
-            "afterfuel": 0,
-            "afterbull": 0,
+            "afterfuel": 480,
+            "afterbull": 980,
             "fuelMax": 15,
             "bullMax": 20,
             "graph": "rtkekdbkqrkg",
@@ -23220,7 +23220,7 @@
             ],
             "houg": [
                 16,
-                65
+                66
             ],
             "raig": [
                 33,
@@ -23228,7 +23228,7 @@
             ],
             "tyku": [
                 24,
-                72
+                73
             ],
             "tais": null,
             "luck": [
@@ -23532,7 +23532,7 @@
             ],
             "houg": [
                 12,
-                61
+                63
             ],
             "raig": [
                 30,
@@ -23540,7 +23540,7 @@
             ],
             "tyku": [
                 32,
-                82
+                83
             ],
             "tais": null,
             "luck": [
@@ -27858,7 +27858,7 @@
             ],
             "houg": [
                 10,
-                65
+                66
             ],
             "raig": [
                 24,
@@ -27910,7 +27910,7 @@
             ],
             "houg": [
                 10,
-                63
+                64
             ],
             "raig": [
                 24,
@@ -28959,8 +28959,8 @@
                 88
             ],
             "tyku": [
-                18,
-                74
+                19,
+                76
             ],
             "tais": null,
             "luck": [
@@ -33275,13 +33275,13 @@
                 89
             ],
             "tyku": [
-                25,
-                80
+                26,
+                81
             ],
             "tais": null,
             "luck": [
-                17,
-                89
+                18,
+                91
             ],
             "soku": 10,
             "leng": 2,
@@ -33483,13 +33483,13 @@
                 88
             ],
             "tyku": [
-                36,
-                88
+                37,
+                89
             ],
             "tais": null,
             "luck": [
-                17,
-                89
+                18,
+                91
             ],
             "soku": 10,
             "leng": 2,
@@ -35702,8 +35702,8 @@
             "yomi": "たまなみ",
             "stype": 2,
             "ctype": 38,
-            "afterlv": 0,
-            "aftershipid": 0,
+            "afterlv": 81,
+            "aftershipid": 1033,
             "taik": [
                 32,
                 49
@@ -35739,8 +35739,8 @@
                 0,
                 0
             ],
-            "afterfuel": 0,
-            "afterbull": 0,
+            "afterfuel": 390,
+            "afterbull": 490,
             "fuelMax": 15,
             "bullMax": 20,
             "graph": "atgbqwzndpsg",
@@ -40739,7 +40739,7 @@
             ],
             "soku": 10,
             "leng": 1,
-            "slotNum": 3,
+            "slotNum": 4,
             "maxeq": [
                 0,
                 0,
@@ -43300,6 +43300,162 @@
             "fuelMax": 90,
             "bullMax": 95,
             "graph": "pxtcicokpqws",
+            "version": null
+        },
+        "1033": {
+            "id": 1033,
+            "sortno": 623,
+            "sortId": 16286,
+            "name": "玉波改二",
+            "yomi": "たまなみ",
+            "stype": 2,
+            "ctype": 38,
+            "afterlv": 0,
+            "aftershipid": 0,
+            "taik": [
+                33,
+                56
+            ],
+            "souk": [
+                16,
+                54
+            ],
+            "houg": [
+                18,
+                64
+            ],
+            "raig": [
+                31,
+                87
+            ],
+            "tyku": [
+                29,
+                79
+            ],
+            "tais": null,
+            "luck": [
+                21,
+                88
+            ],
+            "soku": 10,
+            "leng": 1,
+            "slotNum": 3,
+            "maxeq": [
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "afterfuel": 0,
+            "afterbull": 0,
+            "fuelMax": 15,
+            "bullMax": 20,
+            "graph": "lsudguoipbwg",
+            "version": null
+        },
+        "1035": {
+            "id": 1035,
+            "sortno": 625,
+            "sortId": 14017,
+            "name": "吹雪改三",
+            "yomi": "ふぶき",
+            "stype": 2,
+            "ctype": 12,
+            "afterlv": 95,
+            "aftershipid": 1040,
+            "taik": [
+                33,
+                52
+            ],
+            "souk": [
+                15,
+                54
+            ],
+            "houg": [
+                18,
+                67
+            ],
+            "raig": [
+                32,
+                90
+            ],
+            "tyku": [
+                36,
+                82
+            ],
+            "tais": null,
+            "luck": [
+                30,
+                93
+            ],
+            "soku": 10,
+            "leng": 1,
+            "slotNum": 4,
+            "maxeq": [
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "afterfuel": 780,
+            "afterbull": 1680,
+            "fuelMax": 20,
+            "bullMax": 25,
+            "graph": "movylnwgldnd",
+            "version": null
+        },
+        "1040": {
+            "id": 1040,
+            "sortno": 630,
+            "sortId": 14018,
+            "name": "吹雪改三護(六式)",
+            "yomi": "ふぶき",
+            "stype": 2,
+            "ctype": 12,
+            "afterlv": 0,
+            "aftershipid": 0,
+            "taik": [
+                38,
+                57
+            ],
+            "souk": [
+                17,
+                57
+            ],
+            "houg": [
+                19,
+                69
+            ],
+            "raig": [
+                40,
+                92
+            ],
+            "tyku": [
+                45,
+                92
+            ],
+            "tais": null,
+            "luck": [
+                39,
+                107
+            ],
+            "soku": 10,
+            "leng": 1,
+            "slotNum": 4,
+            "maxeq": [
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "afterfuel": 0,
+            "afterbull": 0,
+            "fuelMax": 25,
+            "bullMax": 30,
+            "graph": "skqpgrmcdjsw",
             "version": null
         },
         "1496": {

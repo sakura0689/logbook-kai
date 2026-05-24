@@ -9122,6 +9122,42 @@
         ]
     },
     {
+        "id": 1033,
+        "name": "玉波改二",
+        "min_taisen": 29,
+        "min_kaihi": 43,
+        "min_sakuteki": 11,
+        "item": [
+            267,
+            47,
+            227
+        ]
+    },
+    {
+        "id": 1035,
+        "name": "吹雪改三",
+        "min_taisen": 46,
+        "min_kaihi": 53,
+        "min_sakuteki": 15,
+        "item": [
+            572,
+            573,
+            285
+        ]
+    },
+    {
+        "id": 1040,
+        "name": "吹雪改三護(六式)",
+        "min_taisen": 52,
+        "min_kaihi": 56,
+        "min_sakuteki": 20,
+        "item": [
+            313,
+            288,
+            574
+        ]
+    },
+    {
         "id": 1496,
         "name": "Colorado改",
         "min_taisen": 0,
