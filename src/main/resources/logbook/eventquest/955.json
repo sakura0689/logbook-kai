@@ -1,17 +1,17 @@
-/* 【梅雨限定月間任務】西方海域統合作戦2025 */
+/* 【梅雨任務拡張作戦】南方反攻望楼作戦を叩け！ */
 {
     "resetType" : "マンスリー",
     "filter" : {
-        "area": ["4-1", "4-2", "4-3", "4-4", "4-5"],
+        "area": ["5-1", "5-2", "5-3", "5-4", "5-5"],
         "fleet": {
             "operator": "AND",
             "conditions": [
-                {"stype": ["軽空母", "正規空母", "装甲空母"], "count": 1, "operator": "GE"},
+                {"stype": ["戦艦"], "count": 1, "operator": "GE"},
                 {
                     "operator": "OR",
                     "conditions": [
                         {"stype": ["重巡洋艦", "航空巡洋艦"], "count": 2, "operator": "GE"},
-                        {"name": ["秋月", "照月", "涼月", "初月", "冬月"], "count": 2, "operator": "GE"}
+                        {"name": ["夕雲", "巻雲", "風雲", "長波", "巻波", "高波", "玉波", "涼波", "藤波", "早波", "浜波", "沖波", "岸波", "朝霜", "早霜", "秋霜", "清霜"], "count": 2, "operator": "GE"}
                     ]
                 }
                 
@@ -19,10 +19,10 @@
         }
     },
     "conditions" : [
-        {"boss": true, "area": ["4-1"], "rank": ["S"], "count": 1},
-        {"boss": true, "area": ["4-2"], "rank": ["S"], "count": 1},
-        {"boss": true, "area": ["4-3"], "rank": ["S"], "count": 1},
-        {"boss": true, "area": ["4-4"], "rank": ["S"], "count": 1},
-        {"boss": true, "area": ["4-5"], "rank": ["S"], "count": 1}
+        {"boss": true, "area": ["5-1"], "rank": ["S", "A"], "count": 1},
+        {"boss": true, "area": ["5-2"], "rank": ["S", "A"], "count": 1},
+        {"boss": true, "area": ["5-3"], "rank": ["S", "A"], "count": 1},
+        {"boss": true, "area": ["5-4"], "rank": ["S", "A"], "count": 1},
+        {"boss": true, "area": ["5-5"], "rank": ["S", "A"], "count": 1}
     ]
 }
