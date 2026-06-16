@@ -6,7 +6,7 @@
         "fleet": {
             "operator": "AND",
             "conditions": [
-                {"stype": ["戦艦"], "count": 1, "operator": "GE"},
+                {"stype": ["戦艦", "航空戦艦"], "count": 1, "operator": "GE"},
                 {
                     "operator": "OR",
                     "conditions": [
