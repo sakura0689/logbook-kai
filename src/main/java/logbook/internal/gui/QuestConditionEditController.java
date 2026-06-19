@@ -188,7 +188,15 @@ public class QuestConditionEditController extends WindowController {
                     for (logbook.bean.AppQuestCondition.Condition cond : condition.getConditions()) {
                         if (cond.getArea() != null && !cond.getArea().isEmpty()) {
                             String area = cond.getArea().iterator().next();
-                            if ("7-2".equals(area)) {
+                            if ("5-6".equals(area)) {
+                                if ("G".equals(cond.getCell())) {
+                                    area = "5-6-1";
+                                } else if ("N".equals(cond.getCell())) {
+                                    area = "5-6-2";
+                                } else if ("Z".equals(cond.getCell())) {
+                                    area = "5-6-3";
+                                }
+                            } else if ("7-2".equals(area)) {
                                 if ("G".equals(cond.getCell())) {
                                     area = "7-2-1";
                                 } else if ("M".equals(cond.getCell())) {
@@ -361,13 +369,19 @@ public class QuestConditionEditController extends WindowController {
 
                 row.getChildren().add(label);
 
-                // マス入力欄を追加 (7-2, 7-3, 7-5)
-                if (val.startsWith("7-2") || val.startsWith("7-3") || val.startsWith("7-5")) {
+                // マス入力欄を追加 (5-6, 7-2, 7-3, 7-5)
+                if (val.startsWith("5-6") || val.startsWith("7-2") || val.startsWith("7-3") || val.startsWith("7-5")) {
                     row.getChildren().add(new Label("マス"));
                     TextField cellField = new TextField();
                     cellField.setPrefWidth(40);
                     // 初期値を設定
-                    if (val.equals("7-2-1")) {
+                    if (val.equals("5-6-1")) {
+                        cellField.setText("G");
+                    } else if (val.equals("5-6-2")) {
+                        cellField.setText("N");
+                    } else if (val.equals("5-6-3")) {
+                        cellField.setText("Z");
+                    } else if (val.equals("7-2-1")) {
                         cellField.setText("G");
                     } else if (val.equals("7-2-2")) {
                         cellField.setText("M");
@@ -638,6 +652,9 @@ public class QuestConditionEditController extends WindowController {
                         .map(String::trim)
                         .filter(s -> !s.isEmpty())
                         .map(s -> {
+                            if ("5-6-1".equals(s) || "5-6-2".equals(s) || "5-6-3".equals(s)) {
+                                return "5-6";
+                            }
                             if ("7-2-1".equals(s) || "7-2-2".equals(s)) {
                                 return "7-2";
                             }
@@ -771,7 +788,16 @@ public class QuestConditionEditController extends WindowController {
                 cond.setBoss(true); // Default
 
                 String labelText = areaLabel.getText();
-                if ("7-2-1".equals(labelText)) {
+                if ("5-6-1".equals(labelText)) {
+                    cond.setArea(new java.util.LinkedHashSet<>(Arrays.asList("5-6")));
+                    cond.setCell("G");
+                } else if ("5-6-2".equals(labelText)) {
+                    cond.setArea(new java.util.LinkedHashSet<>(Arrays.asList("5-6")));
+                    cond.setCell("N");
+                } else if ("5-6-3".equals(labelText)) {
+                    cond.setArea(new java.util.LinkedHashSet<>(Arrays.asList("5-6")));
+                    cond.setCell("Z");
+                } else if ("7-2-1".equals(labelText)) {
                     cond.setArea(new java.util.LinkedHashSet<>(Arrays.asList("7-2")));
                     cond.setCell("G");
                 } else if ("7-2-2".equals(labelText)) {
