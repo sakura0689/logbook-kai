@@ -11,7 +11,9 @@ v22.1.4がJava8の最終版となります
 
 v23.0.4はJava11の最終版となります
 
-v24.0以降はJava17となります **updateの方法を変更しているため、v23.0.4以前からアップデートした方はlaunch.batも更新してください**
+24.0.45はJava17の最終版となります **updateの方法を変更しているため、v23.0.4以前からアップデートした方はlaunch.batも更新してください**
+
+v25.0以降はJava21となります 
 
 個人利用のため修正を行っておりますので、Issueは受け付けておりません。
 
@@ -69,27 +71,27 @@ MIT ライセンスの下で公開する、自由ソフトウェアです。
 ![Redhat](https://img.shields.io/badge/-Redhat-EE0000.svg?logo=red-hat)
 ![macOS](https://img.shields.io/badge/-macOS-333333.svg?logo=apple)
 
-Java17がインストールされたWindows,LinuxまたはmacOSが必要です。
+Java21がインストールされたWindows,LinuxまたはmacOSが必要です。
 
 
 **次のJavaVMで動作確認されています。**
-- **[Liberica JDK version 17](https://bell-sw.com/pages/downloads/#jdk-17-lts)**
+- **[Liberica JDK version 21](https://bell-sw.com/pages/downloads/#jdk-21-lts)**
    - 新規に導入する場合、こちらを推奨します。
-- [Oracle JDK 17](https://www.oracle.com/jp/java/technologies/downloads/)
+- [Oracle JDK 21](https://www.oracle.com/jp/java/technologies/downloads/#java21)
    - ダウンロードにOTNアカウントが必要です。
-   - 画面下部にJDK17のリンクがあります
+   - JDK21のリンクがあります
 
 次のJavaVMではご利用いただけません。
-- バージョンが17ではないJavaVM
+- バージョンが21ではないJavaVM
 
 **Macの場合、追加でJavaFx SDKをインストールしてください**
-- **[JavaFx version 17](https://gluonhq.com/products/javafx/)**
+- **[JavaFx version 21](https://gluonhq.com/products/javafx/)**
 
 以下の設定で起動を確認しています
 
 ```
 export JVM_OPT=-XX:MaxMetaspaceSize=256M
-export PATH_TO_FX=$HOME/Library/javafx-sdk-17.0.14/lib
+export PATH_TO_FX=$HOME/Library/javafx-sdk-21.0.11/lib
 
 java $JVM_OPT --module-path $PATH_TO_FX --add-modules=javafx.controls,javafx.graphics,javafx.fxml,javafx.media,javafx.web,javafx.swing --add-exports=javafx.base/com.sun.javafx.event=ALL-UNNAMED -jar logbook-kai.jar
 ```
