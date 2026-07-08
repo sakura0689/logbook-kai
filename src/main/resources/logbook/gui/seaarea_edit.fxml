@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="650.0" prefWidth="950.0" spacing="10.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logbook.internal.gui.SeaAreaEditController">
+   <children>
+      <HBox spacing="15.0" VBox.vgrow="ALWAYS">
+         <children>
+            <!-- 左側：編集領域（スクロール可能） -->
+            <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label text="作戦札設定 (エリア 1 〜 14)" style="-fx-font-weight: bold; -fx-font-size: 14px;" />
+                  <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS">
+                     <content>
+                        <GridPane fx:id="gridPane" hgap="10.0" vgap="10.0" style="-fx-padding: 10;">
+                           <!-- コントローラ側で動的に行を構築 -->
+                        </GridPane>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </VBox>
+            
+            <!-- 右側：画像情報 common_event.png -->
+            <VBox spacing="10.0" prefWidth="380.0" minWidth="300.0">
+               <children>
+                  <Label text="画像情報 (common_event.png)" style="-fx-font-weight: bold; -fx-font-size: 14px;" />
+                  <ScrollPane VBox.vgrow="ALWAYS" fitToWidth="true" fitToHeight="true">
+                     <content>
+                        <ImageView fx:id="commonEventImage" preserveRatio="true" />
+                     </content>
+                  </ScrollPane>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_RIGHT" spacing="10.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#save" text="更新" prefWidth="100.0" />
+         </children>
+      </HBox>
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+   <styleClass>
+      <String fx:value="seaarea-edit-window" />
+   </styleClass>
+</VBox>

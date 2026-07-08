@@ -360,6 +360,20 @@ public class MainMenuController extends WindowController {
     }
 
     /**
+     * 作戦札編集
+     *
+     * @param e ActionEvent
+     */
+    @FXML
+    void seaAreaEdit(ActionEvent e) {
+        try {
+            InternalFXMLLoader.showWindow("logbook/gui/seaarea_edit.fxml", this.parentController.getWindow(), "作戦札編集");
+        } catch (Exception ex) {
+            LoggerHolder.get().error("作戦札編集の初期化に失敗しました", ex);
+        }
+    }
+
+    /**
      * 設定
      *
      * @param e ActionEvent
