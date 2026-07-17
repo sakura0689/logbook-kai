@@ -27,6 +27,7 @@ import javafx.stage.Stage;
 import logbook.bean.AppConfig;
 import logbook.bean.Spritesmith;
 import logbook.constants.SeaArea;
+import logbook.internal.kancolle.SeaAreas;
 import logbook.internal.logger.LoggerHolder;
 
 /**
@@ -127,8 +128,8 @@ public class SeaAreaEditController extends WindowController {
             }
 
             // 3. GridPaneのヘッダーを作成
-            this.gridPane.add(new Label("エリア"), 0, 0);
-            this.gridPane.add(new Label("お札名"), 1, 0);
+            this.gridPane.add(new Label("札"), 0, 0);
+            this.gridPane.add(new Label("札名"), 1, 0);
             this.gridPane.add(new Label("画像No"), 2, 0);
             this.gridPane.add(new Label("画像"), 3, 0);
 
@@ -152,11 +153,11 @@ public class SeaAreaEditController extends WindowController {
                     initImageNo = customEntry.getImageNo();
                 }
 
-                // エリアラベル
-                Label areaLabel = new Label("エリア " + area);
+                // 札ラベル
+                Label areaLabel = new Label("札 " + area);
                 this.gridPane.add(areaLabel, 0, area);
 
-                // お札名入力
+                // 札名入力
                 TextField nameField = new TextField(initName);
                 nameField.setPrefWidth(200.0);
                 this.gridPane.add(nameField, 1, area);
@@ -269,6 +270,9 @@ public class SeaAreaEditController extends WindowController {
             try (Writer writer = Files.newBufferedWriter(file, StandardCharsets.UTF_8)) {
                 mapper.writeValue(writer, customData);
             }
+
+            // キャッシュを更新
+            SeaAreas.reload();
 
             // 成功アラートを表示
             Alert alert = new Alert(AlertType.INFORMATION);

@@ -27,7 +27,6 @@ import logbook.bean.SlotitemMst;
 import logbook.bean.SlotitemMstCollection;
 import logbook.constants.BannerIcon;
 import logbook.constants.ExpTable;
-import logbook.constants.SeaArea;
 import logbook.internal.ReferenceCache;
 
 class ShipImage {
@@ -221,7 +220,7 @@ class ShipImage {
                 Ship ship = chara.asShip();
                 Integer sallyArea = ship.getSallyArea();
                 if (sallyArea != null && sallyArea.intValue() != 0) {
-                    Path p = Paths.get("common", JOIN_BANNER.replace("{0}", Integer.toString(SeaArea.getImageId(sallyArea))));
+                    Path p = Paths.get("common", JOIN_BANNER.replace("{0}", Integer.toString(SeaAreas.getImageId(sallyArea))));
                     layers.add(new Layer(50, -3, p));
                 }
             }

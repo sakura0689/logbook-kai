@@ -23,7 +23,7 @@ import logbook.bean.SlotItem;
 import logbook.bean.SlotItemCollection;
 import logbook.bean.SlotitemMst;
 import logbook.bean.Stype;
-import logbook.constants.SeaArea;
+import logbook.internal.kancolle.SeaAreas;
 import logbook.internal.kancolle.Items;
 import logbook.internal.kancolle.Ships;
 
@@ -1210,7 +1210,7 @@ public class ShipItem {
         shipItem.setNext(ship.getExp().get(1));
         shipItem.setCond(ship.getCond());
         Set<String> label = new LinkedHashSet<>();
-        SeaArea area = SeaArea.fromArea(ship.getSallyArea());
+        SeaAreas.SeaAreaInfo area = SeaAreas.fromArea(ship.getSallyArea());
         if (area != null) {
             label.add(area.toString());
         }

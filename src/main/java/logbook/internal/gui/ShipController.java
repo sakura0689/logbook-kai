@@ -26,7 +26,8 @@ import logbook.bean.Ship;
 import logbook.bean.ShipCollection;
 import logbook.bean.ShipLabelCollection;
 import logbook.bean.ShipMst;
-import logbook.constants.SeaArea;
+
+import logbook.internal.kancolle.SeaAreas;
 import logbook.internal.kancolle.Ships;
 import logbook.internal.logger.LoggerHolder;
 
@@ -148,13 +149,13 @@ public class ShipController extends WindowController {
         // 海域札(手動のラベルは除く)がついている艦がいる場合のみ表示
         if (ShipCollection.get().getShipMap().values().stream()
             .map(Ship::getSallyArea)
-            .map(SeaArea::fromArea)
+            .map(SeaAreas::fromArea)
             .filter(Objects::nonNull)
             .count() > 0) {
             // 「海域札なし」タブには手動でラベルを付けただけの艦を表示するため SallyArea のみチェック
             ShipTablePane noLabelPane = new ShipTablePane(() -> {
                 return ShipCollection.get().getShipMap().values().stream()
-                    .filter(ship -> SeaArea.fromArea(ship.getSallyArea()) == null)
+                    .filter(ship -> SeaAreas.fromArea(ship.getSallyArea()) == null)
                     .sorted(Comparator.comparing(Ship::getLv).reversed()
                             .thenComparing(Comparator.comparing(Ship::getShipId)))
                     .collect(Collectors.toList());
@@ -164,7 +165,7 @@ public class ShipController extends WindowController {
         ShipCollection.get().getShipMap().values().stream()
                 .flatMap(ship -> {
                     List<String> label = new ArrayList<>();
-                    SeaArea area = SeaArea.fromArea(ship.getSallyArea());
+                    SeaAreas.SeaAreaInfo area = SeaAreas.fromArea(ship.getSallyArea());
                     if (area != null) {
                         label.add(area.toString());
                     }
@@ -183,7 +184,7 @@ public class ShipController extends WindowController {
                                 .getShipMap();
                         return shipMap.values().stream()
                                 .filter(ship -> {
-                                    SeaArea area = SeaArea.fromArea(ship.getSallyArea());
+                                    SeaAreas.SeaAreaInfo area = SeaAreas.fromArea(ship.getSallyArea());
                                     if (area != null && label.equals(area.toString()))
                                         return true;
                                     Set<String> labels = ShipLabelCollection.get().getLabels().get(ship.getId());
@@ -205,11 +206,7 @@ public class ShipController extends WindowController {
      * @return ソート順、もし定義にないものの場合は Integer.MAX_VALUE
      */
     private static int labelSortOrder(String label) {
-        return Stream.of(SeaArea.values())
-                .filter(s -> s.getName().equals(label))
-                .findAny()
-                .map(SeaArea::getArea)
-                .orElse(Integer.MAX_VALUE);
+        return SeaAreas.getAreaByName(label);
     }
 
     /**
