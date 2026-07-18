@@ -1,9 +1,11 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
@@ -11,6 +13,16 @@
    <children>
       <VBox spacing="5.0">
          <children>
+            <HBox alignment="CENTER_LEFT" spacing="15.0">
+               <children>
+                  <RadioButton fx:id="normalQuestRadio" mnemonicParsing="false" selected="true" text="通常任務">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="questTypeGroup" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="customQuestRadio" mnemonicParsing="false" text="カスタム任務" toggleGroup="$questTypeGroup" />
+               </children>
+            </HBox>
             <Label text="任務" />
             <ComboBox fx:id="questSelector" prefWidth="550.0" />
          </children>
@@ -31,6 +43,26 @@
                         <ComboBox fx:id="resetType" prefWidth="150.0" />
                         <Label text="月(イヤリー)" />
                         <TextField fx:id="yearlyResetMonth" prefWidth="50.0" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+        </content>
+      </TitledPane>
+      <TitledPane fx:id="customSettingsPane" animated="false" text="カスタム設定">
+        <content>
+          <VBox spacing="5.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                     <children>
+                        <Label text="カスタム任務名" />
+                        <TextField fx:id="customNameField" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                     <children>
+                        <Label text="カスタム任務開始時間" />
+                        <TextField fx:id="customStartDateField" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
                </children>
@@ -74,6 +106,7 @@
       </TitledPane>
       <HBox alignment="CENTER_RIGHT" spacing="10.0">
          <children>
+            <Button fx:id="removeBtn" mnemonicParsing="false" onAction="#remove" text="除去" />
             <Button mnemonicParsing="false" onAction="#save" text="保存" />
          </children>
       </HBox>

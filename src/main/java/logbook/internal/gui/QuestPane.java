@@ -42,6 +42,9 @@ public class QuestPane extends HBox {
     private Hyperlink condition;
 
     @FXML
+    private Hyperlink searchLink;
+
+    @FXML
     private VBox detailView;
 
     @FXML
@@ -170,6 +173,12 @@ public class QuestPane extends HBox {
                     }
                 }
             }
+            // カスタム任務の場合、検索リンクを表示しない
+            int no = quest.getNo();
+            if (no >= 10001 && no <= 10005) {
+                this.searchLink.setVisible(false);
+                this.searchLink.setManaged(false);
+            }
         } catch (Exception e) {
             LoggerHolder.get().error("FXMLの初期化に失敗しました", e);
         }
@@ -177,6 +186,15 @@ public class QuestPane extends HBox {
 
     @FXML
     void remove(ActionEvent event) {
+        int no = this.quest.getNo();
+        if (no >= 10001 && no <= 10005) {
+            try {
+                java.nio.file.Path file = java.nio.file.Paths.get("./customquest/" + no + ".json");
+                java.nio.file.Files.deleteIfExists(file);
+            } catch (Exception e) {
+                LoggerHolder.get().warn("カスタム任務ファイルの削除に失敗しました", e);
+            }
+        }
         AppQuestCollection.get()
                 .getQuest()
                 .remove(this.quest.getNo());

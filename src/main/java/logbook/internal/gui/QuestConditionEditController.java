@@ -35,7 +35,22 @@ public class QuestConditionEditController extends WindowController {
     private ComboBox<AppQuest> questSelector;
 
     @FXML
+    private javafx.scene.control.RadioButton normalQuestRadio;
+    @FXML
+    private javafx.scene.control.RadioButton customQuestRadio;
+    @FXML
+    private javafx.scene.control.ToggleGroup questTypeGroup;
+    @FXML
+    private Button removeBtn;
+
+    @FXML
     private Label questType;
+    @FXML
+    private javafx.scene.control.TitledPane customSettingsPane;
+    @FXML
+    private TextField customNameField;
+    @FXML
+    private TextField customStartDateField;
     @FXML
     private ComboBox<String> resetType;
     @FXML
@@ -73,16 +88,12 @@ public class QuestConditionEditController extends WindowController {
             // リストの表示数を20に設定
             this.questSelector.setVisibleRowCount(20);
 
-            // カテゴリフィルタ (2, 8, 9)
-            List<Integer> targetCategories = Arrays.asList(2, 8, 9, 10);
+            // ラジオボタンの切り替え
+            this.questTypeGroup.selectedToggleProperty().addListener((ob, o, n) -> {
+                this.updateQuestList();
+            });
 
-            List<AppQuest> quests = AppQuestCollection.get().getQuest().values().stream()
-                    .filter(q -> q.getQuest() != null)
-                    .filter(q -> targetCategories.contains(q.getQuest().getCategory()))
-                    .filter(q -> LogBookCoreServices.getQuestResource(q.getNo(), true) == null) // 恒常任務
-                    .collect(Collectors.toList());
-
-            this.questSelector.setItems(FXCollections.observableArrayList(quests));
+            this.updateQuestList();
 
             // ResetType初期化
             this.resetType.setItems(FXCollections.observableArrayList(
@@ -94,6 +105,10 @@ public class QuestConditionEditController extends WindowController {
                     this.setQuestData(n);
                 }
             });
+
+            // カスタム設定の表示制御
+            this.customSettingsPane.visibleProperty().bind(this.customQuestRadio.selectedProperty());
+            this.customSettingsPane.managedProperty().bind(this.customQuestRadio.selectedProperty());
 
             // イヤリーの時のみ入力可
             this.yearlyResetMonth.disableProperty()
@@ -112,6 +127,10 @@ public class QuestConditionEditController extends WindowController {
     private void setQuestData(AppQuest appQuest) {
         Quest quest = appQuest.getQuest();
         if (quest != null) {
+            // 除去ボタンの活性制御
+            boolean isCustom = quest.getNo() >= 10001 && quest.getNo() <= 10005;
+            this.removeBtn.setDisable(!isCustom);
+
             // Type
             this.questType.setText(this.getCategoryName(quest.getCategory()));
 
@@ -141,6 +160,9 @@ public class QuestConditionEditController extends WindowController {
             this.filterArea.setText("");
             this.fleetConditionsBox.getChildren().clear();
             this.conditionsBox.getChildren().clear();
+            
+            this.customNameField.setText("");
+            this.customStartDateField.setText(logbook.internal.util.DateUtil.nowString());
 
             // Load existing custom conditions
             this.loadQuestData(quest);
@@ -174,6 +196,13 @@ public class QuestConditionEditController extends WindowController {
                 }
                 if (condition.getYearlyResetMonth() != null) {
                     this.yearlyResetMonth.setText(String.valueOf(condition.getYearlyResetMonth()));
+                }
+
+                if (condition.getCustomName() != null) {
+                    this.customNameField.setText(condition.getCustomName());
+                }
+                if (condition.getStartDate() != null) {
+                    this.customStartDateField.setText(condition.getStartDate());
                 }
 
                 // Filter Area
@@ -349,6 +378,14 @@ public class QuestConditionEditController extends WindowController {
             return;
         }
 
+        // 選択されているクエストがカスタム任務かチェック
+        AppQuest appQuest = this.questSelector.getSelectionModel().getSelectedItem();
+        boolean isCustom = false;
+        if (appQuest != null && appQuest.getQuest() != null) {
+            int no = appQuest.getQuest().getNo();
+            isCustom = no >= 10001 && no <= 10005;
+        }
+
         String[] areas = areaText.split(",");
         for (String area : areas) {
             String val = area.trim();
@@ -369,8 +406,8 @@ public class QuestConditionEditController extends WindowController {
 
                 row.getChildren().add(label);
 
-                // マス入力欄を追加 (5-6, 7-2, 7-3, 7-5)
-                if (val.startsWith("5-6") || val.startsWith("7-2") || val.startsWith("7-3") || val.startsWith("7-5")) {
+                // マス入力欄を追加 (5-6, 7-2, 7-3, 7-5) または カスタム任務
+                if (val.startsWith("5-6") || val.startsWith("7-2") || val.startsWith("7-3") || val.startsWith("7-5") || isCustom) {
                     row.getChildren().add(new Label("マス"));
                     TextField cellField = new TextField();
                     cellField.setPrefWidth(40);
@@ -765,6 +802,19 @@ public class QuestConditionEditController extends WindowController {
             }
             condition.setFilter(filter);
 
+            // Custom Name
+            String customName = this.customNameField.getText();
+            if (customName == null || customName.trim().isEmpty()) {
+                int no = appQuest.getQuest().getNo();
+                if (no >= 10001 && no <= 10005) {
+                    customName = "カスタム任務" + (no - 10000);
+                }
+            }
+            condition.setCustomName(customName);
+
+            // Start Date
+            condition.setStartDate(this.customStartDateField.getText());
+
             // Achievement Conditions
             for (javafx.scene.Node node : this.conditionsBox.getChildren()) {
                 HBox row = (HBox) node;
@@ -892,6 +942,95 @@ public class QuestConditionEditController extends WindowController {
             alert.initOwner(this.questSelector.getScene().getWindow());
             alert.setTitle("保存失敗");
             alert.setHeaderText("保存に失敗しました");
+            alert.setContentText(ex.getMessage());
+            alert.showAndWait();
+        }
+    }
+
+    private void updateQuestList() {
+        if (this.normalQuestRadio.isSelected()) {
+            // 通常任務
+            List<Integer> targetCategories = Arrays.asList(2, 8, 9, 10);
+            List<AppQuest> quests = AppQuestCollection.get().getQuest().values().stream()
+                    .filter(q -> q.getQuest() != null)
+                    .filter(q -> targetCategories.contains(q.getQuest().getCategory()))
+                    .filter(q -> LogBookCoreServices.getQuestResource(q.getNo(), true) == null) // 恒常任務
+                    .collect(Collectors.toList());
+            this.questSelector.setItems(FXCollections.observableArrayList(quests));
+        } else {
+            // カスタム任務
+            List<AppQuest> quests = new java.util.ArrayList<>();
+            for (int i = 1; i <= 5; i++) {
+                int no = 10000 + i;
+                Quest q = new Quest();
+                q.setNo(no);
+                q.setCategory(2); // 出撃をデフォルトとする
+                q.setType(4); // 単発をデフォルトとする
+                q.setTitle("カスタム任務" + i);
+                q.setDetail("カスタム任務" + i);
+                q.setState(2); // 受注状態
+                q.setProgressFlag(0);
+
+                AppQuest aq = new AppQuest();
+                aq.setNo(no);
+                aq.setQuest(q);
+                aq.setActive(true);
+                quests.add(aq);
+            }
+            this.questSelector.setItems(FXCollections.observableArrayList(quests));
+        }
+        // 選択をクリア
+        this.questSelector.getSelectionModel().clearSelection();
+        if (this.removeBtn != null) {
+            this.removeBtn.setDisable(true);
+        }
+    }
+
+    @FXML
+    void remove(javafx.event.ActionEvent e) {
+        AppQuest appQuest = this.questSelector.getSelectionModel().getSelectedItem();
+        if (appQuest == null || appQuest.getQuest() == null) {
+            return;
+        }
+        int no = appQuest.getQuest().getNo();
+        if (no < 10001 || no > 10005) {
+            return;
+        }
+
+        try {
+            java.nio.file.Path file = java.nio.file.Paths.get("./customquest/" + no + ".json");
+            boolean deleted = java.nio.file.Files.deleteIfExists(file);
+            
+            if (deleted) {
+                // UI状態をクリア
+                this.filterArea.setText("");
+                this.fleetConditionsBox.getChildren().clear();
+                this.conditionsBox.getChildren().clear();
+                this.removeBtn.setDisable(true);
+                
+                javafx.scene.control.Alert alert = new javafx.scene.control.Alert(
+                        javafx.scene.control.Alert.AlertType.INFORMATION);
+                alert.initOwner(this.questSelector.getScene().getWindow());
+                alert.setTitle("除去成功");
+                alert.setHeaderText(null);
+                alert.setContentText("./customquest/" + no + ".json を削除しました。");
+                alert.showAndWait();
+            } else {
+                javafx.scene.control.Alert alert = new javafx.scene.control.Alert(
+                        javafx.scene.control.Alert.AlertType.WARNING);
+                alert.initOwner(this.questSelector.getScene().getWindow());
+                alert.setTitle("除去");
+                alert.setHeaderText(null);
+                alert.setContentText("削除対象のカスタム任務設定ファイルが存在しませんでした。");
+                alert.showAndWait();
+            }
+        } catch (Exception ex) {
+            LoggerHolder.get().error("削除に失敗しました", ex);
+            javafx.scene.control.Alert alert = new javafx.scene.control.Alert(
+                    javafx.scene.control.Alert.AlertType.ERROR);
+            alert.initOwner(this.questSelector.getScene().getWindow());
+            alert.setTitle("削除失敗");
+            alert.setHeaderText("削除に失敗しました");
             alert.setContentText(ex.getMessage());
             alert.showAndWait();
         }
