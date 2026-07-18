@@ -10,9 +10,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import logbook.internal.Config;
 import logbook.internal.kancolle.BattleLogs;
-import logbook.internal.kancolle.MissionLogs;
 import logbook.internal.kancolle.BattleLogs.SimpleBattleLog;
+import logbook.internal.kancolle.MissionLogs;
 import logbook.internal.kancolle.MissionLogs.SimpleMissionLog;
+import logbook.internal.logger.LoggerHolder;
 import logbook.internal.util.DateUtil;
 import lombok.Data;
 import lombok.val;
@@ -102,6 +103,15 @@ public class AppQuestDuration {
 
     @JsonIgnore
     public Optional<List<SimpleBattleLog>> getCondition(AppQuest quest) {
+        int no = quest.getNo();
+        if (no >= 10001 && no <= 10005) {
+            String from = getCustomQuestFromDate(quest);
+            return Optional.of(BattleLogs.readSimpleLog(log -> {
+                String date = log.getDateString();
+                return date.compareTo(from) >= 0;
+            }));
+        }
+
         val durationMap = this.map.get(quest.getExpire());
         if (durationMap == null)
             return Optional.empty();
@@ -125,6 +135,15 @@ public class AppQuestDuration {
 
     @JsonIgnore
     public Optional<List<SimpleMissionLog>> getMissionCondition(AppQuest quest) {
+        int no = quest.getNo();
+        if (no >= 10001 && no <= 10005) {
+            String from = getCustomQuestFromDate(quest);
+            return Optional.of(MissionLogs.readSimpleLog(log -> {
+                String date = log.getDateString();
+                return date.compareTo(from) >= 0;
+            }));
+        }
+
         val durationMap = this.map.get(quest.getExpire());
         if (durationMap == null)
             return Optional.empty();
@@ -167,5 +186,24 @@ public class AppQuestDuration {
      */
     public static AppQuestDuration get() {
         return Config.getDefault().get(AppQuestDuration.class, AppQuestDuration::new);
+    }
+
+    private String getCustomQuestFromDate(AppQuest quest) {
+        // デフォルトは単発（全期間、2000-01-01）
+        String from = "2000-01-01 05:00:00";
+        try {
+            java.nio.file.Path file = java.nio.file.Paths.get("./customquest/" + quest.getNo() + ".json");
+            if (java.nio.file.Files.exists(file)) {
+                com.fasterxml.jackson.databind.ObjectMapper mapper = new com.fasterxml.jackson.databind.ObjectMapper();
+                mapper.enable(com.fasterxml.jackson.core.JsonParser.Feature.ALLOW_COMMENTS);
+                logbook.bean.AppQuestCondition condition = mapper.readValue(file.toFile(), logbook.bean.AppQuestCondition.class);
+                if (condition != null && condition.getStartDate() != null) {
+                    from = condition.getStartDate();
+                }
+            }
+        } catch (Exception e) {
+            LoggerHolder.get().warn("カスタム任務設定ファイルの開始日時取得に失敗しました", e);
+        }
+        return from;
     }
 }

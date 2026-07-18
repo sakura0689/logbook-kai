@@ -526,22 +526,81 @@ public class MainController extends WindowController {
      * 任務の更新
      */
     private void quest() {
+        // コレクション内の不完全なカスタム任務データの残骸を完全にクリア
+        if (AppQuestCollection.get().getQuest().keySet().removeIf(no -> no >= 10001 && no <= 10005)) {
+            logbook.internal.Config.getDefault().store();
+        }
+
         Map<Integer, AppQuest> questMap = AppQuestCollection.get()
                 .getQuest();
         boolean show = AppConfig.get().isShowQuest();
         long newHashCode = hashCode(questMap, show);
+        
+        // カスタム任務ファイルの存在有無をハッシュコードに追加して変化を監視する
+        for (int no = 10001; no <= 10005; no++) {
+            newHashCode *= 63;
+            boolean exists = java.nio.file.Files.exists(java.nio.file.Paths.get("./customquest/" + no + ".json"));
+            newHashCode += Boolean.hashCode(exists);
+        }
+
         if (this.questHashCode != newHashCode) {
             this.questPane.setVisible(show);
             this.questPane.setManaged(show);
             // ハッシュ・コードが変わっている場合任務の更新
             ObservableList<Node> quest = this.questbox.getChildren();
             quest.clear();
+            
+            // 1. 受領中の任務を追加
             questMap.values()
                     .stream()
-                    // 受諾中の任務を上に持ってくる
-                    .sorted(Comparator.comparing(AppQuest::isActive).reversed())
+                    .filter(aq -> aq.getNo() < 10001 || aq.getNo() > 10005)
+                    .filter(AppQuest::isActive)
                     .map(QuestPane::new)
                     .forEach(quest::add);
+
+            // 2. カスタム任務を追加
+            for (int i = 1; i <= 5; i++) {
+                int no = 10000 + i;
+                java.nio.file.Path file = java.nio.file.Paths.get("./customquest/" + no + ".json");
+                if (java.nio.file.Files.exists(file)) {
+                    logbook.bean.QuestList.Quest q = new logbook.bean.QuestList.Quest();
+                    q.setNo(no);
+                    q.setCategory(2);
+                    q.setType(4);
+                    
+                    String title = "カスタム任務" + i;
+                    try {
+                        com.fasterxml.jackson.databind.ObjectMapper mapper = new com.fasterxml.jackson.databind.ObjectMapper();
+                        mapper.enable(com.fasterxml.jackson.core.JsonParser.Feature.ALLOW_COMMENTS);
+                        logbook.bean.AppQuestCondition cond = mapper.readValue(file.toFile(), logbook.bean.AppQuestCondition.class);
+                        if (cond != null && cond.getCustomName() != null && !cond.getCustomName().trim().isEmpty()) {
+                            title = cond.getCustomName();
+                        }
+                    } catch (Exception e) {
+                        LoggerHolder.get().warn("カスタム任務の名称読み込みに失敗しました", e);
+                    }
+                    q.setTitle(title);
+                    q.setDetail("カスタム任務" + i);
+                    q.setState(2);
+                    q.setProgressFlag(0);
+                    q.setBonusFlag(0);
+                    q.setInvalidFlag(0);
+                    q.setGetMaterial(java.util.Collections.emptyList());
+
+                    AppQuest aq = AppQuest.toAppQuest(q);
+
+                    quest.add(new QuestPane(aq));
+                }
+            }
+
+            // 3. 非受領の任務を追加
+            questMap.values()
+                    .stream()
+                    .filter(aq -> aq.getNo() < 10001 || aq.getNo() > 10005)
+                    .filter(aq -> !aq.isActive())
+                    .map(QuestPane::new)
+                    .forEach(quest::add);
+
             // ハッシュ・コードの更新
             this.questHashCode = newHashCode;
         }

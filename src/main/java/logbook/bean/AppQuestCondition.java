@@ -40,6 +40,9 @@ public class AppQuestCondition implements Predicate<QuestCollect> {
     /** 任務開始日時 */
     private String startDate;
 
+    /** カスタム任務名 */
+    private String customName;
+
     /** フィルター条件 */
     private FilterCondition filter;
 
