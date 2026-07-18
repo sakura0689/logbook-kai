@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.fasterxml.jackson.core.JsonParser.Feature;
@@ -106,19 +107,20 @@ public final class SeaAreas {
                 ObjectMapper mapper = new ObjectMapper();
                 mapper.enable(Feature.ALLOW_COMMENTS);
                 
-                Map<Integer, Map<String, Object>> customData = mapper.readValue(file, new TypeReference<Map<Integer, Map<String, Object>>>() {});
-                if (customData != null) {
-                    customData.forEach((area, props) -> {
+                List<Map<String, Object>> customEntries = mapper.readValue(file, new TypeReference<List<Map<String, Object>>>() {});
+                if (customEntries != null) {
+                    for (Map<String, Object> props : customEntries) {
+                        Integer area = (Integer) props.get("area");
                         String name = (String) props.get("name");
-                        Integer imageId = (Integer) props.get("imageId");
+                        Integer imageNo = (Integer) props.get("imageNo");
                         
-                        if (name != null || imageId != null) {
+                        if (area != null) {
                             SeaAreaInfo base = map.get(area);
                             String finalName = name != null ? name : (base != null ? base.getName() : "Unknown");
-                            int finalImageId = imageId != null ? imageId : (base != null ? base.getImageId() : 0);
+                            int finalImageId = imageNo != null ? imageNo : (base != null ? base.getImageId() : 0);
                             map.put(area, new SeaAreaInfo(area, finalName, finalImageId));
                         }
-                    });
+                    }
                 }
             } catch (IOException e) {
                 LoggerHolder.get().error("海域カスタムJSONの読み込みに失敗しました", e);
