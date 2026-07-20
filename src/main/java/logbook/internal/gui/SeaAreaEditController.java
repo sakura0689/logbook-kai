@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
@@ -116,9 +117,9 @@ public class SeaAreaEditController extends WindowController {
             if (Files.exists(customJsonPath)) {
                 try (Reader reader = Files.newBufferedReader(customJsonPath, StandardCharsets.UTF_8)) {
                     ObjectMapper mapper = new ObjectMapper();
-                    SeaAreaCustomData customData = mapper.readValue(reader, SeaAreaCustomData.class);
-                    if (customData != null && customData.getData() != null) {
-                        for (SeaAreaCustomEntry entry : customData.getData()) {
+                    List<SeaAreaCustomEntry> customEntries = mapper.readValue(reader, new TypeReference<List<SeaAreaCustomEntry>>() {});
+                    if (customEntries != null) {
+                        for (SeaAreaCustomEntry entry : customEntries) {
                             customMap.put(entry.getArea(), entry);
                         }
                     }
@@ -261,14 +262,11 @@ public class SeaAreaEditController extends WindowController {
 
             Path file = dir.resolve("common_event_custom.json");
 
-            SeaAreaCustomData customData = new SeaAreaCustomData();
-            customData.setData(entries);
-
             ObjectMapper mapper = new ObjectMapper();
             mapper.enable(SerializationFeature.INDENT_OUTPUT);
 
             try (Writer writer = Files.newBufferedWriter(file, StandardCharsets.UTF_8)) {
-                mapper.writeValue(writer, customData);
+                mapper.writeValue(writer, entries);
             }
 
             // キャッシュを更新
@@ -297,18 +295,7 @@ public class SeaAreaEditController extends WindowController {
         }
     }
 
-    // JSONシリアライズ/デシリアライズ用のインナークラス
-    public static class SeaAreaCustomData {
-        private List<SeaAreaCustomEntry> data;
 
-        public List<SeaAreaCustomEntry> getData() {
-            return this.data;
-        }
-
-        public void setData(List<SeaAreaCustomEntry> data) {
-            this.data = data;
-        }
-    }
 
     public static class SeaAreaCustomEntry {
         private int area;
