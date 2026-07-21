@@ -6,9 +6,16 @@ import static org.mockito.Mockito.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
+
+import logbook.bean.ShipMst;
+import logbook.bean.ShipMstCollection;
+import logbook.bean.SlotitemMst;
+import logbook.bean.SlotitemMstCollection;
 
 class SlotitemEquipShipsTest {
 
@@ -64,6 +71,9 @@ class SlotitemEquipShipsTest {
         }
     }
     
+    /**
+     * データ確認用
+     */
     @Test
     void testGetShips_getAllSlotitemEquipShips() {
         Path testConfigPath = Paths.get("./src/test/resources/logbook/config");
@@ -79,7 +89,24 @@ class SlotitemEquipShipsTest {
 
             SlotitemEquipShips service = SlotitemEquipShips.getInstance();
 
-            System.out.println(service.getAllSlotitemEquipShips());
+            ShipMstCollection shipMstCollection = ShipMstCollection.get();
+            SlotitemMstCollection slotItemMstCollection = SlotitemMstCollection.get();
+            Map<Integer, ShipMst> shipMstMap = shipMstCollection.getShipMap();
+            Map<Integer, SlotitemMst> slotItemMstMap = slotItemMstCollection.getSlotitemMap();
+            
+            Map<Integer, List<Integer>> allSlotitemEquipShipsMap = service.getAllSlotitemEquipShips();
+            
+            for (Entry<Integer, List<Integer>> entry : allSlotitemEquipShipsMap.entrySet()) {
+                Integer itemId = entry.getKey();
+                List<Integer> ships = entry.getValue();
+                
+                //System.out.println(slotItemMstMap.get(itemId).toString());
+                for (Integer shipid : ships) {
+                    String data = shipMstMap.get(shipid) != null ? shipMstMap.get(shipid).toString() : "null";
+                    //System.out.println(" " +  data);
+                }
+            }
+            
         }
     }
 }
