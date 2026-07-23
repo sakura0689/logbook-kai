@@ -69,10 +69,12 @@ public class ApiReqSortieBattleresult implements APIListenerSpi {
                         .write(log);
                 if (AppConfig.get().isApplyResult()) {
                     try {
-                        // [現在の戦闘]結果の反映
+                        // 戦闘終了毎に艦隊情報を更新
                         PhaseState p = new PhaseState(log);
                         p.apply(log.getBattle());
                         p.apply(log.getMidnight());
+                        
+                        // 艦娘情報を更新: メインパネルに反映
                         ShipCollection.get()
                                 .getShipMap()
                                 .putAll(p.getAfterFriend().stream()

@@ -40,6 +40,8 @@ public class ApiReqCombinedBattleEcMidnightBattle implements APIListenerSpi {
                     PhaseState p = new PhaseState(log);
                     p.apply(log.getBattle());
                     p.apply(log.getMidnight());
+                    
+                    // 艦娘情報を更新: メインパネルに反映
                     ShipCollection.get()
                             .getShipMap()
                             .putAll(Stream.of(p.getAfterFriend(), p.getAfterFriendCombined())
