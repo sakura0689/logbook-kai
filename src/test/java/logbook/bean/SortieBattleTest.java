@@ -25,7 +25,9 @@ public class SortieBattleTest {
             try (JsonReader jsonReader = Json.createReader(reader)) {
                 JsonObject json = jsonReader.readObject()
                         .getJsonObject("api_data");
-                SortieBattle bean = SortieBattle.toBattle(json);
+                SortieBattle bean = SortieBattle.toBattle(json);                
+                SortieBattle bean2 = bean.copy();
+                
             }
         }
     }

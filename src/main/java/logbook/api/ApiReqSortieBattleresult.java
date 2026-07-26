@@ -41,6 +41,7 @@ public class ApiReqSortieBattleresult implements APIListenerSpi {
         JsonObject data = json.getJsonObject("api_data");
         //戦闘結果反映時エラー発生フラグ
         boolean isApplyResultError = false;
+        
         if (data != null) {
             BattleResult result = BattleResult.toBattleResult(data);
             BattleLog log = AppCondition.get().getBattleResult();
@@ -64,26 +65,31 @@ public class ApiReqSortieBattleresult implements APIListenerSpi {
                 BattleLog.snapshot(log, dockId);
                 // battlelogフォルダへ戦闘ログの保存
                 BattleLogs.write(log);
-                //海域・ドロップ報告書の保存
-                LogWriter.getInstance(BattleResultLogFormat::new)
-                        .write(log);
-                if (AppConfig.get().isApplyResult()) {
-                    try {
+
+                try {
+                    PhaseState p = new PhaseState(log);
+                    p.apply(log.getBattle());
+                    p.apply(log.getMidnight());
+
+                    if (AppConfig.get().isApplyResult()) {                        
                         // 戦闘終了毎に艦隊情報を更新
-                        PhaseState p = new PhaseState(log);
-                        p.apply(log.getBattle());
-                        p.apply(log.getMidnight());
-                        
                         // 艦娘情報を更新: メインパネルに反映
                         ShipCollection.get()
                                 .getShipMap()
                                 .putAll(p.getAfterFriend().stream()
                                         .filter(Objects::nonNull)
                                         .collect(Collectors.toMap(Ship::getId, v -> v)));
-                    } catch (Exception e) {
-                        isApplyResultError = true;
-                        LoggerHolder.get().warn("battlelog[" + log.getTime() + ".json]書き込み後、[現在の戦闘]結果の反映に失敗しました", e);
                     }
+                    BattleLog resultLog = BattleLog.updatePhaseState(log, p);
+                    //海戦ドロップ報告書の保存
+                    LogWriter.getInstance(BattleResultLogFormat::new).write(resultLog);
+                } catch (Exception e) {
+                    isApplyResultError = true;
+                    LoggerHolder.get().warn("battlelog[" + log.getTime() + ".json]書き込み後、[現在の戦闘]結果の反映に失敗しました", e);
+
+                    //海戦ドロップ報告書の保存
+                    //戦闘のAPIが仕様変更の際、PhaseStateが評価出来ずエラーとなるため、戦闘開始前情報を記録する
+                    LogWriter.getInstance(BattleResultLogFormat::new).write(log);
                 }
             }
             if (result.achievementGimmick1()) {

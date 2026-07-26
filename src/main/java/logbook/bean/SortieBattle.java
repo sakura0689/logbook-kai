@@ -22,7 +22,7 @@ import lombok.Data;
  */
 @Data
 public class SortieBattle
-        implements ISortieBattle, ISortieHougeki, IFormation, IKouku, ISupport, IAirBaseAttack, Serializable {
+        implements ISortieBattle, ISortieHougeki, IFormation, IKouku, ISupport, IAirBaseAttack, Serializable, Cloneable {
 
     private static final long serialVersionUID = 3020709530421134903L;
 
@@ -112,6 +112,20 @@ public class SortieBattle
 
     /** api_hougeki3 */
     private BattleTypes.Hougeki hougeki3;
+
+    /**
+     * 自分自身の複製を作成します。
+     * 
+     * @return 複製されたSortieBattle
+     */
+    @Override
+    public SortieBattle copy() {
+        try {
+            return (SortieBattle) this.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new IllegalStateException(e);
+        }
+    }
 
     /**
      * JsonObjectから{@link SortieBattle}を構築します

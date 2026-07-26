@@ -20,7 +20,7 @@ import lombok.Data;
  *
  */
 @Data
-public class SortieAirbattle implements ISortieBattle, IFormation, IAirbattle, ISupport, IAirBaseAttack, Serializable {
+public class SortieAirbattle implements ISortieBattle, IFormation, IAirbattle, ISupport, IAirBaseAttack, Serializable, Cloneable {
 
     private static final long serialVersionUID = -6199870579231576550L;
 
@@ -89,6 +89,20 @@ public class SortieAirbattle implements ISortieBattle, IFormation, IAirbattle, I
 
     /** api_kouku2 */
     private BattleTypes.Kouku kouku2;
+
+    /**
+     * 自分自身の複製を作成します。
+     * 
+     * @return 複製されたSortieAirbattle
+     */
+    @Override
+    public SortieAirbattle copy() {
+        try {
+            return (SortieAirbattle) this.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new IllegalStateException(e);
+        }
+    }
 
     /**
      * JsonObjectから{@link SortieAirbattle}を構築します

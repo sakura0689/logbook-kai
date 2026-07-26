@@ -30,6 +30,12 @@ public class BattleTypes {
     public interface IBattle extends Serializable {
 
         /**
+         * 自分自身の複製を作成します。
+         * @return 複製されたIBattle
+         */
+        IBattle copy();
+
+        /**
          * api_dock_id/api_deck_idを取得します。
          * @return api_dock_id/api_deck_id
          */
@@ -70,6 +76,18 @@ public class BattleTypes {
          * @return api_e_maxhps
          */
         List<Integer> getEMaxhps();
+
+        /**
+         * api_f_nowhpsを設定します。
+         * @param fNowhps 設定するapi_f_nowhps
+         */
+        void setFNowhps(List<Integer> fNowhps);
+
+        /**
+         * api_e_nowhpsを設定します。
+         * @param eNowhps 設定するapi_e_nowhps
+         */
+        void setENowhps(List<Integer> eNowhps);
 
         /**
          * api_eSlotを取得します。
@@ -258,6 +276,12 @@ public class BattleTypes {
         List<Integer> getFMaxhpsCombined();
 
         /**
+         * api_f_nowhps_combinedを設定します。
+         * @param fNowhpsCombined 設定するapi_f_nowhps_combined
+         */
+        void setFNowhpsCombined(List<Integer> fNowhpsCombined);
+
+        /**
          * api_fParam_combinedを取得します。
          * @return api_fParam_combined
          */
@@ -290,6 +314,12 @@ public class BattleTypes {
          * @return api_e_maxhps_combined
          */
         List<Integer> getEMaxhpsCombined();
+
+        /**
+         * api_e_nowhps_combinedを設定します。
+         * @param eNowhpsCombined 設定するapi_e_nowhps_combined
+         */
+        void setENowhpsCombined(List<Integer> eNowhpsCombined);
 
         /**
          * api_ship_ke_combinedを取得します。

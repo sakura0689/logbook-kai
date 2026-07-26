@@ -18,7 +18,7 @@ import lombok.Data;
  *
  */
 @Data
-public class BattleMidnightSpMidnight implements IMidnightBattle, IFormation, INSupport, Serializable {
+public class BattleMidnightSpMidnight implements IMidnightBattle, IFormation, INSupport, Serializable, Cloneable {
 
     private static final long serialVersionUID = 1948191471496244360L;
 
@@ -75,6 +75,20 @@ public class BattleMidnightSpMidnight implements IMidnightBattle, IFormation, IN
 
     /** api_n_support_info */
     private BattleTypes.SupportInfo nSupportInfo;
+
+    /**
+     * 自分自身の複製を作成します。
+     * 
+     * @return 複製されたBattleMidnightSpMidnight
+     */
+    @Override
+    public BattleMidnightSpMidnight copy() {
+        try {
+            return (BattleMidnightSpMidnight) this.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new IllegalStateException(e);
+        }
+    }
 
     /**
      * JsonObjectから{@link BattleMidnightSpMidnight}を構築します

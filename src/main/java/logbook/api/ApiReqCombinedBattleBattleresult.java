@@ -1,9 +1,7 @@
 package logbook.api;
 
-import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import jakarta.json.JsonObject;
 import javafx.application.Platform;
@@ -24,6 +22,7 @@ import logbook.internal.kancolle.BattleLogs;
 import logbook.internal.kancolle.PhaseState;
 import logbook.internal.log.BattleResultLogFormat;
 import logbook.internal.log.LogWriter;
+import logbook.internal.logger.LoggerHolder;
 import logbook.internal.util.AudiosUtil;
 import logbook.internal.util.DateUtil;
 import logbook.net.RequestMetaData;
@@ -39,6 +38,9 @@ public class ApiReqCombinedBattleBattleresult implements APIListenerSpi {
     @Override
     public void accept(JsonObject json, RequestMetaData req, ResponseMetaData res) {
         JsonObject data = json.getJsonObject("api_data");
+        //戦闘結果反映時エラー発生フラグ
+        boolean isApplyResultError = false;
+        
         if (data != null) {
             BattleResult result = BattleResult.toBattleResult(data);
             BattleLog log = AppCondition.get().getBattleResult();
@@ -62,22 +64,31 @@ public class ApiReqCombinedBattleBattleresult implements APIListenerSpi {
                 }
                 // 戦闘ログの保存
                 BattleLogs.write(log);
-
-                LogWriter.getInstance(BattleResultLogFormat::new)
-                        .write(log);
-                if (AppConfig.get().isApplyResult()) {
-                    // 戦闘終了毎に艦隊情報を更新
+                        
+                try {
                     PhaseState p = new PhaseState(log);
                     p.apply(log.getBattle());
                     p.apply(log.getMidnight());
+
+                    if (AppConfig.get().isApplyResult()) {                        
+                        // 戦闘終了毎に艦隊情報を更新
+                        // 艦娘情報を更新: メインパネルに反映
+                        ShipCollection.get()
+                                .getShipMap()
+                                .putAll(p.getAfterFriend().stream()
+                                        .filter(Objects::nonNull)
+                                        .collect(Collectors.toMap(Ship::getId, v -> v)));
+                    }
+                    BattleLog resultLog = BattleLog.updatePhaseState(log, p);
+                    //海戦ドロップ報告書の保存
+                    LogWriter.getInstance(BattleResultLogFormat::new).write(resultLog);
+                } catch (Exception e) {
+                    isApplyResultError = true;
+                    LoggerHolder.get().warn("battlelog[" + log.getTime() + ".json]書き込み後、[現在の戦闘]結果の反映に失敗しました", e);
                     
-                    // 艦娘情報を更新: メインパネルに反映
-                    ShipCollection.get()
-                            .getShipMap()
-                            .putAll(Stream.of(p.getAfterFriend(), p.getAfterFriendCombined())
-                                    .flatMap(List::stream)
-                                    .filter(Objects::nonNull)
-                                    .collect(Collectors.toMap(Ship::getId, v -> v)));
+                    //海戦ドロップ報告書の保存
+                    //戦闘のAPIが仕様変更の際、PhaseStateが評価出来ずエラーとなるため、戦闘開始前情報を記録する
+                    LogWriter.getInstance(BattleResultLogFormat::new).write(log);
                 }
             }
             if (result.achievementGimmick1()) {
@@ -105,7 +116,9 @@ public class ApiReqCombinedBattleBattleresult implements APIListenerSpi {
                 }
             }
         }
-        // 戦闘結果APIの前後は他のAPIが呼ばれることがなくconflictの可能性が低いためデータ保存する
-        Config.getDefault().store();
+        if (!isApplyResultError) {
+            // 戦闘結果APIの前後は他のAPIが呼ばれることがなくconflictの可能性が低いためデータ保存する
+            Config.getDefault().store();
+        }
     }
 }
