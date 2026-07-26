@@ -25,7 +25,7 @@ import lombok.Data;
  */
 @Data
 public class CombinedBattleEcNightToDay implements ICombinedBattle, ICombinedEcBattle, IFormation,
-        INightToDayBattle, IAirBaseAttack, IKouku, ISortieHougeki, INSupport, ISupport, Serializable {
+        INightToDayBattle, IAirBaseAttack, IKouku, ISortieHougeki, INSupport, ISupport, Serializable, Cloneable {
 
     private static final long serialVersionUID = -364877629377359534L;
 
@@ -163,6 +163,20 @@ public class CombinedBattleEcNightToDay implements ICombinedBattle, ICombinedEcB
 
     /** api_midnight_flag(未使用) */
     private Boolean midnightFlag;
+
+    /**
+     * 自分自身の複製を作成します。
+     * 
+     * @return 複製されたCombinedBattleEcNightToDay
+     */
+    @Override
+    public CombinedBattleEcNightToDay copy() {
+        try {
+            return (CombinedBattleEcNightToDay) this.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new IllegalStateException(e);
+        }
+    }
 
     /**
      * JsonObjectから{@link CombinedBattleEcNightToDay}を構築します

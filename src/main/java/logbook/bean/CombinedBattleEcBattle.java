@@ -23,7 +23,7 @@ import lombok.Data;
  */
 @Data
 public class CombinedBattleEcBattle implements ICombinedEcBattle, ISortieBattle, ISortieHougeki,
-        IFormation, IKouku, ISupport, IAirBaseAttack, Serializable {
+        IFormation, IKouku, ISupport, IAirBaseAttack, Serializable, Cloneable {
 
     private static final long serialVersionUID = 9219457270531289491L;
 
@@ -134,6 +134,20 @@ public class CombinedBattleEcBattle implements ICombinedEcBattle, ISortieBattle,
 
     /** api_raigeki */
     private BattleTypes.Raigeki raigeki;
+
+    /**
+     * 自分自身の複製を作成します。
+     * 
+     * @return 複製されたCombinedBattleEcBattle
+     */
+    @Override
+    public CombinedBattleEcBattle copy() {
+        try {
+            return (CombinedBattleEcBattle) this.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new IllegalStateException(e);
+        }
+    }
 
     /**
      * JsonObjectから{@link CombinedBattleEcBattle}を構築します

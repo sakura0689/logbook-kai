@@ -1,0 +1,827 @@
+{
+    "equipExslotShipMap": {
+        "33": {
+            "shipIds": null,
+            "stypes": [
+                99
+            ],
+            "ctypes": null,
+            "reqLevel": 0
+        },
+        "66": {
+            "shipIds": [
+                899,
+                488,
+                883,
+                501,
+                502,
+                503,
+                504,
+                888,
+                506,
+                507,
+                508,
+                509,
+                894
+            ],
+            "stypes": [
+                19,
+                20,
+                21
+            ],
+            "ctypes": [
+                41
+            ],
+            "reqLevel": 0
+        },
+        "220": {
+            "shipIds": [
+                899,
+                488,
+                883,
+                501,
+                502,
+                503,
+                504,
+                888,
+                506,
+                507,
+                508,
+                509,
+                894
+            ],
+            "stypes": [
+                19,
+                20,
+                21
+            ],
+            "ctypes": [
+                41
+            ],
+            "reqLevel": 0
+        },
+        "71": {
+            "shipIds": [
+                593,
+                546,
+                899,
+                148,
+                916,
+                1031,
+                136,
+                954,
+                894,
+                911
+            ],
+            "stypes": null,
+            "ctypes": [
+                52,
+                43
+            ],
+            "reqLevel": 0
+        },
+        "275": {
+            "shipIds": [
+                593,
+                546,
+                899,
+                148,
+                916,
+                1031,
+                136,
+                954,
+                894,
+                911
+            ],
+            "stypes": null,
+            "ctypes": [
+                52,
+                43
+            ],
+            "reqLevel": 0
+        },
+        "408": {
+            "shipIds": [
+                626,
+                621
+            ],
+            "stypes": null,
+            "ctypes": null,
+            "reqLevel": 0
+        },
+        "413": {
+            "shipIds": null,
+            "stypes": null,
+            "ctypes": [
+                16,
+                4,
+                20,
+                52,
+                38,
+                54,
+                41
+            ],
+            "reqLevel": 0
+        },
+        "442": {
+            "shipIds": null,
+            "stypes": [
+                13,
+                14
+            ],
+            "ctypes": null,
+            "reqLevel": 0
+        },
+        "443": {
+            "shipIds": null,
+            "stypes": [
+                13,
+                14
+            ],
+            "ctypes": null,
+            "reqLevel": 0
+        },
+        "10": {
+            "shipIds": [
+                593,
+                546,
+                916,
+                1031,
+                954,
+                911
+            ],
+            "stypes": null,
+            "ctypes": null,
+            "reqLevel": 0
+        },
+        "12": {
+            "shipIds": [
+                546,
+                916,
+                911
+            ],
+            "stypes": null,
+            "ctypes": null,
+            "reqLevel": 0
+        },
+        "130": {
+            "shipIds": [
+                593,
+                546,
+                916,
+                1031,
+                954,
+                911
+            ],
+            "stypes": null,
+            "ctypes": null,
+            "reqLevel": 0
+        },
+        "142": {
+            "shipIds": [
+                546,
+                916,
+                911
+            ],
+            "stypes": null,
+            "ctypes": null,
+            "reqLevel": 0
+        },
+        "234": {
+            "shipIds": [
+                546,
+                916,
+                911
+            ],
+            "stypes": null,
+            "ctypes": null,
+            "reqLevel": 0
+        },
+        "460": {
+            "shipIds": [
+                546,
+                916,
+                911
+            ],
+            "stypes": null,
+            "ctypes": null,
+            "reqLevel": 0
+        },
+        "463": {
+            "shipIds": [
+                546,
+                916,
+                911
+            ],
+            "stypes": null,
+            "ctypes": null,
+            "reqLevel": 0
+        },
+        "464": {
+            "shipIds": [
+                593,
+                546,
+                916,
+                1031,
+                954,
+                911
+            ],
+            "stypes": null,
+            "ctypes": null,
+            "reqLevel": 0
+        },
+        "477": {
+            "shipIds": null,
+            "stypes": [
+                18,
+                7,
+                11
+            ],
+            "ctypes": null,
+            "reqLevel": 0
+        },
+        "478": {
+            "shipIds": null,
+            "stypes": [
+                18,
+                7,
+                11
+            ],
+            "ctypes": null,
+            "reqLevel": 0
+        },
+        "28": {
+            "shipIds": [
+                592,
+                1040,
+                961,
+                593,
+                229,
+                694,
+                954,
+                1035,
+                591,
+                975
+            ],
+            "stypes": null,
+            "ctypes": [
+                101,
+                38,
+                30
+            ],
+            "reqLevel": 0
+        },
+        "88": {
+            "shipIds": [
+                592,
+                1040,
+                961,
+                593,
+                229,
+                694,
+                954,
+                1035,
+                591,
+                975
+            ],
+            "stypes": null,
+            "ctypes": [
+                101,
+                38,
+                30
+            ],
+            "reqLevel": 0
+        },
+        "240": {
+            "shipIds": [
+                592,
+                1040,
+                961,
+                593,
+                229,
+                694,
+                954,
+                1035,
+                591,
+                975
+            ],
+            "stypes": null,
+            "ctypes": [
+                101,
+                38,
+                30
+            ],
+            "reqLevel": 0
+        },
+        "517": {
+            "shipIds": [
+                592,
+                1040,
+                961,
+                593,
+                229,
+                694,
+                954,
+                1035,
+                591,
+                975
+            ],
+            "stypes": null,
+            "ctypes": [
+                101,
+                38,
+                30
+            ],
+            "reqLevel": 4
+        },
+        "410": {
+            "shipIds": [
+                592,
+                593,
+                694,
+                1031,
+                954,
+                591
+            ],
+            "stypes": null,
+            "ctypes": null,
+            "reqLevel": 0
+        },
+        "411": {
+            "shipIds": [
+                592,
+                593,
+                694,
+                1031,
+                954,
+                591
+            ],
+            "stypes": null,
+            "ctypes": null,
+            "reqLevel": 0
+        },
+        "27": {
+            "shipIds": [
+                1040,
+                961,
+                979,
+                229,
+                426,
+                986,
+                987,
+                1035,
+                975
+            ],
+            "stypes": null,
+            "ctypes": [
+                52,
+                101,
+                38,
+                54,
+                41
+            ],
+            "reqLevel": 0
+        },
+        "106": {
+            "shipIds": [
+                1040,
+                961,
+                979,
+                229,
+                426,
+                986,
+                987,
+                1035,
+                975
+            ],
+            "stypes": null,
+            "ctypes": [
+                52,
+                101,
+                38,
+                54,
+                41
+            ],
+            "reqLevel": 0
+        },
+        "450": {
+            "shipIds": [
+                1040,
+                961,
+                979,
+                229,
+                426,
+                986,
+                987,
+                1035,
+                975
+            ],
+            "stypes": null,
+            "ctypes": [
+                52,
+                101,
+                38,
+                54,
+                41
+            ],
+            "reqLevel": 0
+        },
+        "506": {
+            "shipIds": [
+                960,
+                961,
+                578,
+                963,
+                968,
+                1033,
+                1034,
+                1035,
+                975,
+                464,
+                656,
+                1040,
+                147,
+                981,
+                470,
+                982,
+                1046,
+                407,
+                983,
+                537,
+                538,
+                419,
+                743,
+                744,
+                745,
+                235,
+                557,
+                558,
+                955,
+                956
+            ],
+            "stypes": null,
+            "ctypes": null,
+            "reqLevel": 0
+        },
+        "226": {
+            "shipIds": [
+                1040,
+                145,
+                961,
+                982,
+                1033,
+                1035
+            ],
+            "stypes": [
+                1
+            ],
+            "ctypes": null,
+            "reqLevel": 0
+        },
+        "227": {
+            "shipIds": [
+                1040,
+                145,
+                961,
+                982,
+                1033,
+                1035
+            ],
+            "stypes": [
+                1
+            ],
+            "ctypes": null,
+            "reqLevel": 0
+        },
+        "488": {
+            "shipIds": [
+                1040,
+                145,
+                961,
+                982,
+                1033,
+                1035
+            ],
+            "stypes": [
+                1
+            ],
+            "ctypes": null,
+            "reqLevel": 0
+        },
+        "34": {
+            "shipIds": [
+                1040,
+                961,
+                229,
+                951,
+                1035,
+                316
+            ],
+            "stypes": null,
+            "ctypes": null,
+            "reqLevel": 0
+        },
+        "87": {
+            "shipIds": [
+                1040,
+                961,
+                229,
+                951,
+                1035,
+                316
+            ],
+            "stypes": null,
+            "ctypes": null,
+            "reqLevel": 0
+        },
+        "35": {
+            "shipIds": null,
+            "stypes": [
+                5,
+                6,
+                8,
+                9,
+                10
+            ],
+            "ctypes": null,
+            "reqLevel": 0
+        },
+        "317": {
+            "shipIds": null,
+            "stypes": [
+                5,
+                6,
+                8,
+                9,
+                10
+            ],
+            "ctypes": null,
+            "reqLevel": 0
+        },
+        "483": {
+            "shipIds": null,
+            "stypes": [
+                5,
+                6,
+                8,
+                9,
+                10
+            ],
+            "ctypes": null,
+            "reqLevel": 0
+        },
+        "210": {
+            "shipIds": null,
+            "stypes": [
+                13,
+                14
+            ],
+            "ctypes": null,
+            "reqLevel": 0
+        },
+        "211": {
+            "shipIds": null,
+            "stypes": [
+                13,
+                14
+            ],
+            "ctypes": null,
+            "reqLevel": 0
+        },
+        "384": {
+            "shipIds": null,
+            "stypes": [
+                13,
+                14
+            ],
+            "ctypes": null,
+            "reqLevel": 0
+        },
+        "458": {
+            "shipIds": null,
+            "stypes": [
+                13,
+                14
+            ],
+            "ctypes": null,
+            "reqLevel": 0
+        },
+        "519": {
+            "shipIds": null,
+            "stypes": null,
+            "ctypes": [
+                114,
+                122
+            ],
+            "reqLevel": 0
+        },
+        "525": {
+            "shipIds": [
+                976,
+                977,
+                971,
+                972,
+                607,
+                399
+            ],
+            "stypes": null,
+            "ctypes": null,
+            "reqLevel": 0
+        },
+        "526": {
+            "shipIds": [
+                976,
+                977,
+                971,
+                972,
+                607,
+                399
+            ],
+            "stypes": null,
+            "ctypes": null,
+            "reqLevel": 0
+        },
+        "524": {
+            "shipIds": null,
+            "stypes": [
+                17,
+                19,
+                20,
+                21,
+                22
+            ],
+            "ctypes": null,
+            "reqLevel": 0
+        },
+        "527": {
+            "shipIds": null,
+            "stypes": null,
+            "ctypes": [
+                112,
+                67,
+                135,
+                88,
+                108,
+                78
+            ],
+            "reqLevel": 0
+        },
+        "528": {
+            "shipIds": null,
+            "stypes": null,
+            "ctypes": [
+                67,
+                134,
+                88,
+                108
+            ],
+            "reqLevel": 0
+        },
+        "124": {
+            "shipIds": null,
+            "stypes": null,
+            "ctypes": [
+                55,
+                47
+            ],
+            "reqLevel": 7
+        },
+        "571": {
+            "shipIds": [
+                592,
+                656,
+                961,
+                694,
+                954,
+                591
+            ],
+            "stypes": null,
+            "ctypes": null,
+            "reqLevel": 0
+        },
+        "268": {
+            "shipIds": [
+                512,
+                513,
+                290,
+                995,
+                100,
+                516,
+                101,
+                200,
+                1000,
+                1001,
+                395,
+                1006,
+                114,
+                574,
+                511
+            ],
+            "stypes": null,
+            "ctypes": null,
+            "reqLevel": 7
+        },
+        "45": {
+            "shipIds": [
+                1040,
+                961,
+                564,
+                982,
+                648,
+                1033,
+                1035
+            ],
+            "stypes": [
+                1
+            ],
+            "ctypes": [
+                101,
+                54
+            ],
+            "reqLevel": 0
+        },
+        "569": {
+            "shipIds": [
+                1040,
+                961,
+                564,
+                982,
+                648,
+                1033,
+                1035
+            ],
+            "stypes": [
+                1
+            ],
+            "ctypes": [
+                101,
+                54
+            ],
+            "reqLevel": 0
+        },
+        "346": {
+            "shipIds": null,
+            "stypes": [
+                16,
+                1,
+                17,
+                19,
+                20,
+                22
+            ],
+            "ctypes": null,
+            "reqLevel": 0
+        },
+        "347": {
+            "shipIds": null,
+            "stypes": [
+                16,
+                1,
+                17,
+                19,
+                20,
+                22
+            ],
+            "ctypes": null,
+            "reqLevel": 0
+        },
+        "379": {
+            "shipIds": [
+                656,
+                144,
+                1040,
+                961,
+                145,
+                195,
+                419,
+                437,
+                407,
+                426,
+                1035,
+                557
+            ],
+            "stypes": null,
+            "ctypes": null,
+            "reqLevel": 7
+        },
+        "572": {
+            "shipIds": [
+                656,
+                144,
+                1040,
+                961,
+                145,
+                195,
+                419,
+                437,
+                407,
+                426,
+                1035,
+                557
+            ],
+            "stypes": null,
+            "ctypes": null,
+            "reqLevel": 0
+        }
+    }
+}

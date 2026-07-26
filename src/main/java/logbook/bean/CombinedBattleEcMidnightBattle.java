@@ -17,7 +17,7 @@ import lombok.Data;
  *
  */
 @Data
-public class CombinedBattleEcMidnightBattle implements ICombinedEcMidnightBattle, IMidnightBattle, Serializable {
+public class CombinedBattleEcMidnightBattle implements ICombinedEcMidnightBattle, IMidnightBattle, Serializable, Cloneable {
 
     private static final long serialVersionUID = 8584847683187523584L;
 
@@ -89,6 +89,20 @@ public class CombinedBattleEcMidnightBattle implements ICombinedEcMidnightBattle
 
     /** api_hougeki */
     private BattleTypes.MidnightHougeki hougeki;
+
+    /**
+     * 自分自身の複製を作成します。
+     * 
+     * @return 複製されたCombinedBattleEcMidnightBattle
+     */
+    @Override
+    public CombinedBattleEcMidnightBattle copy() {
+        try {
+            return (CombinedBattleEcMidnightBattle) this.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new IllegalStateException(e);
+        }
+    }
 
     /**
      * JsonObjectから{@link CombinedBattleEcMidnightBattle}を構築します

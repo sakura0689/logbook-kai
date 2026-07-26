@@ -16,7 +16,6 @@ import logbook.bean.BattleTypes.ICombinedEcBattle;
 import logbook.bean.BattleTypes.IFormation;
 import logbook.bean.BattleTypes.Kouku;
 import logbook.bean.BattleTypes.Stage1;
-import logbook.internal.kancolle.Ships;
 import logbook.bean.MapStartNext;
 import logbook.bean.Ship;
 import logbook.bean.ShipMst;
@@ -25,6 +24,7 @@ import logbook.bean.SlotitemMst;
 import logbook.bean.SlotitemMstCollection;
 import logbook.bean.UseitemMst;
 import logbook.bean.UseitemMstCollection;
+import logbook.internal.kancolle.Ships;
 
 /**
  * 海戦・ドロップ報告書
@@ -143,7 +143,7 @@ public class BattleResultLogFormat extends LogFormatBase<BattleLog> {
         if (!(battle.isICombinedBattle())) {
             // 通常艦隊はDockIdの艦隊
             List<Ship> friendFleet = log.getDeckMap().get(battle.getDockId());
-            for (int i = 0; i < 6; i++) {
+            for (int i = 0; i < 7; i++) {
                 if (friendFleet.size() > i) {
                     Ship ship = friendFleet.get(i);
                     if (ship != null) {

@@ -23,7 +23,7 @@ import lombok.Data;
  */
 @Data
 public class CombinedBattleBattle implements ICombinedBattle, ISortieBattle, ISortieHougeki, IFormation, IKouku,
-        ISupport, IAirBaseAttack, Serializable {
+        ISupport, IAirBaseAttack, Serializable, Cloneable {
 
     private static final long serialVersionUID = 1636245765528487955L;
 
@@ -122,6 +122,20 @@ public class CombinedBattleBattle implements ICombinedBattle, ISortieBattle, ISo
 
     /** api_hougeki3 */
     private BattleTypes.Hougeki hougeki3;
+
+    /**
+     * 自分自身の複製を作成します。
+     * 
+     * @return 複製されたCombinedBattleBattle
+     */
+    @Override
+    public CombinedBattleBattle copy() {
+        try {
+            return (CombinedBattleBattle) this.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new IllegalStateException(e);
+        }
+    }
 
     /**
      * JsonObjectから{@link CombinedBattleBattle}を構築します

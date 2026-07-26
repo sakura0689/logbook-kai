@@ -16,7 +16,7 @@ import lombok.Data;
  *
  */
 @Data
-public class BattleMidnightBattle implements IMidnightBattle, Serializable {
+public class BattleMidnightBattle implements IMidnightBattle, Serializable, Cloneable {
 
     private static final long serialVersionUID = 1993839270894519690L;
 
@@ -64,6 +64,20 @@ public class BattleMidnightBattle implements IMidnightBattle, Serializable {
 
     /** api_hougeki */
     private BattleTypes.MidnightHougeki hougeki;
+
+    /**
+     * 自分自身の複製を作成します。
+     * 
+     * @return 複製されたBattleMidnightBattle
+     */
+    @Override
+    public BattleMidnightBattle copy() {
+        try {
+            return (BattleMidnightBattle) this.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new IllegalStateException(e);
+        }
+    }
 
     /**
      * JsonObjectから{@link BattleMidnightBattle}を構築します
