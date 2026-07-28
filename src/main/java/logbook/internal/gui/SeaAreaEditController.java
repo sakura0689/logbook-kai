@@ -128,65 +128,70 @@ public class SeaAreaEditController extends WindowController {
                 }
             }
 
-            // 3. GridPaneのヘッダーを作成
-            this.gridPane.add(new Label("札"), 0, 0);
-            this.gridPane.add(new Label("札名"), 1, 0);
-            this.gridPane.add(new Label("画像No"), 2, 0);
-            this.gridPane.add(new Label("画像"), 3, 0);
-
-            // 4. エリア1〜14の編集行を構築
-            for (int area = 1; area <= 14; area++) {
-                final int currentArea = area;
-                SeaArea defaultArea = SeaArea.fromArea(area);
-
-                String initName = "";
-                int initImageNo = 0;
-
-                if (defaultArea != null) {
-                    initName = defaultArea.getName();
-                    initImageNo = defaultArea.getImageId();
-                }
-
-                // カスタムデータがあれば上書き
-                SeaAreaCustomEntry customEntry = customMap.get(area);
-                if (customEntry != null) {
-                    initName = customEntry.getName();
-                    initImageNo = customEntry.getImageNo();
-                }
-
-                // 札ラベル
-                Label areaLabel = new Label("札 " + area);
-                this.gridPane.add(areaLabel, 0, area);
-
-                // 札名入力
-                TextField nameField = new TextField(initName);
-                nameField.setPrefWidth(200.0);
-                this.gridPane.add(nameField, 1, area);
-                this.nameFields.add(nameField);
-
-                // 画像No入力
-                TextField imageNoField = new TextField(Integer.toString(initImageNo));
-                imageNoField.setPrefWidth(80.0);
-                this.gridPane.add(imageNoField, 2, area);
-                this.imageNoFields.add(imageNoField);
-
-                // 画像プレビュー
-                ImageView preview = new ImageView();
-                preview.setPreserveRatio(true);
-                this.gridPane.add(preview, 3, area);
-                this.previewImages.add(preview);
-
-                // プレビューの初期読み込み
-                this.updatePreview(currentArea, imageNoField.getText(), preview);
-
-                // リスナーの設定（画像Noが変更されたらプレビューを更新する）
-                imageNoField.textProperty().addListener((ob, o, n) -> {
-                    this.updatePreview(currentArea, n, preview);
-                });
-            }
+            // 3. エリア1〜14の編集行を構築
+            updateCommonEventImage(customMap);
 
         } catch (Exception e) {
             LoggerHolder.get().error("作戦札編集画面の初期化に失敗しました", e);
+        }
+    }
+
+    private void updateCommonEventImage(Map<Integer, SeaAreaCustomEntry> customMap) {
+        // GridPaneのヘッダーを作成
+        this.gridPane.add(new Label("札"), 0, 0);
+        this.gridPane.add(new Label("札名"), 1, 0);
+        this.gridPane.add(new Label("画像No"), 2, 0);
+        this.gridPane.add(new Label("画像"), 3, 0);
+        
+        // エリア1〜14の編集行を構築
+        for (int area = 1; area <= 14; area++) {
+            final int currentArea = area;
+            SeaArea defaultArea = SeaArea.fromArea(area);
+
+            String initName = "";
+            int initImageNo = 0;
+
+            if (defaultArea != null) {
+                initName = defaultArea.getName();
+                initImageNo = defaultArea.getImageId();
+            }
+
+            // カスタムデータがあれば上書き
+            SeaAreaCustomEntry customEntry = customMap.get(area);
+            if (customEntry != null) {
+                initName = customEntry.getName();
+                initImageNo = customEntry.getImageNo();
+            }
+
+            // 札ラベル
+            Label areaLabel = new Label("札 " + area);
+            this.gridPane.add(areaLabel, 0, area);
+
+            // 札名入力
+            TextField nameField = new TextField(initName);
+            nameField.setPrefWidth(200.0);
+            this.gridPane.add(nameField, 1, area);
+            this.nameFields.add(nameField);
+
+            // 画像No入力
+            TextField imageNoField = new TextField(Integer.toString(initImageNo));
+            imageNoField.setPrefWidth(80.0);
+            this.gridPane.add(imageNoField, 2, area);
+            this.imageNoFields.add(imageNoField);
+
+            // 画像プレビュー
+            ImageView preview = new ImageView();
+            preview.setPreserveRatio(true);
+            this.gridPane.add(preview, 3, area);
+            this.previewImages.add(preview);
+
+            // プレビューの初期読み込み
+            this.updatePreview(currentArea, imageNoField.getText(), preview);
+
+            // リスナーの設定（画像Noが変更されたらプレビューを更新する）
+            imageNoField.textProperty().addListener((ob, o, n) -> {
+                this.updatePreview(currentArea, n, preview);
+            });
         }
     }
 
@@ -221,6 +226,43 @@ public class SeaAreaEditController extends WindowController {
             LoggerHolder.get().warn("プレビュー画像の読み込みまたは更新日時の比較に失敗しました", e);
         }
         preview.setImage(null);
+    }
+
+    @FXML
+    void reset(ActionEvent event) {
+        try {
+            Path resourcesDir = Paths.get(AppConfig.get().getResourcesDir());
+            Path customJsonPath = resourcesDir.resolve(Paths.get("common", "common_event", "common_event_custom.json"));
+
+            // カスタム設定ファイルの削除
+            boolean deleted = Files.deleteIfExists(customJsonPath);
+
+            // メモリ上の設定情報をリセット
+            SeaAreas.reload();
+
+            // 画面表示を更新
+            Map<Integer, SeaAreaCustomEntry> customMap = new HashMap<>();
+            updateCommonEventImage(customMap);
+
+            if (deleted) {
+                // 成功アラートを表示
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.initOwner(this.gridPane.getScene().getWindow());
+                alert.setTitle("リセット完了");
+                alert.setHeaderText(null);
+                alert.setContentText("リセット完了");
+                alert.showAndWait();
+            }
+
+        } catch (Exception ex) {
+            LoggerHolder.get().error("作戦札設定のリセットに失敗しました", ex);
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.initOwner(this.gridPane.getScene().getWindow());
+            alert.setTitle("リセット失敗");
+            alert.setHeaderText("リセットに失敗しました");
+            alert.setContentText(ex.getMessage());
+            alert.showAndWait();
+        }
     }
 
     @FXML
