@@ -13,6 +13,7 @@ import logbook.bean.DeckPort;
 import logbook.bean.DeckPortCollection;
 import logbook.bean.Ship;
 import logbook.bean.ShipCollection;
+import logbook.bean.ShipMst;
 import logbook.bean.Stype;
 import logbook.internal.kancolle.Ships;
 import logbook.net.RequestMetaData;
@@ -74,7 +75,7 @@ public class ApiReqHenseiChange implements APIListenerSpi {
         }
         changed.add(portId);
 
-        // 随伴艦一括解除以外の場合に、変化した艦隊の旗艦に工作艦が存在する場合は泊地修理タイマーをセットする
+        // 随伴艦一括解除以外の場合、変化した艦隊をチェックする
         if (shipId != -2) {
             for (Integer port : changed) {
                 List<Integer> changedShips = deckMap.get(port).getShip();
@@ -82,10 +83,27 @@ public class ApiReqHenseiChange implements APIListenerSpi {
                     Integer shipid = changedShips.get(0);
                     Ship ship = ShipCollection.get().getShipMap().get(shipid);
                     if (ship != null) {
+                        // 旗艦に工作艦が存在する場合は泊地修理タイマーをセットする
                         String type = Ships.stype(ship).map(Stype::getName).orElse("");
                         if ("工作艦".equals(type)) {
                             AppCondition.get().setAkashiTimer(System.currentTimeMillis());
-                            break;
+                        }
+
+                        // 旗艦に給糧艦が存在する場合は母港給糧タイマーをセットする
+                        String name = Ships.shipMst(ship).map(ShipMst::getName).orElse("");
+                        if (name.startsWith("野埼")) {
+                            AppCondition.get().setNosakiTimer(System.currentTimeMillis());
+                        }
+                    }
+                }
+                if (changedShips.size() > 1) {
+                    Integer shipid = changedShips.get(1);
+                    Ship ship = ShipCollection.get().getShipMap().get(shipid);
+                    if (ship != null) {
+                        // 2番艦に給糧艦が存在する場合は母港給糧タイマーをセットする
+                        String name = Ships.shipMst(ship).map(ShipMst::getName).orElse("");
+                        if (name.startsWith("野埼")) {
+                            AppCondition.get().setNosakiTimer(System.currentTimeMillis());
                         }
                     }
                 }
