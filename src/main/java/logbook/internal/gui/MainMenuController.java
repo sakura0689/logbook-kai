@@ -289,6 +289,20 @@ public class MainMenuController extends WindowController {
     }
 
     /**
+     * ラスダン計算機
+     *
+     * @param e ActionEvent
+     */
+    @FXML
+    void lastDanceCalc(ActionEvent e) {
+        try {
+            InternalFXMLLoader.showWindow("logbook/gui/last_dance_calc.fxml", this.parentController.getWindow(), "ラスダン計算機");
+        } catch (Exception ex) {
+            LoggerHolder.get().error("ラスダン計算機の初期化に失敗しました", ex);
+        }
+    }
+
+    /**
      * 資材チャート
      *
      * @param e ActionEvent

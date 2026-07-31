@@ -43,6 +43,7 @@
       </HBox>
       <HBox alignment="CENTER_RIGHT" spacing="10.0">
          <children>
+            <Button mnemonicParsing="false" onAction="#reset" text="リセット" prefWidth="100.0" />
             <Button mnemonicParsing="false" onAction="#save" text="更新" prefWidth="100.0" />
          </children>
       </HBox>

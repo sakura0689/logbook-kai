@@ -537,6 +537,10 @@ public class BattleLogs {
         private String etouch;
         /** 敵艦隊 */
         private String efleet;
+        /** 敵艦1 */
+        private String eName1;
+        /** 敵艦1HP(nowHP/maxHP) ex:-100/1000 */
+        private String eHp1;
         /** ドロップ艦種 */
         private String dropType;
         /** ドロップ艦娘 */
@@ -590,6 +594,10 @@ public class BattleLogs {
             this.setEfleet(columns[11]);
             this.setDropType(columns[12]);
             this.setDropShip(columns[13]);
+            if (columns.length > 62) { //連合艦隊登場以降のログのみ
+                this.setEName1(columns[38]);
+                this.setEHp1(columns[39]);
+            }
             if (columns.length > 62) {
                 this.setDropItem(columns[62]);
             }
