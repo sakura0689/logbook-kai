@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="420.0" spacing="10.0" stylesheets="@default.css" xmlns="http://javafx.com/javafx/8.0.162" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logbook.internal.gui.LastDanceCalcController">
+   <children>
+      <GridPane hgap="8.0" vgap="8.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="NEVER" minWidth="70.0" />
+          <ColumnConstraints hgrow="ALWAYS" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="1.海域" GridPane.rowIndex="0" />
+            <TextField fx:id="area" promptText="62-1" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+            <Label text="2.マス" GridPane.rowIndex="1" />
+            <TextField fx:id="cell" promptText="Z" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="3.撃破回数" GridPane.rowIndex="2" />
+            <TextField fx:id="killCount" promptText="10" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label text="4.開始日時" GridPane.rowIndex="3" />
+            <TextField fx:id="startTime" promptText="2026-08-01 00:00:00" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+         </children>
+      </GridPane>
+      <HBox alignment="CENTER_RIGHT">
+         <children>
+            <Button mnemonicParsing="false" onAction="#calculate" text="集計開始" />
+         </children>
+      </HBox>
+      <VBox spacing="5.0" VBox.vgrow="ALWAYS">
+         <children>
+            <TextArea fx:id="resultText" editable="false" prefRowCount="10" style="-fx-font-family: monospace;" VBox.vgrow="ALWAYS" />
+         </children>
+      </VBox>
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</VBox>

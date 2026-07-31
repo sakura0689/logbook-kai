@@ -1,5 +1,7 @@
 package logbook.internal.kancolle;
 
+import static org.mockito.Mockito.*;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -7,9 +9,17 @@ import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeParseException;
+import java.time.temporal.TemporalAccessor;
+import java.util.List;
+import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.mockito.MockedStatic;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -17,9 +27,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.json.Json;
 import jakarta.json.JsonObject;
 import jakarta.json.JsonReader;
+import logbook.bean.AppConfig;
 import logbook.bean.BattleLog;
 import logbook.bean.SortieBattle;
+import logbook.internal.Config;
 import logbook.internal.kancolle.BattleLogs.SimpleBattleLog;
+import logbook.internal.util.DateUtil;
 
 public class BattleLogsTest {
     @Test
@@ -76,5 +89,87 @@ public class BattleLogsTest {
         }
         
         String outString = out.toString();        
+    }
+    
+    @Test
+    public void testReadSimpleLog() throws IOException {
+        String startTimeStr = "2026-07-29 00:00:00";
+        String areaInput = "62-3";
+        String cellInput = "Z";
+
+        ZonedDateTime filterTime = parseZonedDateTime(startTimeStr);
+        
+        
+        Predicate<SimpleBattleLog> predicate = log -> {
+            // 日時チェック
+            if (filterTime != null) {
+                if (log.getDate() != null && log.getDate().compareTo(filterTime) < 0) {
+                    return false;
+                }
+            }
+            
+            // 海域チェック
+            if (!areaInput.isEmpty()) {
+                String areaShort = log.getAreaShortName();
+                String areaName = log.getArea();
+                boolean matchArea = (areaShort != null && areaShort.contains(areaInput))
+                        || (areaName != null && areaName.contains(areaInput));
+                if (!matchArea) {
+                    return false;
+                }
+            }
+
+            // マスチェック
+            if (!cellInput.isEmpty()) {
+                String logCell = log.getCell();
+                if (logCell == null) {
+                    return false;
+                }
+                String cell = Mapping.getCell(areaInput + "-" + logCell);
+                boolean matchCell = (cell != null && cell.equalsIgnoreCase(cellInput));
+                if (!matchCell) {
+                    return false;
+                }
+            }
+
+            return true;
+        };
+
+        Path testConfigPath = Paths.get("./target/test-classes/logbook/config");
+        Config testConfig = new Config(testConfigPath);
+        
+        Path testBattlePath = Paths.get("./target/test-classes/logbook/testlog");
+        Path testBattleLogPath = Paths.get("./target/test-classes/logbook/battlelog");
+        AppConfig mockAppConfig = mock(AppConfig.class);
+        when(mockAppConfig.getReportPath()).thenReturn(testBattlePath.toString());
+        when(mockAppConfig.getBattleLogDir()).thenReturn(testBattleLogPath.toString());
+        
+        try (MockedStatic<Config> mockedConfig = mockStatic(Config.class);
+                MockedStatic<AppConfig> mockedAppConfig = mockStatic(AppConfig.class)) {
+            mockedConfig.when(Config::getDefault).thenReturn(testConfig);
+            mockedAppConfig.when(AppConfig::get).thenReturn(mockAppConfig);
+
+            List<SimpleBattleLog> matchedLogs = BattleLogs.readSimpleLog(predicate);
+            //System.out.println(matchedLogs.size());
+        }
+    }
+    
+    private ZonedDateTime parseZonedDateTime(String text) {
+        if (text == null || text.trim().isEmpty()) {
+            return null;
+        }
+        String str = text.trim();
+        try {
+            TemporalAccessor ta = DateUtil.DATE_FORMAT.parse(str);
+            return ZonedDateTime.of(LocalDateTime.from(ta), ZoneId.of("Asia/Tokyo"));
+        } catch (DateTimeParseException e) {
+            try {
+                str = str.replace('/', '-');
+                TemporalAccessor ta = DateUtil.DATE_FORMAT.parse(str);
+                return ZonedDateTime.of(LocalDateTime.from(ta), ZoneId.of("Asia/Tokyo"));                        
+            } catch (Exception ignored) {
+            }
+        }
+        return null;
     }
 }
