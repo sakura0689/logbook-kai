@@ -116,6 +116,7 @@
                               <CheckBox fx:id="showAchievement" mnemonicParsing="false" text="戦果" GridPane.columnIndex="1" GridPane.rowIndex="17"/>
                               <CheckBox fx:id="showMission" mnemonicParsing="false" text="遠征" GridPane.columnIndex="2" GridPane.rowIndex="17"/>
                               <CheckBox fx:id="showNdock" mnemonicParsing="false" text="入渠" GridPane.columnIndex="3" GridPane.rowIndex="17"/>
+                              <CheckBox fx:id="showSupply" mnemonicParsing="false" text="給糧" GridPane.columnIndex="3" GridPane.rowIndex="17"/>
                               <CheckBox fx:id="showQuest" mnemonicParsing="false" text="任務" GridPane.columnIndex="3" GridPane.rowIndex="17"/>
                               </HBox>
                            </children>

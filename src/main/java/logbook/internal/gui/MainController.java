@@ -84,6 +84,9 @@ public class MainController extends WindowController {
     /** 入渠ドックコレクションのハッシュ・コード */
     private long ndockHashCode;
 
+    /** 給糧コレクションのハッシュ・コード */
+    private long supplyHashCode;
+
     /** 任務コレクションのハッシュ・コード */
     private long questHashCode;
 
@@ -133,7 +136,13 @@ public class MainController extends WindowController {
     private TitledPane ndockPane;
 
     @FXML
+    private TitledPane supplyPane;
+
+    @FXML
     private VBox akashiTimer;
+
+    @FXML
+    private VBox nosakiTimer;
 
     @FXML
     private VBox ndockbox;
@@ -259,8 +268,12 @@ public class MainController extends WindowController {
             this.checkPort();
             // 泊地修理タイマー
             this.akashiTimer();
+            // 母港給糧タイマー
+            this.nosakiTimer();
             // 入渠ドック
             this.ndock();
+            // 給糧
+            this.supply();
             // 任務
             this.quest();
 
@@ -491,6 +504,25 @@ public class MainController extends WindowController {
     }
 
     /**
+     * 母港給糧タイマー
+     */
+    private void nosakiTimer() {
+        ObservableList<Node> nodes = this.nosakiTimer.getChildren();
+
+        if (AppCondition.get().getNosakiTimer() == 0) {
+            if (!nodes.isEmpty()) {
+                nodes.clear();
+            }
+        } else {
+            if (nodes.isEmpty()) {
+                nodes.add(new NosakiTimerPane());
+            } else {
+                ((NosakiTimerPane) nodes.get(0)).update();
+            }
+        }
+    }
+
+    /**
      * 入渠ドックの更新
      */
     private void ndock() {
@@ -519,6 +551,21 @@ public class MainController extends WindowController {
                     ((NdockPane) node).update();
                 }
             }
+        }
+    }
+
+    /**
+     * 給糧の更新
+     */
+    private void supply() {
+        boolean show = AppConfig.get().isShowSupply();
+        long newHashCode = show ? 1 : 0;
+        if (this.supplyHashCode != newHashCode) {
+            this.supplyPane.setVisible(show);
+            this.supplyPane.setManaged(show);
+
+            // ハッシュ・コードの更新
+            this.supplyHashCode = newHashCode;
         }
     }
 

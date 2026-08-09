@@ -63,6 +63,15 @@
                                     </VBox>
                                  </content>
                               </TitledPane>
+                              <TitledPane fx:id="supplyPane" animated="false" text="給糧">
+                                 <content>
+                                    <VBox>
+                                       <children>
+                                          <VBox fx:id="nosakiTimer" />
+                                       </children>
+                                    </VBox>
+                                 </content>
+                              </TitledPane>
                               <TitledPane fx:id="questPane" animated="false" text="任務">
                                  <content>
                                     <VBox fx:id="questbox" />

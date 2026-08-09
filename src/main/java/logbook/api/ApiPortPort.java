@@ -57,6 +57,7 @@ public class ApiPortPort implements APIListenerSpi {
             this.apiCombinedFlag(data);
             this.condition();
             this.akashiTimer();
+            this.nosakiTimer();
             this.detectGimmick(data);
         }
     }
@@ -227,6 +228,16 @@ public class ApiPortPort implements APIListenerSpi {
         long timer = AppCondition.get().getAkashiTimer();
         if (System.currentTimeMillis() - timer >= Duration.ofMinutes(20).toMillis()) {
             AppCondition.get().setAkashiTimer(System.currentTimeMillis());
+        }
+    }
+
+    /**
+     * 母港給糧タイマーを更新する
+     */
+    private void nosakiTimer() {
+        long timer = AppCondition.get().getNosakiTimer();
+        if (System.currentTimeMillis() - timer >= Duration.ofMinutes(15).toMillis()) {
+            AppCondition.get().setNosakiTimer(System.currentTimeMillis());
         }
     }
 

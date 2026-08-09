@@ -70,6 +70,9 @@ public final class AppConfig implements Serializable {
     /** 入渠ペインの表示 */
     private boolean showNdock = true;
 
+    /** 給糧ペインの表示 */
+    private boolean showSupply = true;
+
     /** 任務ペインの表示 */
     private boolean showQuest = true;
 
