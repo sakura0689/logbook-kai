@@ -69,6 +69,12 @@ public class QuestCollect {
         private int d;
         private int e;
 
+        private int kakuho;
+        private int yusei;
+        private int gokaku;
+        private int ressei;
+        private int soshitsu;
+
         public Rank add(Rank rank) {
             this.s += rank.s;
             this.a += rank.a;
@@ -76,6 +82,11 @@ public class QuestCollect {
             this.c += rank.c;
             this.d += rank.d;
             this.e += rank.e;
+            this.kakuho += rank.kakuho;
+            this.yusei += rank.yusei;
+            this.gokaku += rank.gokaku;
+            this.ressei += rank.ressei;
+            this.soshitsu += rank.soshitsu;
             return this;
         }
     }
@@ -201,35 +212,43 @@ public class QuestCollect {
         boolean isBoss = log.getBoss().contains("ボス");
         String cell = log.getCell();
         String rank = log.getRank();
+        String dispseiku = log.getDispseiku();
 
         if (isStart) {
             count.start++;
         }
         if (isBoss) {
-            rank(map, rank, count.getBoss());
+            rank(map, rank, dispseiku, count.getBoss());
         }
-        rank(map, rank, count.getCell().computeIfAbsent(map + "-" + cell, i -> new Rank()));
-        rank(map, rank, count.getAll());
+        rank(map, rank, dispseiku, count.getCell().computeIfAbsent(map + "-" + cell, i -> new Rank()));
+        rank(map, rank, dispseiku, count.getAll());
     }
 
-    private static void rank(String map, String rank, Rank rankCount) {
-        if (rank.equals("S")) {
-            rankCount.s++;
-        }
-        if (rank.equals("A")) {
-            rankCount.a++;
-        }
-        if (rank.equals("B")) {
-            rankCount.b++;
-        }
-        if (rank.equals("C")) {
-            rankCount.c++;
-        }
-        if (rank.equals("D")) {
-            rankCount.d++;
-        }
-        if (rank.equals("E")) {
-            rankCount.e++;
-        }
+    private static void rank(String map, String rank, String dispseiku, Rank rankCount) {
+        boolean isS = "S".equals(rank);
+        boolean isA = "A".equals(rank);
+        boolean isB = "B".equals(rank);
+        boolean isC = "C".equals(rank);
+        boolean isD = "D".equals(rank);
+        boolean isE = "E".equals(rank);
+
+        if (isS) rankCount.s++;
+        if (isA) rankCount.a++;
+        if (isB) rankCount.b++;
+        if (isC) rankCount.c++;
+        if (isD) rankCount.d++;
+        if (isE) rankCount.e++;
+
+        boolean isKakuho = "制空権確保".equals(dispseiku);
+        boolean isYusei = "航空優勢".equals(dispseiku);
+        boolean isGokaku = "航空互角".equals(dispseiku);
+        boolean isRessei = "航空劣勢".equals(dispseiku);
+        boolean isSoshitsu = "制空権喪失".equals(dispseiku);
+
+        if (isKakuho) rankCount.kakuho++;
+        if (isYusei) rankCount.yusei++;
+        if (isGokaku) rankCount.gokaku++;
+        if (isRessei) rankCount.ressei++;
+        if (isSoshitsu) rankCount.soshitsu++;
     }
 }

@@ -7,22 +7,22 @@ import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.TextArea;
 import javafx.util.StringConverter;
-import logbook.constants.StatisticsShipTypeGroup;
 import logbook.bean.AppQuest;
 import logbook.bean.AppQuestCollection;
 import logbook.bean.QuestList.Quest;
+import logbook.constants.StatisticsShipTypeGroup;
 import logbook.core.LogBookCoreServices;
 import logbook.internal.logger.LoggerHolder;
 
@@ -339,10 +339,10 @@ public class QuestConditionEditController extends WindowController {
                         logbook.bean.AppQuestCondition.Condition cond = condition.getConditions().get(i);
                         HBox row = (HBox) this.conditionsBox.getChildren().get(i);
 
-                        // row children: Label(Area), (Label, TextField)?, S, A, B, Count, Label
+                        // row children: Label(Area), (Label, TextField)?, S, A, B, 確保, 優勢, Count, Label
                         int idx = 1;
                         // Check if cell field exists
-                        if (row.getChildren().size() > 6) {
+                        if (row.getChildren().size() > 8) {
                             idx++; // Label("マス")
                             TextField cellField = (TextField) row.getChildren().get(idx++);
                             if (cond.getCell() != null) {
@@ -355,12 +355,18 @@ public class QuestConditionEditController extends WindowController {
                         CheckBox s = (CheckBox) row.getChildren().get(idx++);
                         CheckBox a = (CheckBox) row.getChildren().get(idx++);
                         CheckBox b = (CheckBox) row.getChildren().get(idx++);
+                        CheckBox kakuho = (CheckBox) row.getChildren().get(idx++);
+                        CheckBox yusei = (CheckBox) row.getChildren().get(idx++);
                         TextField countField = (TextField) row.getChildren().get(idx++);
 
                         if (cond.getRank() != null) {
                             s.setSelected(cond.getRank().contains("S"));
                             a.setSelected(cond.getRank().contains("A"));
                             b.setSelected(cond.getRank().contains("B"));
+                        }
+                        if (cond.getSeiku() != null) {
+                            kakuho.setSelected(cond.getSeiku().contains("制空権確保") || cond.getSeiku().contains("確保"));
+                            yusei.setSelected(cond.getSeiku().contains("航空優勢") || cond.getSeiku().contains("優勢"));
                         }
                         countField.setText(String.valueOf(cond.getCount()));
                     }
@@ -399,6 +405,8 @@ public class QuestConditionEditController extends WindowController {
                 CheckBox checkS = new CheckBox("S");
                 CheckBox checkA = new CheckBox("A");
                 CheckBox checkB = new CheckBox("B");
+                CheckBox checkKakuho = new CheckBox("確保");
+                CheckBox checkYusei = new CheckBox("優勢");
 
                 TextField count = new TextField();
                 count.setPrefWidth(50);
@@ -436,7 +444,11 @@ public class QuestConditionEditController extends WindowController {
                     row.getChildren().add(cellField);
                 }
 
-                row.getChildren().addAll(checkS, checkA, checkB, count, countLabel);
+                if (!isCustom) {
+                    row.getChildren().addAll(checkS, checkA, checkB, count, countLabel);
+                } else {
+                    row.getChildren().addAll(checkS, checkA, checkB, checkKakuho, checkYusei, count, countLabel);
+                }
                 this.conditionsBox.getChildren().add(row);
             }
         }
@@ -818,12 +830,12 @@ public class QuestConditionEditController extends WindowController {
             // Achievement Conditions
             for (javafx.scene.Node node : this.conditionsBox.getChildren()) {
                 HBox row = (HBox) node;
-                // Label(Area), [Label, TextField]?, S, A, B, Count, Label
+                // Label(Area), [Label, TextField]?, S, A, B, 確保, 優勢, Count, Label
                 Label areaLabel = (Label) row.getChildren().get(0);
 
                 int idx = 1;
                 String cellValue = null;
-                if (row.getChildren().size() > 6) {
+                if (row.getChildren().size() > 8) {
                     idx++; // Label("マス")
                     TextField cellField = (TextField) row.getChildren().get(idx++);
                     cellValue = cellField.getText();
@@ -832,6 +844,8 @@ public class QuestConditionEditController extends WindowController {
                 CheckBox s = (CheckBox) row.getChildren().get(idx++);
                 CheckBox a = (CheckBox) row.getChildren().get(idx++);
                 CheckBox b = (CheckBox) row.getChildren().get(idx++);
+                CheckBox kakuho = (CheckBox) row.getChildren().get(idx++);
+                CheckBox yusei = (CheckBox) row.getChildren().get(idx++);
                 TextField countField = (TextField) row.getChildren().get(idx++);
 
                 logbook.bean.AppQuestCondition.Condition cond = new logbook.bean.AppQuestCondition.Condition();
@@ -892,6 +906,15 @@ public class QuestConditionEditController extends WindowController {
                     ranks.add("B");
                 if (!ranks.isEmpty()) {
                     cond.setRank(ranks);
+                }
+
+                java.util.LinkedHashSet<String> seiku = new java.util.LinkedHashSet<>();
+                if (kakuho.isSelected())
+                    seiku.add("制空権確保");
+                if (yusei.isSelected())
+                    seiku.add("航空優勢");
+                if (!seiku.isEmpty()) {
+                    cond.setSeiku(seiku);
                 }
 
                 try {

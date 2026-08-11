@@ -388,6 +388,9 @@ public class AppQuestCondition implements Predicate<QuestCollect> {
         /** ランク */
         private LinkedHashSet<String> rank;
 
+        /** 制空権 */
+        private LinkedHashSet<String> seiku;
+
         /** 艦種 */
         private LinkedHashSet<String> stype;
 
@@ -449,26 +452,32 @@ public class AppQuestCondition implements Predicate<QuestCollect> {
                     sb.append("に").append(this.count).append("回出撃");
                 } else {
                     sb.append("で");
-                    if (this.boss) {
-                        sb.append("ボス");
-                    }
-                    if (this.rank == null || this.rank.isEmpty()
-                            || this.rank.contains("E")
-                            || this.rank.contains("D")) {
-                        // D以下
+                    boolean isBattle = !(this.rank == null || this.rank.isEmpty()) && 
+                            (this.rank.contains("S") || this.rank.contains("A") || this.rank.contains("B") || this.rank.contains("C") || this.rank.contains("D") || this.rank.contains("E"));
+                    if (isBattle) {
+                        if (this.boss) {
+                            sb.append("ボス");
+                        }
+                        if (this.rank.contains("C")) {
+                            // C以上
+                            sb.append("C敗北以上");
+                        } else if (this.rank.contains("B")) {
+                            // B以上
+                            sb.append("B勝利以上");
+                        } else if (this.rank.contains("A")) {
+                            // A以上
+                            sb.append("A勝利以上");
+                        } else {
+                            // S
+                            sb.append("S勝利");
+                        }
+                    } else if (this.seiku != null && !this.seiku.isEmpty()) {
+                        sb.append(this.seiku.stream()
+                                .map(s -> "確保".equals(s) ? "制空権確保" : "優勢".equals(s) ? "航空優勢" : s)
+                                .collect(Collectors.joining("または")));
+                    } else if (this.rank == null || this.rank.isEmpty()) {
+                        //勝利条件設定なし = 勝敗に関係ない単純な戦闘数
                         sb.append("戦闘");
-                    } else if (this.rank.contains("C")) {
-                        // C以上
-                        sb.append("C敗北以上");
-                    } else if (this.rank.contains("B")) {
-                        // B以上
-                        sb.append("B勝利以上");
-                    } else if (this.rank.contains("A")) {
-                        // A以上
-                        sb.append("A勝利以上");
-                    } else {
-                        // S
-                        sb.append("S勝利");
                     }
                     sb.append(this.count).append("回");
                 }
@@ -547,20 +556,32 @@ public class AppQuestCondition implements Predicate<QuestCollect> {
                         rank = battleCount.getAll();
                     }
                 }
-                boolean any = (this.rank == null || this.rank.isEmpty());
+                boolean anyRank = (this.rank == null || this.rank.isEmpty());
+                boolean anySeiku = (this.seiku == null || this.seiku.isEmpty());
 
-                if (any || this.rank.contains("S"))
-                    count += rank.getS();
-                if (any || this.rank.contains("A"))
-                    count += rank.getA();
-                if (any || this.rank.contains("B"))
-                    count += rank.getB();
-                if (any || this.rank.contains("C"))
-                    count += rank.getC();
-                if (any || this.rank.contains("D"))
-                    count += rank.getD();
-                if (any || this.rank.contains("E"))
-                    count += rank.getE();
+                if (!anySeiku) {
+                    boolean wantKakuho = this.seiku.contains("制空権確保") || this.seiku.contains("確保");
+                    boolean wantYusei = this.seiku.contains("航空優勢") || this.seiku.contains("優勢");
+                    if (wantKakuho)
+                        count += rank.getKakuho();
+                    if (wantYusei)
+                        count += rank.getYusei();
+                } else if (!anyRank) {
+                    if (this.rank.contains("S"))
+                        count += rank.getS();
+                    if (this.rank.contains("A"))
+                        count += rank.getA();
+                    if (this.rank.contains("B"))
+                        count += rank.getB();
+                    if (this.rank.contains("C"))
+                        count += rank.getC();
+                    if (this.rank.contains("D"))
+                        count += rank.getD();
+                    if (this.rank.contains("E"))
+                        count += rank.getE();
+                } else {
+                    count += rank.getS() + rank.getA() + rank.getB() + rank.getC() + rank.getD() + rank.getE();
+                }
                 return count;
             }
         }
