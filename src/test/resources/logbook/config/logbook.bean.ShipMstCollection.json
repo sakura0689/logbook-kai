@@ -5936,8 +5936,8 @@
             "yomi": "きたかみ",
             "stype": 4,
             "ctype": 4,
-            "afterlv": 0,
-            "aftershipid": 0,
+            "afterlv": 88,
+            "aftershipid": 1071,
             "taik": [
                 43,
                 59
@@ -5973,8 +5973,8 @@
                 0,
                 0
             ],
-            "afterfuel": 0,
-            "afterbull": 0,
+            "afterfuel": 2500,
+            "afterbull": 1500,
             "fuelMax": 25,
             "bullMax": 75,
             "graph": "cqtlanpwihpj",
@@ -19410,8 +19410,8 @@
             "yomi": "さぎり",
             "stype": 2,
             "ctype": 1,
-            "afterlv": 0,
-            "aftershipid": 0,
+            "afterlv": 84,
+            "aftershipid": 902,
             "taik": [
                 30,
                 49
@@ -19447,8 +19447,8 @@
                 0,
                 0
             ],
-            "afterfuel": 0,
-            "afterbull": 0,
+            "afterfuel": 330,
+            "afterbull": 480,
             "fuelMax": 15,
             "bullMax": 20,
             "graph": "xvelofmpcaga",
@@ -20452,8 +20452,8 @@
             "yomi": "ふそう",
             "stype": 10,
             "ctype": 26,
-            "afterlv": 0,
-            "aftershipid": 0,
+            "afterlv": 92,
+            "aftershipid": 748,
             "taik": [
                 77,
                 94
@@ -20489,8 +20489,8 @@
                 23,
                 0
             ],
-            "afterfuel": 0,
-            "afterbull": 0,
+            "afterfuel": 5400,
+            "afterbull": 3200,
             "fuelMax": 105,
             "bullMax": 140,
             "graph": "gmnsxwkdssmj",
@@ -20504,8 +20504,8 @@
             "yomi": "やましろ",
             "stype": 10,
             "ctype": 26,
-            "afterlv": 0,
-            "aftershipid": 0,
+            "afterlv": 92,
+            "aftershipid": 749,
             "taik": [
                 77,
                 94
@@ -20541,8 +20541,8 @@
                 23,
                 0
             ],
-            "afterfuel": 0,
-            "afterbull": 0,
+            "afterfuel": 5400,
+            "afterbull": 3200,
             "fuelMax": 105,
             "bullMax": 140,
             "graph": "xjsgvmgfleuu",
@@ -27116,8 +27116,8 @@
             "yomi": "ながなみ",
             "stype": 2,
             "ctype": 38,
-            "afterlv": 0,
-            "aftershipid": 0,
+            "afterlv": 92,
+            "aftershipid": 743,
             "taik": [
                 33,
                 56
@@ -27153,8 +27153,8 @@
                 0,
                 0
             ],
-            "afterfuel": 0,
-            "afterbull": 0,
+            "afterfuel": 760,
+            "afterbull": 790,
             "fuelMax": 15,
             "bullMax": 20,
             "graph": "tdextuaybvpj",
@@ -28940,8 +28940,8 @@
             "yomi": "あさしも",
             "stype": 2,
             "ctype": 38,
-            "afterlv": 0,
-            "aftershipid": 0,
+            "afterlv": 92,
+            "aftershipid": 744,
             "taik": [
                 33,
                 57
@@ -28977,8 +28977,8 @@
                 0,
                 0
             ],
-            "afterfuel": 0,
-            "afterbull": 0,
+            "afterfuel": 760,
+            "afterbull": 790,
             "fuelMax": 15,
             "bullMax": 20,
             "graph": "zzahenrypate",
@@ -35286,8 +35286,8 @@
             "yomi": "すずなみ",
             "stype": 2,
             "ctype": 38,
-            "afterlv": 0,
-            "aftershipid": 0,
+            "afterlv": 82,
+            "aftershipid": 1034,
             "taik": [
                 32,
                 49
@@ -35323,8 +35323,8 @@
                 0,
                 0
             ],
-            "afterfuel": 0,
-            "afterbull": 0,
+            "afterfuel": 390,
+            "afterbull": 490,
             "fuelMax": 15,
             "bullMax": 20,
             "graph": "uxfylszgxppt",
@@ -36994,6 +36994,370 @@
             "graph": "yswnykcgazhe",
             "version": null
         },
+        "743": {
+            "id": 743,
+            "sortno": 1743,
+            "sortId": 16237,
+            "name": "長波改二補",
+            "yomi": "ながなみ",
+            "stype": 2,
+            "ctype": 38,
+            "afterlv": 0,
+            "aftershipid": 0,
+            "taik": [
+                34,
+                57
+            ],
+            "souk": [
+                16,
+                56
+            ],
+            "houg": [
+                20,
+                69
+            ],
+            "raig": [
+                36,
+                91
+            ],
+            "tyku": [
+                32,
+                72
+            ],
+            "tais": null,
+            "luck": [
+                33,
+                86
+            ],
+            "soku": 10,
+            "leng": 1,
+            "slotNum": 4,
+            "maxeq": [
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "afterfuel": 0,
+            "afterbull": 0,
+            "fuelMax": 15,
+            "bullMax": 20,
+            "graph": "wqxtvtwfzihu",
+            "version": null
+        },
+        "744": {
+            "id": 744,
+            "sortno": 1744,
+            "sortId": 16357,
+            "name": "朝霜改二補",
+            "yomi": "あさしも",
+            "stype": 2,
+            "ctype": 38,
+            "afterlv": 0,
+            "aftershipid": 0,
+            "taik": [
+                33,
+                57
+            ],
+            "souk": [
+                16,
+                57
+            ],
+            "houg": [
+                20,
+                69
+            ],
+            "raig": [
+                36,
+                88
+            ],
+            "tyku": [
+                40,
+                80
+            ],
+            "tais": null,
+            "luck": [
+                29,
+                88
+            ],
+            "soku": 10,
+            "leng": 1,
+            "slotNum": 4,
+            "maxeq": [
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "afterfuel": 0,
+            "afterbull": 0,
+            "fuelMax": 15,
+            "bullMax": 20,
+            "graph": "soqbjsbjekwl",
+            "version": null
+        },
+        "745": {
+            "id": 745,
+            "sortno": 1745,
+            "sortId": 16297,
+            "name": "涼波改二補",
+            "yomi": "すずなみ",
+            "stype": 2,
+            "ctype": 38,
+            "afterlv": 0,
+            "aftershipid": 0,
+            "taik": [
+                33,
+                56
+            ],
+            "souk": [
+                16,
+                55
+            ],
+            "houg": [
+                20,
+                65
+            ],
+            "raig": [
+                36,
+                86
+            ],
+            "tyku": [
+                40,
+                80
+            ],
+            "tais": null,
+            "luck": [
+                23,
+                83
+            ],
+            "soku": 10,
+            "leng": 1,
+            "slotNum": 4,
+            "maxeq": [
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "afterfuel": 0,
+            "afterbull": 0,
+            "fuelMax": 15,
+            "bullMax": 20,
+            "graph": "nvnwinptucct",
+            "version": null
+        },
+        "746": {
+            "id": 746,
+            "sortno": 1746,
+            "sortId": 19062,
+            "name": "桐改",
+            "yomi": "きり",
+            "stype": 2,
+            "ctype": 101,
+            "afterlv": 0,
+            "aftershipid": 0,
+            "taik": [
+                27,
+                45
+            ],
+            "souk": [
+                12,
+                56
+            ],
+            "houg": [
+                8,
+                41
+            ],
+            "raig": [
+                13,
+                69
+            ],
+            "tyku": [
+                28,
+                79
+            ],
+            "tais": null,
+            "luck": [
+                22,
+                88
+            ],
+            "soku": 10,
+            "leng": 1,
+            "slotNum": 3,
+            "maxeq": [
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "afterfuel": 0,
+            "afterbull": 0,
+            "fuelMax": 15,
+            "bullMax": 15,
+            "graph": "jodnyrpxhknb",
+            "version": null
+        },
+        "747": {
+            "id": 747,
+            "sortno": 1747,
+            "sortId": 32482,
+            "name": "Reno改",
+            "yomi": "リノ",
+            "stype": 3,
+            "ctype": 99,
+            "afterlv": 0,
+            "aftershipid": 0,
+            "taik": [
+                41,
+                59
+            ],
+            "souk": [
+                28,
+                63
+            ],
+            "houg": [
+                18,
+                62
+            ],
+            "raig": [
+                22,
+                70
+            ],
+            "tyku": [
+                86,
+                126
+            ],
+            "tais": null,
+            "luck": [
+                48,
+                98
+            ],
+            "soku": 10,
+            "leng": 1,
+            "slotNum": 3,
+            "maxeq": [
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "afterfuel": 0,
+            "afterbull": 0,
+            "fuelMax": 30,
+            "bullMax": 60,
+            "graph": "rdzdbkduytqr",
+            "version": null
+        },
+        "748": {
+            "id": 748,
+            "sortno": 1748,
+            "sortId": 1057,
+            "name": "扶桑改二補",
+            "yomi": "ふそう",
+            "stype": 10,
+            "ctype": 26,
+            "afterlv": 0,
+            "aftershipid": 0,
+            "taik": [
+                77,
+                95
+            ],
+            "souk": [
+                73,
+                90
+            ],
+            "houg": [
+                80,
+                99
+            ],
+            "raig": [
+                0,
+                0
+            ],
+            "tyku": [
+                47,
+                88
+            ],
+            "tais": null,
+            "luck": [
+                14,
+                72
+            ],
+            "soku": 5,
+            "leng": 3,
+            "slotNum": 5,
+            "maxeq": [
+                3,
+                3,
+                10,
+                24,
+                3
+            ],
+            "afterfuel": 0,
+            "afterbull": 0,
+            "fuelMax": 105,
+            "bullMax": 140,
+            "graph": "ibcavjzuajrb",
+            "version": null
+        },
+        "749": {
+            "id": 749,
+            "sortno": 1749,
+            "sortId": 1067,
+            "name": "山城改二補",
+            "yomi": "やましろ",
+            "stype": 10,
+            "ctype": 26,
+            "afterlv": 0,
+            "aftershipid": 0,
+            "taik": [
+                77,
+                95
+            ],
+            "souk": [
+                74,
+                91
+            ],
+            "houg": [
+                80,
+                98
+            ],
+            "raig": [
+                0,
+                0
+            ],
+            "tyku": [
+                46,
+                87
+            ],
+            "tais": null,
+            "luck": [
+                15,
+                73
+            ],
+            "soku": 5,
+            "leng": 3,
+            "slotNum": 5,
+            "maxeq": [
+                3,
+                3,
+                10,
+                24,
+                3
+            ],
+            "afterfuel": 0,
+            "afterbull": 0,
+            "fuelMax": 105,
+            "bullMax": 140,
+            "graph": "nkyfnlezisnl",
+            "version": null
+        },
         "877": {
             "id": 877,
             "sortno": 477,
@@ -38200,6 +38564,58 @@
             "fuelMax": 15,
             "bullMax": 25,
             "graph": "mblmkiwvsotl",
+            "version": null
+        },
+        "902": {
+            "id": 902,
+            "sortno": 502,
+            "sortId": 14166,
+            "name": "狭霧改二",
+            "yomi": "さぎり",
+            "stype": 2,
+            "ctype": 1,
+            "afterlv": 0,
+            "aftershipid": 0,
+            "taik": [
+                31,
+                54
+            ],
+            "souk": [
+                14,
+                51
+            ],
+            "houg": [
+                13,
+                63
+            ],
+            "raig": [
+                30,
+                87
+            ],
+            "tyku": [
+                15,
+                60
+            ],
+            "tais": null,
+            "luck": [
+                28,
+                81
+            ],
+            "soku": 10,
+            "leng": 1,
+            "slotNum": 3,
+            "maxeq": [
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "afterfuel": 0,
+            "afterbull": 0,
+            "fuelMax": 15,
+            "bullMax": 20,
+            "graph": "biobxgnkjnzi",
             "version": null
         },
         "903": {
@@ -39454,6 +39870,58 @@
             "graph": "uodemjpojthc",
             "version": null
         },
+        "932": {
+            "id": 932,
+            "sortno": 532,
+            "sortId": 32071,
+            "name": "Indiana",
+            "yomi": "インディアナ",
+            "stype": 8,
+            "ctype": 102,
+            "afterlv": 48,
+            "aftershipid": 937,
+            "taik": [
+                79,
+                92
+            ],
+            "souk": [
+                77,
+                92
+            ],
+            "houg": [
+                80,
+                100
+            ],
+            "raig": [
+                0,
+                0
+            ],
+            "tyku": [
+                40,
+                92
+            ],
+            "tais": null,
+            "luck": [
+                19,
+                86
+            ],
+            "soku": 10,
+            "leng": 3,
+            "slotNum": 4,
+            "maxeq": [
+                0,
+                0,
+                3,
+                3,
+                0
+            ],
+            "afterfuel": 2700,
+            "afterbull": 2400,
+            "fuelMax": 150,
+            "bullMax": 190,
+            "graph": "gwxkvtmkxmsr",
+            "version": null
+        },
         "933": {
             "id": 933,
             "sortno": 533,
@@ -39660,6 +40128,58 @@
             "fuelMax": 90,
             "bullMax": 150,
             "graph": "sfpnywswxinh",
+            "version": null
+        },
+        "937": {
+            "id": 937,
+            "sortno": 537,
+            "sortId": 32072,
+            "name": "Indiana改",
+            "yomi": "インディアナ",
+            "stype": 8,
+            "ctype": 102,
+            "afterlv": 0,
+            "aftershipid": 0,
+            "taik": [
+                91,
+                100
+            ],
+            "souk": [
+                86,
+                109
+            ],
+            "houg": [
+                85,
+                108
+            ],
+            "raig": [
+                0,
+                0
+            ],
+            "tyku": [
+                59,
+                109
+            ],
+            "tais": null,
+            "luck": [
+                46,
+                122
+            ],
+            "soku": 10,
+            "leng": 3,
+            "slotNum": 4,
+            "maxeq": [
+                0,
+                2,
+                3,
+                3,
+                0
+            ],
+            "afterfuel": 0,
+            "afterbull": 0,
+            "fuelMax": 160,
+            "bullMax": 200,
+            "graph": "pcmckxfhextj",
             "version": null
         },
         "938": {
@@ -40757,7 +41277,7 @@
         "962": {
             "id": 962,
             "sortno": 562,
-            "sortId": 34511,
+            "sortId": 34591,
             "name": "Mogador",
             "yomi": "モガドール",
             "stype": 2,
@@ -41017,7 +41537,7 @@
         "967": {
             "id": 967,
             "sortno": 567,
-            "sortId": 34512,
+            "sortId": 34592,
             "name": "Mogador改",
             "yomi": "モガドール",
             "stype": 2,
@@ -42158,6 +42678,58 @@
             "graph": "yeevhnjpnuck",
             "version": null
         },
+        "991": {
+            "id": 991,
+            "sortno": 591,
+            "sortId": 32481,
+            "name": "Reno",
+            "yomi": "リノ",
+            "stype": 3,
+            "ctype": 99,
+            "afterlv": 50,
+            "aftershipid": 747,
+            "taik": [
+                27,
+                41
+            ],
+            "souk": [
+                15,
+                30
+            ],
+            "houg": [
+                16,
+                37
+            ],
+            "raig": [
+                22,
+                66
+            ],
+            "tyku": [
+                80,
+                122
+            ],
+            "tais": null,
+            "luck": [
+                22,
+                72
+            ],
+            "soku": 10,
+            "leng": 1,
+            "slotNum": 3,
+            "maxeq": [
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "afterfuel": 360,
+            "afterbull": 420,
+            "fuelMax": 30,
+            "bullMax": 50,
+            "graph": "pkvnfsrrwibk",
+            "version": null
+        },
         "992": {
             "id": 992,
             "sortno": 592,
@@ -43094,6 +43666,60 @@
             "graph": "gskohgbesgir",
             "version": null
         },
+        "1023": {
+            "id": 1023,
+            "sortno": 613,
+            "sortId": 32211,
+            "name": "Independence",
+            "yomi": "インディペンデンス",
+            "stype": 7,
+            "ctype": 116,
+            "afterlv": 50,
+            "aftershipid": 1028,
+            "taik": [
+                31,
+                41
+            ],
+            "souk": [
+                14,
+                30
+            ],
+            "houg": [
+                14,
+                34
+            ],
+            "raig": [
+                0,
+                0
+            ],
+            "tyku": [
+                32,
+                52
+            ],
+            "tais": [
+                16
+            ],
+            "luck": [
+                28,
+                88
+            ],
+            "soku": 10,
+            "leng": 2,
+            "slotNum": 3,
+            "maxeq": [
+                12,
+                9,
+                9,
+                0,
+                0
+            ],
+            "afterfuel": 480,
+            "afterbull": 1080,
+            "fuelMax": 35,
+            "bullMax": 40,
+            "graph": "oanubccgwrgx",
+            "version": null
+        },
         "1025": {
             "id": 1025,
             "sortno": 615,
@@ -43196,6 +43822,60 @@
             "fuelMax": 50,
             "bullMax": 45,
             "graph": "mlntixnqlulr",
+            "version": null
+        },
+        "1028": {
+            "id": 1028,
+            "sortno": 618,
+            "sortId": 32212,
+            "name": "Independence改",
+            "yomi": "インディペンデンス",
+            "stype": 7,
+            "ctype": 116,
+            "afterlv": 85,
+            "aftershipid": 1036,
+            "taik": [
+                44,
+                70
+            ],
+            "souk": [
+                22,
+                60
+            ],
+            "houg": [
+                18,
+                42
+            ],
+            "raig": [
+                0,
+                0
+            ],
+            "tyku": [
+                34,
+                58
+            ],
+            "tais": [
+                20
+            ],
+            "luck": [
+                36,
+                98
+            ],
+            "soku": 10,
+            "leng": 2,
+            "slotNum": 4,
+            "maxeq": [
+                24,
+                12,
+                7,
+                3,
+                0
+            ],
+            "afterfuel": 680,
+            "afterbull": 1280,
+            "fuelMax": 40,
+            "bullMax": 45,
+            "graph": "jvylfgpijsfr",
             "version": null
         },
         "1030": {
@@ -43354,6 +44034,58 @@
             "graph": "lsudguoipbwg",
             "version": null
         },
+        "1034": {
+            "id": 1034,
+            "sortno": 624,
+            "sortId": 16296,
+            "name": "涼波改二",
+            "yomi": "すずなみ",
+            "stype": 2,
+            "ctype": 38,
+            "afterlv": 92,
+            "aftershipid": 745,
+            "taik": [
+                32,
+                56
+            ],
+            "souk": [
+                16,
+                53
+            ],
+            "houg": [
+                18,
+                65
+            ],
+            "raig": [
+                31,
+                86
+            ],
+            "tyku": [
+                28,
+                76
+            ],
+            "tais": null,
+            "luck": [
+                17,
+                77
+            ],
+            "soku": 10,
+            "leng": 1,
+            "slotNum": 3,
+            "maxeq": [
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "afterfuel": 760,
+            "afterbull": 790,
+            "fuelMax": 15,
+            "bullMax": 20,
+            "graph": "imyfegjidjbl",
+            "version": null
+        },
         "1035": {
             "id": 1035,
             "sortno": 625,
@@ -43406,6 +44138,60 @@
             "graph": "movylnwgldnd",
             "version": null
         },
+        "1036": {
+            "id": 1036,
+            "sortno": 626,
+            "sortId": 32213,
+            "name": "Independence Flight II",
+            "yomi": "インディペンデンス",
+            "stype": 7,
+            "ctype": 116,
+            "afterlv": 0,
+            "aftershipid": 0,
+            "taik": [
+                46,
+                71
+            ],
+            "souk": [
+                28,
+                62
+            ],
+            "houg": [
+                32,
+                50
+            ],
+            "raig": [
+                0,
+                0
+            ],
+            "tyku": [
+                44,
+                62
+            ],
+            "tais": [
+                32
+            ],
+            "luck": [
+                39,
+                108
+            ],
+            "soku": 10,
+            "leng": 2,
+            "slotNum": 4,
+            "maxeq": [
+                19,
+                7,
+                7,
+                3,
+                0
+            ],
+            "afterfuel": 0,
+            "afterbull": 0,
+            "fuelMax": 45,
+            "bullMax": 45,
+            "graph": "qgjpqkpvigpp",
+            "version": null
+        },
         "1040": {
             "id": 1040,
             "sortno": 630,
@@ -43456,6 +44242,786 @@
             "fuelMax": 25,
             "bullMax": 30,
             "graph": "skqpgrmcdjsw",
+            "version": null
+        },
+        "1041": {
+            "id": 1041,
+            "sortno": 631,
+            "sortId": 17091,
+            "name": "花月",
+            "yomi": "はなづき",
+            "stype": 2,
+            "ctype": 54,
+            "afterlv": 55,
+            "aftershipid": 1046,
+            "taik": [
+                19,
+                40
+            ],
+            "souk": [
+                10,
+                26
+            ],
+            "houg": [
+                16,
+                46
+            ],
+            "raig": [
+                16,
+                42
+            ],
+            "tyku": [
+                68,
+                100
+            ],
+            "tais": null,
+            "luck": [
+                30,
+                79
+            ],
+            "soku": 10,
+            "leng": 1,
+            "slotNum": 3,
+            "maxeq": [
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "afterfuel": 270,
+            "afterbull": 430,
+            "fuelMax": 20,
+            "bullMax": 25,
+            "graph": "jtixxkuniwml",
+            "version": null
+        },
+        "1044": {
+            "id": 1044,
+            "sortno": 634,
+            "sortId": 19061,
+            "name": "桐",
+            "yomi": "きり",
+            "stype": 2,
+            "ctype": 101,
+            "afterlv": 53,
+            "aftershipid": 746,
+            "taik": [
+                14,
+                27
+            ],
+            "souk": [
+                5,
+                22
+            ],
+            "houg": [
+                5,
+                25
+            ],
+            "raig": [
+                16,
+                60
+            ],
+            "tyku": [
+                20,
+                62
+            ],
+            "tais": null,
+            "luck": [
+                22,
+                88
+            ],
+            "soku": 10,
+            "leng": 1,
+            "slotNum": 2,
+            "maxeq": [
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "afterfuel": 180,
+            "afterbull": 190,
+            "fuelMax": 15,
+            "bullMax": 15,
+            "graph": "pssfvnyndkjo",
+            "version": null
+        },
+        "1046": {
+            "id": 1046,
+            "sortno": 636,
+            "sortId": 17092,
+            "name": "花月改",
+            "yomi": "はなづき",
+            "stype": 2,
+            "ctype": 54,
+            "afterlv": 0,
+            "aftershipid": 0,
+            "taik": [
+                37,
+                57
+            ],
+            "souk": [
+                16,
+                53
+            ],
+            "houg": [
+                22,
+                58
+            ],
+            "raig": [
+                22,
+                53
+            ],
+            "tyku": [
+                82,
+                113
+            ],
+            "tais": null,
+            "luck": [
+                42,
+                98
+            ],
+            "soku": 10,
+            "leng": 1,
+            "slotNum": 3,
+            "maxeq": [
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "afterfuel": 0,
+            "afterbull": 0,
+            "fuelMax": 20,
+            "bullMax": 25,
+            "graph": "sjyfiighnnid",
+            "version": null
+        },
+        "1051": {
+            "id": 1051,
+            "sortno": 641,
+            "sortId": 34351,
+            "name": "Algérie",
+            "yomi": "アルジェリー",
+            "stype": 5,
+            "ctype": 138,
+            "afterlv": 50,
+            "aftershipid": 1056,
+            "taik": [
+                48,
+                63
+            ],
+            "souk": [
+                34,
+                52
+            ],
+            "houg": [
+                40,
+                64
+            ],
+            "raig": [
+                30,
+                57
+            ],
+            "tyku": [
+                28,
+                72
+            ],
+            "tais": null,
+            "luck": [
+                5,
+                35
+            ],
+            "soku": 10,
+            "leng": 3,
+            "slotNum": 3,
+            "maxeq": [
+                2,
+                3,
+                3,
+                0,
+                0
+            ],
+            "afterfuel": 280,
+            "afterbull": 420,
+            "fuelMax": 50,
+            "bullMax": 65,
+            "graph": "hfypovxkocok",
+            "version": null
+        },
+        "1053": {
+            "id": 1053,
+            "sortno": 643,
+            "sortId": 34551,
+            "name": "Vautour",
+            "yomi": "ヴァトール",
+            "stype": 2,
+            "ctype": 139,
+            "afterlv": 30,
+            "aftershipid": 1058,
+            "taik": [
+                18,
+                37
+            ],
+            "souk": [
+                11,
+                28
+            ],
+            "houg": [
+                18,
+                38
+            ],
+            "raig": [
+                12,
+                58
+            ],
+            "tyku": [
+                8,
+                36
+            ],
+            "tais": null,
+            "luck": [
+                5,
+                37
+            ],
+            "soku": 10,
+            "leng": 1,
+            "slotNum": 2,
+            "maxeq": [
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "afterfuel": 110,
+            "afterbull": 130,
+            "fuelMax": 20,
+            "bullMax": 25,
+            "graph": "jgocsexxqddm",
+            "version": null
+        },
+        "1055": {
+            "id": 1055,
+            "sortno": 645,
+            "sortId": 34111,
+            "name": "Béarn",
+            "yomi": "ベアルン",
+            "stype": 11,
+            "ctype": 141,
+            "afterlv": 40,
+            "aftershipid": 1060,
+            "taik": [
+                52,
+                77
+            ],
+            "souk": [
+                44,
+                70
+            ],
+            "houg": [
+                20,
+                30
+            ],
+            "raig": [
+                0,
+                0
+            ],
+            "tyku": [
+                24,
+                32
+            ],
+            "tais": null,
+            "luck": [
+                18,
+                68
+            ],
+            "soku": 5,
+            "leng": 2,
+            "slotNum": 3,
+            "maxeq": [
+                12,
+                12,
+                8,
+                0,
+                0
+            ],
+            "afterfuel": 1200,
+            "afterbull": 560,
+            "fuelMax": 60,
+            "bullMax": 40,
+            "graph": "gltpluiiezpb",
+            "version": null
+        },
+        "1056": {
+            "id": 1056,
+            "sortno": 646,
+            "sortId": 34352,
+            "name": "Algérie改",
+            "yomi": "アルジェリー",
+            "stype": 5,
+            "ctype": 138,
+            "afterlv": 0,
+            "aftershipid": 0,
+            "taik": [
+                71,
+                85
+            ],
+            "souk": [
+                53,
+                84
+            ],
+            "houg": [
+                62,
+                91
+            ],
+            "raig": [
+                42,
+                64
+            ],
+            "tyku": [
+                46,
+                91
+            ],
+            "tais": null,
+            "luck": [
+                9,
+                55
+            ],
+            "soku": 10,
+            "leng": 3,
+            "slotNum": 4,
+            "maxeq": [
+                3,
+                3,
+                3,
+                3,
+                0
+            ],
+            "afterfuel": 0,
+            "afterbull": 0,
+            "fuelMax": 55,
+            "bullMax": 85,
+            "graph": "qxdwcchouyut",
+            "version": null
+        },
+        "1058": {
+            "id": 1058,
+            "sortno": 648,
+            "sortId": 34552,
+            "name": "Vautour改",
+            "yomi": "ヴァトール",
+            "stype": 2,
+            "ctype": 139,
+            "afterlv": 0,
+            "aftershipid": 0,
+            "taik": [
+                35,
+                55
+            ],
+            "souk": [
+                16,
+                50
+            ],
+            "houg": [
+                20,
+                62
+            ],
+            "raig": [
+                24,
+                60
+            ],
+            "tyku": [
+                36,
+                68
+            ],
+            "tais": null,
+            "luck": [
+                9,
+                57
+            ],
+            "soku": 10,
+            "leng": 1,
+            "slotNum": 3,
+            "maxeq": [
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "afterfuel": 0,
+            "afterbull": 0,
+            "fuelMax": 20,
+            "bullMax": 30,
+            "graph": "ukjnsutvklgk",
+            "version": null
+        },
+        "1060": {
+            "id": 1060,
+            "sortno": 650,
+            "sortId": 34112,
+            "name": "Béarn改",
+            "yomi": "ベアルン",
+            "stype": 11,
+            "ctype": 141,
+            "afterlv": 75,
+            "aftershipid": 1061,
+            "taik": [
+                75,
+                88
+            ],
+            "souk": [
+                55,
+                85
+            ],
+            "houg": [
+                30,
+                44
+            ],
+            "raig": [
+                0,
+                0
+            ],
+            "tyku": [
+                30,
+                42
+            ],
+            "tais": null,
+            "luck": [
+                28,
+                88
+            ],
+            "soku": 5,
+            "leng": 1,
+            "slotNum": 4,
+            "maxeq": [
+                16,
+                16,
+                6,
+                2,
+                0
+            ],
+            "afterfuel": 1600,
+            "afterbull": 1080,
+            "fuelMax": 65,
+            "bullMax": 45,
+            "graph": "ojaikbrohxzd",
+            "version": null
+        },
+        "1061": {
+            "id": 1061,
+            "sortno": 651,
+            "sortId": 34114,
+            "name": "Béarn amélioration",
+            "yomi": "ベアルン",
+            "stype": 11,
+            "ctype": 141,
+            "afterlv": 0,
+            "aftershipid": 0,
+            "taik": [
+                77,
+                93
+            ],
+            "souk": [
+                57,
+                87
+            ],
+            "houg": [
+                40,
+                55
+            ],
+            "raig": [
+                4,
+                16
+            ],
+            "tyku": [
+                32,
+                60
+            ],
+            "tais": null,
+            "luck": [
+                33,
+                103
+            ],
+            "soku": 5,
+            "leng": 3,
+            "slotNum": 4,
+            "maxeq": [
+                22,
+                22,
+                12,
+                4,
+                0
+            ],
+            "afterfuel": 0,
+            "afterbull": 0,
+            "fuelMax": 65,
+            "bullMax": 60,
+            "graph": "lktlvbkbtkkg",
+            "version": null
+        },
+        "1062": {
+            "id": 1062,
+            "sortno": 652,
+            "sortId": 36551,
+            "name": "Visby",
+            "yomi": "ヴィスビィ",
+            "stype": 2,
+            "ctype": 140,
+            "afterlv": 50,
+            "aftershipid": 1067,
+            "taik": [
+                11,
+                19
+            ],
+            "souk": [
+                5,
+                20
+            ],
+            "houg": [
+                6,
+                22
+            ],
+            "raig": [
+                12,
+                36
+            ],
+            "tyku": [
+                60,
+                74
+            ],
+            "tais": null,
+            "luck": [
+                20,
+                80
+            ],
+            "soku": 10,
+            "leng": 1,
+            "slotNum": 2,
+            "maxeq": [
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "afterfuel": 70,
+            "afterbull": 120,
+            "fuelMax": 10,
+            "bullMax": 10,
+            "graph": "tbwnugkdzgzq",
+            "version": null
+        },
+        "1065": {
+            "id": 1065,
+            "sortno": 655,
+            "sortId": 7031,
+            "name": "日枝丸",
+            "yomi": "ひえまる",
+            "stype": 20,
+            "ctype": 126,
+            "afterlv": 55,
+            "aftershipid": 1070,
+            "taik": [
+                36,
+                51
+            ],
+            "souk": [
+                3,
+                18
+            ],
+            "houg": [
+                5,
+                23
+            ],
+            "raig": [
+                0,
+                0
+            ],
+            "tyku": [
+                10,
+                28
+            ],
+            "tais": null,
+            "luck": [
+                3,
+                33
+            ],
+            "soku": 5,
+            "leng": 2,
+            "slotNum": 2,
+            "maxeq": [
+                1,
+                1,
+                0,
+                0,
+                0
+            ],
+            "afterfuel": 500,
+            "afterbull": 480,
+            "fuelMax": 30,
+            "bullMax": 10,
+            "graph": "gbrezpsvvthn",
+            "version": null
+        },
+        "1067": {
+            "id": 1067,
+            "sortno": 657,
+            "sortId": 36552,
+            "name": "Visby改",
+            "yomi": "ヴィスビィ",
+            "stype": 2,
+            "ctype": 140,
+            "afterlv": 0,
+            "aftershipid": 0,
+            "taik": [
+                17,
+                26
+            ],
+            "souk": [
+                15,
+                43
+            ],
+            "houg": [
+                10,
+                30
+            ],
+            "raig": [
+                24,
+                50
+            ],
+            "tyku": [
+                74,
+                84
+            ],
+            "tais": null,
+            "luck": [
+                36,
+                100
+            ],
+            "soku": 10,
+            "leng": 1,
+            "slotNum": 3,
+            "maxeq": [
+                0,
+                0,
+                1,
+                0,
+                0
+            ],
+            "afterfuel": 0,
+            "afterbull": 0,
+            "fuelMax": 15,
+            "bullMax": 15,
+            "graph": "ojmyqilyjcke",
+            "version": null
+        },
+        "1070": {
+            "id": 1070,
+            "sortno": 660,
+            "sortId": 7032,
+            "name": "日枝丸改",
+            "yomi": "ひえまる",
+            "stype": 20,
+            "ctype": 126,
+            "afterlv": 0,
+            "aftershipid": 0,
+            "taik": [
+                39,
+                57
+            ],
+            "souk": [
+                17,
+                33
+            ],
+            "houg": [
+                13,
+                43
+            ],
+            "raig": [
+                0,
+                0
+            ],
+            "tyku": [
+                10,
+                30
+            ],
+            "tais": null,
+            "luck": [
+                8,
+                48
+            ],
+            "soku": 5,
+            "leng": 2,
+            "slotNum": 3,
+            "maxeq": [
+                1,
+                1,
+                1,
+                0,
+                0
+            ],
+            "afterfuel": 0,
+            "afterbull": 0,
+            "fuelMax": 30,
+            "bullMax": 15,
+            "graph": "bvjnnfgdkyfe",
+            "version": null
+        },
+        "1071": {
+            "id": 1071,
+            "sortno": 661,
+            "sortId": 10057,
+            "name": "北上改三",
+            "yomi": "きたかみ",
+            "stype": 4,
+            "ctype": 4,
+            "afterlv": 0,
+            "aftershipid": 0,
+            "taik": [
+                47,
+                63
+            ],
+            "souk": [
+                32,
+                71
+            ],
+            "houg": [
+                16,
+                68
+            ],
+            "raig": [
+                16,
+                128
+            ],
+            "tyku": [
+                50,
+                96
+            ],
+            "tais": null,
+            "luck": [
+                50,
+                108
+            ],
+            "soku": 10,
+            "leng": 1,
+            "slotNum": 5,
+            "maxeq": [
+                1,
+                1,
+                1,
+                0,
+                0
+            ],
+            "afterfuel": 0,
+            "afterbull": 0,
+            "fuelMax": 30,
+            "bullMax": 75,
+            "graph": "wvurohzsvquy",
             "version": null
         },
         "1496": {
@@ -67056,6 +68622,1350 @@
             "fuelMax": null,
             "bullMax": null,
             "graph": "xzvnmmcuulym",
+            "version": null
+        },
+        "2350": {
+            "id": 2350,
+            "sortno": null,
+            "sortId": 0,
+            "name": "層間棲艦水鬼長女",
+            "yomi": "",
+            "stype": 8,
+            "ctype": 1,
+            "afterlv": null,
+            "aftershipid": null,
+            "taik": null,
+            "souk": null,
+            "houg": null,
+            "raig": null,
+            "tyku": null,
+            "tais": null,
+            "luck": null,
+            "soku": 10,
+            "leng": null,
+            "slotNum": 4,
+            "maxeq": null,
+            "afterfuel": null,
+            "afterbull": null,
+            "fuelMax": null,
+            "bullMax": null,
+            "graph": "humenhukqtdg",
+            "version": null
+        },
+        "2351": {
+            "id": 2351,
+            "sortno": null,
+            "sortId": 0,
+            "name": "層間棲艦水鬼長女",
+            "yomi": "",
+            "stype": 8,
+            "ctype": 1,
+            "afterlv": null,
+            "aftershipid": null,
+            "taik": null,
+            "souk": null,
+            "houg": null,
+            "raig": null,
+            "tyku": null,
+            "tais": null,
+            "luck": null,
+            "soku": 10,
+            "leng": null,
+            "slotNum": 4,
+            "maxeq": null,
+            "afterfuel": null,
+            "afterbull": null,
+            "fuelMax": null,
+            "bullMax": null,
+            "graph": "akfhhpubmnol",
+            "version": null
+        },
+        "2352": {
+            "id": 2352,
+            "sortno": null,
+            "sortId": 0,
+            "name": "層間棲艦水鬼長女",
+            "yomi": "",
+            "stype": 8,
+            "ctype": 1,
+            "afterlv": null,
+            "aftershipid": null,
+            "taik": null,
+            "souk": null,
+            "houg": null,
+            "raig": null,
+            "tyku": null,
+            "tais": null,
+            "luck": null,
+            "soku": 10,
+            "leng": null,
+            "slotNum": 4,
+            "maxeq": null,
+            "afterfuel": null,
+            "afterbull": null,
+            "fuelMax": null,
+            "bullMax": null,
+            "graph": "pqcldsggeuuj",
+            "version": null
+        },
+        "2353": {
+            "id": 2353,
+            "sortno": null,
+            "sortId": 0,
+            "name": "層間棲艦水鬼長女-壊",
+            "yomi": "",
+            "stype": 8,
+            "ctype": 1,
+            "afterlv": null,
+            "aftershipid": null,
+            "taik": null,
+            "souk": null,
+            "houg": null,
+            "raig": null,
+            "tyku": null,
+            "tais": null,
+            "luck": null,
+            "soku": 10,
+            "leng": null,
+            "slotNum": 5,
+            "maxeq": null,
+            "afterfuel": null,
+            "afterbull": null,
+            "fuelMax": null,
+            "bullMax": null,
+            "graph": "mtfkdypnyyir",
+            "version": null
+        },
+        "2354": {
+            "id": 2354,
+            "sortno": null,
+            "sortId": 0,
+            "name": "層間棲艦水鬼長女-壊",
+            "yomi": "",
+            "stype": 8,
+            "ctype": 1,
+            "afterlv": null,
+            "aftershipid": null,
+            "taik": null,
+            "souk": null,
+            "houg": null,
+            "raig": null,
+            "tyku": null,
+            "tais": null,
+            "luck": null,
+            "soku": 10,
+            "leng": null,
+            "slotNum": 5,
+            "maxeq": null,
+            "afterfuel": null,
+            "afterbull": null,
+            "fuelMax": null,
+            "bullMax": null,
+            "graph": "utiukgbhesou",
+            "version": null
+        },
+        "2355": {
+            "id": 2355,
+            "sortno": null,
+            "sortId": 0,
+            "name": "層間棲艦水鬼長女-壊",
+            "yomi": "",
+            "stype": 8,
+            "ctype": 1,
+            "afterlv": null,
+            "aftershipid": null,
+            "taik": null,
+            "souk": null,
+            "houg": null,
+            "raig": null,
+            "tyku": null,
+            "tais": null,
+            "luck": null,
+            "soku": 10,
+            "leng": null,
+            "slotNum": 5,
+            "maxeq": null,
+            "afterfuel": null,
+            "afterbull": null,
+            "fuelMax": null,
+            "bullMax": null,
+            "graph": "oyviidihmjrj",
+            "version": null
+        },
+        "2356": {
+            "id": 2356,
+            "sortno": null,
+            "sortId": 0,
+            "name": "層間棲艦水鬼次女",
+            "yomi": "",
+            "stype": 8,
+            "ctype": 1,
+            "afterlv": null,
+            "aftershipid": null,
+            "taik": null,
+            "souk": null,
+            "houg": null,
+            "raig": null,
+            "tyku": null,
+            "tais": null,
+            "luck": null,
+            "soku": 10,
+            "leng": null,
+            "slotNum": 4,
+            "maxeq": null,
+            "afterfuel": null,
+            "afterbull": null,
+            "fuelMax": null,
+            "bullMax": null,
+            "graph": "zgeufwoxcwcb",
+            "version": null
+        },
+        "2357": {
+            "id": 2357,
+            "sortno": null,
+            "sortId": 0,
+            "name": "層間棲艦水鬼次女",
+            "yomi": "",
+            "stype": 8,
+            "ctype": 1,
+            "afterlv": null,
+            "aftershipid": null,
+            "taik": null,
+            "souk": null,
+            "houg": null,
+            "raig": null,
+            "tyku": null,
+            "tais": null,
+            "luck": null,
+            "soku": 10,
+            "leng": null,
+            "slotNum": 4,
+            "maxeq": null,
+            "afterfuel": null,
+            "afterbull": null,
+            "fuelMax": null,
+            "bullMax": null,
+            "graph": "dvycczskmzks",
+            "version": null
+        },
+        "2358": {
+            "id": 2358,
+            "sortno": null,
+            "sortId": 0,
+            "name": "層間棲艦水鬼次女",
+            "yomi": "",
+            "stype": 8,
+            "ctype": 1,
+            "afterlv": null,
+            "aftershipid": null,
+            "taik": null,
+            "souk": null,
+            "houg": null,
+            "raig": null,
+            "tyku": null,
+            "tais": null,
+            "luck": null,
+            "soku": 10,
+            "leng": null,
+            "slotNum": 4,
+            "maxeq": null,
+            "afterfuel": null,
+            "afterbull": null,
+            "fuelMax": null,
+            "bullMax": null,
+            "graph": "rddmysyhevyp",
+            "version": null
+        },
+        "2359": {
+            "id": 2359,
+            "sortno": null,
+            "sortId": 0,
+            "name": "層間棲艦水鬼次女-壊",
+            "yomi": "",
+            "stype": 8,
+            "ctype": 1,
+            "afterlv": null,
+            "aftershipid": null,
+            "taik": null,
+            "souk": null,
+            "houg": null,
+            "raig": null,
+            "tyku": null,
+            "tais": null,
+            "luck": null,
+            "soku": 10,
+            "leng": null,
+            "slotNum": 5,
+            "maxeq": null,
+            "afterfuel": null,
+            "afterbull": null,
+            "fuelMax": null,
+            "bullMax": null,
+            "graph": "expbzhgizfyw",
+            "version": null
+        },
+        "2360": {
+            "id": 2360,
+            "sortno": null,
+            "sortId": 0,
+            "name": "層間棲艦水鬼次女-壊",
+            "yomi": "",
+            "stype": 8,
+            "ctype": 1,
+            "afterlv": null,
+            "aftershipid": null,
+            "taik": null,
+            "souk": null,
+            "houg": null,
+            "raig": null,
+            "tyku": null,
+            "tais": null,
+            "luck": null,
+            "soku": 10,
+            "leng": null,
+            "slotNum": 5,
+            "maxeq": null,
+            "afterfuel": null,
+            "afterbull": null,
+            "fuelMax": null,
+            "bullMax": null,
+            "graph": "gtsuiopneblm",
+            "version": null
+        },
+        "2361": {
+            "id": 2361,
+            "sortno": null,
+            "sortId": 0,
+            "name": "層間棲艦水鬼次女-壊",
+            "yomi": "",
+            "stype": 8,
+            "ctype": 1,
+            "afterlv": null,
+            "aftershipid": null,
+            "taik": null,
+            "souk": null,
+            "houg": null,
+            "raig": null,
+            "tyku": null,
+            "tais": null,
+            "luck": null,
+            "soku": 10,
+            "leng": null,
+            "slotNum": 5,
+            "maxeq": null,
+            "afterfuel": null,
+            "afterbull": null,
+            "fuelMax": null,
+            "bullMax": null,
+            "graph": "itpfobemfxdb",
+            "version": null
+        },
+        "2362": {
+            "id": 2362,
+            "sortno": null,
+            "sortId": 0,
+            "name": "防空巡新棲姫",
+            "yomi": "",
+            "stype": 3,
+            "ctype": 1,
+            "afterlv": null,
+            "aftershipid": null,
+            "taik": null,
+            "souk": null,
+            "houg": null,
+            "raig": null,
+            "tyku": null,
+            "tais": null,
+            "luck": null,
+            "soku": 10,
+            "leng": null,
+            "slotNum": 4,
+            "maxeq": null,
+            "afterfuel": null,
+            "afterbull": null,
+            "fuelMax": null,
+            "bullMax": null,
+            "graph": "mhydlcssogrm",
+            "version": null
+        },
+        "2363": {
+            "id": 2363,
+            "sortno": null,
+            "sortId": 0,
+            "name": "防空巡新棲姫",
+            "yomi": "",
+            "stype": 3,
+            "ctype": 1,
+            "afterlv": null,
+            "aftershipid": null,
+            "taik": null,
+            "souk": null,
+            "houg": null,
+            "raig": null,
+            "tyku": null,
+            "tais": null,
+            "luck": null,
+            "soku": 10,
+            "leng": null,
+            "slotNum": 4,
+            "maxeq": null,
+            "afterfuel": null,
+            "afterbull": null,
+            "fuelMax": null,
+            "bullMax": null,
+            "graph": "llctqektzejf",
+            "version": null
+        },
+        "2364": {
+            "id": 2364,
+            "sortno": null,
+            "sortId": 0,
+            "name": "防空巡新棲姫",
+            "yomi": "",
+            "stype": 3,
+            "ctype": 1,
+            "afterlv": null,
+            "aftershipid": null,
+            "taik": null,
+            "souk": null,
+            "houg": null,
+            "raig": null,
+            "tyku": null,
+            "tais": null,
+            "luck": null,
+            "soku": 10,
+            "leng": null,
+            "slotNum": 4,
+            "maxeq": null,
+            "afterfuel": null,
+            "afterbull": null,
+            "fuelMax": null,
+            "bullMax": null,
+            "graph": "cexxuqszlclb",
+            "version": null
+        },
+        "2365": {
+            "id": 2365,
+            "sortno": null,
+            "sortId": 0,
+            "name": "防空巡新棲姫-壊",
+            "yomi": "",
+            "stype": 3,
+            "ctype": 1,
+            "afterlv": null,
+            "aftershipid": null,
+            "taik": null,
+            "souk": null,
+            "houg": null,
+            "raig": null,
+            "tyku": null,
+            "tais": null,
+            "luck": null,
+            "soku": 10,
+            "leng": null,
+            "slotNum": 4,
+            "maxeq": null,
+            "afterfuel": null,
+            "afterbull": null,
+            "fuelMax": null,
+            "bullMax": null,
+            "graph": "wfvpzuubhlmk",
+            "version": null
+        },
+        "2366": {
+            "id": 2366,
+            "sortno": null,
+            "sortId": 0,
+            "name": "防空巡新棲姫-壊",
+            "yomi": "",
+            "stype": 3,
+            "ctype": 1,
+            "afterlv": null,
+            "aftershipid": null,
+            "taik": null,
+            "souk": null,
+            "houg": null,
+            "raig": null,
+            "tyku": null,
+            "tais": null,
+            "luck": null,
+            "soku": 10,
+            "leng": null,
+            "slotNum": 4,
+            "maxeq": null,
+            "afterfuel": null,
+            "afterbull": null,
+            "fuelMax": null,
+            "bullMax": null,
+            "graph": "bsdxisugplkl",
+            "version": null
+        },
+        "2367": {
+            "id": 2367,
+            "sortno": null,
+            "sortId": 0,
+            "name": "防空巡新棲姫-壊",
+            "yomi": "",
+            "stype": 3,
+            "ctype": 1,
+            "afterlv": null,
+            "aftershipid": null,
+            "taik": null,
+            "souk": null,
+            "houg": null,
+            "raig": null,
+            "tyku": null,
+            "tais": null,
+            "luck": null,
+            "soku": 10,
+            "leng": null,
+            "slotNum": 4,
+            "maxeq": null,
+            "afterfuel": null,
+            "afterbull": null,
+            "fuelMax": null,
+            "bullMax": null,
+            "graph": "hwcwtatoskbp",
+            "version": null
+        },
+        "2368": {
+            "id": 2368,
+            "sortno": null,
+            "sortId": 0,
+            "name": "高速軽空母首鬼",
+            "yomi": "",
+            "stype": 7,
+            "ctype": 1,
+            "afterlv": null,
+            "aftershipid": null,
+            "taik": null,
+            "souk": null,
+            "houg": null,
+            "raig": null,
+            "tyku": null,
+            "tais": null,
+            "luck": null,
+            "soku": 10,
+            "leng": null,
+            "slotNum": 5,
+            "maxeq": null,
+            "afterfuel": null,
+            "afterbull": null,
+            "fuelMax": null,
+            "bullMax": null,
+            "graph": "jqeyhimohcvl",
+            "version": null
+        },
+        "2369": {
+            "id": 2369,
+            "sortno": null,
+            "sortId": 0,
+            "name": "高速軽空母首鬼",
+            "yomi": "",
+            "stype": 7,
+            "ctype": 1,
+            "afterlv": null,
+            "aftershipid": null,
+            "taik": null,
+            "souk": null,
+            "houg": null,
+            "raig": null,
+            "tyku": null,
+            "tais": null,
+            "luck": null,
+            "soku": 10,
+            "leng": null,
+            "slotNum": 5,
+            "maxeq": null,
+            "afterfuel": null,
+            "afterbull": null,
+            "fuelMax": null,
+            "bullMax": null,
+            "graph": "tgqkbftqcjvt",
+            "version": null
+        },
+        "2370": {
+            "id": 2370,
+            "sortno": null,
+            "sortId": 0,
+            "name": "高速軽空母首鬼",
+            "yomi": "",
+            "stype": 7,
+            "ctype": 1,
+            "afterlv": null,
+            "aftershipid": null,
+            "taik": null,
+            "souk": null,
+            "houg": null,
+            "raig": null,
+            "tyku": null,
+            "tais": null,
+            "luck": null,
+            "soku": 10,
+            "leng": null,
+            "slotNum": 5,
+            "maxeq": null,
+            "afterfuel": null,
+            "afterbull": null,
+            "fuelMax": null,
+            "bullMax": null,
+            "graph": "kjdgjmxrqdau",
+            "version": null
+        },
+        "2371": {
+            "id": 2371,
+            "sortno": null,
+            "sortId": 0,
+            "name": "高速軽空母首鬼-壊",
+            "yomi": "",
+            "stype": 7,
+            "ctype": 1,
+            "afterlv": null,
+            "aftershipid": null,
+            "taik": null,
+            "souk": null,
+            "houg": null,
+            "raig": null,
+            "tyku": null,
+            "tais": null,
+            "luck": null,
+            "soku": 10,
+            "leng": null,
+            "slotNum": 5,
+            "maxeq": null,
+            "afterfuel": null,
+            "afterbull": null,
+            "fuelMax": null,
+            "bullMax": null,
+            "graph": "tvsfgmqxsnns",
+            "version": null
+        },
+        "2372": {
+            "id": 2372,
+            "sortno": null,
+            "sortId": 0,
+            "name": "高速軽空母首鬼-壊",
+            "yomi": "",
+            "stype": 7,
+            "ctype": 1,
+            "afterlv": null,
+            "aftershipid": null,
+            "taik": null,
+            "souk": null,
+            "houg": null,
+            "raig": null,
+            "tyku": null,
+            "tais": null,
+            "luck": null,
+            "soku": 10,
+            "leng": null,
+            "slotNum": 5,
+            "maxeq": null,
+            "afterfuel": null,
+            "afterbull": null,
+            "fuelMax": null,
+            "bullMax": null,
+            "graph": "jrdzpwsrfkrp",
+            "version": null
+        },
+        "2373": {
+            "id": 2373,
+            "sortno": null,
+            "sortId": 0,
+            "name": "高速軽空母首鬼-壊",
+            "yomi": "",
+            "stype": 7,
+            "ctype": 1,
+            "afterlv": null,
+            "aftershipid": null,
+            "taik": null,
+            "souk": null,
+            "houg": null,
+            "raig": null,
+            "tyku": null,
+            "tais": null,
+            "luck": null,
+            "soku": 10,
+            "leng": null,
+            "slotNum": 5,
+            "maxeq": null,
+            "afterfuel": null,
+            "afterbull": null,
+            "fuelMax": null,
+            "bullMax": null,
+            "graph": "gefyrllbfvvj",
+            "version": null
+        },
+        "2374": {
+            "id": 2374,
+            "sortno": null,
+            "sortId": 0,
+            "name": "軽巡ウ級",
+            "yomi": "",
+            "stype": 3,
+            "ctype": 1,
+            "afterlv": null,
+            "aftershipid": null,
+            "taik": null,
+            "souk": null,
+            "houg": null,
+            "raig": null,
+            "tyku": null,
+            "tais": null,
+            "luck": null,
+            "soku": 10,
+            "leng": null,
+            "slotNum": 4,
+            "maxeq": null,
+            "afterfuel": null,
+            "afterbull": null,
+            "fuelMax": null,
+            "bullMax": null,
+            "graph": "wgsuoicfkfqb",
+            "version": null
+        },
+        "2375": {
+            "id": 2375,
+            "sortno": null,
+            "sortId": 0,
+            "name": "軽巡ウ級",
+            "yomi": "",
+            "stype": 3,
+            "ctype": 1,
+            "afterlv": null,
+            "aftershipid": null,
+            "taik": null,
+            "souk": null,
+            "houg": null,
+            "raig": null,
+            "tyku": null,
+            "tais": null,
+            "luck": null,
+            "soku": 10,
+            "leng": null,
+            "slotNum": 4,
+            "maxeq": null,
+            "afterfuel": null,
+            "afterbull": null,
+            "fuelMax": null,
+            "bullMax": null,
+            "graph": "hhiqckpergmk",
+            "version": null
+        },
+        "2376": {
+            "id": 2376,
+            "sortno": null,
+            "sortId": 0,
+            "name": "軽巡ウ級",
+            "yomi": "",
+            "stype": 3,
+            "ctype": 1,
+            "afterlv": null,
+            "aftershipid": null,
+            "taik": null,
+            "souk": null,
+            "houg": null,
+            "raig": null,
+            "tyku": null,
+            "tais": null,
+            "luck": null,
+            "soku": 10,
+            "leng": null,
+            "slotNum": 4,
+            "maxeq": null,
+            "afterfuel": null,
+            "afterbull": null,
+            "fuelMax": null,
+            "bullMax": null,
+            "graph": "lyqhycodbogr",
+            "version": null
+        },
+        "2377": {
+            "id": 2377,
+            "sortno": null,
+            "sortId": 0,
+            "name": "軽巡ウ級-壊",
+            "yomi": "",
+            "stype": 3,
+            "ctype": 1,
+            "afterlv": null,
+            "aftershipid": null,
+            "taik": null,
+            "souk": null,
+            "houg": null,
+            "raig": null,
+            "tyku": null,
+            "tais": null,
+            "luck": null,
+            "soku": 10,
+            "leng": null,
+            "slotNum": 5,
+            "maxeq": null,
+            "afterfuel": null,
+            "afterbull": null,
+            "fuelMax": null,
+            "bullMax": null,
+            "graph": "tkavcbojnhir",
+            "version": null
+        },
+        "2378": {
+            "id": 2378,
+            "sortno": null,
+            "sortId": 0,
+            "name": "軽巡ウ級-壊",
+            "yomi": "",
+            "stype": 3,
+            "ctype": 1,
+            "afterlv": null,
+            "aftershipid": null,
+            "taik": null,
+            "souk": null,
+            "houg": null,
+            "raig": null,
+            "tyku": null,
+            "tais": null,
+            "luck": null,
+            "soku": 10,
+            "leng": null,
+            "slotNum": 5,
+            "maxeq": null,
+            "afterfuel": null,
+            "afterbull": null,
+            "fuelMax": null,
+            "bullMax": null,
+            "graph": "zqzmenlbuxtb",
+            "version": null
+        },
+        "2379": {
+            "id": 2379,
+            "sortno": null,
+            "sortId": 0,
+            "name": "軽巡ウ級-壊",
+            "yomi": "",
+            "stype": 3,
+            "ctype": 1,
+            "afterlv": null,
+            "aftershipid": null,
+            "taik": null,
+            "souk": null,
+            "houg": null,
+            "raig": null,
+            "tyku": null,
+            "tais": null,
+            "luck": null,
+            "soku": 10,
+            "leng": null,
+            "slotNum": 5,
+            "maxeq": null,
+            "afterfuel": null,
+            "afterbull": null,
+            "fuelMax": null,
+            "bullMax": null,
+            "graph": "mhmlquicqpxt",
+            "version": null
+        },
+        "2380": {
+            "id": 2380,
+            "sortno": null,
+            "sortId": 0,
+            "name": "重巡ヰ級",
+            "yomi": "",
+            "stype": 5,
+            "ctype": 1,
+            "afterlv": null,
+            "aftershipid": null,
+            "taik": null,
+            "souk": null,
+            "houg": null,
+            "raig": null,
+            "tyku": null,
+            "tais": null,
+            "luck": null,
+            "soku": 5,
+            "leng": null,
+            "slotNum": 4,
+            "maxeq": null,
+            "afterfuel": null,
+            "afterbull": null,
+            "fuelMax": null,
+            "bullMax": null,
+            "graph": "ilxkrrivulbc",
+            "version": null
+        },
+        "2381": {
+            "id": 2381,
+            "sortno": null,
+            "sortId": 0,
+            "name": "重巡ヰ級",
+            "yomi": "",
+            "stype": 5,
+            "ctype": 1,
+            "afterlv": null,
+            "aftershipid": null,
+            "taik": null,
+            "souk": null,
+            "houg": null,
+            "raig": null,
+            "tyku": null,
+            "tais": null,
+            "luck": null,
+            "soku": 5,
+            "leng": null,
+            "slotNum": 4,
+            "maxeq": null,
+            "afterfuel": null,
+            "afterbull": null,
+            "fuelMax": null,
+            "bullMax": null,
+            "graph": "cutyqpyueihl",
+            "version": null
+        },
+        "2382": {
+            "id": 2382,
+            "sortno": null,
+            "sortId": 0,
+            "name": "重巡ヰ級",
+            "yomi": "",
+            "stype": 5,
+            "ctype": 1,
+            "afterlv": null,
+            "aftershipid": null,
+            "taik": null,
+            "souk": null,
+            "houg": null,
+            "raig": null,
+            "tyku": null,
+            "tais": null,
+            "luck": null,
+            "soku": 5,
+            "leng": null,
+            "slotNum": 4,
+            "maxeq": null,
+            "afterfuel": null,
+            "afterbull": null,
+            "fuelMax": null,
+            "bullMax": null,
+            "graph": "pfemqpnxbryt",
+            "version": null
+        },
+        "2383": {
+            "id": 2383,
+            "sortno": null,
+            "sortId": 0,
+            "name": "重巡ヰ級-壊",
+            "yomi": "",
+            "stype": 5,
+            "ctype": 1,
+            "afterlv": null,
+            "aftershipid": null,
+            "taik": null,
+            "souk": null,
+            "houg": null,
+            "raig": null,
+            "tyku": null,
+            "tais": null,
+            "luck": null,
+            "soku": 5,
+            "leng": null,
+            "slotNum": 5,
+            "maxeq": null,
+            "afterfuel": null,
+            "afterbull": null,
+            "fuelMax": null,
+            "bullMax": null,
+            "graph": "fhcdkbxmuube",
+            "version": null
+        },
+        "2384": {
+            "id": 2384,
+            "sortno": null,
+            "sortId": 0,
+            "name": "重巡ヰ級-壊",
+            "yomi": "",
+            "stype": 5,
+            "ctype": 1,
+            "afterlv": null,
+            "aftershipid": null,
+            "taik": null,
+            "souk": null,
+            "houg": null,
+            "raig": null,
+            "tyku": null,
+            "tais": null,
+            "luck": null,
+            "soku": 5,
+            "leng": null,
+            "slotNum": 5,
+            "maxeq": null,
+            "afterfuel": null,
+            "afterbull": null,
+            "fuelMax": null,
+            "bullMax": null,
+            "graph": "xhjdkxpcvcwm",
+            "version": null
+        },
+        "2385": {
+            "id": 2385,
+            "sortno": null,
+            "sortId": 0,
+            "name": "重巡ヰ級-壊",
+            "yomi": "",
+            "stype": 5,
+            "ctype": 1,
+            "afterlv": null,
+            "aftershipid": null,
+            "taik": null,
+            "souk": null,
+            "houg": null,
+            "raig": null,
+            "tyku": null,
+            "tais": null,
+            "luck": null,
+            "soku": 5,
+            "leng": null,
+            "slotNum": 5,
+            "maxeq": null,
+            "afterfuel": null,
+            "afterbull": null,
+            "fuelMax": null,
+            "bullMax": null,
+            "graph": "fhlkcduymvep",
+            "version": null
+        },
+        "2386": {
+            "id": 2386,
+            "sortno": null,
+            "sortId": 0,
+            "name": "仏蘭西哀重姫",
+            "yomi": "",
+            "stype": 5,
+            "ctype": 1,
+            "afterlv": null,
+            "aftershipid": null,
+            "taik": null,
+            "souk": null,
+            "houg": null,
+            "raig": null,
+            "tyku": null,
+            "tais": null,
+            "luck": null,
+            "soku": 10,
+            "leng": null,
+            "slotNum": 5,
+            "maxeq": null,
+            "afterfuel": null,
+            "afterbull": null,
+            "fuelMax": null,
+            "bullMax": null,
+            "graph": "tstfuizqngeo",
+            "version": null
+        },
+        "2387": {
+            "id": 2387,
+            "sortno": null,
+            "sortId": 0,
+            "name": "仏蘭西哀重姫",
+            "yomi": "",
+            "stype": 5,
+            "ctype": 1,
+            "afterlv": null,
+            "aftershipid": null,
+            "taik": null,
+            "souk": null,
+            "houg": null,
+            "raig": null,
+            "tyku": null,
+            "tais": null,
+            "luck": null,
+            "soku": 10,
+            "leng": null,
+            "slotNum": 5,
+            "maxeq": null,
+            "afterfuel": null,
+            "afterbull": null,
+            "fuelMax": null,
+            "bullMax": null,
+            "graph": "pwdkgqqpskie",
+            "version": null
+        },
+        "2388": {
+            "id": 2388,
+            "sortno": null,
+            "sortId": 0,
+            "name": "仏蘭西哀重姫",
+            "yomi": "",
+            "stype": 5,
+            "ctype": 1,
+            "afterlv": null,
+            "aftershipid": null,
+            "taik": null,
+            "souk": null,
+            "houg": null,
+            "raig": null,
+            "tyku": null,
+            "tais": null,
+            "luck": null,
+            "soku": 10,
+            "leng": null,
+            "slotNum": 5,
+            "maxeq": null,
+            "afterfuel": null,
+            "afterbull": null,
+            "fuelMax": null,
+            "bullMax": null,
+            "graph": "lypnydghsttu",
+            "version": null
+        },
+        "2389": {
+            "id": 2389,
+            "sortno": null,
+            "sortId": 0,
+            "name": "仏蘭西哀重姫-壊",
+            "yomi": "",
+            "stype": 6,
+            "ctype": 1,
+            "afterlv": null,
+            "aftershipid": null,
+            "taik": null,
+            "souk": null,
+            "houg": null,
+            "raig": null,
+            "tyku": null,
+            "tais": null,
+            "luck": null,
+            "soku": 10,
+            "leng": null,
+            "slotNum": 5,
+            "maxeq": null,
+            "afterfuel": null,
+            "afterbull": null,
+            "fuelMax": null,
+            "bullMax": null,
+            "graph": "kfgmjunqeyml",
+            "version": null
+        },
+        "2390": {
+            "id": 2390,
+            "sortno": null,
+            "sortId": 0,
+            "name": "仏蘭西哀重姫-壊",
+            "yomi": "",
+            "stype": 6,
+            "ctype": 1,
+            "afterlv": null,
+            "aftershipid": null,
+            "taik": null,
+            "souk": null,
+            "houg": null,
+            "raig": null,
+            "tyku": null,
+            "tais": null,
+            "luck": null,
+            "soku": 10,
+            "leng": null,
+            "slotNum": 5,
+            "maxeq": null,
+            "afterfuel": null,
+            "afterbull": null,
+            "fuelMax": null,
+            "bullMax": null,
+            "graph": "tgpiosviynny",
+            "version": null
+        },
+        "2391": {
+            "id": 2391,
+            "sortno": null,
+            "sortId": 0,
+            "name": "仏蘭西哀重姫-壊",
+            "yomi": "",
+            "stype": 6,
+            "ctype": 1,
+            "afterlv": null,
+            "aftershipid": null,
+            "taik": null,
+            "souk": null,
+            "houg": null,
+            "raig": null,
+            "tyku": null,
+            "tais": null,
+            "luck": null,
+            "soku": 10,
+            "leng": null,
+            "slotNum": 5,
+            "maxeq": null,
+            "afterfuel": null,
+            "afterbull": null,
+            "fuelMax": null,
+            "bullMax": null,
+            "graph": "yybffmaucelr",
+            "version": null
+        },
+        "2392": {
+            "id": 2392,
+            "sortno": null,
+            "sortId": 0,
+            "name": "仏蘭西空母籠姫",
+            "yomi": "",
+            "stype": 11,
+            "ctype": 1,
+            "afterlv": null,
+            "aftershipid": null,
+            "taik": null,
+            "souk": null,
+            "houg": null,
+            "raig": null,
+            "tyku": null,
+            "tais": null,
+            "luck": null,
+            "soku": 10,
+            "leng": null,
+            "slotNum": 5,
+            "maxeq": null,
+            "afterfuel": null,
+            "afterbull": null,
+            "fuelMax": null,
+            "bullMax": null,
+            "graph": "ifovmyjggeyf",
+            "version": null
+        },
+        "2393": {
+            "id": 2393,
+            "sortno": null,
+            "sortId": 0,
+            "name": "仏蘭西空母籠姫",
+            "yomi": "",
+            "stype": 11,
+            "ctype": 1,
+            "afterlv": null,
+            "aftershipid": null,
+            "taik": null,
+            "souk": null,
+            "houg": null,
+            "raig": null,
+            "tyku": null,
+            "tais": null,
+            "luck": null,
+            "soku": 10,
+            "leng": null,
+            "slotNum": 5,
+            "maxeq": null,
+            "afterfuel": null,
+            "afterbull": null,
+            "fuelMax": null,
+            "bullMax": null,
+            "graph": "ezqvpcsvzcdk",
+            "version": null
+        },
+        "2394": {
+            "id": 2394,
+            "sortno": null,
+            "sortId": 0,
+            "name": "仏蘭西空母籠姫",
+            "yomi": "",
+            "stype": 11,
+            "ctype": 1,
+            "afterlv": null,
+            "aftershipid": null,
+            "taik": null,
+            "souk": null,
+            "houg": null,
+            "raig": null,
+            "tyku": null,
+            "tais": null,
+            "luck": null,
+            "soku": 10,
+            "leng": null,
+            "slotNum": 5,
+            "maxeq": null,
+            "afterfuel": null,
+            "afterbull": null,
+            "fuelMax": null,
+            "bullMax": null,
+            "graph": "eessgzghhsls",
+            "version": null
+        },
+        "2395": {
+            "id": 2395,
+            "sortno": null,
+            "sortId": 0,
+            "name": "仏蘭西空母籠姫-壊",
+            "yomi": "",
+            "stype": 11,
+            "ctype": 1,
+            "afterlv": null,
+            "aftershipid": null,
+            "taik": null,
+            "souk": null,
+            "houg": null,
+            "raig": null,
+            "tyku": null,
+            "tais": null,
+            "luck": null,
+            "soku": 10,
+            "leng": null,
+            "slotNum": 5,
+            "maxeq": null,
+            "afterfuel": null,
+            "afterbull": null,
+            "fuelMax": null,
+            "bullMax": null,
+            "graph": "brjvpquuxcju",
+            "version": null
+        },
+        "2396": {
+            "id": 2396,
+            "sortno": null,
+            "sortId": 0,
+            "name": "仏蘭西空母籠姫-壊",
+            "yomi": "",
+            "stype": 11,
+            "ctype": 1,
+            "afterlv": null,
+            "aftershipid": null,
+            "taik": null,
+            "souk": null,
+            "houg": null,
+            "raig": null,
+            "tyku": null,
+            "tais": null,
+            "luck": null,
+            "soku": 10,
+            "leng": null,
+            "slotNum": 5,
+            "maxeq": null,
+            "afterfuel": null,
+            "afterbull": null,
+            "fuelMax": null,
+            "bullMax": null,
+            "graph": "fwjqkifxkaad",
+            "version": null
+        },
+        "2397": {
+            "id": 2397,
+            "sortno": null,
+            "sortId": 0,
+            "name": "仏蘭西空母籠姫-壊",
+            "yomi": "",
+            "stype": 11,
+            "ctype": 1,
+            "afterlv": null,
+            "aftershipid": null,
+            "taik": null,
+            "souk": null,
+            "houg": null,
+            "raig": null,
+            "tyku": null,
+            "tais": null,
+            "luck": null,
+            "soku": 10,
+            "leng": null,
+            "slotNum": 5,
+            "maxeq": null,
+            "afterfuel": null,
+            "afterbull": null,
+            "fuelMax": null,
+            "bullMax": null,
+            "graph": "fmijgqjvdweg",
             "version": null
         }
     }
