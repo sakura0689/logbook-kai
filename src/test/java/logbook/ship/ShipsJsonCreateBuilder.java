@@ -118,7 +118,7 @@ public class ShipsJsonCreateBuilder {
                         JsonArrayBuilder itemArrayBuilder = Json.createArrayBuilder();
                         if (items != null) {
                             for (String itemName : items) {
-                                if ("未装備".equals(itemName)) {
+                                if ("未装備".equals(itemName) || "（未装備）".equals(itemName)) {
                                     continue;
                                 }
 
@@ -173,7 +173,28 @@ public class ShipsJsonCreateBuilder {
         if (!tempDir.exists()) {
             tempDir.mkdirs();
         }
-        File htmlFile = new File(tempDir, shipName + ".html");
+
+        String urlName = shipName;
+        // Glorious改の同名回避 (ID 740:巡洋戦艦, 741:正規空母)
+        if ("Glorious改".equals(shipName)) {
+            if (shipId == 740) {
+                urlName = "Glorious改(巡洋戦艦)";
+            } else if (shipId == 741) {
+                urlName = "Glorious改(正規空母)";
+            }
+        } else if ("Béarn".equals(shipName)) {
+            urlName = "Bearn";            
+        } else if ("Béarn改".equals(shipName)) {
+            urlName = "Bearn改";            
+        } else if ("Béarn amélioration".equals(shipName)) {
+            urlName = "Bearn amelioration";            
+        } else if ("Algérie".equals(shipName)) {
+            urlName = "Algerie";            
+        } else if ("Algérie改".equals(shipName)) {
+            urlName = "Algerie改";            
+        }
+
+        File htmlFile = new File(tempDir, urlName + ".html");
 
         Document doc;
         boolean fromCache = false;
@@ -182,15 +203,6 @@ public class ShipsJsonCreateBuilder {
             doc = Jsoup.parse(htmlFile, "UTF-8", "https://wikiwiki.jp/kancolle/");
             fromCache = true;
         } else {
-            String urlName = shipName;
-            // Glorious改の同名回避 (ID 740:巡洋戦艦, 741:正規空母)
-            if ("Glorious改".equals(shipName)) {
-                if (shipId == 740) {
-                    urlName = "Glorious改(巡洋戦艦)";
-                } else if (shipId == 741) {
-                    urlName = "Glorious改(正規空母)";
-                }
-            }
             String url = "https://wikiwiki.jp/kancolle/" + urlName;
             doc = Jsoup.connect(url)
                     .userAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:93.0) Gecko/20100101 Firefox/93.0")

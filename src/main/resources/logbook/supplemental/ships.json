@@ -7821,8 +7821,8 @@
         "id": 741,
         "name": "Glorious改",
         "min_taisen": 0,
-        "min_kaihi": 35,
-        "min_sakuteki": 14,
+        "min_kaihi": 37,
+        "min_sakuteki": 42,
         "item": [
         ]
     },
@@ -7836,6 +7836,81 @@
             229,
             15,
             106
+        ]
+    },
+    {
+        "id": 743,
+        "name": "長波改二補",
+        "min_taisen": 30,
+        "min_kaihi": 48,
+        "min_sakuteki": 12,
+        "item": [
+        ]
+    },
+    {
+        "id": 744,
+        "name": "朝霜改二補",
+        "min_taisen": 29,
+        "min_kaihi": 47,
+        "min_sakuteki": 11,
+        "item": [
+        ]
+    },
+    {
+        "id": 745,
+        "name": "涼波改二補",
+        "min_taisen": 28,
+        "min_kaihi": 43,
+        "min_sakuteki": 10,
+        "item": [
+        ]
+    },
+    {
+        "id": 746,
+        "name": "桐改",
+        "min_taisen": 35,
+        "min_kaihi": 36,
+        "min_sakuteki": 16,
+        "item": [
+            229,
+            106,
+            49
+        ]
+    },
+    {
+        "id": 747,
+        "name": "Reno改",
+        "min_taisen": 14,
+        "min_kaihi": 37,
+        "min_sakuteki": 9,
+        "item": [
+            362
+        ]
+    },
+    {
+        "id": 748,
+        "name": "扶桑改二補",
+        "min_taisen": 10,
+        "min_kaihi": 34,
+        "min_sakuteki": 24,
+        "item": [
+            105,
+            8,
+            193,
+            80
+        ]
+    },
+    {
+        "id": 749,
+        "name": "山城改二補",
+        "min_taisen": 10,
+        "min_kaihi": 35,
+        "min_sakuteki": 25,
+        "item": [
+            105,
+            8,
+            488,
+            80
         ]
     },
     {
@@ -8066,6 +8141,15 @@
         "min_sakuteki": 10,
         "item": [
             280
+        ]
+    },
+    {
+        "id": 902,
+        "name": "狭霧改二",
+        "min_taisen": 26,
+        "min_kaihi": 53,
+        "min_sakuteki": 11,
+        "item": [
         ]
     },
     {
@@ -8328,6 +8412,17 @@
         ]
     },
     {
+        "id": 932,
+        "name": "Indiana",
+        "min_taisen": 0,
+        "min_kaihi": 29,
+        "min_sakuteki": 15,
+        "item": [
+            381,
+            381
+        ]
+    },
+    {
         "id": 933,
         "name": "Massachusetts",
         "min_taisen": 0,
@@ -8366,6 +8461,18 @@
         "item": [
             507,
             508
+        ]
+    },
+    {
+        "id": 937,
+        "name": "Indiana改",
+        "min_taisen": 0,
+        "min_kaihi": 36,
+        "min_sakuteki": 18,
+        "item": [
+            385,
+            315,
+            171
         ]
     },
     {
@@ -8881,6 +8988,16 @@
         ]
     },
     {
+        "id": 991,
+        "name": "Reno",
+        "min_taisen": 10,
+        "min_kaihi": 34,
+        "min_sakuteki": 11,
+        "item": [
+            362
+        ]
+    },
+    {
         "id": 992,
         "name": "杉",
         "min_taisen": 28,
@@ -9077,6 +9194,17 @@
         ]
     },
     {
+        "id": 1023,
+        "name": "Independence",
+        "min_taisen": 16,
+        "min_kaihi": 22,
+        "min_sakuteki": 40,
+        "item": [
+            198,
+            419
+        ]
+    },
+    {
         "id": 1025,
         "name": "Wasp",
         "min_taisen": 0,
@@ -9097,6 +9225,17 @@
         "item": [
             190,
             566
+        ]
+    },
+    {
+        "id": 1028,
+        "name": "Independence改",
+        "min_taisen": 20,
+        "min_kaihi": 30,
+        "min_sakuteki": 50,
+        "item": [
+            205,
+            256
         ]
     },
     {
@@ -9134,6 +9273,18 @@
         ]
     },
     {
+        "id": 1034,
+        "name": "涼波改二",
+        "min_taisen": 28,
+        "min_kaihi": 42,
+        "min_sakuteki": 10,
+        "item": [
+            267,
+            106,
+            39
+        ]
+    },
+    {
         "id": 1035,
         "name": "吹雪改三",
         "min_taisen": 46,
@@ -9146,6 +9297,15 @@
         ]
     },
     {
+        "id": 1036,
+        "name": "Independence Flight II",
+        "min_taisen": 32,
+        "min_kaihi": 33,
+        "min_sakuteki": 51,
+        "item": [
+        ]
+    },
+    {
         "id": 1040,
         "name": "吹雪改三護(六式)",
         "min_taisen": 52,
@@ -9155,6 +9315,173 @@
             313,
             288,
             574
+        ]
+    },
+    {
+        "id": 1041,
+        "name": "花月",
+        "min_taisen": 26,
+        "min_kaihi": 43,
+        "min_sakuteki": 8,
+        "item": [
+            122,
+            27,
+            40
+        ]
+    },
+    {
+        "id": 1044,
+        "name": "桐",
+        "min_taisen": 30,
+        "min_kaihi": 33,
+        "min_sakuteki": 9,
+        "item": [
+            229
+        ]
+    },
+    {
+        "id": 1046,
+        "name": "花月改",
+        "min_taisen": 27,
+        "min_kaihi": 48,
+        "min_sakuteki": 8,
+        "item": [
+            122,
+            106,
+            40
+        ]
+    },
+    {
+        "id": 1051,
+        "name": "Algérie",
+        "min_taisen": 0,
+        "min_kaihi": 33,
+        "min_sakuteki": 13,
+        "item": [
+            582,
+            582,
+            580
+        ]
+    },
+    {
+        "id": 1053,
+        "name": "Vautour",
+        "min_taisen": 36,
+        "min_kaihi": 46,
+        "min_sakuteki": 7,
+        "item": [
+            579,
+            580
+        ]
+    },
+    {
+        "id": 1055,
+        "name": "Béarn",
+        "min_taisen": 0,
+        "min_kaihi": 20,
+        "min_sakuteki": 24,
+        "item": [
+            585,
+            586
+        ]
+    },
+    {
+        "id": 1056,
+        "name": "Algérie改",
+        "min_taisen": 0,
+        "min_kaihi": 38,
+        "min_sakuteki": 22,
+        "item": [
+            583,
+            471,
+            580
+        ]
+    },
+    {
+        "id": 1058,
+        "name": "Vautour改",
+        "min_taisen": 38,
+        "min_kaihi": 47,
+        "min_sakuteki": 10,
+        "item": [
+            579,
+            580
+        ]
+    },
+    {
+        "id": 1060,
+        "name": "Béarn改",
+        "min_taisen": 0,
+        "min_kaihi": 27,
+        "min_sakuteki": 30,
+        "item": [
+            587,
+            586,
+            585
+        ]
+    },
+    {
+        "id": 1061,
+        "name": "Béarn amélioration",
+        "min_taisen": 0,
+        "min_kaihi": 28,
+        "min_sakuteki": 45,
+        "item": [
+            588,
+            587
+        ]
+    },
+    {
+        "id": 1062,
+        "name": "Visby",
+        "min_taisen": 50,
+        "min_kaihi": 50,
+        "min_sakuteki": 8,
+        "item": [
+            584
+        ]
+    },
+    {
+        "id": 1065,
+        "name": "日枝丸",
+        "min_taisen": 1,
+        "min_kaihi": 14,
+        "min_sakuteki": 10,
+        "item": [
+            4,
+            226
+        ]
+    },
+    {
+        "id": 1067,
+        "name": "Visby改",
+        "min_taisen": 60,
+        "min_kaihi": 54,
+        "min_sakuteki": 9,
+        "item": [
+            584,
+            584
+        ]
+    },
+    {
+        "id": 1070,
+        "name": "日枝丸改",
+        "min_taisen": 6,
+        "min_kaihi": 15,
+        "min_sakuteki": 17,
+        "item": [
+            48,
+            39,
+            146
+        ]
+    },
+    {
+        "id": 1071,
+        "name": "北上改三",
+        "min_taisen": 32,
+        "min_kaihi": 44,
+        "min_sakuteki": 14,
+        "item": [
         ]
     },
     {
