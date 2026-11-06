@@ -139,6 +139,10 @@ public class ConfigController extends WindowController {
     @FXML
     private CheckBox showNdock;
 
+    /** 給糧ペインの表示 */
+    @FXML
+    private CheckBox showSupply;
+
     /** 任務ペインの表示 */
     @FXML
     private CheckBox showQuest;
@@ -416,6 +420,7 @@ public class ConfigController extends WindowController {
         this.showAchievement.setSelected(conf.isShowAchievement());
         this.showMission.setSelected(conf.isShowMission());
         this.showNdock.setSelected(conf.isShowNdock());
+        this.showSupply.setSelected(conf.isShowSupply());
         this.showQuest.setSelected(conf.isShowQuest());
         this.useRemind.setSelected(conf.isUseRemind());
         this.remind.setText(Integer.toString(conf.getRemind()));
@@ -545,6 +550,7 @@ public class ConfigController extends WindowController {
         conf.setShowAchievement(this.showAchievement.isSelected());
         conf.setShowMission(this.showMission.isSelected());
         conf.setShowNdock(this.showNdock.isSelected());
+        conf.setShowSupply(this.showSupply.isSelected());
         conf.setShowQuest(this.showQuest.isSelected());
         conf.setUseRemind(this.useRemind.isSelected());
         conf.setRemind(Math.max(this.toInt(this.remind.getText()), 10));
