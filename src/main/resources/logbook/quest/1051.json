@@ -1,0 +1,46 @@
+/* [1051] 改装「1YB3H」旗艦、敵中を突破せよ！ */
+{
+  "type" : "出撃",
+  "resetType" : "イヤリー",
+  "yearlyResetMonth" : 8,
+  "filter" : {
+    "area" : [ "1-5", "1-6", "2-3", "2-5", "4-3" ],
+    "fleet" : {
+      "conditions" : [ {
+        "name" : [ "山城改二補" ],
+        "order" : 1
+      }, {
+        "name" : [ "扶桑", "時雨" ], "count": 1, "operator": "GE"
+      }, {
+        "name" : [ "最上", "満潮", "朝雲", "山雲" ], "count": 2, "operator": "GE"
+      } ],
+      "operator" : "AND"
+    }
+  },
+  "conditions" : [ {
+    "area" : [ "1-5" ],
+    "boss" : true,
+    "rank" : [ "S", "A" ],
+    "count" : 1
+  },{
+    "area": ["1-6"], 
+    "rank": ["S", "A", "B", "C", "D", "E"], 
+    "cells": ["B", "D"], 
+    "count": 1
+  },{
+    "area" : [ "2-3" ],
+    "boss" : true,
+    "rank" : [ "S", "A" ],
+    "count" : 1
+  }, {
+    "area" : [ "2-5" ],
+    "boss" : true,
+    "rank" : [ "S", "A" ],
+    "count" : 1
+  }, {
+    "area" : [ "4-3" ],
+    "boss" : true,
+    "rank" : [ "S", "A" ],
+    "count" : 1
+  } ]
+}
