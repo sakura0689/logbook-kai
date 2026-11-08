@@ -1,0 +1,39 @@
+/* [1050] 「第九戦隊」抜錨！前線展開せよッ！ */
+{
+  "type" : "出撃",
+  "resetType" : "イヤリー",
+  "yearlyResetMonth" : 9,
+  "filter" : {
+    "area" : [ "1-4", "2-1", "2-2", "2-3" ],
+    "fleet" : {
+      "conditions" : [ {
+        "name" : [ "北上改二", "北上改三", "大井改二" ],
+        "order" : 1
+      }, {
+        "stype": ["駆逐艦"], "count": 2, "operator": "GE"
+      } ],
+      "operator" : "AND"
+    }
+  },
+  "conditions" : [ {
+    "area" : [ "1-4" ],
+    "boss" : true,
+    "rank" : [ "S" ],
+    "count" : 1
+  }, {
+    "area" : [ "2-1" ],
+    "boss" : true,
+    "rank" : [ "S" ],
+    "count" : 1
+  }, {
+    "area" : [ "2-2" ],
+    "boss" : true,
+    "rank" : [ "S" ],
+    "count" : 1
+  }, {
+    "area" : [ "2-3" ],
+    "boss" : true,
+    "rank" : [ "S" ],
+    "count" : 1
+  } ]
+}
